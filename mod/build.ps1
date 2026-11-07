@@ -100,7 +100,7 @@ foreach ($file in $required) {
     }
 }
 
-$manifest = Get-Content (Join-Path $stageDir 'manifest.json') -Raw | ConvertFrom-Json
+$manifest = Get-Content (Join-Path $stageDir 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 foreach ($field in @('Name', 'Version', 'Id', 'MinimumGameVersion')) {
     if (-not $manifest.$field) {
         throw "manifest.json is missing required field $field"

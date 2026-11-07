@@ -38,7 +38,7 @@ if (-not (Test-Path $stageDir)) {
     throw "staged mod folder not found: $stageDir (run build.ps1 first)"
 }
 
-$manifest = Get-Content (Join-Path $stageDir 'manifest.json') -Raw | ConvertFrom-Json
+$manifest = Get-Content (Join-Path $stageDir 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 $version = $manifest.Version
 if (-not $version) {
     throw 'manifest.json has no Version'
