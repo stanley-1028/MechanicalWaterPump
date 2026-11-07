@@ -1,0 +1,214 @@
+# member dump for Timberborn.SimpleOutputBuildings.SimpleOutputInventory, Timberborn.InventorySystem.Inventory$, Timberborn.InventorySystem.InventorySpec, Timberborn.InventorySystem.InventoryService, Timberborn.InventorySystem.IInventory
+
+=== Timberborn.InventorySystem.IInventoryValidator   [Timberborn.InventorySystem]
+  kind: interface   base: -
+  prop System.Boolean ValidInventory {get}
+  method public System.Boolean get_ValidInventory()
+
+=== Timberborn.InventorySystem.Inventory   [Timberborn.InventorySystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.WorldPersistence.IPersistentEntity, Timberborn.InventorySystem.IAmountProvider, Timberborn.WorldPersistence.INamedComponent
+  field static Timberborn.WorldPersistence.ComponentKey InventoryKey
+  field static PropertyKey<Timberborn.Goods.GoodRegistry> StorageKey
+  field EventHandler<Timberborn.InventorySystem.InventoryChangedEventArgs> InventoryChanged
+  field EventHandler<Timberborn.InventorySystem.InventoryStockChangedEventArgs> InventoryStockChanged
+  field EventHandler<Timberborn.InventorySystem.InventoryReservationChangedEventArgs> InventoryCapacityReservationChanged
+  field System.EventHandler UnwantedStockDisappeared
+  field System.EventHandler InventoryEnabled
+  field System.EventHandler InventoryDisabled
+  field System.String <ComponentName>k__BackingField
+  field System.Int32 <Capacity>k__BackingField
+  field System.Boolean <HasUnwantedStock>k__BackingField
+  field System.Boolean <PublicInput>k__BackingField
+  field System.Boolean <PublicOutput>k__BackingField
+  field Timberborn.Goods.GoodRegistryValueSerializer _goodRegistryValueSerializer
+  field Timberborn.BlockingSystem.BlockableObject _blockableObject
+  field Timberborn.InventorySystem.DistrictInventoryAssigner _districtInventoryAssigner
+  field Timberborn.Goods.StorableGoodRegistry _allowedGoods
+  field Timberborn.Goods.GoodRegistry _storage
+  field Timberborn.Goods.GoodRegistry _reservedStock
+  field Timberborn.Goods.GoodRegistry _reservedCapacity
+  field Timberborn.InventorySystem.IGoodDisallower _goodDisallower
+  field System.Boolean _ignorableCapacity
+  field System.Boolean _specIgnorableCapacity
+  prop System.String ComponentName {get/set}
+  prop System.Int32 Capacity {get/set}
+  prop System.Boolean HasUnwantedStock {get/set}
+  prop System.Boolean PublicInput {get/set}
+  prop System.Boolean PublicOutput {get/set}
+  prop System.Int32 TotalAmountInStock {get}
+  prop System.Boolean IsFull {get}
+  prop System.Boolean IsFullyReserved {get}
+  prop System.Boolean HasAnyUnreservedStock {get}
+  prop System.Boolean IsEmpty {get}
+  prop System.Boolean IsInput {get}
+  prop System.Boolean IsOutput {get}
+  prop ReadOnlyList<Timberborn.Goods.StorableGoodAmount> AllowedGoods {get}
+  prop ReadOnlyHashSet<System.String> InputGoods {get}
+  prop ReadOnlyHashSet<System.String> OutputGoods {get}
+  prop ReadOnlyList<Timberborn.Goods.GoodAmount> Stock {get}
+  prop System.Boolean IsUnblocked {get}
+  event EventHandler<Timberborn.InventorySystem.InventoryChangedEventArgs> InventoryChanged
+  event EventHandler<Timberborn.InventorySystem.InventoryStockChangedEventArgs> InventoryStockChanged
+  event EventHandler<Timberborn.InventorySystem.InventoryReservationChangedEventArgs> InventoryCapacityReservationChanged
+  event System.EventHandler UnwantedStockDisappeared
+  event System.EventHandler InventoryEnabled
+  event System.EventHandler InventoryDisabled
+  method public System.Void add_InventoryChanged(EventHandler<Timberborn.InventorySystem.InventoryChangedEventArgs> value)
+  method public System.Void remove_InventoryChanged(EventHandler<Timberborn.InventorySystem.InventoryChangedEventArgs> value)
+  method public System.Void add_InventoryStockChanged(EventHandler<Timberborn.InventorySystem.InventoryStockChangedEventArgs> value)
+  method public System.Void remove_InventoryStockChanged(EventHandler<Timberborn.InventorySystem.InventoryStockChangedEventArgs> value)
+  method public System.Void add_InventoryCapacityReservationChanged(EventHandler<Timberborn.InventorySystem.InventoryReservationChangedEventArgs> value)
+  method public System.Void remove_InventoryCapacityReservationChanged(EventHandler<Timberborn.InventorySystem.InventoryReservationChangedEventArgs> value)
+  method public System.Void add_UnwantedStockDisappeared(System.EventHandler value)
+  method public System.Void remove_UnwantedStockDisappeared(System.EventHandler value)
+  method public System.Void add_InventoryEnabled(System.EventHandler value)
+  method public System.Void remove_InventoryEnabled(System.EventHandler value)
+  method public System.Void add_InventoryDisabled(System.EventHandler value)
+  method public System.Void remove_InventoryDisabled(System.EventHandler value)
+  method public System.String get_ComponentName()
+  method private System.Void set_ComponentName(System.String value)
+  method public System.Int32 get_Capacity()
+  method private System.Void set_Capacity(System.Int32 value)
+  method public System.Boolean get_HasUnwantedStock()
+  method private System.Void set_HasUnwantedStock(System.Boolean value)
+  method public System.Boolean get_PublicInput()
+  method private System.Void set_PublicInput(System.Boolean value)
+  method public System.Boolean get_PublicOutput()
+  method private System.Void set_PublicOutput(System.Boolean value)
+  method public System.Void .ctor(Timberborn.Goods.GoodRegistryValueSerializer goodRegistryValueSerializer)
+  method public System.Int32 get_TotalAmountInStock()
+  method public System.Boolean get_IsFull()
+  method public System.Boolean get_IsFullyReserved()
+  method public System.Boolean get_HasAnyUnreservedStock()
+  method public System.Boolean get_IsEmpty()
+  method public System.Boolean get_IsInput()
+  method public System.Boolean get_IsOutput()
+  method public ReadOnlyList<Timberborn.Goods.StorableGoodAmount> get_AllowedGoods()
+  method public ReadOnlyHashSet<System.String> get_InputGoods()
+  method public ReadOnlyHashSet<System.String> get_OutputGoods()
+  method public ReadOnlyList<Timberborn.Goods.GoodAmount> get_Stock()
+  method public System.Boolean get_IsUnblocked()
+  method public System.Void Awake()
+  method public System.Void Initialize(System.String componentName, System.Int32 capacity, IEnumerable<Timberborn.Goods.StorableGoodAmount> storableGoodAmounts, System.Boolean publicInput, System.Boolean publicOutput, System.Boolean ignorableCapacity, Timberborn.InventorySystem.IGoodDisallower goodDisallower)
+  method public System.Void Enable()
+  method public System.Void Disable()
+  method public System.Void GiveProduced(Timberborn.Goods.GoodAmount good)
+  method public System.Void GiveImported(Timberborn.Goods.GoodAmount good)
+  method public System.Void GiveExisting(Timberborn.Goods.GoodAmount good)
+  method public System.Void GiveExistingIgnoringCapacityReservation(Timberborn.Goods.GoodAmount good)
+  method public System.Void GiveExistingIgnoringCapacity(Timberborn.Goods.GoodAmount good)
+  method public System.Void ReserveCapacity(Timberborn.Goods.GoodAmount good)
+  method public System.Void UnreserveCapacity(Timberborn.Goods.GoodAmount good)
+  method public System.Int32 ReservedCapacity(System.String good)
+  method public ReadOnlyList<Timberborn.Goods.GoodAmount> ReservedCapacity()
+  method public System.Int32 UnreservedCapacity(System.String goodId)
+  method public System.Boolean HasUnreservedCapacity(Timberborn.Goods.GoodAmount good)
+  method public System.Boolean HasUnreservedCapacity(System.String goodId)
+  method public System.Void TakeConsumed(Timberborn.Goods.GoodAmount good)
+  method public System.Void TakeExported(Timberborn.Goods.GoodAmount good)
+  method public System.Void TakeExisting(Timberborn.Goods.GoodAmount good)
+  method public System.Void ReserveStock(Timberborn.Goods.GoodAmount good)
+  method public System.Boolean HasUnreservedStock(Timberborn.Goods.GoodAmount good)
+  method public System.Void UnreserveStock(Timberborn.Goods.GoodAmount good)
+  method public System.Boolean HasUnreservedStock(System.String goodId)
+  method public System.Int32 AmountInStock(System.String goodId)
+  method public System.Int32 UnreservedAmountInStock(System.String goodId)
+  method public IEnumerable<Timberborn.Goods.GoodAmount> UnreservedStock()
+  method public IEnumerable<Timberborn.Goods.GoodAmount> UnreservedTakeableStock()
+  method public IEnumerable<Timberborn.Goods.GoodAmount> UnreservedUnwantedStock()
+  method public System.Int32 UnwantedStockAmount()
+  method public System.Int32 LimitedAmount(System.String goodId)
+  method public System.Boolean Gives(System.String goodId)
+  method public System.Boolean Takes(System.String goodId)
+  method public System.Void Save(Timberborn.WorldPersistence.IEntitySaver entitySaver)
+  method public System.Void Load(Timberborn.WorldPersistence.IEntityLoader entityLoader)
+  method public System.String ToString()
+  method public System.Void SetIgnorableCapacity(System.Boolean ignorableCapacity)
+  method public System.Void GetCapacity(List<Timberborn.Goods.GoodAmount> capacity)
+  method private System.Void GiveInternal(Timberborn.Goods.GoodAmount good, Timberborn.InventorySystem.StockChangeType stockChangeType)
+  method private System.Void TakeInternal(Timberborn.Goods.GoodAmount good, Timberborn.InventorySystem.StockChangeType stockChangeType)
+  method private System.Void LoadFromNamedComponent(Timberborn.WorldPersistence.IEntityLoader entityLoader, System.String componentName)
+  method private System.Void CheckUnreservedCapacity(Timberborn.Goods.GoodAmount good)
+  method private System.Void CheckCapacity(Timberborn.Goods.GoodAmount good)
+  method private System.Boolean HasStock(Timberborn.Goods.GoodAmount good)
+  method private System.Boolean Allows(System.String goodId)
+  method private System.Void CheckIfAllows(Timberborn.Goods.GoodAmount good)
+  method private System.Void CheckIfHasStock(Timberborn.Goods.GoodAmount good, System.String action)
+  method private System.Boolean HasCapacity(Timberborn.Goods.GoodAmount good)
+  method private System.Int32 GoodCapacity(System.String goodId)
+  method private System.Void OnDisallowedGoodsChanged(System.Object sender, Timberborn.InventorySystem.DisallowedGoodsChangedEventArgs e)
+  method private System.Void CheckIfUnwantedStockAppeared()
+  method private System.Void CheckIfUnwantedStockDisappeared()
+  method private System.Void InvokeInventoryChangedEvent(System.String goodId)
+  method private System.Void InvokeInventoryStockChangedEvents(Timberborn.Goods.GoodAmount goodAmount, Timberborn.InventorySystem.StockChangeType stockChangeType)
+  method private System.Void InvokeInventoryCapacityReservationChangedEvents(Timberborn.Goods.GoodAmount goodAmount)
+  method private System.Void ThrowArgumentException(System.String customMessage)
+  method private static System.Void .cctor()
+  nested Timberborn.InventorySystem.Inventory+.<UnreservedStock>d__100
+  nested Timberborn.InventorySystem.Inventory+.<UnreservedTakeableStock>d__101
+  nested Timberborn.InventorySystem.Inventory+.<UnreservedUnwantedStock>d__102
+
+=== Timberborn.SimpleOutputBuildings.SimpleOutputInventory   [Timberborn.SimpleOutputBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BlockSystem.IFinishedStateListener
+  field Timberborn.InventorySystem.Inventory <Inventory>k__BackingField
+  prop Timberborn.InventorySystem.Inventory Inventory {get/set}
+  method public Timberborn.InventorySystem.Inventory get_Inventory()
+  method private System.Void set_Inventory(Timberborn.InventorySystem.Inventory value)
+  method public System.Void Awake()
+  method public System.Void InitializeInventory(Timberborn.InventorySystem.Inventory inventory)
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void .ctor()
+
+=== Timberborn.SimpleOutputBuildings.SimpleOutputInventoryHaulBehaviorProvider   [Timberborn.SimpleOutputBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.Hauling.IHaulBehaviorProvider
+  field Timberborn.InventorySystem.InventoryFillCalculator _inventoryFillCalculator
+  field Timberborn.Emptying.EmptyOutputWorkplaceBehavior _emptyOutputWorkplaceBehavior
+  field Timberborn.BlockingSystem.BlockableObject _blockableObject
+  field Timberborn.InventorySystem.Inventory _inventory
+  method public System.Void .ctor(Timberborn.InventorySystem.InventoryFillCalculator inventoryFillCalculator)
+  method public System.Void Awake()
+  method public System.Void GetWeightedBehaviors(IList<Timberborn.Hauling.WeightedBehavior> weightedBehaviors)
+
+=== Timberborn.SimpleOutputBuildings.SimpleOutputInventoryInitializer   [Timberborn.SimpleOutputBuildings]
+  kind: class   base: System.Object
+  interfaces: IDedicatedDecoratorInitializer<Timberborn.SimpleOutputBuildings.SimpleOutputInventory, Timberborn.InventorySystem.Inventory>
+  field static System.String InventoryComponentName
+  field Timberborn.Goods.IGoodService _goodService
+  field Timberborn.InventoryNeedSystem.InventoryNeedBehaviorInitializer _inventoryNeedBehaviorInitializer
+  field Timberborn.InventorySystem.InventoryInitializerFactory _inventoryInitializerFactory
+  method public System.Void .ctor(Timberborn.Goods.IGoodService goodService, Timberborn.InventoryNeedSystem.InventoryNeedBehaviorInitializer inventoryNeedBehaviorInitializer, Timberborn.InventorySystem.InventoryInitializerFactory inventoryInitializerFactory)
+  method public System.Void Initialize(Timberborn.SimpleOutputBuildings.SimpleOutputInventory subject, Timberborn.InventorySystem.Inventory decorator)
+  method private static System.Void AddGoodDisallower(Timberborn.SimpleOutputBuildings.SimpleOutputInventory subject, Timberborn.InventorySystem.InventoryInitializer inventoryInitializer)
+  method private System.Void AllowGoodsAsTakeable(Timberborn.InventorySystem.InventoryInitializer inventoryInitializer, System.Int32 allowedAmount, Timberborn.Goods.IAllowedGoodProvider provider)
+  method private static System.Void .cctor()
+
+=== Timberborn.SimpleOutputBuildings.SimpleOutputInventorySpec   [Timberborn.SimpleOutputBuildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.SimpleOutputBuildings.SimpleOutputInventorySpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  field System.Int32 <Capacity>k__BackingField
+  field System.Boolean <IgnorableCapacity>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.Int32 Capacity {get/set}
+  prop System.Boolean IgnorableCapacity {get/set}
+  method System.Type get_EqualityContract()
+  method public System.Int32 get_Capacity()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Capacity(System.Int32 value)
+  method public System.Boolean get_IgnorableCapacity()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_IgnorableCapacity(System.Boolean value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.SimpleOutputBuildings.SimpleOutputInventorySpec left, Timberborn.SimpleOutputBuildings.SimpleOutputInventorySpec right)
+  method public static System.Boolean op_Equality(Timberborn.SimpleOutputBuildings.SimpleOutputInventorySpec left, Timberborn.SimpleOutputBuildings.SimpleOutputInventorySpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.SimpleOutputBuildings.SimpleOutputInventorySpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.SimpleOutputBuildings.SimpleOutputInventorySpec original)
+  method public System.Void .ctor()

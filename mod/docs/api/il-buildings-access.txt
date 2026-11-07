@@ -1,0 +1,454 @@
+# member dump for Timberborn.Buildings.BuildingAccessible, Timberborn.Buildings.BuildingAccessibleSpec, Timberborn.Buildings.Building, Timberborn.Buildings.FinishedState, Timberborn.Buildings.PausableBuilding
+
+=== Timberborn.Buildings.Building   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IRegisteredComponent
+  field Timberborn.Buildings.BuildingSpec <Spec>k__BackingField
+  prop Timberborn.Buildings.BuildingSpec Spec {get/set}
+  method public Timberborn.Buildings.BuildingSpec get_Spec()
+  method private System.Void set_Spec(Timberborn.Buildings.BuildingSpec value)
+  method public System.Void Awake()
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.BuildingAccessible   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BlockSystem.IFinishedStateListener, Timberborn.BlockSystem.IPreviewSelectionListener, Timberborn.BlockSystem.IPostPlacementChangeListener, Timberborn.EntitySystem.IRegisteredComponent, Timberborn.Navigation.IAccessibleNeeder
+  field Timberborn.Navigation.Accessible <Accessible>k__BackingField
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.Buildings.BuildingAccessibleSpec _buildingAccessibleSpec
+  field UnityEngine.Vector3 _access
+  prop Timberborn.Navigation.Accessible Accessible {get/set}
+  prop System.String AccessibleComponentName {get}
+  method public Timberborn.Navigation.Accessible get_Accessible()
+  method private System.Void set_Accessible(Timberborn.Navigation.Accessible value)
+  method public System.String get_AccessibleComponentName()
+  method public System.Void Awake()
+  method public System.Void SetAccessible(Timberborn.Navigation.Accessible accessible)
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void OnPreviewSelect()
+  method public System.Void OnPreviewUnselect()
+  method public System.Void OnPostPlacementChanged()
+  method public UnityEngine.Vector3 CalculateAccess()
+  method public UnityEngine.Vector3 CalculateAccessFromLocalAccess()
+  method private System.Void EnableAccesses()
+  method private System.Void UpdateAccess()
+  method private UnityEngine.Vector3 CalculateAccessAtEntrance()
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.BuildingAccessibleSpec   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.Buildings.BuildingAccessibleSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  field UnityEngine.Vector3 <LocalAccess>k__BackingField
+  field System.Boolean <ForceOneFinalAccess>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop UnityEngine.Vector3 LocalAccess {get/set}
+  prop System.Boolean ForceOneFinalAccess {get/set}
+  method System.Type get_EqualityContract()
+  method public UnityEngine.Vector3 get_LocalAccess()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_LocalAccess(UnityEngine.Vector3 value)
+  method public System.Boolean get_ForceOneFinalAccess()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_ForceOneFinalAccess(System.Boolean value)
+  method public UnityEngine.Vector3 CalculateAccessFromLocalAccess(Timberborn.BlockSystem.BlockObject blockObject)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.Buildings.BuildingAccessibleSpec left, Timberborn.Buildings.BuildingAccessibleSpec right)
+  method public static System.Boolean op_Equality(Timberborn.Buildings.BuildingAccessibleSpec left, Timberborn.Buildings.BuildingAccessibleSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.Buildings.BuildingAccessibleSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.Buildings.BuildingAccessibleSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.BuildingBlockedAccessible   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.Navigation.IBlockedAccessible, Timberborn.BlockSystem.IFinishedStateListener
+  field Timberborn.Navigation.INavMeshService _navMeshService
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  method public System.Void .ctor(Timberborn.Navigation.INavMeshService navMeshService)
+  method public System.Void Awake()
+  method public System.Boolean IsBlocked()
+  method public System.Boolean IsBlockedInstant()
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+
+=== Timberborn.Buildings.BuildingDetailTexture   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BlockSystem.IInitializablePreview, Timberborn.EntitySystem.IInitializableEntity
+  field static System.Int32 TextureProperty
+  field static System.Int32 ColorProperty
+  method public System.Void InitializePreview()
+  method public System.Void InitializeEntity()
+  method private System.Void Initialize()
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+
+=== Timberborn.Buildings.BuildingDetailTextureSpec   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.Buildings.BuildingDetailTextureSpec>
+  field AssetRef<UnityEngine.Texture> <Texture>k__BackingField
+  field UnityEngine.Color <Color>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop AssetRef<UnityEngine.Texture> Texture {get/set}
+  prop UnityEngine.Color Color {get/set}
+  method System.Type get_EqualityContract()
+  method public AssetRef<UnityEngine.Texture> get_Texture()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Texture(AssetRef<UnityEngine.Texture> value)
+  method public UnityEngine.Color get_Color()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Color(UnityEngine.Color value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.Buildings.BuildingDetailTextureSpec left, Timberborn.Buildings.BuildingDetailTextureSpec right)
+  method public static System.Boolean op_Equality(Timberborn.Buildings.BuildingDetailTextureSpec left, Timberborn.Buildings.BuildingDetailTextureSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.Buildings.BuildingDetailTextureSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.Buildings.BuildingDetailTextureSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.BuildingModel   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BlockSystem.IInitializablePreview, Timberborn.BlockObjectModelSystem.IBlockObjectModel, Timberborn.BlockSystem.IFinishedStateListener, Timberborn.BlockSystem.IUnfinishedStateListener
+  field UnityEngine.GameObject <FinishedModel>k__BackingField
+  field UnityEngine.GameObject <UnfinishedModel>k__BackingField
+  field UnityEngine.GameObject <FinishedUncoveredModel>k__BackingField
+  field System.Int32 <UndergroundModelDepth>k__BackingField
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.BlockObjectModelSystem.BlockObjectModelController _blockObjectModelController
+  field Timberborn.Buildings.BuildingModelSpec _buildingModelSpec
+  field System.Boolean _showFinishedModel
+  field System.Boolean _blockUnfinishedModel
+  field UnityEngine.GameObject _undergroundModel
+  prop UnityEngine.GameObject FinishedModel {get/set}
+  prop UnityEngine.GameObject UnfinishedModel {get/set}
+  prop UnityEngine.GameObject FinishedUncoveredModel {get/set}
+  prop System.Int32 UndergroundModelDepth {get/set}
+  prop System.Boolean HasUnfinishedModel {get}
+  prop System.Boolean HasUncoveredModel {get}
+  prop System.Boolean HasUndergroundModel {get}
+  prop System.Boolean UnfinishedConstructionModeModel {get}
+  prop System.Boolean IsUnfinishedModelBlocked {get}
+  prop System.Boolean ForceUnfinishedModel {get}
+  method public UnityEngine.GameObject get_FinishedModel()
+  method private System.Void set_FinishedModel(UnityEngine.GameObject value)
+  method public UnityEngine.GameObject get_UnfinishedModel()
+  method private System.Void set_UnfinishedModel(UnityEngine.GameObject value)
+  method public UnityEngine.GameObject get_FinishedUncoveredModel()
+  method private System.Void set_FinishedUncoveredModel(UnityEngine.GameObject value)
+  method public System.Int32 get_UndergroundModelDepth()
+  method private System.Void set_UndergroundModelDepth(System.Int32 value)
+  method public System.Boolean get_HasUnfinishedModel()
+  method public System.Boolean get_HasUncoveredModel()
+  method public System.Boolean get_HasUndergroundModel()
+  method public System.Boolean get_UnfinishedConstructionModeModel()
+  method public System.Boolean get_IsUnfinishedModelBlocked()
+  method public System.Void Awake()
+  method public System.Void InitializePreview()
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void OnEnterUnfinishedState()
+  method public System.Void OnExitUnfinishedState()
+  method public System.Void ShowFinishedModel()
+  method public System.Void ShowUnfinishedModel()
+  method public System.Void BlockUnfinishedModel()
+  method public System.Void UnblockUnfinishedModel()
+  method public System.Void UpdateModelVisibility()
+  method private System.Boolean get_ForceUnfinishedModel()
+  method private System.Void ToggleModelVisibility(System.Boolean showFinished, System.Boolean showFinishedShadows, System.Boolean showFinishedUncovered, System.Boolean showUnfinished, System.Boolean showUndergroundModel)
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.BuildingModelGroundCutoff   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity, Timberborn.BlockSystem.IPostPlacementChangeListener
+  field Timberborn.Rendering.MaterialHeightCutoffSetter _materialHeightCutoffSetter
+  field Timberborn.Buildings.BuildingModelGroundCutoffSpec _buildingModelGroundCutoffSpec
+  method public System.Void .ctor(Timberborn.Rendering.MaterialHeightCutoffSetter materialHeightCutoffSetter)
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method public System.Void OnPostPlacementChanged()
+  method private System.Void UpdateCutoff()
+
+=== Timberborn.Buildings.BuildingModelGroundCutoffSpec   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.Buildings.BuildingModelGroundCutoffSpec>
+  field ImmutableArray<System.String> <Targets>k__BackingField
+  field System.Single <Offset>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop ImmutableArray<System.String> Targets {get/set}
+  prop System.Single Offset {get/set}
+  method System.Type get_EqualityContract()
+  method public ImmutableArray<System.String> get_Targets()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Targets(ImmutableArray<System.String> value)
+  method public System.Single get_Offset()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Offset(System.Single value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.Buildings.BuildingModelGroundCutoffSpec left, Timberborn.Buildings.BuildingModelGroundCutoffSpec right)
+  method public static System.Boolean op_Equality(Timberborn.Buildings.BuildingModelGroundCutoffSpec left, Timberborn.Buildings.BuildingModelGroundCutoffSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.Buildings.BuildingModelGroundCutoffSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.Buildings.BuildingModelGroundCutoffSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.BuildingModelSpec   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.Buildings.BuildingModelSpec>
+  field System.String <FinishedModelName>k__BackingField
+  field System.String <UnfinishedModelName>k__BackingField
+  field System.String <FinishedUncoveredModelName>k__BackingField
+  field System.String <UndergroundModelName>k__BackingField
+  field Timberborn.Buildings.ConstructionModeModel <ConstructionModeModel>k__BackingField
+  field System.Int32 <UndergroundModelDepth>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.String FinishedModelName {get/set}
+  prop System.String UnfinishedModelName {get/set}
+  prop System.String FinishedUncoveredModelName {get/set}
+  prop System.String UndergroundModelName {get/set}
+  prop Timberborn.Buildings.ConstructionModeModel ConstructionModeModel {get/set}
+  prop System.Int32 UndergroundModelDepth {get/set}
+  prop System.Boolean UnfinishedConstructionModeModel {get}
+  method System.Type get_EqualityContract()
+  method public System.String get_FinishedModelName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_FinishedModelName(System.String value)
+  method public System.String get_UnfinishedModelName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_UnfinishedModelName(System.String value)
+  method public System.String get_FinishedUncoveredModelName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_FinishedUncoveredModelName(System.String value)
+  method public System.String get_UndergroundModelName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_UndergroundModelName(System.String value)
+  method public Timberborn.Buildings.ConstructionModeModel get_ConstructionModeModel()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_ConstructionModeModel(Timberborn.Buildings.ConstructionModeModel value)
+  method public System.Int32 get_UndergroundModelDepth()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_UndergroundModelDepth(System.Int32 value)
+  method public System.Boolean get_UnfinishedConstructionModeModel()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.Buildings.BuildingModelSpec left, Timberborn.Buildings.BuildingModelSpec right)
+  method public static System.Boolean op_Equality(Timberborn.Buildings.BuildingModelSpec left, Timberborn.Buildings.BuildingModelSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.Buildings.BuildingModelSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.Buildings.BuildingModelSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.BuildingModelUpdater   [Timberborn.Buildings]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton, Timberborn.Navigation.ISingletonPreviewNavMeshListener, Timberborn.Navigation.ISingletonInstantNavMeshListener
+  field Timberborn.BlockSystem.IBlockService _blockService
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field System.Boolean _loaded
+  method public System.Void .ctor(Timberborn.BlockSystem.IBlockService blockService, Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void Load()
+  method public System.Void OnPreviewNavMeshUpdated(Timberborn.Navigation.NavMeshUpdate navMeshUpdate)
+  method public System.Void OnInstantNavMeshUpdated(Timberborn.Navigation.NavMeshUpdate navMeshUpdate)
+  method public System.Void OnBlockObjectSetEvent(Timberborn.BlockSystem.BlockObjectSetEvent blockObjectSetEvent)
+  method public System.Void OnBlockObjectUnsetEvent(Timberborn.BlockSystem.BlockObjectUnsetEvent blockObjectUnsetEvent)
+  method private System.Void OnNavMeshUpdated(Timberborn.Navigation.NavMeshUpdate navMeshUpdate)
+  method private System.Void UpdateBuildingsModelsAt(ReadOnlyList<UnityEngine.Vector3Int> coordinates)
+  method private System.Void UpdateBuildingModelsAt(UnityEngine.Vector3Int coordinates)
+  method private System.Void UpdateBuildingsModelsAround(Timberborn.BlockSystem.BlockObject blockObject)
+  method private System.Void UpdateBuildingModelsBelow(ReadOnlyList<UnityEngine.Vector3Int> coordinates)
+  method private System.Void UpdateBuildingModelsBelow(Timberborn.BlockSystem.BlockObject blockObject)
+
+=== Timberborn.Buildings.BuildingSelectionSound   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.SelectionSystem.ISelectionListener
+  field Timberborn.SoundSystem.ISoundSystem _soundSystem
+  field Timberborn.Buildings.BuildingSpec _buildingSpec
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  method public System.Void .ctor(Timberborn.SoundSystem.ISoundSystem soundSystem)
+  method public System.Void Awake()
+  method public System.Void OnSelect()
+  method public System.Void OnUnselect()
+
+=== Timberborn.Buildings.BuildingService   [Timberborn.Buildings]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton
+  field Timberborn.TemplateSystem.TemplateService _templateService
+  field List<Timberborn.Buildings.BuildingSpec> _buildings
+  prop ReadOnlyList<Timberborn.Buildings.BuildingSpec> Buildings {get}
+  method public System.Void .ctor(Timberborn.TemplateSystem.TemplateService templateService)
+  method public ReadOnlyList<Timberborn.Buildings.BuildingSpec> get_Buildings()
+  method public System.Void Load()
+  method public System.String GetTemplateName(Timberborn.Buildings.BuildingSpec buildingSpec)
+  method public Timberborn.Buildings.BuildingSpec GetBuildingTemplate(System.String templateName)
+  method private static System.Boolean IsBuildingNamedExactly(System.String templateName, Timberborn.Buildings.BuildingSpec buildingSpec)
+  nested Timberborn.Buildings.BuildingService+.<>c__DisplayClass7_0
+
+=== Timberborn.Buildings.BuildingService+.<>c__DisplayClass7_0   [Timberborn.Buildings]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.String templateName
+  method public System.Void .ctor()
+  method System.Boolean <GetBuildingTemplate>b__0(Timberborn.Buildings.BuildingSpec building)
+
+=== Timberborn.Buildings.BuildingSoundController   [Timberborn.Buildings]
+  kind: class   base: System.Object
+  interfaces: Timberborn.WorldPersistence.IPersistentEntity
+  field static Timberborn.WorldPersistence.ComponentKey BuildingSoundControllerKey
+  field static PropertyKey<System.Boolean> PlaySoundKey
+  field System.Boolean <PlaySound>k__BackingField
+  prop System.Boolean PlaySound {get/set}
+  method public System.Boolean get_PlaySound()
+  method private System.Void set_PlaySound(System.Boolean value)
+  method public System.Void Save(Timberborn.WorldPersistence.IEntitySaver entitySaver)
+  method public System.Void Load(Timberborn.WorldPersistence.IEntityLoader entityLoader)
+  method public System.Void EnableSound()
+  method public System.Void DisableSound()
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+
+=== Timberborn.Buildings.BuildingSounds   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent
+  field Timberborn.SoundSystem.ISoundSystem _soundSystem
+  field Timberborn.Buildings.Building _building
+  field System.Boolean _isStarted
+  prop System.Boolean HasLoopingSound {get}
+  method public System.Void .ctor(Timberborn.SoundSystem.ISoundSystem soundSystem)
+  method public System.Void Awake()
+  method public System.Void ToggleSound(System.Boolean start)
+  method private System.Boolean get_HasLoopingSound()
+  method private System.Void StartSound(Timberborn.Buildings.Building emitter)
+  method private System.Void StopSound(Timberborn.Buildings.Building emitter)
+  method private static System.String GetSoundName(Timberborn.Buildings.Building emitter)
+  method private static UnityEngine.Vector3 GetSoundOffset(Timberborn.Buildings.Building emitter)
+
+=== Timberborn.Buildings.BuildingSpec   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.Buildings.BuildingSpec>
+  field System.String <SelectionSoundName>k__BackingField
+  field System.String <LoopingSoundName>k__BackingField
+  field ImmutableArray<Timberborn.Goods.GoodAmountSpec> <BuildingCost>k__BackingField
+  field System.Int32 <ScienceCost>k__BackingField
+  field System.Boolean <PlaceFinished>k__BackingField
+  field System.Boolean <FinishableWithBeaversOnSite>k__BackingField
+  field System.Boolean <DrawRangeBoundsOnIt>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.String SelectionSoundName {get/set}
+  prop System.String LoopingSoundName {get/set}
+  prop ImmutableArray<Timberborn.Goods.GoodAmountSpec> BuildingCost {get/set}
+  prop System.Int32 ScienceCost {get/set}
+  prop System.Boolean PlaceFinished {get/set}
+  prop System.Boolean FinishableWithBeaversOnSite {get/set}
+  prop System.Boolean DrawRangeBoundsOnIt {get/set}
+  method System.Type get_EqualityContract()
+  method public System.String get_SelectionSoundName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_SelectionSoundName(System.String value)
+  method public System.String get_LoopingSoundName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_LoopingSoundName(System.String value)
+  method public ImmutableArray<Timberborn.Goods.GoodAmountSpec> get_BuildingCost()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_BuildingCost(ImmutableArray<Timberborn.Goods.GoodAmountSpec> value)
+  method public System.Int32 get_ScienceCost()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_ScienceCost(System.Int32 value)
+  method public System.Boolean get_PlaceFinished()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_PlaceFinished(System.Boolean value)
+  method public System.Boolean get_FinishableWithBeaversOnSite()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_FinishableWithBeaversOnSite(System.Boolean value)
+  method public System.Boolean get_DrawRangeBoundsOnIt()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_DrawRangeBoundsOnIt(System.Boolean value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.Buildings.BuildingSpec left, Timberborn.Buildings.BuildingSpec right)
+  method public static System.Boolean op_Equality(Timberborn.Buildings.BuildingSpec left, Timberborn.Buildings.BuildingSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.Buildings.BuildingSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.Buildings.BuildingSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.BuildingTerrainCutout   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity, Timberborn.EntitySystem.IDeletableEntity, Timberborn.TerrainSystem.ICutoutTilesProvider
+  field Timberborn.TerrainSystem.TerrainCutout _terrainCutout
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.BlockObjectModelSystem.BlockObjectModelController _blockObjectModelController
+  field Timberborn.Buildings.BuildingTerrainCutoutSpec _buildingTerrainCutoutSpec
+  field System.Boolean _isCutoutSet
+  method public System.Void .ctor(Timberborn.TerrainSystem.TerrainCutout terrainCutout)
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method public System.Void DeleteEntity()
+  method public IEnumerable<UnityEngine.Vector3Int> GetPositionedCutoutTiles()
+  method private System.Void OnModelsUpdated(System.Object sender, System.EventArgs e)
+  method private System.Void UpdateCutout()
+  method private UnityEngine.Vector3Int <GetPositionedCutoutTiles>b__9_0(UnityEngine.Vector3Int tile)
+
+=== Timberborn.Buildings.BuildingTerrainCutoutSpec   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.Buildings.BuildingTerrainCutoutSpec>
+  field ImmutableArray<UnityEngine.Vector3Int> <CutoutTiles>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop ImmutableArray<UnityEngine.Vector3Int> CutoutTiles {get/set}
+  method System.Type get_EqualityContract()
+  method public ImmutableArray<UnityEngine.Vector3Int> get_CutoutTiles()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_CutoutTiles(ImmutableArray<UnityEngine.Vector3Int> value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.Buildings.BuildingTerrainCutoutSpec left, Timberborn.Buildings.BuildingTerrainCutoutSpec right)
+  method public static System.Boolean op_Equality(Timberborn.Buildings.BuildingTerrainCutoutSpec left, Timberborn.Buildings.BuildingTerrainCutoutSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.Buildings.BuildingTerrainCutoutSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.Buildings.BuildingTerrainCutoutSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.BuildingsConfigurator   [Timberborn.Buildings]
+  kind: class   base: Bindito.Core.Configurator
+  [type attr] Bindito.Core.ContextAttribute
+  [type attr] Bindito.Core.ContextAttribute
+  method System.Void Configure()
+  method private static Timberborn.TemplateInstantiation.TemplateModule ProvideTemplateModule()
+  method public System.Void .ctor()
+
+=== Timberborn.Buildings.PausableBuilding   [Timberborn.Buildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity, Timberborn.BlockSystem.IFinishedStateListener, Timberborn.BlockSystem.IUnfinishedStateListener, Timberborn.WorldPersistence.IPersistentEntity, IDuplicable<Timberborn.Buildings.PausableBuilding>, Timberborn.DuplicationSystem.IDuplicable
+  field static System.String PausedLocKey
+  field static Timberborn.WorldPersistence.ComponentKey PausableBuildingKey
+  field static PropertyKey<System.Boolean> PausedKey
+  field System.EventHandler PausedChanged
+  field System.Boolean <Paused>k__BackingField
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.BlockingSystem.BlockableObject _blockableObject
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field List<Timberborn.Buildings.IUnfinishedPausable> _unfinishedPausables
+  field List<Timberborn.Buildings.IFinishedPausable> _finishedPausables
+  field Timberborn.StatusSystem.StatusToggle _pauseStatusToggle
+  prop System.Boolean Paused {get/set}
+  prop System.Boolean IsDuplicable {get}
+  event System.EventHandler PausedChanged
+  method public System.Void add_PausedChanged(System.EventHandler value)
+  method public System.Void remove_PausedChanged(System.EventHandler value)
+  method public System.Boolean get_Paused()
+  method private System.Void set_Paused(System.Boolean value)
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc)
+  method public System.Boolean get_IsDuplicable()
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void OnEnterUnfinishedState()
+  method public System.Void OnExitUnfinishedState()
+  method public System.Void Save(Timberborn.WorldPersistence.IEntitySaver entitySaver)
+  method public System.Void Load(Timberborn.WorldPersistence.IEntityLoader entityLoader)
+  method public System.Void DuplicateFrom(Timberborn.Buildings.PausableBuilding source)
+  method public System.Boolean IsPausable()
+  method public System.Void Pause()
+  method public System.Void Resume()
+  method private static System.Void .cctor()

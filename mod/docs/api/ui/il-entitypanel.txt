@@ -1,0 +1,748 @@
+
+=== Timberborn.EntityPanelSystem.EntityPanel::.ctor   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: newobj System.Void System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>::.ctor()
+  IL_0006: stfld System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelFragments
+  IL_000b: ldarg.0
+  IL_000c: call System.Void System.Object::.ctor()
+  IL_0011: ldarg.0
+  IL_0012: ldarg.1
+  IL_0013: call System.Collections.Immutable.ImmutableArray`1<!!0> System.Collections.Immutable.ImmutableArray::ToImmutableArray<Timberborn.EntityPanelSystem.EntityPanelModule>(System.Collections.Generic.IEnumerable`1<!!0>)
+  IL_0018: stfld System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelModules
+  IL_001d: ldarg.0
+  IL_001e: ldarg.2
+  IL_001f: stfld Timberborn.UILayoutSystem.UILayout Timberborn.EntityPanelSystem.EntityPanel::_uiLayout
+  IL_0024: ldarg.0
+  IL_0025: ldarg.3
+  IL_0026: stfld Timberborn.CoreUI.VisualElementLoader Timberborn.EntityPanelSystem.EntityPanel::_visualElementLoader
+  IL_002b: ldarg.0
+  IL_002c: ldarg.s eventBus
+  IL_002e: stfld Timberborn.SingletonSystem.EventBus Timberborn.EntityPanelSystem.EntityPanel::_eventBus
+  IL_0033: ldarg.0
+  IL_0034: ldarg.s entityNameDialog
+  IL_0036: stfld Timberborn.EntityNamingUI.EntityNameDialog Timberborn.EntityPanelSystem.EntityPanel::_entityNameDialog
+  IL_003b: ldarg.0
+  IL_003c: ldarg.s entityBadgeService
+  IL_003e: stfld Timberborn.EntityPanelSystem.EntityBadgeService Timberborn.EntityPanelSystem.EntityPanel::_entityBadgeService
+  IL_0043: ldarg.0
+  IL_0044: ldarg.s loc
+  IL_0046: stfld Timberborn.Localization.ILoc Timberborn.EntityPanelSystem.EntityPanel::_loc
+  IL_004b: ldarg.0
+  IL_004c: ldarg.s entityDescriptionService
+  IL_004e: stfld Timberborn.EntityPanelSystem.EntityDescriptionService Timberborn.EntityPanelSystem.EntityPanel::_entityDescriptionService
+  IL_0053: ldarg.0
+  IL_0054: ldarg.s tooltipRegistrar
+  IL_0056: stfld Timberborn.TooltipSystem.ITooltipRegistrar Timberborn.EntityPanelSystem.EntityPanel::_tooltipRegistrar
+  IL_005b: ldarg.0
+  IL_005c: ldarg.s diagnosticFragmentController
+  IL_005e: stfld Timberborn.EntityPanelSystem.DiagnosticFragmentController Timberborn.EntityPanelSystem.EntityPanel::_diagnosticFragmentController
+  IL_0063: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::Load   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld Timberborn.CoreUI.VisualElementLoader Timberborn.EntityPanelSystem.EntityPanel::_visualElementLoader
+  IL_0007: ldstr "Common/EntityPanel/EntityPanel"
+  IL_000c: callvirt UnityEngine.UIElements.VisualElement Timberborn.CoreUI.VisualElementLoader::LoadVisualElement(System.String)
+  IL_0011: stfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0016: ldarg.0
+  IL_0017: call System.Void Timberborn.EntityPanelSystem.EntityPanel::InitializeFields()
+  IL_001c: ldarg.0
+  IL_001d: call System.Void Timberborn.EntityPanelSystem.EntityPanel::InitializeModules()
+  IL_0022: ldarg.0
+  IL_0023: ldfld Timberborn.SingletonSystem.EventBus Timberborn.EntityPanelSystem.EntityPanel::_eventBus
+  IL_0028: ldarg.0
+  IL_0029: callvirt System.Void Timberborn.SingletonSystem.EventBus::Register(System.Object)
+  IL_002e: ldarg.0
+  IL_002f: ldfld Timberborn.UILayoutSystem.UILayout Timberborn.EntityPanelSystem.EntityPanel::_uiLayout
+  IL_0034: ldarg.0
+  IL_0035: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_003a: callvirt System.Void Timberborn.UILayoutSystem.UILayout::AddAbsoluteItem(UnityEngine.UIElements.VisualElement)
+  IL_003f: ldarg.0
+  IL_0040: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0045: ldc.i4.0
+  IL_0046: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_004b: ldarg.0
+  IL_004c: call System.Void Timberborn.EntityPanelSystem.EntityPanel::InitializeButtons()
+  IL_0051: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::UpdateSingleton   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_0006: call System.Boolean Timberborn.BaseComponentSystem.BaseComponent::op_Implicit(Timberborn.BaseComponentSystem.BaseComponent)
+  IL_000b: brfalse.s IL_0019
+  IL_000d: ldarg.0
+  IL_000e: call System.Void Timberborn.EntityPanelSystem.EntityPanel::UpdateEntityBadge()
+  IL_0013: ldarg.0
+  IL_0014: call System.Void Timberborn.EntityPanelSystem.EntityPanel::UpdateFragments()
+  IL_0019: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::OnSelectableObjectSelected   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.1
+  IL_0001: callvirt Timberborn.SelectionSystem.SelectableObject Timberborn.SelectionSystem.SelectableObjectSelectedEvent::get_SelectableObject()
+  IL_0006: ldloca.s V_0
+  IL_0008: callvirt System.Boolean Timberborn.BaseComponentSystem.BaseComponent::TryGetComponent<Timberborn.EntitySystem.EntityComponent>(!!0&)
+  IL_000d: brfalse.s IL_0016
+  IL_000f: ldarg.0
+  IL_0010: ldloc.0
+  IL_0011: call System.Void Timberborn.EntityPanelSystem.EntityPanel::Show(Timberborn.EntitySystem.EntityComponent)
+  IL_0016: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::OnSelectableObjectUnselectedEvent   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Timberborn.EntityPanelSystem.EntityPanel::Hide()
+  IL_0006: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::ReloadDescription   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.1
+  IL_0001: ldarg.0
+  IL_0002: ldfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_0007: bne.un.s IL_001a
+  IL_0009: ldarg.0
+  IL_000a: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityDescription
+  IL_000f: callvirt System.Void UnityEngine.UIElements.VisualElement::Clear()
+  IL_0014: ldarg.0
+  IL_0015: call System.Void Timberborn.EntityPanelSystem.EntityPanel::UpdateEntityDescription()
+  IL_001a: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::get_DescriptionVisible   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityDescription
+  IL_0006: call System.Boolean Timberborn.CoreUI.VisualElementExtensions::IsDisplayed(UnityEngine.UIElements.VisualElement)
+  IL_000b: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::get_DescriptionHiderTooltipText   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.Boolean Timberborn.EntityPanelSystem.EntityPanel::get_DescriptionVisible()
+  IL_0006: brtrue.s IL_0019
+  IL_0008: ldarg.0
+  IL_0009: ldfld Timberborn.Localization.ILoc Timberborn.EntityPanelSystem.EntityPanel::_loc
+  IL_000e: ldsfld System.String Timberborn.EntityPanelSystem.EntityPanel::ShowLocKey
+  IL_0013: callvirt System.String Timberborn.Localization.ILoc::T(System.String)
+  IL_0018: ret
+  IL_0019: ldarg.0
+  IL_001a: ldfld Timberborn.Localization.ILoc Timberborn.EntityPanelSystem.EntityPanel::_loc
+  IL_001f: ldsfld System.String Timberborn.EntityPanelSystem.EntityPanel::HideLocKey
+  IL_0024: callvirt System.String Timberborn.Localization.ILoc::T(System.String)
+  IL_0029: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::InitializeFields   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0007: ldstr "EntityAvatar"
+  IL_000c: ldnull
+  IL_000d: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0012: stfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityAvatar
+  IL_0017: ldarg.0
+  IL_0018: ldarg.0
+  IL_0019: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_001e: ldstr "EntityDescription"
+  IL_0023: ldnull
+  IL_0024: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0029: stfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityDescription
+  IL_002e: ldarg.0
+  IL_002f: ldarg.0
+  IL_0030: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0035: ldstr "EntityDescriptionHider"
+  IL_003a: ldnull
+  IL_003b: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Button>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0040: stfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityDescriptionHider
+  IL_0045: ldarg.0
+  IL_0046: ldarg.0
+  IL_0047: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_004c: ldstr "EntityName"
+  IL_0051: ldnull
+  IL_0052: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Button>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0057: stfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityNameButton
+  IL_005c: ldarg.0
+  IL_005d: ldarg.0
+  IL_005e: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0063: ldstr "EntityNameText"
+  IL_0068: ldnull
+  IL_0069: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Label>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_006e: stfld UnityEngine.UIElements.Label Timberborn.EntityPanelSystem.EntityPanel::_entityNameText
+  IL_0073: ldarg.0
+  IL_0074: ldarg.0
+  IL_0075: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_007a: ldstr "EntityNameHint"
+  IL_007f: ldnull
+  IL_0080: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0085: stfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityNameHint
+  IL_008a: ldarg.0
+  IL_008b: ldarg.0
+  IL_008c: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0091: ldstr "EntitySubtitle"
+  IL_0096: ldnull
+  IL_0097: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Label>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_009c: stfld UnityEngine.UIElements.Label Timberborn.EntityPanelSystem.EntityPanel::_entitySubtitle
+  IL_00a1: ldarg.0
+  IL_00a2: ldarg.0
+  IL_00a3: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_00a8: ldstr "EntityClickableSubtitle"
+  IL_00ad: ldnull
+  IL_00ae: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Button>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_00b3: stfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitleButton
+  IL_00b8: ldarg.0
+  IL_00b9: ldarg.0
+  IL_00ba: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_00bf: ldstr "SubtitleWarning"
+  IL_00c4: ldnull
+  IL_00c5: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Image>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_00ca: stfld UnityEngine.UIElements.Image Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitleWarningIcon
+  IL_00cf: ldarg.0
+  IL_00d0: ldarg.0
+  IL_00d1: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_00d6: ldstr "LeftButtons"
+  IL_00db: ldnull
+  IL_00dc: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_00e1: stfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_leftHeaderButtons
+  IL_00e6: ldarg.0
+  IL_00e7: ldarg.0
+  IL_00e8: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_00ed: ldstr "RightButtons"
+  IL_00f2: ldnull
+  IL_00f3: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_00f8: stfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_rightHeaderButtons
+  IL_00fd: ldarg.0
+  IL_00fe: ldarg.0
+  IL_00ff: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0104: ldstr "MiddleButtons"
+  IL_0109: ldnull
+  IL_010a: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_010f: stfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_middleHeaderButtons
+  IL_0114: ldarg.0
+  IL_0115: ldarg.0
+  IL_0116: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_011b: ldstr "SideFragments"
+  IL_0120: ldnull
+  IL_0121: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0126: stfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_sideFragments
+  IL_012b: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::InitializeButtons   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityNameButton
+  IL_0006: ldarg.0
+  IL_0007: ldftn System.Void Timberborn.EntityPanelSystem.EntityPanel::OnEntityNameClicked(UnityEngine.UIElements.ClickEvent)
+  IL_000d: newobj System.Void UnityEngine.UIElements.EventCallback`1<UnityEngine.UIElements.ClickEvent>::.ctor(System.Object,System.IntPtr)
+  IL_0012: ldc.i4.0
+  IL_0013: callvirt System.Void UnityEngine.UIElements.CallbackEventHandler::RegisterCallback<UnityEngine.UIElements.ClickEvent>(UnityEngine.UIElements.EventCallback`1<!!0>,UnityEngine.UIElements.TrickleDown)
+  IL_0018: ldarg.0
+  IL_0019: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityDescriptionHider
+  IL_001e: ldarg.0
+  IL_001f: ldftn System.Void Timberborn.EntityPanelSystem.EntityPanel::ToggleEntityDescription(UnityEngine.UIElements.ClickEvent)
+  IL_0025: newobj System.Void UnityEngine.UIElements.EventCallback`1<UnityEngine.UIElements.ClickEvent>::.ctor(System.Object,System.IntPtr)
+  IL_002a: ldc.i4.0
+  IL_002b: callvirt System.Void UnityEngine.UIElements.CallbackEventHandler::RegisterCallback<UnityEngine.UIElements.ClickEvent>(UnityEngine.UIElements.EventCallback`1<!!0>,UnityEngine.UIElements.TrickleDown)
+  IL_0030: ldarg.0
+  IL_0031: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitleButton
+  IL_0036: ldarg.0
+  IL_0037: ldftn System.Void Timberborn.EntityPanelSystem.EntityPanel::PerformSubtitleButtonClickAction(UnityEngine.UIElements.ClickEvent)
+  IL_003d: newobj System.Void UnityEngine.UIElements.EventCallback`1<UnityEngine.UIElements.ClickEvent>::.ctor(System.Object,System.IntPtr)
+  IL_0042: ldc.i4.0
+  IL_0043: callvirt System.Void UnityEngine.UIElements.CallbackEventHandler::RegisterCallback<UnityEngine.UIElements.ClickEvent>(UnityEngine.UIElements.EventCallback`1<!!0>,UnityEngine.UIElements.TrickleDown)
+  IL_0048: ldarg.0
+  IL_0049: ldfld Timberborn.TooltipSystem.ITooltipRegistrar Timberborn.EntityPanelSystem.EntityPanel::_tooltipRegistrar
+  IL_004e: ldarg.0
+  IL_004f: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityDescriptionHider
+  IL_0054: ldarg.0
+  IL_0055: ldftn System.String Timberborn.EntityPanelSystem.EntityPanel::<InitializeButtons>b__45_0()
+  IL_005b: newobj System.Void System.Func`1<System.String>::.ctor(System.Object,System.IntPtr)
+  IL_0060: callvirt System.Void Timberborn.TooltipSystem.ITooltipRegistrar::Register(UnityEngine.UIElements.VisualElement,System.Func`1<System.String>)
+  IL_0065: ldarg.0
+  IL_0066: ldfld Timberborn.TooltipSystem.ITooltipRegistrar Timberborn.EntityPanelSystem.EntityPanel::_tooltipRegistrar
+  IL_006b: ldarg.0
+  IL_006c: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0071: ldstr "ClickableSubtitleWrapper"
+  IL_0076: ldnull
+  IL_0077: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_007c: ldarg.0
+  IL_007d: ldftn System.String Timberborn.EntityPanelSystem.EntityPanel::<InitializeButtons>b__45_1()
+  IL_0083: newobj System.Void System.Func`1<System.String>::.ctor(System.Object,System.IntPtr)
+  IL_0088: callvirt System.Void Timberborn.TooltipSystem.ITooltipRegistrar::Register(UnityEngine.UIElements.VisualElement,System.Func`1<System.String>)
+  IL_008d: ldarg.0
+  IL_008e: ldfld Timberborn.TooltipSystem.ITooltipRegistrar Timberborn.EntityPanelSystem.EntityPanel::_tooltipRegistrar
+  IL_0093: ldarg.0
+  IL_0094: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityNameButton
+  IL_0099: ldarg.0
+  IL_009a: ldftn System.String Timberborn.EntityPanelSystem.EntityPanel::GetEntityNameTooltip()
+  IL_00a0: newobj System.Void System.Func`1<System.String>::.ctor(System.Object,System.IntPtr)
+  IL_00a5: callvirt System.Void Timberborn.TooltipSystem.ITooltipRegistrar::Register(UnityEngine.UIElements.VisualElement,System.Func`1<System.String>)
+  IL_00aa: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::InitializeModules   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelModules
+  IL_0007: box System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule>
+  IL_000c: ldsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_0
+  IL_0011: dup
+  IL_0012: brtrue.s IL_002b
+  IL_0014: pop
+  IL_0015: ldsfld Timberborn.EntityPanelSystem.EntityPanel/<>c Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9
+  IL_001a: ldftn System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel/<>c::<InitializeModules>b__46_0(Timberborn.EntityPanelSystem.EntityPanelModule)
+  IL_0020: newobj System.Void System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>>::.ctor(System.Object,System.IntPtr)
+  IL_0025: dup
+  IL_0026: stsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_0
+  IL_002b: call System.Collections.Generic.IEnumerable`1<!!1> System.Linq.Enumerable::SelectMany<Timberborn.EntityPanelSystem.EntityPanelModule,Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>(System.Collections.Generic.IEnumerable`1<!!0>,System.Func`2<!!0,System.Collections.Generic.IEnumerable`1<!!1>>)
+  IL_0030: call System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel::Order(System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>)
+  IL_0035: ldarg.0
+  IL_0036: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_leftHeaderButtons
+  IL_003b: call System.Void Timberborn.EntityPanelSystem.EntityPanel::AddFragments(System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>,UnityEngine.UIElements.VisualElement)
+  IL_0040: ldarg.0
+  IL_0041: ldarg.0
+  IL_0042: ldfld System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelModules
+  IL_0047: box System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule>
+  IL_004c: ldsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_1
+  IL_0051: dup
+  IL_0052: brtrue.s IL_006b
+  IL_0054: pop
+  IL_0055: ldsfld Timberborn.EntityPanelSystem.EntityPanel/<>c Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9
+  IL_005a: ldftn System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel/<>c::<InitializeModules>b__46_1(Timberborn.EntityPanelSystem.EntityPanelModule)
+  IL_0060: newobj System.Void System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>>::.ctor(System.Object,System.IntPtr)
+  IL_0065: dup
+  IL_0066: stsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_1
+  IL_006b: call System.Collections.Generic.IEnumerable`1<!!1> System.Linq.Enumerable::SelectMany<Timberborn.EntityPanelSystem.EntityPanelModule,Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>(System.Collections.Generic.IEnumerable`1<!!0>,System.Func`2<!!0,System.Collections.Generic.IEnumerable`1<!!1>>)
+  IL_0070: call System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel::Order(System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>)
+  IL_0075: ldarg.0
+  IL_0076: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_rightHeaderButtons
+  IL_007b: call System.Void Timberborn.EntityPanelSystem.EntityPanel::AddFragments(System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>,UnityEngine.UIElements.VisualElement)
+  IL_0080: ldarg.0
+  IL_0081: ldarg.0
+  IL_0082: ldfld System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelModules
+  IL_0087: box System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule>
+  IL_008c: ldsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_2
+  IL_0091: dup
+  IL_0092: brtrue.s IL_00ab
+  IL_0094: pop
+  IL_0095: ldsfld Timberborn.EntityPanelSystem.EntityPanel/<>c Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9
+  IL_009a: ldftn System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel/<>c::<InitializeModules>b__46_2(Timberborn.EntityPanelSystem.EntityPanelModule)
+  IL_00a0: newobj System.Void System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>>::.ctor(System.Object,System.IntPtr)
+  IL_00a5: dup
+  IL_00a6: stsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_2
+  IL_00ab: call System.Collections.Generic.IEnumerable`1<!!1> System.Linq.Enumerable::SelectMany<Timberborn.EntityPanelSystem.EntityPanelModule,Timberborn.EntityPanelSystem.IEntityPanelFragment>(System.Collections.Generic.IEnumerable`1<!!0>,System.Func`2<!!0,System.Collections.Generic.IEnumerable`1<!!1>>)
+  IL_00b0: ldarg.0
+  IL_00b1: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_middleHeaderButtons
+  IL_00b6: call System.Void Timberborn.EntityPanelSystem.EntityPanel::AddFragments(System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>,UnityEngine.UIElements.VisualElement)
+  IL_00bb: ldarg.0
+  IL_00bc: ldarg.0
+  IL_00bd: ldfld System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelModules
+  IL_00c2: box System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule>
+  IL_00c7: ldsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_3
+  IL_00cc: dup
+  IL_00cd: brtrue.s IL_00e6
+  IL_00cf: pop
+  IL_00d0: ldsfld Timberborn.EntityPanelSystem.EntityPanel/<>c Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9
+  IL_00d5: ldftn System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel/<>c::<InitializeModules>b__46_3(Timberborn.EntityPanelSystem.EntityPanelModule)
+  IL_00db: newobj System.Void System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>>::.ctor(System.Object,System.IntPtr)
+  IL_00e0: dup
+  IL_00e1: stsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_3
+  IL_00e6: call System.Collections.Generic.IEnumerable`1<!!1> System.Linq.Enumerable::SelectMany<Timberborn.EntityPanelSystem.EntityPanelModule,Timberborn.EntityPanelSystem.IEntityPanelFragment>(System.Collections.Generic.IEnumerable`1<!!0>,System.Func`2<!!0,System.Collections.Generic.IEnumerable`1<!!1>>)
+  IL_00eb: ldarg.0
+  IL_00ec: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_sideFragments
+  IL_00f1: call System.Void Timberborn.EntityPanelSystem.EntityPanel::AddFragments(System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>,UnityEngine.UIElements.VisualElement)
+  IL_00f6: ldarg.0
+  IL_00f7: ldarg.0
+  IL_00f8: ldfld System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelModules
+  IL_00fd: box System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule>
+  IL_0102: ldsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_4
+  IL_0107: dup
+  IL_0108: brtrue.s IL_0121
+  IL_010a: pop
+  IL_010b: ldsfld Timberborn.EntityPanelSystem.EntityPanel/<>c Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9
+  IL_0110: ldftn System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel/<>c::<InitializeModules>b__46_4(Timberborn.EntityPanelSystem.EntityPanelModule)
+  IL_0116: newobj System.Void System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>>::.ctor(System.Object,System.IntPtr)
+  IL_011b: dup
+  IL_011c: stsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_4
+  IL_0121: call System.Collections.Generic.IEnumerable`1<!!1> System.Linq.Enumerable::SelectMany<Timberborn.EntityPanelSystem.EntityPanelModule,Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>(System.Collections.Generic.IEnumerable`1<!!0>,System.Func`2<!!0,System.Collections.Generic.IEnumerable`1<!!1>>)
+  IL_0126: call System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel::Order(System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>)
+  IL_012b: ldarg.0
+  IL_012c: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0131: ldstr "Fragments"
+  IL_0136: ldnull
+  IL_0137: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_013c: call System.Void Timberborn.EntityPanelSystem.EntityPanel::AddFragments(System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>,UnityEngine.UIElements.VisualElement)
+  IL_0141: ldarg.0
+  IL_0142: ldfld Timberborn.EntityPanelSystem.DiagnosticFragmentController Timberborn.EntityPanelSystem.EntityPanel::_diagnosticFragmentController
+  IL_0147: ldarg.0
+  IL_0148: ldfld System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelModules
+  IL_014d: box System.Collections.Immutable.ImmutableArray`1<Timberborn.EntityPanelSystem.EntityPanelModule>
+  IL_0152: ldsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_5
+  IL_0157: dup
+  IL_0158: brtrue.s IL_0171
+  IL_015a: pop
+  IL_015b: ldsfld Timberborn.EntityPanelSystem.EntityPanel/<>c Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9
+  IL_0160: ldftn System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel/<>c::<InitializeModules>b__46_5(Timberborn.EntityPanelSystem.EntityPanelModule)
+  IL_0166: newobj System.Void System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>>::.ctor(System.Object,System.IntPtr)
+  IL_016b: dup
+  IL_016c: stsfld System.Func`2<Timberborn.EntityPanelSystem.EntityPanelModule,System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__46_5
+  IL_0171: call System.Collections.Generic.IEnumerable`1<!!1> System.Linq.Enumerable::SelectMany<Timberborn.EntityPanelSystem.EntityPanelModule,Timberborn.EntityPanelSystem.IEntityPanelFragment>(System.Collections.Generic.IEnumerable`1<!!0>,System.Func`2<!!0,System.Collections.Generic.IEnumerable`1<!!1>>)
+  IL_0176: ldarg.0
+  IL_0177: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_017c: callvirt System.Void Timberborn.EntityPanelSystem.DiagnosticFragmentController::Initialize(System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>,UnityEngine.UIElements.VisualElement)
+  IL_0181: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::AddFragments   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.1
+  IL_0001: callvirt System.Collections.Generic.IEnumerator`1<!0> System.Collections.Generic.IEnumerable`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>::GetEnumerator()
+  IL_0006: stloc.0
+  IL_0007: br.s IL_0028
+  IL_0009: ldloc.0
+  IL_000a: callvirt !0 System.Collections.Generic.IEnumerator`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>::get_Current()
+  IL_000f: stloc.1
+  IL_0010: ldarg.2
+  IL_0011: ldloc.1
+  IL_0012: callvirt UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.IEntityPanelFragment::InitializeFragment()
+  IL_0017: callvirt System.Void UnityEngine.UIElements.VisualElement::Add(UnityEngine.UIElements.VisualElement)
+  IL_001c: ldarg.0
+  IL_001d: ldfld System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelFragments
+  IL_0022: ldloc.1
+  IL_0023: callvirt System.Void System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>::Add(!0)
+  IL_0028: ldloc.0
+  IL_0029: callvirt System.Boolean System.Collections.IEnumerator::MoveNext()
+  IL_002e: brtrue.s IL_0009
+  IL_0030: leave.s IL_003c
+  IL_0032: ldloc.0
+  IL_0033: brfalse.s IL_003b
+  IL_0035: ldloc.0
+  IL_0036: callvirt System.Void System.IDisposable::Dispose()
+  IL_003b: endfinally
+  IL_003c: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::Show   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.1
+  IL_0002: stfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_0007: ldarg.0
+  IL_0008: call System.Void Timberborn.EntityPanelSystem.EntityPanel::UpdateEntityBadge()
+  IL_000d: ldarg.0
+  IL_000e: call System.Void Timberborn.EntityPanelSystem.EntityPanel::UpdateEntityDescription()
+  IL_0013: ldarg.0
+  IL_0014: ldarg.1
+  IL_0015: call System.Void Timberborn.EntityPanelSystem.EntityPanel::ShowFragments(Timberborn.EntitySystem.EntityComponent)
+  IL_001a: ldarg.0
+  IL_001b: call System.Void Timberborn.EntityPanelSystem.EntityPanel::UpdateFragments()
+  IL_0020: ldarg.0
+  IL_0021: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0026: ldc.i4.1
+  IL_0027: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_002c: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::Hide   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_root
+  IL_0006: ldc.i4.0
+  IL_0007: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_000c: ldarg.0
+  IL_000d: call System.Void Timberborn.EntityPanelSystem.EntityPanel::ClearFragments()
+  IL_0012: ldarg.0
+  IL_0013: ldnull
+  IL_0014: stfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_0019: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::UpdateEntityBadge   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_0006: callvirt !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.EntityNaming.NamedEntity>()
+  IL_000b: stloc.0
+  IL_000c: ldloc.0
+  IL_000d: callvirt System.String Timberborn.EntityNaming.NamedEntity::get_EntityName()
+  IL_0012: stloc.1
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.EntityPanelSystem.EntityBadgeService Timberborn.EntityPanelSystem.EntityPanel::_entityBadgeService
+  IL_0019: ldarg.0
+  IL_001a: ldfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_001f: callvirt System.String Timberborn.EntityPanelSystem.EntityBadgeService::GetEntitySubtitle(Timberborn.BaseComponentSystem.BaseComponent)
+  IL_0024: stloc.2
+  IL_0025: ldarg.0
+  IL_0026: ldarg.0
+  IL_0027: ldfld Timberborn.EntityPanelSystem.EntityBadgeService Timberborn.EntityPanelSystem.EntityPanel::_entityBadgeService
+  IL_002c: ldarg.0
+  IL_002d: ldfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_0032: callvirt Timberborn.EntityPanelSystem.ClickableSubtitle Timberborn.EntityPanelSystem.EntityBadgeService::GetEntityClickableSubtitle(Timberborn.BaseComponentSystem.BaseComponent)
+  IL_0037: stfld Timberborn.EntityPanelSystem.ClickableSubtitle Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitle
+  IL_003c: ldarg.0
+  IL_003d: ldfld Timberborn.EntityPanelSystem.EntityBadgeService Timberborn.EntityPanelSystem.EntityPanel::_entityBadgeService
+  IL_0042: ldarg.0
+  IL_0043: ldfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_0048: callvirt UnityEngine.Sprite Timberborn.EntityPanelSystem.EntityBadgeService::GetEntityAvatar(Timberborn.BaseComponentSystem.BaseComponent)
+  IL_004d: stloc.3
+  IL_004e: ldarg.0
+  IL_004f: ldfld UnityEngine.UIElements.Label Timberborn.EntityPanelSystem.EntityPanel::_entityNameText
+  IL_0054: ldloc.1
+  IL_0055: callvirt System.Void UnityEngine.UIElements.TextElement::set_text(System.String)
+  IL_005a: ldarg.0
+  IL_005b: ldfld UnityEngine.UIElements.Label Timberborn.EntityPanelSystem.EntityPanel::_entitySubtitle
+  IL_0060: ldloc.2
+  IL_0061: callvirt System.Void UnityEngine.UIElements.TextElement::set_text(System.String)
+  IL_0066: ldarg.0
+  IL_0067: ldfld UnityEngine.UIElements.Label Timberborn.EntityPanelSystem.EntityPanel::_entitySubtitle
+  IL_006c: ldloc.2
+  IL_006d: call System.Boolean System.String::IsNullOrEmpty(System.String)
+  IL_0072: ldc.i4.0
+  IL_0073: ceq
+  IL_0075: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_007a: ldarg.0
+  IL_007b: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitleButton
+  IL_0080: ldarg.0
+  IL_0081: ldflda Timberborn.EntityPanelSystem.ClickableSubtitle Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitle
+  IL_0086: call System.String Timberborn.EntityPanelSystem.ClickableSubtitle::get_Subtitle()
+  IL_008b: callvirt System.Void UnityEngine.UIElements.TextElement::set_text(System.String)
+  IL_0090: ldarg.0
+  IL_0091: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitleButton
+  IL_0096: ldarg.0
+  IL_0097: ldflda Timberborn.EntityPanelSystem.ClickableSubtitle Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitle
+  IL_009c: call System.Boolean Timberborn.EntityPanelSystem.ClickableSubtitle::get_HasAction()
+  IL_00a1: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_00a6: ldarg.0
+  IL_00a7: ldfld UnityEngine.UIElements.Image Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitleWarningIcon
+  IL_00ac: ldarg.0
+  IL_00ad: ldflda Timberborn.EntityPanelSystem.ClickableSubtitle Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitle
+  IL_00b2: call System.Boolean Timberborn.EntityPanelSystem.ClickableSubtitle::get_HasWarning()
+  IL_00b7: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_00bc: ldarg.0
+  IL_00bd: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityAvatar
+  IL_00c2: callvirt UnityEngine.UIElements.IStyle UnityEngine.UIElements.VisualElement::get_style()
+  IL_00c7: ldloc.3
+  IL_00c8: newobj System.Void UnityEngine.UIElements.StyleBackground::.ctor(UnityEngine.Sprite)
+  IL_00cd: callvirt System.Void UnityEngine.UIElements.IStyle::set_backgroundImage(UnityEngine.UIElements.StyleBackground)
+  IL_00d2: ldarg.0
+  IL_00d3: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityAvatar
+  IL_00d8: ldloc.3
+  IL_00d9: ldnull
+  IL_00da: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  IL_00df: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_00e4: ldarg.0
+  IL_00e5: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityNameButton
+  IL_00ea: ldloc.0
+  IL_00eb: callvirt System.Boolean Timberborn.EntityNaming.NamedEntity::get_IsEditable()
+  IL_00f0: callvirt System.Void UnityEngine.UIElements.VisualElement::SetEnabled(System.Boolean)
+  IL_00f5: ldarg.0
+  IL_00f6: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityNameHint
+  IL_00fb: ldloc.0
+  IL_00fc: callvirt System.Boolean Timberborn.EntityNaming.NamedEntity::get_IsEditable()
+  IL_0101: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_0106: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::UpdateEntityDescription   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.EntityPanelSystem.EntityDescriptionService Timberborn.EntityPanelSystem.EntityPanel::_entityDescriptionService
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_000c: ldarg.0
+  IL_000d: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityDescription
+  IL_0012: callvirt System.Void Timberborn.EntityPanelSystem.EntityDescriptionService::DescribeAsSingleSection(Timberborn.BaseComponentSystem.BaseComponent,UnityEngine.UIElements.VisualElement)
+  IL_0017: ldarg.0
+  IL_0018: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityDescription
+  IL_001d: callvirt System.Int32 UnityEngine.UIElements.VisualElement::get_childCount()
+  IL_0022: ldc.i4.0
+  IL_0023: ceq
+  IL_0025: stloc.0
+  IL_0026: ldarg.0
+  IL_0027: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityDescription
+  IL_002c: ldsfld System.String Timberborn.EntityPanelSystem.EntityPanel::DescriptionNoneClass
+  IL_0031: ldloc.0
+  IL_0032: callvirt System.Void UnityEngine.UIElements.VisualElement::EnableInClassList(System.String,System.Boolean)
+  IL_0037: ldarg.0
+  IL_0038: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityDescriptionHider
+  IL_003d: ldsfld System.String Timberborn.EntityPanelSystem.EntityPanel::HiderNoneClass
+  IL_0042: ldloc.0
+  IL_0043: callvirt System.Void UnityEngine.UIElements.VisualElement::EnableInClassList(System.String,System.Boolean)
+  IL_0048: ldarg.0
+  IL_0049: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityDescriptionHider
+  IL_004e: ldloc.0
+  IL_004f: ldc.i4.0
+  IL_0050: ceq
+  IL_0052: callvirt System.Void UnityEngine.UIElements.VisualElement::SetEnabled(System.Boolean)
+  IL_0057: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::ShowFragments   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelFragments
+  IL_0006: callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>::GetEnumerator()
+  IL_000b: stloc.0
+  IL_000c: br.s IL_001b
+  IL_000e: ldloca.s V_0
+  IL_0010: call !0 System.Collections.Generic.List`1/Enumerator<Timberborn.EntityPanelSystem.IEntityPanelFragment>::get_Current()
+  IL_0015: ldarg.1
+  IL_0016: callvirt System.Void Timberborn.EntityPanelSystem.IEntityPanelFragment::ShowFragment(Timberborn.BaseComponentSystem.BaseComponent)
+  IL_001b: ldloca.s V_0
+  IL_001d: call System.Boolean System.Collections.Generic.List`1/Enumerator<Timberborn.EntityPanelSystem.IEntityPanelFragment>::MoveNext()
+  IL_0022: brtrue.s IL_000e
+  IL_0024: leave.s IL_0034
+  IL_0026: ldloca.s V_0
+  IL_0028: constrained. System.Collections.Generic.List`1/Enumerator<Timberborn.EntityPanelSystem.IEntityPanelFragment>
+  IL_002e: callvirt System.Void System.IDisposable::Dispose()
+  IL_0033: endfinally
+  IL_0034: ldarg.0
+  IL_0035: ldfld Timberborn.EntityPanelSystem.DiagnosticFragmentController Timberborn.EntityPanelSystem.EntityPanel::_diagnosticFragmentController
+  IL_003a: ldarg.1
+  IL_003b: callvirt System.Void Timberborn.EntityPanelSystem.DiagnosticFragmentController::ShowFragments(Timberborn.EntitySystem.EntityComponent)
+  IL_0040: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::ClearFragments   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelFragments
+  IL_0006: callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>::GetEnumerator()
+  IL_000b: stloc.0
+  IL_000c: br.s IL_001a
+  IL_000e: ldloca.s V_0
+  IL_0010: call !0 System.Collections.Generic.List`1/Enumerator<Timberborn.EntityPanelSystem.IEntityPanelFragment>::get_Current()
+  IL_0015: callvirt System.Void Timberborn.EntityPanelSystem.IEntityPanelFragment::ClearFragment()
+  IL_001a: ldloca.s V_0
+  IL_001c: call System.Boolean System.Collections.Generic.List`1/Enumerator<Timberborn.EntityPanelSystem.IEntityPanelFragment>::MoveNext()
+  IL_0021: brtrue.s IL_000e
+  IL_0023: leave.s IL_0033
+  IL_0025: ldloca.s V_0
+  IL_0027: constrained. System.Collections.Generic.List`1/Enumerator<Timberborn.EntityPanelSystem.IEntityPanelFragment>
+  IL_002d: callvirt System.Void System.IDisposable::Dispose()
+  IL_0032: endfinally
+  IL_0033: ldarg.0
+  IL_0034: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityDescription
+  IL_0039: callvirt System.Void UnityEngine.UIElements.VisualElement::Clear()
+  IL_003e: ldarg.0
+  IL_003f: ldfld Timberborn.EntityPanelSystem.DiagnosticFragmentController Timberborn.EntityPanelSystem.EntityPanel::_diagnosticFragmentController
+  IL_0044: callvirt System.Void Timberborn.EntityPanelSystem.DiagnosticFragmentController::ClearFragments()
+  IL_0049: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::UpdateFragments   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel::_entityPanelFragments
+  IL_0006: callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<Timberborn.EntityPanelSystem.IEntityPanelFragment>::GetEnumerator()
+  IL_000b: stloc.0
+  IL_000c: br.s IL_001a
+  IL_000e: ldloca.s V_0
+  IL_0010: call !0 System.Collections.Generic.List`1/Enumerator<Timberborn.EntityPanelSystem.IEntityPanelFragment>::get_Current()
+  IL_0015: callvirt System.Void Timberborn.EntityPanelSystem.IEntityPanelFragment::UpdateFragment()
+  IL_001a: ldloca.s V_0
+  IL_001c: call System.Boolean System.Collections.Generic.List`1/Enumerator<Timberborn.EntityPanelSystem.IEntityPanelFragment>::MoveNext()
+  IL_0021: brtrue.s IL_000e
+  IL_0023: leave.s IL_0033
+  IL_0025: ldloca.s V_0
+  IL_0027: constrained. System.Collections.Generic.List`1/Enumerator<Timberborn.EntityPanelSystem.IEntityPanelFragment>
+  IL_002d: callvirt System.Void System.IDisposable::Dispose()
+  IL_0032: endfinally
+  IL_0033: ldarg.0
+  IL_0034: ldfld Timberborn.EntityPanelSystem.DiagnosticFragmentController Timberborn.EntityPanelSystem.EntityPanel::_diagnosticFragmentController
+  IL_0039: callvirt System.Void Timberborn.EntityPanelSystem.DiagnosticFragmentController::UpdateFragments()
+  IL_003e: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::ToggleEntityDescription   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld UnityEngine.UIElements.VisualElement Timberborn.EntityPanelSystem.EntityPanel::_entityDescription
+  IL_0006: ldsfld System.String Timberborn.EntityPanelSystem.EntityPanel::DescriptionHiddenClass
+  IL_000b: ldarg.0
+  IL_000c: call System.Boolean Timberborn.EntityPanelSystem.EntityPanel::get_DescriptionVisible()
+  IL_0011: callvirt System.Void UnityEngine.UIElements.VisualElement::EnableInClassList(System.String,System.Boolean)
+  IL_0016: ldarg.0
+  IL_0017: ldfld UnityEngine.UIElements.Button Timberborn.EntityPanelSystem.EntityPanel::_entityDescriptionHider
+  IL_001c: ldsfld System.String Timberborn.EntityPanelSystem.EntityPanel::HiderShowClass
+  IL_0021: ldarg.0
+  IL_0022: call System.Boolean Timberborn.EntityPanelSystem.EntityPanel::get_DescriptionVisible()
+  IL_0027: callvirt System.Void UnityEngine.UIElements.VisualElement::EnableInClassList(System.String,System.Boolean)
+  IL_002c: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::GetEntityNameTooltip   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_0006: dup
+  IL_0007: brtrue.s IL_0015
+  IL_0009: pop
+  IL_000a: ldloca.s V_0
+  IL_000c: initobj System.Nullable`1<System.Boolean>
+  IL_0012: ldloc.0
+  IL_0013: br.s IL_0033
+  IL_0015: call !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.EntityNaming.NamedEntity>()
+  IL_001a: dup
+  IL_001b: brtrue.s IL_0029
+  IL_001d: pop
+  IL_001e: ldloca.s V_0
+  IL_0020: initobj System.Nullable`1<System.Boolean>
+  IL_0026: ldloc.0
+  IL_0027: br.s IL_0033
+  IL_0029: call System.Boolean Timberborn.EntityNaming.NamedEntity::get_IsEditable()
+  IL_002e: newobj System.Void System.Nullable`1<System.Boolean>::.ctor(!0)
+  IL_0033: stloc.0
+  IL_0034: ldloca.s V_0
+  IL_0036: call !0 System.Nullable`1<System.Boolean>::GetValueOrDefault()
+  IL_003b: brtrue.s IL_003f
+  IL_003d: ldnull
+  IL_003e: ret
+  IL_003f: ldarg.0
+  IL_0040: ldfld Timberborn.Localization.ILoc Timberborn.EntityPanelSystem.EntityPanel::_loc
+  IL_0045: ldsfld System.String Timberborn.EntityPanelSystem.EntityPanel::RenameLocKey
+  IL_004a: callvirt System.String Timberborn.Localization.ILoc::T(System.String)
+  IL_004f: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::OnEntityNameClicked   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.EntityNamingUI.EntityNameDialog Timberborn.EntityPanelSystem.EntityPanel::_entityNameDialog
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.EntitySystem.EntityComponent Timberborn.EntityPanelSystem.EntityPanel::_shownEntity
+  IL_000c: callvirt !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.EntityNaming.NamedEntity>()
+  IL_0011: callvirt System.Void Timberborn.EntityNamingUI.EntityNameDialog::Show(Timberborn.EntityNaming.NamedEntity)
+  IL_0016: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::PerformSubtitleButtonClickAction   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldflda Timberborn.EntityPanelSystem.ClickableSubtitle Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitle
+  IL_0006: call System.Boolean Timberborn.EntityPanelSystem.ClickableSubtitle::get_HasAction()
+  IL_000b: brfalse.s IL_001d
+  IL_000d: ldarg.0
+  IL_000e: ldflda Timberborn.EntityPanelSystem.ClickableSubtitle Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitle
+  IL_0013: call System.Action Timberborn.EntityPanelSystem.ClickableSubtitle::get_ClickAction()
+  IL_0018: callvirt System.Void System.Action::Invoke()
+  IL_001d: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::Order   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldsfld System.Func`2<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment,System.Int32> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__59_0
+  IL_0006: dup
+  IL_0007: brtrue.s IL_0020
+  IL_0009: pop
+  IL_000a: ldsfld Timberborn.EntityPanelSystem.EntityPanel/<>c Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9
+  IL_000f: ldftn System.Int32 Timberborn.EntityPanelSystem.EntityPanel/<>c::<Order>b__59_0(Timberborn.EntityPanelSystem.OrderedEntityPanelFragment)
+  IL_0015: newobj System.Void System.Func`2<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment,System.Int32>::.ctor(System.Object,System.IntPtr)
+  IL_001a: dup
+  IL_001b: stsfld System.Func`2<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment,System.Int32> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__59_0
+  IL_0020: call System.Linq.IOrderedEnumerable`1<!!0> System.Linq.Enumerable::OrderBy<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment,System.Int32>(System.Collections.Generic.IEnumerable`1<!!0>,System.Func`2<!!0,!!1>)
+  IL_0025: ldsfld System.Func`2<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment,Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__59_1
+  IL_002a: dup
+  IL_002b: brtrue.s IL_0044
+  IL_002d: pop
+  IL_002e: ldsfld Timberborn.EntityPanelSystem.EntityPanel/<>c Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9
+  IL_0033: ldftn Timberborn.EntityPanelSystem.IEntityPanelFragment Timberborn.EntityPanelSystem.EntityPanel/<>c::<Order>b__59_1(Timberborn.EntityPanelSystem.OrderedEntityPanelFragment)
+  IL_0039: newobj System.Void System.Func`2<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment,Timberborn.EntityPanelSystem.IEntityPanelFragment>::.ctor(System.Object,System.IntPtr)
+  IL_003e: dup
+  IL_003f: stsfld System.Func`2<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment,Timberborn.EntityPanelSystem.IEntityPanelFragment> Timberborn.EntityPanelSystem.EntityPanel/<>c::<>9__59_1
+  IL_0044: call System.Collections.Generic.IEnumerable`1<!!1> System.Linq.Enumerable::Select<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment,Timberborn.EntityPanelSystem.IEntityPanelFragment>(System.Collections.Generic.IEnumerable`1<!!0>,System.Func`2<!!0,!!1>)
+  IL_0049: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::.cctor   [Timberborn.EntityPanelSystem]
+  IL_0000: ldstr "EntityPanel.Show"
+  IL_0005: stsfld System.String Timberborn.EntityPanelSystem.EntityPanel::ShowLocKey
+  IL_000a: ldstr "EntityPanel.Hide"
+  IL_000f: stsfld System.String Timberborn.EntityPanelSystem.EntityPanel::HideLocKey
+  IL_0014: ldstr "EntityPanel.Rename"
+  IL_0019: stsfld System.String Timberborn.EntityPanelSystem.EntityPanel::RenameLocKey
+  IL_001e: ldstr "entity-panel__description--hidden"
+  IL_0023: stsfld System.String Timberborn.EntityPanelSystem.EntityPanel::DescriptionHiddenClass
+  IL_0028: ldstr "entity-panel__description-hider--show-icon"
+  IL_002d: stsfld System.String Timberborn.EntityPanelSystem.EntityPanel::HiderShowClass
+  IL_0032: ldstr "entity-panel__description--none"
+  IL_0037: stsfld System.String Timberborn.EntityPanelSystem.EntityPanel::DescriptionNoneClass
+  IL_003c: ldstr "entity-panel__description-hider--none"
+  IL_0041: stsfld System.String Timberborn.EntityPanelSystem.EntityPanel::HiderNoneClass
+  IL_0046: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::<InitializeButtons>b__45_0   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.String Timberborn.EntityPanelSystem.EntityPanel::get_DescriptionHiderTooltipText()
+  IL_0006: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanel::<InitializeButtons>b__45_1   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldflda Timberborn.EntityPanelSystem.ClickableSubtitle Timberborn.EntityPanelSystem.EntityPanel::_entityClickableSubtitle
+  IL_0006: call System.String Timberborn.EntityPanelSystem.ClickableSubtitle::get_TooltipText()
+  IL_000b: ret

@@ -1,0 +1,505 @@
+# member dump for Timberborn\.MechanicalSystemUI\..*
+
+=== Timberborn.MechanicalSystemUI.BatteryBatchControlRowItem   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.BatchControl.IBatchControlRowItem, Timberborn.BatchControl.IUpdatableBatchControlRowItem
+  field UnityEngine.UIElements.VisualElement <Root>k__BackingField
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.CoreUI.ProgressBar _progressBar
+  field UnityEngine.UIElements.Label _chargeLabel
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.Localization.Phrase _chargePhrase
+  prop UnityEngine.UIElements.VisualElement Root {get}
+  method public UnityEngine.UIElements.VisualElement get_Root()
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc, UnityEngine.UIElements.VisualElement root, Timberborn.CoreUI.ProgressBar progressBar, UnityEngine.UIElements.Label chargeLabel, Timberborn.MechanicalSystem.MechanicalNode mechanicalNode)
+  method public System.Void UpdateRowItem()
+  nested Timberborn.MechanicalSystemUI.BatteryBatchControlRowItem+.<>c
+
+=== Timberborn.MechanicalSystemUI.BatteryBatchControlRowItem+.<>c   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.MechanicalSystemUI.BatteryBatchControlRowItem+.<>c <>9
+  field static Func<System.Int32, System.String> <>9__8_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.String <.ctor>b__8_0(System.Int32 value)
+
+=== Timberborn.MechanicalSystemUI.BatteryBatchControlRowItemFactory   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.Localization.ILoc _loc
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.Localization.ILoc loc)
+  method public Timberborn.BatchControl.IBatchControlRowItem Create(Timberborn.BaseComponentSystem.BaseComponent entity)
+
+=== Timberborn.MechanicalSystemUI.BatteryFragment   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.Debugging.DevModeManager _devModeManager
+  field UnityEngine.UIElements.VisualElement _root
+  field UnityEngine.UIElements.Label _chargeLabel
+  field Timberborn.CoreUI.ProgressBar _progressBar
+  field UnityEngine.UIElements.Slider _chargeSlider
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.Localization.Phrase _chargePhrase
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.Localization.ILoc loc, Timberborn.Debugging.DevModeManager devModeManager)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method private System.Void ChangeCharge(ChangeEvent<System.Single> changeEvent)
+  nested Timberborn.MechanicalSystemUI.BatteryFragment+.<>c
+
+=== Timberborn.MechanicalSystemUI.BatteryFragment+.<>c   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.MechanicalSystemUI.BatteryFragment+.<>c <>9
+  field static Func<System.Int32, System.String> <>9__9_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.String <.ctor>b__9_0(System.Int32 value)
+
+=== Timberborn.MechanicalSystemUI.ConsumerFragmentService   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter _mechanicalNodeTextFormatter
+  field UnityEngine.UIElements.Label _label
+  method public System.Void .ctor(Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter mechanicalNodeTextFormatter)
+  method public System.Void Initialize(UnityEngine.UIElements.Label label)
+  method public System.Boolean Update(Timberborn.MechanicalSystem.MechanicalNode mechanicalNode)
+  method public System.Void Hide()
+  method private System.Void UpdateText(UnityEngine.UIElements.Label label, Timberborn.MechanicalSystem.MechanicalNode mechanicalNode)
+
+=== Timberborn.MechanicalSystemUI.GeneratorFragmentService   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter _mechanicalNodeTextFormatter
+  field UnityEngine.UIElements.Label _label
+  method public System.Void .ctor(Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter mechanicalNodeTextFormatter)
+  method public System.Void Initialize(UnityEngine.UIElements.Label label)
+  method public System.Boolean Update(Timberborn.MechanicalSystem.MechanicalNode mechanicalNode)
+  method public System.Void Hide()
+
+=== Timberborn.MechanicalSystemUI.IMechanicalModelUpdater   [Timberborn.MechanicalSystemUI]
+  kind: interface   base: -
+  method public System.Void UpdateModel()
+
+=== Timberborn.MechanicalSystemUI.MarkerMatrix4x4Calculator   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  method public UnityEngine.Matrix4x4 CalculateMatrixFrom(Timberborn.MechanicalSystem.Transput transput)
+  method private static UnityEngine.Vector3 GetPosition(Timberborn.MechanicalSystem.Transput transput)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystemUI.MechanicalBatchControlRowItem   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.BatchControl.IBatchControlRowItem, Timberborn.BatchControl.IUpdatableBatchControlRowItem
+  field UnityEngine.UIElements.VisualElement <Root>k__BackingField
+  field Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter _mechanicalNodeTextFormatter
+  field UnityEngine.UIElements.Label _label
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  prop UnityEngine.UIElements.VisualElement Root {get}
+  method public UnityEngine.UIElements.VisualElement get_Root()
+  method public System.Void .ctor(Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter mechanicalNodeTextFormatter, UnityEngine.UIElements.VisualElement root, UnityEngine.UIElements.Label label, Timberborn.MechanicalSystem.MechanicalNode mechanicalNode)
+  method public System.Void UpdateRowItem()
+
+=== Timberborn.MechanicalSystemUI.MechanicalBatchControlRowItemFactory   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter _mechanicalNodeTextFormatter
+  method System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.Localization.ILoc loc, Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter mechanicalNodeTextFormatter)
+  method public Timberborn.BatchControl.IBatchControlRowItem Create(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public Timberborn.BatchControl.IBatchControlRowItem Create(Timberborn.MechanicalSystem.MechanicalGraph mechanicalGraph)
+
+=== Timberborn.MechanicalSystemUI.MechanicalGraphModelUpdater   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton, Timberborn.SingletonSystem.IUpdatableSingleton
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field HashSet<Timberborn.MechanicalSystem.MechanicalNode> _untouchedShafts
+  field HashSet<Timberborn.MechanicalSystem.MechanicalNode> _nodesToUpdate
+  field Queue<Timberborn.MechanicalSystem.MechanicalNode> _intersections
+  field HashSet<Timberborn.MechanicalSystem.MechanicalGraph> _dirtyGraphs
+  field List<Timberborn.MechanicalSystem.Transput> _transputCache
+  method public System.Void .ctor(Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void Load()
+  method public System.Void UpdateSingleton()
+  method public System.Void OnMechanicalGraphGeneratorAdded(Timberborn.MechanicalSystem.MechanicalGraphGeneratorAddedEvent mechanicalGraphGeneratorAddedEvent)
+  method public System.Void OnMechanicalGraphGeneratorUpdated(Timberborn.MechanicalSystem.MechanicalGraphGeneratorUpdatedEvent mechanicalGraphGeneratorUpdatedEvent)
+  method private System.Void UpdateModels(Timberborn.MechanicalSystem.MechanicalGraph mechanicalGraph)
+  method private System.Void TraverseFromGenerators(Timberborn.MechanicalSystem.MechanicalGraph mechanicalGraph)
+  method private System.Void TraverseRemainingShafts()
+  method private System.Void TraverseRemainingIntersections()
+  method private System.Void TraverseToNextIntersection(Timberborn.MechanicalSystem.MechanicalNode node)
+  method private System.Void TraverseToNextIntersection(Timberborn.MechanicalSystem.Transput transput)
+  method private System.Void UpdateModels()
+  method private Timberborn.MechanicalSystem.Transput GetNextSingleTransput(Timberborn.MechanicalSystem.Transput input)
+  nested Timberborn.MechanicalSystemUI.MechanicalGraphModelUpdater+.<>c
+
+=== Timberborn.MechanicalSystemUI.MechanicalGraphModelUpdater+.<>c   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.MechanicalSystemUI.MechanicalGraphModelUpdater+.<>c <>9
+  field static Func<Timberborn.MechanicalSystem.MechanicalNode, System.Boolean> <>9__11_0
+  field static Func<Timberborn.MechanicalSystem.MechanicalNode, System.Boolean> <>9__12_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.Boolean <UpdateModels>b__11_0(Timberborn.MechanicalSystem.MechanicalNode node)
+  method System.Boolean <TraverseFromGenerators>b__12_0(Timberborn.MechanicalSystem.MechanicalNode node)
+
+=== Timberborn.MechanicalSystemUI.MechanicalHeaderBatchControlRowItem   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.BatchControl.IBatchControlRowItem, Timberborn.BatchControl.IUpdatableBatchControlRowItem
+  field static System.String EfficiencyLocKey
+  field UnityEngine.UIElements.VisualElement <Root>k__BackingField
+  field Timberborn.Localization.ILoc _loc
+  field UnityEngine.UIElements.Label _label
+  field Timberborn.MechanicalSystem.MechanicalGraph _mechanicalGraph
+  field Timberborn.Localization.Phrase _networkPowerPhrase
+  prop UnityEngine.UIElements.VisualElement Root {get}
+  method public UnityEngine.UIElements.VisualElement get_Root()
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc, UnityEngine.UIElements.VisualElement root, UnityEngine.UIElements.Label label, Timberborn.MechanicalSystem.MechanicalGraph mechanicalGraph)
+  method public System.Void UpdateRowItem()
+  method private static System.Void .cctor()
+  nested Timberborn.MechanicalSystemUI.MechanicalHeaderBatchControlRowItem+.<>c
+
+=== Timberborn.MechanicalSystemUI.MechanicalHeaderBatchControlRowItem+.<>c   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.MechanicalSystemUI.MechanicalHeaderBatchControlRowItem+.<>c <>9
+  field static Func<System.Int32, System.String> <>9__8_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.String <.ctor>b__8_0(System.Int32 value)
+
+=== Timberborn.MechanicalSystemUI.MechanicalModel   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.MechanicalSystemUI.IMechanicalModelUpdater _mechanicalModelUpdater
+  method public System.Void Awake()
+  method public System.Void UpdateModel()
+  method private System.Void OnAddedToGraph(System.Object sender, System.EventArgs eventArgs)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeAnimator   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.TickSystem.TickableComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IPostLoadableEntity, Timberborn.BlockSystem.IFinishedStateListener, Timberborn.BlockSystem.IUnfinishedStateListener
+  field Timberborn.TimeSystem.NonlinearAnimationManager _nonlinearAnimationManager
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.MechanicalSystemUI.MechanicalNodeAnimatorSpec _mechanicalNodeAnimatorSpec
+  field Timberborn.TimbermeshAnimations.IAnimator[] _animators
+  field Timberborn.TimbermeshAnimations.IAnimator _activeAnimator
+  field System.Single _currentAnimationSpeed
+  method public System.Void .ctor(Timberborn.TimeSystem.NonlinearAnimationManager nonlinearAnimationManager, Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void Awake()
+  method public System.Void PostLoadEntity()
+  method public System.Void Tick()
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void OnEnterUnfinishedState()
+  method public System.Void OnExitUnfinishedState()
+  method public System.Void OnCurrentSpeedChanged(Timberborn.TimeSystem.CurrentSpeedChangedEvent currentSpeedChangedEvent)
+  method private System.Void StopAnimators()
+  method private System.Void FindAndUpdateActiveAnimator()
+  method private System.Void UpdateAnimation()
+  method private System.Boolean CanAnimate()
+  method private System.Single GetPowerMultiplier()
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeAnimatorSpec   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.MechanicalSystemUI.MechanicalNodeAnimatorSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  field System.Single <MinSpeedMultiplier>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.Single MinSpeedMultiplier {get/set}
+  method System.Type get_EqualityContract()
+  method public System.Single get_MinSpeedMultiplier()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_MinSpeedMultiplier(System.Single value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.MechanicalSystemUI.MechanicalNodeAnimatorSpec left, Timberborn.MechanicalSystemUI.MechanicalNodeAnimatorSpec right)
+  method public static System.Boolean op_Equality(Timberborn.MechanicalSystemUI.MechanicalNodeAnimatorSpec left, Timberborn.MechanicalSystemUI.MechanicalNodeAnimatorSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.MechanicalSystemUI.MechanicalNodeAnimatorSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.MechanicalSystemUI.MechanicalNodeAnimatorSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeDescriber   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntityPanelSystem.IEntityDescriber
+  field static System.String PowerClass
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.UIFormatters.DescribedAmountFactory _describedAmountFactory
+  field Timberborn.EntityPanelSystem.ProductionItemFactory _productionItemFactory
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.MechanicalSystem.MechanicalNodeSpec _mechanicalNodeSpec
+  field Timberborn.MechanicalSystemUI.MechanicalNodeDescriptionSpec _mechanicalNodeDescriptionSpec
+  field Timberborn.Localization.Phrase _powerInputPhrase
+  field Timberborn.Localization.Phrase _powerOutputPhrase
+  field Timberborn.Localization.Phrase _powerInputTooltipPhrase
+  field Timberborn.Localization.Phrase _powerOutputTooltipPhrase
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc, Timberborn.UIFormatters.DescribedAmountFactory describedAmountFactory, Timberborn.EntityPanelSystem.ProductionItemFactory productionItemFactory)
+  method public System.Void Awake()
+  method public IEnumerable<Timberborn.EntityPanelSystem.EntityDescription> DescribeEntity()
+  method private System.String GetPowerUnitLocKey()
+  method private static System.Void .cctor()
+  nested Timberborn.MechanicalSystemUI.MechanicalNodeDescriber+.<DescribeEntity>d__13
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeDescriber+.<DescribeEntity>d__13   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: IEnumerable<Timberborn.EntityPanelSystem.EntityDescription>, System.Collections.IEnumerable, IEnumerator<Timberborn.EntityPanelSystem.EntityDescription>, System.Collections.IEnumerator, System.IDisposable
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 <>1__state
+  field Timberborn.EntityPanelSystem.EntityDescription <>2__current
+  field System.Int32 <>l__initialThreadId
+  field Timberborn.MechanicalSystemUI.MechanicalNodeDescriber <>4__this
+  field System.Int32 <powerInput>5__2
+  prop Timberborn.EntityPanelSystem.EntityDescription System.Collections.Generic.IEnumerator<Timberborn.EntityPanelSystem.EntityDescription>.Current {get}
+  prop System.Object System.Collections.IEnumerator.Current {get}
+  method public System.Void .ctor(System.Int32 <>1__state)
+  method private System.Void System.IDisposable.Dispose()
+  method private System.Boolean MoveNext()
+  method private Timberborn.EntityPanelSystem.EntityDescription System.Collections.Generic.IEnumerator<Timberborn.EntityPanelSystem.EntityDescription>.get_Current()
+  method private System.Void System.Collections.IEnumerator.Reset()
+  method private System.Object System.Collections.IEnumerator.get_Current()
+  method private IEnumerator<Timberborn.EntityPanelSystem.EntityDescription> System.Collections.Generic.IEnumerable<Timberborn.EntityPanelSystem.EntityDescription>.GetEnumerator()
+  method private System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeDescriptionSpec   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.MechanicalSystemUI.MechanicalNodeDescriptionSpec>
+  field System.String <AlternativePowerUnitLocKey>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.String AlternativePowerUnitLocKey {get/set}
+  method System.Type get_EqualityContract()
+  method public System.String get_AlternativePowerUnitLocKey()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_AlternativePowerUnitLocKey(System.String value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.MechanicalSystemUI.MechanicalNodeDescriptionSpec left, Timberborn.MechanicalSystemUI.MechanicalNodeDescriptionSpec right)
+  method public static System.Boolean op_Equality(Timberborn.MechanicalSystemUI.MechanicalNodeDescriptionSpec left, Timberborn.MechanicalSystemUI.MechanicalNodeDescriptionSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.MechanicalSystemUI.MechanicalNodeDescriptionSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.MechanicalSystemUI.MechanicalNodeDescriptionSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeFacingMarkerDrawer   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BaseComponentSystem.IUpdatableComponent, Timberborn.BlockSystem.IPreviewSelectionListener, Timberborn.BlockSystem.IPostPlacementChangeListener
+  field static UnityEngine.Color MarkerColor
+  field static System.Int32 MaxDistance
+  field Timberborn.Rendering.MarkerDrawerFactory _markerDrawerFactory
+  field Timberborn.BlockSystem.IBlockService _blockService
+  field Timberborn.MechanicalSystemUI.MarkerMatrix4x4Calculator _markerMatrix4X4Calculator
+  field Timberborn.Rendering.MeshDrawer _meshDrawer
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.MechanicalSystem.TransputProviderSpec _transputProviderSpec
+  field Timberborn.BlockSystem.Preview _preview
+  field List<UnityEngine.Matrix4x4> _markers
+  field List<Timberborn.BlockSystem.BlockObject> _blockObjectCache
+  method public System.Void .ctor(Timberborn.Rendering.MarkerDrawerFactory markerDrawerFactory, Timberborn.BlockSystem.IBlockService blockService, Timberborn.MechanicalSystemUI.MarkerMatrix4x4Calculator markerMatrix4X4Calculator)
+  method public System.Void Awake()
+  method public System.Void Update()
+  method public System.Void OnPreviewSelect()
+  method public System.Void OnPreviewUnselect()
+  method public System.Void OnPostPlacementChanged()
+  method private System.Boolean ShouldEnable(System.Boolean isSingleShownPreview)
+  method private System.Void FindFacingTransputs()
+  method private System.Void FindFacingTransput(Timberborn.MechanicalSystem.TransputSpec transputSpec)
+  method private System.Boolean HasConnectableOccupation(UnityEngine.Vector3Int coordinates, Timberborn.BlockSystem.BlockOccupations occupations)
+  method private System.Boolean HasNonOverridableBlockObject()
+  method private System.Void AddMarker(UnityEngine.Vector3Int coordinates, Timberborn.MechanicalSystem.Transput transput)
+  method private static Timberborn.MechanicalSystem.Transput GetTransput(Timberborn.MechanicalSystem.MechanicalNode otherNode, UnityEngine.Vector3Int coordinates, Timberborn.MechanicalSystem.Transput transput)
+  method private static System.Void .cctor()
+  nested Timberborn.MechanicalSystemUI.MechanicalNodeFacingMarkerDrawer+.<>c__DisplayClass24_0
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeFacingMarkerDrawer+.<>c__DisplayClass24_0   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field UnityEngine.Vector3Int coordinates
+  field Timberborn.MechanicalSystem.Transput transput
+  method public System.Void .ctor()
+  method System.Boolean <GetTransput>b__0(Timberborn.MechanicalSystem.Transput otherTransput)
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeFragment   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.MechanicalSystemUI.GeneratorFragmentService _generatorFragmentService
+  field Timberborn.MechanicalSystemUI.ConsumerFragmentService _consumerFragmentService
+  field Timberborn.MechanicalSystemUI.NetworkFragmentService _networkFragmentService
+  field UnityEngine.UIElements.VisualElement _root
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.MechanicalSystemUI.GeneratorFragmentService generatorFragmentService, Timberborn.MechanicalSystemUI.ConsumerFragmentService consumerFragmentService, Timberborn.MechanicalSystemUI.NetworkFragmentService networkFragmentService)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeIlluminator   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.TickSystem.TickableComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IPostLoadableEntity
+  field Timberborn.Illumination.IlluminatorToggle _illuminatorToggle
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field System.Boolean _wasEnabled
+  method public System.Void Awake()
+  method public System.Void PostLoadEntity()
+  method public System.Void Tick()
+  method private System.Void UpdateIllumination()
+  method private System.Void ToggleIllumination(System.Boolean isEnabled)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeIlluminatorSpec   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.MechanicalSystemUI.MechanicalNodeIlluminatorSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  prop System.Type EqualityContract {get}
+  method System.Type get_EqualityContract()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.MechanicalSystemUI.MechanicalNodeIlluminatorSpec left, Timberborn.MechanicalSystemUI.MechanicalNodeIlluminatorSpec right)
+  method public static System.Boolean op_Equality(Timberborn.MechanicalSystemUI.MechanicalNodeIlluminatorSpec left, Timberborn.MechanicalSystemUI.MechanicalNodeIlluminatorSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.MechanicalSystemUI.MechanicalNodeIlluminatorSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.MechanicalSystemUI.MechanicalNodeIlluminatorSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeSelfMarkerDrawer   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BaseComponentSystem.IUpdatableComponent, Timberborn.SelectionSystem.ISelectionListener, Timberborn.BlockSystem.IPreviewSelectionListener
+  field static UnityEngine.Color MarkerColor
+  field Timberborn.Rendering.MarkerDrawerFactory _markerDrawerFactory
+  field Timberborn.MechanicalSystemUI.MarkerMatrix4x4Calculator _markerMatrix4X4Calculator
+  field Timberborn.Rendering.MeshDrawer _meshDrawer
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.MechanicalSystem.TransputProviderSpec _transputProviderSpec
+  field Timberborn.BlockObjectModelSystem.BlockObjectModelController _blockObjectModelController
+  field List<UnityEngine.Matrix4x4> _markers
+  method public System.Void .ctor(Timberborn.Rendering.MarkerDrawerFactory markerDrawerFactory, Timberborn.MechanicalSystemUI.MarkerMatrix4x4Calculator markerMatrix4X4Calculator)
+  method public System.Void Awake()
+  method public System.Void Update()
+  method public System.Void OnSelect()
+  method public System.Void OnUnselect()
+  method public System.Void OnPreviewSelect()
+  method public System.Void OnPreviewUnselect()
+  method private System.Void Enable()
+  method private System.Void GetMarkersFromSpec()
+  method private System.Void GetMarkersFromMechanicalNode()
+  method private System.Void AddMarker(Timberborn.MechanicalSystem.Transput transput)
+  method private static System.Void .cctor()
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.Localization.Phrase _powerOutputPhrase
+  field Timberborn.Localization.Phrase _powerInputPhrase
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc)
+  method public System.String FormatGeneratorText(Timberborn.MechanicalSystem.MechanicalNode mechanicalNode)
+  method public System.String FormatConsumerText(Timberborn.MechanicalSystem.MechanicalNode mechanicalNode)
+  nested Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter+.<>c
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter+.<>c   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.MechanicalSystemUI.MechanicalNodeTextFormatter+.<>c <>9
+  field static Func<System.Int32, System.String> <>9__3_0
+  field static Func<System.Int32, System.String> <>9__3_1
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.String <.ctor>b__3_0(System.Int32 value)
+  method System.String <.ctor>b__3_1(System.Int32 value)
+
+=== Timberborn.MechanicalSystemUI.MechanicalSystemDebuggingPanel   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton, Timberborn.DebuggingUI.IDebuggingPanel
+  field Timberborn.DebuggingUI.DebuggingPanel _debuggingPanel
+  field Timberborn.SelectionSystem.EntitySelectionService _entitySelectionService
+  method public System.Void .ctor(Timberborn.DebuggingUI.DebuggingPanel debuggingPanel, Timberborn.SelectionSystem.EntitySelectionService entitySelectionService)
+  method public System.Void Load()
+  method public System.String GetText()
+
+=== Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Bindito.Core.Configurator
+  [type attr] Bindito.Core.ContextAttribute
+  method System.Void Configure()
+  method private static Timberborn.TemplateInstantiation.TemplateModule ProvideTemplateModule()
+  method public System.Void .ctor()
+  nested Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator+.EntityPanelModuleProvider
+
+=== Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator+.EntityPanelModuleProvider   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: IProvider<Timberborn.EntityPanelSystem.EntityPanelModule>
+  field Timberborn.MechanicalSystemUI.MechanicalNodeFragment _mechanicalNodeFragment
+  field Timberborn.MechanicalSystemUI.BatteryFragment _batteryFragment
+  method public System.Void .ctor(Timberborn.MechanicalSystemUI.MechanicalNodeFragment mechanicalNodeFragment, Timberborn.MechanicalSystemUI.BatteryFragment batteryFragment)
+  method public Timberborn.EntityPanelSystem.EntityPanelModule Get()
+
+=== Timberborn.MechanicalSystemUI.NetworkFragmentService   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.Localization.ILoc _loc
+  field UnityEngine.UIElements.Label _label
+  field Timberborn.Localization.Phrase _powerDemandPhrase
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc)
+  method public System.Void Initialize(UnityEngine.UIElements.Label label)
+  method public System.Boolean Update(Timberborn.MechanicalSystem.MechanicalNode mechanicalNode)
+  method public System.Void Hide()
+  nested Timberborn.MechanicalSystemUI.NetworkFragmentService+.<>c
+
+=== Timberborn.MechanicalSystemUI.NetworkFragmentService+.<>c   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.MechanicalSystemUI.NetworkFragmentService+.<>c <>9
+  field static Func<System.Int32, System.String> <>9__3_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.String <.ctor>b__3_0(System.Int32 value)
+
+=== Timberborn.MechanicalSystemUI.NoPowerStatus   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.TickSystem.TickableComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IPostLoadableEntity
+  field static System.String NoPowerSpriteName
+  field static System.String NoPowerLocKey
+  field static System.String NoPowerShortLocKey
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.StatusSystem.StatusToggle _noPowerStatusToggle
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc)
+  method public System.Void Awake()
+  method public System.Void PostLoadEntity()
+  method public System.Void Tick()
+  method private System.Void OnAddedToGraph(System.Object sender, System.EventArgs e)
+  method private System.Void InitializeStatus()
+  method private System.Void UpdateStatus()
+  method private static System.Void .cctor()
+
+=== Timberborn.MechanicalSystemUI.NoPowerStatusAlertDisablerSpec   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.MechanicalSystemUI.NoPowerStatusAlertDisablerSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  prop System.Type EqualityContract {get}
+  method System.Type get_EqualityContract()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.MechanicalSystemUI.NoPowerStatusAlertDisablerSpec left, Timberborn.MechanicalSystemUI.NoPowerStatusAlertDisablerSpec right)
+  method public static System.Boolean op_Equality(Timberborn.MechanicalSystemUI.NoPowerStatusAlertDisablerSpec left, Timberborn.MechanicalSystemUI.NoPowerStatusAlertDisablerSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.MechanicalSystemUI.NoPowerStatusAlertDisablerSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.MechanicalSystemUI.NoPowerStatusAlertDisablerSpec original)
+  method public System.Void .ctor()

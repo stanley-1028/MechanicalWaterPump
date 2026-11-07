@@ -1,0 +1,11 @@
+{
+  "TemplateCollectionSpec": {
+    "CollectionId": "Buildings.IronTeeth",
+    "Blueprints#append": [
+      "Buildings/Water/MWP/MWP.Pump.Basic.IronTeeth.blueprint",
+      "Buildings/Water/MWP/MWP.Pump.Intermediate.IronTeeth.blueprint",
+      "Buildings/Water/MWP/MWP.Pump.Advanced.IronTeeth.blueprint",
+      "Buildings/Water/MWP/MWP.Pump.Top.IronTeeth.blueprint"
+    ]
+  }
+}

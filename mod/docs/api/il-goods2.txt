@@ -1,0 +1,102 @@
+# member dump for Timberborn.Goods.GoodAmount$, Timberborn.Goods.GoodAmountSpec, Timberborn.Goods.IGoodService, Timberborn.InventorySystem.DistrictInventoryRegistry, Timberborn.InventorySystem.InventoryRegistry, Timberborn.InventorySystem.DistrictInventoryAssigner
+
+=== Timberborn.Goods.GoodAmount   [Timberborn.Goods]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.String <GoodId>k__BackingField
+  field System.Int32 <Amount>k__BackingField
+  prop System.String GoodId {get}
+  prop System.Int32 Amount {get}
+  method public System.String get_GoodId()
+  method public System.Int32 get_Amount()
+  method public System.Void .ctor(System.String goodId, System.Int32 amount)
+  method public System.String ToString()
+
+=== Timberborn.Goods.GoodAmountSpec   [Timberborn.Goods]
+  kind: class   base: System.Object
+  interfaces: IEquatable<Timberborn.Goods.GoodAmountSpec>
+  field System.String <Id>k__BackingField
+  field System.Int32 <Amount>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.String Id {get/set}
+  prop System.Int32 Amount {get/set}
+  method System.Type get_EqualityContract()
+  method public System.String get_Id()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Id(System.String value)
+  method public System.Int32 get_Amount()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Amount(System.Int32 value)
+  method public Timberborn.Goods.GoodAmount ToGoodAmount()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.Goods.GoodAmountSpec left, Timberborn.Goods.GoodAmountSpec right)
+  method public static System.Boolean op_Equality(Timberborn.Goods.GoodAmountSpec left, Timberborn.Goods.GoodAmountSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.Goods.GoodAmountSpec other)
+  method public Timberborn.Goods.GoodAmountSpec <Clone>$()
+  method System.Void .ctor(Timberborn.Goods.GoodAmountSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.Goods.IGoodService   [Timberborn.Goods]
+  kind: interface   base: -
+  prop ReadOnlyList<System.String> Goods {get}
+  method public ReadOnlyList<System.String> get_Goods()
+  method public System.Boolean HasGood(System.String id)
+  method public Timberborn.Goods.GoodSpec GetGoodOrNull(System.String id)
+  method public Timberborn.Goods.GoodSpec GetGood(System.String id)
+  method public IEnumerable<System.String> GetGoodsForGroup(System.String groupId)
+  method public IEnumerable<System.String> GetGoodsForType(System.String goodType)
+
+=== Timberborn.InventorySystem.DistrictInventoryAssigner   [Timberborn.InventorySystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BlockSystem.IFinishedStateListener
+  field Timberborn.GameDistricts.DistrictBuilding _districtBuilding
+  field Timberborn.InventorySystem.DistrictInventoryRegistry _districtInventoryRegistry
+  field List<Timberborn.InventorySystem.Inventory> _inventories
+  method public System.Void Awake()
+  method public System.Void StartAssigningInventory(Timberborn.InventorySystem.Inventory inventory)
+  method public System.Void StopAssigningInventory(Timberborn.InventorySystem.Inventory inventory)
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method private System.Void OnReassignedDistrict(System.Object sender, System.EventArgs e)
+  method private System.Void RemoveRegisteredInventories()
+  method private System.Void AddRegisteredInventories()
+  method public System.Void .ctor()
+
+=== Timberborn.InventorySystem.DistrictInventoryRegistry   [Timberborn.InventorySystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent
+  field EventHandler<Timberborn.InventorySystem.Inventory> InventoryRegistered
+  field EventHandler<Timberborn.InventorySystem.Inventory> InventoryUnregistered
+  field Timberborn.Goods.IGoodService _goodService
+  field Timberborn.InventorySystem.InventoryRegistry _publicInventoryRegistry
+  prop ReadOnlyHashSet<Timberborn.InventorySystem.Inventory> Inventories {get}
+  event EventHandler<Timberborn.InventorySystem.Inventory> InventoryRegistered
+  event EventHandler<Timberborn.InventorySystem.Inventory> InventoryUnregistered
+  method public System.Void add_InventoryRegistered(EventHandler<Timberborn.InventorySystem.Inventory> value)
+  method public System.Void remove_InventoryRegistered(EventHandler<Timberborn.InventorySystem.Inventory> value)
+  method public System.Void add_InventoryUnregistered(EventHandler<Timberborn.InventorySystem.Inventory> value)
+  method public System.Void remove_InventoryUnregistered(EventHandler<Timberborn.InventorySystem.Inventory> value)
+  method public System.Void .ctor(Timberborn.Goods.IGoodService goodService)
+  method public ReadOnlyHashSet<Timberborn.InventorySystem.Inventory> get_Inventories()
+  method public System.Void Awake()
+  method public System.Void Add(Timberborn.InventorySystem.Inventory inventory)
+  method public System.Void Remove(Timberborn.InventorySystem.Inventory inventory)
+  method public ReadOnlyHashSet<Timberborn.InventorySystem.Inventory> ActiveInventoriesWithStock(System.String goodId)
+  method public ReadOnlyHashSet<Timberborn.InventorySystem.Inventory> ActiveInventoriesWithCapacity(System.String goodId)
+
+=== Timberborn.InventorySystem.InventoryRegistry   [Timberborn.InventorySystem]
+  kind: class   base: System.Object
+  field Dictionary<System.String, HashSet<Timberborn.InventorySystem.Inventory>> _inventoriesWithCapacity
+  field Dictionary<System.String, HashSet<Timberborn.InventorySystem.Inventory>> _inventoriesWithStock
+  field HashSet<Timberborn.InventorySystem.Inventory> _inventories
+  prop ReadOnlyHashSet<Timberborn.InventorySystem.Inventory> Inventories {get}
+  method public System.Void .ctor(ReadOnlyList<System.String> goods)
+  method public ReadOnlyHashSet<Timberborn.InventorySystem.Inventory> get_Inventories()
+  method public ReadOnlyHashSet<Timberborn.InventorySystem.Inventory> InventoriesWithCapacity(System.String goodId)
+  method public ReadOnlyHashSet<Timberborn.InventorySystem.Inventory> InventoriesWithStock(System.String goodId)
+  method public System.Void RegisterInventory(Timberborn.InventorySystem.Inventory inventory)
+  method public System.Void UnregisterInventory(Timberborn.InventorySystem.Inventory inventory)
+  method private System.Void OnInventoryChanged(System.Object sender, Timberborn.InventorySystem.InventoryChangedEventArgs e)
+  method private System.Void OnUnwantedStockDisappeared(System.Object sender, System.EventArgs e)
+  method private System.Void UpdateRegistries(Timberborn.InventorySystem.Inventory inventory, System.String good)

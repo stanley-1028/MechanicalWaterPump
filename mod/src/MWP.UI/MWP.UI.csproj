@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    MWP.UI: entity panel fragment for the four pump tiers (status, condition, maintenance
+    buttons). References MWP.Core only (single ProjectReference) plus the game UI assemblies.
+    The gameplay assembly registers the IMwpPumpQuery singleton the panel reads.
+  -->
+
+  <PropertyGroup>
+    <MwpGameProject>true</MwpGameProject>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>MWP.UI</AssemblyName>
+    <RootNamespace>MWP.UI</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MWP.Core\MWP.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(TimberbornManagedDir)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.CoreUI">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.CoreUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.EntityPanelSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.EntityPanelSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Localization">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Localization.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.UIFormatters">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.UIFormatters.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.StatusSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.StatusSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.EntityNaming">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.EntityNaming.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    MWP.Gameplay: the in-game half of the mod.
+
+    One custom blueprint spec (MWP.MechanicalWaterPumpSpec), one controller component that
+    reads mechanical power + vanilla WaterInput and fills a SimpleOutputInventory with Water,
+    the maintenance state machine driver, the save bridge, the DI wiring and the IModStarter.
+
+    Compiles against the installed Timberborn assemblies; nothing from those assemblies is
+    copied into the output.
+  -->
+
+  <PropertyGroup>
+    <MwpGameProject>true</MwpGameProject>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>MWP.Gameplay</AssemblyName>
+    <RootNamespace>MWP.Gameplay</RootNamespace>
+  </PropertyGroup>
+
+  <!--
+    Single ProjectReference by design. The build environment rejects a project that declares
+    two project references during NuGet restore (MSBuild _GenerateRestoreProjectPathWalk fails
+    silently). Dependency chain: Core <- Gameplay / Integration / UI (each referencing Core only).
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\MWP.Core\MWP.Core.csproj" />
+  </ItemGroup>
+
+</Project>

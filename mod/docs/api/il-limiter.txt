@@ -1,0 +1,101 @@
+
+=== Timberborn.WaterWorkshops.WaterGoodToWaterAmountConverter::GetWaterAmount   [Timberborn.WaterWorkshops]
+  IL_0000: ldc.i4.0
+  IL_0001: stloc.0
+  IL_0002: br.s IL_0030
+  IL_0004: ldarg.0
+  IL_0005: ldloc.0
+  IL_0006: callvirt !0 System.Collections.Generic.IReadOnlyList`1<Timberborn.Goods.GoodAmountSpec>::get_Item(System.Int32)
+  IL_000b: stloc.1
+  IL_000c: ldloc.1
+  IL_000d: callvirt System.String Timberborn.Goods.GoodAmountSpec::get_Id()
+  IL_0012: ldsfld System.String Timberborn.WaterWorkshops.WaterGoodToWaterAmountConverter::WaterId
+  IL_0017: call System.Boolean System.String::op_Equality(System.String,System.String)
+  IL_001c: brfalse.s IL_002c
+  IL_001e: ldloc.1
+  IL_001f: callvirt System.Int32 Timberborn.Goods.GoodAmountSpec::get_Amount()
+  IL_0024: conv.r4
+  IL_0025: ldsfld System.Single Timberborn.WaterWorkshops.WaterGoodToWaterAmountConverter::WaterAmountConversion
+  IL_002a: mul
+  IL_002b: ret
+  IL_002c: ldloc.0
+  IL_002d: ldc.i4.1
+  IL_002e: add
+  IL_002f: stloc.0
+  IL_0030: ldloc.0
+  IL_0031: ldarg.0
+  IL_0032: callvirt System.Int32 System.Collections.Generic.IReadOnlyCollection`1<Timberborn.Goods.GoodAmountSpec>::get_Count()
+  IL_0037: blt.s IL_0004
+  IL_0039: ldc.r4 0
+  IL_003e: ret
+
+=== Timberborn.WaterWorkshops.WaterGoodToWaterAmountConverter::.cctor   [Timberborn.WaterWorkshops]
+  IL_0000: ldstr "Water"
+  IL_0005: stsfld System.String Timberborn.WaterWorkshops.WaterGoodToWaterAmountConverter::WaterId
+  IL_000a: ldc.r4 0.2
+  IL_000f: stsfld System.Single Timberborn.WaterWorkshops.WaterGoodToWaterAmountConverter::WaterAmountConversion
+  IL_0014: ret
+
+=== Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::Awake   [Timberborn.WaterWorkshops]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: call !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.WaterBuildings.WaterInput>()
+  IL_0007: stfld Timberborn.WaterBuildings.WaterInput Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::_waterInput
+  IL_000c: ldarg.0
+  IL_000d: ldarg.0
+  IL_000e: call !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.WaterWorkshops.ManufactoryWaterConsumer>()
+  IL_0013: stfld Timberborn.WaterWorkshops.ManufactoryWaterConsumer Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::_manufactoryWaterConsumer
+  IL_0018: ret
+
+=== Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::ProductionEfficiency   [Timberborn.WaterWorkshops]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterBuildings.WaterInput Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::_waterInput
+  IL_0006: callvirt System.Boolean Timberborn.WaterBuildings.WaterInput::get_IsUnderwater()
+  IL_000b: brtrue.s IL_0013
+  IL_000d: ldc.r4 0
+  IL_0012: ret
+  IL_0013: ldc.r4 1
+  IL_0018: ldarg.0
+  IL_0019: ldfld Timberborn.WaterBuildings.WaterInput Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::_waterInput
+  IL_001e: callvirt System.Single Timberborn.WaterBuildings.WaterInput::get_ContaminationPercentage()
+  IL_0023: sub
+  IL_0024: stloc.0
+  IL_0025: ldloc.0
+  IL_0026: ldsfld System.Single Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::EfficiencyThreshold
+  IL_002b: bge.un.s IL_0033
+  IL_002d: ldc.r4 0
+  IL_0032: ret
+  IL_0033: ldloc.0
+  IL_0034: ret
+
+=== Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::MaxProductionProgressChange   [Timberborn.WaterWorkshops]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterWorkshops.ManufactoryWaterConsumer Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::_manufactoryWaterConsumer
+  IL_0006: callvirt System.Single Timberborn.WaterWorkshops.ManufactoryWaterConsumer::get_ConsumedWater()
+  IL_000b: stloc.0
+  IL_000c: ldloc.0
+  IL_000d: ldc.r4 0
+  IL_0012: ble.un.s IL_0027
+  IL_0014: ldarg.1
+  IL_0015: ldloc.0
+  IL_0016: mul
+  IL_0017: stloc.1
+  IL_0018: ldarg.0
+  IL_0019: ldfld Timberborn.WaterBuildings.WaterInput Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::_waterInput
+  IL_001e: ldloc.1
+  IL_001f: callvirt System.Single Timberborn.WaterBuildings.WaterInput::DemandCleanWaterAmount(System.Single)
+  IL_0024: ldloc.0
+  IL_0025: div
+  IL_0026: ret
+  IL_0027: ldc.r4 0
+  IL_002c: ret
+
+=== Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::.ctor   [Timberborn.WaterWorkshops]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Timberborn.BaseComponentSystem.BaseComponent::.ctor()
+  IL_0006: ret
+
+=== Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::.cctor   [Timberborn.WaterWorkshops]
+  IL_0000: ldc.r4 0.0001
+  IL_0005: stsfld System.Single Timberborn.WaterWorkshops.WaterInputManufactoryLimiter::EfficiencyThreshold
+  IL_000a: ret

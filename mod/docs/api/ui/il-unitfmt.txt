@@ -1,0 +1,84 @@
+
+=== Timberborn.UIFormatters.UnitFormatter::FormatPower<T>   [Timberborn.UIFormatters]
+  IL_0000: ldarg.0
+  IL_0001: ldsfld System.Func`1<System.String> Timberborn.UIFormatters.UnitFormatter/<>c__22`1<T>::<>9__22_0
+  IL_0006: dup
+  IL_0007: brtrue.s IL_0020
+  IL_0009: pop
+  IL_000a: ldsfld Timberborn.UIFormatters.UnitFormatter/<>c__22`1<T> Timberborn.UIFormatters.UnitFormatter/<>c__22`1<T>::<>9
+  IL_000f: ldftn System.String Timberborn.UIFormatters.UnitFormatter/<>c__22`1<T>::<FormatPower>b__22_0()
+  IL_0015: newobj System.Void System.Func`1<System.String>::.ctor(System.Object,System.IntPtr)
+  IL_001a: dup
+  IL_001b: stsfld System.Func`1<System.String> Timberborn.UIFormatters.UnitFormatter/<>c__22`1<T>::<>9__22_0
+  IL_0020: ldarg.1
+  IL_0021: call Timberborn.Localization.Phrase Timberborn.UIFormatters.UnitFormatter::FormatPower<T>(Timberborn.Localization.Phrase,System.Func`1<System.String>,System.String)
+  IL_0026: ret
+
+=== Timberborn.UIFormatters.UnitFormatter::FormatPower<T>   [Timberborn.UIFormatters]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.2
+  IL_0002: ldarg.1
+  IL_0003: brtrue.s IL_0008
+  IL_0005: ldnull
+  IL_0006: br.s IL_000e
+  IL_0008: ldarg.1
+  IL_0009: callvirt !0 System.Func`1<System.String>::Invoke()
+  IL_000e: dup
+  IL_000f: brtrue.s IL_0017
+  IL_0011: pop
+  IL_0012: ldsfld System.String Timberborn.UIFormatters.UnitFormatter::PowerUnitLocKey
+  IL_0017: call Timberborn.Localization.Phrase Timberborn.UIFormatters.UnitFormatter::FormatPhraseWithUnit<T>(Timberborn.Localization.Phrase,System.String,System.String)
+  IL_001c: ret
+
+=== Timberborn.UIFormatters.UnitFormatter::FormatPowerCapacity<T>   [Timberborn.UIFormatters]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.1
+  IL_0002: ldsfld System.String Timberborn.UIFormatters.UnitFormatter::PowerCapacityUnitLocKey
+  IL_0007: call Timberborn.Localization.Phrase Timberborn.UIFormatters.UnitFormatter::FormatPhraseWithUnit<T>(Timberborn.Localization.Phrase,System.String,System.String)
+  IL_000c: ret
+
+=== Timberborn.UIFormatters.UnitFormatter::FormatPowerCapacityPerMeter<T>   [Timberborn.UIFormatters]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.1
+  IL_0002: ldsfld System.String Timberborn.UIFormatters.UnitFormatter::PowerCapacityPerMeterUnitLocKey
+  IL_0007: call Timberborn.Localization.Phrase Timberborn.UIFormatters.UnitFormatter::FormatPhraseWithUnit<T>(Timberborn.Localization.Phrase,System.String,System.String)
+  IL_000c: ret
+
+=== Timberborn.UIFormatters.UnitFormatter::.cctor   [Timberborn.UIFormatters]
+  IL_0000: ldstr "Unit.Percent.NumberAndUnit"
+  IL_0005: stsfld System.String Timberborn.UIFormatters.UnitFormatter::PercentUnitLocKey
+  IL_000a: ldstr "Unit.Tick.NumberAndUnit"
+  IL_000f: stsfld System.String Timberborn.UIFormatters.UnitFormatter::TickUnitLocKey
+  IL_0014: ldstr "Unit.Hour.NumberAndUnit"
+  IL_0019: stsfld System.String Timberborn.UIFormatters.UnitFormatter::HourUnitLocKey
+  IL_001e: ldstr "Unit.Day.NumberAndUnit"
+  IL_0023: stsfld System.String Timberborn.UIFormatters.UnitFormatter::DayUnitLocKey
+  IL_0028: ldstr "Unit.CubicMeterPerSecond.NumberAndUnit"
+  IL_002d: stsfld System.String Timberborn.UIFormatters.UnitFormatter::FlowUnitLocKey
+  IL_0032: ldstr "Unit.Meter.NumberAndUnit"
+  IL_0037: stsfld System.String Timberborn.UIFormatters.UnitFormatter::DistanceUnitLocKey
+  IL_003c: ldstr "Unit.Degree.NumberAndUnit"
+  IL_0041: stsfld System.String Timberborn.UIFormatters.UnitFormatter::AngleUnitLocKey
+  IL_0046: ldstr "Unit.Kilogram.NumberAndUnit"
+  IL_004b: stsfld System.String Timberborn.UIFormatters.UnitFormatter::KilogramUnitLocKey
+  IL_0050: ldstr "Unit.HorsePower.NumberAndUnit"
+  IL_0055: stsfld System.String Timberborn.UIFormatters.UnitFormatter::PowerUnitLocKey
+  IL_005a: ldstr "Unit.HorsePowerHour.NumberAndUnit"
+  IL_005f: stsfld System.String Timberborn.UIFormatters.UnitFormatter::PowerCapacityUnitLocKey
+  IL_0064: ldstr "Unit.HorsePowerHourPerMeter.NumberAndUnit"
+  IL_0069: stsfld System.String Timberborn.UIFormatters.UnitFormatter::PowerCapacityPerMeterUnitLocKey
+  IL_006e: ret
+
+=== Timberborn.UIFormatters.UnitFormatter+.<>c::.cctor   [Timberborn.UIFormatters]
+  IL_0000: newobj System.Void Timberborn.UIFormatters.UnitFormatter/<>c::.ctor()
+  IL_0005: stsfld Timberborn.UIFormatters.UnitFormatter/<>c Timberborn.UIFormatters.UnitFormatter/<>c::<>9
+  IL_000a: ret
+
+=== Timberborn.UIFormatters.UnitFormatter+.<>c__22`1::.cctor   [Timberborn.UIFormatters]
+  IL_0000: newobj System.Void Timberborn.UIFormatters.UnitFormatter/<>c__22`1<T>::.ctor()
+  IL_0005: stsfld Timberborn.UIFormatters.UnitFormatter/<>c__22`1<T> Timberborn.UIFormatters.UnitFormatter/<>c__22`1<T>::<>9
+  IL_000a: ret
+
+=== Timberborn.UIFormatters.UnitFormatter+.<>c__22`1::<FormatPower>b__22_0   [Timberborn.UIFormatters]
+  IL_0000: ldsfld System.String Timberborn.UIFormatters.UnitFormatter::PowerUnitLocKey
+  IL_0005: ret

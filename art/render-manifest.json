@@ -1,0 +1,153 @@
+{
+  "generated_by": "art/render_previews.py",
+  "blender_version": "4.2.1 LTS",
+  "renderer": "Cycles CPU, offline (not in-game screenshots)",
+  "textures": "real vanilla _D albedo + _N normal + _AO occlusion maps (paths from material_texture_map.json)",
+  "preview_size": 512,
+  "icon_size": 128,
+  "icon_render_size": 512,
+  "animation_preview_frames": [
+    1,
+    41,
+    81
+  ],
+  "previews": [
+    "art/previews/Basic.Folktails_iso.png",
+    "art/previews/Basic.Folktails_iso50.png",
+    "art/previews/Basic.Folktails_anim_f001.png",
+    "art/previews/Basic.Folktails_anim_f041.png",
+    "art/previews/Basic.Folktails_anim_f081.png",
+    "art/previews/Basic.IronTeeth_iso.png",
+    "art/previews/Basic.IronTeeth_iso50.png",
+    "art/previews/Basic.IronTeeth_anim_f001.png",
+    "art/previews/Basic.IronTeeth_anim_f041.png",
+    "art/previews/Basic.IronTeeth_anim_f081.png",
+    "art/previews/Intermediate.Folktails_iso.png",
+    "art/previews/Intermediate.Folktails_iso50.png",
+    "art/previews/Intermediate.Folktails_anim_f001.png",
+    "art/previews/Intermediate.Folktails_anim_f041.png",
+    "art/previews/Intermediate.Folktails_anim_f081.png",
+    "art/previews/Intermediate.IronTeeth_iso.png",
+    "art/previews/Intermediate.IronTeeth_iso50.png",
+    "art/previews/Intermediate.IronTeeth_anim_f001.png",
+    "art/previews/Intermediate.IronTeeth_anim_f041.png",
+    "art/previews/Intermediate.IronTeeth_anim_f081.png",
+    "art/previews/Advanced.Folktails_iso.png",
+    "art/previews/Advanced.Folktails_iso50.png",
+    "art/previews/Advanced.Folktails_anim_f001.png",
+    "art/previews/Advanced.Folktails_anim_f041.png",
+    "art/previews/Advanced.Folktails_anim_f081.png",
+    "art/previews/Advanced.IronTeeth_iso.png",
+    "art/previews/Advanced.IronTeeth_iso50.png",
+    "art/previews/Advanced.IronTeeth_anim_f001.png",
+    "art/previews/Advanced.IronTeeth_anim_f041.png",
+    "art/previews/Advanced.IronTeeth_anim_f081.png",
+    "art/previews/Top.Folktails_iso.png",
+    "art/previews/Top.Folktails_iso50.png",
+    "art/previews/Top.Folktails_anim_f001.png",
+    "art/previews/Top.Folktails_anim_f041.png",
+    "art/previews/Top.Folktails_anim_f081.png",
+    "art/previews/Top.IronTeeth_iso.png",
+    "art/previews/Top.IronTeeth_iso50.png",
+    "art/previews/Top.IronTeeth_anim_f001.png",
+    "art/previews/Top.IronTeeth_anim_f041.png",
+    "art/previews/Top.IronTeeth_anim_f081.png",
+    "art/previews/Basic.Folktails_construction_iso.png",
+    "art/previews/Basic.IronTeeth_construction_iso.png",
+    "art/previews/Intermediate.Folktails_construction_iso.png",
+    "art/previews/Intermediate.IronTeeth_construction_iso.png",
+    "art/previews/Advanced.Folktails_construction_iso.png",
+    "art/previews/Advanced.IronTeeth_construction_iso.png",
+    "art/previews/Top.Folktails_construction_iso.png",
+    "art/previews/Top.IronTeeth_construction_iso.png"
+  ],
+  "icons": [
+    {
+      "icon_stem": "MWPBasicFolktails",
+      "source_render": "art/icons/MWPBasicFolktails.512.png",
+      "art_icon": "art/icons/MWPBasicFolktails.png",
+      "mod_icon": "mod/data/Icons/MWPBasicFolktails.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "icon_stem": "MWPBasicIronTeeth",
+      "source_render": "art/icons/MWPBasicIronTeeth.512.png",
+      "art_icon": "art/icons/MWPBasicIronTeeth.png",
+      "mod_icon": "mod/data/Icons/MWPBasicIronTeeth.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "icon_stem": "MWPIntermediateFolktails",
+      "source_render": "art/icons/MWPIntermediateFolktails.512.png",
+      "art_icon": "art/icons/MWPIntermediateFolktails.png",
+      "mod_icon": "mod/data/Icons/MWPIntermediateFolktails.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "icon_stem": "MWPIntermediateIronTeeth",
+      "source_render": "art/icons/MWPIntermediateIronTeeth.512.png",
+      "art_icon": "art/icons/MWPIntermediateIronTeeth.png",
+      "mod_icon": "mod/data/Icons/MWPIntermediateIronTeeth.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "icon_stem": "MWPAdvancedFolktails",
+      "source_render": "art/icons/MWPAdvancedFolktails.512.png",
+      "art_icon": "art/icons/MWPAdvancedFolktails.png",
+      "mod_icon": "mod/data/Icons/MWPAdvancedFolktails.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "icon_stem": "MWPAdvancedIronTeeth",
+      "source_render": "art/icons/MWPAdvancedIronTeeth.512.png",
+      "art_icon": "art/icons/MWPAdvancedIronTeeth.png",
+      "mod_icon": "mod/data/Icons/MWPAdvancedIronTeeth.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "icon_stem": "MWPTopFolktails",
+      "source_render": "art/icons/MWPTopFolktails.512.png",
+      "art_icon": "art/icons/MWPTopFolktails.png",
+      "mod_icon": "mod/data/Icons/MWPTopFolktails.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "icon_stem": "MWPTopIronTeeth",
+      "source_render": "art/icons/MWPTopIronTeeth.512.png",
+      "art_icon": "art/icons/MWPTopIronTeeth.png",
+      "mod_icon": "mod/data/Icons/MWPTopIronTeeth.png",
+      "size": [
+        128,
+        128
+      ]
+    }
+  ],
+  "animations_enabled": true,
+  "composites": [
+    "art/previews/icons_contact_4x2.png",
+    "art/previews/tiers_factions_iso_grid.png",
+    "art/previews/animation_phases_grid.png"
+  ],
+  "note": "T10 deliverable B: winding fixed + node animations restored; Mk I/II all-wood"
+}

@@ -1,0 +1,39 @@
+# member dump for Timberborn.Modding.VersionedMod, Timberborn.Versioning.Version$
+
+=== Timberborn.Modding.VersionedMod   [Timberborn.Modding]
+  kind: class   base: System.Object
+  field System.String <Id>k__BackingField
+  field Timberborn.Versioning.Version <MinimumVersion>k__BackingField
+  prop System.String Id {get}
+  prop Timberborn.Versioning.Version MinimumVersion {get}
+  method public System.String get_Id()
+  method public Timberborn.Versioning.Version get_MinimumVersion()
+  method public System.Void .ctor(System.String id, Timberborn.Versioning.Version minimumVersion)
+
+=== Timberborn.Versioning.Version   [Timberborn.Versioning]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field static System.Char ExperimentalSymbol
+  field System.String <Numeric>k__BackingField
+  field System.String <Full>k__BackingField
+  field System.Boolean _isExperimental
+  field ImmutableArray<System.Int32> _subNumbers
+  prop System.String Numeric {get}
+  prop System.String Full {get}
+  prop System.String Formatted {get}
+  prop System.String NumericWithBranch {get}
+  prop System.Boolean IsDevelopmentVersion {get}
+  method public System.String get_Numeric()
+  method public System.String get_Full()
+  method private System.Void .ctor(System.String numeric, System.String full, System.Boolean isExperimental, ImmutableArray<System.Int32> subNumbers)
+  method public static Timberborn.Versioning.Version Create(System.String version)
+  method public System.String get_Formatted()
+  method public System.String get_NumericWithBranch()
+  method public System.Boolean get_IsDevelopmentVersion()
+  method public System.String ToString()
+  method public System.Boolean IsEqualOrHigherThan(Timberborn.Versioning.Version other, Nullable<System.Int32> depth)
+  method public System.Boolean IsFromSameBranch(Timberborn.Versioning.Version other)
+  method private static System.String ExtractVersionNumber(System.String version)
+  method private static System.Boolean VersionIsInOldFormat(System.String version)
+  method private static System.Boolean GetExperimental(System.String version)
+  method private static System.Void .cctor()

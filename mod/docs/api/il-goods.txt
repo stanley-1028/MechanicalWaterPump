@@ -1,0 +1,244 @@
+# member dump for Timberborn.Goods.GoodAmount, Timberborn.Goods.StorableGoodAmount, Timberborn.Goods.GoodSpec, Timberborn.Goods.GoodService
+
+=== Timberborn.Goods.GoodAmount   [Timberborn.Goods]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.String <GoodId>k__BackingField
+  field System.Int32 <Amount>k__BackingField
+  prop System.String GoodId {get}
+  prop System.Int32 Amount {get}
+  method public System.String get_GoodId()
+  method public System.Int32 get_Amount()
+  method public System.Void .ctor(System.String goodId, System.Int32 amount)
+  method public System.String ToString()
+
+=== Timberborn.Goods.GoodAmountComparer   [Timberborn.Goods]
+  kind: class   base: System.Object
+  interfaces: IComparer<Timberborn.Goods.GoodAmount>
+  method public System.Int32 Compare(Timberborn.Goods.GoodAmount x, Timberborn.Goods.GoodAmount y)
+  method public System.Void .ctor()
+
+=== Timberborn.Goods.GoodAmountSerializer   [Timberborn.Goods]
+  kind: class   base: System.Object
+  interfaces: IValueSerializer<Timberborn.Goods.GoodAmount>
+  field static PropertyKey<Timberborn.Goods.SerializedGood> GoodKey
+  field static PropertyKey<System.Int32> AmountKey
+  field Timberborn.Goods.SerializedGoodValueSerializer _serializedGoodValueSerializer
+  method public System.Void .ctor(Timberborn.Goods.SerializedGoodValueSerializer serializedGoodValueSerializer)
+  method public System.Void Serialize(Timberborn.Goods.GoodAmount goodAmount, Timberborn.Persistence.IValueSaver valueSaver)
+  method public Obsoletable<Timberborn.Goods.GoodAmount> Deserialize(Timberborn.Persistence.IValueLoader valueLoader)
+  method private static System.Void .cctor()
+
+=== Timberborn.Goods.GoodAmountSpec   [Timberborn.Goods]
+  kind: class   base: System.Object
+  interfaces: IEquatable<Timberborn.Goods.GoodAmountSpec>
+  field System.String <Id>k__BackingField
+  field System.Int32 <Amount>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.String Id {get/set}
+  prop System.Int32 Amount {get/set}
+  method System.Type get_EqualityContract()
+  method public System.String get_Id()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Id(System.String value)
+  method public System.Int32 get_Amount()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Amount(System.Int32 value)
+  method public Timberborn.Goods.GoodAmount ToGoodAmount()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.Goods.GoodAmountSpec left, Timberborn.Goods.GoodAmountSpec right)
+  method public static System.Boolean op_Equality(Timberborn.Goods.GoodAmountSpec left, Timberborn.Goods.GoodAmountSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.Goods.GoodAmountSpec other)
+  method public Timberborn.Goods.GoodAmountSpec <Clone>$()
+  method System.Void .ctor(Timberborn.Goods.GoodAmountSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.Goods.GoodService   [Timberborn.Goods]
+  kind: class   base: System.Object
+  interfaces: Timberborn.Goods.IGoodService, Timberborn.SingletonSystem.ILoadableSingleton
+  field Timberborn.BlueprintSystem.ISpecService _specService
+  field Timberborn.Goods.IGoodFilter _goodFilter
+  field List<System.String> _goods
+  field Dictionary<System.String, Timberborn.Goods.GoodSpec> _goodSpecsById
+  prop ReadOnlyList<System.String> Goods {get}
+  method public System.Void .ctor(Timberborn.BlueprintSystem.ISpecService specService, Timberborn.Goods.IGoodFilter goodFilter)
+  method public ReadOnlyList<System.String> get_Goods()
+  method public System.Void Load()
+  method public System.Boolean HasGood(System.String id)
+  method public Timberborn.Goods.GoodSpec GetGoodOrNull(System.String id)
+  method public Timberborn.Goods.GoodSpec GetGood(System.String id)
+  method public IEnumerable<System.String> GetGoodsForGroup(System.String groupId)
+  method public IEnumerable<System.String> GetGoodsForType(System.String goodType)
+  method private System.Void LoadGoods()
+  method private System.Void AddGood(Timberborn.Goods.GoodSpec goodSpec)
+  method private System.Void BindGoodToItsBackwardCompatibleIds(Timberborn.Goods.GoodSpec goodSpec)
+  nested Timberborn.Goods.GoodService+.<>c
+  nested Timberborn.Goods.GoodService+.<GetGoodsForGroup>d__11
+  nested Timberborn.Goods.GoodService+.<GetGoodsForType>d__12
+
+=== Timberborn.Goods.GoodService+.<>c   [Timberborn.Goods]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.Goods.GoodService+.<>c <>9
+  field static Func<Timberborn.Goods.GoodSpec, System.Int32> <>9__13_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.Int32 <LoadGoods>b__13_0(Timberborn.Goods.GoodSpec goodSpec)
+
+=== Timberborn.Goods.GoodService+.<GetGoodsForGroup>d__11   [Timberborn.Goods]
+  kind: class   base: System.Object
+  interfaces: IEnumerable<System.String>, System.Collections.IEnumerable, IEnumerator<System.String>, System.Collections.IEnumerator, System.IDisposable
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 <>1__state
+  field System.String <>2__current
+  field System.Int32 <>l__initialThreadId
+  field Timberborn.Goods.GoodService <>4__this
+  field System.String groupId
+  field System.String <>3__groupId
+  field Enumerator<System.String> <>7__wrap1
+  prop System.String System.Collections.Generic.IEnumerator<System.String>.Current {get}
+  prop System.Object System.Collections.IEnumerator.Current {get}
+  method public System.Void .ctor(System.Int32 <>1__state)
+  method private System.Void System.IDisposable.Dispose()
+  method private System.Boolean MoveNext()
+  method private System.Void <>m__Finally1()
+  method private System.String System.Collections.Generic.IEnumerator<System.String>.get_Current()
+  method private System.Void System.Collections.IEnumerator.Reset()
+  method private System.Object System.Collections.IEnumerator.get_Current()
+  method private IEnumerator<System.String> System.Collections.Generic.IEnumerable<System.String>.GetEnumerator()
+  method private System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+=== Timberborn.Goods.GoodService+.<GetGoodsForType>d__12   [Timberborn.Goods]
+  kind: class   base: System.Object
+  interfaces: IEnumerable<System.String>, System.Collections.IEnumerable, IEnumerator<System.String>, System.Collections.IEnumerator, System.IDisposable
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 <>1__state
+  field System.String <>2__current
+  field System.Int32 <>l__initialThreadId
+  field Timberborn.Goods.GoodService <>4__this
+  field System.String goodType
+  field System.String <>3__goodType
+  field Enumerator<System.String> <>7__wrap1
+  prop System.String System.Collections.Generic.IEnumerator<System.String>.Current {get}
+  prop System.Object System.Collections.IEnumerator.Current {get}
+  method public System.Void .ctor(System.Int32 <>1__state)
+  method private System.Void System.IDisposable.Dispose()
+  method private System.Boolean MoveNext()
+  method private System.Void <>m__Finally1()
+  method private System.String System.Collections.Generic.IEnumerator<System.String>.get_Current()
+  method private System.Void System.Collections.IEnumerator.Reset()
+  method private System.Object System.Collections.IEnumerator.get_Current()
+  method private IEnumerator<System.String> System.Collections.Generic.IEnumerable<System.String>.GetEnumerator()
+  method private System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+=== Timberborn.Goods.GoodSpec   [Timberborn.Goods]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.Goods.GoodSpec>
+  field System.String <Id>k__BackingField
+  field ImmutableArray<System.String> <BackwardCompatibleIds>k__BackingField
+  field Timberborn.LocalizationSerialization.LocalizedText <DisplayName>k__BackingField
+  field Timberborn.LocalizationSerialization.LocalizedText <PluralDisplayName>k__BackingField
+  field ImmutableArray<Timberborn.NeedSpecs.InstantEffectSpec> <ConsumptionEffects>k__BackingField
+  field System.String <GoodType>k__BackingField
+  field System.String <StockpileVisualization>k__BackingField
+  field Timberborn.Goods.VisibleContainer <VisibleContainer>k__BackingField
+  field UnityEngine.Color <ContainerColor>k__BackingField
+  field AssetRef<UnityEngine.Material> <ContainerMaterial>k__BackingField
+  field System.String <CarryingAnimation>k__BackingField
+  field System.Int32 <Weight>k__BackingField
+  field System.String <GoodGroupId>k__BackingField
+  field System.Int32 <GoodOrder>k__BackingField
+  field AssetRef<UnityEngine.Sprite> <Icon>k__BackingField
+  field Timberborn.SpriteOperations.FlippedSprite <IconFlipped>k__BackingField
+  field Timberborn.SpriteOperations.UISprite <IconSmall>k__BackingField
+  field System.Boolean <ForceImport>k__BackingField
+  field System.String <DisplayNameLocKey>k__BackingField
+  field System.String <PluralDisplayNameLocKey>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.String Id {get/set}
+  prop ImmutableArray<System.String> BackwardCompatibleIds {get/set}
+  prop Timberborn.LocalizationSerialization.LocalizedText DisplayName {get/set}
+  prop Timberborn.LocalizationSerialization.LocalizedText PluralDisplayName {get/set}
+  prop ImmutableArray<Timberborn.NeedSpecs.InstantEffectSpec> ConsumptionEffects {get/set}
+  prop System.String GoodType {get/set}
+  prop System.String StockpileVisualization {get/set}
+  prop Timberborn.Goods.VisibleContainer VisibleContainer {get/set}
+  prop UnityEngine.Color ContainerColor {get/set}
+  prop AssetRef<UnityEngine.Material> ContainerMaterial {get/set}
+  prop System.String CarryingAnimation {get/set}
+  prop System.Int32 Weight {get/set}
+  prop System.String GoodGroupId {get/set}
+  prop System.Int32 GoodOrder {get/set}
+  prop AssetRef<UnityEngine.Sprite> Icon {get/set}
+  prop Timberborn.SpriteOperations.FlippedSprite IconFlipped {get/set}
+  prop Timberborn.SpriteOperations.UISprite IconSmall {get/set}
+  prop System.Boolean ForceImport {get/set}
+  prop System.String DisplayNameLocKey {get/set}
+  prop System.String PluralDisplayNameLocKey {get/set}
+  prop System.Boolean HasConsumptionEffects {get}
+  method System.Type get_EqualityContract()
+  method public System.String get_Id()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Id(System.String value)
+  method public ImmutableArray<System.String> get_BackwardCompatibleIds()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_BackwardCompatibleIds(ImmutableArray<System.String> value)
+  method public Timberborn.LocalizationSerialization.LocalizedText get_DisplayName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_DisplayName(Timberborn.LocalizationSerialization.LocalizedText value)
+  method public Timberborn.LocalizationSerialization.LocalizedText get_PluralDisplayName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_PluralDisplayName(Timberborn.LocalizationSerialization.LocalizedText value)
+  method public ImmutableArray<Timberborn.NeedSpecs.InstantEffectSpec> get_ConsumptionEffects()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_ConsumptionEffects(ImmutableArray<Timberborn.NeedSpecs.InstantEffectSpec> value)
+  method public System.String get_GoodType()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_GoodType(System.String value)
+  method public System.String get_StockpileVisualization()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_StockpileVisualization(System.String value)
+  method public Timberborn.Goods.VisibleContainer get_VisibleContainer()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_VisibleContainer(Timberborn.Goods.VisibleContainer value)
+  method public UnityEngine.Color get_ContainerColor()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_ContainerColor(UnityEngine.Color value)
+  method public AssetRef<UnityEngine.Material> get_ContainerMaterial()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_ContainerMaterial(AssetRef<UnityEngine.Material> value)
+  method public System.String get_CarryingAnimation()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_CarryingAnimation(System.String value)
+  method public System.Int32 get_Weight()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Weight(System.Int32 value)
+  method public System.String get_GoodGroupId()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_GoodGroupId(System.String value)
+  method public System.Int32 get_GoodOrder()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_GoodOrder(System.Int32 value)
+  method public AssetRef<UnityEngine.Sprite> get_Icon()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Icon(AssetRef<UnityEngine.Sprite> value)
+  method public Timberborn.SpriteOperations.FlippedSprite get_IconFlipped()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_IconFlipped(Timberborn.SpriteOperations.FlippedSprite value)
+  method public Timberborn.SpriteOperations.UISprite get_IconSmall()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_IconSmall(Timberborn.SpriteOperations.UISprite value)
+  method public System.Boolean get_ForceImport()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_ForceImport(System.Boolean value)
+  method private System.String get_DisplayNameLocKey()
+  method private System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_DisplayNameLocKey(System.String value)
+  method private System.String get_PluralDisplayNameLocKey()
+  method private System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_PluralDisplayNameLocKey(System.String value)
+  method public System.Boolean get_HasConsumptionEffects()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.Goods.GoodSpec left, Timberborn.Goods.GoodSpec right)
+  method public static System.Boolean op_Equality(Timberborn.Goods.GoodSpec left, Timberborn.Goods.GoodSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.Goods.GoodSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.Goods.GoodSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.Goods.StorableGoodAmount   [Timberborn.Goods]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field Timberborn.Goods.StorableGood <StorableGood>k__BackingField
+  field System.Int32 <Amount>k__BackingField
+  prop Timberborn.Goods.StorableGood StorableGood {get}
+  prop System.Int32 Amount {get}
+  method public Timberborn.Goods.StorableGood get_StorableGood()
+  method public System.Int32 get_Amount()
+  method public System.Void .ctor(Timberborn.Goods.StorableGood storableGood, System.Int32 amount)
+  method public System.String ToString()

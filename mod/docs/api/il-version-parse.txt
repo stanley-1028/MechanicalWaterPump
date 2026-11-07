@@ -1,0 +1,226 @@
+
+=== Timberborn.Versioning.Version::get_Numeric   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.String Timberborn.Versioning.Version::<Numeric>k__BackingField
+  IL_0006: ret
+
+=== Timberborn.Versioning.Version::get_Full   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.String Timberborn.Versioning.Version::<Full>k__BackingField
+  IL_0006: ret
+
+=== Timberborn.Versioning.Version::.ctor   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.1
+  IL_0002: stfld System.String Timberborn.Versioning.Version::<Numeric>k__BackingField
+  IL_0007: ldarg.0
+  IL_0008: ldarg.2
+  IL_0009: stfld System.String Timberborn.Versioning.Version::<Full>k__BackingField
+  IL_000e: ldarg.0
+  IL_000f: ldarg.3
+  IL_0010: stfld System.Boolean Timberborn.Versioning.Version::_isExperimental
+  IL_0015: ldarg.0
+  IL_0016: ldarg.s subNumbers
+  IL_0018: stfld System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_001d: ret
+
+=== Timberborn.Versioning.Version::Create   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: call System.String Timberborn.Versioning.Version::ExtractVersionNumber(System.String)
+  IL_0006: dup
+  IL_0007: ldc.i4.s 46
+  IL_0009: ldc.i4.0
+  IL_000a: callvirt System.String[] System.String::Split(System.Char,System.StringSplitOptions)
+  IL_000f: ldnull
+  IL_0010: ldftn System.Int32 System.Int32::Parse(System.String)
+  IL_0016: newobj System.Void System.Func`2<System.String,System.Int32>::.ctor(System.Object,System.IntPtr)
+  IL_001b: call System.Collections.Generic.IEnumerable`1<!!1> System.Linq.Enumerable::Select<System.String,System.Int32>(System.Collections.Generic.IEnumerable`1<!!0>,System.Func`2<!!0,!!1>)
+  IL_0020: call System.Collections.Immutable.ImmutableArray`1<!!0> System.Collections.Immutable.ImmutableArray::ToImmutableArray<System.Int32>(System.Collections.Generic.IEnumerable`1<!!0>)
+  IL_0025: stloc.0
+  IL_0026: ldarg.0
+  IL_0027: ldarg.0
+  IL_0028: call System.Boolean Timberborn.Versioning.Version::GetExperimental(System.String)
+  IL_002d: ldloc.0
+  IL_002e: newobj System.Void Timberborn.Versioning.Version::.ctor(System.String,System.String,System.Boolean,System.Collections.Immutable.ImmutableArray`1<System.Int32>)
+  IL_0033: ret
+
+=== Timberborn.Versioning.Version::get_Formatted   [Timberborn.Versioning]
+  IL_0000: ldstr "v"
+  IL_0005: ldarg.0
+  IL_0006: call System.String Timberborn.Versioning.Version::get_Full()
+  IL_000b: call System.String System.String::Concat(System.String,System.String)
+  IL_0010: ret
+
+=== Timberborn.Versioning.Version::get_NumericWithBranch   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.Boolean Timberborn.Versioning.Version::_isExperimental
+  IL_0006: brtrue.s IL_000f
+  IL_0008: ldarg.0
+  IL_0009: call System.String Timberborn.Versioning.Version::get_Numeric()
+  IL_000e: ret
+  IL_000f: ldstr "{0}-{1}"
+  IL_0014: ldarg.0
+  IL_0015: call System.String Timberborn.Versioning.Version::get_Numeric()
+  IL_001a: ldsfld System.Char Timberborn.Versioning.Version::ExperimentalSymbol
+  IL_001f: box System.Char
+  IL_0024: call System.String System.String::Format(System.String,System.Object,System.Object)
+  IL_0029: ret
+
+=== Timberborn.Versioning.Version::get_IsDevelopmentVersion   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: call System.String Timberborn.Versioning.Version::get_Numeric()
+  IL_0006: ldstr "0"
+  IL_000b: call System.Boolean System.String::op_Equality(System.String,System.String)
+  IL_0010: ret
+
+=== Timberborn.Versioning.Version::ToString   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: call System.String Timberborn.Versioning.Version::get_Numeric()
+  IL_0006: ret
+
+=== Timberborn.Versioning.Version::IsEqualOrHigherThan   [Timberborn.Versioning]
+  IL_0000: ldarga.s depth
+  IL_0002: call System.Boolean System.Nullable`1<System.Int32>::get_HasValue()
+  IL_0007: brtrue.s IL_0016
+  IL_0009: ldarg.0
+  IL_000a: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_000f: call System.Int32 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Length()
+  IL_0014: br.s IL_002d
+  IL_0016: ldarga.s depth
+  IL_0018: call !0 System.Nullable`1<System.Int32>::get_Value()
+  IL_001d: ldarg.0
+  IL_001e: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_0023: call System.Int32 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Length()
+  IL_0028: call System.Int32 System.Math::Min(System.Int32,System.Int32)
+  IL_002d: stloc.0
+  IL_002e: ldc.i4.0
+  IL_002f: stloc.2
+  IL_0030: br.s IL_0081
+  IL_0032: ldloc.2
+  IL_0033: ldarga.s other
+  IL_0035: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_003a: call System.Int32 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Length()
+  IL_003f: blt.s IL_0043
+  IL_0041: ldc.i4.1
+  IL_0042: ret
+  IL_0043: ldarg.0
+  IL_0044: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_0049: ldloc.2
+  IL_004a: call !0 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Item(System.Int32)
+  IL_004f: ldarga.s other
+  IL_0051: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_0056: ldloc.2
+  IL_0057: call !0 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Item(System.Int32)
+  IL_005c: ble.s IL_0060
+  IL_005e: ldc.i4.1
+  IL_005f: ret
+  IL_0060: ldarg.0
+  IL_0061: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_0066: ldloc.2
+  IL_0067: call !0 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Item(System.Int32)
+  IL_006c: ldarga.s other
+  IL_006e: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_0073: ldloc.2
+  IL_0074: call !0 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Item(System.Int32)
+  IL_0079: bge.s IL_007d
+  IL_007b: ldc.i4.0
+  IL_007c: ret
+  IL_007d: ldloc.2
+  IL_007e: ldc.i4.1
+  IL_007f: add
+  IL_0080: stloc.2
+  IL_0081: ldloc.2
+  IL_0082: ldloc.0
+  IL_0083: blt.s IL_0032
+  IL_0085: ldarga.s depth
+  IL_0087: call System.Boolean System.Nullable`1<System.Int32>::get_HasValue()
+  IL_008c: brtrue.s IL_009c
+  IL_008e: ldarga.s other
+  IL_0090: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_0095: call System.Int32 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Length()
+  IL_009a: br.s IL_00b4
+  IL_009c: ldarga.s depth
+  IL_009e: call !0 System.Nullable`1<System.Int32>::get_Value()
+  IL_00a3: ldarga.s other
+  IL_00a5: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_00aa: call System.Int32 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Length()
+  IL_00af: call System.Int32 System.Math::Min(System.Int32,System.Int32)
+  IL_00b4: stloc.1
+  IL_00b5: ldloc.0
+  IL_00b6: stloc.3
+  IL_00b7: br.s IL_00cf
+  IL_00b9: ldarga.s other
+  IL_00bb: ldflda System.Collections.Immutable.ImmutableArray`1<System.Int32> Timberborn.Versioning.Version::_subNumbers
+  IL_00c0: ldloc.3
+  IL_00c1: call !0 System.Collections.Immutable.ImmutableArray`1<System.Int32>::get_Item(System.Int32)
+  IL_00c6: ldc.i4.0
+  IL_00c7: ble.s IL_00cb
+  IL_00c9: ldc.i4.0
+  IL_00ca: ret
+  IL_00cb: ldloc.3
+  IL_00cc: ldc.i4.1
+  IL_00cd: add
+  IL_00ce: stloc.3
+  IL_00cf: ldloc.3
+  IL_00d0: ldloc.1
+  IL_00d1: blt.s IL_00b9
+  IL_00d3: ldc.i4.1
+  IL_00d4: ret
+
+=== Timberborn.Versioning.Version::IsFromSameBranch   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.Boolean Timberborn.Versioning.Version::_isExperimental
+  IL_0006: ldarg.1
+  IL_0007: ldfld System.Boolean Timberborn.Versioning.Version::_isExperimental
+  IL_000c: ceq
+  IL_000e: ret
+
+=== Timberborn.Versioning.Version::ExtractVersionNumber   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: call System.Boolean Timberborn.Versioning.Version::VersionIsInOldFormat(System.String)
+  IL_0006: brtrue.s IL_0014
+  IL_0008: ldarg.0
+  IL_0009: ldc.i4.s 45
+  IL_000b: ldc.i4.0
+  IL_000c: callvirt System.String[] System.String::Split(System.Char,System.StringSplitOptions)
+  IL_0011: ldc.i4.0
+  IL_0012: ldelem.ref
+  IL_0013: ret
+  IL_0014: ldstr "0.0.0.0"
+  IL_0019: ret
+
+=== Timberborn.Versioning.Version::VersionIsInOldFormat   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: ldc.i4.0
+  IL_0002: callvirt System.Char System.String::get_Chars(System.Int32)
+  IL_0007: ldc.i4.s 118
+  IL_0009: ceq
+  IL_000b: ret
+
+=== Timberborn.Versioning.Version::GetExperimental   [Timberborn.Versioning]
+  IL_0000: ldarg.0
+  IL_0001: ldc.i4.s 45
+  IL_0003: ldc.i4.0
+  IL_0004: callvirt System.String[] System.String::Split(System.Char,System.StringSplitOptions)
+  IL_0009: stloc.0
+  IL_000a: ldarg.0
+  IL_000b: call System.Boolean Timberborn.Versioning.Version::VersionIsInOldFormat(System.String)
+  IL_0010: brtrue.s IL_0026
+  IL_0012: ldloc.0
+  IL_0013: ldlen
+  IL_0014: conv.i4
+  IL_0015: ldc.i4.2
+  IL_0016: ble.s IL_0026
+  IL_0018: ldloc.0
+  IL_0019: ldc.i4.2
+  IL_001a: ldelem.ref
+  IL_001b: ldsfld System.Char Timberborn.Versioning.Version::ExperimentalSymbol
+  IL_0020: callvirt System.Boolean System.String::StartsWith(System.Char)
+  IL_0025: ret
+  IL_0026: ldc.i4.0
+  IL_0027: ret
+
+=== Timberborn.Versioning.Version::.cctor   [Timberborn.Versioning]
+  IL_0000: ldc.i4.s 120
+  IL_0002: stsfld System.Char Timberborn.Versioning.Version::ExperimentalSymbol
+  IL_0007: ret

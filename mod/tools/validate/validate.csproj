@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    MWP data validator. Verifies the shippable data\ folder against the installed game
+    assemblies, the game's own Blueprints.zip and the mod's built assemblies:
+
+      * manifest.json fields and ids;
+      * every blueprint spec name resolves to a real ComponentSpec subclass / [SpecAlias] and every
+        serialized field name and enum value exists in the game metadata;
+      * BlockObject blocks (length, row-major semantics, not a fully solid footprint), entrance,
+        ports and the water intake;
+      * the four tiers match TierCatalog (parsed from Core), every template collection reference
+        exists and TemplateNames are globally unique;
+      * the CONTRACT section 6 model / pipe / construction-base paths exist in the same faction;
+      * enUS/zhCN/zhTW cover MwpLocKeys with identical placeholders and no raw keys;
+      * MWP_Config.json schema 2 and ranges;
+      * the eight 128x128 icons and their .meta.json;
+      * A5-A7 static contract checks on the built mod assemblies (Mono.Cecil IL).
+
+    No ProjectReference and no NuGet package is used: Mono.Cecil is referenced from the local
+    package cache, exactly like tools/ApiIndex (this machine is offline; see API_FACTS_MWP.md §7).
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>MwpValidate</AssemblyName>
+    <RootNamespace>MWP.Tools.Validate</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Cecil">
+      <HintPath>$(UserProfile)\.nuget\packages\mono.cecil\0.11.5\lib\netstandard2.0\Mono.Cecil.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,91 @@
+{
+  "configSchemaVersion": 2,
+  "features": {
+    "pipeAdapter": true,
+    "directPipeOutput": false,
+    "uiDiagnostics": false
+  },
+  "balance": {
+    "useLegacyRates": false,
+    "badwaterPenalty": 1.0,
+    "minWaterQuality": 0.0,
+    "cubicMetersPerWater": 0.2,
+    "tickIntervalSeconds": 1.0,
+    "tiers": [
+      {
+        "tier": "Basic",
+        "waterPerHour": 3.0,
+        "powerRequired": 100,
+        "internalCapacity": 15,
+        "maxDepth": 2
+      },
+      {
+        "tier": "Intermediate",
+        "waterPerHour": 6.0,
+        "powerRequired": 200,
+        "internalCapacity": 30,
+        "maxDepth": 4
+      },
+      {
+        "tier": "Advanced",
+        "waterPerHour": 15.0,
+        "powerRequired": 500,
+        "internalCapacity": 75,
+        "maxDepth": 6
+      },
+      {
+        "tier": "Top",
+        "waterPerHour": 20.0,
+        "powerRequired": 700,
+        "internalCapacity": 100,
+        "maxDepth": 8
+      }
+    ]
+  },
+  "maintenance": {
+    "enabled": true,
+    "auto": true,
+    "autoThreshold": 50,
+    "durationHours": 2,
+    "intervalsDays": [
+      8,
+      10,
+      12,
+      15
+    ],
+    "materials": [
+      [
+        {
+          "id": "Log",
+          "amount": 10
+        }
+      ],
+      [
+        {
+          "id": "Plank",
+          "amount": 15
+        }
+      ],
+      [
+        {
+          "id": "MetalBlock",
+          "amount": 10
+        },
+        {
+          "id": "Plank",
+          "amount": 10
+        }
+      ],
+      [
+        {
+          "id": "MetalBlock",
+          "amount": 15
+        }
+      ]
+    ]
+  },
+  "compat": {
+    "timberPipesMinVersion": "11.4.0",
+    "logThrottleSeconds": 30
+  }
+}

@@ -1,0 +1,42 @@
+# member dump for Timberborn\.UIFormatters\.UnitFormatter$
+
+=== Timberborn.UIFormatters.UnitFormatter   [Timberborn.UIFormatters]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.ExtensionAttribute
+  field static System.String PercentUnitLocKey
+  field static System.String TickUnitLocKey
+  field static System.String HourUnitLocKey
+  field static System.String DayUnitLocKey
+  field static System.String FlowUnitLocKey
+  field static System.String DistanceUnitLocKey
+  field static System.String AngleUnitLocKey
+  field static System.String KilogramUnitLocKey
+  field static System.String PowerUnitLocKey
+  field static System.String PowerCapacityUnitLocKey
+  field static System.String PowerCapacityPerMeterUnitLocKey
+  prop System.Globalization.CultureInfo Culture {get}
+  method public static Timberborn.Localization.Phrase FormatPercentRounded(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatPercentCeiled(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatPercentFloored(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatTicks(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatHours(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatHours(Timberborn.Localization.Phrase phrase, Func<T, System.String> formatter)
+  method public static Timberborn.Localization.Phrase FormatDays(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatFlow(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatDistance(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatAngle(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatKilogram(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatPower(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatPower(Timberborn.Localization.Phrase phrase, Func<System.String> unitLocKeyProvider, System.String format)
+  method public static Timberborn.Localization.Phrase FormatPowerCapacity(Timberborn.Localization.Phrase phrase, System.String format)
+  method public static Timberborn.Localization.Phrase FormatPowerCapacityPerMeter(Timberborn.Localization.Phrase phrase, System.String format)
+  method private static System.Globalization.CultureInfo get_Culture()
+  method private static Timberborn.Localization.Phrase FormatPhraseWithPercent(Timberborn.Localization.Phrase phrase, Func<System.Single, System.Single> valueFormatter, System.String format)
+  method private static Timberborn.Localization.Phrase FormatPhraseWithUnit(Timberborn.Localization.Phrase phrase, System.String format, System.String unitLocKey)
+  method private static Timberborn.Localization.Phrase FormatPhraseWithUnit(Timberborn.Localization.Phrase phrase, Func<T, System.String> formatter, System.String unitLocKey)
+  method private static System.Void .cctor()
+  nested Timberborn.UIFormatters.UnitFormatter+.<>c
+  nested Timberborn.UIFormatters.UnitFormatter+.<>c__22`1
+  nested Timberborn.UIFormatters.UnitFormatter+.<>c__DisplayClass28_0
+  nested Timberborn.UIFormatters.UnitFormatter+.<>c__DisplayClass29_0`1
+  nested Timberborn.UIFormatters.UnitFormatter+.<>c__DisplayClass30_0`1

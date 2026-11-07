@@ -1,0 +1,1933 @@
+# member dump for EntityPanelSystem\..*, Timberborn\.Localization\..*, UnityEngine\.UIElements\.(Button|Toggle|VisualElement|Label|BaseField.*|INotifyValueChanged.*)$
+
+=== Timberborn.EntityPanelSystem.ClickableSubtitle   [Timberborn.EntityPanelSystem]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.Action <ClickAction>k__BackingField
+  field System.String <Subtitle>k__BackingField
+  field System.String <TooltipText>k__BackingField
+  field System.Boolean <HasWarning>k__BackingField
+  prop System.Action ClickAction {get}
+  prop System.String Subtitle {get}
+  prop System.String TooltipText {get}
+  prop System.Boolean HasWarning {get}
+  prop System.Boolean HasAction {get}
+  method public System.Action get_ClickAction()
+  method public System.String get_Subtitle()
+  method public System.String get_TooltipText()
+  method public System.Boolean get_HasWarning()
+  method private System.Void .ctor(System.Action clickAction, System.String subtitle, System.String tooltipText, System.Boolean hasWarning)
+  method public static Timberborn.EntityPanelSystem.ClickableSubtitle Create(System.Action clickAction, System.String subtitle)
+  method public static Timberborn.EntityPanelSystem.ClickableSubtitle Create(System.Action clickAction, System.String subtitle, System.String tooltipText, System.Boolean isWarning)
+  method public static Timberborn.EntityPanelSystem.ClickableSubtitle CreateEmpty()
+  method public System.Boolean get_HasAction()
+
+=== Timberborn.EntityPanelSystem.DebugFragmentButton   [Timberborn.EntityPanelSystem]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.Action <Action>k__BackingField
+  field System.String <Text>k__BackingField
+  prop System.Action Action {get}
+  prop System.String Text {get}
+  method public System.Action get_Action()
+  method public System.String get_Text()
+  method public System.Void .ctor(System.Action action, System.String text)
+
+=== Timberborn.EntityPanelSystem.DebugFragmentFactory   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  field static System.String MarginClass
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader)
+  method public UnityEngine.UIElements.VisualElement Create(System.String title)
+  method public UnityEngine.UIElements.VisualElement Create(System.String title, Timberborn.EntityPanelSystem.DebugFragmentButton debugFragmentButton)
+  method public UnityEngine.UIElements.VisualElement Create(Timberborn.EntityPanelSystem.DebugFragmentButton debugFragmentButton)
+  method public UnityEngine.UIElements.VisualElement Create(Timberborn.EntityPanelSystem.DebugFragmentButton[] debugFragmentButtons)
+  method private UnityEngine.UIElements.VisualElement GetRootAndInitialize(System.String title)
+  method private UnityEngine.UIElements.Button CreateButton(Timberborn.EntityPanelSystem.DebugFragmentButton debugFragmentButton, UnityEngine.UIElements.VisualElement root)
+  method private static System.Void InitializeCallbacks(UnityEngine.UIElements.VisualElement root)
+  method private static System.Void ToggleVisibility(UnityEngine.UIElements.VisualElement root, System.Boolean visible)
+  method private static System.Void .cctor()
+  nested Timberborn.EntityPanelSystem.DebugFragmentFactory+.<>c__DisplayClass8_0
+  nested Timberborn.EntityPanelSystem.DebugFragmentFactory+.<>c__DisplayClass9_0
+
+=== Timberborn.EntityPanelSystem.DebugFragmentFactory+.<>c__DisplayClass8_0   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Timberborn.EntityPanelSystem.DebugFragmentButton debugFragmentButton
+  method public System.Void .ctor()
+  method System.Void <CreateButton>b__0(UnityEngine.UIElements.ClickEvent _)
+
+=== Timberborn.EntityPanelSystem.DebugFragmentFactory+.<>c__DisplayClass9_0   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field UnityEngine.UIElements.VisualElement root
+  method public System.Void .ctor()
+  method System.Void <InitializeCallbacks>b__0(UnityEngine.UIElements.ClickEvent _)
+  method System.Void <InitializeCallbacks>b__1(UnityEngine.UIElements.ClickEvent _)
+
+=== Timberborn.EntityPanelSystem.DiagnosticFragmentController   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  field Timberborn.Debugging.DevModeManager _devModeManager
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field List<Timberborn.EntityPanelSystem.IEntityPanelFragment> _diagnosticFragments
+  field UnityEngine.UIElements.VisualElement _root
+  field Timberborn.EntitySystem.EntityComponent _shownEntity
+  method public System.Void .ctor(Timberborn.Debugging.DevModeManager devModeManager, Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void Initialize(IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment> fragments, UnityEngine.UIElements.VisualElement parent)
+  method public System.Void OnDevModeToggled(Timberborn.Debugging.DevModeToggledEvent devModeToggledEvent)
+  method public System.Void ShowFragments(Timberborn.EntitySystem.EntityComponent entity)
+  method public System.Void ClearFragments()
+  method public System.Void UpdateFragments()
+  method private System.Void ClearFragmentsInternal()
+
+=== Timberborn.EntityPanelSystem.EntityBadgeService   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field List<Timberborn.EntityPanelSystem.IEntityBadge> _entityBadgesCache
+  method public System.Void .ctor(Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void Load()
+  method public System.String GetEntitySubtitle(Timberborn.BaseComponentSystem.BaseComponent subject)
+  method public Timberborn.EntityPanelSystem.ClickableSubtitle GetEntityClickableSubtitle(Timberborn.BaseComponentSystem.BaseComponent subject)
+  method public UnityEngine.Sprite GetEntityAvatar(Timberborn.BaseComponentSystem.BaseComponent subject)
+  method private Timberborn.EntityPanelSystem.IEntityBadge GetHighestPriorityEntityBadge(Timberborn.BaseComponentSystem.BaseComponent subject)
+  method private Timberborn.EntityPanelSystem.IEntityBadge GetHighestPriorityEntityBadge()
+
+=== Timberborn.EntityPanelSystem.EntityDescription   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  field System.String <Content>k__BackingField
+  field UnityEngine.UIElements.VisualElement <Section>k__BackingField
+  field System.Int32 <Order>k__BackingField
+  field System.Boolean <FlavorSection>k__BackingField
+  field System.Boolean <Input>k__BackingField
+  field System.Boolean <Output>k__BackingField
+  field System.String <Time>k__BackingField
+  field System.Boolean <BottomSection>k__BackingField
+  prop System.String Content {get}
+  prop UnityEngine.UIElements.VisualElement Section {get}
+  prop System.Int32 Order {get}
+  prop System.Boolean FlavorSection {get}
+  prop System.Boolean Input {get}
+  prop System.Boolean Output {get}
+  prop System.String Time {get}
+  prop System.Boolean BottomSection {get}
+  prop System.Boolean TextSection {get}
+  prop System.Boolean MiddleSection {get}
+  prop System.Boolean ProductionSection {get}
+  method public System.String get_Content()
+  method public UnityEngine.UIElements.VisualElement get_Section()
+  method public System.Int32 get_Order()
+  method public System.Boolean get_FlavorSection()
+  method public System.Boolean get_Input()
+  method public System.Boolean get_Output()
+  method public System.String get_Time()
+  method public System.Boolean get_BottomSection()
+  method private System.Void .ctor(System.String content, UnityEngine.UIElements.VisualElement section, System.Int32 order, System.Boolean flavorSection, System.Boolean input, System.Boolean output, System.String time, System.Boolean bottomSection)
+  method public static Timberborn.EntityPanelSystem.EntityDescription CreateTextSection(System.String content, System.Int32 order)
+  method public static Timberborn.EntityPanelSystem.EntityDescription CreateFlavorSection(System.String content, System.Int32 order)
+  method public static Timberborn.EntityPanelSystem.EntityDescription CreateMiddleSection(UnityEngine.UIElements.VisualElement content, System.Int32 order)
+  method public static Timberborn.EntityPanelSystem.EntityDescription CreateBottomSection(UnityEngine.UIElements.VisualElement content, System.Int32 order)
+  method public static Timberborn.EntityPanelSystem.EntityDescription CreateInputOutputSection(UnityEngine.UIElements.VisualElement content, System.Int32 order)
+  method public static Timberborn.EntityPanelSystem.EntityDescription CreateInputSectionWithTime(UnityEngine.UIElements.VisualElement content, System.Int32 order, System.String time)
+  method public static Timberborn.EntityPanelSystem.EntityDescription CreateOutputSection(UnityEngine.UIElements.VisualElement content, System.Int32 order)
+  method public System.Boolean get_TextSection()
+  method public System.Boolean get_MiddleSection()
+  method public System.Boolean get_ProductionSection()
+
+=== Timberborn.EntityPanelSystem.EntityDescriptionService   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  field static System.String DescriptionBackgroundClass
+  field static System.String SingleSectionClass
+  field static System.String MiddleSectionRootClass
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.CoreUI.RowShader _rowShader
+  field List<Timberborn.EntityPanelSystem.EntityDescription> _entityDescriptions
+  field List<Timberborn.EntityPanelSystem.IEntityDescriber> _entityDescribersCache
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.CoreUI.RowShader rowShader)
+  method public System.Void DescribeAsSingleSection(Timberborn.BaseComponentSystem.BaseComponent subject, UnityEngine.UIElements.VisualElement root)
+  method public System.Void DescribeAsSeparateSections(Timberborn.BaseComponentSystem.BaseComponent subject, UnityEngine.UIElements.VisualElement root, System.String startingDescription)
+  method private System.Void Describe(Timberborn.BaseComponentSystem.BaseComponent subject, UnityEngine.UIElements.VisualElement root, System.Boolean singleSection, System.String startingDescription)
+  method private System.Void AddSections(Timberborn.BaseComponentSystem.BaseComponent subject, UnityEngine.UIElements.VisualElement root, System.Boolean singleSection, System.String startingDescription)
+  method private System.Void DescribeHeader(Timberborn.BaseComponentSystem.BaseComponent subject, UnityEngine.UIElements.VisualElement root, System.Boolean singleSection)
+  method private System.Void AddMiddleSections(UnityEngine.UIElements.VisualElement middleSectionRoot)
+  method private System.Void DescribeProduction(UnityEngine.UIElements.VisualElement root)
+  method private static System.Boolean AddElements(IEnumerable<Timberborn.EntityPanelSystem.EntityDescription> descriptions, UnityEngine.UIElements.VisualElement root, System.String name)
+  method private System.Void SetTime(UnityEngine.UIElements.VisualElement productionItems)
+  method private System.Void DescribeBottomSections(UnityEngine.UIElements.VisualElement root, System.Boolean singleSection)
+  method private System.Void DescribeText(UnityEngine.UIElements.VisualElement root, System.Boolean singleSection, System.String startingDescription)
+  method private System.Boolean Describe(IEnumerable<Timberborn.EntityPanelSystem.EntityDescription> entityDescriptions, UnityEngine.UIElements.Label textLabel, System.String startingDescription)
+  method private static System.Void .cctor()
+  nested Timberborn.EntityPanelSystem.EntityDescriptionService+.<>c
+
+=== Timberborn.EntityPanelSystem.EntityDescriptionService+.<>c   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.EntityPanelSystem.EntityDescriptionService+.<>c <>9
+  field static Func<Timberborn.EntityPanelSystem.IEntityDescriber, IEnumerable<Timberborn.EntityPanelSystem.EntityDescription>> <>9__10_0
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Int32> <>9__10_1
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__13_0
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__14_0
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__14_1
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__14_2
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__14_3
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__16_0
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__17_0
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__17_1
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__18_0
+  field static Func<Timberborn.EntityPanelSystem.EntityDescription, System.Boolean> <>9__18_1
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method IEnumerable<Timberborn.EntityPanelSystem.EntityDescription> <Describe>b__10_0(Timberborn.EntityPanelSystem.IEntityDescriber describer)
+  method System.Int32 <Describe>b__10_1(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <AddMiddleSections>b__13_0(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <DescribeProduction>b__14_0(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <DescribeProduction>b__14_1(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <DescribeProduction>b__14_2(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <DescribeProduction>b__14_3(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <SetTime>b__16_0(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <DescribeBottomSections>b__17_0(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <DescribeBottomSections>b__17_1(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <DescribeText>b__18_0(Timberborn.EntityPanelSystem.EntityDescription description)
+  method System.Boolean <DescribeText>b__18_1(Timberborn.EntityPanelSystem.EntityDescription description)
+
+=== Timberborn.EntityPanelSystem.EntityPanel   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton, Timberborn.SingletonSystem.IUpdatableSingleton, Timberborn.EntityPanelSystem.IEntityPanel
+  field static System.String ShowLocKey
+  field static System.String HideLocKey
+  field static System.String RenameLocKey
+  field static System.String DescriptionHiddenClass
+  field static System.String HiderShowClass
+  field static System.String DescriptionNoneClass
+  field static System.String HiderNoneClass
+  field Timberborn.UILayoutSystem.UILayout _uiLayout
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Timberborn.EntityNamingUI.EntityNameDialog _entityNameDialog
+  field Timberborn.EntityPanelSystem.EntityBadgeService _entityBadgeService
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.EntityPanelSystem.EntityDescriptionService _entityDescriptionService
+  field Timberborn.TooltipSystem.ITooltipRegistrar _tooltipRegistrar
+  field Timberborn.EntityPanelSystem.DiagnosticFragmentController _diagnosticFragmentController
+  field ImmutableArray<Timberborn.EntityPanelSystem.EntityPanelModule> _entityPanelModules
+  field List<Timberborn.EntityPanelSystem.IEntityPanelFragment> _entityPanelFragments
+  field UnityEngine.UIElements.VisualElement _root
+  field UnityEngine.UIElements.VisualElement _entityAvatar
+  field UnityEngine.UIElements.VisualElement _entityDescription
+  field Timberborn.EntitySystem.EntityComponent _shownEntity
+  field UnityEngine.UIElements.Button _entityDescriptionHider
+  field UnityEngine.UIElements.Button _entityNameButton
+  field UnityEngine.UIElements.Label _entityNameText
+  field UnityEngine.UIElements.VisualElement _entityNameHint
+  field UnityEngine.UIElements.Label _entitySubtitle
+  field UnityEngine.UIElements.Button _entityClickableSubtitleButton
+  field UnityEngine.UIElements.Image _entityClickableSubtitleWarningIcon
+  field Timberborn.EntityPanelSystem.ClickableSubtitle _entityClickableSubtitle
+  field UnityEngine.UIElements.VisualElement _leftHeaderButtons
+  field UnityEngine.UIElements.VisualElement _rightHeaderButtons
+  field UnityEngine.UIElements.VisualElement _middleHeaderButtons
+  field UnityEngine.UIElements.VisualElement _sideFragments
+  prop System.Boolean DescriptionVisible {get}
+  prop System.String DescriptionHiderTooltipText {get}
+  method public System.Void .ctor(IEnumerable<Timberborn.EntityPanelSystem.EntityPanelModule> entityPanelModules, Timberborn.UILayoutSystem.UILayout uiLayout, Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.SingletonSystem.EventBus eventBus, Timberborn.EntityNamingUI.EntityNameDialog entityNameDialog, Timberborn.EntityPanelSystem.EntityBadgeService entityBadgeService, Timberborn.Localization.ILoc loc, Timberborn.EntityPanelSystem.EntityDescriptionService entityDescriptionService, Timberborn.TooltipSystem.ITooltipRegistrar tooltipRegistrar, Timberborn.EntityPanelSystem.DiagnosticFragmentController diagnosticFragmentController)
+  method public System.Void Load()
+  method public System.Void UpdateSingleton()
+  method public System.Void OnSelectableObjectSelected(Timberborn.SelectionSystem.SelectableObjectSelectedEvent selectableObjectSelectedEvent)
+  method public System.Void OnSelectableObjectUnselectedEvent(Timberborn.SelectionSystem.SelectableObjectUnselectedEvent selectableObjectUnselectedEvent)
+  method public System.Void ReloadDescription(Timberborn.EntitySystem.EntityComponent entity)
+  method private System.Boolean get_DescriptionVisible()
+  method private System.String get_DescriptionHiderTooltipText()
+  method private System.Void InitializeFields()
+  method private System.Void InitializeButtons()
+  method private System.Void InitializeModules()
+  method private System.Void AddFragments(IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment> fragments, UnityEngine.UIElements.VisualElement parent)
+  method private System.Void Show(Timberborn.EntitySystem.EntityComponent entity)
+  method private System.Void Hide()
+  method private System.Void UpdateEntityBadge()
+  method private System.Void UpdateEntityDescription()
+  method private System.Void ShowFragments(Timberborn.EntitySystem.EntityComponent entity)
+  method private System.Void ClearFragments()
+  method private System.Void UpdateFragments()
+  method private System.Void ToggleEntityDescription(UnityEngine.UIElements.ClickEvent evt)
+  method private System.String GetEntityNameTooltip()
+  method private System.Void OnEntityNameClicked(UnityEngine.UIElements.ClickEvent evt)
+  method private System.Void PerformSubtitleButtonClickAction(UnityEngine.UIElements.ClickEvent evt)
+  method private static IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment> Order(IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> input)
+  method private static System.Void .cctor()
+  method private System.String <InitializeButtons>b__45_0()
+  method private System.String <InitializeButtons>b__45_1()
+  nested Timberborn.EntityPanelSystem.EntityPanel+.<>c
+
+=== Timberborn.EntityPanelSystem.EntityPanel+.<>c   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.EntityPanelSystem.EntityPanel+.<>c <>9
+  field static Func<Timberborn.EntityPanelSystem.EntityPanelModule, IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>> <>9__46_0
+  field static Func<Timberborn.EntityPanelSystem.EntityPanelModule, IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>> <>9__46_1
+  field static Func<Timberborn.EntityPanelSystem.EntityPanelModule, IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment>> <>9__46_2
+  field static Func<Timberborn.EntityPanelSystem.EntityPanelModule, IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment>> <>9__46_3
+  field static Func<Timberborn.EntityPanelSystem.EntityPanelModule, IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment>> <>9__46_4
+  field static Func<Timberborn.EntityPanelSystem.EntityPanelModule, IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment>> <>9__46_5
+  field static Func<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment, System.Int32> <>9__59_0
+  field static Func<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment, Timberborn.EntityPanelSystem.IEntityPanelFragment> <>9__59_1
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> <InitializeModules>b__46_0(Timberborn.EntityPanelSystem.EntityPanelModule module)
+  method IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> <InitializeModules>b__46_1(Timberborn.EntityPanelSystem.EntityPanelModule module)
+  method IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment> <InitializeModules>b__46_2(Timberborn.EntityPanelSystem.EntityPanelModule module)
+  method IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment> <InitializeModules>b__46_3(Timberborn.EntityPanelSystem.EntityPanelModule module)
+  method IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> <InitializeModules>b__46_4(Timberborn.EntityPanelSystem.EntityPanelModule module)
+  method IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment> <InitializeModules>b__46_5(Timberborn.EntityPanelSystem.EntityPanelModule module)
+  method System.Int32 <Order>b__59_0(Timberborn.EntityPanelSystem.OrderedEntityPanelFragment fragment)
+  method Timberborn.EntityPanelSystem.IEntityPanelFragment <Order>b__59_1(Timberborn.EntityPanelSystem.OrderedEntityPanelFragment fragment)
+
+=== Timberborn.EntityPanelSystem.EntityPanelModule   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  field static System.Int32 TopOrder
+  field static System.Int32 MiddleOrder
+  field static System.Int32 BottomOrder
+  field static System.Int32 FooterOrder
+  field ImmutableArray<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> <LeftHeaderFragments>k__BackingField
+  field ImmutableArray<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> <RightHeaderFragments>k__BackingField
+  field ImmutableArray<Timberborn.EntityPanelSystem.IEntityPanelFragment> <MiddleHeaderFragments>k__BackingField
+  field ImmutableArray<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> <ContentFragments>k__BackingField
+  field ImmutableArray<Timberborn.EntityPanelSystem.IEntityPanelFragment> <SideFragments>k__BackingField
+  field ImmutableArray<Timberborn.EntityPanelSystem.IEntityPanelFragment> <DiagnosticFragments>k__BackingField
+  prop ImmutableArray<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> LeftHeaderFragments {get}
+  prop ImmutableArray<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> RightHeaderFragments {get}
+  prop ImmutableArray<Timberborn.EntityPanelSystem.IEntityPanelFragment> MiddleHeaderFragments {get}
+  prop ImmutableArray<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> ContentFragments {get}
+  prop ImmutableArray<Timberborn.EntityPanelSystem.IEntityPanelFragment> SideFragments {get}
+  prop ImmutableArray<Timberborn.EntityPanelSystem.IEntityPanelFragment> DiagnosticFragments {get}
+  method public ImmutableArray<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> get_LeftHeaderFragments()
+  method public ImmutableArray<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> get_RightHeaderFragments()
+  method public ImmutableArray<Timberborn.EntityPanelSystem.IEntityPanelFragment> get_MiddleHeaderFragments()
+  method public ImmutableArray<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> get_ContentFragments()
+  method public ImmutableArray<Timberborn.EntityPanelSystem.IEntityPanelFragment> get_SideFragments()
+  method public ImmutableArray<Timberborn.EntityPanelSystem.IEntityPanelFragment> get_DiagnosticFragments()
+  method private System.Void .ctor(IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> leftHeaderFragments, IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> rightHeaderFragments, IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment> middleHeaderFragments, IEnumerable<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> contentFragments, IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment> sideFragments, IEnumerable<Timberborn.EntityPanelSystem.IEntityPanelFragment> diagnosticFragments)
+  method private static System.Void .cctor()
+  nested Timberborn.EntityPanelSystem.EntityPanelModule+.Builder
+
+=== Timberborn.EntityPanelSystem.EntityPanelModule+.Builder   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  field List<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> _leftHeaderFragments
+  field List<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> _rightHeaderFragments
+  field List<Timberborn.EntityPanelSystem.IEntityPanelFragment> _middleHeaderFragments
+  field List<Timberborn.EntityPanelSystem.OrderedEntityPanelFragment> _contentFragments
+  field List<Timberborn.EntityPanelSystem.IEntityPanelFragment> _sideFragments
+  field List<Timberborn.EntityPanelSystem.IEntityPanelFragment> _diagnosticFragments
+  method public System.Void AddLeftHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment, System.Int32 order)
+  method public System.Void AddRightHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment, System.Int32 order)
+  method public System.Void AddMiddleHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment)
+  method public System.Void AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment, System.Int32 order)
+  method public System.Void AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment, System.Int32 order)
+  method public System.Void AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment, System.Int32 order)
+  method public System.Void AddFooterFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment, System.Int32 order)
+  method public System.Void AddSideFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment)
+  method public System.Void AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment)
+  method public Timberborn.EntityPanelSystem.EntityPanelModule Build()
+  method private System.Void AddContentFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment panelFragment, System.Int32 order)
+  method public System.Void .ctor()
+
+=== Timberborn.EntityPanelSystem.EntityPanelSystemConfigurator   [Timberborn.EntityPanelSystem]
+  kind: class   base: Bindito.Core.Configurator
+  [type attr] Bindito.Core.ContextAttribute
+  [type attr] Bindito.Core.ContextAttribute
+  method System.Void Configure()
+  method public System.Void .ctor()
+  nested Timberborn.EntityPanelSystem.EntityPanelSystemConfigurator+.EntityPanelModuleProvider
+
+=== Timberborn.EntityPanelSystem.EntityPanelSystemConfigurator+.EntityPanelModuleProvider   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  interfaces: IProvider<Timberborn.EntityPanelSystem.EntityPanelModule>
+  field Timberborn.EntityPanelSystem.UnselectObjectFragment _unselectObjectFragment
+  field Timberborn.EntityPanelSystem.FollowObjectFragment _followObjectFragment
+  method public System.Void .ctor(Timberborn.EntityPanelSystem.UnselectObjectFragment unselectObjectFragment, Timberborn.EntityPanelSystem.FollowObjectFragment followObjectFragment)
+  method public Timberborn.EntityPanelSystem.EntityPanelModule Get()
+
+=== Timberborn.EntityPanelSystem.FollowObjectFragment   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field static System.String FocusLocKey
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.TooltipSystem.ITooltipRegistrar _tooltipRegistrar
+  field Timberborn.CoreUI.AlternateClickableFactory _alternateClickableFactory
+  field Timberborn.SelectionSystem.EntitySelectionService _entitySelectionService
+  field Timberborn.Localization.ILoc _loc
+  field UnityEngine.UIElements.Button _root
+  field Timberborn.CoreUI.AlternateClickable _alternateClickable
+  field Timberborn.BaseComponentSystem.BaseComponent _shownEntity
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.TooltipSystem.ITooltipRegistrar tooltipRegistrar, Timberborn.CoreUI.AlternateClickableFactory alternateClickableFactory, Timberborn.SelectionSystem.EntitySelectionService entitySelectionService, Timberborn.Localization.ILoc loc)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method private System.Void SelectAndFollow()
+  method private System.Void UnselectAndFollow()
+  method private static System.Void .cctor()
+
+=== Timberborn.EntityPanelSystem.IEntityBadge   [Timberborn.EntityPanelSystem]
+  kind: interface   base: -
+  prop System.Boolean EntityBadgeEnabled {get}
+  prop System.Int32 EntityBadgePriority {get}
+  method public System.Boolean get_EntityBadgeEnabled()
+  method public System.Int32 get_EntityBadgePriority()
+  method public System.String GetEntitySubtitle()
+  method public Timberborn.EntityPanelSystem.ClickableSubtitle GetEntityClickableSubtitle()
+  method public UnityEngine.Sprite GetEntityAvatar()
+
+=== Timberborn.EntityPanelSystem.IEntityDescriber   [Timberborn.EntityPanelSystem]
+  kind: interface   base: -
+  method public IEnumerable<Timberborn.EntityPanelSystem.EntityDescription> DescribeEntity()
+
+=== Timberborn.EntityPanelSystem.IEntityPanel   [Timberborn.EntityPanelSystem]
+  kind: interface   base: -
+  method public System.Void ReloadDescription(Timberborn.EntitySystem.EntityComponent entity)
+
+=== Timberborn.EntityPanelSystem.IEntityPanelFragment   [Timberborn.EntityPanelSystem]
+  kind: interface   base: -
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+
+=== Timberborn.EntityPanelSystem.LabeledEntityBadge   [Timberborn.EntityPanelSystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntityPanelSystem.IEntityBadge
+  field Timberborn.EntitySystem.LabeledEntity _labeledEntity
+  field Timberborn.EntityNaming.NamedEntity _namedEntity
+  field UnityEngine.Sprite _image
+  prop System.Int32 EntityBadgePriority {get}
+  method public System.Int32 get_EntityBadgePriority()
+  method public System.Void Awake()
+  method public System.String GetEntitySubtitle()
+  method public Timberborn.EntityPanelSystem.ClickableSubtitle GetEntityClickableSubtitle()
+  method public UnityEngine.Sprite GetEntityAvatar()
+  method public System.Void .ctor()
+
+=== Timberborn.EntityPanelSystem.OrderedEntityPanelFragment   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  field Timberborn.EntityPanelSystem.IEntityPanelFragment <Fragment>k__BackingField
+  field System.Int32 <Order>k__BackingField
+  prop Timberborn.EntityPanelSystem.IEntityPanelFragment Fragment {get}
+  prop System.Int32 Order {get}
+  method public Timberborn.EntityPanelSystem.IEntityPanelFragment get_Fragment()
+  method public System.Int32 get_Order()
+  method public System.Void .ctor(Timberborn.EntityPanelSystem.IEntityPanelFragment fragment, System.Int32 order)
+
+=== Timberborn.EntityPanelSystem.ProductionItemFactory   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader)
+  method public UnityEngine.UIElements.VisualElement CreateInputOutput(IEnumerable<UnityEngine.UIElements.VisualElement> inputs, IEnumerable<UnityEngine.UIElements.VisualElement> outputs, System.String craftingTime)
+  method public UnityEngine.UIElements.VisualElement CreateInput(UnityEngine.UIElements.VisualElement input)
+  method public UnityEngine.UIElements.VisualElement CreateOutput(UnityEngine.UIElements.VisualElement output)
+  method public UnityEngine.UIElements.VisualElement CreateInput(IEnumerable<UnityEngine.UIElements.VisualElement> inputs)
+  method public UnityEngine.UIElements.VisualElement CreateOutput(IEnumerable<UnityEngine.UIElements.VisualElement> outputs)
+  method private static System.Boolean FillItems(UnityEngine.UIElements.VisualElement element, System.String rootName, IEnumerable<UnityEngine.UIElements.VisualElement> items)
+
+=== Timberborn.EntityPanelSystem.UnselectObjectFragment   [Timberborn.EntityPanelSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field static System.String CloseLocKey
+  field static System.String CloseKeyBindingId
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.TooltipSystem.ITooltipRegistrar _tooltipRegistrar
+  field Timberborn.SelectionSystem.EntitySelectionService _entitySelectionService
+  field Timberborn.Localization.ILoc _loc
+  field UnityEngine.UIElements.Button _root
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.TooltipSystem.ITooltipRegistrar tooltipRegistrar, Timberborn.SelectionSystem.EntitySelectionService entitySelectionService, Timberborn.Localization.ILoc loc)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method private System.Void OnClicked(UnityEngine.UIElements.ClickEvent clickEvent)
+  method private static System.Void .cctor()
+
+=== Timberborn.Localization.ILoc   [Timberborn.Localization]
+  kind: interface   base: -
+  method public System.Void Initialize(Dictionary<System.String, System.String> localization)
+  method public IEnumerable<System.String> GetRawTexts()
+  method public System.String T(System.String key)
+  method public System.String T(System.String key, T1 param1)
+  method public System.String T(System.String key, T1 param1, T2 param2)
+  method public System.String T(System.String key, T1 param1, T2 param2, T3 param3)
+  method public System.String T(Timberborn.Localization.Phrase phrase)
+  method public System.String T(Timberborn.Localization.Phrase phrase, T1 param1)
+  method public System.String T(Timberborn.Localization.Phrase phrase, T1 param1, T2 param2)
+  method public System.String T(Timberborn.Localization.Phrase phrase, T1 param1, T2 param2, T3 param3)
+
+=== Timberborn.Localization.ILocalizationCsvValidator   [Timberborn.Localization]
+  kind: interface   base: -
+  method public System.Void Validate(UnityEngine.TextAsset textAsset)
+
+=== Timberborn.Localization.ILocalizationService   [Timberborn.Localization]
+  kind: interface   base: -
+  prop System.String CurrentLanguage {get}
+  prop IEnumerable<Timberborn.Localization.LanguageInfo> AvailableLanguages {get}
+  method public System.String get_CurrentLanguage()
+  method public IEnumerable<Timberborn.Localization.LanguageInfo> get_AvailableLanguages()
+  method public System.Void Load(System.String localizationCode)
+
+=== Timberborn.Localization.LanguageInfo   [Timberborn.Localization]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.String <LocalizationCode>k__BackingField
+  field System.String <DisplayName>k__BackingField
+  field System.Boolean <IsNew>k__BackingField
+  prop System.String LocalizationCode {get}
+  prop System.String DisplayName {get}
+  prop System.Boolean IsNew {get}
+  method public System.String get_LocalizationCode()
+  method public System.String get_DisplayName()
+  method public System.Boolean get_IsNew()
+  method public System.Void .ctor(System.String localizationCode, System.String displayName, System.Boolean isNew)
+
+=== Timberborn.Localization.Loc   [Timberborn.Localization]
+  kind: class   base: System.Object
+  interfaces: Timberborn.Localization.ILoc
+  field Dictionary<System.String, System.String> _localization
+  field Dictionary<System.String, Timberborn.Localization.TextLocalizationWrapper> _localizationCache
+  method public System.Void Initialize(Dictionary<System.String, System.String> localization)
+  method public IEnumerable<System.String> GetRawTexts()
+  method public System.String T(System.String key)
+  method public System.String T(System.String key, T1 param1)
+  method public System.String T(System.String key, T1 param1, T2 param2)
+  method public System.String T(System.String key, T1 param1, T2 param2, T3 param3)
+  method public System.String T(Timberborn.Localization.Phrase phrase)
+  method public System.String T(Timberborn.Localization.Phrase phrase, T1 param1)
+  method public System.String T(Timberborn.Localization.Phrase phrase, T1 param1, T2 param2)
+  method public System.String T(Timberborn.Localization.Phrase phrase, T1 param1, T2 param2, T3 param3)
+  method public System.Void .ctor()
+
+=== Timberborn.Localization.LocalizationCodes   [Timberborn.Localization]
+  kind: class   base: System.Object
+  field static System.String Default
+  field static System.String Reference
+  field static System.String German
+  field static System.String English
+  field static System.String Spanish
+  field static System.String French
+  field static System.String Italian
+  field static System.String Japanese
+  field static System.String Korean
+  field static System.String Polish
+  field static System.String BrazilianPortuguese
+  field static System.String Russian
+  field static System.String SimplifiedChinese
+  field static System.String Ukrainian
+  field static System.String Turkish
+  field static System.String TraditionalChinese
+  field static System.String Thai
+  method private static System.Void .cctor()
+
+=== Timberborn.Localization.LocalizationConfigurator   [Timberborn.Localization]
+  kind: class   base: Bindito.Core.Configurator
+  [type attr] Bindito.Core.ContextAttribute
+  method System.Void Configure()
+  method public System.Void .ctor()
+
+=== Timberborn.Localization.LocalizationCsvValidator   [Timberborn.Localization]
+  kind: class   base: System.Object
+  interfaces: Timberborn.Localization.ILocalizationCsvValidator
+  field System.Text.StringBuilder _errors
+  field System.Text.StringBuilder _criticalErrors
+  method public System.Void Validate(UnityEngine.TextAsset textAsset)
+  method private System.Void ValidateCsvIntegrity(UnityEngine.TextAsset textAsset)
+  method private System.Void ValidateCommaAndSemicolonSpaces(UnityEngine.TextAsset textAsset)
+  method private System.Void InformAboutErrors()
+  method private System.Void AddError(System.String exception, System.String sourceName, System.Int32 lineNumber)
+  method private System.Void AddCriticalError(System.String exception, System.String sourceName, System.Int32 lineNumber)
+  method private static System.Int32 GetNumberOfNewLinesInContent(Timberborn.Localization.LocalizationCsvValidator+.ValidationRow rowItems)
+  method public System.Void .ctor()
+  nested Timberborn.Localization.LocalizationCsvValidator+.ValidationRow
+  nested Timberborn.Localization.LocalizationCsvValidator+.<>c
+
+=== Timberborn.Localization.LocalizationCsvValidator+.ValidationRow   [Timberborn.Localization]
+  kind: class   base: List<LINQtoCSV.DataRowItem>
+  interfaces: LINQtoCSV.IDataRow
+  method public System.Void .ctor()
+
+=== Timberborn.Localization.LocalizationCsvValidator+.<>c   [Timberborn.Localization]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.Localization.LocalizationCsvValidator+.<>c <>9
+  field static Func<System.Char, System.Boolean> <>9__8_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.Boolean <GetNumberOfNewLinesInContent>b__8_0(System.Char c)
+
+=== Timberborn.Localization.LocalizationDisplayNames   [Timberborn.Localization]
+  kind: class   base: System.Object
+  field static System.String LocalizationDisplayNameKey
+  field Timberborn.Localization.LocalizationLoader _localizationLoader
+  field Timberborn.Localization.NewLocalizationService _newLocalizationService
+  method public System.Void .ctor(Timberborn.Localization.LocalizationLoader localizationLoader, Timberborn.Localization.NewLocalizationService newLocalizationService)
+  method public IEnumerable<Timberborn.Localization.LanguageInfo> GetLocalizationDisplayNames()
+  method private Timberborn.Localization.LanguageInfo GetDisplayName(System.String localizationCode)
+  method private static System.Void .cctor()
+  nested Timberborn.Localization.LocalizationDisplayNames+.<GetLocalizationDisplayNames>d__4
+
+=== Timberborn.Localization.LocalizationDisplayNames+.<GetLocalizationDisplayNames>d__4   [Timberborn.Localization]
+  kind: class   base: System.Object
+  interfaces: IEnumerable<Timberborn.Localization.LanguageInfo>, System.Collections.IEnumerable, IEnumerator<Timberborn.Localization.LanguageInfo>, System.Collections.IEnumerator, System.IDisposable
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 <>1__state
+  field Timberborn.Localization.LanguageInfo <>2__current
+  field System.Int32 <>l__initialThreadId
+  field Timberborn.Localization.LocalizationDisplayNames <>4__this
+  field IEnumerator<System.String> <>7__wrap1
+  prop Timberborn.Localization.LanguageInfo System.Collections.Generic.IEnumerator<Timberborn.Localization.LanguageInfo>.Current {get}
+  prop System.Object System.Collections.IEnumerator.Current {get}
+  method public System.Void .ctor(System.Int32 <>1__state)
+  method private System.Void System.IDisposable.Dispose()
+  method private System.Boolean MoveNext()
+  method private System.Void <>m__Finally1()
+  method private Timberborn.Localization.LanguageInfo System.Collections.Generic.IEnumerator<Timberborn.Localization.LanguageInfo>.get_Current()
+  method private System.Void System.Collections.IEnumerator.Reset()
+  method private System.Object System.Collections.IEnumerator.get_Current()
+  method private IEnumerator<Timberborn.Localization.LanguageInfo> System.Collections.Generic.IEnumerable<Timberborn.Localization.LanguageInfo>.GetEnumerator()
+  method private System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+=== Timberborn.Localization.LocalizationLoader   [Timberborn.Localization]
+  kind: class   base: System.Object
+  field static System.String WipFilenameSuffix
+  field static System.String LocalizationsDirectory
+  field Timberborn.Localization.ILocalizationCsvValidator _localizationCsvValidator
+  field Timberborn.AssetSystem.IAssetLoader _assetLoader
+  method public System.Void .ctor(Timberborn.Localization.ILocalizationCsvValidator localizationCsvValidator, Timberborn.AssetSystem.IAssetLoader assetLoader)
+  method public Dictionary<System.String, System.String> GetLocalization(System.String localizationKey, System.Boolean isExperimental)
+  method public IEnumerable<System.String> GetLocalizationNames()
+  method public Dictionary<System.String, System.String> GetLocalizationRecords(System.String localization)
+  method private IEnumerable<Timberborn.Localization.LocalizationRecord> GetDefaultLocalization()
+  method private Dictionary<System.String, System.String> GetReferenceLocalization()
+  method private IEnumerable<Timberborn.Localization.LocalizationRecord> GetLocalizationRecordsInternal(System.String localization, System.Boolean validate)
+  method private IEnumerable<Timberborn.Localization.LocalizationRecord> ReadLocalizationFiles(IEnumerable<LoadedAsset<UnityEngine.TextAsset>> loadedLocalizations, System.String localization, System.Boolean validate)
+  method private static IEnumerable<Timberborn.Localization.LocalizationRecord> ReadRecords(System.String localization, System.IO.StreamReader reader)
+  method private static System.String LocalizationNameOrDefault(System.String localizationName)
+  method private IEnumerable<LoadedAsset<UnityEngine.TextAsset>> GetLocalizationFiles()
+  method private static System.String LocalizationNameFromFileName(System.String assetName)
+  method private static System.Void .cctor()
+  nested Timberborn.Localization.LocalizationLoader+.<>c
+  nested Timberborn.Localization.LocalizationLoader+.<>c__DisplayClass10_0
+  nested Timberborn.Localization.LocalizationLoader+.<ReadLocalizationFiles>d__11
+
+=== Timberborn.Localization.LocalizationLoader+.<>c   [Timberborn.Localization]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.Localization.LocalizationLoader+.<>c <>9
+  field static Func<LoadedAsset<UnityEngine.TextAsset>, System.String> <>9__6_0
+  field static Func<System.String, System.Boolean> <>9__6_1
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.String <GetLocalizationNames>b__6_0(LoadedAsset<UnityEngine.TextAsset> localizationFile)
+  method System.Boolean <GetLocalizationNames>b__6_1(System.String assetName)
+
+=== Timberborn.Localization.LocalizationLoader+.<>c__DisplayClass10_0   [Timberborn.Localization]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.String localizationName
+  method public System.Void .ctor()
+  method System.Boolean <GetLocalizationRecordsInternal>b__0(LoadedAsset<UnityEngine.TextAsset> asset)
+
+=== Timberborn.Localization.LocalizationLoader+.<ReadLocalizationFiles>d__11   [Timberborn.Localization]
+  kind: class   base: System.Object
+  interfaces: IEnumerable<Timberborn.Localization.LocalizationRecord>, System.Collections.IEnumerable, IEnumerator<Timberborn.Localization.LocalizationRecord>, System.Collections.IEnumerator, System.IDisposable
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 <>1__state
+  field Timberborn.Localization.LocalizationRecord <>2__current
+  field System.Int32 <>l__initialThreadId
+  field IEnumerable<LoadedAsset<UnityEngine.TextAsset>> loadedLocalizations
+  field IEnumerable<LoadedAsset<UnityEngine.TextAsset>> <>3__loadedLocalizations
+  field System.Boolean validate
+  field System.Boolean <>3__validate
+  field Timberborn.Localization.LocalizationLoader <>4__this
+  field System.String localization
+  field System.String <>3__localization
+  field IEnumerator<LoadedAsset<UnityEngine.TextAsset>> <>7__wrap1
+  field LoadedAsset<UnityEngine.TextAsset> <loadedLocalization>5__3
+  field System.Boolean <hideWarning>5__4
+  field System.IO.MemoryStream <stream>5__5
+  field System.IO.StreamReader <reader>5__6
+  field IEnumerator<Timberborn.Localization.LocalizationRecord> <>7__wrap6
+  prop Timberborn.Localization.LocalizationRecord System.Collections.Generic.IEnumerator<Timberborn.Localization.LocalizationRecord>.Current {get}
+  prop System.Object System.Collections.IEnumerator.Current {get}
+  method public System.Void .ctor(System.Int32 <>1__state)
+  method private System.Void System.IDisposable.Dispose()
+  method private System.Boolean MoveNext()
+  method private System.Void <>m__Finally1()
+  method private System.Void <>m__Finally2()
+  method private System.Void <>m__Finally3()
+  method private System.Void <>m__Finally4()
+  method private Timberborn.Localization.LocalizationRecord System.Collections.Generic.IEnumerator<Timberborn.Localization.LocalizationRecord>.get_Current()
+  method private System.Void System.Collections.IEnumerator.Reset()
+  method private System.Object System.Collections.IEnumerator.get_Current()
+  method private IEnumerator<Timberborn.Localization.LocalizationRecord> System.Collections.Generic.IEnumerable<Timberborn.Localization.LocalizationRecord>.GetEnumerator()
+  method private System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+=== Timberborn.Localization.LocalizationRecord   [Timberborn.Localization]
+  kind: class   base: System.Object
+  field System.String <Id>k__BackingField
+  field System.String <Text>k__BackingField
+  field System.String <Comment>k__BackingField
+  field System.Boolean <HideWarning>k__BackingField
+  field System.Boolean <IsBuiltIn>k__BackingField
+  prop System.String Id {get/set}
+  prop System.String Text {get/set}
+  prop System.String Comment {get/set}
+  prop System.Boolean HideWarning {get/set}
+  prop System.Boolean IsBuiltIn {get/set}
+  method public System.String get_Id()
+  method public System.Void set_Id(System.String value)
+  method public System.String get_Text()
+  method public System.Void set_Text(System.String value)
+  method public System.String get_Comment()
+  method public System.Void set_Comment(System.String value)
+  method public System.Boolean get_HideWarning()
+  method public System.Void set_HideWarning(System.Boolean value)
+  method public System.Boolean get_IsBuiltIn()
+  method public System.Void set_IsBuiltIn(System.Boolean value)
+  method public System.Void .ctor()
+
+=== Timberborn.Localization.LocalizationService   [Timberborn.Localization]
+  kind: class   base: System.Object
+  interfaces: Timberborn.Localization.ILocalizationService
+  field System.String <CurrentLanguage>k__BackingField
+  field Timberborn.Localization.LocalizationLoader _localizationLoader
+  field Timberborn.Localization.LocalizationDisplayNames _localizationDisplayNames
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.ExperimentalModeSystem.ExperimentalMode _experimentalMode
+  field Timberborn.Localization.PanelTextSettingsUpdater _panelTextSettingsUpdater
+  prop System.String CurrentLanguage {get/set}
+  prop IEnumerable<Timberborn.Localization.LanguageInfo> AvailableLanguages {get}
+  method public System.String get_CurrentLanguage()
+  method private System.Void set_CurrentLanguage(System.String value)
+  method public System.Void .ctor(Timberborn.Localization.LocalizationLoader localizationLoader, Timberborn.Localization.LocalizationDisplayNames localizationDisplayNames, Timberborn.Localization.ILoc loc, Timberborn.ExperimentalModeSystem.ExperimentalMode experimentalMode, Timberborn.Localization.PanelTextSettingsUpdater panelTextSettingsUpdater)
+  method public IEnumerable<Timberborn.Localization.LanguageInfo> get_AvailableLanguages()
+  method public System.Void Load(System.String localizationCode)
+
+=== Timberborn.Localization.NewLocalizationService   [Timberborn.Localization]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton
+  field static System.String LocalizationsOnLastLaunchKey
+  field static System.Char Delimiter
+  field Timberborn.Localization.LocalizationLoader _localizationLoader
+  field HashSet<System.String> _localizationsAvailableOnLastLaunch
+  method public System.Void .ctor(Timberborn.Localization.LocalizationLoader localizationLoader)
+  method public System.Void Load()
+  method public System.Boolean LocalizationIsNew(System.String localizationCode)
+  method private static System.String SerializeLocalizations(IEnumerable<System.String> localizations)
+  method private static IEnumerable<System.String> DeserializeLocalizations(System.String localizations)
+  method private static System.Void .cctor()
+  nested Timberborn.Localization.NewLocalizationService+.<>c
+
+=== Timberborn.Localization.NewLocalizationService+.<>c   [Timberborn.Localization]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.Localization.NewLocalizationService+.<>c <>9
+  field static Func<System.String, System.String> <>9__7_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.String <SerializeLocalizations>b__7_0(System.String localization)
+
+=== Timberborn.Localization.PanelTextSettingsUpdater   [Timberborn.Localization]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton, Timberborn.SingletonSystem.IUnloadableSingleton
+  field static System.String PanelTextSettingsPath
+  field static System.String DynamicKeyword
+  field static System.String FallbackKeyword
+  field static System.String RegularName
+  field static System.String SymbolsName
+  field static System.String JapaneseName
+  field static System.String KoreanName
+  field static System.String SimplifiedChineseName
+  field static System.String TraditionalChineseName
+  field static System.String ThaiName
+  field Timberborn.AssetSystem.IAssetLoader _assetLoader
+  field List<UnityEngine.TextCore.Text.FontAsset> _originalFallbackAssets
+  method public System.Void .ctor(Timberborn.AssetSystem.IAssetLoader assetLoader)
+  method public System.Void Load()
+  method public System.Void Update(System.String languageCode)
+  method public System.Void Unload()
+  method private List<UnityEngine.TextCore.Text.FontAsset> GetFallbackFonts()
+  method private System.Void AddDefaultDynamicFonts(List<UnityEngine.TextCore.Text.FontAsset> fallbackFontAssets)
+  method private System.Void AddFontsInJapaneseOrder(List<UnityEngine.TextCore.Text.FontAsset> fallbackFontAssets)
+  method private System.Void AddFontsInKoreanOrder(List<UnityEngine.TextCore.Text.FontAsset> fallbackFontAssets)
+  method private System.Void AddFontsInSimplifiedChineseOrder(List<UnityEngine.TextCore.Text.FontAsset> fallbackFontAssets)
+  method private System.Void AddFontsInTraditionalChineseOrder(List<UnityEngine.TextCore.Text.FontAsset> fallbackFontAssets)
+  method private System.Void AddFontsInThaiOrder(List<UnityEngine.TextCore.Text.FontAsset> fallbackFontAssets)
+  method private System.Void AddFontsInDefaultOrder(List<UnityEngine.TextCore.Text.FontAsset> fallbackFontAssets)
+  method private System.Void Add(List<UnityEngine.TextCore.Text.FontAsset> fallbackFontAssets, System.String name, System.String type)
+  method private static System.Void .cctor()
+
+=== Timberborn.Localization.Phrase   [Timberborn.Localization]
+  kind: class   base: System.Object
+  field System.String <Key>k__BackingField
+  field Timberborn.Localization.TextLocalizationWrapper _textLocalizationWrapper
+  field System.Int32 _customFormatters
+  field System.Object _formatter1
+  field System.Object _formatter2
+  field System.Object _formatter3
+  prop System.String Key {get}
+  method System.String get_Key()
+  method private System.Void .ctor(System.String key)
+  method private System.Void .ctor(System.String key, System.Object formatter1)
+  method private System.Void .ctor(System.String key, System.Object formatter1, System.Object formatter2)
+  method private System.Void .ctor(System.String key, System.Object formatter1, System.Object formatter2, System.Object formatter3)
+  method public static Timberborn.Localization.Phrase New()
+  method public static Timberborn.Localization.Phrase New(System.String key)
+  method public Timberborn.Localization.Phrase Format()
+  method public Timberborn.Localization.Phrase Format(System.String format)
+  method public Timberborn.Localization.Phrase Format(Func<T, System.String> formatter)
+  method public Timberborn.Localization.Phrase Format(Func<T, Timberborn.Localization.ILoc, System.String> formatter)
+  method System.String GetText(Timberborn.Localization.ILoc loc, TP1 value1, TP2 value2, TP3 value3)
+  method private static System.Void ValidateKeyExists(System.String key)
+  nested Timberborn.Localization.Phrase+.<>c__DisplayClass15_0`1
+  nested Timberborn.Localization.Phrase+.<>c__DisplayClass16_0`1
+
+=== Timberborn.Localization.Phrase+.<>c__DisplayClass15_0`1   [Timberborn.Localization]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.String format
+  method public System.Void .ctor()
+  method System.String <Format>b__0(T value)
+
+=== Timberborn.Localization.Phrase+.<>c__DisplayClass16_0`1   [Timberborn.Localization]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Func<T, System.String> formatter
+  method public System.Void .ctor()
+  method System.String <Format>b__0(T value, Timberborn.Localization.ILoc _)
+
+=== Timberborn.Localization.TextColors   [Timberborn.Localization]
+  kind: class   base: System.Object
+  field static UnityEngine.Color GreenHighlight
+  field static UnityEngine.Color RedHighlight
+  field static UnityEngine.Color YellowHighlight
+  field static UnityEngine.Color GreyHighlight
+  method public static System.String ColorizeText(System.String text)
+  method private static System.Void .cctor()
+
+=== Timberborn.Localization.TextLocalization`3   [Timberborn.Localization]
+  kind: class   base: System.Object
+  field System.String <Text>k__BackingField
+  field T1 _value1
+  field T2 _value2
+  field T3 _value3
+  prop System.String Text {get/set}
+  method public System.String get_Text()
+  method private System.Void set_Text(System.String value)
+  method public System.Void .ctor(T1 value1, T2 value2, T3 value3, System.String text)
+  method public System.Void Update(T1 value1, T2 value2, T3 value3, System.String text)
+  method public System.Boolean AreValuesEqual(T1 value1, T2 value2, T3 value3)
+
+=== Timberborn.Localization.TextLocalizationWrapper   [Timberborn.Localization]
+  kind: class   base: System.Object
+  field System.String _textTemplate
+  field System.Object _textLocalization
+  method public System.Void .ctor(System.String textTemplate)
+  method public System.String GetText(Timberborn.Localization.ILoc loc, TP1 value1, TP2 value2, TP3 value3)
+  method public System.String GetText(Timberborn.Localization.ILoc loc, TP1 value1, TP2 value2, TP3 value3, System.Object formatter1, System.Object formatter2, System.Object formatter3)
+  method private System.String GetText(Timberborn.Localization.ILoc loc, TextLocalization<TP1, TP2, TP3> textLocalization, TP1 value1, TP2 value2, TP3 value3, System.Object formatter1, System.Object formatter2, System.Object formatter3)
+  method private System.String CreateNewTextLocalization(Timberborn.Localization.ILoc loc, TP1 value1, TP2 value2, TP3 value3, System.Object formatter1, System.Object formatter2, System.Object formatter3)
+  method private System.Void WarnIfUpdating(TP1 value1, TP2 value2, TP3 value3)
+  method private System.String Format(Timberborn.Localization.ILoc loc, TP1 value1, TP2 value2, TP3 value3, System.Object formatter1, System.Object formatter2, System.Object formatter3)
+  method private static System.Object Format(Timberborn.Localization.ILoc loc, T value, System.Object formatter)
+  method private static System.Object FormatFallback(T value, System.Object formatter)
+
+=== UnityEngine.UIElements.Button   [UnityEngine.UIElementsModule]
+  kind: class   base: UnityEngine.UIElements.TextElement
+  field static UnityEngine.UIElements.BindingId iconImageProperty
+  field static System.String ussClassName
+  field static System.String iconUssClassName
+  field static System.String iconOnlyUssClassName
+  field static System.String imageUSSClassName
+  field UnityEngine.UIElements.Clickable m_Clickable
+  field UnityEngine.UIElements.TextElement m_TextElement
+  field UnityEngine.UIElements.Image m_ImageElement
+  field System.Boolean m_IconImageIsInline
+  field UnityEngine.UIElements.Background m_IconImage
+  field System.String m_Text
+  field static System.String NonEmptyString
+  prop UnityEngine.UIElements.Clickable clickable {get/set}
+  prop UnityEngine.Object iconImageReference {get/set}
+  prop UnityEngine.UIElements.Image imageElement {get}
+  prop System.Boolean iconImageIsInline {get}
+  prop UnityEngine.UIElements.Background iconImage {get/set}
+  prop System.String text {get/set}
+  event System.Action onClick
+  event System.Action clicked
+  method public UnityEngine.UIElements.Clickable get_clickable()
+  method public System.Void set_clickable(UnityEngine.UIElements.Clickable value)
+  method public System.Void add_onClick(System.Action value)
+  method public System.Void remove_onClick(System.Action value)
+  method public System.Void add_clicked(System.Action value)
+  method public System.Void remove_clicked(System.Action value)
+  method private UnityEngine.Object get_iconImageReference()
+  method private System.Void set_iconImageReference(UnityEngine.Object value)
+  method UnityEngine.UIElements.Image get_imageElement()
+  method System.Boolean get_iconImageIsInline()
+  method public UnityEngine.UIElements.Background get_iconImage()
+  method public System.Void set_iconImage(UnityEngine.UIElements.Background value)
+  method public System.String get_text()
+  method public System.Void set_text(System.String value)
+  method public System.Void .ctor()
+  method public System.Void .ctor(UnityEngine.UIElements.Background iconImage, System.Action clickEvent)
+  method public System.Void .ctor(System.Action clickEvent)
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent evt)
+  method private System.Void ReadCustomProperties(UnityEngine.UIElements.ICustomStyle customStyleProvider)
+  method private System.Void SetCustomProperty(UnityEngine.UIElements.Background value)
+  method private System.Void ClearProperty()
+  method private System.Void UpdateImageElement(UnityEngine.UIElements.Background value)
+  method private System.Void OnNavigationSubmit(UnityEngine.UIElements.NavigationSubmitEvent evt)
+  method UnityEngine.Vector2 DoMeasure(System.Single desiredWidth, UnityEngine.UIElements.VisualElement+.MeasureMode widthMode, System.Single desiredHeight, UnityEngine.UIElements.VisualElement+.MeasureMode heightMode)
+  method private System.Void UpdateButtonHierarchy()
+  method private System.Void ResetButtonHierarchy()
+  method private static System.Void .cctor()
+  nested UnityEngine.UIElements.Button+.UxmlSerializedData
+  nested UnityEngine.UIElements.Button+.UxmlFactory
+  nested UnityEngine.UIElements.Button+.UxmlTraits
+
+=== UnityEngine.UIElements.INotifyValueChanged`1   [UnityEngine.UIElementsModule]
+  kind: interface   base: -
+  prop T value {get/set}
+  method public T get_value()
+  method public System.Void set_value(T value)
+  method public System.Void SetValueWithoutNotify(T newValue)
+
+=== UnityEngine.UIElements.INotifyValueChangedExtensions   [UnityEngine.UIElementsModule]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.ExtensionAttribute
+  method public static System.Boolean RegisterValueChangedCallback(INotifyValueChanged<T> control, EventCallback<ChangeEvent<T>> callback)
+  method public static System.Boolean UnregisterValueChangedCallback(INotifyValueChanged<T> control, EventCallback<ChangeEvent<T>> callback)
+
+=== UnityEngine.UIElements.BaseField`1   [UnityEngine.UIElementsModule]
+  kind: class   base: UnityEngine.UIElements.BindableElement
+  interfaces: INotifyValueChanged<TValueType>, UnityEngine.UIElements.IMixedValueSupport, UnityEngine.UIElements.IPrefixLabel, UnityEngine.UIElements.IEditableElement
+  field static UnityEngine.UIElements.BindingId valueProperty
+  field static UnityEngine.UIElements.BindingId labelProperty
+  field static UnityEngine.UIElements.BindingId showMixedValueProperty
+  field static System.String ussClassName
+  field static System.String labelUssClassName
+  field static System.String inputUssClassName
+  field static System.String noLabelVariantUssClassName
+  field static System.String labelDraggerVariantUssClassName
+  field static System.String mixedValueLabelUssClassName
+  field static System.String alignedFieldUssClassName
+  field static System.String inspectorFieldUssClassName
+  field static System.String mixedValueString
+  field static UnityEngine.PropertyName serializedPropertyCopyName
+  field static CustomStyleProperty<System.Single> s_LabelWidthRatioProperty
+  field static CustomStyleProperty<System.Single> s_LabelExtraPaddingProperty
+  field static CustomStyleProperty<System.Single> s_LabelBaseMinWidthProperty
+  field System.Single m_LabelWidthRatio
+  field System.Single m_LabelExtraPadding
+  field System.Single m_LabelBaseMinWidth
+  field UnityEngine.UIElements.VisualElement m_VisualInput
+  field Action<UnityEngine.ExpressionEvaluator+.Expression> expressionEvaluated
+  field System.Action viewDataRestored
+  field TValueType m_Value
+  field Func<TValueType, TValueType> onValidateValue
+  field UnityEngine.UIElements.DispatchMode <dispatchMode>k__BackingField
+  field UnityEngine.UIElements.Label <labelElement>k__BackingField
+  field System.Boolean m_ShowMixedValue
+  field UnityEngine.UIElements.Label m_MixedValueLabel
+  field System.Boolean m_SkipValidation
+  field UnityEngine.UIElements.VisualElement m_CachedContextWidthElement
+  field UnityEngine.UIElements.VisualElement m_CachedInspectorElement
+  field System.Action <UnityEngine.UIElements.IEditableElement.editingStarted>k__BackingField
+  field System.Action <UnityEngine.UIElements.IEditableElement.editingEnded>k__BackingField
+  prop UnityEngine.UIElements.VisualElement visualInput {get/set}
+  prop TValueType rawValue {get/set}
+  prop UnityEngine.UIElements.DispatchMode dispatchMode {get/set}
+  prop TValueType value {get/set}
+  prop UnityEngine.UIElements.Label labelElement {get/set}
+  prop System.String label {get/set}
+  prop System.Boolean showMixedValue {get/set}
+  prop System.Boolean canSwitchToMixedValue {get}
+  prop UnityEngine.UIElements.Label mixedValueLabel {get}
+  prop System.Action UnityEngine.UIElements.IEditableElement.editingStarted {get/set}
+  prop System.Action UnityEngine.UIElements.IEditableElement.editingEnded {get/set}
+  event System.Action viewDataRestored
+  event Func<TValueType, TValueType> onValidateValue
+  method System.Void add_viewDataRestored(System.Action value)
+  method System.Void remove_viewDataRestored(System.Action value)
+  method UnityEngine.UIElements.VisualElement get_visualInput()
+  method System.Void set_visualInput(UnityEngine.UIElements.VisualElement value)
+  method TValueType get_rawValue()
+  method System.Void set_rawValue(TValueType value)
+  method System.Void add_onValidateValue(Func<TValueType, TValueType> value)
+  method System.Void remove_onValidateValue(Func<TValueType, TValueType> value)
+  method UnityEngine.UIElements.DispatchMode get_dispatchMode()
+  method System.Void set_dispatchMode(UnityEngine.UIElements.DispatchMode value)
+  method public TValueType get_value()
+  method public System.Void set_value(TValueType value)
+  method public UnityEngine.UIElements.Label get_labelElement()
+  method private System.Void set_labelElement(UnityEngine.UIElements.Label value)
+  method public System.String get_label()
+  method public System.Void set_label(System.String value)
+  method public System.Boolean get_showMixedValue()
+  method public System.Void set_showMixedValue(System.Boolean value)
+  method System.Boolean get_canSwitchToMixedValue()
+  method UnityEngine.UIElements.Label get_mixedValueLabel()
+  method private System.Action UnityEngine.UIElements.IEditableElement.get_editingStarted()
+  method private System.Void UnityEngine.UIElements.IEditableElement.set_editingStarted(System.Action value)
+  method private System.Action UnityEngine.UIElements.IEditableElement.get_editingEnded()
+  method private System.Void UnityEngine.UIElements.IEditableElement.set_editingEnded(System.Action value)
+  method System.Void .ctor(System.String label)
+  method System.Void .ctor(System.String label, UnityEngine.UIElements.VisualElement visualInput)
+  method System.Boolean EqualsCurrentValue(TValueType v)
+  method private System.Void OnAttachToPanel(UnityEngine.UIElements.AttachToPanelEvent e)
+  method private System.Void OnDetachFromPanel(UnityEngine.UIElements.DetachFromPanelEvent e)
+  method System.Void RegisterEditingCallbacks()
+  method System.Void UnregisterEditingCallbacks()
+  method System.Void StartEditing(UnityEngine.UIElements.EventBase e)
+  method System.Void EndEditing(UnityEngine.UIElements.EventBase e)
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent evt)
+  method private System.Void OnInspectorFieldGeometryChanged(UnityEngine.UIElements.GeometryChangedEvent e)
+  method private System.Void AlignLabel()
+  method private UnityEngine.Rect ComputeTooltipRect()
+  method TValueType ValidatedValue(TValueType value)
+  method System.Void HandleEventBubbleUp(UnityEngine.UIElements.EventBase evt)
+  method System.Void UpdateMixedValueContent()
+  method public System.Void SetValueWithoutNotify(TValueType newValue)
+  method System.Void SetValueWithoutValidation(TValueType newValue)
+  method System.Void OnViewDataReady()
+  method private static System.Void .cctor()
+  nested UnityEngine.UIElements.BaseField`1+.UxmlSerializedData
+  nested UnityEngine.UIElements.BaseField`1+.UxmlTraits
+
+=== UnityEngine.UIElements.BaseField`1+.UxmlSerializedData   [UnityEngine.UIElementsModule]
+  kind: class   base: UnityEngine.UIElements.BindableElement+.UxmlSerializedData
+  [type attr] UnityEngine.Internal.ExcludeFromDocsAttribute
+  field System.String label
+  field UnityEngine.UIElements.UxmlSerializedData+.UxmlAttributeFlags label_UxmlAttributeFlags
+  field TValueType value
+  field UnityEngine.UIElements.UxmlSerializedData+.UxmlAttributeFlags value_UxmlAttributeFlags
+  prop TValueType Value {get/set}
+  method public static System.Void Register()
+  method System.Void set_Value(TValueType value)
+  method TValueType get_Value()
+  method public System.Void Deserialize(System.Object obj)
+  method System.Void .ctor()
+
+=== UnityEngine.UIElements.BaseField`1+.UxmlTraits   [UnityEngine.UIElementsModule]
+  kind: class   base: UnityEngine.UIElements.BindableElement+.UxmlTraits
+  [type attr] System.ObsoleteAttribute
+  method public System.Void .ctor()
+
+=== UnityEngine.UIElements.Label   [UnityEngine.UIElementsModule]
+  kind: class   base: UnityEngine.UIElements.TextElement
+  field static System.String ussClassName
+  method public System.Void .ctor()
+  method public System.Void .ctor(System.String text)
+  method private static System.Void .cctor()
+  nested UnityEngine.UIElements.Label+.UxmlSerializedData
+  nested UnityEngine.UIElements.Label+.UxmlFactory
+  nested UnityEngine.UIElements.Label+.UxmlTraits
+
+=== UnityEngine.UIElements.Toggle   [UnityEngine.UIElementsModule]
+  kind: class   base: UnityEngine.UIElements.BaseBoolField
+  field static System.String ussClassName
+  field static System.String labelUssClassName
+  field static System.String inputUssClassName
+  field static System.String noTextVariantUssClassName
+  field static System.String checkmarkUssClassName
+  field static System.String textUssClassName
+  field static System.String mixedValuesUssClassName
+  method public System.Void .ctor()
+  method public System.Void .ctor(System.String label)
+  method System.Void InitLabel()
+  method System.Void UpdateMixedValueContent()
+  method private static System.Void .cctor()
+  nested UnityEngine.UIElements.Toggle+.UxmlSerializedData
+  nested UnityEngine.UIElements.Toggle+.UxmlFactory
+  nested UnityEngine.UIElements.Toggle+.UxmlTraits
+
+=== UnityEngine.UIElements.BaseFieldMouseDragger   [UnityEngine.UIElementsModule]
+  kind: class   base: System.Object
+  [type attr] UnityEngine.Scripting.APIUpdating.MovedFromAttribute
+  method public System.Void SetDragZone(UnityEngine.UIElements.VisualElement dragElement)
+  method public System.Void SetDragZone(UnityEngine.UIElements.VisualElement dragElement, UnityEngine.Rect hotZone)
+  method System.Void .ctor()
+
+=== UnityEngine.UIElements.VisualElement   [UnityEngine.UIElementsModule]
+  kind: class   base: UnityEngine.UIElements.Focusable
+  interfaces: UnityEngine.UIElements.IResolvedStyle, UnityEngine.UIElements.IStylePropertyAnimations, UnityEngine.UIElements.ITransform, UnityEngine.UIElements.Experimental.ITransitionAnimations, UnityEngine.UIElements.IExperimentalFeatures, UnityEngine.UIElements.IVisualElementScheduler, UnityEngine.UIElements.ICustomStyle
+  [type attr] System.Reflection.DefaultMemberAttribute
+  field System.Int32 <UnityEngine.UIElements.IStylePropertyAnimations.runningAnimationCount>k__BackingField
+  field System.Int32 <UnityEngine.UIElements.IStylePropertyAnimations.completedAnimationCount>k__BackingField
+  field static System.Boolean UxmlTraitsObsoleteIsError
+  field static System.Boolean UxmlFactoryObsoleteIsError
+  field static System.UInt32 s_NextId
+  field static List<System.String> s_EmptyClassList
+  field static UnityEngine.PropertyName userDataPropertyKey
+  field static System.String disabledUssClassName
+  field System.String m_Name
+  field List<System.String> m_ClassList
+  field Dictionary<UnityEngine.PropertyName, System.Object> m_PropertyBag
+  field UnityEngine.UIElements.VisualElementFlags m_Flags
+  field System.String m_ViewDataKey
+  field UnityEngine.UIElements.RenderHints m_RenderHints
+  field UnityEngine.Rect lastLayout
+  field UnityEngine.Rect lastPseudoPadding
+  field UnityEngine.UIElements.UIR.RenderData renderData
+  field UnityEngine.UIElements.UIR.RenderData nestedRenderData
+  field System.Int32 hierarchyDepth
+  field System.Int32 insertionIndex
+  field static UnityEngine.UIElements.VisualElementTransformFlags worldBoundingBoxDirtyDependencies
+  field static UnityEngine.UIElements.VisualElementTransformFlags worldTransformInverseDirtyDependencies
+  field UnityEngine.UIElements.PseudoStates triggerPseudoMask
+  field UnityEngine.UIElements.PseudoStates dependencyPseudoMask
+  field UnityEngine.UIElements.PseudoStates m_PseudoStates
+  field System.Int32 <containedPointerIds>k__BackingField
+  field UnityEngine.UIElements.Layout.LayoutNode m_LayoutNode
+  field UnityEngine.UIElements.VisualElementTransformData* m_TransformDataPTr
+  field UnityEngine.UIElements.StyleVariableContext variableContext
+  field System.Int32 inheritedStylesHash
+  field System.UInt32 controlid
+  field System.Int32 imguiContainerDescendantCount
+  field static System.Int32 s_FinalizerCount
+  field System.Boolean m_EnabledSelf
+  field UnityEngine.UIElements.LanguageDirection m_LanguageDirection
+  field UnityEngine.UIElements.LanguageDirection m_LocalLanguageDirection
+  field Action<UnityEngine.UIElements.MeshGenerationContext> <generateVisualContent>k__BackingField
+  field static Unity.Profiling.ProfilerMarker k_GenerateVisualContentMarker
+  field List<UnityEngine.UIElements.Experimental.IValueAnimationUpdate> m_RunningAnimations
+  field static UnityEngine.UIElements.BindingId childCountProperty
+  field static UnityEngine.UIElements.BindingId contentRectProperty
+  field static UnityEngine.UIElements.BindingId dataSourcePathProperty
+  field static UnityEngine.UIElements.BindingId dataSourceProperty
+  field static UnityEngine.UIElements.BindingId disablePlayModeTintProperty
+  field static UnityEngine.UIElements.BindingId enabledInHierarchyProperty
+  field static UnityEngine.UIElements.BindingId enabledSelfProperty
+  field static UnityEngine.UIElements.BindingId layoutProperty
+  field static UnityEngine.UIElements.BindingId languageDirectionProperty
+  field static UnityEngine.UIElements.BindingId localBoundProperty
+  field static UnityEngine.UIElements.BindingId nameProperty
+  field static UnityEngine.UIElements.BindingId panelProperty
+  field static UnityEngine.UIElements.BindingId pickingModeProperty
+  field static UnityEngine.UIElements.BindingId styleSheetsProperty
+  field static UnityEngine.UIElements.BindingId tooltipProperty
+  field static UnityEngine.UIElements.BindingId usageHintsProperty
+  field static UnityEngine.UIElements.BindingId userDataProperty
+  field static UnityEngine.UIElements.BindingId viewDataKeyProperty
+  field static UnityEngine.UIElements.BindingId visibleProperty
+  field static UnityEngine.UIElements.BindingId visualTreeAssetSourceProperty
+  field static UnityEngine.UIElements.BindingId worldBoundProperty
+  field static UnityEngine.UIElements.BindingId worldTransformProperty
+  field System.Object m_DataSource
+  field UnityEngine.UIElements.PathRef m_DataSourcePath
+  field List<UnityEngine.UIElements.Binding> m_Bindings
+  field System.Type <dataSourceType>k__BackingField
+  field System.Int32 m_TrickleDownHandleEventCategories
+  field System.Int32 m_BubbleUpHandleEventCategories
+  field System.Int32 m_BubbleUpEventCallbackCategories
+  field System.Int32 m_TrickleDownEventCallbackCategories
+  field System.Int32 m_EventInterestSelfCategories
+  field System.Int32 m_CachedEventInterestParentCategories
+  field static System.UInt32 s_NextParentVersion
+  field System.UInt32 m_NextParentCachedVersion
+  field System.UInt32 m_NextParentRequiredVersion
+  field UnityEngine.UIElements.VisualElement m_CachedNextParentWithEventInterests
+  field static System.String k_VisualElementAssetPropertyName
+  field static System.String k_LinkedTemplateAssetOwnerPropertyName
+  field static System.String k_RootVisualContainerName
+  field UnityEngine.UIElements.VisualElement+.Hierarchy <hierarchy>k__BackingField
+  field System.Boolean <cacheAsBitmap>k__BackingField
+  field UnityEngine.UIElements.VisualElement m_PhysicalParent
+  field UnityEngine.UIElements.VisualElement m_LogicalParent
+  field static List<UnityEngine.UIElements.VisualElement> s_EmptyList
+  field List<UnityEngine.UIElements.VisualElement> m_Children
+  field UnityEngine.UIElements.BaseVisualElementPanel <elementPanel>k__BackingField
+  field UnityEngine.UIElements.VisualTreeAsset m_VisualTreeAssetSource
+  field UnityEngine.UIElements.InlineStyleAccess inlineStyleAccess
+  field UnityEngine.UIElements.ResolvedStyleAccess resolvedStyleAccess
+  field List<UnityEngine.UIElements.StyleSheet> styleSheetList
+  field static System.Text.RegularExpressions.Regex s_InternalStyleSheetPath
+  field static UnityEngine.PropertyName tooltipPropertyKey
+  field UnityEngine.UIElements.VisualElement+.TypeData m_TypeData
+  field static Dictionary<System.Type, UnityEngine.UIElements.VisualElement+.TypeData> s_TypeData
+  prop UnityEngine.UIElements.Align UnityEngine.UIElements.IResolvedStyle.alignContent {get}
+  prop UnityEngine.UIElements.Align UnityEngine.UIElements.IResolvedStyle.alignItems {get}
+  prop UnityEngine.UIElements.Align UnityEngine.UIElements.IResolvedStyle.alignSelf {get}
+  prop UnityEngine.UIElements.Ratio UnityEngine.UIElements.IResolvedStyle.aspectRatio {get}
+  prop UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.backgroundColor {get}
+  prop UnityEngine.UIElements.Background UnityEngine.UIElements.IResolvedStyle.backgroundImage {get}
+  prop UnityEngine.UIElements.BackgroundPosition UnityEngine.UIElements.IResolvedStyle.backgroundPositionX {get}
+  prop UnityEngine.UIElements.BackgroundPosition UnityEngine.UIElements.IResolvedStyle.backgroundPositionY {get}
+  prop UnityEngine.UIElements.BackgroundRepeat UnityEngine.UIElements.IResolvedStyle.backgroundRepeat {get}
+  prop UnityEngine.UIElements.BackgroundSize UnityEngine.UIElements.IResolvedStyle.backgroundSize {get}
+  prop UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.borderBottomColor {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.borderBottomLeftRadius {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.borderBottomRightRadius {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.borderBottomWidth {get}
+  prop UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.borderLeftColor {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.borderLeftWidth {get}
+  prop UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.borderRightColor {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.borderRightWidth {get}
+  prop UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.borderTopColor {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.borderTopLeftRadius {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.borderTopRightRadius {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.borderTopWidth {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.bottom {get}
+  prop UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.color {get}
+  prop UnityEngine.UIElements.DisplayStyle UnityEngine.UIElements.IResolvedStyle.display {get}
+  prop IEnumerable<UnityEngine.UIElements.FilterFunction> UnityEngine.UIElements.IResolvedStyle.filter {get}
+  prop UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.flexBasis {get}
+  prop UnityEngine.UIElements.FlexDirection UnityEngine.UIElements.IResolvedStyle.flexDirection {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.flexGrow {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.flexShrink {get}
+  prop UnityEngine.UIElements.Wrap UnityEngine.UIElements.IResolvedStyle.flexWrap {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.fontSize {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.height {get}
+  prop UnityEngine.UIElements.Justify UnityEngine.UIElements.IResolvedStyle.justifyContent {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.left {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.letterSpacing {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.marginBottom {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.marginLeft {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.marginRight {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.marginTop {get}
+  prop UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.maxHeight {get}
+  prop UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.maxWidth {get}
+  prop UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.minHeight {get}
+  prop UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.minWidth {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.opacity {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.paddingBottom {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.paddingLeft {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.paddingRight {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.paddingTop {get}
+  prop UnityEngine.UIElements.Position UnityEngine.UIElements.IResolvedStyle.position {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.right {get}
+  prop UnityEngine.UIElements.Rotate UnityEngine.UIElements.IResolvedStyle.rotate {get}
+  prop UnityEngine.UIElements.Scale UnityEngine.UIElements.IResolvedStyle.scale {get}
+  prop UnityEngine.UIElements.TextOverflow UnityEngine.UIElements.IResolvedStyle.textOverflow {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.top {get}
+  prop UnityEngine.Vector3 UnityEngine.UIElements.IResolvedStyle.transformOrigin {get}
+  prop IEnumerable<UnityEngine.UIElements.TimeValue> UnityEngine.UIElements.IResolvedStyle.transitionDelay {get}
+  prop IEnumerable<UnityEngine.UIElements.TimeValue> UnityEngine.UIElements.IResolvedStyle.transitionDuration {get}
+  prop IEnumerable<UnityEngine.UIElements.StylePropertyName> UnityEngine.UIElements.IResolvedStyle.transitionProperty {get}
+  prop IEnumerable<UnityEngine.UIElements.EasingFunction> UnityEngine.UIElements.IResolvedStyle.transitionTimingFunction {get}
+  prop UnityEngine.Vector3 UnityEngine.UIElements.IResolvedStyle.translate {get}
+  prop UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.unityBackgroundImageTintColor {get}
+  prop UnityEngine.UIElements.EditorTextRenderingMode UnityEngine.UIElements.IResolvedStyle.unityEditorTextRenderingMode {get}
+  prop UnityEngine.Font UnityEngine.UIElements.IResolvedStyle.unityFont {get}
+  prop UnityEngine.UIElements.FontDefinition UnityEngine.UIElements.IResolvedStyle.unityFontDefinition {get}
+  prop UnityEngine.FontStyle UnityEngine.UIElements.IResolvedStyle.unityFontStyleAndWeight {get}
+  prop UnityEngine.UIElements.MaterialDefinition UnityEngine.UIElements.IResolvedStyle.unityMaterial {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.unityParagraphSpacing {get}
+  prop System.Int32 UnityEngine.UIElements.IResolvedStyle.unitySliceBottom {get}
+  prop System.Int32 UnityEngine.UIElements.IResolvedStyle.unitySliceLeft {get}
+  prop System.Int32 UnityEngine.UIElements.IResolvedStyle.unitySliceRight {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.unitySliceScale {get}
+  prop System.Int32 UnityEngine.UIElements.IResolvedStyle.unitySliceTop {get}
+  prop UnityEngine.UIElements.SliceType UnityEngine.UIElements.IResolvedStyle.unitySliceType {get}
+  prop UnityEngine.TextAnchor UnityEngine.UIElements.IResolvedStyle.unityTextAlign {get}
+  prop UnityEngine.TextGeneratorType UnityEngine.UIElements.IResolvedStyle.unityTextGenerator {get}
+  prop UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.unityTextOutlineColor {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.unityTextOutlineWidth {get}
+  prop UnityEngine.UIElements.TextOverflowPosition UnityEngine.UIElements.IResolvedStyle.unityTextOverflowPosition {get}
+  prop UnityEngine.UIElements.Visibility UnityEngine.UIElements.IResolvedStyle.visibility {get}
+  prop UnityEngine.UIElements.WhiteSpace UnityEngine.UIElements.IResolvedStyle.whiteSpace {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.width {get}
+  prop System.Single UnityEngine.UIElements.IResolvedStyle.wordSpacing {get}
+  prop System.Boolean hasRunningAnimations {get}
+  prop System.Boolean hasCompletedAnimations {get}
+  prop System.Int32 UnityEngine.UIElements.IStylePropertyAnimations.runningAnimationCount {get/set}
+  prop System.Int32 UnityEngine.UIElements.IStylePropertyAnimations.completedAnimationCount {get/set}
+  prop UnityEngine.UIElements.IStylePropertyAnimations styleAnimation {get}
+  prop System.Boolean isCompositeRoot {get/set}
+  prop System.Boolean areAncestorsAndSelfDisplayed {get/set}
+  prop System.Boolean hasOneOrMorePointerCaptures {get/set}
+  prop UnityEngine.UIElements.VisualElementFlags flags {get/set}
+  prop ref UnityEngine.UIElements.VisualElementTransformFlags transformFlags {get}
+  prop System.String viewDataKey {get/set}
+  prop System.Boolean enableViewDataPersistence {get/set}
+  prop System.Object userData {get/set}
+  prop System.Boolean canGrabFocus {get}
+  prop UnityEngine.UIElements.FocusController focusController {get}
+  prop System.Boolean disablePlayModeTint {get/set}
+  prop UnityEngine.Color playModeTintColor {get}
+  prop UnityEngine.UIElements.UsageHints usageHints {get/set}
+  prop UnityEngine.UIElements.RenderHints renderHints {get/set}
+  prop System.Boolean useRenderTexture {get}
+  prop UnityEngine.UIElements.ITransform transform {get}
+  prop UnityEngine.Vector3 UnityEngine.UIElements.ITransform.position {get/set}
+  prop UnityEngine.Quaternion UnityEngine.UIElements.ITransform.rotation {get/set}
+  prop UnityEngine.Vector3 UnityEngine.UIElements.ITransform.scale {get/set}
+  prop UnityEngine.Matrix4x4 UnityEngine.UIElements.ITransform.matrix {get}
+  prop System.Single scaledPixelsPerPoint {get}
+  prop System.Single scaledPixelsPerPoint_noChecks {get}
+  prop StyleEnum<UnityEngine.ScaleMode> UnityEngine.UIElements.IResolvedStyle.unityBackgroundScaleMode {get}
+  prop UnityEngine.Rect layout {get}
+  prop System.Boolean hasSize {get}
+  prop UnityEngine.Rect contentRect {get}
+  prop UnityEngine.Rect paddingRect {get}
+  prop System.Boolean needs3DBounds {get/set}
+  prop System.Boolean isLocalBounds3DDirty {get/set}
+  prop System.Boolean isLocalBoundsWithoutNested3DDirty {get/set}
+  prop System.Boolean isBoundingBoxDirty {get/set}
+  prop System.Boolean isBoundingBoxWithoutNestedDirty {get/set}
+  prop System.Boolean isWorldBoundingBoxDirty {get/set}
+  prop System.Boolean isWorldBoundingBoxOrDependenciesDirty {get}
+  prop UnityEngine.Rect boundingBox {get}
+  prop UnityEngine.Rect boundingBoxWithoutNested {get}
+  prop UnityEngine.Rect worldBoundingBox {get}
+  prop UnityEngine.Rect boundingBoxInParentSpace {get}
+  prop UnityEngine.Bounds localBounds3D {get}
+  prop UnityEngine.Bounds localBoundsPicking3D {get}
+  prop UnityEngine.Bounds localBounds3DWithoutNested3D {get}
+  prop UnityEngine.Rect worldBound {get}
+  prop UnityEngine.Rect localBound {get}
+  prop UnityEngine.Rect rect {get}
+  prop UnityEngine.Vector2 layoutSize {get}
+  prop UnityEngine.Vector2 layoutPosition {get}
+  prop System.Boolean isWorldSpaceRootPanelComponent {get/set}
+  prop System.Boolean isWorldTransformDirty {get/set}
+  prop System.Boolean isWorldTransformInverseDirty {get/set}
+  prop System.Boolean isWorldTransformInverseOrDependenciesDirty {get}
+  prop UnityEngine.Matrix4x4 worldTransform {get}
+  prop ref UnityEngine.Matrix4x4 worldTransformRef {get}
+  prop ref UnityEngine.Matrix4x4 worldTransformInverse {get}
+  prop System.Boolean isWorldClipDirty {get}
+  prop UnityEngine.Rect worldClip {get}
+  prop UnityEngine.Rect nestedTreeWorldClip {get}
+  prop System.Boolean receivesHierarchyGeometryChangedEvents {get/set}
+  prop System.Boolean boundingBoxDirtiedSinceLastLayoutPass {get/set}
+  prop UnityEngine.UIElements.PseudoStates pseudoStates {get/set}
+  prop System.Boolean hasActivePseudoState {get}
+  prop System.Boolean hasInactivePseudoState {get}
+  prop System.Boolean hasHoverPseudoState {get}
+  prop System.Boolean hasCheckedPseudoState {get}
+  prop System.Boolean hasEnabledPseudoState {get}
+  prop System.Boolean hasDisabledPseudoState {get}
+  prop System.Boolean hasFocusPseudoState {get}
+  prop System.Boolean hasRootPseudoState {get}
+  prop System.Int32 containedPointerIds {get/set}
+  prop UnityEngine.UIElements.PickingMode pickingMode {get/set}
+  prop System.String name {get/set}
+  prop List<System.String> classList {get}
+  prop System.String fullTypeName {get}
+  prop System.String typeName {get}
+  prop ref UnityEngine.UIElements.Layout.LayoutNode layoutNode {get}
+  prop ref UnityEngine.UIElements.VisualElementTransformData transformData {get}
+  prop ref UnityEngine.UIElements.ComputedStyle computedStyle {get}
+  prop System.Boolean hasInlineStyle {get}
+  prop System.Boolean styleInitialized {get/set}
+  prop System.Single opacity {get/set}
+  prop System.Boolean resourcesReleased {get}
+  prop System.Boolean isParentEnabledInHierarchy {get}
+  prop System.Boolean enabledInHierarchy {get}
+  prop System.Boolean enabledSelf {get/set}
+  prop UnityEngine.UIElements.LanguageDirection languageDirection {get/set}
+  prop UnityEngine.UIElements.LanguageDirection localLanguageDirection {get/set}
+  prop System.Boolean visible {get/set}
+  prop Action<UnityEngine.UIElements.MeshGenerationContext> generateVisualContent {get/set}
+  prop System.Boolean requireMeasureFunction {get/set}
+  prop System.Boolean usesContainsPoint {get/set}
+  prop System.Object dataSource {get/set}
+  prop UnityEngine.Object dataSourceUnityObject {get/set}
+  prop Unity.Properties.PropertyPath dataSourcePath {get/set}
+  prop System.Boolean isDataSourcePathEmpty {get}
+  prop System.String dataSourcePathString {get/set}
+  prop List<UnityEngine.UIElements.Binding> bindings {get/set}
+  prop System.Type dataSourceType {get/set}
+  prop System.String dataSourceTypeString {get/set}
+  prop UnityEngine.UIElements.VisualElement nextParentWithEventInterests {get}
+  prop System.Int32 eventInterestSelfCategories {get}
+  prop System.Int32 eventInterestParentCategories {get}
+  prop System.Boolean isEventInterestParentCategoriesDirty {get/set}
+  prop UnityEngine.UIElements.IExperimentalFeatures experimental {get}
+  prop UnityEngine.UIElements.Experimental.ITransitionAnimations UnityEngine.UIElements.IExperimentalFeatures.animation {get}
+  prop UnityEngine.UIElements.VisualElement+.Hierarchy hierarchy {get}
+  prop System.Boolean isRootVisualContainer {get}
+  prop System.Boolean cacheAsBitmap {get/set}
+  prop System.Boolean disableClipping {get/set}
+  prop System.Boolean disableRendering {get/set}
+  prop UnityEngine.UIElements.VisualElement parent {get}
+  prop UnityEngine.UIElements.BaseVisualElementPanel elementPanel {get/set}
+  prop UnityEngine.UIElements.IPanel panel {get}
+  prop UnityEngine.UIElements.VisualElement contentContainer {get}
+  prop UnityEngine.UIElements.VisualTreeAsset visualTreeAssetSource {get/set}
+  prop UnityEngine.UIElements.VisualElementAsset visualElementAsset {get/set}
+  prop UnityEngine.UIElements.TemplateAsset templateAsset {get/set}
+  prop UnityEngine.UIElements.VisualElement Item {get}
+  prop System.Int32 childCount {get}
+  prop UnityEngine.Vector3 positionWithLayout {get}
+  prop System.Boolean hasDefaultRotationAndScale {get}
+  prop System.Boolean has3DTransform {get}
+  prop System.Boolean has3DTranslation {get}
+  prop System.Boolean has3DRotation {get}
+  prop UnityEngine.UIElements.IVisualElementScheduler schedule {get}
+  prop UnityEngine.UIElements.VisualElement+.CustomStyleAccess customStyleAccess {get}
+  prop UnityEngine.UIElements.IStyle style {get}
+  prop UnityEngine.UIElements.IResolvedStyle resolvedStyle {get}
+  prop UnityEngine.UIElements.ICustomStyle customStyle {get}
+  prop UnityEngine.UIElements.VisualElementStyleSheetSet styleSheets {get}
+  prop System.String tooltip {get/set}
+  prop UnityEngine.UIElements.VisualElement+.TypeData typeData {get}
+  method private UnityEngine.UIElements.Align UnityEngine.UIElements.IResolvedStyle.get_alignContent()
+  method private UnityEngine.UIElements.Align UnityEngine.UIElements.IResolvedStyle.get_alignItems()
+  method private UnityEngine.UIElements.Align UnityEngine.UIElements.IResolvedStyle.get_alignSelf()
+  method private UnityEngine.UIElements.Ratio UnityEngine.UIElements.IResolvedStyle.get_aspectRatio()
+  method private UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.get_backgroundColor()
+  method private UnityEngine.UIElements.Background UnityEngine.UIElements.IResolvedStyle.get_backgroundImage()
+  method private UnityEngine.UIElements.BackgroundPosition UnityEngine.UIElements.IResolvedStyle.get_backgroundPositionX()
+  method private UnityEngine.UIElements.BackgroundPosition UnityEngine.UIElements.IResolvedStyle.get_backgroundPositionY()
+  method private UnityEngine.UIElements.BackgroundRepeat UnityEngine.UIElements.IResolvedStyle.get_backgroundRepeat()
+  method private UnityEngine.UIElements.BackgroundSize UnityEngine.UIElements.IResolvedStyle.get_backgroundSize()
+  method private UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.get_borderBottomColor()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_borderBottomLeftRadius()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_borderBottomRightRadius()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_borderBottomWidth()
+  method private UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.get_borderLeftColor()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_borderLeftWidth()
+  method private UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.get_borderRightColor()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_borderRightWidth()
+  method private UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.get_borderTopColor()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_borderTopLeftRadius()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_borderTopRightRadius()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_borderTopWidth()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_bottom()
+  method private UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.get_color()
+  method private UnityEngine.UIElements.DisplayStyle UnityEngine.UIElements.IResolvedStyle.get_display()
+  method private IEnumerable<UnityEngine.UIElements.FilterFunction> UnityEngine.UIElements.IResolvedStyle.get_filter()
+  method private UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.get_flexBasis()
+  method private UnityEngine.UIElements.FlexDirection UnityEngine.UIElements.IResolvedStyle.get_flexDirection()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_flexGrow()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_flexShrink()
+  method private UnityEngine.UIElements.Wrap UnityEngine.UIElements.IResolvedStyle.get_flexWrap()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_fontSize()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_height()
+  method private UnityEngine.UIElements.Justify UnityEngine.UIElements.IResolvedStyle.get_justifyContent()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_left()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_letterSpacing()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_marginBottom()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_marginLeft()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_marginRight()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_marginTop()
+  method private UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.get_maxHeight()
+  method private UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.get_maxWidth()
+  method private UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.get_minHeight()
+  method private UnityEngine.UIElements.StyleFloat UnityEngine.UIElements.IResolvedStyle.get_minWidth()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_opacity()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_paddingBottom()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_paddingLeft()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_paddingRight()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_paddingTop()
+  method private UnityEngine.UIElements.Position UnityEngine.UIElements.IResolvedStyle.get_position()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_right()
+  method private UnityEngine.UIElements.Rotate UnityEngine.UIElements.IResolvedStyle.get_rotate()
+  method private UnityEngine.UIElements.Scale UnityEngine.UIElements.IResolvedStyle.get_scale()
+  method private UnityEngine.UIElements.TextOverflow UnityEngine.UIElements.IResolvedStyle.get_textOverflow()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_top()
+  method private UnityEngine.Vector3 UnityEngine.UIElements.IResolvedStyle.get_transformOrigin()
+  method private IEnumerable<UnityEngine.UIElements.TimeValue> UnityEngine.UIElements.IResolvedStyle.get_transitionDelay()
+  method private IEnumerable<UnityEngine.UIElements.TimeValue> UnityEngine.UIElements.IResolvedStyle.get_transitionDuration()
+  method private IEnumerable<UnityEngine.UIElements.StylePropertyName> UnityEngine.UIElements.IResolvedStyle.get_transitionProperty()
+  method private IEnumerable<UnityEngine.UIElements.EasingFunction> UnityEngine.UIElements.IResolvedStyle.get_transitionTimingFunction()
+  method private UnityEngine.Vector3 UnityEngine.UIElements.IResolvedStyle.get_translate()
+  method private UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.get_unityBackgroundImageTintColor()
+  method private UnityEngine.UIElements.EditorTextRenderingMode UnityEngine.UIElements.IResolvedStyle.get_unityEditorTextRenderingMode()
+  method private UnityEngine.Font UnityEngine.UIElements.IResolvedStyle.get_unityFont()
+  method private UnityEngine.UIElements.FontDefinition UnityEngine.UIElements.IResolvedStyle.get_unityFontDefinition()
+  method private UnityEngine.FontStyle UnityEngine.UIElements.IResolvedStyle.get_unityFontStyleAndWeight()
+  method private UnityEngine.UIElements.MaterialDefinition UnityEngine.UIElements.IResolvedStyle.get_unityMaterial()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_unityParagraphSpacing()
+  method private System.Int32 UnityEngine.UIElements.IResolvedStyle.get_unitySliceBottom()
+  method private System.Int32 UnityEngine.UIElements.IResolvedStyle.get_unitySliceLeft()
+  method private System.Int32 UnityEngine.UIElements.IResolvedStyle.get_unitySliceRight()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_unitySliceScale()
+  method private System.Int32 UnityEngine.UIElements.IResolvedStyle.get_unitySliceTop()
+  method private UnityEngine.UIElements.SliceType UnityEngine.UIElements.IResolvedStyle.get_unitySliceType()
+  method private UnityEngine.TextAnchor UnityEngine.UIElements.IResolvedStyle.get_unityTextAlign()
+  method private UnityEngine.TextGeneratorType UnityEngine.UIElements.IResolvedStyle.get_unityTextGenerator()
+  method private UnityEngine.Color UnityEngine.UIElements.IResolvedStyle.get_unityTextOutlineColor()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_unityTextOutlineWidth()
+  method private UnityEngine.UIElements.TextOverflowPosition UnityEngine.UIElements.IResolvedStyle.get_unityTextOverflowPosition()
+  method private UnityEngine.UIElements.Visibility UnityEngine.UIElements.IResolvedStyle.get_visibility()
+  method private UnityEngine.UIElements.WhiteSpace UnityEngine.UIElements.IResolvedStyle.get_whiteSpace()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_width()
+  method private System.Single UnityEngine.UIElements.IResolvedStyle.get_wordSpacing()
+  method System.Boolean get_hasRunningAnimations()
+  method System.Boolean get_hasCompletedAnimations()
+  method private System.Int32 UnityEngine.UIElements.IStylePropertyAnimations.get_runningAnimationCount()
+  method private System.Void UnityEngine.UIElements.IStylePropertyAnimations.set_runningAnimationCount(System.Int32 value)
+  method private System.Int32 UnityEngine.UIElements.IStylePropertyAnimations.get_completedAnimationCount()
+  method private System.Void UnityEngine.UIElements.IStylePropertyAnimations.set_completedAnimationCount(System.Int32 value)
+  method private UnityEngine.UIElements.IStylePropertyAnimationSystem GetStylePropertyAnimationSystem()
+  method UnityEngine.UIElements.IStylePropertyAnimations get_styleAnimation()
+  method System.Boolean HasRunningAnimation(UnityEngine.UIElements.StyleSheets.StylePropertyId id)
+  method System.Void CancelAnimation(UnityEngine.UIElements.StyleSheets.StylePropertyId id)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, System.Single from, System.Single to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, System.Int32 from, System.Int32 to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.Length from, UnityEngine.UIElements.Length to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.Color from, UnityEngine.Color to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.StartEnum(UnityEngine.UIElements.StyleSheets.StylePropertyId id, System.Int32 from, System.Int32 to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.EntityId from, UnityEngine.EntityId to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.TextShadow from, UnityEngine.UIElements.TextShadow to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.Scale from, UnityEngine.UIElements.Scale to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.Translate from, UnityEngine.UIElements.Translate to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.Rotate from, UnityEngine.UIElements.Rotate to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.Ratio from, UnityEngine.UIElements.Ratio to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.TransformOrigin from, UnityEngine.UIElements.TransformOrigin to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.BackgroundPosition from, UnityEngine.UIElements.BackgroundPosition to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.BackgroundRepeat from, UnityEngine.UIElements.BackgroundRepeat to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.BackgroundSize from, UnityEngine.UIElements.BackgroundSize to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, List<UnityEngine.UIElements.FilterFunction> from, List<UnityEngine.UIElements.FilterFunction> to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.Start(UnityEngine.UIElements.StyleSheets.StylePropertyId id, UnityEngine.UIElements.MaterialDefinition from, UnityEngine.UIElements.MaterialDefinition to, System.Int32 durationMs, System.Int32 delayMs, Func<System.Single, System.Single> easingCurve)
+  method private System.Void UnityEngine.UIElements.IStylePropertyAnimations.CancelAnimation(UnityEngine.UIElements.StyleSheets.StylePropertyId id)
+  method private System.Void UnityEngine.UIElements.IStylePropertyAnimations.CancelAllAnimations()
+  method private System.Boolean UnityEngine.UIElements.IStylePropertyAnimations.HasRunningAnimation(UnityEngine.UIElements.StyleSheets.StylePropertyId id)
+  method private System.Void UnityEngine.UIElements.IStylePropertyAnimations.UpdateAnimation(UnityEngine.UIElements.StyleSheets.StylePropertyId id)
+  method private System.Void UnityEngine.UIElements.IStylePropertyAnimations.GetAllAnimations(List<UnityEngine.UIElements.StyleSheets.StylePropertyId> outPropertyIds)
+  method System.Boolean TryConvertLengthUnits(UnityEngine.UIElements.StyleSheets.StylePropertyId id, ref ref UnityEngine.UIElements.Length from, ref ref UnityEngine.UIElements.Length to, System.Int32 subPropertyIndex)
+  method System.Boolean TryConvertTransformOriginUnits(ref ref UnityEngine.UIElements.TransformOrigin from, ref ref UnityEngine.UIElements.TransformOrigin to)
+  method System.Boolean TryConvertTranslateUnits(ref ref UnityEngine.UIElements.Translate from, ref ref UnityEngine.UIElements.Translate to)
+  method System.Boolean TryConvertBackgroundPositionUnits(ref ref UnityEngine.UIElements.BackgroundPosition from, ref ref UnityEngine.UIElements.BackgroundPosition to)
+  method System.Boolean TryConvertBackgroundSizeUnits(ref ref UnityEngine.UIElements.BackgroundSize from, ref ref UnityEngine.UIElements.BackgroundSize to)
+  method private Nullable<System.Single> GetParentSizeForLengthConversion(UnityEngine.UIElements.StyleSheets.StylePropertyId id, System.Int32 subPropertyIndex)
+  method System.Boolean get_isCompositeRoot()
+  method System.Void set_isCompositeRoot(System.Boolean value)
+  method System.Boolean get_areAncestorsAndSelfDisplayed()
+  method System.Void set_areAncestorsAndSelfDisplayed(System.Boolean value)
+  method System.Boolean get_hasOneOrMorePointerCaptures()
+  method System.Void set_hasOneOrMorePointerCaptures(System.Boolean value)
+  method UnityEngine.UIElements.VisualElementFlags get_flags()
+  method System.Void set_flags(UnityEngine.UIElements.VisualElementFlags value)
+  method ref UnityEngine.UIElements.VisualElementTransformFlags get_transformFlags()
+  method public System.String get_viewDataKey()
+  method public System.Void set_viewDataKey(System.String value)
+  method System.Boolean get_enableViewDataPersistence()
+  method private System.Void set_enableViewDataPersistence(System.Boolean value)
+  method public System.Object get_userData()
+  method public System.Void set_userData(System.Object value)
+  method public System.Boolean get_canGrabFocus()
+  method public UnityEngine.UIElements.FocusController get_focusController()
+  method public System.Boolean get_disablePlayModeTint()
+  method public System.Void set_disablePlayModeTint(System.Boolean value)
+  method UnityEngine.Color get_playModeTintColor()
+  method public UnityEngine.UIElements.UsageHints get_usageHints()
+  method public System.Void set_usageHints(UnityEngine.UIElements.UsageHints value)
+  method UnityEngine.UIElements.RenderHints get_renderHints()
+  method System.Void set_renderHints(UnityEngine.UIElements.RenderHints value)
+  method System.Void MarkRenderHintsClean()
+  method System.Boolean get_useRenderTexture()
+  method public UnityEngine.UIElements.ITransform get_transform()
+  method private UnityEngine.Vector3 UnityEngine.UIElements.ITransform.get_position()
+  method private System.Void UnityEngine.UIElements.ITransform.set_position(UnityEngine.Vector3 value)
+  method private UnityEngine.Quaternion UnityEngine.UIElements.ITransform.get_rotation()
+  method private System.Void UnityEngine.UIElements.ITransform.set_rotation(UnityEngine.Quaternion value)
+  method private UnityEngine.Vector3 UnityEngine.UIElements.ITransform.get_scale()
+  method private System.Void UnityEngine.UIElements.ITransform.set_scale(UnityEngine.Vector3 value)
+  method private UnityEngine.Matrix4x4 UnityEngine.UIElements.ITransform.get_matrix()
+  method public System.Single get_scaledPixelsPerPoint()
+  method System.Single get_scaledPixelsPerPoint_noChecks()
+  method private StyleEnum<UnityEngine.ScaleMode> UnityEngine.UIElements.IResolvedStyle.get_unityBackgroundScaleMode()
+  method public UnityEngine.Rect get_layout()
+  method System.Boolean get_hasSize()
+  method public UnityEngine.Rect get_contentRect()
+  method UnityEngine.Rect get_paddingRect()
+  method System.Boolean get_needs3DBounds()
+  method System.Void set_needs3DBounds(System.Boolean value)
+  method System.Boolean get_isLocalBounds3DDirty()
+  method System.Void set_isLocalBounds3DDirty(System.Boolean value)
+  method System.Boolean get_isLocalBoundsWithoutNested3DDirty()
+  method System.Void set_isLocalBoundsWithoutNested3DDirty(System.Boolean value)
+  method System.Boolean get_isBoundingBoxDirty()
+  method System.Void set_isBoundingBoxDirty(System.Boolean value)
+  method System.Boolean get_isBoundingBoxWithoutNestedDirty()
+  method System.Void set_isBoundingBoxWithoutNestedDirty(System.Boolean value)
+  method System.Boolean get_isWorldBoundingBoxDirty()
+  method System.Void set_isWorldBoundingBoxDirty(System.Boolean value)
+  method System.Boolean get_isWorldBoundingBoxOrDependenciesDirty()
+  method UnityEngine.Rect get_boundingBox()
+  method UnityEngine.Rect get_boundingBoxWithoutNested()
+  method UnityEngine.Rect get_worldBoundingBox()
+  method private UnityEngine.Rect get_boundingBoxInParentSpace()
+  method System.Void UpdateBoundingBox()
+  method System.Void UpdateBoundingBoxWithoutNested()
+  method System.Void UpdateWorldBoundingBox()
+  method UnityEngine.Bounds get_localBounds3D()
+  method UnityEngine.Bounds get_localBoundsPicking3D()
+  method UnityEngine.Bounds get_localBounds3DWithoutNested3D()
+  method private System.Void UpdateBounds3D()
+  method public UnityEngine.Rect get_worldBound()
+  method public UnityEngine.Rect get_localBound()
+  method UnityEngine.Rect get_rect()
+  method UnityEngine.Vector2 get_layoutSize()
+  method UnityEngine.Vector2 get_layoutPosition()
+  method System.Boolean get_isWorldSpaceRootPanelComponent()
+  method System.Void set_isWorldSpaceRootPanelComponent(System.Boolean value)
+  method System.Boolean get_isWorldTransformDirty()
+  method System.Void set_isWorldTransformDirty(System.Boolean value)
+  method System.Boolean get_isWorldTransformInverseDirty()
+  method System.Void set_isWorldTransformInverseDirty(System.Boolean value)
+  method System.Boolean get_isWorldTransformInverseOrDependenciesDirty()
+  method public UnityEngine.Matrix4x4 get_worldTransform()
+  method ref UnityEngine.Matrix4x4 get_worldTransformRef()
+  method ref UnityEngine.Matrix4x4 get_worldTransformInverse()
+  method System.Void UpdateWorldTransform()
+  method System.Void UpdateWorldTransformNative()
+  method System.Void UpdateWorldTransformHierarchyNative()
+  method System.Void UpdateWorldTransformManaged()
+  method System.Void UpdateWorldTransformInverse()
+  method System.Boolean get_isWorldClipDirty()
+  method UnityEngine.Rect get_worldClip()
+  method UnityEngine.Rect get_nestedTreeWorldClip()
+  method System.Void EnsureWorldTransformAndClipUpToDate()
+  method static UnityEngine.Rect ComputeAAAlignedBound(UnityEngine.Rect position, UnityEngine.Matrix4x4 mat)
+  method System.Boolean get_receivesHierarchyGeometryChangedEvents()
+  method System.Void set_receivesHierarchyGeometryChangedEvents(System.Boolean value)
+  method System.Boolean get_boundingBoxDirtiedSinceLastLayoutPass()
+  method System.Void set_boundingBoxDirtiedSinceLastLayoutPass(System.Boolean value)
+  method UnityEngine.UIElements.PseudoStates get_pseudoStates()
+  method System.Void set_pseudoStates(UnityEngine.UIElements.PseudoStates value)
+  method public System.Boolean get_hasActivePseudoState()
+  method public System.Boolean get_hasInactivePseudoState()
+  method public System.Boolean get_hasHoverPseudoState()
+  method public System.Boolean get_hasCheckedPseudoState()
+  method public System.Boolean get_hasEnabledPseudoState()
+  method public System.Boolean get_hasDisabledPseudoState()
+  method public System.Boolean get_hasFocusPseudoState()
+  method public System.Boolean get_hasRootPseudoState()
+  method public System.Void SetActivePseudoState(System.Boolean value)
+  method public System.Void SetCheckedPseudoState(System.Boolean value)
+  method System.Int32 get_containedPointerIds()
+  method System.Void set_containedPointerIds(System.Int32 value)
+  method System.Void UpdateHoverPseudoState()
+  method private static System.Boolean IsPartOfCapturedChain(UnityEngine.UIElements.VisualElement self, ref ref UnityEngine.UIElements.IEventHandler capturingElement)
+  method System.Void UpdateHoverPseudoStateAfterCaptureChange(System.Int32 pointerId)
+  method System.Void UpdatePointerCaptureFlag()
+  method public UnityEngine.UIElements.PickingMode get_pickingMode()
+  method public System.Void set_pickingMode(UnityEngine.UIElements.PickingMode value)
+  method public System.String get_name()
+  method public System.Void set_name(System.String value)
+  method List<System.String> get_classList()
+  method System.String get_fullTypeName()
+  method System.String get_typeName()
+  method ref UnityEngine.UIElements.Layout.LayoutNode get_layoutNode()
+  method private ref UnityEngine.UIElements.VisualElementTransformData get_transformData()
+  method ref UnityEngine.UIElements.ComputedStyle get_computedStyle()
+  method System.Boolean get_hasInlineStyle()
+  method System.Boolean get_styleInitialized()
+  method System.Void set_styleInitialized(System.Boolean value)
+  method System.Single get_opacity()
+  method System.Void set_opacity(System.Single value)
+  method private System.Void ChangeIMGUIContainerCount(System.Int32 delta)
+  method public System.Void .ctor()
+  method System.Void Finalize()
+  method public System.Boolean get_resourcesReleased()
+  method public System.Void ReleaseResources()
+  method System.Void ReleaseResourcesNoChecks()
+  method System.Void SetTooltip(UnityEngine.UIElements.TooltipEvent e)
+  method public System.Void Focus()
+  method System.Int64 TimeSinceStartupMs()
+  method System.Void SetPanel(UnityEngine.UIElements.BaseVisualElementPanel p)
+  method System.Void SetPanelBatched(UnityEngine.UIElements.BaseVisualElementPanel p, List<UnityEngine.UIElements.VisualElement> elements)
+  method private System.Void WillChangePanel(UnityEngine.UIElements.BaseVisualElementPanel destinationPanel)
+  method private System.Void HasChangedPanel(UnityEngine.UIElements.BaseVisualElementPanel prevPanel)
+  method public System.Void SendEvent(UnityEngine.UIElements.EventBase e)
+  method System.Void SendEvent(UnityEngine.UIElements.EventBase e, UnityEngine.UIElements.DispatchMode dispatchMode)
+  method System.Void HandleEvent(UnityEngine.UIElements.EventBase e)
+  method System.Void IncrementVersion(UnityEngine.UIElements.VersionChangeType changeType)
+  method System.Void InvokeHierarchyChanged(UnityEngine.UIElements.HierarchyChangeType changeType, IReadOnlyList<UnityEngine.UIElements.VisualElement> additionalContext)
+  method System.Boolean SetEnabledFromHierarchy(System.Boolean state)
+  method private System.Boolean SetEnabledFromHierarchyPrivate(System.Boolean state)
+  method private System.Boolean get_isParentEnabledInHierarchy()
+  method public System.Boolean get_enabledInHierarchy()
+  method public System.Boolean get_enabledSelf()
+  method public System.Void set_enabledSelf(System.Boolean value)
+  method public System.Void SetEnabled(System.Boolean value)
+  method private System.Void PropagateEnabledToChildren(System.Boolean value)
+  method public UnityEngine.UIElements.LanguageDirection get_languageDirection()
+  method public System.Void set_languageDirection(UnityEngine.UIElements.LanguageDirection value)
+  method UnityEngine.UIElements.LanguageDirection get_localLanguageDirection()
+  method System.Void set_localLanguageDirection(UnityEngine.UIElements.LanguageDirection value)
+  method public System.Boolean get_visible()
+  method public System.Void set_visible(System.Boolean value)
+  method public System.Void MarkDirtyRepaint()
+  method public System.Boolean IsMarkedForRepaint()
+  method public Action<UnityEngine.UIElements.MeshGenerationContext> get_generateVisualContent()
+  method public System.Void set_generateVisualContent(Action<UnityEngine.UIElements.MeshGenerationContext> value)
+  method System.Void InvokeGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  method System.Void GetFullHierarchicalViewDataKey(System.Text.StringBuilder key)
+  method System.String GetFullHierarchicalViewDataKey()
+  method T GetOrCreateViewData(System.Object existing, System.String key)
+  method T GetOrCreateViewData(UnityEngine.ScriptableObject existing, System.String key)
+  method System.Void OverwriteFromViewData(System.Object obj, System.String key)
+  method System.Void SaveViewData()
+  method System.Boolean IsViewDataPersitenceSupportedOnChildren(System.Boolean existingState)
+  method System.Void OnViewDataReady(System.Boolean enablePersistence)
+  method System.Void OnViewDataReady()
+  method public System.Boolean ContainsPoint(UnityEngine.Vector2 localPoint)
+  method public System.Boolean Overlaps(UnityEngine.Rect rectangle)
+  method System.Boolean get_requireMeasureFunction()
+  method System.Void set_requireMeasureFunction(System.Boolean value)
+  method System.Boolean get_usesContainsPoint()
+  method System.Void set_usesContainsPoint(System.Boolean value)
+  method private System.Void AssignMeasureFunction()
+  method private System.Void RemoveMeasureFunction()
+  method UnityEngine.Vector2 DoMeasure(System.Single desiredWidth, UnityEngine.UIElements.VisualElement+.MeasureMode widthMode, System.Single desiredHeight, UnityEngine.UIElements.VisualElement+.MeasureMode heightMode)
+  method static System.Void Measure(UnityEngine.UIElements.VisualElement ve, ref ref UnityEngine.UIElements.Layout.LayoutNode node, System.Single width, UnityEngine.UIElements.Layout.LayoutMeasureMode widthMode, System.Single height, UnityEngine.UIElements.Layout.LayoutMeasureMode heightMode, out ref UnityEngine.UIElements.Layout.LayoutSize result)
+  method System.Void SetSize(UnityEngine.Vector2 size)
+  method private System.Void FinalizeLayout(UnityEngine.UIElements.VersionChangeType changes)
+  method System.Void SetInlineRule(UnityEngine.UIElements.StyleSheet sheet, UnityEngine.UIElements.StyleRule rule, UnityEngine.UIElements.StyleVariableContext variableContext)
+  method System.Void UpdateInlineRule(UnityEngine.UIElements.StyleSheet sheet, UnityEngine.UIElements.StyleRule rule)
+  method System.Void UpdateInlineRule(UnityEngine.UIElements.StyleSheet sheet, UnityEngine.UIElements.StyleRule rule, UnityEngine.UIElements.StyleVariableContext variableContext)
+  method System.Void SetComputedStyle(ref ref UnityEngine.UIElements.ComputedStyle newStyle)
+  method System.Void ResetPositionProperties()
+  method public System.String ToString()
+  method public IEnumerable<System.String> GetClasses()
+  method List<System.String> GetClassesForIteration()
+  method public System.Void ClearClassList()
+  method public System.Void AddToClassList(System.String className)
+  method public System.Void AddToClassList(System.String[] classNames)
+  method public System.Void RemoveFromClassList(System.String className)
+  method public System.Void ToggleInClassList(System.String className)
+  method public System.Void EnableInClassList(System.String className, System.Boolean enable)
+  method public System.Boolean ClassListContains(System.String cls)
+  method public System.Object FindAncestorUserData()
+  method System.Object GetProperty(UnityEngine.PropertyName key)
+  method System.Void SetProperty(UnityEngine.PropertyName key, System.Object value)
+  method System.Boolean HasProperty(UnityEngine.PropertyName key)
+  method System.Boolean ClearProperty(UnityEngine.PropertyName key)
+  method private static System.Void CheckUserKeyArgument(UnityEngine.PropertyName key)
+  method private System.Void SetPropertyInternal(UnityEngine.PropertyName key, System.Object value)
+  method System.Void UpdateCursorStyle(System.Int64 eventType)
+  method private UnityEngine.UIElements.VisualElementAnimationSystem GetAnimationSystem()
+  method System.Void RegisterAnimation(UnityEngine.UIElements.Experimental.IValueAnimationUpdate anim)
+  method System.Void UnregisterAnimation(UnityEngine.UIElements.Experimental.IValueAnimationUpdate anim)
+  method private System.Void UnregisterRunningAnimations()
+  method private System.Void RegisterRunningAnimations()
+  method private ValueAnimation<System.Single> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(System.Single from, System.Single to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, System.Single> onValueChanged)
+  method private ValueAnimation<UnityEngine.Rect> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(UnityEngine.Rect from, UnityEngine.Rect to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Rect> onValueChanged)
+  method private ValueAnimation<UnityEngine.Color> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(UnityEngine.Color from, UnityEngine.Color to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Color> onValueChanged)
+  method private ValueAnimation<UnityEngine.Vector3> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(UnityEngine.Vector3 from, UnityEngine.Vector3 to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Vector3> onValueChanged)
+  method private ValueAnimation<UnityEngine.Vector2> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(UnityEngine.Vector2 from, UnityEngine.Vector2 to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Vector2> onValueChanged)
+  method private ValueAnimation<UnityEngine.Quaternion> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(UnityEngine.Quaternion from, UnityEngine.Quaternion to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Quaternion> onValueChanged)
+  method private ValueAnimation<UnityEngine.UIElements.Experimental.StyleValues> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(UnityEngine.UIElements.Experimental.StyleValues from, UnityEngine.UIElements.Experimental.StyleValues to, System.Int32 durationMs)
+  method private ValueAnimation<System.Single> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(Func<UnityEngine.UIElements.VisualElement, System.Single> fromValueGetter, System.Single to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, System.Single> onValueChanged)
+  method private ValueAnimation<UnityEngine.Rect> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(Func<UnityEngine.UIElements.VisualElement, UnityEngine.Rect> fromValueGetter, UnityEngine.Rect to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Rect> onValueChanged)
+  method private ValueAnimation<UnityEngine.Color> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(Func<UnityEngine.UIElements.VisualElement, UnityEngine.Color> fromValueGetter, UnityEngine.Color to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Color> onValueChanged)
+  method private ValueAnimation<UnityEngine.Vector3> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(Func<UnityEngine.UIElements.VisualElement, UnityEngine.Vector3> fromValueGetter, UnityEngine.Vector3 to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Vector3> onValueChanged)
+  method private ValueAnimation<UnityEngine.Vector2> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(Func<UnityEngine.UIElements.VisualElement, UnityEngine.Vector2> fromValueGetter, UnityEngine.Vector2 to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Vector2> onValueChanged)
+  method private ValueAnimation<UnityEngine.Quaternion> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(Func<UnityEngine.UIElements.VisualElement, UnityEngine.Quaternion> fromValueGetter, UnityEngine.Quaternion to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, UnityEngine.Quaternion> onValueChanged)
+  method private static ValueAnimation<T> StartAnimation(ValueAnimation<T> anim, Func<UnityEngine.UIElements.VisualElement, T> fromValueGetter, T to, System.Int32 durationMs, Action<UnityEngine.UIElements.VisualElement, T> onValueChanged)
+  method private static System.Void AssignStyleValues(UnityEngine.UIElements.VisualElement ve, UnityEngine.UIElements.Experimental.StyleValues src)
+  method private UnityEngine.UIElements.Experimental.StyleValues ReadCurrentValues(UnityEngine.UIElements.VisualElement ve, UnityEngine.UIElements.Experimental.StyleValues targetValuesToRead)
+  method private ValueAnimation<UnityEngine.UIElements.Experimental.StyleValues> UnityEngine.UIElements.Experimental.ITransitionAnimations.Start(UnityEngine.UIElements.Experimental.StyleValues to, System.Int32 durationMs)
+  method private ValueAnimation<UnityEngine.UIElements.Experimental.StyleValues> Start(Func<UnityEngine.UIElements.VisualElement, UnityEngine.UIElements.Experimental.StyleValues> fromValueGetter, UnityEngine.UIElements.Experimental.StyleValues to, System.Int32 durationMs)
+  method private ValueAnimation<UnityEngine.Rect> UnityEngine.UIElements.Experimental.ITransitionAnimations.Layout(UnityEngine.Rect to, System.Int32 durationMs)
+  method private ValueAnimation<UnityEngine.Vector2> UnityEngine.UIElements.Experimental.ITransitionAnimations.TopLeft(UnityEngine.Vector2 to, System.Int32 durationMs)
+  method private ValueAnimation<UnityEngine.Vector2> UnityEngine.UIElements.Experimental.ITransitionAnimations.Size(UnityEngine.Vector2 to, System.Int32 durationMs)
+  method private ValueAnimation<System.Single> UnityEngine.UIElements.Experimental.ITransitionAnimations.Scale(System.Single to, System.Int32 durationMs)
+  method private ValueAnimation<UnityEngine.Vector3> UnityEngine.UIElements.Experimental.ITransitionAnimations.Position(UnityEngine.Vector3 to, System.Int32 durationMs)
+  method private ValueAnimation<UnityEngine.Quaternion> UnityEngine.UIElements.Experimental.ITransitionAnimations.Rotation(UnityEngine.Quaternion to, System.Int32 durationMs)
+  method public System.Object get_dataSource()
+  method public System.Void set_dataSource(System.Object value)
+  method UnityEngine.Object get_dataSourceUnityObject()
+  method System.Void set_dataSourceUnityObject(UnityEngine.Object value)
+  method public Unity.Properties.PropertyPath get_dataSourcePath()
+  method public System.Void set_dataSourcePath(Unity.Properties.PropertyPath value)
+  method System.Boolean get_isDataSourcePathEmpty()
+  method System.String get_dataSourcePathString()
+  method System.Void set_dataSourcePathString(System.String value)
+  method private List<UnityEngine.UIElements.Binding> get_bindings()
+  method private System.Void set_bindings(List<UnityEngine.UIElements.Binding> value)
+  method public System.Type get_dataSourceType()
+  method public System.Void set_dataSourceType(System.Type value)
+  method System.String get_dataSourceTypeString()
+  method System.Void set_dataSourceTypeString(System.String value)
+  method public System.Void SetBinding(UnityEngine.UIElements.BindingId bindingId, UnityEngine.UIElements.Binding binding)
+  method public UnityEngine.UIElements.Binding GetBinding(UnityEngine.UIElements.BindingId bindingId)
+  method public System.Boolean TryGetBinding(UnityEngine.UIElements.BindingId bindingId, out ref UnityEngine.UIElements.Binding binding)
+  method public IEnumerable<UnityEngine.UIElements.BindingInfo> GetBindingInfos()
+  method public System.Void GetBindingInfos(List<UnityEngine.UIElements.BindingInfo> bindingInfos)
+  method public System.Boolean HasBinding(UnityEngine.UIElements.BindingId bindingId)
+  method public System.Void ClearBinding(UnityEngine.UIElements.BindingId bindingId)
+  method public System.Void ClearBindings()
+  method public UnityEngine.UIElements.DataSourceContext GetHierarchicalDataSourceContext()
+  method public UnityEngine.UIElements.DataSourceContext GetDataSourceContext(UnityEngine.UIElements.BindingId bindingId)
+  method public System.Boolean TryGetDataSourceContext(UnityEngine.UIElements.BindingId bindingId, out ref UnityEngine.UIElements.DataSourceContext context)
+  method public System.Boolean TryGetLastBindingToUIResult(ref ref UnityEngine.UIElements.BindingId bindingId, out ref UnityEngine.UIElements.BindingResult result)
+  method public System.Boolean TryGetLastBindingToSourceResult(ref ref UnityEngine.UIElements.BindingId bindingId, out ref UnityEngine.UIElements.BindingResult result)
+  method private System.Void RegisterBinding(UnityEngine.UIElements.BindingId bindingId, UnityEngine.UIElements.Binding binding)
+  method System.Void AddBindingRequest(UnityEngine.UIElements.BindingId bindingId, UnityEngine.UIElements.Binding binding)
+  method private System.Void ProcessBindingRequests()
+  method private System.Void CreateBindingRequests()
+  method private System.Void TrackSource(System.Object previous, System.Object current)
+  method private System.Void DetachDataSource()
+  method private System.Void AttachDataSource()
+  method private System.Void DirtyNextParentWithEventInterests()
+  method System.Void SetAsNextParentWithEventInterests()
+  method System.Boolean GetCachedNextParentWithEventInterests(out ref UnityEngine.UIElements.VisualElement nextParent)
+  method UnityEngine.UIElements.VisualElement get_nextParentWithEventInterests()
+  method private System.Void PropagateCachedNextParentWithEventInterests(UnityEngine.UIElements.VisualElement nextParent, UnityEngine.UIElements.VisualElement stopParent)
+  method System.Void ResetEventInterests()
+  method System.Void AddEventCallbackCategories(System.Int32 eventCategories, UnityEngine.UIElements.CallbackOptions callbackOptions)
+  method System.Void RemoveEventCallbackCategories(System.Int32 eventCategories, UnityEngine.UIElements.CallbackOptions callbackOptions)
+  method System.Int32 get_eventInterestSelfCategories()
+  method System.Int32 get_eventInterestParentCategories()
+  method System.Boolean get_isEventInterestParentCategoriesDirty()
+  method System.Void set_isEventInterestParentCategoriesDirty(System.Boolean value)
+  method private System.Void UpdateEventInterestSelfCategories()
+  method private System.Void UpdateEventInterestParentCategories()
+  method System.Boolean HasParentEventInterests(UnityEngine.UIElements.EventCategory eventCategory)
+  method System.Boolean HasParentEventInterests(System.Int32 eventCategories)
+  method System.Boolean HasSelfEventInterests(UnityEngine.UIElements.EventCategory eventCategory)
+  method System.Boolean HasSelfEventInterests(System.Int32 eventCategories)
+  method System.Boolean HasTrickleDownEventInterests(System.Int32 eventCategories)
+  method System.Boolean HasBubbleUpEventInterests(System.Int32 eventCategories)
+  method System.Boolean HasTrickleDownEventCallbacks(System.Int32 eventCategories)
+  method System.Boolean HasBubbleUpEventCallbacks(System.Int32 eventCategories)
+  method System.Boolean HasTrickleDownHandleEvent(UnityEngine.UIElements.EventCategory eventCategory)
+  method System.Boolean HasTrickleDownHandleEvent(System.Int32 eventCategories)
+  method System.Boolean HasBubbleUpHandleEvent(UnityEngine.UIElements.EventCategory eventCategory)
+  method System.Boolean HasBubbleUpHandleEvent(System.Int32 eventCategories)
+  method public UnityEngine.UIElements.IExperimentalFeatures get_experimental()
+  method private UnityEngine.UIElements.Experimental.ITransitionAnimations UnityEngine.UIElements.IExperimentalFeatures.get_animation()
+  method public UnityEngine.UIElements.VisualElement+.Hierarchy get_hierarchy()
+  method System.Boolean get_isRootVisualContainer()
+  method public System.Boolean get_cacheAsBitmap()
+  method public System.Void set_cacheAsBitmap(System.Boolean value)
+  method System.Boolean get_disableClipping()
+  method System.Void set_disableClipping(System.Boolean value)
+  method System.Boolean ShouldClip()
+  method System.Boolean get_disableRendering()
+  method System.Void set_disableRendering(System.Boolean value)
+  method public UnityEngine.UIElements.VisualElement get_parent()
+  method UnityEngine.UIElements.BaseVisualElementPanel get_elementPanel()
+  method private System.Void set_elementPanel(UnityEngine.UIElements.BaseVisualElementPanel value)
+  method public UnityEngine.UIElements.IPanel get_panel()
+  method public UnityEngine.UIElements.VisualElement get_contentContainer()
+  method public UnityEngine.UIElements.VisualTreeAsset get_visualTreeAssetSource()
+  method System.Void set_visualTreeAssetSource(UnityEngine.UIElements.VisualTreeAsset value)
+  method UnityEngine.UIElements.VisualElementAsset get_visualElementAsset()
+  method System.Void set_visualElementAsset(UnityEngine.UIElements.VisualElementAsset value)
+  method UnityEngine.UIElements.TemplateAsset get_templateAsset()
+  method System.Void set_templateAsset(UnityEngine.UIElements.TemplateAsset value)
+  method public System.Void Add(UnityEngine.UIElements.VisualElement child)
+  method System.Void Add(UnityEngine.UIElements.VisualElement child, System.Boolean ignoreContentContainer)
+  method public System.Void Insert(System.Int32 index, UnityEngine.UIElements.VisualElement element)
+  method System.Void Insert(System.Int32 index, UnityEngine.UIElements.VisualElement element, System.Boolean ignoreContentContainer)
+  method public System.Void Remove(UnityEngine.UIElements.VisualElement element)
+  method public System.Void RemoveAt(System.Int32 index)
+  method public System.Void Clear()
+  method public System.Void Clear(UnityEngine.UIElements.VisualElementClearOptions options)
+  method public UnityEngine.UIElements.VisualElement ElementAt(System.Int32 index)
+  method public UnityEngine.UIElements.VisualElement get_Item(System.Int32 key)
+  method public System.Int32 get_childCount()
+  method System.Int32 ChildCount(System.Boolean ignoreContentContainer)
+  method public System.Int32 IndexOf(UnityEngine.UIElements.VisualElement element)
+  method System.Int32 IndexOf(UnityEngine.UIElements.VisualElement element, System.Boolean ignoreContentContainer)
+  method UnityEngine.UIElements.VisualElement ElementAtTreePath(List<System.Int32> childIndexes)
+  method System.Boolean FindElementInTree(UnityEngine.UIElements.VisualElement element, List<System.Int32> outChildIndexes)
+  method public IEnumerable<UnityEngine.UIElements.VisualElement> Children()
+  method public System.Void Sort(Comparison<UnityEngine.UIElements.VisualElement> comp)
+  method public System.Void BringToFront()
+  method public System.Void SendToBack()
+  method public System.Void PlaceBehind(UnityEngine.UIElements.VisualElement sibling)
+  method public System.Void PlaceInFront(UnityEngine.UIElements.VisualElement sibling)
+  method System.Void OnChildAdded(UnityEngine.UIElements.VisualElement child)
+  method System.Void OnChildRemoved(UnityEngine.UIElements.VisualElement child)
+  method public System.Void RemoveFromHierarchy()
+  method public T GetFirstOfType()
+  method public T GetFirstAncestorOfType()
+  method UnityEngine.UIElements.VisualElement GetFirstAncestorWhere(Predicate<UnityEngine.UIElements.VisualElement> predicate)
+  method public System.Boolean Contains(UnityEngine.UIElements.VisualElement child)
+  method private System.Void GatherAllChildren(List<UnityEngine.UIElements.VisualElement> elements)
+  method public UnityEngine.UIElements.VisualElement FindCommonAncestor(UnityEngine.UIElements.VisualElement other)
+  method UnityEngine.UIElements.VisualElement GetRoot()
+  method UnityEngine.UIElements.VisualElement GetRootVisualContainer(System.Boolean stopAtNearestRoot)
+  method UnityEngine.UIElements.VisualElement GetNextElementDepthFirst()
+  method UnityEngine.UIElements.VisualElement GetPreviousElementDepthFirst()
+  method UnityEngine.UIElements.VisualElement RetargetElement(UnityEngine.UIElements.VisualElement retargetAgainst)
+  method private UnityEngine.Vector3 get_positionWithLayout()
+  method System.Void GetPivotedMatrixWithLayout(out ref UnityEngine.Matrix4x4 result)
+  method System.Boolean get_hasDefaultRotationAndScale()
+  method System.Boolean get_has3DTransform()
+  method private System.Boolean get_has3DTranslation()
+  method private System.Boolean get_has3DRotation()
+  method static System.Single Min(System.Single a, System.Single b, System.Single c, System.Single d)
+  method static System.Single Max(System.Single a, System.Single b, System.Single c, System.Single d)
+  method System.Void TransformAlignedBoundsToParentSpace(ref ref UnityEngine.Bounds bounds)
+  method private System.Void TransformAlignedRectToParentSpace(ref ref UnityEngine.Rect rect)
+  method static UnityEngine.Rect CalculateConservativeRect(ref ref UnityEngine.Matrix4x4 matrix, UnityEngine.Rect rect)
+  method static UnityEngine.Bounds CalculateConservativeBounds(ref ref UnityEngine.Matrix4x4 matrix, UnityEngine.Bounds bounds)
+  method static System.Void TransformAlignedRect(ref ref UnityEngine.Matrix4x4 matrix, ref ref UnityEngine.Rect rect)
+  method static System.Void TransformAlignedBounds(ref ref UnityEngine.Matrix4x4 matrix, ref ref UnityEngine.Bounds bounds)
+  method static System.Void OrderMinMaxRect(ref ref UnityEngine.Rect rect)
+  method static System.Void OrderMinMaxBounds(ref ref UnityEngine.Bounds bounds)
+  method static UnityEngine.Vector2 MultiplyMatrix44Point2(ref ref UnityEngine.Matrix4x4 lhs, UnityEngine.Vector2 point)
+  method static UnityEngine.Vector3 MultiplyMatrix44Point2ToPoint3(ref ref UnityEngine.Matrix4x4 lhs, UnityEngine.Vector2 point)
+  method static UnityEngine.Vector2 MultiplyMatrix44Point3ToPoint2(ref ref UnityEngine.Matrix4x4 lhs, UnityEngine.Vector3 point)
+  method static UnityEngine.Vector2 MultiplyVector2(ref ref UnityEngine.Matrix4x4 lhs, UnityEngine.Vector2 vector)
+  method static UnityEngine.Rect MultiplyMatrix44Rect2(ref ref UnityEngine.Matrix4x4 lhs, UnityEngine.Rect r)
+  method static System.Void MultiplyMatrix34(ref ref UnityEngine.Matrix4x4 lhs, ref ref UnityEngine.Matrix4x4 rhs, out ref UnityEngine.Matrix4x4 res)
+  method private static System.Void TranslateMatrix34(ref ref UnityEngine.Matrix4x4 lhs, UnityEngine.Vector3 rhs, out ref UnityEngine.Matrix4x4 res)
+  method private static System.Void TranslateMatrix34InPlace(ref ref UnityEngine.Matrix4x4 lhs, UnityEngine.Vector3 rhs)
+  method public UnityEngine.UIElements.IVisualElementScheduler get_schedule()
+  method private UnityEngine.UIElements.IVisualElementScheduledItem UnityEngine.UIElements.IVisualElementScheduler.Execute(Action<UnityEngine.UIElements.TimerState> timerUpdateEvent)
+  method private UnityEngine.UIElements.IVisualElementScheduledItem UnityEngine.UIElements.IVisualElementScheduler.Execute(System.Action updateEvent)
+  method UnityEngine.UIElements.VisualElement+.CustomStyleAccess get_customStyleAccess()
+  method public UnityEngine.UIElements.IStyle get_style()
+  method public UnityEngine.UIElements.IResolvedStyle get_resolvedStyle()
+  method public UnityEngine.UIElements.ICustomStyle get_customStyle()
+  method public UnityEngine.UIElements.VisualElementStyleSheetSet get_styleSheets()
+  method System.Void AddStyleSheetPath(System.String sheetPath)
+  method System.Boolean HasStyleSheetPath(System.String sheetPath)
+  method System.Void RemoveStyleSheetPath(System.String sheetPath)
+  method UnityEngine.UIElements.StyleFloat ResolveLengthValue(UnityEngine.UIElements.Length length, System.Boolean isRow)
+  method UnityEngine.Vector3 ResolveTranslate()
+  method UnityEngine.Vector3 ResolveTransformOrigin()
+  method private UnityEngine.Quaternion ResolveRotation()
+  method private UnityEngine.Vector3 ResolveScale()
+  method private System.Boolean UnityEngine.UIElements.ICustomStyle.TryGetValue(CustomStyleProperty<System.Single> property, out ref System.Single value)
+  method private System.Boolean UnityEngine.UIElements.ICustomStyle.TryGetValue(CustomStyleProperty<System.Int32> property, out ref System.Int32 value)
+  method private System.Boolean UnityEngine.UIElements.ICustomStyle.TryGetValue(CustomStyleProperty<System.Boolean> property, out ref System.Boolean value)
+  method private System.Boolean UnityEngine.UIElements.ICustomStyle.TryGetValue(CustomStyleProperty<UnityEngine.Color> property, out ref UnityEngine.Color value)
+  method private System.Boolean UnityEngine.UIElements.ICustomStyle.TryGetValue(CustomStyleProperty<UnityEngine.Texture2D> property, out ref UnityEngine.Texture2D value)
+  method private System.Boolean UnityEngine.UIElements.ICustomStyle.TryGetValue(CustomStyleProperty<UnityEngine.Sprite> property, out ref UnityEngine.Sprite value)
+  method private System.Boolean UnityEngine.UIElements.ICustomStyle.TryGetValue(CustomStyleProperty<UnityEngine.UIElements.VectorImage> property, out ref UnityEngine.UIElements.VectorImage value)
+  method private System.Boolean UnityEngine.UIElements.ICustomStyle.TryGetValue(CustomStyleProperty<T> property, out ref T value)
+  method private System.Boolean UnityEngine.UIElements.ICustomStyle.TryGetValue(CustomStyleProperty<System.String> property, out ref System.String value)
+  method public System.String get_tooltip()
+  method public System.Void set_tooltip(System.String value)
+  method private UnityEngine.UIElements.VisualElement+.TypeData get_typeData()
+  method static UnityEngine.UIElements.VisualElement+.TypeData GetOrCreateTypeData(System.Type t)
+  method private static System.Void .cctor()
+  method static System.Boolean <CalculateConservativeBounds>g__IsNaN|792_0(UnityEngine.Vector3 v)
+  nested UnityEngine.UIElements.VisualElement+.ResolvedStyleProperties
+  nested UnityEngine.UIElements.VisualElement+.StyleProperties
+  nested UnityEngine.UIElements.VisualElement+.UxmlFactory
+  nested UnityEngine.UIElements.VisualElement+.UxmlTraits
+  nested UnityEngine.UIElements.VisualElement+.UxmlSerializedData
+  nested UnityEngine.UIElements.VisualElement+.MeasureMode
+  nested UnityEngine.UIElements.VisualElement+.DefaultEventInterests
+  nested UnityEngine.UIElements.VisualElement+.Hierarchy
+  nested UnityEngine.UIElements.VisualElement+.BaseVisualElementScheduledItem
+  nested UnityEngine.UIElements.VisualElement+.VisualElementScheduledItem`1
+  nested UnityEngine.UIElements.VisualElement+.TimerStateScheduledItem
+  nested UnityEngine.UIElements.VisualElement+.SimpleScheduledItem
+  nested UnityEngine.UIElements.VisualElement+.CustomStyleAccess
+  nested UnityEngine.UIElements.VisualElement+.TypeData
+  nested UnityEngine.UIElements.VisualElement+.TypeReferenceComparer
+  nested UnityEngine.UIElements.VisualElement+.<>O
+  nested UnityEngine.UIElements.VisualElement+.<>c
+  nested UnityEngine.UIElements.VisualElement+.<>c__DisplayClass556_0
+  nested UnityEngine.UIElements.VisualElement+.<>c__DisplayClass557_0
+  nested UnityEngine.UIElements.VisualElement+.<>c__DisplayClass558_0
+  nested UnityEngine.UIElements.VisualElement+.<>c__DisplayClass559_0
+  nested UnityEngine.UIElements.VisualElement+.<>c__DisplayClass560_0
+  nested UnityEngine.UIElements.VisualElement+.<>c__DisplayClass561_0
+  nested UnityEngine.UIElements.VisualElement+.<>c__DisplayClass562_0
+  nested UnityEngine.UIElements.VisualElement+.<>c__DisplayClass572_0
+  nested UnityEngine.UIElements.VisualElement+.<>c__DisplayClass635_0
+  nested UnityEngine.UIElements.VisualElement+.<GetBindingInfos>d__632
+
+=== UnityEngine.UIElements.BaseFieldTraits`2   [UnityEngine.UIElementsModule]
+  kind: class   base: UxmlTraits<TValueType>
+  [type attr] System.ObsoleteAttribute
+  method public System.Void .ctor()

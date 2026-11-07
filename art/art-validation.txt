@@ -1,0 +1,452 @@
+====================================================================================
+MWP mechanical water pump - .timbermesh validation (pure Python)
+Blender-free: zlib + vendored official plugin protobuf schema
+validator: art/validate_timbermesh.py  |  contract: art/mwp_common.py
+checks: geometry/envelope/materials + ART-07 world-scale UV + node animations
+====================================================================================
+mode: ANIMATED
+
+
+  MWP.Pump.Basic.Folktails.Model
+  ------------------------------
+    [PASS] C1 parse (zlib+protobuf)             49919 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Basic.Folktails.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Basic.Folktails.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        9 (want 9 = root+3 ports+5 parts)
+    [PASS] C3 independent part nodes            animated=['#AnimatedPiston', '#AnimatedFlywheel', '#AnimatedHeadPulley', '#AnimatedHeadShaft', '#AnimatedDriveShaft'] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_Brown.Folktails', 'BaseWood_LightBrown.Folktails', 'IrregularPlanks_Brown.Folktails']
+    [PASS] C3 3 port markers                    #Port#Power=[2.0, 1.5, 1.5] #Port#Pipe=[1.0, 0.65, 3.0] #Port#Logistics=[1.0, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=6 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[2.0, 3.0, 3.0]
+    [PASS] C5 triangle budget / source match    2072 <= 12000 (source 2072)
+    [PASS] C17 merge check (parts stay separate) root=1332/1332 Piston=44/44 Flywheel=272/272 HeadPulley=248/248 HeadShaft=32/32 DriveShaft=144/144
+    [PASS] C8 topology + uv0 in [0,1]           indices=6216 uv_u_range=[0.0391, 0.8180]
+    [PASS] C9 normals unit/flat/outward + volume checked=2072 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Basic.Folktails.Model=2.7019; Piston=0.0254; Flywheel=0.4519; HeadPulley=0.0239; HeadShaft=0.0152; DriveShaft=0.1133
+    [PASS] C10 uv inside verified canvas        BaseWood_Brown.Folktails=[0.0391,0.5684,0.4648,0.9941]; BaseWood_LightBrown.Folktails=[0.0391,0.5684,0.4648,0.9941]; IrregularPlanks_Brown.Folktails=[0.1820,0.1820,0.8180,0.8180]
+    [PASS] C11 ART-07 UV density                min=141.4 px/m; BaseWood_Brown.Folktails=144.6 px/m (planned 145.3); BaseWood_LightBrown.Folktails=141.4 px/m (planned 145.3); IrregularPlanks_Brown.Folktails=327.0 px/m (planned 340.0)
+    [PASS] C12 node animations                  5 animated nodes x 120 frames @ 24 fps
+    [PASS] C15 frames vs source animation       Piston rot_err=0.0e+00 pos_err=1.5e-07 scale_err=0.0e+00; Flywheel rot_err=7.2e-08 pos_err=4.8e-08 scale_err=6.0e-08; HeadPulley rot_err=7.9e-08 pos_err=4.8e-08 scale_err=6.0e-08; HeadShaft rot_err=7.9e-08 pos_err=4.8e-08 scale_err=6.0e-08; DriveShaft rot_err=7.2e-08 pos_err=4.8e-08 scale_err=6.0e-08
+    [PASS] C16 motion axis vs part geometry     Piston y(ok); Flywheel x(disc); HeadPulley x(disc); HeadShaft x(shaft); DriveShaft x(shaft)
+
+  MWP.Pump.Basic.IronTeeth.Model
+  ------------------------------
+    [PASS] C1 parse (zlib+protobuf)             49921 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Basic.IronTeeth.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Basic.IronTeeth.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        9 (want 9 = root+3 ports+5 parts)
+    [PASS] C3 independent part nodes            animated=['#AnimatedPiston', '#AnimatedFlywheel', '#AnimatedHeadPulley', '#AnimatedHeadShaft', '#AnimatedDriveShaft'] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_DarkBrown.IronTeeth', 'BaseWood_Grey.IronTeeth', 'IrregularPlanks_MetalForged.IronTeeth']
+    [PASS] C3 3 port markers                    #Port#Power=[2.0, 1.5, 1.5] #Port#Pipe=[1.0, 0.65, 3.0] #Port#Logistics=[1.0, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=6 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[2.0, 3.0, 3.0]
+    [PASS] C5 triangle budget / source match    2072 <= 12000 (source 2072)
+    [PASS] C17 merge check (parts stay separate) root=1332/1332 Piston=44/44 Flywheel=272/272 HeadPulley=248/248 HeadShaft=32/32 DriveShaft=144/144
+    [PASS] C8 topology + uv0 in [0,1]           indices=6216 uv_u_range=[0.0391, 0.8180]
+    [PASS] C9 normals unit/flat/outward + volume checked=2072 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Basic.IronTeeth.Model=2.7019; Piston=0.0254; Flywheel=0.4519; HeadPulley=0.0239; HeadShaft=0.0152; DriveShaft=0.1133
+    [PASS] C10 uv inside verified canvas        BaseWood_DarkBrown.IronTeeth=[0.0391,0.5684,0.4648,0.9941]; BaseWood_Grey.IronTeeth=[0.0391,0.5684,0.4648,0.9941]; IrregularPlanks_MetalForged.IronTeeth=[0.1820,0.1820,0.8180,0.8180]
+    [PASS] C11 ART-07 UV density                min=141.4 px/m; BaseWood_DarkBrown.IronTeeth=144.6 px/m (planned 145.3); BaseWood_Grey.IronTeeth=141.4 px/m (planned 145.3); IrregularPlanks_MetalForged.IronTeeth=327.0 px/m (planned 340.0)
+    [PASS] C12 node animations                  5 animated nodes x 120 frames @ 24 fps
+    [PASS] C15 frames vs source animation       Piston rot_err=0.0e+00 pos_err=1.5e-07 scale_err=0.0e+00; Flywheel rot_err=7.2e-08 pos_err=4.8e-08 scale_err=6.0e-08; HeadPulley rot_err=7.9e-08 pos_err=4.8e-08 scale_err=6.0e-08; HeadShaft rot_err=7.9e-08 pos_err=4.8e-08 scale_err=6.0e-08; DriveShaft rot_err=7.2e-08 pos_err=4.8e-08 scale_err=6.0e-08
+    [PASS] C16 motion axis vs part geometry     Piston y(ok); Flywheel x(disc); HeadPulley x(disc); HeadShaft x(shaft); DriveShaft x(shaft)
+
+  MWP.Pump.Intermediate.Folktails.Model
+  -------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             66135 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Intermediate.Folktails.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Intermediate.Folktails.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        10 (want 10 = root+3 ports+6 parts)
+    [PASS] C3 independent part nodes            animated=['#AnimatedPiston', '#AnimatedGearboxGear', '#AnimatedGearboxPinion', '#AnimatedFlywheel', '#AnimatedHeadPulley', '#AnimatedDriveShaft'] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_LightBrown.Folktails', 'BaseWood_Brown.Folktails', 'IrregularPlanks_Brown.Folktails']
+    [PASS] C3 3 port markers                    #Port#Power=[2.0, 1.5, 1.5] #Port#Pipe=[1.0, 0.65, 3.0] #Port#Logistics=[1.0, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=7 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[2.0, 3.0, 3.0]
+    [PASS] C5 triangle budget / source match    2788 <= 12000 (source 2788)
+    [PASS] C17 merge check (parts stay separate) root=1724/1724 Piston=76/76 GearboxGear=272/272 GearboxPinion=248/248 Flywheel=284/284 HeadPulley=40/40 DriveShaft=144/144
+    [PASS] C8 topology + uv0 in [0,1]           indices=8364 uv_u_range=[0.0391, 0.7563]
+    [PASS] C9 normals unit/flat/outward + volume checked=2788 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Intermediate.Folktails.Model=4.6117; Piston=0.0383; GearboxGear=0.0686; GearboxPinion=0.0326; Flywheel=0.2675; HeadPulley=0.0152; DriveShaft=0.0936
+    [PASS] C10 uv inside verified canvas        BaseWood_Brown.Folktails=[0.0391,0.5684,0.4648,0.9941]; BaseWood_LightBrown.Folktails=[0.0391,0.5684,0.4648,0.9941]; IrregularPlanks_Brown.Folktails=[0.2437,0.2437,0.7563,0.7563]
+    [PASS] C11 ART-07 UV density                min=141.3 px/m; BaseWood_Brown.Folktails=141.3 px/m (planned 145.3); BaseWood_LightBrown.Folktails=145.3 px/m (planned 145.3); IrregularPlanks_Brown.Folktails=333.6 px/m (planned 340.0)
+    [PASS] C12 node animations                  6 animated nodes x 120 frames @ 24 fps
+    [PASS] C15 frames vs source animation       Piston rot_err=0.0e+00 pos_err=1.2e-07 scale_err=0.0e+00; GearboxGear rot_err=6.1e-08 pos_err=5.7e-08 scale_err=6.0e-08; GearboxPinion rot_err=6.1e-08 pos_err=5.7e-08 scale_err=6.0e-08; Flywheel rot_err=7.2e-08 pos_err=5.2e-08 scale_err=6.0e-08; HeadPulley rot_err=6.7e-08 pos_err=8.6e-08 scale_err=6.0e-08; DriveShaft rot_err=7.2e-08 pos_err=2.4e-08 scale_err=6.0e-08
+    [PASS] C16 motion axis vs part geometry     Piston y(ok); GearboxGear x(disc); GearboxPinion x(disc); Flywheel x(disc); HeadPulley x(disc); DriveShaft x(shaft)
+
+  MWP.Pump.Intermediate.IronTeeth.Model
+  -------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             66163 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Intermediate.IronTeeth.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Intermediate.IronTeeth.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        10 (want 10 = root+3 ports+6 parts)
+    [PASS] C3 independent part nodes            animated=['#AnimatedPiston', '#AnimatedGearboxGear', '#AnimatedGearboxPinion', '#AnimatedFlywheel', '#AnimatedHeadPulley', '#AnimatedDriveShaft'] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_Grey.IronTeeth', 'BaseWood_DarkBrown.IronTeeth', 'IrregularPlanks_MetalForged.IronTeeth']
+    [PASS] C3 3 port markers                    #Port#Power=[2.0, 1.5, 1.5] #Port#Pipe=[1.0, 0.65, 3.0] #Port#Logistics=[1.0, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=7 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[2.0, 3.0, 3.0]
+    [PASS] C5 triangle budget / source match    2788 <= 12000 (source 2788)
+    [PASS] C17 merge check (parts stay separate) root=1724/1724 Piston=76/76 GearboxGear=272/272 GearboxPinion=248/248 Flywheel=284/284 HeadPulley=40/40 DriveShaft=144/144
+    [PASS] C8 topology + uv0 in [0,1]           indices=8364 uv_u_range=[0.0391, 0.7563]
+    [PASS] C9 normals unit/flat/outward + volume checked=2788 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Intermediate.IronTeeth.Model=4.6117; Piston=0.0383; GearboxGear=0.0686; GearboxPinion=0.0326; Flywheel=0.2675; HeadPulley=0.0152; DriveShaft=0.0936
+    [PASS] C10 uv inside verified canvas        BaseWood_DarkBrown.IronTeeth=[0.0391,0.5684,0.4648,0.9941]; BaseWood_Grey.IronTeeth=[0.0391,0.5684,0.4648,0.9941]; IrregularPlanks_MetalForged.IronTeeth=[0.2437,0.2437,0.7563,0.7563]
+    [PASS] C11 ART-07 UV density                min=141.3 px/m; BaseWood_DarkBrown.IronTeeth=141.3 px/m (planned 145.3); BaseWood_Grey.IronTeeth=145.3 px/m (planned 145.3); IrregularPlanks_MetalForged.IronTeeth=333.6 px/m (planned 340.0)
+    [PASS] C12 node animations                  6 animated nodes x 120 frames @ 24 fps
+    [PASS] C15 frames vs source animation       Piston rot_err=0.0e+00 pos_err=1.2e-07 scale_err=0.0e+00; GearboxGear rot_err=6.1e-08 pos_err=5.7e-08 scale_err=6.0e-08; GearboxPinion rot_err=6.1e-08 pos_err=5.7e-08 scale_err=6.0e-08; Flywheel rot_err=7.2e-08 pos_err=5.2e-08 scale_err=6.0e-08; HeadPulley rot_err=6.7e-08 pos_err=8.6e-08 scale_err=6.0e-08; DriveShaft rot_err=7.2e-08 pos_err=2.4e-08 scale_err=6.0e-08
+    [PASS] C16 motion axis vs part geometry     Piston y(ok); GearboxGear x(disc); GearboxPinion x(disc); Flywheel x(disc); HeadPulley x(disc); DriveShaft x(shaft)
+
+  MWP.Pump.Advanced.Folktails.Model
+  ---------------------------------
+    [PASS] C1 parse (zlib+protobuf)             89948 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Advanced.Folktails.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Advanced.Folktails.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        11 (want 11 = root+3 ports+7 parts)
+    [PASS] C3 independent part nodes            animated=['#AnimatedPiston1', '#AnimatedPiston2', '#AnimatedPiston3', '#AnimatedFlywheel', '#AnimatedHeadPulley', '#AnimatedGearboxGear', '#AnimatedDriveShaft'] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_LightBrown.Folktails', 'BaseMetal.Folktails', 'WindowsAtlas.Folktails', 'Details.Folktails']
+    [PASS] C3 3 port markers                    #Port#Power=[3.0, 2.0, 1.5] #Port#Pipe=[1.5, 0.65, 3.0] #Port#Logistics=[1.5, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=8 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[3.0, 4.0, 3.0]
+    [PASS] C5 triangle budget / source match    3948 <= 12000 (source 3948)
+    [PASS] C17 merge check (parts stay separate) root=2820/2820 Piston1=44/44 Piston2=44/44 Piston3=44/44 Flywheel=320/320 HeadPulley=260/260 GearboxGear=272/272 DriveShaft=144/144
+    [PASS] C8 topology + uv0 in [0,1]           indices=11844 uv_u_range=[0.0098, 0.9766]
+    [PASS] C9 normals unit/flat/outward + volume checked=3948 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Advanced.Folktails.Model=5.9509; Piston1=0.0143; Piston2=0.0143; Piston3=0.0143; Flywheel=0.4528; HeadPulley=0.0332; GearboxGear=0.0459; DriveShaft=0.1955
+    [PASS] C10 uv inside verified canvas        BaseMetal.Folktails=[0.0098,0.5098,0.4902,0.9902]; BaseWood_LightBrown.Folktails=[0.0391,0.5684,0.4648,0.9941]; Details.Folktails=[0.0537,0.0614,0.4463,0.4464]; WindowsAtlas.Folktails=[0.7734,0.0059,0.9766,0.2441]
+    [PASS] C11 ART-07 UV density                min=82.0 px/m; BaseMetal.Folktails=140.1 px/m (planned 142.0); BaseWood_LightBrown.Folktails=138.6 px/m (planned 138.6); Details.Folktails=161.1 px/m (planned 164.0); WindowsAtlas.Folktails=82.0 px/m (planned 82.1)
+    [PASS] C12 node animations                  7 animated nodes x 120 frames @ 24 fps
+    [PASS] C15 frames vs source animation       Piston1 rot_err=0.0e+00 pos_err=1.5e-07 scale_err=0.0e+00; Piston2 rot_err=0.0e+00 pos_err=1.4e-07 scale_err=0.0e+00; Piston3 rot_err=0.0e+00 pos_err=1.5e-07 scale_err=0.0e+00; Flywheel rot_err=7.2e-08 pos_err=9.5e-08 scale_err=6.0e-08; HeadPulley rot_err=6.7e-08 pos_err=9.5e-08 scale_err=6.0e-08; GearboxGear rot_err=6.1e-08 pos_err=9.5e-08 scale_err=6.0e-08; DriveShaft rot_err=7.2e-08 pos_err=4.8e-08 scale_err=6.0e-08
+    [PASS] C16 motion axis vs part geometry     Piston1 y(ok); Piston2 y(ok); Piston3 y(ok); Flywheel x(disc); HeadPulley x(disc); GearboxGear x(disc); DriveShaft x(shaft)
+
+  MWP.Pump.Advanced.IronTeeth.Model
+  ---------------------------------
+    [PASS] C1 parse (zlib+protobuf)             89977 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Advanced.IronTeeth.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Advanced.IronTeeth.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        11 (want 11 = root+3 ports+7 parts)
+    [PASS] C3 independent part nodes            animated=['#AnimatedPiston1', '#AnimatedPiston2', '#AnimatedPiston3', '#AnimatedFlywheel', '#AnimatedHeadPulley', '#AnimatedGearboxGear', '#AnimatedDriveShaft'] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_Grey.IronTeeth', 'BaseMetal.IronTeeth', 'IrregularPlanks_MetalForged.IronTeeth', 'WindowsAtlas.IronTeeth']
+    [PASS] C3 3 port markers                    #Port#Power=[3.0, 2.0, 1.5] #Port#Pipe=[1.5, 0.65, 3.0] #Port#Logistics=[1.5, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=8 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[3.0, 4.0, 3.0]
+    [PASS] C5 triangle budget / source match    3948 <= 12000 (source 3948)
+    [PASS] C17 merge check (parts stay separate) root=2820/2820 Piston1=44/44 Piston2=44/44 Piston3=44/44 Flywheel=320/320 HeadPulley=260/260 GearboxGear=272/272 DriveShaft=144/144
+    [PASS] C8 topology + uv0 in [0,1]           indices=11844 uv_u_range=[0.0098, 0.9766]
+    [PASS] C9 normals unit/flat/outward + volume checked=3948 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Advanced.IronTeeth.Model=5.9509; Piston1=0.0143; Piston2=0.0143; Piston3=0.0143; Flywheel=0.4528; HeadPulley=0.0332; GearboxGear=0.0459; DriveShaft=0.1955
+    [PASS] C10 uv inside verified canvas        BaseMetal.IronTeeth=[0.0098,0.5098,0.4902,0.9902]; BaseWood_Grey.IronTeeth=[0.0391,0.5684,0.4648,0.9941]; IrregularPlanks_MetalForged.IronTeeth=[0.0318,0.0186,0.9682,0.9814]; WindowsAtlas.IronTeeth=[0.7734,0.0059,0.9766,0.2441]
+    [PASS] C11 ART-07 UV density                min=82.0 px/m; BaseMetal.IronTeeth=140.1 px/m (planned 142.0); BaseWood_Grey.IronTeeth=145.3 px/m (planned 145.3); IrregularPlanks_MetalForged.IronTeeth=340.0 px/m (planned 340.0); WindowsAtlas.IronTeeth=82.0 px/m (planned 82.1)
+    [PASS] C12 node animations                  7 animated nodes x 120 frames @ 24 fps
+    [PASS] C15 frames vs source animation       Piston1 rot_err=0.0e+00 pos_err=1.5e-07 scale_err=0.0e+00; Piston2 rot_err=0.0e+00 pos_err=1.4e-07 scale_err=0.0e+00; Piston3 rot_err=0.0e+00 pos_err=1.5e-07 scale_err=0.0e+00; Flywheel rot_err=7.2e-08 pos_err=9.5e-08 scale_err=6.0e-08; HeadPulley rot_err=6.7e-08 pos_err=9.5e-08 scale_err=6.0e-08; GearboxGear rot_err=6.1e-08 pos_err=9.5e-08 scale_err=6.0e-08; DriveShaft rot_err=7.2e-08 pos_err=4.8e-08 scale_err=6.0e-08
+    [PASS] C16 motion axis vs part geometry     Piston1 y(ok); Piston2 y(ok); Piston3 y(ok); Flywheel x(disc); HeadPulley x(disc); GearboxGear x(disc); DriveShaft x(shaft)
+
+  MWP.Pump.Top.Folktails.Model
+  ----------------------------
+    [PASS] C1 parse (zlib+protobuf)             82155 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Top.Folktails.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Top.Folktails.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        9 (want 9 = root+3 ports+5 parts)
+    [PASS] C3 independent part nodes            animated=['#AnimatedPiston1', '#AnimatedPiston2', '#AnimatedFlywheel', '#AnimatedHeadPulley', '#AnimatedDriveShaft'] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['IrregularPlanks_Brown.Folktails', 'BaseMetal.Folktails', 'Details.Folktails', 'WindowsAtlas.Folktails']
+    [PASS] C3 3 port markers                    #Port#Power=[3.0, 2.0, 2.0] #Port#Pipe=[1.5, 0.65, 4.0] #Port#Logistics=[1.5, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=6 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[3.0, 4.0, 4.0]
+    [PASS] C5 triangle budget / source match    3768 <= 12000 (source 3768)
+    [PASS] C17 merge check (parts stay separate) root=2836/2836 Piston1=80/80 Piston2=80/80 Flywheel=356/356 HeadPulley=272/272 DriveShaft=144/144
+    [PASS] C8 topology + uv0 in [0,1]           indices=11304 uv_u_range=[0.0020, 0.9980]
+    [PASS] C9 normals unit/flat/outward + volume checked=3768 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Top.Folktails.Model=10.2526; Piston1=0.1755; Piston2=0.1755; Flywheel=0.9059; HeadPulley=0.0495; DriveShaft=0.3238
+    [PASS] C10 uv inside verified canvas        BaseMetal.Folktails=[0.0098,0.5098,0.4902,0.9902]; Details.Folktails=[0.0059,0.0137,0.4941,0.4941]; IrregularPlanks_Brown.Folktails=[0.0020,0.0020,0.9980,0.9980]; WindowsAtlas.Folktails=[0.7747,0.0094,0.9753,0.2406]
+    [PASS] C11 ART-07 UV density                min=82.3 px/m; BaseMetal.Folktails=121.2 px/m (planned 123.0); Details.Folktails=138.9 px/m (planned 140.9); IrregularPlanks_Brown.Folktails=255.0 px/m (planned 255.0); WindowsAtlas.Folktails=82.3 px/m (planned 82.4)
+    [PASS] C12 node animations                  5 animated nodes x 120 frames @ 24 fps
+    [PASS] C15 frames vs source animation       Piston1 rot_err=0.0e+00 pos_err=1.1e-07 scale_err=0.0e+00; Piston2 rot_err=0.0e+00 pos_err=1.1e-07 scale_err=0.0e+00; Flywheel rot_err=7.2e-08 pos_err=1.1e-07 scale_err=6.0e-08; HeadPulley rot_err=7.9e-08 pos_err=1.1e-07 scale_err=6.0e-08; DriveShaft rot_err=7.2e-08 pos_err=4.8e-08 scale_err=6.0e-08
+    [PASS] C16 motion axis vs part geometry     Piston1 z(ok); Piston2 z(ok); Flywheel x(disc); HeadPulley x(disc); DriveShaft x(shaft)
+
+  MWP.Pump.Top.IronTeeth.Model
+  ----------------------------
+    [PASS] C1 parse (zlib+protobuf)             82163 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Top.IronTeeth.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Top.IronTeeth.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        9 (want 9 = root+3 ports+5 parts)
+    [PASS] C3 independent part nodes            animated=['#AnimatedPiston1', '#AnimatedPiston2', '#AnimatedFlywheel', '#AnimatedHeadPulley', '#AnimatedDriveShaft'] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['IrregularPlanks_MetalForged.IronTeeth', 'BaseMetal.IronTeeth', 'Details.IronTeeth', 'WindowsAtlas.IronTeeth']
+    [PASS] C3 3 port markers                    #Port#Power=[3.0, 2.0, 2.0] #Port#Pipe=[1.5, 0.65, 4.0] #Port#Logistics=[1.5, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=6 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[3.0, 4.0, 4.0]
+    [PASS] C5 triangle budget / source match    3768 <= 12000 (source 3768)
+    [PASS] C17 merge check (parts stay separate) root=2836/2836 Piston1=80/80 Piston2=80/80 Flywheel=356/356 HeadPulley=272/272 DriveShaft=144/144
+    [PASS] C8 topology + uv0 in [0,1]           indices=11304 uv_u_range=[0.0020, 0.9980]
+    [PASS] C9 normals unit/flat/outward + volume checked=3768 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Top.IronTeeth.Model=10.2526; Piston1=0.1755; Piston2=0.1755; Flywheel=0.9059; HeadPulley=0.0495; DriveShaft=0.3238
+    [PASS] C10 uv inside verified canvas        BaseMetal.IronTeeth=[0.0098,0.5098,0.4902,0.9902]; Details.IronTeeth=[0.0059,0.0137,0.4941,0.4941]; IrregularPlanks_MetalForged.IronTeeth=[0.0020,0.0020,0.9980,0.9980]; WindowsAtlas.IronTeeth=[0.7747,0.0094,0.9753,0.2406]
+    [PASS] C11 ART-07 UV density                min=82.3 px/m; BaseMetal.IronTeeth=121.2 px/m (planned 123.0); Details.IronTeeth=138.9 px/m (planned 140.9); IrregularPlanks_MetalForged.IronTeeth=255.0 px/m (planned 255.0); WindowsAtlas.IronTeeth=82.3 px/m (planned 82.4)
+    [PASS] C12 node animations                  5 animated nodes x 120 frames @ 24 fps
+    [PASS] C15 frames vs source animation       Piston1 rot_err=0.0e+00 pos_err=1.1e-07 scale_err=0.0e+00; Piston2 rot_err=0.0e+00 pos_err=1.1e-07 scale_err=0.0e+00; Flywheel rot_err=7.2e-08 pos_err=1.1e-07 scale_err=6.0e-08; HeadPulley rot_err=7.9e-08 pos_err=1.1e-07 scale_err=6.0e-08; DriveShaft rot_err=7.2e-08 pos_err=4.8e-08 scale_err=6.0e-08
+    [PASS] C16 motion axis vs part geometry     Piston1 z(ok); Piston2 z(ok); Flywheel x(disc); HeadPulley x(disc); DriveShaft x(shaft)
+
+  MWP.Pump.Basic.Folktails.ConstructionStage0.Model
+  -------------------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             9459 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Basic.Folktails.ConstructionStage0.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Basic.Folktails.ConstructionStage0.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        4 (want 4 = root+3 ports+0 parts)
+    [PASS] C3 independent part nodes            animated=[] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_Brown.Folktails', 'BaseMetal.Folktails']
+    [PASS] C3 3 port markers                    #Port#Power=[2.0, 1.5, 1.5] #Port#Pipe=[1.0, 0.65, 3.0] #Port#Logistics=[1.0, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=1 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[2.0, 3.0, 3.0]
+    [PASS] C5 triangle budget / source match    628 <= 12000 (source 628)
+    [PASS] C17 merge check (parts stay separate) root=628/628
+    [PASS] C8 topology + uv0 in [0,1]           indices=1884 uv_u_range=[0.0210, 0.4790]
+    [PASS] C9 normals unit/flat/outward + volume checked=628 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Basic.Folktails.ConstructionStage0.Model=1.4255
+    [PASS] C10 uv inside verified canvas        BaseMetal.Folktails=[0.0210,0.5154,0.4790,0.9846]; BaseWood_Brown.Folktails=[0.0391,0.5684,0.4648,0.9941]
+    [PASS] C11 ART-07 UV density                min=145.3 px/m; BaseMetal.Folktails=162.7 px/m (planned 164.0); BaseWood_Brown.Folktails=145.3 px/m (planned 145.3)
+    [PASS] C12 node animations                  static diagnostic: 0 independent part nodes, 0 animations
+    [PASS] C15 frames vs source animation       
+    [PASS] C16 motion axis vs part geometry     
+
+  MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model
+  -------------------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             9463 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        4 (want 4 = root+3 ports+0 parts)
+    [PASS] C3 independent part nodes            animated=[] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_DarkBrown.IronTeeth', 'BaseMetal.IronTeeth']
+    [PASS] C3 3 port markers                    #Port#Power=[2.0, 1.5, 1.5] #Port#Pipe=[1.0, 0.65, 3.0] #Port#Logistics=[1.0, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=1 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[2.0, 3.0, 3.0]
+    [PASS] C5 triangle budget / source match    628 <= 12000 (source 628)
+    [PASS] C17 merge check (parts stay separate) root=628/628
+    [PASS] C8 topology + uv0 in [0,1]           indices=1884 uv_u_range=[0.0210, 0.4790]
+    [PASS] C9 normals unit/flat/outward + volume checked=628 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model=1.4255
+    [PASS] C10 uv inside verified canvas        BaseMetal.IronTeeth=[0.0210,0.5154,0.4790,0.9846]; BaseWood_DarkBrown.IronTeeth=[0.0391,0.5684,0.4648,0.9941]
+    [PASS] C11 ART-07 UV density                min=145.3 px/m; BaseMetal.IronTeeth=162.7 px/m (planned 164.0); BaseWood_DarkBrown.IronTeeth=145.3 px/m (planned 145.3)
+    [PASS] C12 node animations                  static diagnostic: 0 independent part nodes, 0 animations
+    [PASS] C15 frames vs source animation       
+    [PASS] C16 motion axis vs part geometry     
+
+  MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model
+  --------------------------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             9465 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        4 (want 4 = root+3 ports+0 parts)
+    [PASS] C3 independent part nodes            animated=[] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_Brown.Folktails', 'BaseMetal.Folktails']
+    [PASS] C3 3 port markers                    #Port#Power=[2.0, 1.5, 1.5] #Port#Pipe=[1.0, 0.65, 3.0] #Port#Logistics=[1.0, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=1 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[2.0, 3.0, 3.0]
+    [PASS] C5 triangle budget / source match    628 <= 12000 (source 628)
+    [PASS] C17 merge check (parts stay separate) root=628/628
+    [PASS] C8 topology + uv0 in [0,1]           indices=1884 uv_u_range=[0.0210, 0.4790]
+    [PASS] C9 normals unit/flat/outward + volume checked=628 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model=1.4255
+    [PASS] C10 uv inside verified canvas        BaseMetal.Folktails=[0.0210,0.5154,0.4790,0.9846]; BaseWood_Brown.Folktails=[0.0391,0.5684,0.4648,0.9941]
+    [PASS] C11 ART-07 UV density                min=145.3 px/m; BaseMetal.Folktails=162.7 px/m (planned 164.0); BaseWood_Brown.Folktails=145.3 px/m (planned 145.3)
+    [PASS] C12 node animations                  static diagnostic: 0 independent part nodes, 0 animations
+    [PASS] C15 frames vs source animation       
+    [PASS] C16 motion axis vs part geometry     
+
+  MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model
+  --------------------------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             9471 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        4 (want 4 = root+3 ports+0 parts)
+    [PASS] C3 independent part nodes            animated=[] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_DarkBrown.IronTeeth', 'BaseMetal.IronTeeth']
+    [PASS] C3 3 port markers                    #Port#Power=[2.0, 1.5, 1.5] #Port#Pipe=[1.0, 0.65, 3.0] #Port#Logistics=[1.0, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=1 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[2.0, 3.0, 3.0]
+    [PASS] C5 triangle budget / source match    628 <= 12000 (source 628)
+    [PASS] C17 merge check (parts stay separate) root=628/628
+    [PASS] C8 topology + uv0 in [0,1]           indices=1884 uv_u_range=[0.0210, 0.4790]
+    [PASS] C9 normals unit/flat/outward + volume checked=628 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model=1.4255
+    [PASS] C10 uv inside verified canvas        BaseMetal.IronTeeth=[0.0210,0.5154,0.4790,0.9846]; BaseWood_DarkBrown.IronTeeth=[0.0391,0.5684,0.4648,0.9941]
+    [PASS] C11 ART-07 UV density                min=145.3 px/m; BaseMetal.IronTeeth=162.7 px/m (planned 164.0); BaseWood_DarkBrown.IronTeeth=145.3 px/m (planned 145.3)
+    [PASS] C12 node animations                  static diagnostic: 0 independent part nodes, 0 animations
+    [PASS] C15 frames vs source animation       
+    [PASS] C16 motion axis vs part geometry     
+
+  MWP.Pump.Advanced.Folktails.ConstructionStage0.Model
+  ----------------------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             9756 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Advanced.Folktails.ConstructionStage0.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Advanced.Folktails.ConstructionStage0.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        4 (want 4 = root+3 ports+0 parts)
+    [PASS] C3 independent part nodes            animated=[] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_Brown.Folktails', 'BaseMetal.Folktails']
+    [PASS] C3 3 port markers                    #Port#Power=[3.0, 2.0, 1.5] #Port#Pipe=[1.5, 0.65, 3.0] #Port#Logistics=[1.5, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=1 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[3.0, 4.0, 3.0]
+    [PASS] C5 triangle budget / source match    664 <= 12000 (source 664)
+    [PASS] C17 merge check (parts stay separate) root=664/664
+    [PASS] C8 topology + uv0 in [0,1]           indices=1992 uv_u_range=[0.0210, 0.4790]
+    [PASS] C9 normals unit/flat/outward + volume checked=664 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Advanced.Folktails.ConstructionStage0.Model=1.9812
+    [PASS] C10 uv inside verified canvas        BaseMetal.Folktails=[0.0210,0.5098,0.4790,0.9902]; BaseWood_Brown.Folktails=[0.0391,0.5684,0.4648,0.9941]
+    [PASS] C11 ART-07 UV density                min=141.7 px/m; BaseMetal.Folktails=141.7 px/m (planned 143.3); BaseWood_Brown.Folktails=145.3 px/m (planned 145.3)
+    [PASS] C12 node animations                  static diagnostic: 0 independent part nodes, 0 animations
+    [PASS] C15 frames vs source animation       
+    [PASS] C16 motion axis vs part geometry     
+
+  MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model
+  ----------------------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             9760 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        4 (want 4 = root+3 ports+0 parts)
+    [PASS] C3 independent part nodes            animated=[] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_DarkBrown.IronTeeth', 'BaseMetal.IronTeeth']
+    [PASS] C3 3 port markers                    #Port#Power=[3.0, 2.0, 1.5] #Port#Pipe=[1.5, 0.65, 3.0] #Port#Logistics=[1.5, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=1 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[3.0, 4.0, 3.0]
+    [PASS] C5 triangle budget / source match    664 <= 12000 (source 664)
+    [PASS] C17 merge check (parts stay separate) root=664/664
+    [PASS] C8 topology + uv0 in [0,1]           indices=1992 uv_u_range=[0.0210, 0.4790]
+    [PASS] C9 normals unit/flat/outward + volume checked=664 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model=1.9812
+    [PASS] C10 uv inside verified canvas        BaseMetal.IronTeeth=[0.0210,0.5098,0.4790,0.9902]; BaseWood_DarkBrown.IronTeeth=[0.0391,0.5684,0.4648,0.9941]
+    [PASS] C11 ART-07 UV density                min=141.7 px/m; BaseMetal.IronTeeth=141.7 px/m (planned 143.3); BaseWood_DarkBrown.IronTeeth=145.3 px/m (planned 145.3)
+    [PASS] C12 node animations                  static diagnostic: 0 independent part nodes, 0 animations
+    [PASS] C15 frames vs source animation       
+    [PASS] C16 motion axis vs part geometry     
+
+  MWP.Pump.Top.Folktails.ConstructionStage0.Model
+  -----------------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             9779 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Top.Folktails.ConstructionStage0.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Top.Folktails.ConstructionStage0.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        4 (want 4 = root+3 ports+0 parts)
+    [PASS] C3 independent part nodes            animated=[] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_Brown.Folktails', 'BaseMetal.Folktails']
+    [PASS] C3 3 port markers                    #Port#Power=[3.0, 2.0, 2.0] #Port#Pipe=[1.5, 0.65, 4.0] #Port#Logistics=[1.5, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=1 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[3.0, 4.0, 4.0]
+    [PASS] C5 triangle budget / source match    664 <= 12000 (source 664)
+    [PASS] C17 merge check (parts stay separate) root=664/664
+    [PASS] C8 topology + uv0 in [0,1]           indices=1992 uv_u_range=[0.0059, 0.4980]
+    [PASS] C9 normals unit/flat/outward + volume checked=664 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Top.Folktails.ConstructionStage0.Model=2.4636
+    [PASS] C10 uv inside verified canvas        BaseMetal.Folktails=[0.0098,0.5098,0.4902,0.9902]; BaseWood_Brown.Folktails=[0.0059,0.5684,0.4980,0.9941]
+    [PASS] C11 ART-07 UV density                min=117.2 px/m; BaseMetal.Folktails=124.9 px/m (planned 126.3); BaseWood_Brown.Folktails=117.2 px/m (planned 117.2)
+    [PASS] C12 node animations                  static diagnostic: 0 independent part nodes, 0 animations
+    [PASS] C15 frames vs source animation       
+    [PASS] C16 motion axis vs part geometry     
+
+  MWP.Pump.Top.IronTeeth.ConstructionStage0.Model
+  -----------------------------------------------
+    [PASS] C1 parse (zlib+protobuf)             9784 bytes
+    [PASS] C2 Model.name                        'MWP.Pump.Top.IronTeeth.ConstructionStage0.Model'
+    [PASS] C2 Model.version                     0
+    [PASS] C3 static model-root node            name='MWP.Pump.Top.IronTeeth.ConstructionStage0.Model' parent=-1
+    [PASS] C3 no #Slot# marker                  0 slots
+    [PASS] C3 node count                        4 (want 4 = root+3 ports+0 parts)
+    [PASS] C3 independent part nodes            animated=[] (mode=animated)
+    [PASS] C6 materials (vanilla whitelist)     ['BaseWood_DarkBrown.IronTeeth', 'BaseMetal.IronTeeth']
+    [PASS] C3 3 port markers                    #Port#Power=[3.0, 2.0, 2.0] #Port#Pipe=[1.5, 0.65, 4.0] #Port#Logistics=[1.5, 1.0, 0.0]
+    [PASS] C7 vertex properties                 nodes with mesh=1 properties=['normal', 'position', 'tangent', 'uv0']
+    [PASS] C4 export-space bounds               min=[0.0, 0.0, 0.0] max=[3.0, 4.0, 4.0]
+    [PASS] C5 triangle budget / source match    664 <= 12000 (source 664)
+    [PASS] C17 merge check (parts stay separate) root=664/664
+    [PASS] C8 topology + uv0 in [0,1]           indices=1992 uv_u_range=[0.0059, 0.4980]
+    [PASS] C9 normals unit/flat/outward + volume checked=664 unit_bad=0 flat_bad=0 winding_bad=0 volume_bad=0
+        signed volume per node: MWP.Pump.Top.IronTeeth.ConstructionStage0.Model=2.4636
+    [PASS] C10 uv inside verified canvas        BaseMetal.IronTeeth=[0.0098,0.5098,0.4902,0.9902]; BaseWood_DarkBrown.IronTeeth=[0.0059,0.5684,0.4980,0.9941]
+    [PASS] C11 ART-07 UV density                min=117.2 px/m; BaseMetal.IronTeeth=124.9 px/m (planned 126.3); BaseWood_DarkBrown.IronTeeth=117.2 px/m (planned 117.2)
+    [PASS] C12 node animations                  static diagnostic: 0 independent part nodes, 0 animations
+    [PASS] C15 frames vs source animation       
+    [PASS] C16 motion axis vs part geometry     
+
+CROSS-FILE CHECKS
+------------------------------------------------------------------------------------
+    [PASS] C13 mod/data == art/timbermesh       16/16 byte-identical
+    [PASS] C14 export-manifest coverage         models=16 failures=0 animation_contract=yes
+
+====================================================================================
+FILES:    16/16 present; 16 PASS, 0 FAIL
+CHECKS:   322 PASS, 0 FAIL (per-file C1-C17 x 16 files + C13/C14)
+OVERALL VERDICT: PASS
+====================================================================================
+
+Per-file numbers (export space, block-corner origin):
+file                                                   bytes   tris  verts bounds max       anim  nodes animated node names
+MWP.Pump.Basic.Folktails.Model                         49919   2072   4764 [2.0, 3.0, 3.0]  5     9   DriveShaft,Flywheel,HeadPulley,HeadShaft
+MWP.Pump.Basic.IronTeeth.Model                         49921   2072   4764 [2.0, 3.0, 3.0]  5     9   DriveShaft,Flywheel,HeadPulley,HeadShaft
+MWP.Pump.Intermediate.Folktails.Model                  66135   2788   6610 [2.0, 3.0, 3.0]  6     10  DriveShaft,Flywheel,GearboxGear,GearboxP
+MWP.Pump.Intermediate.IronTeeth.Model                  66163   2788   6610 [2.0, 3.0, 3.0]  6     10  DriveShaft,Flywheel,GearboxGear,GearboxP
+MWP.Pump.Advanced.Folktails.Model                      89948   3948   9399 [3.0, 4.0, 3.0]  7     11  DriveShaft,Flywheel,GearboxGear,HeadPull
+MWP.Pump.Advanced.IronTeeth.Model                      89977   3948   9399 [3.0, 4.0, 3.0]  7     11  DriveShaft,Flywheel,GearboxGear,HeadPull
+MWP.Pump.Top.Folktails.Model                           82155   3768   8852 [3.0, 4.0, 4.0]  5     9   DriveShaft,Flywheel,HeadPulley,Piston1,P
+MWP.Pump.Top.IronTeeth.Model                           82163   3768   8852 [3.0, 4.0, 4.0]  5     9   DriveShaft,Flywheel,HeadPulley,Piston1,P
+MWP.Pump.Basic.Folktails.ConstructionStage0.Model       9459    628   1278 [2.0, 3.0, 3.0]  0     4   
+MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model       9463    628   1278 [2.0, 3.0, 3.0]  0     4   
+MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model    9465    628   1278 [2.0, 3.0, 3.0]  0     4   
+MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model    9471    628   1278 [2.0, 3.0, 3.0]  0     4   
+MWP.Pump.Advanced.Folktails.ConstructionStage0.Model    9756    664   1320 [3.0, 4.0, 3.0]  0     4   
+MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model    9760    664   1320 [3.0, 4.0, 3.0]  0     4   
+MWP.Pump.Top.Folktails.ConstructionStage0.Model         9779    664   1308 [3.0, 4.0, 4.0]  0     4   
+MWP.Pump.Top.IronTeeth.ConstructionStage0.Model         9784    664   1308 [3.0, 4.0, 4.0]  0     4   
+
+Animated nodes per file:
+  MWP.Pump.Basic.Folktails.Model                       #AnimatedDriveShaft, #AnimatedFlywheel, #AnimatedHeadPulley, #AnimatedHeadShaft, #AnimatedPiston
+  MWP.Pump.Basic.IronTeeth.Model                       #AnimatedDriveShaft, #AnimatedFlywheel, #AnimatedHeadPulley, #AnimatedHeadShaft, #AnimatedPiston
+  MWP.Pump.Intermediate.Folktails.Model                #AnimatedDriveShaft, #AnimatedFlywheel, #AnimatedGearboxGear, #AnimatedGearboxPinion, #AnimatedHeadPulley, #AnimatedPiston
+  MWP.Pump.Intermediate.IronTeeth.Model                #AnimatedDriveShaft, #AnimatedFlywheel, #AnimatedGearboxGear, #AnimatedGearboxPinion, #AnimatedHeadPulley, #AnimatedPiston
+  MWP.Pump.Advanced.Folktails.Model                    #AnimatedDriveShaft, #AnimatedFlywheel, #AnimatedGearboxGear, #AnimatedHeadPulley, #AnimatedPiston1, #AnimatedPiston2, #AnimatedPiston3
+  MWP.Pump.Advanced.IronTeeth.Model                    #AnimatedDriveShaft, #AnimatedFlywheel, #AnimatedGearboxGear, #AnimatedHeadPulley, #AnimatedPiston1, #AnimatedPiston2, #AnimatedPiston3
+  MWP.Pump.Top.Folktails.Model                         #AnimatedDriveShaft, #AnimatedFlywheel, #AnimatedHeadPulley, #AnimatedPiston1, #AnimatedPiston2
+  MWP.Pump.Top.IronTeeth.Model                         #AnimatedDriveShaft, #AnimatedFlywheel, #AnimatedHeadPulley, #AnimatedPiston1, #AnimatedPiston2
+
+ART-07 UV texel density (px/m, measured from the exported UVs):
+  MWP.Pump.Basic.Folktails.Model                       BaseWood_Brown=144.6, BaseWood_LightBrown=141.4, IrregularPlanks_Brown=327.0
+  MWP.Pump.Basic.IronTeeth.Model                       BaseWood_DarkBrown=144.6, BaseWood_Grey=141.4, IrregularPlanks_MetalForged=327.0
+  MWP.Pump.Intermediate.Folktails.Model                BaseWood_Brown=141.3, BaseWood_LightBrown=145.3, IrregularPlanks_Brown=333.6
+  MWP.Pump.Intermediate.IronTeeth.Model                BaseWood_DarkBrown=141.3, BaseWood_Grey=145.3, IrregularPlanks_MetalForged=333.6
+  MWP.Pump.Advanced.Folktails.Model                    BaseMetal=140.1, BaseWood_LightBrown=138.6, Details=161.1, WindowsAtlas=82.0
+  MWP.Pump.Advanced.IronTeeth.Model                    BaseMetal=140.1, BaseWood_Grey=145.3, IrregularPlanks_MetalForged=340.0, WindowsAtlas=82.0
+  MWP.Pump.Top.Folktails.Model                         BaseMetal=121.2, Details=138.9, IrregularPlanks_Brown=255.0, WindowsAtlas=82.3
+  MWP.Pump.Top.IronTeeth.Model                         BaseMetal=121.2, Details=138.9, IrregularPlanks_MetalForged=255.0, WindowsAtlas=82.3
+  MWP.Pump.Basic.Folktails.ConstructionStage0.Model    BaseMetal=162.7, BaseWood_Brown=145.3
+  MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model    BaseMetal=162.7, BaseWood_DarkBrown=145.3
+  MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model BaseMetal=162.7, BaseWood_Brown=145.3
+  MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model BaseMetal=162.7, BaseWood_DarkBrown=145.3
+  MWP.Pump.Advanced.Folktails.ConstructionStage0.Model BaseMetal=141.7, BaseWood_Brown=145.3
+  MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model BaseMetal=141.7, BaseWood_DarkBrown=145.3
+  MWP.Pump.Top.Folktails.ConstructionStage0.Model      BaseMetal=124.9, BaseWood_Brown=117.2
+  MWP.Pump.Top.IronTeeth.ConstructionStage0.Model      BaseMetal=124.9, BaseWood_DarkBrown=117.2
+
+TOTAL: 653318 bytes / 30320 triangles / 69618 vertices / 46 animated node animations

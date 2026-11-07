@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    MWP.Core: pure, game-free domain logic.
+
+    No reference to Timberborn, Unity, or any third-party mod assembly is allowed here
+    (REQ-NFR-01). That is what makes the production formulas, state machine, maintenance
+    ledger, config validation and save codec unit-testable without launching the game.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>MWP.Core</AssemblyName>
+    <RootNamespace>MWP.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,334 @@
+# member dump for Timberborn.MechanicalSystem.MechanicalBuilding, Timberborn.MechanicalSystem.MechanicalNode
+
+=== Timberborn.MechanicalSystem.MechanicalBuilding   [Timberborn.MechanicalSystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BlockSystem.IFinishedStateListener, Timberborn.Buildings.IFinishedPausable, Timberborn.Buildings.IBuildingEfficiencyProvider
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  prop System.Boolean ActiveAndPowered {get}
+  prop System.Boolean CanUse {get}
+  prop System.Single Efficiency {get}
+  method public System.Boolean get_ActiveAndPowered()
+  method public System.Boolean get_CanUse()
+  method public System.Single get_Efficiency()
+  method public System.Void Awake()
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void SetConsumptionDisabled(System.Boolean value)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystem.MechanicalBuildingSpec   [Timberborn.MechanicalSystem]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.MechanicalSystem.MechanicalBuildingSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  prop System.Type EqualityContract {get}
+  method System.Type get_EqualityContract()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.MechanicalSystem.MechanicalBuildingSpec left, Timberborn.MechanicalSystem.MechanicalBuildingSpec right)
+  method public static System.Boolean op_Equality(Timberborn.MechanicalSystem.MechanicalBuildingSpec left, Timberborn.MechanicalSystem.MechanicalBuildingSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.MechanicalSystem.MechanicalBuildingSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.MechanicalSystem.MechanicalBuildingSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystem.MechanicalNode   [Timberborn.MechanicalSystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BlockSystem.IFinishedStateListener, Timberborn.BlockSystem.IUnfinishedStateListener
+  field System.EventHandler AddedToGraph
+  field System.EventHandler TransputsInitialized
+  field Timberborn.MechanicalSystem.MechanicalNodeActuals <Actuals>k__BackingField
+  field Timberborn.MechanicalSystem.IBattery <Battery>k__BackingField
+  field Timberborn.MechanicalSystem.MechanicalGraph <Graph>k__BackingField
+  field ImmutableArray<Timberborn.MechanicalSystem.Transput> <Transputs>k__BackingField
+  field System.Boolean <IsShaft>k__BackingField
+  field System.Boolean <IsGenerator>k__BackingField
+  field System.Boolean <IsConsumer>k__BackingField
+  field System.Boolean <IsIntermediary>k__BackingField
+  field System.Boolean <IgnoreRotation>k__BackingField
+  field System.Boolean <IsDetached>k__BackingField
+  field System.Int32 <NominalBatteryCharge>k__BackingField
+  field System.Int32 <NominalBatteryCapacity>k__BackingField
+  field System.Single <OutputMultiplier>k__BackingField
+  field Timberborn.MechanicalSystem.MechanicalGraphManager _mechanicalGraphManager
+  field Timberborn.MechanicalSystem.TransputMap _transputMap
+  field Timberborn.BlockingSystem.BlockableObject _blockableObject
+  field Timberborn.MechanicalSystem.MechanicalNodeSpec _mechanicalNodeSpec
+  field System.Int32 _nominalPowerInput
+  field System.Int32 _nominalPowerOutput
+  field System.Single _inputMultiplier
+  field System.Boolean _detached
+  field System.Boolean _addedToGraph
+  prop Timberborn.MechanicalSystem.MechanicalNodeActuals Actuals {get/set}
+  prop Timberborn.MechanicalSystem.IBattery Battery {get/set}
+  prop Timberborn.MechanicalSystem.MechanicalGraph Graph {get/set}
+  prop ImmutableArray<Timberborn.MechanicalSystem.Transput> Transputs {get/set}
+  prop System.Boolean IsShaft {get/set}
+  prop System.Boolean IsGenerator {get/set}
+  prop System.Boolean IsConsumer {get/set}
+  prop System.Boolean IsIntermediary {get/set}
+  prop System.Boolean IgnoreRotation {get/set}
+  prop System.Boolean IsDetached {get/set}
+  prop System.Int32 NominalBatteryCharge {get/set}
+  prop System.Int32 NominalBatteryCapacity {get/set}
+  prop System.Single OutputMultiplier {get/set}
+  prop System.Boolean IsBattery {get}
+  prop System.Single PowerEfficiency {get}
+  prop System.Boolean Active {get}
+  prop System.Boolean Powered {get}
+  prop System.Boolean ActiveAndPowered {get}
+  prop System.Boolean IsConsuming {get}
+  prop System.Single NominalBatteryChargeLevel {get}
+  event System.EventHandler AddedToGraph
+  event System.EventHandler TransputsInitialized
+  method public System.Void add_AddedToGraph(System.EventHandler value)
+  method public System.Void remove_AddedToGraph(System.EventHandler value)
+  method public System.Void add_TransputsInitialized(System.EventHandler value)
+  method public System.Void remove_TransputsInitialized(System.EventHandler value)
+  method public Timberborn.MechanicalSystem.MechanicalNodeActuals get_Actuals()
+  method private System.Void set_Actuals(Timberborn.MechanicalSystem.MechanicalNodeActuals value)
+  method public Timberborn.MechanicalSystem.IBattery get_Battery()
+  method private System.Void set_Battery(Timberborn.MechanicalSystem.IBattery value)
+  method public Timberborn.MechanicalSystem.MechanicalGraph get_Graph()
+  method System.Void set_Graph(Timberborn.MechanicalSystem.MechanicalGraph value)
+  method public ImmutableArray<Timberborn.MechanicalSystem.Transput> get_Transputs()
+  method private System.Void set_Transputs(ImmutableArray<Timberborn.MechanicalSystem.Transput> value)
+  method public System.Boolean get_IsShaft()
+  method private System.Void set_IsShaft(System.Boolean value)
+  method public System.Boolean get_IsGenerator()
+  method private System.Void set_IsGenerator(System.Boolean value)
+  method public System.Boolean get_IsConsumer()
+  method private System.Void set_IsConsumer(System.Boolean value)
+  method public System.Boolean get_IsIntermediary()
+  method private System.Void set_IsIntermediary(System.Boolean value)
+  method public System.Boolean get_IgnoreRotation()
+  method private System.Void set_IgnoreRotation(System.Boolean value)
+  method public System.Boolean get_IsDetached()
+  method private System.Void set_IsDetached(System.Boolean value)
+  method public System.Int32 get_NominalBatteryCharge()
+  method private System.Void set_NominalBatteryCharge(System.Int32 value)
+  method public System.Int32 get_NominalBatteryCapacity()
+  method private System.Void set_NominalBatteryCapacity(System.Int32 value)
+  method public System.Single get_OutputMultiplier()
+  method private System.Void set_OutputMultiplier(System.Single value)
+  method System.Void .ctor(Timberborn.MechanicalSystem.MechanicalGraphManager mechanicalGraphManager, Timberborn.MechanicalSystem.TransputMap transputMap)
+  method public System.Boolean get_IsBattery()
+  method public System.Single get_PowerEfficiency()
+  method public System.Boolean get_Active()
+  method public System.Boolean get_Powered()
+  method public System.Boolean get_ActiveAndPowered()
+  method public System.Boolean get_IsConsuming()
+  method public System.Single get_NominalBatteryChargeLevel()
+  method public System.Void Awake()
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void OnEnterUnfinishedState()
+  method public System.Void OnExitUnfinishedState()
+  method public System.Void SetDetached(System.Boolean value)
+  method public System.Void ReverseAllTransputs()
+  method public System.Void ResetAllTransputRotations()
+  method public System.Void SetOutputMultiplier(System.Single value)
+  method public System.Void SetInputMultiplier(System.Single value)
+  method public System.Void SetNominalBatteryCharge(System.Int32 value)
+  method public System.Void SetNominalBatteryCapacity(System.Int32 value)
+  method public IEnumerable<Timberborn.MechanicalSystem.Transput> TransputsWithConnections()
+  method public System.Boolean CanPotentiallyBePowered()
+  method private System.Void OnBlockableObjectStateChanged(System.Object sender, System.EventArgs e)
+  method private System.Void InitializeConstantParameters()
+  method private System.Void InitializeActuals()
+  method private System.Void InitializeTransputs()
+  method private System.Void UpdateActiveState()
+  method private System.Void UpdatePowerOutput()
+  method private System.Void UpdatePowerInput()
+  method private System.Void UpdateBatteryCharge()
+  method private System.Void UpdateBatteryCapacity()
+  method private System.Void AddOrRemoveFromGraph()
+  method private System.Void AddToGraph()
+  method private System.Void RemoveFromGraph()
+  nested Timberborn.MechanicalSystem.MechanicalNode+.<TransputsWithConnections>d__94
+
+=== Timberborn.MechanicalSystem.MechanicalNode+.<TransputsWithConnections>d__94   [Timberborn.MechanicalSystem]
+  kind: class   base: System.Object
+  interfaces: IEnumerable<Timberborn.MechanicalSystem.Transput>, System.Collections.IEnumerable, IEnumerator<Timberborn.MechanicalSystem.Transput>, System.Collections.IEnumerator, System.IDisposable
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 <>1__state
+  field Timberborn.MechanicalSystem.Transput <>2__current
+  field System.Int32 <>l__initialThreadId
+  field Timberborn.MechanicalSystem.MechanicalNode <>4__this
+  field Enumerator<Timberborn.MechanicalSystem.Transput> <>7__wrap1
+  prop Timberborn.MechanicalSystem.Transput System.Collections.Generic.IEnumerator<Timberborn.MechanicalSystem.Transput>.Current {get}
+  prop System.Object System.Collections.IEnumerator.Current {get}
+  method public System.Void .ctor(System.Int32 <>1__state)
+  method private System.Void System.IDisposable.Dispose()
+  method private System.Boolean MoveNext()
+  method private Timberborn.MechanicalSystem.Transput System.Collections.Generic.IEnumerator<Timberborn.MechanicalSystem.Transput>.get_Current()
+  method private System.Void System.Collections.IEnumerator.Reset()
+  method private System.Object System.Collections.IEnumerator.get_Current()
+  method private IEnumerator<Timberborn.MechanicalSystem.Transput> System.Collections.Generic.IEnumerable<Timberborn.MechanicalSystem.Transput>.GetEnumerator()
+  method private System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+=== Timberborn.MechanicalSystem.MechanicalNodeActuals   [Timberborn.MechanicalSystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  field EventHandler<ValueChangedEventArgs<System.Int32>> PowerOutputChanged
+  field EventHandler<ValueChangedEventArgs<System.Int32>> PowerInputChanged
+  field EventHandler<ValueChangedEventArgs<System.Int32>> BatteryChargeChanged
+  field EventHandler<ValueChangedEventArgs<System.Int32>> BatteryCapacityChanged
+  field System.Int32 <PowerOutput>k__BackingField
+  field System.Int32 <PowerInput>k__BackingField
+  field System.Int32 <BatteryCharge>k__BackingField
+  field System.Int32 <BatteryCapacity>k__BackingField
+  prop System.Int32 PowerOutput {get/set}
+  prop System.Int32 PowerInput {get/set}
+  prop System.Int32 BatteryCharge {get/set}
+  prop System.Int32 BatteryCapacity {get/set}
+  event EventHandler<ValueChangedEventArgs<System.Int32>> PowerOutputChanged
+  event EventHandler<ValueChangedEventArgs<System.Int32>> PowerInputChanged
+  event EventHandler<ValueChangedEventArgs<System.Int32>> BatteryChargeChanged
+  event EventHandler<ValueChangedEventArgs<System.Int32>> BatteryCapacityChanged
+  method public System.Void add_PowerOutputChanged(EventHandler<ValueChangedEventArgs<System.Int32>> value)
+  method public System.Void remove_PowerOutputChanged(EventHandler<ValueChangedEventArgs<System.Int32>> value)
+  method public System.Void add_PowerInputChanged(EventHandler<ValueChangedEventArgs<System.Int32>> value)
+  method public System.Void remove_PowerInputChanged(EventHandler<ValueChangedEventArgs<System.Int32>> value)
+  method public System.Void add_BatteryChargeChanged(EventHandler<ValueChangedEventArgs<System.Int32>> value)
+  method public System.Void remove_BatteryChargeChanged(EventHandler<ValueChangedEventArgs<System.Int32>> value)
+  method public System.Void add_BatteryCapacityChanged(EventHandler<ValueChangedEventArgs<System.Int32>> value)
+  method public System.Void remove_BatteryCapacityChanged(EventHandler<ValueChangedEventArgs<System.Int32>> value)
+  method public System.Int32 get_PowerOutput()
+  method private System.Void set_PowerOutput(System.Int32 value)
+  method public System.Int32 get_PowerInput()
+  method private System.Void set_PowerInput(System.Int32 value)
+  method public System.Int32 get_BatteryCharge()
+  method private System.Void set_BatteryCharge(System.Int32 value)
+  method public System.Int32 get_BatteryCapacity()
+  method private System.Void set_BatteryCapacity(System.Int32 value)
+  method System.Void SetPowerOutput(System.Int32 value)
+  method System.Void SetPowerInput(System.Int32 value)
+  method System.Void SetBatteryCharge(System.Int32 value)
+  method System.Void SetBatteryCapacity(System.Int32 value)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystem.MechanicalNodeParticlesController   [Timberborn.MechanicalSystem]
+  kind: class   base: Timberborn.TickSystem.TickableComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity, Timberborn.BlockSystem.IFinishedStateListener, Timberborn.Particles.IParticlesSpeedMultiplier
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.MechanicalSystem.MechanicalNodeParticlesControllerSpec _mechanicalNodeParticlesControllerSpec
+  field Timberborn.Particles.ParticlesRunner _particlesRunner
+  prop System.Single SpeedMultiplier {get}
+  prop System.Boolean ShouldPlayParticles {get}
+  method public System.Single get_SpeedMultiplier()
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void Tick()
+  method private System.Boolean get_ShouldPlayParticles()
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystem.MechanicalNodeParticlesControllerSpec   [Timberborn.MechanicalSystem]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.MechanicalSystem.MechanicalNodeParticlesControllerSpec>
+  field System.Single <MinEfficiency>k__BackingField
+  field ImmutableArray<System.String> <AttachmentIds>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.Single MinEfficiency {get/set}
+  prop ImmutableArray<System.String> AttachmentIds {get/set}
+  method System.Type get_EqualityContract()
+  method public System.Single get_MinEfficiency()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_MinEfficiency(System.Single value)
+  method public ImmutableArray<System.String> get_AttachmentIds()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_AttachmentIds(ImmutableArray<System.String> value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.MechanicalSystem.MechanicalNodeParticlesControllerSpec left, Timberborn.MechanicalSystem.MechanicalNodeParticlesControllerSpec right)
+  method public static System.Boolean op_Equality(Timberborn.MechanicalSystem.MechanicalNodeParticlesControllerSpec left, Timberborn.MechanicalSystem.MechanicalNodeParticlesControllerSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.MechanicalSystem.MechanicalNodeParticlesControllerSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.MechanicalSystem.MechanicalNodeParticlesControllerSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystem.MechanicalNodeSpec   [Timberborn.MechanicalSystem]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.MechanicalSystem.MechanicalNodeSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  field System.Int32 <PowerOutput>k__BackingField
+  field System.Int32 <PowerInput>k__BackingField
+  field System.Boolean <IsShaft>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.Int32 PowerOutput {get/set}
+  prop System.Int32 PowerInput {get/set}
+  prop System.Boolean IsShaft {get/set}
+  method System.Type get_EqualityContract()
+  method public System.Int32 get_PowerOutput()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_PowerOutput(System.Int32 value)
+  method public System.Int32 get_PowerInput()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_PowerInput(System.Int32 value)
+  method public System.Boolean get_IsShaft()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_IsShaft(System.Boolean value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.MechanicalSystem.MechanicalNodeSpec left, Timberborn.MechanicalSystem.MechanicalNodeSpec right)
+  method public static System.Boolean op_Equality(Timberborn.MechanicalSystem.MechanicalNodeSpec left, Timberborn.MechanicalSystem.MechanicalNodeSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.MechanicalSystem.MechanicalNodeSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.MechanicalSystem.MechanicalNodeSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.MechanicalSystem.MechanicalNodeTransformHeight   [Timberborn.MechanicalSystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BaseComponentSystem.IUpdatableComponent, Timberborn.BlockSystem.IFinishedStateListener, Timberborn.WorldPersistence.IPersistentEntity
+  field static Timberborn.WorldPersistence.ComponentKey MechanicalNodeTransformHeightKey
+  field static PropertyKey<System.Single> TransformHeightKey
+  field Timberborn.TimeSystem.NonlinearAnimationManager _nonlinearAnimationManager
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  field Timberborn.MechanicalSystem.MechanicalNodeTransformHeightSpec _mechanicalNodeTransformHeightSpec
+  field UnityEngine.Transform _transform
+  field System.Single _initialHeight
+  method public System.Void .ctor(Timberborn.TimeSystem.NonlinearAnimationManager nonlinearAnimationManager)
+  method public System.Void Awake()
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void Update()
+  method public System.Void Save(Timberborn.WorldPersistence.IEntitySaver entitySaver)
+  method public System.Void Load(Timberborn.WorldPersistence.IEntityLoader entityLoader)
+  method private System.Void MoveTransform()
+  method private System.Single GetTargetHeight()
+  method private static System.Void .cctor()
+
+=== Timberborn.MechanicalSystem.MechanicalNodeTransformHeightSpec   [Timberborn.MechanicalSystem]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.MechanicalSystem.MechanicalNodeTransformHeightSpec>
+  field System.String <TransformName>k__BackingField
+  field System.Single <Range>k__BackingField
+  field System.Single <ChangeSpeed>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.String TransformName {get/set}
+  prop System.Single Range {get/set}
+  prop System.Single ChangeSpeed {get/set}
+  method System.Type get_EqualityContract()
+  method public System.String get_TransformName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_TransformName(System.String value)
+  method public System.Single get_Range()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Range(System.Single value)
+  method public System.Single get_ChangeSpeed()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_ChangeSpeed(System.Single value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.MechanicalSystem.MechanicalNodeTransformHeightSpec left, Timberborn.MechanicalSystem.MechanicalNodeTransformHeightSpec right)
+  method public static System.Boolean op_Equality(Timberborn.MechanicalSystem.MechanicalNodeTransformHeightSpec left, Timberborn.MechanicalSystem.MechanicalNodeTransformHeightSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.MechanicalSystem.MechanicalNodeTransformHeightSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.MechanicalSystem.MechanicalNodeTransformHeightSpec original)
+  method public System.Void .ctor()

@@ -1,0 +1,856 @@
+# member dump for Timberborn\.StatusSystem.*, Timberborn\.StatusSystemUI.*
+
+=== Timberborn.StatusSystem.AlertStatusSubjectSelector   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field Timberborn.StatusSystem.IStatusAggregator _statusAggregator
+  field Timberborn.SelectionSystem.EntitySelectionService _entitySelectionService
+  field Dictionary<System.String, Timberborn.StatusSystem.StatusInstance> _previousSelectedStatuses
+  method public System.Void .ctor(Timberborn.StatusSystem.IStatusAggregator statusAggregator, Timberborn.SelectionSystem.EntitySelectionService entitySelectionService)
+  method public System.Void SelectNextSubject(System.String alertDescription)
+  method private static System.Boolean ShouldShowFirst(System.Int32 previousIndex, ImmutableArray<Timberborn.StatusSystem.StatusInstance> statuses)
+  nested Timberborn.StatusSystem.AlertStatusSubjectSelector+.<>c
+
+=== Timberborn.StatusSystem.AlertStatusSubjectSelector+.<>c   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.StatusSystem.AlertStatusSubjectSelector+.<>c <>9
+  field static Func<Timberborn.StatusSystem.StatusInstance> <>9__4_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method Timberborn.StatusSystem.StatusInstance <SelectNextSubject>b__4_0()
+
+=== Timberborn.StatusSystem.DynamicStatusAggregator   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.IUpdatableSingleton, Timberborn.StatusSystem.IStatusAggregator
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Dictionary<System.String, List<Timberborn.StatusSystem.StatusInstance>> _allStatuses
+  field Dictionary<System.String, List<Timberborn.StatusSystem.StatusInstance>> _visibleStatuses
+  method public System.Void .ctor(Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void AddStatus(Timberborn.StatusSystem.StatusInstance statusInstance)
+  method public System.Void RemoveStatuses(Timberborn.StatusSystem.StatusSubject statusSubject)
+  method public System.Void UpdateSingleton()
+  method public ImmutableArray<Timberborn.StatusSystem.StatusInstance> GetVisibleStatuses(System.String alertDescription)
+  method public System.Boolean TryGetStatusData(System.String alertDescription, out ref Timberborn.StatusSystem.StatusData statusData)
+  method private System.Void UpdateVisibleStatuses(System.String key)
+  method private static System.Boolean IsVisible(Timberborn.StatusSystem.StatusInstance statusInstance)
+  nested Timberborn.StatusSystem.DynamicStatusAggregator+.<>c__DisplayClass5_0
+
+=== Timberborn.StatusSystem.DynamicStatusAggregator+.<>c__DisplayClass5_0   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Timberborn.StatusSystem.StatusSubject statusSubject
+  field Predicate<Timberborn.StatusSystem.StatusInstance> <>9__0
+  method public System.Void .ctor()
+  method System.Boolean <RemoveStatuses>b__0(Timberborn.StatusSystem.StatusInstance instance)
+
+=== Timberborn.StatusSystem.DynamicStatusAlertAddedEvent   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field Timberborn.StatusSystem.StatusInstance <StatusInstance>k__BackingField
+  prop Timberborn.StatusSystem.StatusInstance StatusInstance {get}
+  method public Timberborn.StatusSystem.StatusInstance get_StatusInstance()
+  method public System.Void .ctor(Timberborn.StatusSystem.StatusInstance statusInstance)
+
+=== Timberborn.StatusSystem.IStatusAggregator   [Timberborn.StatusSystem]
+  kind: interface   base: -
+  method public ImmutableArray<Timberborn.StatusSystem.StatusInstance> GetVisibleStatuses(System.String alertDescription)
+
+=== Timberborn.StatusSystem.IStatusIconOffsetService   [Timberborn.StatusSystem]
+  kind: interface   base: -
+  method public System.Void AddOffsetter(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Void RemoveOffsetter(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Void UpdateAffectedStatusSlot(UnityEngine.Vector2Int coordinates)
+  method public System.Void UpdateIcons(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Void UpdatePositions(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Single CalculateVerticalPosition(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Void RepositionAllIcons()
+  method public IEnumerable<ValueTuple<Timberborn.StatusSystem.StatusSlot, UnityEngine.Vector2>> GetAllStatusSlots()
+  method public System.Void EnablePreviewMode()
+  method public System.Void DisablePreviewMode()
+
+=== Timberborn.StatusSystem.IStatusIconOffsetter   [Timberborn.StatusSystem]
+  kind: interface   base: -
+  prop System.Single TopBound {get}
+  prop System.Single FinishedTopBound {get}
+  prop System.Single UnfinishedTopBound {get}
+  prop UnityEngine.Vector3 Position {get}
+  prop UnityEngine.Vector2Int Key {get}
+  prop System.Boolean StatusActive {get}
+  prop Timberborn.BlockSystem.BlockObject BlockObject {get}
+  method public System.Single get_TopBound()
+  method public System.Single get_FinishedTopBound()
+  method public System.Single get_UnfinishedTopBound()
+  method public UnityEngine.Vector3 get_Position()
+  method public UnityEngine.Vector2Int get_Key()
+  method public System.Boolean get_StatusActive()
+  method public Timberborn.BlockSystem.BlockObject get_BlockObject()
+  method public System.Void UpdateIcon()
+
+=== Timberborn.StatusSystem.NotifyingStatusChangedEvent   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field System.String <StatusAlert>k__BackingField
+  prop System.String StatusAlert {get}
+  method public System.String get_StatusAlert()
+  method public System.Void .ctor(System.String statusAlert)
+
+=== Timberborn.StatusSystem.NotifyingStatusMonitor   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field HashSet<Timberborn.StatusSystem.StatusSubject> _statusSubjects
+  method public System.Void .ctor(Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void AddSubject(Timberborn.StatusSystem.StatusSubject statusSubject)
+  method public System.Void RemoveSubject(Timberborn.StatusSystem.StatusSubject statusSubject)
+  method private System.Void OnStatusToggled(System.Object sender, Timberborn.StatusSystem.StatusInstance statusInstance)
+
+=== Timberborn.StatusSystem.SlotBlockOccupation   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field static Timberborn.BlockSystem.BlockOccupations Default
+  field static Timberborn.BlockSystem.BlockOccupations TileCorner
+  field static Timberborn.BlockSystem.BlockOccupations Middle
+  method public static Timberborn.BlockSystem.BlockOccupations GetOccupation(UnityEngine.Vector2Int key, System.Boolean isMiddleSlot)
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystem.SlotConstraints   [Timberborn.StatusSystem]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.Boolean <IsOccupied>k__BackingField
+  field System.Byte <BaseZ>k__BackingField
+  field System.Boolean <InvalidInConstructionMode>k__BackingField
+  field System.Boolean <ForceValidInConstructionMode>k__BackingField
+  prop System.Boolean IsOccupied {get}
+  prop System.Byte BaseZ {get}
+  prop System.Boolean InvalidInConstructionMode {get}
+  prop System.Boolean ForceValidInConstructionMode {get}
+  method public System.Boolean get_IsOccupied()
+  method public System.Byte get_BaseZ()
+  method public System.Boolean get_InvalidInConstructionMode()
+  method public System.Boolean get_ForceValidInConstructionMode()
+  method private System.Void .ctor(System.Boolean isOccupied, System.Byte baseZ, System.Boolean invalidInConstructionMode, System.Boolean forceValidInConstructionMode)
+  method public static Timberborn.StatusSystem.SlotConstraints GetOccupied(System.Byte baseZ, System.Boolean invalidInConstructionMode, System.Boolean forceValidInConstructionMode)
+  method public static Timberborn.StatusSystem.SlotConstraints GetUnoccupied(System.Byte baseZ)
+  method public Timberborn.StatusSystem.SlotConstraints Merge(Timberborn.StatusSystem.SlotConstraints other)
+  method private System.Boolean BothInvalidInConstructionModeOrEmpty(Timberborn.StatusSystem.SlotConstraints other)
+
+=== Timberborn.StatusSystem.StatusAggregator   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.IUpdatableSingleton, Timberborn.StatusSystem.IStatusAggregator
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field List<Timberborn.StatusSystem.StatusInstance> _statuses
+  field Dictionary<System.String, List<Timberborn.StatusSystem.StatusInstance>> _visibleStatuses
+  method public System.Void .ctor(Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void UpdateSingleton()
+  method public System.Void AddStatus(Timberborn.StatusSystem.StatusInstance statusInstance)
+  method public System.Void RemoveStatuses(Timberborn.StatusSystem.StatusSubject statusSubject)
+  method public ImmutableArray<Timberborn.StatusSystem.StatusInstance> GetVisibleStatuses(System.String alertDescription)
+  method public System.Int32 GetVisibleStatusesCount(System.String alertDescription)
+  method private System.Void UpdateVisibleStatuses()
+  method private static System.Boolean IsVisible(Timberborn.StatusSystem.StatusInstance statusInstance)
+  nested Timberborn.StatusSystem.StatusAggregator+.<>c__DisplayClass6_0
+
+=== Timberborn.StatusSystem.StatusAggregator+.<>c__DisplayClass6_0   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Timberborn.StatusSystem.StatusSubject statusSubject
+  method public System.Void .ctor()
+  method System.Boolean <RemoveStatuses>b__0(Timberborn.StatusSystem.StatusInstance instance)
+
+=== Timberborn.StatusSystem.StatusAlertAddedEvent   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field System.String <StatusAlert>k__BackingField
+  field UnityEngine.Sprite <StatusSprite>k__BackingField
+  prop System.String StatusAlert {get}
+  prop UnityEngine.Sprite StatusSprite {get}
+  method public System.String get_StatusAlert()
+  method public UnityEngine.Sprite get_StatusSprite()
+  method public System.Void .ctor(System.String statusAlert, UnityEngine.Sprite statusSprite)
+
+=== Timberborn.StatusSystem.StatusData   [Timberborn.StatusSystem]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.Int32 <Count>k__BackingField
+  field System.Single <Value>k__BackingField
+  field Timberborn.StatusSystem.StatusWarningType <StatusWarningType>k__BackingField
+  prop System.Int32 Count {get}
+  prop System.Single Value {get}
+  prop Timberborn.StatusSystem.StatusWarningType StatusWarningType {get}
+  method public System.Int32 get_Count()
+  method public System.Single get_Value()
+  method public Timberborn.StatusSystem.StatusWarningType get_StatusWarningType()
+  method public System.Void .ctor(System.Int32 count, System.Single value, Timberborn.StatusSystem.StatusWarningType statusWarningType)
+
+=== Timberborn.StatusSystem.StatusIconCycler   [Timberborn.StatusSystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IPreInitializableEntity, Timberborn.MortalComponents.IDeadNeededComponent, Timberborn.EntitySystem.IDeletableEntity
+  field System.EventHandler ActiveStateChanged
+  field UnityEngine.GameObject <Root>k__BackingField
+  field System.Boolean <VisibleAndActive>k__BackingField
+  field Timberborn.StatusSystem.StatusIconMaterials _statusIconMaterials
+  field Timberborn.StatusSystem.StatusIconCyclerUpdater _statusIconCyclerUpdater
+  field Timberborn.StatusSystem.StatusIconCyclerFactory _statusIconCyclerFactory
+  field Timberborn.UILayoutSystem.UIVisibilityManager _uiVisibilityManager
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field UnityEngine.MeshRenderer _statusIconRenderer
+  field System.Single _radius
+  field Timberborn.StatusSystem.StatusSubject _statusSubject
+  field Timberborn.CameraSystem.FacingCamera _facingCamera
+  field Timberborn.StatusSystem.StatusInstance _shownIconStatus
+  field UnityEngine.GameObject _statusIcon
+  field UnityEngine.Transform _colliderTransform
+  field System.Int32 _indexOfStatusCheckedInLastUpdate
+  field System.Boolean _visible
+  field List<Timberborn.StatusSystem.StatusVisibilityToggle> _toggles
+  prop UnityEngine.GameObject Root {get/set}
+  prop System.Boolean VisibleAndActive {get/set}
+  event System.EventHandler ActiveStateChanged
+  method public System.Void add_ActiveStateChanged(System.EventHandler value)
+  method public System.Void remove_ActiveStateChanged(System.EventHandler value)
+  method public UnityEngine.GameObject get_Root()
+  method private System.Void set_Root(UnityEngine.GameObject value)
+  method public System.Boolean get_VisibleAndActive()
+  method private System.Void set_VisibleAndActive(System.Boolean value)
+  method public System.Void .ctor(Timberborn.StatusSystem.StatusIconMaterials statusIconMaterials, Timberborn.StatusSystem.StatusIconCyclerUpdater statusIconCyclerUpdater, Timberborn.StatusSystem.StatusIconCyclerFactory statusIconCyclerFactory, Timberborn.UILayoutSystem.UIVisibilityManager uiVisibilityManager, Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void Awake()
+  method public System.Void PreInitializeEntity()
+  method public System.Void DeleteEntity()
+  method public System.Void OnUIVisibilityChanged(Timberborn.CoreUI.UIVisibilityChangedEvent uiVisibilityChangedEvent)
+  method public System.Void InitializeIcon(UnityEngine.Transform parent, System.Single radius)
+  method public Timberborn.StatusSystem.StatusVisibilityToggle GetStatusVisibilityToggle()
+  method public System.Void IntervalUpdate()
+  method public System.Void SetIconLocalPosition(UnityEngine.Vector3 position)
+  method public System.Void UpdateStatusVisibility()
+  method private System.Void OnStatusToggled(System.Object sender, Timberborn.StatusSystem.StatusInstance statusInstance)
+  method private System.Void CheckActiveStatuses()
+  method private System.Void UpdateIcon()
+  method private Timberborn.StatusSystem.StatusInstance MoveToNextStatus()
+  method private System.Void ShowIcon(Timberborn.StatusSystem.StatusInstance status)
+  method private System.Void HideShownIcon()
+  method private System.Void UpdateVisibility()
+  method private System.Void UpdateScale()
+  method private System.Void ToggleRoot(System.Boolean visible)
+  method private System.Void ToggleStatusIcon(System.Boolean visible)
+  method private System.Void <GetStatusVisibilityToggle>b__32_0(System.Object _, System.EventArgs _)
+  nested Timberborn.StatusSystem.StatusIconCycler+.<>c
+
+=== Timberborn.StatusSystem.StatusIconCycler+.<>c   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.StatusSystem.StatusIconCycler+.<>c <>9
+  field static Predicate<Timberborn.StatusSystem.StatusInstance> <>9__37_0
+  field static Predicate<Timberborn.StatusSystem.StatusVisibilityToggle> <>9__42_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.Boolean <CheckActiveStatuses>b__37_0(Timberborn.StatusSystem.StatusInstance status)
+  method System.Boolean <UpdateVisibility>b__42_0(Timberborn.StatusSystem.StatusVisibilityToggle toggle)
+
+=== Timberborn.StatusSystem.StatusIconCyclerFactory   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field static System.String IconCyclerPrefabPath
+  field static System.Single YOffset
+  field Timberborn.Common.BoundsCalculator _boundsCalculator
+  field Timberborn.AssetSystem.IAssetLoader _assetLoader
+  field UnityEngine.GameObject _statusIconCyclerPrefab
+  method public System.Void .ctor(Timberborn.Common.BoundsCalculator boundsCalculator, Timberborn.AssetSystem.IAssetLoader assetLoader)
+  method public UnityEngine.GameObject CreateAsChild(UnityEngine.Transform parent)
+  method private UnityEngine.GameObject GetPrefab()
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystem.StatusIconCyclerUpdater   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.IUpdatableSingleton
+  field static System.Single UpdateInterval
+  field List<Timberborn.StatusSystem.StatusIconCycler> _statusIconCyclers
+  field System.Single _nextUpdateTime
+  method public System.Void UpdateSingleton()
+  method public System.Void AddStatusIconCycler(Timberborn.StatusSystem.StatusIconCycler statusIconCycler)
+  method public System.Void RemoveStatusIconCycler(Timberborn.StatusSystem.StatusIconCycler statusIconCycler)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystem.StatusIconMaterials   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field static System.Int32 BaseMapProperty
+  field Dictionary<UnityEngine.Sprite, UnityEngine.Material> _materials
+  method public System.Void SetMaterial(UnityEngine.MeshRenderer renderer, UnityEngine.Sprite sprite)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystem.StatusIconOffsetCalculator   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field static System.Single OffsetFromMaxLevel
+  field static System.Int32 NextIndexOffsetAfterUsedSlot
+  field Timberborn.StatusSystem.StatusSlotUpdateService _statusSlotUpdateService
+  field Timberborn.LevelVisibilitySystem.ILevelVisibilityService _levelVisibilityService
+  field System.Boolean _previewMode
+  method public System.Void .ctor(Timberborn.StatusSystem.StatusSlotUpdateService statusSlotUpdateService, Timberborn.LevelVisibilitySystem.ILevelVisibilityService levelVisibilityService)
+  method public System.Single CalculatePreviewVerticalPosition(ReadOnlyList<Timberborn.StatusSystem.IStatusIconOffsetter> offsetters, Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Single CalculateVerticalPosition(ReadOnlyList<Timberborn.StatusSystem.IStatusIconOffsetter> offsetters, Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method private System.Int32 GetFirstAvailableSlotIndex(Timberborn.StatusSystem.IStatusIconOffsetter currentOffsetter, ReadOnlyList<Timberborn.StatusSystem.IStatusIconOffsetter> offsetters, ReadOnlyList<Timberborn.StatusSystem.StatusSlot> slots)
+  method private System.Int32 GetFirstSlotIndexAboveBase(ReadOnlyList<Timberborn.StatusSystem.StatusSlot> slots, Timberborn.StatusSystem.IStatusIconOffsetter offsetter, System.Int32 currentSlotIndex)
+  method private System.Int32 GetFirstFreeSlotIndexAboveOffsetter(ReadOnlyList<Timberborn.StatusSystem.StatusSlot> slots, System.Int32 currentSlotIndex, Timberborn.StatusSystem.IStatusIconOffsetter statusIconOffsetter)
+  method private System.Int32 GetNextSlotIndex(ReadOnlyList<Timberborn.StatusSystem.StatusSlot> slots, System.Int32 currentSlotIndex, System.Int32 change)
+  method private static System.Boolean IsActiveAndBelow(Timberborn.StatusSystem.IStatusIconOffsetter currentOffsetter, Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method private System.Boolean SkipInvalidSlots(ReadOnlyList<Timberborn.StatusSystem.StatusSlot> slots, System.Int32 currentIndex)
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystem.StatusIconOffsetService   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.StatusSystem.IStatusIconOffsetService, Timberborn.SingletonSystem.ILoadableSingleton
+  field static UnityEngine.Vector2[] Offsets
+  field Timberborn.TerrainSystem.ITerrainService _terrainService
+  field Timberborn.StatusSystem.StatusSlotUpdateService _statusSlotUpdateService
+  field Timberborn.StatusSystem.StatusIconOffsetCalculator _statusIconOffsetCalculator
+  field Dictionary<UnityEngine.Vector2Int, List<Timberborn.StatusSystem.IStatusIconOffsetter>> _offsetters
+  field HashSet<UnityEngine.Vector2Int> _affectedKeysCache
+  field System.Boolean _previewMode
+  method public System.Void .ctor(Timberborn.TerrainSystem.ITerrainService terrainService, Timberborn.StatusSystem.StatusSlotUpdateService statusSlotUpdateService, Timberborn.StatusSystem.StatusIconOffsetCalculator statusIconOffsetCalculator)
+  method public System.Void Load()
+  method public System.Void AddOffsetter(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Void RemoveOffsetter(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Void UpdateAffectedStatusSlot(UnityEngine.Vector2Int coordinates)
+  method public System.Void UpdateIcons(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Void UpdatePositions(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Single CalculateVerticalPosition(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method public System.Void RepositionAllIcons()
+  method public IEnumerable<ValueTuple<Timberborn.StatusSystem.StatusSlot, UnityEngine.Vector2>> GetAllStatusSlots()
+  method public System.Void EnablePreviewMode()
+  method public System.Void DisablePreviewMode()
+  method private System.Void OnTerrainHeightChanged(System.Object sender, Timberborn.TerrainSystem.TerrainHeightChangeEventArgs terrainColumnChangedEventArgs)
+  method private System.Boolean HasOffsetterAt(UnityEngine.Vector2Int key, out ref ReadOnlyList<Timberborn.StatusSystem.IStatusIconOffsetter> readOnlyOffsetters)
+  method private static System.Void UpdateIcons(ReadOnlyList<Timberborn.StatusSystem.IStatusIconOffsetter> offsetters)
+  method private System.Void GetKeysAffectedByOffsetter(Timberborn.StatusSystem.IStatusIconOffsetter offsetter)
+  method private System.Void GetEffectedKeysForGridPosition(UnityEngine.Vector2Int position)
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystem.StatusIconSlotFactory   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  method public Timberborn.StatusSystem.StatusSlot CreateBounded(Timberborn.StatusSystem.SlotConstraints slotConstraints, Timberborn.StatusSystem.TopBoundForLayer topBoundForLayer, System.Single statusZCoordinate, System.Byte baseZ)
+  method public Timberborn.StatusSystem.StatusSlot CreateUnbounded(Timberborn.StatusSystem.SlotConstraints slotConstraints, System.Single statusZCoordinate, System.Byte baseZ)
+  method public System.Void .ctor()
+
+=== Timberborn.StatusSystem.StatusInstance   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field System.String <StatusDescription>k__BackingField
+  field System.String <AlertDescription>k__BackingField
+  field System.Boolean <IsPriorityStatus>k__BackingField
+  field System.Boolean <IsNotifying>k__BackingField
+  field System.Boolean <ShowFloatingIcon>k__BackingField
+  field Timberborn.StatusSystem.StatusSubject <StatusSubject>k__BackingField
+  field UnityEngine.Sprite <IconLarge>k__BackingField
+  field UnityEngine.Sprite <IconSmall>k__BackingField
+  field Func<System.Single> <StatusValueGetter>k__BackingField
+  field Func<Timberborn.StatusSystem.StatusWarningType> <StatusWarningTypeGetter>k__BackingField
+  field System.String <WarningSound>k__BackingField
+  field System.Boolean <IsActive>k__BackingField
+  field Timberborn.TimeSystem.IDayNightCycle _dayNightCycle
+  field System.Single _showDelayInDays
+  field System.Single _lastInactiveTimestamp
+  prop System.String StatusDescription {get}
+  prop System.String AlertDescription {get}
+  prop System.Boolean IsPriorityStatus {get}
+  prop System.Boolean IsNotifying {get}
+  prop System.Boolean ShowFloatingIcon {get}
+  prop Timberborn.StatusSystem.StatusSubject StatusSubject {get}
+  prop UnityEngine.Sprite IconLarge {get}
+  prop UnityEngine.Sprite IconSmall {get}
+  prop Func<System.Single> StatusValueGetter {get}
+  prop Func<Timberborn.StatusSystem.StatusWarningType> StatusWarningTypeGetter {get}
+  prop System.String WarningSound {get}
+  prop System.Boolean IsActive {get/set}
+  prop System.Boolean ShowAlert {get}
+  prop System.Boolean IsOverriden {get}
+  method public System.String get_StatusDescription()
+  method public System.String get_AlertDescription()
+  method public System.Boolean get_IsPriorityStatus()
+  method public System.Boolean get_IsNotifying()
+  method public System.Boolean get_ShowFloatingIcon()
+  method public Timberborn.StatusSystem.StatusSubject get_StatusSubject()
+  method public UnityEngine.Sprite get_IconLarge()
+  method public UnityEngine.Sprite get_IconSmall()
+  method public Func<System.Single> get_StatusValueGetter()
+  method public Func<Timberborn.StatusSystem.StatusWarningType> get_StatusWarningTypeGetter()
+  method public System.String get_WarningSound()
+  method public System.Boolean get_IsActive()
+  method private System.Void set_IsActive(System.Boolean value)
+  method public System.Void .ctor(System.String statusDescription, System.String alertDescription, System.Boolean isPriorityStatus, System.Boolean isNotifying, System.Boolean showFloatingIcon, Timberborn.StatusSystem.StatusSubject statusSubject, UnityEngine.Sprite iconLarge, UnityEngine.Sprite iconSmall, Func<System.Single> statusValueGetter, Func<Timberborn.StatusSystem.StatusWarningType> statusWarningTypeGetter, System.String warningSound, Timberborn.TimeSystem.IDayNightCycle dayNightCycle, System.Single showDelayInHours)
+  method public System.Boolean get_ShowAlert()
+  method public System.Void Activate()
+  method public System.Void Deactivate()
+  method public System.Boolean IsVisible()
+  method private System.Boolean get_IsOverriden()
+
+=== Timberborn.StatusSystem.StatusInstanceFactory   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field static System.Int32 DefaultUISpriteSize
+  field Timberborn.TimeSystem.IDayNightCycle _dayNightCycle
+  field Timberborn.SpriteOperations.SpriteResizer _spriteResizer
+  field Timberborn.StatusSystem.StatusSpriteLoader _statusSpriteLoader
+  method public System.Void .ctor(Timberborn.TimeSystem.IDayNightCycle dayNightCycle, Timberborn.SpriteOperations.SpriteResizer spriteResizer, Timberborn.StatusSystem.StatusSpriteLoader statusSpriteLoader)
+  method public Timberborn.StatusSystem.StatusInstance CreateStatus(Timberborn.StatusSystem.StatusSubject statusSubject, Timberborn.StatusSystem.StatusToggle statusToggle)
+  method public Timberborn.StatusSystem.StatusInstance CreateDynamicStatus(Timberborn.StatusSystem.StatusSubject statusSubject, Timberborn.StatusSystem.StatusToggle statusToggle, Func<System.Single> statusValueGetter, Func<Timberborn.StatusSystem.StatusWarningType> statusWarningTypeGetter, System.String warningSound)
+  method private Timberborn.StatusSystem.StatusInstance CreateStatusInternal(Timberborn.StatusSystem.StatusSubject statusSubject, Timberborn.StatusSystem.StatusToggle statusToggle, Func<System.Single> statusValueGetter, Func<Timberborn.StatusSystem.StatusWarningType> statusWarningTypeGetter, System.String warningSound)
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystem.StatusSlot   [Timberborn.StatusSystem]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.Single <ZCoordinate>k__BackingField
+  field System.Boolean <InvalidInConstructionMode>k__BackingField
+  field System.Byte <BaseZ>k__BackingField
+  field System.Byte <UnfinishedBaseZ>k__BackingField
+  prop System.Single ZCoordinate {get}
+  prop System.Boolean InvalidInConstructionMode {get}
+  prop System.Byte BaseZ {get}
+  prop System.Byte UnfinishedBaseZ {get}
+  method public System.Single get_ZCoordinate()
+  method public System.Boolean get_InvalidInConstructionMode()
+  method public System.Byte get_BaseZ()
+  method public System.Byte get_UnfinishedBaseZ()
+  method private System.Void .ctor(System.Single zCoordinate, System.Boolean invalidInConstructionMode, System.Byte baseZ, System.Byte unfinishedBaseZ)
+  method public static Timberborn.StatusSystem.StatusSlot CreateAlwaysValid(System.Single statusZCoordinate)
+  method public static Timberborn.StatusSystem.StatusSlot CreateInvalidInConstructionMode(System.Single statusZCoordinate, System.Byte unfinishedBaseZ)
+  method public static Timberborn.StatusSystem.StatusSlot CreateValidAboveMaxVisibilityLevel(System.Single statusZCoordinate, System.Byte baseZ)
+
+=== Timberborn.StatusSystem.StatusSlotOccupier   [Timberborn.StatusSystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity
+  field System.Boolean <UseUnfinishedConstructionModeModel>k__BackingField
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.StatusSystem.IStatusIconOffsetter _statusIconOffsetter
+  field System.Int32 _topZCoordinate
+  prop System.Boolean UseUnfinishedConstructionModeModel {get/set}
+  prop System.Boolean IsUnfinished {get}
+  prop System.Byte BaseZ {get}
+  method public System.Boolean get_UseUnfinishedConstructionModeModel()
+  method private System.Void set_UseUnfinishedConstructionModeModel(System.Boolean value)
+  method public System.Boolean get_IsUnfinished()
+  method public System.Byte get_BaseZ()
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method public System.Single GetNormalModeTopBound()
+  method public Timberborn.StatusSystem.TopBoundForLayer GetTopBound(UnityEngine.Vector3Int coordinates)
+  method public System.Boolean IntersectsAt(UnityEngine.Vector3Int coordinates, Timberborn.BlockSystem.BlockOccupations occupations)
+  method public System.Void .ctor()
+
+=== Timberborn.StatusSystem.StatusSlotUpdateService   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field static System.Single SlotZCoordinateOffset
+  field static System.Single TopBoundForTerrain
+  field Timberborn.BlockSystem.IBlockService _blockService
+  field Timberborn.TerrainSystem.ITerrainService _terrainService
+  field Timberborn.StatusSystem.StatusIconSlotFactory _statusIconSlotFactory
+  field Dictionary<UnityEngine.Vector2Int, List<Timberborn.StatusSystem.StatusSlot>> _slots
+  field Dictionary<System.Int32, Timberborn.StatusSystem.TopBoundForLayer> _topBoundCache
+  field List<Timberborn.StatusSystem.StatusSlotUpdateService+.PositionedOccupier> _positionedOccupierCache
+  method public System.Void .ctor(Timberborn.BlockSystem.IBlockService blockService, Timberborn.TerrainSystem.ITerrainService terrainService, Timberborn.StatusSystem.StatusIconSlotFactory statusIconSlotFactory)
+  method public ReadOnlyList<Timberborn.StatusSystem.StatusSlot> GetStatusSlots(UnityEngine.Vector2Int key)
+  method public System.Void UpdateStatusSlots(UnityEngine.Vector2Int key)
+  method public System.Void ClearStatusSlots(UnityEngine.Vector2Int key)
+  method public IEnumerable<ValueTuple<Timberborn.StatusSystem.StatusSlot, UnityEngine.Vector2>> GetAllStatusSlots()
+  method private System.Void CalculateSlotPositions(ref ref UnityEngine.Vector2Int key, IList<Timberborn.StatusSystem.StatusSlot> statusSlots)
+  method private Timberborn.StatusSystem.SlotConstraints GetConstraints(UnityEngine.Vector2Int key, System.Int32 z, System.Single slotZCoordinate)
+  method private Timberborn.StatusSystem.StatusSlot CreateStatusIconSlot(Timberborn.StatusSystem.SlotConstraints slotConstraints, System.Int32 gridZ, System.Single statusZCoordinate, System.Byte minBaseZ)
+  method private Timberborn.StatusSystem.SlotConstraints GetConstraints(System.Single slotZCoordinate, Timberborn.StatusSystem.StatusSlotUpdateService+.AffectedCoordinates affectedCoordinates, Timberborn.BlockSystem.BlockOccupations blockingOccupations)
+  method private System.Boolean IsBlockedByTerrain(Timberborn.StatusSystem.StatusSlotUpdateService+.AffectedCoordinates affectedCoordinates)
+  method private Timberborn.StatusSystem.SlotConstraints GetConstraintsFromBlockObject(System.Single slotZCoordinate, Timberborn.StatusSystem.StatusSlotUpdateService+.AffectedCoordinates affectedCoordinates, Timberborn.BlockSystem.BlockOccupations occupations)
+  method private System.Void GetOccupiersAtAffectedCoordinates(Timberborn.StatusSystem.StatusSlotUpdateService+.AffectedCoordinates affectedCoordinates)
+  method private System.Void UpdateTopBoundForLayer(Timberborn.StatusSystem.StatusSlotOccupier statusSlotOccupier, UnityEngine.Vector3Int coordinates)
+  method private static System.Void .cctor()
+  nested Timberborn.StatusSystem.StatusSlotUpdateService+.AffectedCoordinates
+  nested Timberborn.StatusSystem.StatusSlotUpdateService+.PositionedOccupier
+  nested Timberborn.StatusSystem.StatusSlotUpdateService+.<GetAllStatusSlots>d__12
+
+=== Timberborn.StatusSystem.StatusSlotUpdateService+.AffectedCoordinates   [Timberborn.StatusSystem]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.Int32 <XMin>k__BackingField
+  field System.Int32 <XMax>k__BackingField
+  field System.Int32 <YMin>k__BackingField
+  field System.Int32 <YMax>k__BackingField
+  field System.Int32 <Z>k__BackingField
+  prop System.Int32 XMin {get}
+  prop System.Int32 XMax {get}
+  prop System.Int32 YMin {get}
+  prop System.Int32 YMax {get}
+  prop System.Int32 Z {get}
+  method public System.Int32 get_XMin()
+  method public System.Int32 get_XMax()
+  method public System.Int32 get_YMin()
+  method public System.Int32 get_YMax()
+  method public System.Int32 get_Z()
+  method public System.Void .ctor(UnityEngine.Vector2Int key, System.Int32 z)
+
+=== Timberborn.StatusSystem.StatusSlotUpdateService+.PositionedOccupier   [Timberborn.StatusSystem]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field Timberborn.StatusSystem.StatusSlotOccupier <Occupier>k__BackingField
+  field UnityEngine.Vector3Int <Coordinates>k__BackingField
+  prop Timberborn.StatusSystem.StatusSlotOccupier Occupier {get}
+  prop UnityEngine.Vector3Int Coordinates {get}
+  method public Timberborn.StatusSystem.StatusSlotOccupier get_Occupier()
+  method public UnityEngine.Vector3Int get_Coordinates()
+  method public System.Void .ctor(Timberborn.StatusSystem.StatusSlotOccupier occupier, UnityEngine.Vector3Int coordinates)
+
+=== Timberborn.StatusSystem.StatusSlotUpdateService+.<GetAllStatusSlots>d__12   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  interfaces: IEnumerable<ValueTuple<Timberborn.StatusSystem.StatusSlot, UnityEngine.Vector2>>, System.Collections.IEnumerable, IEnumerator<ValueTuple<Timberborn.StatusSystem.StatusSlot, UnityEngine.Vector2>>, System.Collections.IEnumerator, System.IDisposable
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 <>1__state
+  field ValueTuple<Timberborn.StatusSystem.StatusSlot, UnityEngine.Vector2> <>2__current
+  field System.Int32 <>l__initialThreadId
+  field Timberborn.StatusSystem.StatusSlotUpdateService <>4__this
+  field Enumerator<UnityEngine.Vector2Int, List<Timberborn.StatusSystem.StatusSlot>> <>7__wrap1
+  field UnityEngine.Vector2Int <key>5__3
+  field Enumerator<Timberborn.StatusSystem.StatusSlot> <>7__wrap3
+  prop ValueTuple<Timberborn.StatusSystem.StatusSlot, UnityEngine.Vector2> System.Collections.Generic.IEnumerator<System.ValueTuple<Timberborn.StatusSystem.StatusSlot,UnityEngine.Vector2>>.Current {get}
+  prop System.Object System.Collections.IEnumerator.Current {get}
+  method public System.Void .ctor(System.Int32 <>1__state)
+  method private System.Void System.IDisposable.Dispose()
+  method private System.Boolean MoveNext()
+  method private System.Void <>m__Finally1()
+  method private System.Void <>m__Finally2()
+  method private ValueTuple<Timberborn.StatusSystem.StatusSlot, UnityEngine.Vector2> System.Collections.Generic.IEnumerator<System.ValueTuple<Timberborn.StatusSystem.StatusSlot,UnityEngine.Vector2>>.get_Current()
+  method private System.Void System.Collections.IEnumerator.Reset()
+  method private System.Object System.Collections.IEnumerator.get_Current()
+  method private IEnumerator<ValueTuple<Timberborn.StatusSystem.StatusSlot, UnityEngine.Vector2>> System.Collections.Generic.IEnumerable<System.ValueTuple<Timberborn.StatusSystem.StatusSlot,UnityEngine.Vector2>>.GetEnumerator()
+  method private System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+=== Timberborn.StatusSystem.StatusSlotsUpdater   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton, Timberborn.SingletonSystem.IUpdatableSingleton
+  field Timberborn.StatusSystem.IStatusIconOffsetService _statusIconOffsetService
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field HashSet<UnityEngine.Vector2Int> _dirtyCoordinates
+  method public System.Void .ctor(Timberborn.StatusSystem.IStatusIconOffsetService statusIconOffsetService, Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Void Load()
+  method public System.Void UpdateSingleton()
+  method public System.Void OnEntityDeletedEvent(Timberborn.EntitySystem.EntityDeletedEvent entityDeletedEvent)
+  method public System.Void OnEnteredUnfinishedStateEvent(Timberborn.BlockSystem.EnteredUnfinishedStateEvent enteredUnfinishedStateEvent)
+  method public System.Void OnEnteredFinishedStateEvent(Timberborn.BlockSystem.EnteredFinishedStateEvent enteredFinishedStateEvent)
+  method private System.Void MarkCoordinatesDirty(Timberborn.BlockSystem.BlockObject blockObject)
+
+=== Timberborn.StatusSystem.StatusSpecification   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field System.String <SpriteName>k__BackingField
+  field System.String <StatusDescription>k__BackingField
+  field System.String <AlertDescription>k__BackingField
+  field System.Single <DelayInHours>k__BackingField
+  field System.Boolean <ShowFloatingIcon>k__BackingField
+  prop System.String SpriteName {get}
+  prop System.String StatusDescription {get}
+  prop System.String AlertDescription {get}
+  prop System.Single DelayInHours {get}
+  prop System.Boolean ShowFloatingIcon {get}
+  method public System.String get_SpriteName()
+  method public System.String get_StatusDescription()
+  method public System.String get_AlertDescription()
+  method public System.Single get_DelayInHours()
+  method public System.Boolean get_ShowFloatingIcon()
+  method private System.Void .ctor(System.String spriteName, System.String statusDescription, System.String alertDescription, System.Single delayInHours, System.Boolean showFloatingIcon)
+  method public static Timberborn.StatusSystem.StatusSpecification Create(System.String spriteName, System.String statusDescription)
+  method public static Timberborn.StatusSystem.StatusSpecification CreateWithIcon(System.String spriteName, System.String statusDescription, System.Single delayInHours)
+  method public static Timberborn.StatusSystem.StatusSpecification CreateWithAlert(System.String spriteName, System.String statusDescription, System.String alertDescription, System.Single delayInHours)
+  method public static Timberborn.StatusSystem.StatusSpecification CreateWithAlertAndIcon(System.String spriteName, System.String statusDescription, System.String alertDescription, System.Single delayInHours)
+
+=== Timberborn.StatusSystem.StatusSpriteLoader   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field static System.String StatusSpriteDirectory
+  field Timberborn.AssetSystem.IAssetLoader _assetLoader
+  method public System.Void .ctor(Timberborn.AssetSystem.IAssetLoader assetLoader)
+  method public UnityEngine.Sprite LoadSprite(System.String spriteName)
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystem.StatusSubject   [Timberborn.StatusSystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.EntitySystem.IInitializableEntity, Timberborn.EntitySystem.IDeletableEntity
+  field EventHandler<Timberborn.StatusSystem.StatusInstance> StatusToggled
+  field Timberborn.StatusSystem.StatusInstanceFactory _statusInstanceFactory
+  field Timberborn.StatusSystem.DynamicStatusAggregator _dynamicStatusAggregator
+  field Timberborn.StatusSystem.StatusAggregator _statusAggregator
+  field Timberborn.StatusSystem.NotifyingStatusMonitor _notifyingStatusMonitor
+  field List<Timberborn.StatusSystem.StatusInstance> _activePriorityStatuses
+  field List<Timberborn.StatusSystem.StatusInstance> _activeNormalStatuses
+  prop ReadOnlyList<Timberborn.StatusSystem.StatusInstance> ActiveStatuses {get}
+  prop System.Boolean InPriorityMode {get}
+  event EventHandler<Timberborn.StatusSystem.StatusInstance> StatusToggled
+  method public System.Void add_StatusToggled(EventHandler<Timberborn.StatusSystem.StatusInstance> value)
+  method public System.Void remove_StatusToggled(EventHandler<Timberborn.StatusSystem.StatusInstance> value)
+  method System.Void .ctor(Timberborn.StatusSystem.StatusInstanceFactory statusInstanceFactory, Timberborn.StatusSystem.DynamicStatusAggregator dynamicStatusAggregator, Timberborn.StatusSystem.StatusAggregator statusAggregator, Timberborn.StatusSystem.NotifyingStatusMonitor notifyingStatusMonitor)
+  method public ReadOnlyList<Timberborn.StatusSystem.StatusInstance> get_ActiveStatuses()
+  method public System.Boolean get_InPriorityMode()
+  method public System.Void RegisterStatuses(IEnumerable<Timberborn.StatusSystem.StatusToggle> statusToggles)
+  method public System.Void RegisterStatus(Timberborn.StatusSystem.StatusToggle statusToggle)
+  method public System.Void RegisterDynamicStatus(Timberborn.StatusSystem.StatusToggle statusToggle, Func<System.Single> statusGroupOrderingGetter, Func<Timberborn.StatusSystem.StatusWarningType> statusWarningTypeGetter, System.String warningSound)
+  method public System.Void InitializeEntity()
+  method public System.Void DeleteEntity()
+  method private System.Void UpdateStatus(Timberborn.StatusSystem.StatusToggle statusToggle, Timberborn.StatusSystem.StatusInstance statusInstance)
+  method private System.Void UpdateStatus(Timberborn.StatusSystem.StatusInstance statusInstance, System.Boolean isActive)
+  nested Timberborn.StatusSystem.StatusSubject+.<>c__DisplayClass19_0
+
+=== Timberborn.StatusSystem.StatusSubject+.<>c__DisplayClass19_0   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Timberborn.StatusSystem.StatusSubject <>4__this
+  field Timberborn.StatusSystem.StatusInstance statusInstance
+  field Timberborn.StatusSystem.StatusToggle statusToggle
+  method public System.Void .ctor()
+  method System.Void <UpdateStatus>b__0(System.Object _, System.EventArgs _)
+
+=== Timberborn.StatusSystem.StatusSystemConfigurator   [Timberborn.StatusSystem]
+  kind: class   base: Bindito.Core.Configurator
+  [type attr] Bindito.Core.ContextAttribute
+  [type attr] Bindito.Core.ContextAttribute
+  method System.Void Configure()
+  method private static Timberborn.TemplateInstantiation.TemplateModule ProvideTemplateModule()
+  method public System.Void .ctor()
+
+=== Timberborn.StatusSystem.StatusToggle   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field EventHandler<System.EventArgs> StatusToggled
+  field Timberborn.StatusSystem.StatusSpecification <StatusSpecification>k__BackingField
+  field System.Boolean <IsPriorityStatus>k__BackingField
+  field System.Boolean <IsNotifying>k__BackingField
+  field System.Boolean <IsActive>k__BackingField
+  prop Timberborn.StatusSystem.StatusSpecification StatusSpecification {get}
+  prop System.Boolean IsPriorityStatus {get}
+  prop System.Boolean IsNotifying {get/set}
+  prop System.Boolean IsActive {get/set}
+  event EventHandler<System.EventArgs> StatusToggled
+  method public System.Void add_StatusToggled(EventHandler<System.EventArgs> value)
+  method public System.Void remove_StatusToggled(EventHandler<System.EventArgs> value)
+  method public Timberborn.StatusSystem.StatusSpecification get_StatusSpecification()
+  method public System.Boolean get_IsPriorityStatus()
+  method public System.Boolean get_IsNotifying()
+  method private System.Void set_IsNotifying(System.Boolean value)
+  method public System.Boolean get_IsActive()
+  method private System.Void set_IsActive(System.Boolean value)
+  method private System.Void .ctor(Timberborn.StatusSystem.StatusSpecification statusSpecification, System.Boolean isPriorityStatus)
+  method public static Timberborn.StatusSystem.StatusToggle CreateNormalStatus(System.String spriteName, System.String description)
+  method public static Timberborn.StatusSystem.StatusToggle CreatePriorityStatus(System.String spriteName, System.String description)
+  method public static Timberborn.StatusSystem.StatusToggle CreatePriorityStatusWithFloatingIcon(System.String spriteName, System.String description, System.Single delayInHours)
+  method public static Timberborn.StatusSystem.StatusToggle CreatePriorityStatusWithAlertAndFloatingIcon(System.String spriteName, System.String statusDescription, System.String alertDescription, System.Single delayInHours)
+  method public static Timberborn.StatusSystem.StatusToggle CreateNormalStatusWithFloatingIcon(System.String spriteName, System.String description, System.Single delayInHours)
+  method public static Timberborn.StatusSystem.StatusToggle CreateNormalStatusWithAlert(System.String spriteName, System.String statusDescription, System.String alertDescription, System.Single delayInHours)
+  method public static Timberborn.StatusSystem.StatusToggle CreateNormalStatusWithAlertAndFloatingIcon(System.String spriteName, System.String statusDescription, System.String alertDescription, System.Single delayInHours)
+  method public System.Void Activate()
+  method public System.Void Deactivate()
+  method public System.Void Toggle(System.Boolean isActive)
+  method public Timberborn.StatusSystem.StatusToggle AsNotifying()
+
+=== Timberborn.StatusSystem.StatusVisibilityToggle   [Timberborn.StatusSystem]
+  kind: class   base: System.Object
+  field System.EventHandler StateChanged
+  field System.Boolean <Hidden>k__BackingField
+  prop System.Boolean Hidden {get/set}
+  event System.EventHandler StateChanged
+  method public System.Void add_StateChanged(System.EventHandler value)
+  method public System.Void remove_StateChanged(System.EventHandler value)
+  method public System.Boolean get_Hidden()
+  method private System.Void set_Hidden(System.Boolean value)
+  method public System.Void Hide()
+  method public System.Void Show()
+  method public System.Void .ctor()
+
+=== Timberborn.StatusSystem.StatusWarningType   [Timberborn.StatusSystem]
+  kind: enum   base: System.Enum
+  field System.Int32 value__
+  field static Timberborn.StatusSystem.StatusWarningType None
+  field static Timberborn.StatusSystem.StatusWarningType Short
+  field static Timberborn.StatusSystem.StatusWarningType Infinite
+
+=== Timberborn.StatusSystem.TopBoundForLayer   [Timberborn.StatusSystem]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field System.Single <ConstructionModeTopBound>k__BackingField
+  field System.Single <NormalModeTopBound>k__BackingField
+  prop System.Single ConstructionModeTopBound {get}
+  prop System.Single NormalModeTopBound {get}
+  method public System.Single get_ConstructionModeTopBound()
+  method public System.Single get_NormalModeTopBound()
+  method public System.Void .ctor(System.Single constructionModeTopBound)
+  method public System.Void .ctor(System.Single constructionModeTopBound, System.Single normalModeTopBound)
+
+=== Timberborn.StatusSystemUI.DynamicStatusAlertFragment   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.AlertPanelSystem.IAlertFragment
+  field Timberborn.StatusSystem.DynamicStatusAggregator _dynamicStatusAggregator
+  field Timberborn.GameSound.GameUISoundController _gameUISoundController
+  field Timberborn.StatusSystemUI.StatusAlertRowBlinker _statusAlertRowBlinker
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Timberborn.SelectionSystem.EntitySelectionService _entitySelectionService
+  field Timberborn.StatusSystemUI.StatusAlertFragmentRowFactory _statusAlertFragmentRowFactory
+  field Timberborn.StatusSystem.AlertStatusSubjectSelector _alertStatusSubjectSelector
+  field Dictionary<System.String, Timberborn.StatusSystemUI.StatusAlertFragmentRow> _rows
+  field Dictionary<System.String, System.Single> _blinkingRow
+  field Dictionary<System.String, System.Single> _infiniteBlinkingRow
+  field UnityEngine.UIElements.VisualElement _root
+  method public System.Void .ctor(Timberborn.StatusSystem.DynamicStatusAggregator dynamicStatusAggregator, Timberborn.GameSound.GameUISoundController gameUISoundController, Timberborn.StatusSystemUI.StatusAlertRowBlinker statusAlertRowBlinker, Timberborn.SingletonSystem.EventBus eventBus, Timberborn.SelectionSystem.EntitySelectionService entitySelectionService, Timberborn.StatusSystemUI.StatusAlertFragmentRowFactory statusAlertFragmentRowFactory)
+  method public System.Void InitializeAlertFragment(UnityEngine.UIElements.VisualElement root)
+  method public System.Void UpdateAlertFragment()
+  method public System.Void OnStatusAlertAddedEvent(Timberborn.StatusSystem.DynamicStatusAlertAddedEvent statusAlertAddedEvent)
+  method public System.Void OnPinnedStatusChanged(Timberborn.StatusSystem.NotifyingStatusChangedEvent notifyingStatusChangedEvent)
+  method private System.Void UpdateBlinkingState(Timberborn.StatusSystem.StatusData statusData, System.String alertDescription, Timberborn.StatusSystemUI.StatusAlertFragmentRow row)
+  method private static System.Boolean ShouldStartBlinking(System.String alertDescription, System.Single value, Dictionary<System.String, System.Single> blinkingRow)
+  method private System.Void PlaySound(System.String warningSound)
+
+=== Timberborn.StatusSystemUI.StatusAlertFragment   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.AlertPanelSystem.IAlertFragment
+  field Timberborn.StatusSystem.StatusAggregator _statusAggregator
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Timberborn.SelectionSystem.EntitySelectionService _entitySelectionService
+  field Timberborn.StatusSystemUI.StatusAlertFragmentRowFactory _statusAlertFragmentRowFactory
+  field Timberborn.StatusSystem.AlertStatusSubjectSelector _alertStatusSubjectSelector
+  field List<Timberborn.StatusSystemUI.StatusAlertFragmentRow> _rows
+  field UnityEngine.UIElements.VisualElement _root
+  method public System.Void .ctor(Timberborn.StatusSystem.StatusAggregator statusAggregator, Timberborn.SingletonSystem.EventBus eventBus, Timberborn.SelectionSystem.EntitySelectionService entitySelectionService, Timberborn.StatusSystemUI.StatusAlertFragmentRowFactory statusAlertFragmentRowFactory)
+  method public System.Void InitializeAlertFragment(UnityEngine.UIElements.VisualElement root)
+  method public System.Void UpdateAlertFragment()
+  method public System.Void OnStatusAlertAddedEvent(Timberborn.StatusSystem.StatusAlertAddedEvent statusAlertAddedEvent)
+
+=== Timberborn.StatusSystemUI.StatusAlertFragmentRow   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  field static System.String BlinkingClass
+  field System.String <AlertDescription>k__BackingField
+  field System.String <WarningSound>k__BackingField
+  field UnityEngine.UIElements.VisualElement <Root>k__BackingField
+  field Timberborn.StatusSystem.AlertStatusSubjectSelector _alertStatusSubjectSelector
+  field UnityEngine.UIElements.Button _statusButton
+  field System.Int32 _previousCount
+  field System.String _previousValue
+  field System.Boolean _highlightActive
+  prop System.String AlertDescription {get}
+  prop System.String WarningSound {get}
+  prop UnityEngine.UIElements.VisualElement Root {get}
+  method public System.String get_AlertDescription()
+  method public System.String get_WarningSound()
+  method public UnityEngine.UIElements.VisualElement get_Root()
+  method public System.Void .ctor(Timberborn.StatusSystem.AlertStatusSubjectSelector alertStatusSubjectSelector, System.String alertDescription, System.String warningSound, UnityEngine.UIElements.VisualElement root, UnityEngine.UIElements.Button statusButton)
+  method public System.Void Initialize()
+  method public System.Void UpdateRowState(System.Int32 count, System.String value)
+  method public System.Void ToggleHighlight()
+  method public System.Void DisableHighlight()
+  method private System.Void SelectNext(UnityEngine.UIElements.ClickEvent evt)
+  method private System.String GetAlertText(System.Int32 count, System.String value)
+  method private System.Void ChangeHighlightState(System.Boolean active)
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystemUI.StatusAlertFragmentRowFactory   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.AlertPanelSystem.AlertPanelRowFactory _alertPanelRowFactory
+  method public System.Void .ctor(Timberborn.AlertPanelSystem.AlertPanelRowFactory alertPanelRowFactory)
+  method public Timberborn.StatusSystemUI.StatusAlertFragmentRow Create(System.String alert, UnityEngine.Sprite sprite, Timberborn.StatusSystem.AlertStatusSubjectSelector subjectSelector, System.String warningSound)
+
+=== Timberborn.StatusSystemUI.StatusAlertRowBlinker   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.IUpdatableSingleton
+  field static System.Single BlinkInterval
+  field static System.Int32 BliksCount
+  field List<Timberborn.StatusSystemUI.StatusAlertRowBlinker+.RowBlinkData> _activeRows
+  method public System.Void StartInfiniteBlinking(Timberborn.StatusSystemUI.StatusAlertFragmentRow row)
+  method public System.Void StartShortBlinking(Timberborn.StatusSystemUI.StatusAlertFragmentRow row)
+  method public System.Void UpdateSingleton()
+  method public System.Void StopBlinking(Timberborn.StatusSystemUI.StatusAlertFragmentRow row)
+  method private System.Void StartBlinkingInternal(Timberborn.StatusSystemUI.StatusAlertFragmentRow row, System.Int32 blinkCount)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+  nested Timberborn.StatusSystemUI.StatusAlertRowBlinker+.RowBlinkData
+
+=== Timberborn.StatusSystemUI.StatusAlertRowBlinker+.RowBlinkData   [Timberborn.StatusSystemUI]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field Timberborn.StatusSystemUI.StatusAlertFragmentRow <Row>k__BackingField
+  field System.Int32 <BlinksRemaining>k__BackingField
+  field System.Single <NextToggleTime>k__BackingField
+  prop Timberborn.StatusSystemUI.StatusAlertFragmentRow Row {get}
+  prop System.Int32 BlinksRemaining {get}
+  prop System.Single NextToggleTime {get}
+  method public Timberborn.StatusSystemUI.StatusAlertFragmentRow get_Row()
+  method public System.Int32 get_BlinksRemaining()
+  method public System.Single get_NextToggleTime()
+  method public System.Void .ctor(Timberborn.StatusSystemUI.StatusAlertFragmentRow row, System.Int32 blinksRemaining, System.Single nextToggleTime)
+  method public Timberborn.StatusSystemUI.StatusAlertRowBlinker+.RowBlinkData UpdatedData()
+
+=== Timberborn.StatusSystemUI.StatusBatchControlRowItem   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.BatchControl.IBatchControlRowItem, Timberborn.BatchControl.IInitializableBatchControlItem, Timberborn.BatchControl.IClearableBatchControlRowItem
+  field UnityEngine.UIElements.VisualElement <Root>k__BackingField
+  field Timberborn.StatusSystem.StatusSubject _statusSubject
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.TooltipSystem.ITooltipRegistrar _tooltipRegistrar
+  prop UnityEngine.UIElements.VisualElement Root {get}
+  method public UnityEngine.UIElements.VisualElement get_Root()
+  method public System.Void .ctor(UnityEngine.UIElements.VisualElement root, Timberborn.StatusSystem.StatusSubject statusSubject, Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.TooltipSystem.ITooltipRegistrar tooltipRegistrar)
+  method public System.Void InitializeRowItem()
+  method public System.Void ClearRowItem()
+  method private System.Void OnStatusToggled(System.Object sender, Timberborn.StatusSystem.StatusInstance statusInstance)
+  method private System.Void UpdateStatuses()
+  nested Timberborn.StatusSystemUI.StatusBatchControlRowItem+.<>c
+
+=== Timberborn.StatusSystemUI.StatusBatchControlRowItem+.<>c   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.StatusSystemUI.StatusBatchControlRowItem+.<>c <>9
+  field static Func<Timberborn.StatusSystem.StatusInstance, System.Boolean> <>9__10_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.Boolean <UpdateStatuses>b__10_0(Timberborn.StatusSystem.StatusInstance status)
+
+=== Timberborn.StatusSystemUI.StatusBatchControlRowItemFactory   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.TooltipSystem.ITooltipRegistrar _tooltipRegistrar
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.TooltipSystem.ITooltipRegistrar tooltipRegistrar)
+  method public Timberborn.BatchControl.IBatchControlRowItem Create(Timberborn.BaseComponentSystem.BaseComponent entity)
+
+=== Timberborn.StatusSystemUI.StatusListFragment   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field UnityEngine.UIElements.VisualElement _root
+  field Timberborn.StatusSystem.StatusSubject _selectedStatusSubject
+  field List<UnityEngine.UIElements.VisualElement> _statusListElements
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method private static System.Void Show(UnityEngine.UIElements.VisualElement statusListElement, Timberborn.StatusSystem.StatusInstance statusInstance)
+  method private UnityEngine.UIElements.VisualElement GetStatusListElement(System.Int32 index)
+  method private System.Void HideStatusListElements(System.Int32 startingIndex)
+
+=== Timberborn.StatusSystemUI.StatusSystemSlotsDrawer   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.Debugging.IDevModule, Timberborn.SingletonSystem.IUpdatableSingleton
+  field static System.Single VerticalLineLength
+  field static System.Single HorizontalLinesLength
+  field Timberborn.StatusSystem.IStatusIconOffsetService _statusIconOffsetService
+  field System.Boolean _showingSlots
+  method public System.Void .ctor(Timberborn.StatusSystem.IStatusIconOffsetService statusIconOffsetService)
+  method public Timberborn.Debugging.DevModuleDefinition GetDefinition()
+  method public System.Void UpdateSingleton()
+  method private System.Void ToggleStatusSlots()
+  method private System.Void DrawStatusSlots()
+  method private static System.Void DrawStatusSlot(Timberborn.StatusSystem.StatusSlot statusSlot, UnityEngine.Vector2 position2D)
+  method private static System.Void .cctor()
+
+=== Timberborn.StatusSystemUI.StatusSystemUIConfigurator   [Timberborn.StatusSystemUI]
+  kind: class   base: Bindito.Core.Configurator
+  [type attr] Bindito.Core.ContextAttribute
+  method System.Void Configure()
+  method public System.Void .ctor()
+  nested Timberborn.StatusSystemUI.StatusSystemUIConfigurator+.EntityPanelModuleProvider
+  nested Timberborn.StatusSystemUI.StatusSystemUIConfigurator+.AlertPanelModuleProvider
+
+=== Timberborn.StatusSystemUI.StatusSystemUIConfigurator+.EntityPanelModuleProvider   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  interfaces: IProvider<Timberborn.EntityPanelSystem.EntityPanelModule>
+  field Timberborn.StatusSystemUI.StatusListFragment _statusListFragment
+  method public System.Void .ctor(Timberborn.StatusSystemUI.StatusListFragment statusListFragment)
+  method public Timberborn.EntityPanelSystem.EntityPanelModule Get()
+
+=== Timberborn.StatusSystemUI.StatusSystemUIConfigurator+.AlertPanelModuleProvider   [Timberborn.StatusSystemUI]
+  kind: class   base: System.Object
+  interfaces: IProvider<Timberborn.AlertPanelSystem.AlertPanelModule>
+  field Timberborn.StatusSystemUI.StatusAlertFragment _statusAlertFragment
+  field Timberborn.StatusSystemUI.DynamicStatusAlertFragment _dynamicStatusAlertFragment
+  method public System.Void .ctor(Timberborn.StatusSystemUI.StatusAlertFragment statusAlertFragment, Timberborn.StatusSystemUI.DynamicStatusAlertFragment dynamicStatusAlertFragment)
+  method public Timberborn.AlertPanelSystem.AlertPanelModule Get()

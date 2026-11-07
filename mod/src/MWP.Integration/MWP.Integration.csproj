@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    MWP.Integration: the only assembly allowed to touch third-party mod types.
+
+    v0.1 ships zero hard references to external mods. Timber Pipes support is delivered two
+    ways: (a) the MUST path needs no code at all - a standard Water inventory is extractable
+    with a One-way Valve; (b) the optional direct-output port is detection-only and degrades
+    safely (REQ-COMPAT-02/03/04/07).
+  -->
+
+  <PropertyGroup>
+    <MwpGameProject>true</MwpGameProject>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>MWP.Integration</AssemblyName>
+    <RootNamespace>MWP.Integration</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MWP.Core\MWP.Core.csproj" />
+  </ItemGroup>
+
+</Project>

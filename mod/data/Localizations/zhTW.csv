@@ -1,0 +1,42 @@
+ID,Text,Comment
+Building.MWP.Pump.Basic.DisplayName,機械飲水泵 Mk I,req 12.3
+Building.MWP.Pump.Intermediate.DisplayName,機械飲水泵 Mk II,req 12.3
+Building.MWP.Pump.Advanced.DisplayName,機械飲水泵 Mk III,req 12.3
+Building.MWP.Pump.Top.DisplayName,機械飲水泵 Mk IV,req 12.3
+Building.MWP.Pump.Basic.Description,以機械動力抽取並過濾飲用水，無需工人。,req 12.3
+Building.MWP.Pump.Intermediate.Description,雙缸機械飲水泵，水槽更大，可抽取更深的水。,req 20.1.2
+Building.MWP.Pump.Advanced.Description,高階機械飲水泵，可抽更深的水，產量更高。,req 12.3
+Building.MWP.Pump.Top.Description,頂級機械飲水泵，以大型動力網支撐整個聚落的飲水。,req 12.3
+Building.MWP.Pump.Flavor,「終於不用再派海狸去搖水泵了。」,req 12.3
+Status.MWP.NoPower,沒有動力：接上風車或水輪,req 12.2
+Status.MWP.LowPower,供電不足：{0}%,req 12.3
+Status.MWP.NoWater,沒有可抽取的水,req 12.3
+Status.MWP.StorageFull,內部水槽已滿,req 12.3
+Status.MWP.NoAccess,沒有道路可搬運,req 12.3
+Status.MWP.Producing,產水中：{0} 水/小時,req 12.3
+Status.MWP.Paused,已暫停,req 12.3
+Status.MWP.PipeDirect,管道直連可用,req 12.3
+Status.MWP.PipeValve,管道：請用閥門抽取,req 12.3
+Status.MWP.PipeUnavailable,管道直連不可用，已退回基本模式,req 12.3
+Status.MWP.PowerDemand,動力需求：{0} hp,req 12.3
+Status.MWP.PowerSupply,目前供電：{0}%,req 12.3
+Status.MWP.WaterQuality,水質：{0}%,req 12.3
+Status.MWP.MaintenanceDue,維護將至：{0}%,req 20.2.5
+Status.MWP.Critical,磨損嚴重：{0}%,req 20.2.5
+Status.MWP.NeedsMaintenance,需要維護，已停產,req 20.2.5
+Status.MWP.Maintaining,維護中：{0}%,req 20.2.5
+Status.MWP.MissingMaintenanceMaterials,維護材料不足,req 20.2.5
+Status.MWP.NoAccessForMaintenance,維護材料無法送達（無路）,req 20.2.5
+UI.MWP.Condition,機況：{0}%,req 20.2.5
+UI.MWP.MaintenanceIn,下次維護：{0} 日,req 20.2.5
+UI.MWP.MaintenanceMaterials,需要：{0},req 20.2.5
+UI.MWP.MaintainNow,立即維護,req 20.2.5
+UI.MWP.AutoMaintenance,自動維護,req 20.2.5
+UI.MWP.Inventory,庫存：{0}/{1},req 12.1
+UI.MWP.MaxDepth,抽水深度：{0} 格,v0.2 UI depth row
+UI.MWP.WaterRate,產量：{0} 水/小時,v0.2 UI rate row
+UI.MWP.Pause,暫停,v0.2 UI pause button
+UI.MWP.Resume,恢復,v0.2 UI resume button
+Tooltip.MWP.PipeCompat,安裝 Timber Pipes 後可用閥門抽取,req 12.3
+Tooltip.MWP.WaterRate,滿載速率；受供電與水質影響,req 12.3
+MWP.Flavor.Citation,「水往低處流，但飲用水要往高處送。」,req 12.3

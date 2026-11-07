@@ -1,0 +1,11 @@
+{
+  "TemplateCollectionSpec": {
+    "CollectionId": "Buildings.Folktails",
+    "Blueprints#append": [
+      "Buildings/Water/MWP/MWP.Pump.Basic.Folktails.blueprint",
+      "Buildings/Water/MWP/MWP.Pump.Intermediate.Folktails.blueprint",
+      "Buildings/Water/MWP/MWP.Pump.Advanced.Folktails.blueprint",
+      "Buildings/Water/MWP/MWP.Pump.Top.Folktails.blueprint"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+# member dump for UnityEngine\.UIElements\.UQueryExtensions$
+
+=== UnityEngine.UIElements.UQueryExtensions   [UnityEngine.UIElementsModule]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.ExtensionAttribute
+  field static UQueryState<UnityEngine.UIElements.VisualElement> SingleElementEmptyQuery
+  field static UQueryState<UnityEngine.UIElements.VisualElement> SingleElementNameQuery
+  field static UQueryState<UnityEngine.UIElements.VisualElement> SingleElementClassQuery
+  field static UQueryState<UnityEngine.UIElements.VisualElement> SingleElementNameAndClassQuery
+  field static UQueryState<UnityEngine.UIElements.VisualElement> SingleElementTypeQuery
+  field static UQueryState<UnityEngine.UIElements.VisualElement> SingleElementTypeAndNameQuery
+  field static UQueryState<UnityEngine.UIElements.VisualElement> SingleElementTypeAndClassQuery
+  field static UQueryState<UnityEngine.UIElements.VisualElement> SingleElementTypeAndNameAndClassQuery
+  method public static T Q(UnityEngine.UIElements.VisualElement e, System.String name, System.String[] classes)
+  method public static UnityEngine.UIElements.VisualElement Q(UnityEngine.UIElements.VisualElement e, System.String name, System.String[] classes)
+  method public static T Q(UnityEngine.UIElements.VisualElement e, System.String name, System.String className)
+  method static T MandatoryQ(UnityEngine.UIElements.VisualElement e, System.String name, System.String className)
+  method public static UnityEngine.UIElements.VisualElement Q(UnityEngine.UIElements.VisualElement e, System.String name, System.String className)
+  method static UnityEngine.UIElements.VisualElement MandatoryQ(UnityEngine.UIElements.VisualElement e, System.String name, System.String className)
+  method public static UQueryBuilder<UnityEngine.UIElements.VisualElement> Query(UnityEngine.UIElements.VisualElement e, System.String name, System.String[] classes)
+  method public static UQueryBuilder<UnityEngine.UIElements.VisualElement> Query(UnityEngine.UIElements.VisualElement e, System.String name, System.String className)
+  method public static UQueryBuilder<T> Query(UnityEngine.UIElements.VisualElement e, System.String name, System.String[] classes)
+  method public static UQueryBuilder<T> Query(UnityEngine.UIElements.VisualElement e, System.String name, System.String className)
+  method public static UQueryBuilder<UnityEngine.UIElements.VisualElement> Query(UnityEngine.UIElements.VisualElement e)
+  method private static System.Void .cctor()
+  nested UnityEngine.UIElements.UQueryExtensions+.MissingVisualElementException

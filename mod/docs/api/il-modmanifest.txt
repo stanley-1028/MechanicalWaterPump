@@ -1,0 +1,61 @@
+# member dump for Timberborn.Modding.ModManifest, Timberborn.Modding.ModManifestDependency, Timberborn.Modding.ManifestLoader
+
+=== Timberborn.Modding.ManifestLoader   [Timberborn.Modding]
+  kind: class   base: System.Object
+  field static System.String ManifestFileName
+  field Timberborn.SerializationSystem.SerializedObjectReaderWriter _serializedObjectReaderWriter
+  method public System.Void .ctor(Timberborn.SerializationSystem.SerializedObjectReaderWriter serializedObjectReaderWriter)
+  method public System.Boolean TryLoadManifest(System.String modDirectory, out ref Timberborn.Modding.ModManifest manifest)
+  method private System.Boolean TryDeserializeManifest(System.IO.FileInfo manifestFile, out ref Timberborn.Modding.ModManifest manifest)
+  method private static IEnumerable<Timberborn.Modding.VersionedMod> GetVersionedMods(Timberborn.SerializationSystem.SerializedObject save, System.String arrayName)
+  method private static System.Void .cctor()
+  nested Timberborn.Modding.ManifestLoader+.<GetVersionedMods>d__5
+
+=== Timberborn.Modding.ManifestLoader+.<GetVersionedMods>d__5   [Timberborn.Modding]
+  kind: class   base: System.Object
+  interfaces: IEnumerable<Timberborn.Modding.VersionedMod>, System.Collections.IEnumerable, IEnumerator<Timberborn.Modding.VersionedMod>, System.Collections.IEnumerator, System.IDisposable
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 <>1__state
+  field Timberborn.Modding.VersionedMod <>2__current
+  field System.Int32 <>l__initialThreadId
+  field Timberborn.SerializationSystem.SerializedObject save
+  field Timberborn.SerializationSystem.SerializedObject <>3__save
+  field System.String arrayName
+  field System.String <>3__arrayName
+  field Timberborn.SerializationSystem.SerializedObject[] <>7__wrap1
+  field System.Int32 <>7__wrap2
+  prop Timberborn.Modding.VersionedMod System.Collections.Generic.IEnumerator<Timberborn.Modding.VersionedMod>.Current {get}
+  prop System.Object System.Collections.IEnumerator.Current {get}
+  method public System.Void .ctor(System.Int32 <>1__state)
+  method private System.Void System.IDisposable.Dispose()
+  method private System.Boolean MoveNext()
+  method private Timberborn.Modding.VersionedMod System.Collections.Generic.IEnumerator<Timberborn.Modding.VersionedMod>.get_Current()
+  method private System.Void System.Collections.IEnumerator.Reset()
+  method private System.Object System.Collections.IEnumerator.get_Current()
+  method private IEnumerator<Timberborn.Modding.VersionedMod> System.Collections.Generic.IEnumerable<Timberborn.Modding.VersionedMod>.GetEnumerator()
+  method private System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+=== Timberborn.Modding.ModManifest   [Timberborn.Modding]
+  kind: class   base: System.Object
+  field System.String <Name>k__BackingField
+  field System.String <Description>k__BackingField
+  field Timberborn.Versioning.Version <Version>k__BackingField
+  field System.String <Id>k__BackingField
+  field Timberborn.Versioning.Version <MinimumGameVersion>k__BackingField
+  field ImmutableArray<Timberborn.Modding.VersionedMod> <RequiredMods>k__BackingField
+  field ImmutableArray<Timberborn.Modding.VersionedMod> <OptionalMods>k__BackingField
+  prop System.String Name {get}
+  prop System.String Description {get}
+  prop Timberborn.Versioning.Version Version {get}
+  prop System.String Id {get}
+  prop Timberborn.Versioning.Version MinimumGameVersion {get}
+  prop ImmutableArray<Timberborn.Modding.VersionedMod> RequiredMods {get}
+  prop ImmutableArray<Timberborn.Modding.VersionedMod> OptionalMods {get}
+  method public System.String get_Name()
+  method public System.String get_Description()
+  method public Timberborn.Versioning.Version get_Version()
+  method public System.String get_Id()
+  method public Timberborn.Versioning.Version get_MinimumGameVersion()
+  method public ImmutableArray<Timberborn.Modding.VersionedMod> get_RequiredMods()
+  method public ImmutableArray<Timberborn.Modding.VersionedMod> get_OptionalMods()
+  method public System.Void .ctor(System.String name, System.String description, Timberborn.Versioning.Version version, System.String id, Timberborn.Versioning.Version minimumGameVersion, IEnumerable<Timberborn.Modding.VersionedMod> requiredMods, IEnumerable<Timberborn.Modding.VersionedMod> optionalMods)

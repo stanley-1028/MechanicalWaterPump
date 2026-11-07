@@ -1,0 +1,151 @@
+# member dump for UnityEngine\.UIElements\.EventCallback.*, UnityEngine\.UIElements\.ChangeEvent.*
+
+=== UnityEngine.UIElements.ChangeEvent`1   [UnityEngine.UIElementsModule]
+  kind: class   base: EventBase<ChangeEvent<T>>
+  interfaces: UnityEngine.UIElements.IChangeEvent
+  [type attr] UnityEngine.UIElements.EventCategoryAttribute
+  field T <previousValue>k__BackingField
+  field T <newValue>k__BackingField
+  prop T previousValue {get/set}
+  prop T newValue {get/set}
+  method private static System.Void .cctor()
+  method public T get_previousValue()
+  method System.Void set_previousValue(T value)
+  method public T get_newValue()
+  method System.Void set_newValue(T value)
+  method System.Void Init()
+  method private System.Void LocalInit()
+  method public static ChangeEvent<T> GetPooled(T previousValue, T newValue)
+  method public System.Void .ctor()
+  nested UnityEngine.UIElements.ChangeEvent`1+.<>c
+
+=== UnityEngine.UIElements.ChangeEvent`1+.<>c   [UnityEngine.UIElementsModule]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static <>c<T> <>9
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method ChangeEvent<T> <.cctor>b__0_0()
+
+=== UnityEngine.UIElements.EventCallback`1   [UnityEngine.UIElementsModule]
+  kind: class   base: System.MulticastDelegate
+  method public System.Void .ctor(System.Object object, System.IntPtr method)
+  method public System.Void Invoke(TEventType evt)
+  method public System.IAsyncResult BeginInvoke(TEventType evt, System.AsyncCallback callback, System.Object object)
+  method public System.Void EndInvoke(System.IAsyncResult result)
+
+=== UnityEngine.UIElements.EventCallback`2   [UnityEngine.UIElementsModule]
+  kind: class   base: System.MulticastDelegate
+  method public System.Void .ctor(System.Object object, System.IntPtr method)
+  method public System.Void Invoke(TEventType evt, TCallbackArgs userArgs)
+  method public System.IAsyncResult BeginInvoke(TEventType evt, TCallbackArgs userArgs, System.AsyncCallback callback, System.Object object)
+  method public System.Void EndInvoke(System.IAsyncResult result)
+
+=== UnityEngine.UIElements.EventCallbackFunctorBase   [UnityEngine.UIElementsModule]
+  kind: class   base: System.Object
+  interfaces: System.IDisposable
+  field System.Int64 eventTypeId
+  field UnityEngine.UIElements.CallbackOptions callbackOptions
+  method public System.Void Invoke(UnityEngine.UIElements.EventBase evt)
+  method public System.Void UnregisterCallback(UnityEngine.UIElements.CallbackEventHandler target, UnityEngine.UIElements.TrickleDown useTrickleDown)
+  method public System.Void Dispose()
+  method public System.Boolean IsEquivalentTo(System.Int64 eventTypeId, System.Delegate callback)
+  method System.Void .ctor()
+
+=== UnityEngine.UIElements.EventCallbackFunctor`1   [UnityEngine.UIElementsModule]
+  kind: class   base: UnityEngine.UIElements.EventCallbackFunctorBase
+  field EventCallback<TEventType> m_Callback
+  method public static EventCallbackFunctor<TEventType> GetPooled(System.Int64 eventTypeId, EventCallback<TEventType> callback, UnityEngine.UIElements.CallbackOptions callbackOptions)
+  method public System.Void Dispose()
+  method public System.Void Invoke(UnityEngine.UIElements.EventBase evt)
+  method public System.Void UnregisterCallback(UnityEngine.UIElements.CallbackEventHandler target, UnityEngine.UIElements.TrickleDown useTrickleDown)
+  method public System.Boolean IsEquivalentTo(System.Int64 eventTypeId, System.Delegate callback)
+  method public System.Void .ctor()
+
+=== UnityEngine.UIElements.EventCallbackFunctor`2   [UnityEngine.UIElementsModule]
+  kind: class   base: UnityEngine.UIElements.EventCallbackFunctorBase
+  field EventCallback<TEventType, TCallbackArgs> m_Callback
+  field TCallbackArgs <userArgs>k__BackingField
+  prop TCallbackArgs userArgs {get/set}
+  method TCallbackArgs get_userArgs()
+  method System.Void set_userArgs(TCallbackArgs value)
+  method public static EventCallbackFunctor<TEventType, TCallbackArgs> GetPooled(System.Int64 eventTypeId, EventCallback<TEventType, TCallbackArgs> callback, TCallbackArgs userArgs, UnityEngine.UIElements.CallbackOptions callbackOptions)
+  method public System.Void Dispose()
+  method public System.Void Invoke(UnityEngine.UIElements.EventBase evt)
+  method public System.Void UnregisterCallback(UnityEngine.UIElements.CallbackEventHandler target, UnityEngine.UIElements.TrickleDown useTrickleDown)
+  method public System.Boolean IsEquivalentTo(System.Int64 eventTypeId, System.Delegate callback)
+  method public System.Void .ctor()
+
+=== UnityEngine.UIElements.EventCallbackListPool   [UnityEngine.UIElementsModule]
+  kind: class   base: System.Object
+  field Stack<UnityEngine.UIElements.EventCallbackList> m_Stack
+  method public UnityEngine.UIElements.EventCallbackList Get(UnityEngine.UIElements.EventCallbackList initializer)
+  method public System.Void Release(UnityEngine.UIElements.EventCallbackList element)
+  method public System.Void .ctor()
+
+=== UnityEngine.UIElements.EventCallbackList   [UnityEngine.UIElementsModule]
+  kind: class   base: System.Object
+  [type attr] System.Reflection.DefaultMemberAttribute
+  field static UnityEngine.UIElements.EventCallbackList EmptyList
+  field UnityEngine.UIElements.EventCallbackFunctorBase[] m_Array
+  field System.Int32 m_Count
+  prop System.Int32 Count {get}
+  prop Span<UnityEngine.UIElements.EventCallbackFunctorBase> Span {get}
+  prop UnityEngine.UIElements.EventCallbackFunctorBase Item {get/set}
+  method public System.Void .ctor()
+  method public System.Void .ctor(UnityEngine.UIElements.EventCallbackList source)
+  method public System.Boolean Contains(System.Int64 eventTypeId, System.Delegate callback)
+  method public UnityEngine.UIElements.EventCallbackFunctorBase Find(System.Int64 eventTypeId, System.Delegate callback)
+  method public System.Boolean Remove(System.Int64 eventTypeId, System.Delegate callback, out ref UnityEngine.UIElements.EventCallbackFunctorBase removedFunctor)
+  method public System.Boolean RemoveAndDisposeAllRemovable(UnityEngine.UIElements.EventCallbackRegistry registry)
+  method public System.Void Add(UnityEngine.UIElements.EventCallbackFunctorBase item)
+  method public System.Void AddRange(UnityEngine.UIElements.EventCallbackList list)
+  method public System.Int32 get_Count()
+  method public Span<UnityEngine.UIElements.EventCallbackFunctorBase> get_Span()
+  method public UnityEngine.UIElements.EventCallbackFunctorBase get_Item(System.Int32 i)
+  method public System.Void set_Item(System.Int32 i, UnityEngine.UIElements.EventCallbackFunctorBase value)
+  method public System.Void Clear()
+  method private static System.Void .cctor()
+
+=== UnityEngine.UIElements.EventCallbackRegistry   [UnityEngine.UIElementsModule]
+  kind: class   base: System.Object
+  field static UnityEngine.UIElements.EventCallbackListPool s_ListPool
+  field UnityEngine.UIElements.EventCallbackRegistry+.DynamicCallbackList m_TrickleDownCallbacks
+  field UnityEngine.UIElements.EventCallbackRegistry+.DynamicCallbackList m_BubbleUpCallbacks
+  prop System.Boolean isInvoking {get}
+  method private static UnityEngine.UIElements.EventCallbackList GetCallbackList(UnityEngine.UIElements.EventCallbackList initializer)
+  method private static System.Void ReleaseCallbackList(UnityEngine.UIElements.EventCallbackList toRelease)
+  method private ref UnityEngine.UIElements.EventCallbackRegistry+.DynamicCallbackList GetDynamicCallbackList(UnityEngine.UIElements.CallbackOptions callbackOptions)
+  method public System.Void RegisterCallback(EventCallback<TEventType> callback, UnityEngine.UIElements.CallbackOptions callbackOptions)
+  method public System.Void RegisterCallback(EventCallback<TEventType, TCallbackArgs> callback, TCallbackArgs userArgs, UnityEngine.UIElements.CallbackOptions callbackOptions)
+  method public System.Boolean UnregisterCallback(EventCallback<TEventType> callback, UnityEngine.UIElements.CallbackOptions callbackOptions)
+  method public System.Boolean UnregisterCallback(EventCallback<TEventType, TCallbackArgs> callback, UnityEngine.UIElements.CallbackOptions callbackOptions)
+  method System.Boolean UnregisterAllRemovableCallbacks_NotDuringInvoke()
+  method System.Void InvokeCallbacks(UnityEngine.UIElements.EventBase evt, UnityEngine.UIElements.PropagationPhase propagationPhase)
+  method public System.Void Clear()
+  method public System.Boolean HasTrickleDownHandlers()
+  method public System.Boolean HasBubbleHandlers()
+  method public System.Boolean get_isInvoking()
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+  nested UnityEngine.UIElements.EventCallbackRegistry+.DynamicCallbackList
+
+=== UnityEngine.UIElements.EventCallbackRegistry+.DynamicCallbackList   [UnityEngine.UIElementsModule]
+  kind: struct   base: System.ValueType
+  field UnityEngine.UIElements.TrickleDown m_UseTrickleDown
+  field UnityEngine.UIElements.EventCallbackList m_Callbacks
+  field UnityEngine.UIElements.EventCallbackList m_TemporaryCallbacks
+  field List<UnityEngine.UIElements.EventCallbackFunctorBase> m_UnregisteredCallbacksDuringInvoke
+  field System.Int32 m_IsInvoking
+  prop System.Boolean isInvoking {get}
+  prop System.Int32 Count {get}
+  method public System.Boolean get_isInvoking()
+  method public System.Int32 get_Count()
+  method public static UnityEngine.UIElements.EventCallbackRegistry+.DynamicCallbackList Create(UnityEngine.UIElements.TrickleDown useTrickleDown)
+  method public UnityEngine.UIElements.EventCallbackList GetCallbackListForWriting()
+  method public UnityEngine.UIElements.EventCallbackList GetCallbackListForReading()
+  method public System.Boolean UnregisterCallback(System.Int64 eventTypeId, System.Delegate callback)
+  method public System.Void Invoke(UnityEngine.UIElements.EventBase evt, UnityEngine.UIElements.BaseVisualElementPanel panel, UnityEngine.UIElements.VisualElement target)
+  method public System.Void Clear()
+  method private System.Void BeginInvoke()
+  method private System.Void EndInvoke()

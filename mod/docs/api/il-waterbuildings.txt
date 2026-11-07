@@ -1,0 +1,154 @@
+# member dump for Timberborn.WaterBuildings.WaterInput$, Timberborn.WaterBuildings.WaterInputSpec, Timberborn.WaterBuildings.WaterInputPipe$, Timberborn.WaterBuildings.WaterInputPipeSpec, Timberborn.WaterBuildings.WaterInputService, Timberborn.WaterBuildings.WaterInputFixed
+
+=== Timberborn.WaterBuildings.WaterInput   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.WorldPersistence.IPersistentEntity, Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BlockSystem.IFinishedStateListener
+  field static System.Int32 BufferMultiplier
+  field static Timberborn.WorldPersistence.ComponentKey WaterInputKey
+  field static PropertyKey<System.Single> CleanWaterAmountKey
+  field static PropertyKey<System.Single> ContaminatedWaterAmountKey
+  field Timberborn.WaterSystem.IWaterService _waterService
+  field Timberborn.WaterSystem.IThreadSafeWaterMap _threadSafeWaterMap
+  field Timberborn.WaterBuildings.WaterInputService _waterInputService
+  field Timberborn.WaterBuildings.IWaterInputCoordinates _inputCoordinates
+  field System.Single _contaminatedWaterAmount
+  field System.Single _cleanWaterAmount
+  prop System.Boolean IsUnderwater {get}
+  prop System.Single ContaminationPercentage {get}
+  prop UnityEngine.Vector3Int Coordinates {get}
+  method public System.Void .ctor(Timberborn.WaterSystem.IWaterService waterService, Timberborn.WaterSystem.IThreadSafeWaterMap threadSafeWaterMap, Timberborn.WaterBuildings.WaterInputService waterInputService)
+  method public System.Boolean get_IsUnderwater()
+  method public System.Single get_ContaminationPercentage()
+  method public UnityEngine.Vector3Int get_Coordinates()
+  method public System.Void Awake()
+  method public System.Void OnEnterFinishedState()
+  method public System.Void OnExitFinishedState()
+  method public System.Void Save(Timberborn.WorldPersistence.IEntitySaver entitySaver)
+  method public System.Void Load(Timberborn.WorldPersistence.IEntityLoader entityLoader)
+  method public System.Void AddWater(System.Single cleanWaterAmount, System.Single contaminatedWaterAmount)
+  method public System.Void RemoveCleanWater(System.Single waterAmount)
+  method public System.Void RemoveContaminatedWater(System.Single waterAmount)
+  method public System.Single DemandCleanWaterAmount(System.Single neededWater)
+  method public System.Single DemandContaminatedWaterAmount(System.Single neededWater)
+  method private static System.Void .cctor()
+
+=== Timberborn.WaterBuildings.WaterInputFixedCoordinates   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IPostInitializableEntity, Timberborn.WaterBuildings.IWaterInputCoordinates
+  field UnityEngine.Vector3Int <Coordinates>k__BackingField
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.WaterBuildings.WaterInputSpec _waterInputSpec
+  prop UnityEngine.Vector3Int Coordinates {get/set}
+  prop System.Boolean IsBlocked {get}
+  method public UnityEngine.Vector3Int get_Coordinates()
+  method private System.Void set_Coordinates(UnityEngine.Vector3Int value)
+  method public System.Boolean get_IsBlocked()
+  method public System.Void Awake()
+  method public System.Void PostInitializeEntity()
+  method public System.Void .ctor()
+
+=== Timberborn.WaterBuildings.WaterInputFixedSpec   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.WaterBuildings.WaterInputFixedSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  prop System.Type EqualityContract {get}
+  method System.Type get_EqualityContract()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.WaterBuildings.WaterInputFixedSpec left, Timberborn.WaterBuildings.WaterInputFixedSpec right)
+  method public static System.Boolean op_Equality(Timberborn.WaterBuildings.WaterInputFixedSpec left, Timberborn.WaterBuildings.WaterInputFixedSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.WaterBuildings.WaterInputFixedSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.WaterBuildings.WaterInputFixedSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.WaterBuildings.WaterInputPipe   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity, Timberborn.EntitySystem.IDeletableEntity
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Timberborn.WaterBuildings.PreviewWaterInputPipeBlockerService _previewWaterInputPipeBlockerService
+  field Timberborn.WaterBuildings.WaterInputPipeCoordinates _waterInputPipeCoordinates
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.BlockObjectModelSystem.BlockObjectModelController _blockObjectModelController
+  field Timberborn.SelectionSystem.HighlightableObject _highlightableObject
+  field Timberborn.WaterBuildings.WaterInputPipeSegmentCreator _waterInputPipeSegmentCreator
+  field List<Timberborn.WaterBuildings.PipeSegment> _pipeSegments
+  method public System.Void .ctor(Timberborn.SingletonSystem.EventBus eventBus, Timberborn.WaterBuildings.PreviewWaterInputPipeBlockerService previewWaterInputPipeBlockerService)
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method public System.Void DeleteEntity()
+  method public System.Void OnPreviewPipeBlockingCoordinatesChanged(Timberborn.WaterBuildings.PreviewBlockingCoordinatesChangedEvent e)
+  method private System.Void OnWaterPipeCoordinatesChanged(System.Object sender, UnityEngine.Vector3Int coordinates)
+  method private System.Boolean ShouldUpdatePipe(ReadOnlyList<UnityEngine.Vector3Int> changedCoordinates)
+  method private System.Void UpdatePipe()
+  method private System.Boolean CanShowPipeSegment(UnityEngine.Vector3Int gridPosition)
+  method private System.Void ShowPipeSegment(System.Int32 index, UnityEngine.Vector3Int gridPosition)
+  method private Timberborn.WaterBuildings.PipeSegment GetOrCreatePipeSegment(System.Int32 index)
+  method private System.Boolean IsEndSegment(System.Int32 index, UnityEngine.Vector3Int gridPosition)
+  method private System.Void DisablePipeSegmentsAfter(System.Int32 index)
+
+=== Timberborn.WaterBuildings.WaterInputPipeSpec   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.WaterBuildings.WaterInputPipeSpec>
+  field System.String <PipeSegmentPrefabPath>k__BackingField
+  field System.String <PipeParentName>k__BackingField
+  field System.Int32 <MaxDepth>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.String PipeSegmentPrefabPath {get/set}
+  prop System.String PipeParentName {get/set}
+  prop System.Int32 MaxDepth {get/set}
+  method System.Type get_EqualityContract()
+  method public System.String get_PipeSegmentPrefabPath()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_PipeSegmentPrefabPath(System.String value)
+  method public System.String get_PipeParentName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_PipeParentName(System.String value)
+  method public System.Int32 get_MaxDepth()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_MaxDepth(System.Int32 value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.WaterBuildings.WaterInputPipeSpec left, Timberborn.WaterBuildings.WaterInputPipeSpec right)
+  method public static System.Boolean op_Equality(Timberborn.WaterBuildings.WaterInputPipeSpec left, Timberborn.WaterBuildings.WaterInputPipeSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.WaterBuildings.WaterInputPipeSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.WaterBuildings.WaterInputPipeSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.WaterBuildings.WaterInputService   [Timberborn.WaterBuildings]
+  kind: class   base: System.Object
+  interfaces: Timberborn.TickSystem.ITickableSingleton
+  field Timberborn.WaterSystem.IWaterRemovalService _waterRemovalService
+  field List<Timberborn.WaterBuildings.WaterInput> _waterInputs
+  method public System.Void .ctor(Timberborn.WaterSystem.IWaterRemovalService waterRemovalService)
+  method public System.Void RegisterWaterInput(Timberborn.WaterBuildings.WaterInput waterInput)
+  method public System.Void UnregisterWaterInput(Timberborn.WaterBuildings.WaterInput waterInput)
+  method public System.Void Tick()
+
+=== Timberborn.WaterBuildings.WaterInputSpec   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.WaterBuildings.WaterInputSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  field UnityEngine.Vector3Int <WaterInputCoordinates>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop UnityEngine.Vector3Int WaterInputCoordinates {get/set}
+  method System.Type get_EqualityContract()
+  method public UnityEngine.Vector3Int get_WaterInputCoordinates()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_WaterInputCoordinates(UnityEngine.Vector3Int value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.WaterBuildings.WaterInputSpec left, Timberborn.WaterBuildings.WaterInputSpec right)
+  method public static System.Boolean op_Equality(Timberborn.WaterBuildings.WaterInputSpec left, Timberborn.WaterBuildings.WaterInputSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.WaterBuildings.WaterInputSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.WaterBuildings.WaterInputSpec original)
+  method public System.Void .ctor()

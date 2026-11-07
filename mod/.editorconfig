@@ -1,0 +1,71 @@
+root = true
+
+# MWP code style (REQ-NFR-02). Warnings are already errors in Directory.Build.props;
+# this file pins the conventions reviewers rely on.
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{csproj,props,targets,json,yml,yaml}]
+indent_size = 2
+
+[*.{json,jsonc}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.cs]
+indent_size = 4
+
+# --- naming (REQ-NFR-03 / requirements 20.3.1) -----------------------------
+dotnet_naming_rule.constants_upper_snake.severity = warning
+dotnet_naming_rule.constants_upper_snake.symbols = constants
+dotnet_naming_rule.constants_upper_snake.style = upper_snake_case
+dotnet_naming_symbols.constants.applicable_kinds = field
+dotnet_naming_symbols.constants.applicable_accessibilities = *
+dotnet_naming_symbols.constants.required_modifiers = const
+dotnet_naming_style.upper_snake_case.required_prefix =
+dotnet_naming_style.upper_snake_case.capitalization = all_upper
+dotnet_naming_style.upper_snake_case.word_separator = _
+
+dotnet_naming_rule.private_fields_camel.severity = warning
+dotnet_naming_rule.private_fields_camel.symbols = private_fields
+dotnet_naming_rule.private_fields_camel.style = camel_with_underscore
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_fields.required_modifiers = *
+dotnet_naming_style.camel_with_underscore.required_prefix = _
+dotnet_naming_style.camel_with_underscore.capitalization = camel_case
+
+# --- C# style --------------------------------------------------------------
+dotnet_style_qualification_for_field = false:warning
+dotnet_style_qualification_for_property = false:warning
+dotnet_style_qualification_for_method = false:warning
+dotnet_style_qualification_for_event = false:warning
+dotnet_style_readonly_field = true:warning
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:warning
+dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
+dotnet_style_prefer_conditional_expression_over_assignment = false:suggestion
+dotnet_style_prefer_inferred_tuple_names = true:suggestion
+dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
+dotnet_style_coalesce_expression = true:suggestion
+dotnet_style_null_propagation = true:suggestion
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = false:suggestion
+csharp_prefer_braces = true:suggestion
+csharp_style_namespace_declarations = block_scoped:suggestion
+csharp_new_line_before_open_brace = all
+csharp_indent_switch_labels = true
+csharp_style_unused_value_expression_statement_preference = discard_variable:suggestion
+
+# --- analyzer hygiene ------------------------------------------------------
+dotnet_diagnostic.CA1051.severity = none   # public API stability: mod assemblies ship as-is
+dotnet_diagnostic.CA1707.severity = none   # test method names mirror requirement ids
+dotnet_diagnostic.IDE0058.severity = none  # expression values are intentionally unused in tests

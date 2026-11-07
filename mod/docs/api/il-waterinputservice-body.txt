@@ -1,0 +1,57 @@
+
+=== Timberborn.WaterBuildings.WaterInputService::.ctor   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: newobj System.Void System.Collections.Generic.List`1<Timberborn.WaterBuildings.WaterInput>::.ctor()
+  IL_0006: stfld System.Collections.Generic.List`1<Timberborn.WaterBuildings.WaterInput> Timberborn.WaterBuildings.WaterInputService::_waterInputs
+  IL_000b: ldarg.0
+  IL_000c: call System.Void System.Object::.ctor()
+  IL_0011: ldarg.0
+  IL_0012: ldarg.1
+  IL_0013: stfld Timberborn.WaterSystem.IWaterRemovalService Timberborn.WaterBuildings.WaterInputService::_waterRemovalService
+  IL_0018: ret
+
+=== Timberborn.WaterBuildings.WaterInputService::RegisterWaterInput   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.Collections.Generic.List`1<Timberborn.WaterBuildings.WaterInput> Timberborn.WaterBuildings.WaterInputService::_waterInputs
+  IL_0006: ldarg.1
+  IL_0007: callvirt System.Void System.Collections.Generic.List`1<Timberborn.WaterBuildings.WaterInput>::Add(!0)
+  IL_000c: ret
+
+=== Timberborn.WaterBuildings.WaterInputService::UnregisterWaterInput   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.Collections.Generic.List`1<Timberborn.WaterBuildings.WaterInput> Timberborn.WaterBuildings.WaterInputService::_waterInputs
+  IL_0006: ldarg.1
+  IL_0007: callvirt System.Boolean System.Collections.Generic.List`1<Timberborn.WaterBuildings.WaterInput>::Remove(!0)
+  IL_000c: pop
+  IL_000d: ret
+
+=== Timberborn.WaterBuildings.WaterInputService::Tick   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldfld System.Collections.Generic.List`1<Timberborn.WaterBuildings.WaterInput> Timberborn.WaterBuildings.WaterInputService::_waterInputs
+  IL_0006: callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<Timberborn.WaterBuildings.WaterInput>::GetEnumerator()
+  IL_000b: stloc.0
+  IL_000c: br.s IL_003c
+  IL_000e: ldloca.s V_0
+  IL_0010: call !0 System.Collections.Generic.List`1/Enumerator<Timberborn.WaterBuildings.WaterInput>::get_Current()
+  IL_0015: stloc.1
+  IL_0016: ldarg.0
+  IL_0017: ldfld Timberborn.WaterSystem.IWaterRemovalService Timberborn.WaterBuildings.WaterInputService::_waterRemovalService
+  IL_001c: ldloc.1
+  IL_001d: callvirt UnityEngine.Vector3Int Timberborn.WaterBuildings.WaterInput::get_Coordinates()
+  IL_0022: callvirt Timberborn.WaterSystem.WaterAmountChange Timberborn.WaterSystem.IWaterRemovalService::GetWaterChangeUnsafe(UnityEngine.Vector3Int)
+  IL_0027: stloc.2
+  IL_0028: ldloc.1
+  IL_0029: ldloca.s V_2
+  IL_002b: call System.Single Timberborn.WaterSystem.WaterAmountChange::get_CleanWaterChange()
+  IL_0030: ldloca.s V_2
+  IL_0032: call System.Single Timberborn.WaterSystem.WaterAmountChange::get_ContaminatedWaterChange()
+  IL_0037: callvirt System.Void Timberborn.WaterBuildings.WaterInput::AddWater(System.Single,System.Single)
+  IL_003c: ldloca.s V_0
+  IL_003e: call System.Boolean System.Collections.Generic.List`1/Enumerator<Timberborn.WaterBuildings.WaterInput>::MoveNext()
+  IL_0043: brtrue.s IL_000e
+  IL_0045: leave.s IL_0055
+  IL_0047: ldloca.s V_0
+  IL_0049: constrained. System.Collections.Generic.List`1/Enumerator<Timberborn.WaterBuildings.WaterInput>
+  IL_004f: callvirt System.Void System.IDisposable::Dispose()
+  IL_0054: endfinally
+  IL_0055: ret

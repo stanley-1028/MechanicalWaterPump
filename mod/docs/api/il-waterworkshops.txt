@@ -1,0 +1,151 @@
+# member dump for Timberborn.WaterWorkshops.ManufactoryWater(Consumer|Producer), Timberborn.WaterWorkshops.ManufactoryWaterContamination(Consumer|Producer), Timberborn.WaterWorkshops.WaterInput(Manufactory|Contamination)Limiter
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterConsumer   [Timberborn.WaterWorkshops]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity
+  field System.Single <ConsumedWater>k__BackingField
+  field Timberborn.Workshops.Manufactory _manufactory
+  field Timberborn.WaterBuildings.WaterInput _waterInput
+  prop System.Single ConsumedWater {get/set}
+  method public System.Single get_ConsumedWater()
+  method private System.Void set_ConsumedWater(System.Single value)
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method private System.Void UpdateRecipe()
+  method private System.Void OnProductionProgressed(System.Object sender, Timberborn.Workshops.ProductionProgressedEventArgs e)
+  method public System.Void .ctor()
+  method private System.Void <InitializeEntity>b__7_0(System.Object _, System.EventArgs _)
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterConsumerSpec   [Timberborn.WaterWorkshops]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.WaterWorkshops.ManufactoryWaterConsumerSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  prop System.Type EqualityContract {get}
+  method System.Type get_EqualityContract()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.WaterWorkshops.ManufactoryWaterConsumerSpec left, Timberborn.WaterWorkshops.ManufactoryWaterConsumerSpec right)
+  method public static System.Boolean op_Equality(Timberborn.WaterWorkshops.ManufactoryWaterConsumerSpec left, Timberborn.WaterWorkshops.ManufactoryWaterConsumerSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.WaterWorkshops.ManufactoryWaterConsumerSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.WaterWorkshops.ManufactoryWaterConsumerSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterContaminationConsumer   [Timberborn.WaterWorkshops]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity
+  field System.Single <ConsumedWaterContamination>k__BackingField
+  field Timberborn.Workshops.Manufactory _manufactory
+  field Timberborn.WaterBuildings.WaterInput _waterInput
+  prop System.Single ConsumedWaterContamination {get/set}
+  method public System.Single get_ConsumedWaterContamination()
+  method private System.Void set_ConsumedWaterContamination(System.Single value)
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method private System.Void UpdateRecipe()
+  method private System.Void OnProductionProgressed(System.Object sender, Timberborn.Workshops.ProductionProgressedEventArgs e)
+  method public System.Void .ctor()
+  method private System.Void <InitializeEntity>b__7_0(System.Object _, System.EventArgs _)
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterContaminationConsumerSpec   [Timberborn.WaterWorkshops]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: Timberborn.WaterBuildings.IContaminatedWaterNeedingBuilding, IEquatable<Timberborn.WaterWorkshops.ManufactoryWaterContaminationConsumerSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  prop System.Type EqualityContract {get}
+  method System.Type get_EqualityContract()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.WaterWorkshops.ManufactoryWaterContaminationConsumerSpec left, Timberborn.WaterWorkshops.ManufactoryWaterContaminationConsumerSpec right)
+  method public static System.Boolean op_Equality(Timberborn.WaterWorkshops.ManufactoryWaterContaminationConsumerSpec left, Timberborn.WaterWorkshops.ManufactoryWaterContaminationConsumerSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.WaterWorkshops.ManufactoryWaterContaminationConsumerSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.WaterWorkshops.ManufactoryWaterContaminationConsumerSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterContaminationProducer   [Timberborn.WaterWorkshops]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity
+  field static System.String WaterContaminationId
+  field Timberborn.Workshops.Manufactory _manufactory
+  field Timberborn.WaterBuildings.WaterOutput _waterOutput
+  field System.Single _producedWaterContamination
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method private System.Void UpdateRecipe()
+  method private System.Void OnProductionProgressed(System.Object sender, Timberborn.Workshops.ProductionProgressedEventArgs e)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+  method private System.Void <InitializeEntity>b__5_0(System.Object _, System.EventArgs _)
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterContaminationProducerSpec   [Timberborn.WaterWorkshops]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.WaterWorkshops.ManufactoryWaterContaminationProducerSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  prop System.Type EqualityContract {get}
+  method System.Type get_EqualityContract()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.WaterWorkshops.ManufactoryWaterContaminationProducerSpec left, Timberborn.WaterWorkshops.ManufactoryWaterContaminationProducerSpec right)
+  method public static System.Boolean op_Equality(Timberborn.WaterWorkshops.ManufactoryWaterContaminationProducerSpec left, Timberborn.WaterWorkshops.ManufactoryWaterContaminationProducerSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.WaterWorkshops.ManufactoryWaterContaminationProducerSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.WaterWorkshops.ManufactoryWaterContaminationProducerSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterProducer   [Timberborn.WaterWorkshops]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity
+  field static System.String WaterId
+  field Timberborn.Workshops.Manufactory _manufactory
+  field Timberborn.WaterBuildings.WaterOutput _waterOutput
+  field System.Single _producedWater
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method private System.Void UpdateRecipe()
+  method private System.Void OnProductionProgressed(System.Object sender, Timberborn.Workshops.ProductionProgressedEventArgs e)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+  method private System.Void <InitializeEntity>b__5_0(System.Object _, System.EventArgs _)
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterProducerSpec   [Timberborn.WaterWorkshops]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.WaterWorkshops.ManufactoryWaterProducerSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  prop System.Type EqualityContract {get}
+  method System.Type get_EqualityContract()
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.WaterWorkshops.ManufactoryWaterProducerSpec left, Timberborn.WaterWorkshops.ManufactoryWaterProducerSpec right)
+  method public static System.Boolean op_Equality(Timberborn.WaterWorkshops.ManufactoryWaterProducerSpec left, Timberborn.WaterWorkshops.ManufactoryWaterProducerSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.WaterWorkshops.ManufactoryWaterProducerSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.WaterWorkshops.ManufactoryWaterProducerSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.WaterWorkshops.WaterInputManufactoryLimiter   [Timberborn.WaterWorkshops]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.Workshops.IManufactoryLimiter
+  field static System.Single EfficiencyThreshold
+  field Timberborn.WaterBuildings.WaterInput _waterInput
+  field Timberborn.WaterWorkshops.ManufactoryWaterConsumer _manufactoryWaterConsumer
+  method public System.Void Awake()
+  method public System.Single ProductionEfficiency()
+  method public System.Single MaxProductionProgressChange(System.Single expectedProductionProgressChange)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()

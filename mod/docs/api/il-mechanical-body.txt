@@ -1,0 +1,55 @@
+
+=== Timberborn.MechanicalSystem.MechanicalBuilding::get_ActiveAndPowered   [Timberborn.MechanicalSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystem.MechanicalBuilding::_mechanicalNode
+  IL_0006: callvirt System.Boolean Timberborn.MechanicalSystem.MechanicalNode::get_ActiveAndPowered()
+  IL_000b: ret
+
+=== Timberborn.MechanicalSystem.MechanicalBuilding::get_CanUse   [Timberborn.MechanicalSystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.Boolean Timberborn.MechanicalSystem.MechanicalBuilding::get_ActiveAndPowered()
+  IL_0006: ret
+
+=== Timberborn.MechanicalSystem.MechanicalBuilding::get_Efficiency   [Timberborn.MechanicalSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystem.MechanicalBuilding::_mechanicalNode
+  IL_0006: callvirt System.Single Timberborn.MechanicalSystem.MechanicalNode::get_PowerEfficiency()
+  IL_000b: ret
+
+=== Timberborn.MechanicalSystem.MechanicalBuilding::Awake   [Timberborn.MechanicalSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: call !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.MechanicalSystem.MechanicalNode>()
+  IL_0007: stfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystem.MechanicalBuilding::_mechanicalNode
+  IL_000c: ldarg.0
+  IL_000d: call System.Void Timberborn.BaseComponentSystem.BaseComponent::DisableComponent()
+  IL_0012: ret
+
+=== Timberborn.MechanicalSystem.MechanicalBuilding::OnEnterFinishedState   [Timberborn.MechanicalSystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Timberborn.BaseComponentSystem.BaseComponent::EnableComponent()
+  IL_0006: ret
+
+=== Timberborn.MechanicalSystem.MechanicalBuilding::OnExitFinishedState   [Timberborn.MechanicalSystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Timberborn.BaseComponentSystem.BaseComponent::DisableComponent()
+  IL_0006: ret
+
+=== Timberborn.MechanicalSystem.MechanicalBuilding::SetConsumptionDisabled   [Timberborn.MechanicalSystem]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystem.MechanicalBuilding::_mechanicalNode
+  IL_0006: callvirt System.Boolean Timberborn.MechanicalSystem.MechanicalNode::get_IsConsumer()
+  IL_000b: brfalse.s IL_001d
+  IL_000d: ldarg.0
+  IL_000e: ldfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystem.MechanicalBuilding::_mechanicalNode
+  IL_0013: ldarg.1
+  IL_0014: ldc.i4.0
+  IL_0015: ceq
+  IL_0017: conv.r4
+  IL_0018: callvirt System.Void Timberborn.MechanicalSystem.MechanicalNode::SetInputMultiplier(System.Single)
+  IL_001d: ret
+
+=== Timberborn.MechanicalSystem.MechanicalBuilding::.ctor   [Timberborn.MechanicalSystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Timberborn.BaseComponentSystem.BaseComponent::.ctor()
+  IL_0006: ret

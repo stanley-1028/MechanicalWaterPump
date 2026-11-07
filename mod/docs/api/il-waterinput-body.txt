@@ -1,0 +1,195 @@
+
+=== Timberborn.WaterBuildings.WaterInput::.ctor   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Timberborn.BaseComponentSystem.BaseComponent::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.WaterSystem.IWaterService Timberborn.WaterBuildings.WaterInput::_waterService
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.WaterSystem.IThreadSafeWaterMap Timberborn.WaterBuildings.WaterInput::_threadSafeWaterMap
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.WaterBuildings.WaterInputService Timberborn.WaterBuildings.WaterInput::_waterInputService
+  IL_001b: ret
+
+=== Timberborn.WaterBuildings.WaterInput::get_IsUnderwater   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterBuildings.IWaterInputCoordinates Timberborn.WaterBuildings.WaterInput::_inputCoordinates
+  IL_0006: callvirt System.Boolean Timberborn.WaterBuildings.IWaterInputCoordinates::get_IsBlocked()
+  IL_000b: brtrue.s IL_0024
+  IL_000d: ldarg.0
+  IL_000e: ldfld Timberborn.WaterSystem.IThreadSafeWaterMap Timberborn.WaterBuildings.WaterInput::_threadSafeWaterMap
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.WaterBuildings.IWaterInputCoordinates Timberborn.WaterBuildings.WaterInput::_inputCoordinates
+  IL_0019: callvirt UnityEngine.Vector3Int Timberborn.WaterBuildings.IWaterInputCoordinates::get_Coordinates()
+  IL_001e: callvirt System.Boolean Timberborn.WaterSystem.IThreadSafeWaterMap::CellIsUnderwater(UnityEngine.Vector3Int)
+  IL_0023: ret
+  IL_0024: ldc.i4.0
+  IL_0025: ret
+
+=== Timberborn.WaterBuildings.WaterInput::get_ContaminationPercentage   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterSystem.IThreadSafeWaterMap Timberborn.WaterBuildings.WaterInput::_threadSafeWaterMap
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.WaterBuildings.IWaterInputCoordinates Timberborn.WaterBuildings.WaterInput::_inputCoordinates
+  IL_000c: callvirt UnityEngine.Vector3Int Timberborn.WaterBuildings.IWaterInputCoordinates::get_Coordinates()
+  IL_0011: callvirt System.Single Timberborn.WaterSystem.IThreadSafeWaterMap::ColumnContamination(UnityEngine.Vector3Int)
+  IL_0016: ret
+
+=== Timberborn.WaterBuildings.WaterInput::get_Coordinates   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterBuildings.IWaterInputCoordinates Timberborn.WaterBuildings.WaterInput::_inputCoordinates
+  IL_0006: callvirt UnityEngine.Vector3Int Timberborn.WaterBuildings.IWaterInputCoordinates::get_Coordinates()
+  IL_000b: ret
+
+=== Timberborn.WaterBuildings.WaterInput::Awake   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: call !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.WaterBuildings.IWaterInputCoordinates>()
+  IL_0007: stfld Timberborn.WaterBuildings.IWaterInputCoordinates Timberborn.WaterBuildings.WaterInput::_inputCoordinates
+  IL_000c: ret
+
+=== Timberborn.WaterBuildings.WaterInput::OnEnterFinishedState   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterBuildings.WaterInputService Timberborn.WaterBuildings.WaterInput::_waterInputService
+  IL_0006: ldarg.0
+  IL_0007: callvirt System.Void Timberborn.WaterBuildings.WaterInputService::RegisterWaterInput(Timberborn.WaterBuildings.WaterInput)
+  IL_000c: ret
+
+=== Timberborn.WaterBuildings.WaterInput::OnExitFinishedState   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterBuildings.WaterInputService Timberborn.WaterBuildings.WaterInput::_waterInputService
+  IL_0006: ldarg.0
+  IL_0007: callvirt System.Void Timberborn.WaterBuildings.WaterInputService::UnregisterWaterInput(Timberborn.WaterBuildings.WaterInput)
+  IL_000c: ret
+
+=== Timberborn.WaterBuildings.WaterInput::Save   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.1
+  IL_0001: ldsfld Timberborn.WorldPersistence.ComponentKey Timberborn.WaterBuildings.WaterInput::WaterInputKey
+  IL_0006: callvirt Timberborn.Persistence.IObjectSaver Timberborn.WorldPersistence.IEntitySaver::GetComponent(Timberborn.WorldPersistence.ComponentKey)
+  IL_000b: dup
+  IL_000c: ldsfld Timberborn.Persistence.PropertyKey`1<System.Single> Timberborn.WaterBuildings.WaterInput::CleanWaterAmountKey
+  IL_0011: ldarg.0
+  IL_0012: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_cleanWaterAmount
+  IL_0017: callvirt System.Void Timberborn.Persistence.IObjectSaver::Set(Timberborn.Persistence.PropertyKey`1<System.Single>,System.Single)
+  IL_001c: ldsfld Timberborn.Persistence.PropertyKey`1<System.Single> Timberborn.WaterBuildings.WaterInput::ContaminatedWaterAmountKey
+  IL_0021: ldarg.0
+  IL_0022: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_contaminatedWaterAmount
+  IL_0027: callvirt System.Void Timberborn.Persistence.IObjectSaver::Set(Timberborn.Persistence.PropertyKey`1<System.Single>,System.Single)
+  IL_002c: ret
+
+=== Timberborn.WaterBuildings.WaterInput::Load   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.1
+  IL_0001: ldsfld Timberborn.WorldPersistence.ComponentKey Timberborn.WaterBuildings.WaterInput::WaterInputKey
+  IL_0006: ldloca.s V_0
+  IL_0008: callvirt System.Boolean Timberborn.WorldPersistence.IEntityLoader::TryGetComponent(Timberborn.WorldPersistence.ComponentKey,Timberborn.Persistence.IObjectLoader&)
+  IL_000d: brfalse.s IL_0031
+  IL_000f: ldarg.0
+  IL_0010: ldloc.0
+  IL_0011: ldsfld Timberborn.Persistence.PropertyKey`1<System.Single> Timberborn.WaterBuildings.WaterInput::CleanWaterAmountKey
+  IL_0016: callvirt System.Single Timberborn.Persistence.IObjectLoader::Get(Timberborn.Persistence.PropertyKey`1<System.Single>)
+  IL_001b: stfld System.Single Timberborn.WaterBuildings.WaterInput::_cleanWaterAmount
+  IL_0020: ldarg.0
+  IL_0021: ldloc.0
+  IL_0022: ldsfld Timberborn.Persistence.PropertyKey`1<System.Single> Timberborn.WaterBuildings.WaterInput::ContaminatedWaterAmountKey
+  IL_0027: callvirt System.Single Timberborn.Persistence.IObjectLoader::Get(Timberborn.Persistence.PropertyKey`1<System.Single>)
+  IL_002c: stfld System.Single Timberborn.WaterBuildings.WaterInput::_contaminatedWaterAmount
+  IL_0031: ret
+
+=== Timberborn.WaterBuildings.WaterInput::AddWater   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_cleanWaterAmount
+  IL_0007: ldarg.1
+  IL_0008: add
+  IL_0009: stfld System.Single Timberborn.WaterBuildings.WaterInput::_cleanWaterAmount
+  IL_000e: ldarg.0
+  IL_000f: ldarg.0
+  IL_0010: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_contaminatedWaterAmount
+  IL_0015: ldarg.2
+  IL_0016: add
+  IL_0017: stfld System.Single Timberborn.WaterBuildings.WaterInput::_contaminatedWaterAmount
+  IL_001c: ret
+
+=== Timberborn.WaterBuildings.WaterInput::RemoveCleanWater   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_cleanWaterAmount
+  IL_0007: ldarg.1
+  IL_0008: sub
+  IL_0009: stfld System.Single Timberborn.WaterBuildings.WaterInput::_cleanWaterAmount
+  IL_000e: ret
+
+=== Timberborn.WaterBuildings.WaterInput::RemoveContaminatedWater   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_contaminatedWaterAmount
+  IL_0007: ldarg.1
+  IL_0008: sub
+  IL_0009: stfld System.Single Timberborn.WaterBuildings.WaterInput::_contaminatedWaterAmount
+  IL_000e: ret
+
+=== Timberborn.WaterBuildings.WaterInput::DemandCleanWaterAmount   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.1
+  IL_0001: ldsfld System.Int32 Timberborn.WaterBuildings.WaterInput::BufferMultiplier
+  IL_0006: conv.r4
+  IL_0007: mul
+  IL_0008: ldarg.0
+  IL_0009: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_cleanWaterAmount
+  IL_000e: ble.un.s IL_0027
+  IL_0010: ldarg.0
+  IL_0011: ldfld Timberborn.WaterSystem.IWaterService Timberborn.WaterBuildings.WaterInput::_waterService
+  IL_0016: ldarg.0
+  IL_0017: ldfld Timberborn.WaterBuildings.IWaterInputCoordinates Timberborn.WaterBuildings.WaterInput::_inputCoordinates
+  IL_001c: callvirt UnityEngine.Vector3Int Timberborn.WaterBuildings.IWaterInputCoordinates::get_Coordinates()
+  IL_0021: ldarg.1
+  IL_0022: callvirt System.Void Timberborn.WaterSystem.IWaterService::RemoveCleanWater(UnityEngine.Vector3Int,System.Single)
+  IL_0027: ldarg.0
+  IL_0028: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_cleanWaterAmount
+  IL_002d: ldc.r4 0
+  IL_0032: ble.s IL_003b
+  IL_0034: ldarg.0
+  IL_0035: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_cleanWaterAmount
+  IL_003a: ret
+  IL_003b: ldc.r4 0
+  IL_0040: ret
+
+=== Timberborn.WaterBuildings.WaterInput::DemandContaminatedWaterAmount   [Timberborn.WaterBuildings]
+  IL_0000: ldarg.1
+  IL_0001: ldsfld System.Int32 Timberborn.WaterBuildings.WaterInput::BufferMultiplier
+  IL_0006: conv.r4
+  IL_0007: mul
+  IL_0008: ldarg.0
+  IL_0009: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_contaminatedWaterAmount
+  IL_000e: ble.un.s IL_0027
+  IL_0010: ldarg.0
+  IL_0011: ldfld Timberborn.WaterSystem.IWaterService Timberborn.WaterBuildings.WaterInput::_waterService
+  IL_0016: ldarg.0
+  IL_0017: ldfld Timberborn.WaterBuildings.IWaterInputCoordinates Timberborn.WaterBuildings.WaterInput::_inputCoordinates
+  IL_001c: callvirt UnityEngine.Vector3Int Timberborn.WaterBuildings.IWaterInputCoordinates::get_Coordinates()
+  IL_0021: ldarg.1
+  IL_0022: callvirt System.Void Timberborn.WaterSystem.IWaterService::RemoveContaminatedWater(UnityEngine.Vector3Int,System.Single)
+  IL_0027: ldarg.0
+  IL_0028: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_contaminatedWaterAmount
+  IL_002d: ldc.r4 0
+  IL_0032: ble.s IL_003b
+  IL_0034: ldarg.0
+  IL_0035: ldfld System.Single Timberborn.WaterBuildings.WaterInput::_contaminatedWaterAmount
+  IL_003a: ret
+  IL_003b: ldc.r4 0
+  IL_0040: ret
+
+=== Timberborn.WaterBuildings.WaterInput::.cctor   [Timberborn.WaterBuildings]
+  IL_0000: ldc.i4.3
+  IL_0001: stsfld System.Int32 Timberborn.WaterBuildings.WaterInput::BufferMultiplier
+  IL_0006: ldstr "WaterInput"
+  IL_000b: newobj System.Void Timberborn.WorldPersistence.ComponentKey::.ctor(System.String)
+  IL_0010: stsfld Timberborn.WorldPersistence.ComponentKey Timberborn.WaterBuildings.WaterInput::WaterInputKey
+  IL_0015: ldstr "CleanWaterAmount"
+  IL_001a: newobj System.Void Timberborn.Persistence.PropertyKey`1<System.Single>::.ctor(System.String)
+  IL_001f: stsfld Timberborn.Persistence.PropertyKey`1<System.Single> Timberborn.WaterBuildings.WaterInput::CleanWaterAmountKey
+  IL_0024: ldstr "ContaminatedWaterAmount"
+  IL_0029: newobj System.Void Timberborn.Persistence.PropertyKey`1<System.Single>::.ctor(System.String)
+  IL_002e: stsfld Timberborn.Persistence.PropertyKey`1<System.Single> Timberborn.WaterBuildings.WaterInput::ContaminatedWaterAmountKey
+  IL_0033: ret

@@ -1,0 +1,65 @@
+# member dump for Timberborn\.BuildingsUI\..*Fragment.*, Timberborn\.MechanicalUI\..*
+
+=== Timberborn.BuildingsUI.BuildingSoundControllerFragment   [Timberborn.BuildingsUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field UnityEngine.UIElements.VisualElement _root
+  field UnityEngine.UIElements.Toggle _toggle
+  field Timberborn.Buildings.BuildingSoundController _buildingSoundController
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method private System.Void ToggleSound(ChangeEvent<System.Boolean> evt)
+
+=== Timberborn.BuildingsUI.DeleteBuildingFragment   [Timberborn.BuildingsUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field static System.String DeleteObjectKey
+  field static System.String SkipDeleteConfirmationKey
+  field static System.String DeletePromptLocKey
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.RecoverableGoodSystemUI.RecoverableGoodDialogBoxShower _recoverableGoodDialogBoxShower
+  field Timberborn.InputSystem.InputService _inputService
+  field Timberborn.EntitySystem.EntityService _entityService
+  field Timberborn.InputSystemUI.BindableButtonFactory _bindableButtonFactory
+  field Timberborn.Debugging.DevModeManager _devModeManager
+  field Timberborn.TooltipSystem.ITooltipRegistrar _tooltipRegistrar
+  field Timberborn.BlockSystem.BlockObject _selectedBlockObject
+  field Timberborn.BlockSystemUI.BlockObjectDeletionDescriber _deletionDescriber
+  field Timberborn.InputSystemUI.BindableButton _deleteButton
+  field UnityEngine.UIElements.VisualElement _root
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.RecoverableGoodSystemUI.RecoverableGoodDialogBoxShower recoverableGoodDialogBoxShower, Timberborn.InputSystem.InputService inputService, Timberborn.EntitySystem.EntityService entityService, Timberborn.InputSystemUI.BindableButtonFactory bindableButtonFactory, Timberborn.Debugging.DevModeManager devModeManager, Timberborn.TooltipSystem.ITooltipRegistrar tooltipRegistrar)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method private System.Void DeleteCallback()
+  method private System.String GetTooltipText()
+  method private System.String GetKeyBinding()
+  method private System.Void ShowDialogBox()
+  method private System.Void DeleteBuilding()
+  method private System.Boolean SelectedBuildingIsDeletable()
+  method private static System.Void .cctor()
+
+=== Timberborn.BuildingsUI.PausableBuildingFragment   [Timberborn.BuildingsUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field static System.String ToggleBuildingPauseKey
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.InputSystemUI.BindableToggleFactory _bindableToggleFactory
+  field Timberborn.TooltipSystem.ITooltipRegistrar _tooltipRegistrar
+  field Timberborn.Buildings.PausableBuilding _pausableBuilding
+  field UnityEngine.UIElements.VisualElement _root
+  field Timberborn.InputSystemUI.BindableToggle _pauseToggle
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.InputSystemUI.BindableToggleFactory bindableToggleFactory, Timberborn.TooltipSystem.ITooltipRegistrar tooltipRegistrar)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method public System.Void ToggleHighlight(System.Boolean state)
+  method private System.Void ToggleActivationState(System.Boolean resume)
+  method private static System.Void .cctor()
+  method private System.Boolean <InitializeFragment>b__8_0()

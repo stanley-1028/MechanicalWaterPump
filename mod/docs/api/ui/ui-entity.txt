@@ -1,0 +1,70 @@
+# member dump for Timberborn\.EntitySystem\.EntityComponent$, Timberborn\.EntitySystem\.EntityService$, Timberborn\.BaseComponentSystem\.BaseComponent$
+
+=== Timberborn.BaseComponentSystem.BaseComponent   [Timberborn.BaseComponentSystem]
+  kind: class   base: System.Object
+  field System.Boolean <Enabled>k__BackingField
+  field Timberborn.BaseComponentSystem.ComponentCache _componentCache
+  prop System.Boolean Enabled {get/set}
+  prop UnityEngine.GameObject GameObject {get}
+  prop UnityEngine.Transform Transform {get}
+  prop ReadOnlyList<System.Object> AllComponents {get}
+  prop System.String Name {get}
+  method public System.Boolean get_Enabled()
+  method private System.Void set_Enabled(System.Boolean value)
+  method public UnityEngine.GameObject get_GameObject()
+  method public UnityEngine.Transform get_Transform()
+  method public ReadOnlyList<System.Object> get_AllComponents()
+  method public System.String get_Name()
+  method public System.Void EnableComponent()
+  method public System.Void DisableComponent()
+  method public T GetEnabledComponent()
+  method public T GetComponent()
+  method public System.Boolean HasComponent()
+  method public System.Void GetComponents(List<T> results)
+  method public List<T> GetComponentsAllocating()
+  method public System.Boolean TryGetComponent(out ref T component)
+  method public T GetComponentInChildren(System.Boolean includeInactive)
+  method public static System.Boolean op_Implicit(Timberborn.BaseComponentSystem.BaseComponent baseComponent)
+  method System.Void Initialize(Timberborn.BaseComponentSystem.ComponentCache componentCache)
+  method System.Void .ctor()
+
+=== Timberborn.EntitySystem.EntityComponent   [Timberborn.EntitySystem]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent
+  field System.Guid <EntityId>k__BackingField
+  field List<Timberborn.EntitySystem.IRegisteredComponent> <RegisteredComponents>k__BackingField
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Timberborn.EntitySystem.EntityComponentRegistry _entityComponentRegistry
+  field Timberborn.EntitySystem.EntityComponent+.EntityState _entityState
+  field System.Boolean _deleteAfterInitialization
+  prop System.Guid EntityId {get/set}
+  prop List<Timberborn.EntitySystem.IRegisteredComponent> RegisteredComponents {get}
+  prop System.Boolean Initialized {get}
+  prop System.Boolean Deleted {get}
+  method public System.Guid get_EntityId()
+  method private System.Void set_EntityId(System.Guid value)
+  method public List<Timberborn.EntitySystem.IRegisteredComponent> get_RegisteredComponents()
+  method public System.Void .ctor(Timberborn.SingletonSystem.EventBus eventBus, Timberborn.EntitySystem.EntityComponentRegistry entityComponentRegistry)
+  method public System.Boolean get_Initialized()
+  method public System.Boolean get_Deleted()
+  method public System.Void Awake()
+  method public System.Void PreInitialize()
+  method public System.Void Initialize()
+  method public System.Void PostInitialize()
+  method public System.Void PostLoad()
+  method System.Void InitializeIfUninitialized()
+  method System.Void Delete()
+  method System.Void SetEntityId(System.Guid id)
+  method private System.Void InternalDelete()
+  nested Timberborn.EntitySystem.EntityComponent+.EntityState
+
+=== Timberborn.EntitySystem.EntityService   [Timberborn.EntitySystem]
+  kind: class   base: System.Object
+  field Timberborn.TemplateInstantiation.TemplateInstantiator _templateInstantiator
+  field Bindito.Core.IContainer _container
+  field Timberborn.EntitySystem.EntityRegistry _entityRegistry
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  method public System.Void .ctor(Timberborn.TemplateInstantiation.TemplateInstantiator templateInstantiator, Bindito.Core.IContainer container, Timberborn.EntitySystem.EntityRegistry entityRegistry, Timberborn.SingletonSystem.EventBus eventBus)
+  method public Timberborn.EntitySystem.EntityComponent Instantiate(Timberborn.BlueprintSystem.Blueprint blueprint)
+  method public Timberborn.EntitySystem.EntityComponent Instantiate(Timberborn.EntitySystem.EntitySetup+.Builder entitySetupBuilder)
+  method public System.Void Delete(Timberborn.BaseComponentSystem.BaseComponent entity)

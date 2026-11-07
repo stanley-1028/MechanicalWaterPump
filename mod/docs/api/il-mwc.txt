@@ -1,0 +1,48 @@
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterConsumer::InitializeEntity   [Timberborn.WaterWorkshops]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Timberborn.WaterWorkshops.ManufactoryWaterConsumer::UpdateRecipe()
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.Workshops.Manufactory Timberborn.WaterWorkshops.ManufactoryWaterConsumer::_manufactory
+  IL_000c: ldarg.0
+  IL_000d: ldftn System.Void Timberborn.WaterWorkshops.ManufactoryWaterConsumer::<InitializeEntity>b__7_0(System.Object,System.EventArgs)
+  IL_0013: newobj System.Void System.EventHandler::.ctor(System.Object,System.IntPtr)
+  IL_0018: callvirt System.Void Timberborn.Workshops.Manufactory::add_RecipeChanged(System.EventHandler)
+  IL_001d: ldarg.0
+  IL_001e: ldfld Timberborn.Workshops.Manufactory Timberborn.WaterWorkshops.ManufactoryWaterConsumer::_manufactory
+  IL_0023: ldarg.0
+  IL_0024: ldftn System.Void Timberborn.WaterWorkshops.ManufactoryWaterConsumer::OnProductionProgressed(System.Object,Timberborn.Workshops.ProductionProgressedEventArgs)
+  IL_002a: newobj System.Void System.EventHandler`1<Timberborn.Workshops.ProductionProgressedEventArgs>::.ctor(System.Object,System.IntPtr)
+  IL_002f: callvirt System.Void Timberborn.Workshops.Manufactory::add_ProductionProgressed(System.EventHandler`1<Timberborn.Workshops.ProductionProgressedEventArgs>)
+  IL_0034: ret
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterConsumer::UpdateRecipe   [Timberborn.WaterWorkshops]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld Timberborn.Workshops.Manufactory Timberborn.WaterWorkshops.ManufactoryWaterConsumer::_manufactory
+  IL_0007: callvirt Timberborn.Workshops.RecipeSpec Timberborn.Workshops.Manufactory::get_CurrentRecipe()
+  IL_000c: callvirt System.Collections.Immutable.ImmutableArray`1<Timberborn.Goods.GoodAmountSpec> Timberborn.Workshops.RecipeSpec::get_Products()
+  IL_0011: box System.Collections.Immutable.ImmutableArray`1<Timberborn.Goods.GoodAmountSpec>
+  IL_0016: call System.Single Timberborn.WaterWorkshops.WaterGoodToWaterAmountConverter::GetWaterAmount(System.Collections.Generic.IReadOnlyList`1<Timberborn.Goods.GoodAmountSpec>)
+  IL_001b: call System.Void Timberborn.WaterWorkshops.ManufactoryWaterConsumer::set_ConsumedWater(System.Single)
+  IL_0020: ret
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterConsumer::OnProductionProgressed   [Timberborn.WaterWorkshops]
+  IL_0000: ldarg.0
+  IL_0001: call System.Single Timberborn.WaterWorkshops.ManufactoryWaterConsumer::get_ConsumedWater()
+  IL_0006: ldc.r4 0
+  IL_000b: ble.un.s IL_0025
+  IL_000d: ldarg.0
+  IL_000e: ldfld Timberborn.WaterBuildings.WaterInput Timberborn.WaterWorkshops.ManufactoryWaterConsumer::_waterInput
+  IL_0013: ldarg.0
+  IL_0014: call System.Single Timberborn.WaterWorkshops.ManufactoryWaterConsumer::get_ConsumedWater()
+  IL_0019: ldarg.2
+  IL_001a: callvirt System.Single Timberborn.Workshops.ProductionProgressedEventArgs::get_ProductionProgressChange()
+  IL_001f: mul
+  IL_0020: callvirt System.Void Timberborn.WaterBuildings.WaterInput::RemoveCleanWater(System.Single)
+  IL_0025: ret
+
+=== Timberborn.WaterWorkshops.ManufactoryWaterConsumer::<InitializeEntity>b__7_0   [Timberborn.WaterWorkshops]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Timberborn.WaterWorkshops.ManufactoryWaterConsumer::UpdateRecipe()
+  IL_0006: ret

@@ -1,0 +1,42 @@
+ID,Text,Comment
+Building.MWP.Pump.Basic.DisplayName,Mechanical Drinking Water Pump Mk I,req 12.3
+Building.MWP.Pump.Intermediate.DisplayName,Mechanical Drinking Water Pump Mk II,req 12.3
+Building.MWP.Pump.Advanced.DisplayName,Mechanical Drinking Water Pump Mk III,req 12.3
+Building.MWP.Pump.Top.DisplayName,Mechanical Drinking Water Pump Mk IV,req 12.3
+Building.MWP.Pump.Basic.Description,Draws and filters drinking water using mechanical power. No workers needed.,req 12.3
+Building.MWP.Pump.Intermediate.Description,Twin-cylinder mechanical drinking water pump with a larger tank and deeper intake.,req 20.1.2
+Building.MWP.Pump.Advanced.Description,An advanced mechanical drinking water pump with deeper intake and higher output.,req 12.3
+Building.MWP.Pump.Top.Description,The top-tier mechanical drinking water pump for large colonies.,req 12.3
+Building.MWP.Pump.Flavor,"""Finally - no beaver has to crank the pump anymore.""",req 12.3
+Status.MWP.NoPower,No power - connect a windmill or water wheel,req 12.2
+Status.MWP.LowPower,Low power: {0}%,req 12.3
+Status.MWP.NoWater,No water to pump,req 12.3
+Status.MWP.StorageFull,Internal tank full,req 12.3
+Status.MWP.NoAccess,No path for haulers,req 12.3
+Status.MWP.Producing,Producing: {0} water/hour,req 12.3
+Status.MWP.Paused,Paused,req 12.3
+Status.MWP.PipeDirect,Direct pipe connection available,req 12.3
+Status.MWP.PipeValve,Pipes: extract with a valve,req 12.3
+Status.MWP.PipeUnavailable,Direct pipe unavailable - using basic mode,req 12.3
+Status.MWP.PowerDemand,Power demand: {0} hp,req 12.3
+Status.MWP.PowerSupply,Current power: {0}%,req 12.3
+Status.MWP.WaterQuality,Water quality: {0}%,req 12.3
+Status.MWP.MaintenanceDue,Maintenance due: {0}%,req 20.2.5
+Status.MWP.Critical,Critical wear: {0}%,req 20.2.5
+Status.MWP.NeedsMaintenance,Needs maintenance - stopped,req 20.2.5
+Status.MWP.Maintaining,Maintaining: {0}%,req 20.2.5
+Status.MWP.MissingMaintenanceMaterials,Missing maintenance materials,req 20.2.5
+Status.MWP.NoAccessForMaintenance,Maintenance materials cannot be delivered (no path),req 20.2.5
+UI.MWP.Condition,Condition: {0}%,req 20.2.5
+UI.MWP.MaintenanceIn,Next maintenance: {0} days,req 20.2.5
+UI.MWP.MaintenanceMaterials,Requires: {0},req 20.2.5
+UI.MWP.MaintainNow,Maintain now,req 20.2.5
+UI.MWP.AutoMaintenance,Auto maintenance,req 20.2.5
+UI.MWP.Inventory,Inventory: {0}/{1},req 12.1
+UI.MWP.MaxDepth,Intake depth: {0} blocks,v0.2 UI depth row
+UI.MWP.WaterRate,Output: {0} water/hour,v0.2 UI rate row
+UI.MWP.Pause,Pause,v0.2 UI pause button
+UI.MWP.Resume,Resume,v0.2 UI resume button
+Tooltip.MWP.PipeCompat,Requires Timber Pipes for valve extraction,req 12.3
+Tooltip.MWP.WaterRate,Rated rate; affected by power and water quality,req 12.3
+MWP.Flavor.Citation,"""Water flows downhill - but drinking water must go up.""",req 12.3

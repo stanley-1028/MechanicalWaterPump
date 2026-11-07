@@ -1,0 +1,39 @@
+# --- build outputs -------------------------------------------------------------------
+bin/
+obj/
+mod/build/
+dist/
+*.user
+*.suo
+
+# --- tools / generated caches --------------------------------------------------------
+**/__pycache__/
+*.pyc
+art/tmp/
+art/models/_smoke/
+mod/tools/ApiIndex/bin/
+mod/tools/ApiIndex/obj/
+mod/tools/validate/bin/
+mod/tools/validate/obj/
+mod/tests/MWP.Tests/bin/
+mod/tests/MWP.Tests/obj/
+
+# --- generated art artifacts (reproducible from art/*.py + Blender) ------------------
+art/models/
+art/previews/*
+!art/previews/tiers_factions_iso_grid.png
+!art/previews/animation_phases_grid.png
+!art/previews/icons_contact_4x2.png
+art/reports/
+art/icons/*.512.png
+art/probe.timbermesh
+
+# --- local game/editor reference copies ---------------------------------------------
+.ref/
+*.log
+
+# --- agent/team scratch directories --------------------------------------------------
+.tmp*/
+*.tmp
+art/tmp_probe_anim.py
+art/probe.timbermesh

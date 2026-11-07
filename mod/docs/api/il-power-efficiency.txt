@@ -1,0 +1,11 @@
+
+=== Timberborn.MechanicalSystem.MechanicalNode::get_PowerEfficiency   [Timberborn.MechanicalSystem]
+  IL_0000: ldarg.0
+  IL_0001: call Timberborn.MechanicalSystem.MechanicalGraph Timberborn.MechanicalSystem.MechanicalNode::get_Graph()
+  IL_0006: dup
+  IL_0007: brtrue.s IL_0010
+  IL_0009: pop
+  IL_000a: ldc.r4 0
+  IL_000f: ret
+  IL_0010: call System.Single Timberborn.MechanicalSystem.MechanicalGraph::get_PowerEfficiency()
+  IL_0015: ret

@@ -1,0 +1,9 @@
+{
+  "Name": "Mechanical Water Pump",
+  "Version": "0.2.0",
+  "Id": "MechanicalWaterPump",
+  "MinimumGameVersion": "1.1.0.0",
+  "Description": "Four tiers of worker-free mechanical drinking-water pumps. Pay research, materials and mechanical power instead of beaver labour; valve-extractable Water inventory for pipe mods. v0.2 adds the maintenance system (condition, materials, downtime) and raises rated output to 3/6/15/20 Water per hour. Timber Pipes is detected at runtime and never required.",
+  "RequiredMods": [],
+  "OptionalMods": []
+}

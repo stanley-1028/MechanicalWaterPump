@@ -1,0 +1,4420 @@
+{
+  "construction_shared_patches": {
+    "construction_metal": {
+      "art07_shared_window": true,
+      "folktails_material": "BaseMetal.Folktails",
+      "group": "construction_metal",
+      "ironteeth_material": "BaseMetal.IronTeeth",
+      "per_texture": {
+        "BaseMetal_D1.png": {
+          "color_distance": 5.19,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            109.45,
+            97.55,
+            74.21
+          ],
+          "std": 14.45,
+          "std_by_channel": [
+            12.06,
+            13.52,
+            14.45
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            112.0,
+            100.0,
+            78.0
+          ]
+        },
+        "BaseMetal_D2.png": {
+          "color_distance": 6.62,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            107.96,
+            103.25,
+            103.34
+          ],
+          "std": 14.68,
+          "std_by_channel": [
+            14.21,
+            14.68,
+            14.53
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            112.0,
+            107.0,
+            107.0
+          ]
+        }
+      },
+      "pixel_rect": [
+        8,
+        8,
+        504,
+        504
+      ],
+      "reason": "ART-07 shared construction-stage UV window: the construction stage is one shared source mesh with ONE baked UV set (Folktails materials), so both factions' materials must resolve the same UV window; the window is the BaseMetal.Folktails ART-07 canvas and BaseMetal.IronTeeth's own canvas contains it (full-bleed tile texture).",
+      "size_px": [
+        496,
+        496
+      ],
+      "texture_uv_rect": {
+        "BaseMetal_D1.png": [
+          0.0078125,
+          0.5078125,
+          0.4921875,
+          0.9921875
+        ],
+        "BaseMetal_D2.png": [
+          0.0078125,
+          0.5078125,
+          0.4921875,
+          0.9921875
+        ]
+      },
+      "textures": [
+        "BaseMetal_D1.png",
+        "BaseMetal_D2.png"
+      ],
+      "uv_rect": [
+        0.0078125,
+        0.5078125,
+        0.4921875,
+        0.9921875
+      ]
+    },
+    "construction_wood": {
+      "art07_shared_window": true,
+      "folktails_material": "BaseWood_Brown.Folktails",
+      "group": "construction_wood",
+      "ironteeth_material": "RoofPlanks.IronTeeth",
+      "per_texture": {
+        "BaseWood_1K_D_Brown.png": {
+          "color_distance": 15.68,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            47.21,
+            33.02,
+            21.69
+          ],
+          "std": 11.73,
+          "std_by_channel": [
+            11.73,
+            11.18,
+            7.47
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            56.0,
+            43.0,
+            30.0
+          ]
+        },
+        "RoofPlanks_D.png": {
+          "color_distance": 0.98,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            37.22,
+            40.45,
+            31.4
+          ],
+          "std": 12.08,
+          "std_by_channel": [
+            10.42,
+            12.08,
+            10.49
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            38.0,
+            40.0,
+            31.0
+          ]
+        }
+      },
+      "pixel_rect": [
+        4,
+        4,
+        512,
+        444
+      ],
+      "reason": "ART-07 shared construction-stage UV window: the construction stage is one shared source mesh with ONE baked UV set (Folktails materials), so both factions' materials must resolve the same UV window; the window is the BaseWood_Brown.Folktails ART-07 canvas and RoofPlanks.IronTeeth's own canvas contains it (full-bleed tile texture).",
+      "size_px": [
+        508,
+        440
+      ],
+      "texture_uv_rect": {
+        "BaseWood_1K_D_Brown.png": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ],
+        "RoofPlanks_D.png": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "textures": [
+        "BaseWood_1K_D_Brown.png",
+        "RoofPlanks_D.png"
+      ],
+      "uv_rect": [
+        0.00390625,
+        0.56640625,
+        0.5,
+        0.99609375
+      ]
+    }
+  },
+  "generated_by": "art/material_texture_analysis.py",
+  "generation_warnings": [],
+  "large_shell_policy": {
+    "forbidden_materials": [
+      "PaintedMetal.Folktails",
+      "PaintedMetal.IronTeeth"
+    ],
+    "reason": "their entire albedo is warning-stripe paint; any large face would read as a hazard sign (user bug 2026-10-27). They stay in MATERIAL_WHITELIST for completeness but must never appear in a shipped model."
+  },
+  "material_source_provenance": "Ground truth read from the installed game's Material assets (Timberborn_Data/resources.assets, 660 assemblies / 1536 Texture2D): each material's m_SavedProperties._MainTex (Texture2D name) and _Color tint, extracted 2026-10-27 with AssetStudioModCLI (materials enumerated via a small AssetStudio probe) and cross-checked against the runtime UV contract in Timberborn.PrefabOptimization.AutoAtlaser / AutoAtlasingPrefabOptimizer IL: a mesh UV is remapped as uv_atlas = uv_material * UVScale + UVOffset with UVScale = 1/sizeMultiplier, so normalized (u,v) inside the material's own _D texture is preserved (AutoAtlas or direct material, identical sampling). The _Color tint multiplies the sampled albedo. ART-07 addition (2026-10-27): AutoAtlaser.GenerateAutoAtlasFragments builds one atlas of 1024*sizeMultiplier and CombineFragments copies every fragment at its native 1024x1024 resolution, so a UV component > 1 leaves the material's own cell and samples another material - hence the ART-07 world UVs never leave the material canvas (see art/ART07_UV_TILING.md).",
+  "materials": {
+    "BaseMetal.Folktails": {
+      "canvas_meters": [
+        3.0244,
+        3.0244
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "BaseMetal.Folktails",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 5.19,
+        "color_distance_max": 22.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          109.45,
+          97.55,
+          74.21
+        ],
+        "mean_rgb_tinted": [
+          109.45,
+          97.55,
+          74.21
+        ],
+        "pixel_rect": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "reason": "ART-07 large canvas: plain worn sheet-metal plate of the metal sheet; the grille, ribs, hexagon grid and tile blocks are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          496,
+          496
+        ],
+        "std": 14.45,
+        "std_by_channel": [
+          12.06,
+          13.52,
+          14.45
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          112.0,
+          100.0,
+          78.0
+        ],
+        "uv_rect": [
+          0.0078125,
+          0.5078125,
+          0.4921875,
+          0.9921875
+        ]
+      },
+      "patch_class": "metal",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.25,
+          0.75
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 164.0,
+      "shared_uv_group": "construction_metal",
+      "texture": "BaseMetal_D1.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\BaseMetal_D1.png",
+      "texture_sha256": "e8d758b0f22a02224534f15e742100d2862b3e4e3c7303de3800253c4ccea9aa",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Advanced.Folktails.M_HDBF_Metal",
+        "Advanced.Folktails.M_HDBF_Metal.Construction",
+        "Basic.Folktails.M_HDBF_Metal.Construction",
+        "Intermediate.Folktails.M_HDBF_Metal.Construction",
+        "Top.Folktails.M_HDBF_Fabric",
+        "Top.Folktails.M_HDBF_Metal.Construction"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "size_px": [
+          496,
+          496
+        ],
+        "stats": {
+          "color_distance": 5.19,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            109.45,
+            97.55,
+            74.21
+          ],
+          "std": 14.45,
+          "std_by_channel": [
+            12.06,
+            13.52,
+            14.45
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            112.0,
+            100.0,
+            78.0
+          ]
+        },
+        "uv_rect": [
+          0.0078125,
+          0.5078125,
+          0.4921875,
+          0.9921875
+        ]
+      },
+      "uv_reason": "plain worn sheet-metal plate of the metal sheet; the grille, ribs, hexagon grid and tile blocks are excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "BaseMetal.IronTeeth": {
+      "canvas_meters": [
+        3.0244,
+        3.0244
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "BaseMetal.IronTeeth",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 6.62,
+        "color_distance_max": 22.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          107.96,
+          103.25,
+          103.34
+        ],
+        "mean_rgb_tinted": [
+          107.96,
+          103.25,
+          103.34
+        ],
+        "pixel_rect": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "reason": "ART-07 large canvas: plain worn sheet-metal plate of the second metal sheet (same atlas layout, so the shared construction UV set stays valid)",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          496,
+          496
+        ],
+        "std": 14.68,
+        "std_by_channel": [
+          14.21,
+          14.68,
+          14.53
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          112.0,
+          107.0,
+          107.0
+        ],
+        "uv_rect": [
+          0.0078125,
+          0.5078125,
+          0.4921875,
+          0.9921875
+        ]
+      },
+      "patch_class": "metal",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.25,
+          0.75
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 164.0,
+      "shared_uv_group": "construction_metal",
+      "texture": "BaseMetal_D2.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\BaseMetal_D2.png",
+      "texture_sha256": "56e4cac79f4e52f3857b7443101222284c6b7a82355f8adcbcf8e658ccb11a29",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Advanced.IronTeeth.M_HDBF_Metal",
+        "Advanced.IronTeeth.M_HDBF_Metal.Construction",
+        "Basic.IronTeeth.M_HDBF_Metal.Construction",
+        "Intermediate.IronTeeth.M_HDBF_Metal.Construction",
+        "Top.IronTeeth.M_HDBF_Metal.Construction"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "size_px": [
+          496,
+          496
+        ],
+        "stats": {
+          "color_distance": 6.62,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            107.96,
+            103.25,
+            103.34
+          ],
+          "std": 14.68,
+          "std_by_channel": [
+            14.21,
+            14.68,
+            14.53
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            112.0,
+            107.0,
+            107.0
+          ]
+        },
+        "uv_rect": [
+          0.0078125,
+          0.5078125,
+          0.4921875,
+          0.9921875
+        ]
+      },
+      "uv_reason": "plain worn sheet-metal plate of the second metal sheet (same atlas layout, so the shared construction UV set stays valid)",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "BaseWood_Brown.Folktails": {
+      "canvas_meters": [
+        3.4962,
+        3.0282
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "BaseWood_Brown.Folktails",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 15.68,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          47.21,
+          33.02,
+          21.69
+        ],
+        "mean_rgb_tinted": [
+          47.21,
+          33.02,
+          21.69
+        ],
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "reason": "ART-07 large canvas: vertical-plank field of the wood sheet; the variant bundles, plank ends and blank canvas margins of the artefact sheet are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "std": 11.73,
+        "std_by_channel": [
+          11.73,
+          11.18,
+          7.47
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          56.0,
+          43.0,
+          30.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "patch_class": "wood",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.251953125,
+          0.78125
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 145.3,
+      "shared_uv_group": "construction_wood",
+      "texture": "BaseWood_1K_D_Brown.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_Brown.png",
+      "texture_sha256": "f623aac2bb48cdb8e11ae11b82f11615801db7c5052aa5c106398a61bb11b006",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Advanced.Folktails.M_HDBF_Wood.Construction",
+        "Basic.Folktails.M_HDBF_Wood",
+        "Basic.Folktails.M_HDBF_Wood.Construction",
+        "Intermediate.Folktails.M_HDBF_Wood.Construction",
+        "Top.Folktails.M_HDBF_Wood.Construction"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "stats": {
+          "color_distance": 15.68,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            47.21,
+            33.02,
+            21.69
+          ],
+          "std": 11.73,
+          "std_by_channel": [
+            11.73,
+            11.18,
+            7.47
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            56.0,
+            43.0,
+            30.0
+          ]
+        },
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "uv_reason": "vertical-plank field of the wood sheet; the variant bundles, plank ends and blank canvas margins of the artefact sheet are excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "BaseWood_DarkBrown.IronTeeth": {
+      "canvas_meters": [
+        3.4962,
+        3.0282
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "BaseWood_DarkBrown.IronTeeth",
+      "material_color_tint": [
+        0.3113,
+        0.2673,
+        0.2071
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 4.29,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          140.8,
+          135.09,
+          126.49
+        ],
+        "mean_rgb_tinted": [
+          43.83,
+          36.11,
+          26.2
+        ],
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "reason": "ART-07 large canvas: vertical-plank field of the grey wood sheet (vanilla _Color tints it dark brown); variant bundles and canvas margins excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "std": 27.59,
+        "std_by_channel": [
+          27.38,
+          27.59,
+          27.18
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          138.0,
+          133.0,
+          124.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "patch_class": "wood",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.251953125,
+          0.78125
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 145.3,
+      "shared_uv_group": null,
+      "texture": "BaseWood_1K_D_Grey.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_Grey.png",
+      "texture_sha256": "4aae49ffbf9f6014f6f96849ba98136ccb8975b0a38fe91fa64fc96de827da70",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Basic.IronTeeth.M_HDBF_Wood",
+        "Top.IronTeeth.M_HDBF_Wood"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "stats": {
+          "color_distance": 4.29,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            140.8,
+            135.09,
+            126.49
+          ],
+          "std": 27.59,
+          "std_by_channel": [
+            27.38,
+            27.59,
+            27.18
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            138.0,
+            133.0,
+            124.0
+          ]
+        },
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "uv_reason": "vertical-plank field of the grey wood sheet (vanilla _Color tints it dark brown); variant bundles and canvas margins excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "BaseWood_Grey.IronTeeth": {
+      "canvas_meters": [
+        3.4962,
+        3.0282
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "BaseWood_Grey.IronTeeth",
+      "material_color_tint": [
+        0.6226,
+        0.5796,
+        0.5257
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 4.29,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          140.8,
+          135.09,
+          126.49
+        ],
+        "mean_rgb_tinted": [
+          87.66,
+          78.3,
+          66.5
+        ],
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "reason": "ART-07 large canvas: vertical-plank field of the grey wood sheet (vanilla _Color tints it grey); variant bundles and canvas margins excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "std": 27.59,
+        "std_by_channel": [
+          27.38,
+          27.59,
+          27.18
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          138.0,
+          133.0,
+          124.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "patch_class": "wood",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.251953125,
+          0.78125
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 145.3,
+      "shared_uv_group": null,
+      "texture": "BaseWood_1K_D_Grey.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_Grey.png",
+      "texture_sha256": "4aae49ffbf9f6014f6f96849ba98136ccb8975b0a38fe91fa64fc96de827da70",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Intermediate.IronTeeth.M_HDBF_Wood"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "stats": {
+          "color_distance": 4.29,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            140.8,
+            135.09,
+            126.49
+          ],
+          "std": 27.59,
+          "std_by_channel": [
+            27.38,
+            27.59,
+            27.18
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            138.0,
+            133.0,
+            124.0
+          ]
+        },
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "uv_reason": "vertical-plank field of the grey wood sheet (vanilla _Color tints it grey); variant bundles and canvas margins excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "BaseWood_LightBrown.Folktails": {
+      "canvas_meters": [
+        3.4962,
+        3.0282
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "BaseWood_LightBrown.Folktails",
+      "material_color_tint": [
+        0.6604,
+        0.5552,
+        0.4081
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 1.4,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          151.21,
+          138.31,
+          121.93
+        ],
+        "mean_rgb_tinted": [
+          99.86,
+          76.79,
+          49.76
+        ],
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "reason": "ART-07 large canvas: vertical-plank field of the whitewashed wood sheet (vanilla _Color tints it light brown); canvas margins excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "std": 24.76,
+        "std_by_channel": [
+          19.76,
+          21.59,
+          24.76
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          152.0,
+          139.0,
+          121.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "patch_class": "wood",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.251953125,
+          0.78125
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 145.3,
+      "shared_uv_group": null,
+      "texture": "BaseWood_1K_D_White.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_White.png",
+      "texture_sha256": "02adce75b4809d6c0c4c3bef8775cc73f8c867ef025455ad8d20c08676d371c4",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Intermediate.Folktails.M_HDBF_Wood"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "stats": {
+          "color_distance": 1.4,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            151.21,
+            138.31,
+            121.93
+          ],
+          "std": 24.76,
+          "std_by_channel": [
+            19.76,
+            21.59,
+            24.76
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            152.0,
+            139.0,
+            121.0
+          ]
+        },
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "uv_reason": "vertical-plank field of the whitewashed wood sheet (vanilla _Color tints it light brown); canvas margins excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "BaseWood_White.Folktails": {
+      "canvas_meters": [
+        3.4962,
+        3.0282
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "BaseWood_White.Folktails",
+      "material_color_tint": [
+        0.8868,
+        0.8641,
+        0.8324
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 1.4,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          151.21,
+          138.31,
+          121.93
+        ],
+        "mean_rgb_tinted": [
+          134.09,
+          119.51,
+          101.49
+        ],
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "reason": "ART-07 large canvas: vertical-plank field of the whitewashed wood sheet (vanilla _Color tints it pale); canvas margins excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "std": 24.76,
+        "std_by_channel": [
+          19.76,
+          21.59,
+          24.76
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          152.0,
+          139.0,
+          121.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "patch_class": "wood",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.251953125,
+          0.78125
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 145.3,
+      "shared_uv_group": null,
+      "texture": "BaseWood_1K_D_White.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_White.png",
+      "texture_sha256": "02adce75b4809d6c0c4c3bef8775cc73f8c867ef025455ad8d20c08676d371c4",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Advanced.Folktails.M_HDBF_Wood"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "stats": {
+          "color_distance": 1.4,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            151.21,
+            138.31,
+            121.93
+          ],
+          "std": 24.76,
+          "std_by_channel": [
+            19.76,
+            21.59,
+            24.76
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            152.0,
+            139.0,
+            121.0
+          ]
+        },
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "uv_reason": "vertical-plank field of the whitewashed wood sheet (vanilla _Color tints it pale); canvas margins excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "Details.Folktails": {
+      "canvas_meters": [
+        3.0732,
+        3.0244
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "Details.Folktails",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 1.33,
+        "color_distance_max": 25.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          105.93,
+          81.34,
+          48.89
+        ],
+        "mean_rgb_tinted": [
+          105.93,
+          81.34,
+          48.89
+        ],
+        "pixel_rect": [
+          4,
+          516,
+          508,
+          1012
+        ],
+        "reason": "ART-07 large canvas: framed dark-timber wall/roof panels of the detail atlas; the faction banner, sack, flag ribbon and crate half are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          504,
+          496
+        ],
+        "std": 25.33,
+        "std_by_channel": [
+          25.33,
+          22.84,
+          18.2
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          105.0,
+          81.0,
+          48.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.01171875,
+          0.49609375,
+          0.49609375
+        ]
+      },
+      "patch_class": "details",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.25,
+          0.25390625
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 164.0,
+      "shared_uv_group": null,
+      "texture": "Details_D.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Details_D.Folktails.png",
+      "texture_sha256": "14ac2d0ecaf25153dda260fd66e2d88a52d8f61db953982de94337bb76da237e",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Advanced.Folktails.M_HDBF_Fabric",
+        "Top.Folktails.M_HDBF_Metal"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          4,
+          516,
+          508,
+          1012
+        ],
+        "size_px": [
+          504,
+          496
+        ],
+        "stats": {
+          "color_distance": 1.33,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            105.93,
+            81.34,
+            48.89
+          ],
+          "std": 25.33,
+          "std_by_channel": [
+            25.33,
+            22.84,
+            18.2
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            105.0,
+            81.0,
+            48.0
+          ]
+        },
+        "uv_rect": [
+          0.00390625,
+          0.01171875,
+          0.49609375,
+          0.49609375
+        ]
+      },
+      "uv_reason": "framed dark-timber wall/roof panels of the detail atlas; the faction banner, sack, flag ribbon and crate half are excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "Details.IronTeeth": {
+      "canvas_meters": [
+        3.0732,
+        3.0244
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "Details.IronTeeth",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 5.72,
+        "color_distance_max": 25.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          84.63,
+          72.14,
+          55.46
+        ],
+        "mean_rgb_tinted": [
+          84.63,
+          72.14,
+          55.46
+        ],
+        "pixel_rect": [
+          4,
+          516,
+          508,
+          1012
+        ],
+        "reason": "ART-07 large canvas: framed dark-timber wall/roof panels of the IronTeeth detail atlas; the faction banner, sack, flag ribbon and crate half are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          504,
+          496
+        ],
+        "std": 28.63,
+        "std_by_channel": [
+          28.63,
+          24.69,
+          19.29
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          88.0,
+          76.0,
+          58.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.01171875,
+          0.49609375,
+          0.49609375
+        ]
+      },
+      "patch_class": "details",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.25,
+          0.25390625
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 164.0,
+      "shared_uv_group": null,
+      "texture": "Details_D.IronTeeth.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Details_D.IronTeeth.png",
+      "texture_sha256": "8c45aee96164608273d106d4a529e5776d277af290561327f04cbc44ab6b4298",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Advanced.IronTeeth.M_HDBF_Fabric",
+        "Top.IronTeeth.M_HDBF_Metal"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          4,
+          516,
+          508,
+          1012
+        ],
+        "size_px": [
+          504,
+          496
+        ],
+        "stats": {
+          "color_distance": 5.72,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            84.63,
+            72.14,
+            55.46
+          ],
+          "std": 28.63,
+          "std_by_channel": [
+            28.63,
+            24.69,
+            19.29
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            88.0,
+            76.0,
+            58.0
+          ]
+        },
+        "uv_rect": [
+          0.00390625,
+          0.01171875,
+          0.49609375,
+          0.49609375
+        ]
+      },
+      "uv_reason": "framed dark-timber wall/roof panels of the IronTeeth detail atlas; the faction banner, sack, flag ribbon and crate half are excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "IrregularPlanks_Brown.Folktails": {
+      "canvas_meters": [
+        3.0118,
+        3.0118
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "IrregularPlanks_Brown.Folktails",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "tile",
+      "patch": {
+        "color_distance": 1.69,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          50.97,
+          37.95,
+          26.16
+        ],
+        "mean_rgb_tinted": [
+          50.97,
+          37.95,
+          26.16
+        ],
+        "pixel_rect": [
+          4,
+          204,
+          260,
+          460
+        ],
+        "reason": "dark irregular plank field, single-plank tone",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          256,
+          256
+        ],
+        "std": 17.88,
+        "std_by_channel": [
+          17.88,
+          16.44,
+          11.09
+        ],
+        "std_max": 18.0,
+        "target_rgb": [
+          52.0,
+          39.0,
+          27.0
+        ],
+        "uv_rect": [
+          0.003906,
+          0.550781,
+          0.253906,
+          0.800781
+        ]
+      },
+      "patch_class": "wood",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.5,
+          0.5
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 340.0,
+      "shared_uv_group": null,
+      "texture": "IrregularPlanks_D_Brown.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\IrregularPlanks_D_Brown.png",
+      "texture_sha256": "49e2f0a787bdc5513f159dd349306bcd71d00458f84874249b3349edd28a514b",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all",
+      "tile_meters": 2.4,
+      "tile_meters_band": [
+        2.2,
+        2.6
+      ],
+      "used_in_material_map": [
+        "Top.Folktails.M_HDBF_Wood"
+      ],
+      "uv_canvas": {
+        "meaning": "the whole vanilla _D texture (full-bleed tileable surface texture)",
+        "pixel_rect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "size_px": [
+          1024,
+          1024
+        ],
+        "stats": {
+          "color_distance": 0.41,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            51.6,
+            38.98,
+            27.12
+          ],
+          "std": 20.54,
+          "std_by_channel": [
+            20.54,
+            18.92,
+            12.66
+          ],
+          "std_max": null,
+          "target_rgb": [
+            52.0,
+            39.0,
+            27.0
+          ]
+        },
+        "uv_rect": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ]
+      },
+      "uv_reason": "full-bleed irregular-plank surface (Top tier timber accents); tileable",
+      "wrap": "repeat",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "IrregularPlanks_MetalForged.IronTeeth": {
+      "canvas_meters": [
+        3.0118,
+        3.0118
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "IrregularPlanks_MetalForged.IronTeeth",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "tile",
+      "patch": {
+        "color_distance": 0.46,
+        "color_distance_max": 30.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          94.91,
+          73.74,
+          57.63
+        ],
+        "mean_rgb_tinted": [
+          94.91,
+          73.74,
+          57.63
+        ],
+        "pixel_rect": [
+          636,
+          372,
+          860,
+          596
+        ],
+        "reason": "copper/forged plank field between the forged steel bands (small detail/accent material on the advanced/top tiers); the class budget 27 is the texture's inherent flat-window minimum for painted planks + steel bands",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          224,
+          224
+        ],
+        "std": 26.26,
+        "std_by_channel": [
+          25.27,
+          21.35,
+          26.26
+        ],
+        "std_max": 27.0,
+        "target_rgb": [
+          95.0,
+          74.0,
+          58.0
+        ],
+        "uv_rect": [
+          0.621094,
+          0.417969,
+          0.839844,
+          0.636719
+        ]
+      },
+      "patch_class": "forged_planks",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.5,
+          0.5
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 340.0,
+      "shared_uv_group": null,
+      "texture": "PlanksWithMetal_D.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\PlanksWithMetal_D.png",
+      "texture_sha256": "8dbe8731000415e14b45a7ee8ed25badc13af11b0b19ae809f3f2739554f23a8",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all",
+      "tile_meters": 2.2,
+      "tile_meters_band": [
+        2.2,
+        2.6
+      ],
+      "used_in_material_map": [
+        "Advanced.IronTeeth.M_HDBF_Wood",
+        "Top.IronTeeth.M_HDBF_Fabric"
+      ],
+      "uv_canvas": {
+        "meaning": "the whole vanilla _D texture (full-bleed tileable surface texture)",
+        "pixel_rect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "size_px": [
+          1024,
+          1024
+        ],
+        "stats": {
+          "color_distance": 0.61,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            95.51,
+            74.31,
+            58.08
+          ],
+          "std": 30.95,
+          "std_by_channel": [
+            23.63,
+            23.76,
+            30.95
+          ],
+          "std_max": null,
+          "target_rgb": [
+            95.0,
+            74.0,
+            58.0
+          ]
+        },
+        "uv_rect": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ]
+      },
+      "uv_reason": "full-bleed forged planks with metal straps (Top tier fabric slot); tileable",
+      "wrap": "repeat",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "Moss.Folktails": {
+      "canvas_meters": [
+        3.0021,
+        3.0021
+      ],
+      "coverage_u_m": 2.99,
+      "coverage_v_m": 2.99,
+      "material": "Moss.Folktails",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "tile",
+      "patch": {
+        "color_distance": 0.44,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          43.2,
+          48.63,
+          20.88
+        ],
+        "mean_rgb_tinted": [
+          43.2,
+          48.63,
+          20.88
+        ],
+        "pixel_rect": [
+          188,
+          292,
+          444,
+          548
+        ],
+        "reason": "uniform moss/foliage area (green accents of the basic tier)",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          256,
+          256
+        ],
+        "std": 13.1,
+        "std_by_channel": [
+          12.2,
+          13.1,
+          6.69
+        ],
+        "std_max": 16.0,
+        "target_rgb": [
+          43.0,
+          49.0,
+          21.0
+        ],
+        "uv_rect": [
+          0.183594,
+          0.464844,
+          0.433594,
+          0.714844
+        ]
+      },
+      "patch_class": "moss",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.5,
+          0.5
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 341.1,
+      "shared_uv_group": null,
+      "texture": "Moss_D.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\Moss_D.Folktails.png",
+      "texture_sha256": "e147a3c3dc196634b68563817d22818d1e4b26bf8dcadbf80c900f593eaa5fae",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all",
+      "tile_meters": 2.2,
+      "tile_meters_band": [
+        2.0,
+        2.4
+      ],
+      "used_in_material_map": [
+        "Basic.Folktails.M_HDBF_Fabric"
+      ],
+      "uv_canvas": {
+        "meaning": "the whole vanilla _D texture (full-bleed tileable surface texture)",
+        "pixel_rect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "size_px": [
+          1024,
+          1024
+        ],
+        "stats": {
+          "color_distance": 0.74,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            43.67,
+            49.26,
+            21.18
+          ],
+          "std": 14.25,
+          "std_by_channel": [
+            13.22,
+            14.25,
+            7.27
+          ],
+          "std_max": null,
+          "target_rgb": [
+            43.0,
+            49.0,
+            21.0
+          ]
+        },
+        "uv_rect": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ]
+      },
+      "uv_reason": "full-bleed moss/foliage surface; tileable",
+      "wrap": "repeat",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "Plaster_Orange.IronTeeth": {
+      "canvas_meters": [
+        3.0118,
+        3.0118
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "Plaster_Orange.IronTeeth",
+      "material_color_tint": [
+        0.8353,
+        0.4824,
+        0.2588
+      ],
+      "mode": "tile",
+      "patch": {
+        "color_distance": 4.74,
+        "color_distance_max": 12.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          176.09,
+          159.81,
+          141.2
+        ],
+        "mean_rgb_tinted": [
+          147.09,
+          77.09,
+          36.54
+        ],
+        "pixel_rect": [
+          468,
+          4,
+          788,
+          324
+        ],
+        "reason": "large smooth white-plaster area; the orange IronTeeth plaster variant is supplied by the material _Color tint",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          320,
+          320
+        ],
+        "std": 9.97,
+        "std_by_channel": [
+          6.36,
+          7.35,
+          9.97
+        ],
+        "std_max": 10.0,
+        "target_rgb": [
+          174.0,
+          157.0,
+          138.0
+        ],
+        "uv_rect": [
+          0.457031,
+          0.683594,
+          0.769531,
+          0.996094
+        ]
+      },
+      "patch_class": "plaster",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.5,
+          0.5
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 340.0,
+      "shared_uv_group": null,
+      "texture": "Plaster_D_White.IronTeeth.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Plaster_D_White.IronTeeth.png",
+      "texture_sha256": "1a3b0dd719832eae461b0acd77e0a9235d7a485d671ffd2e4c324736b6d71930",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra",
+      "tile_meters": 2.6,
+      "tile_meters_band": [
+        2.4,
+        2.8
+      ],
+      "used_in_material_map": [
+        "Intermediate.IronTeeth.M_HDBF_Fabric"
+      ],
+      "uv_canvas": {
+        "meaning": "the whole vanilla _D texture (full-bleed tileable surface texture)",
+        "pixel_rect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "size_px": [
+          1024,
+          1024
+        ],
+        "stats": {
+          "color_distance": 0.38,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            173.62,
+            157.02,
+            138.02
+          ],
+          "std": 12.23,
+          "std_by_channel": [
+            8.56,
+            9.58,
+            12.23
+          ],
+          "std_max": null,
+          "target_rgb": [
+            174.0,
+            157.0,
+            138.0
+          ]
+        },
+        "uv_rect": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ]
+      },
+      "uv_reason": "full-bleed smooth plaster (the orange IronTeeth variant is the vanilla _Color tint); tileable surface texture",
+      "wrap": "repeat",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "Plaster_White.Folktails": {
+      "canvas_meters": [
+        3.0118,
+        3.0118
+      ],
+      "coverage_u_m": 3.0,
+      "coverage_v_m": 3.0,
+      "material": "Plaster_White.Folktails",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "tile",
+      "patch": {
+        "color_distance": 4.74,
+        "color_distance_max": 12.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          176.09,
+          159.81,
+          141.2
+        ],
+        "mean_rgb_tinted": [
+          176.09,
+          159.81,
+          141.2
+        ],
+        "pixel_rect": [
+          468,
+          4,
+          788,
+          324
+        ],
+        "reason": "large smooth white-plaster area (cream flat roof / plaster walls)",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          320,
+          320
+        ],
+        "std": 9.97,
+        "std_by_channel": [
+          6.36,
+          7.35,
+          9.97
+        ],
+        "std_max": 10.0,
+        "target_rgb": [
+          174.0,
+          157.0,
+          138.0
+        ],
+        "uv_rect": [
+          0.457031,
+          0.683594,
+          0.769531,
+          0.996094
+        ]
+      },
+      "patch_class": "plaster",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.5,
+          0.5
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 340.0,
+      "shared_uv_group": null,
+      "texture": "Plaster_D_White.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Plaster_D_White.Folktails.png",
+      "texture_sha256": "1a3b0dd719832eae461b0acd77e0a9235d7a485d671ffd2e4c324736b6d71930",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra",
+      "tile_meters": 2.6,
+      "tile_meters_band": [
+        2.4,
+        2.8
+      ],
+      "used_in_material_map": [
+        "Intermediate.Folktails.M_HDBF_Fabric"
+      ],
+      "uv_canvas": {
+        "meaning": "the whole vanilla _D texture (full-bleed tileable surface texture)",
+        "pixel_rect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "size_px": [
+          1024,
+          1024
+        ],
+        "stats": {
+          "color_distance": 0.38,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            173.62,
+            157.02,
+            138.02
+          ],
+          "std": 12.23,
+          "std_by_channel": [
+            8.56,
+            9.58,
+            12.23
+          ],
+          "std_max": null,
+          "target_rgb": [
+            174.0,
+            157.0,
+            138.0
+          ]
+        },
+        "uv_rect": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ]
+      },
+      "uv_reason": "full-bleed smooth plaster (cream flat roof / plaster walls); tileable surface texture",
+      "wrap": "repeat",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "RoofPlanks.IronTeeth": {
+      "canvas_meters": [
+        2.8619,
+        2.8619
+      ],
+      "coverage_u_m": 2.85,
+      "coverage_v_m": 2.85,
+      "material": "RoofPlanks.IronTeeth",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "tile",
+      "patch": {
+        "color_distance": 0.72,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          37.85,
+          39.6,
+          30.42
+        ],
+        "mean_rgb_tinted": [
+          37.85,
+          39.6,
+          30.42
+        ],
+        "pixel_rect": [
+          4,
+          756,
+          260,
+          1012
+        ],
+        "reason": "shared construction-stage UV window (construction_wood): construction stage shares one UV set across factions: BaseWood_Brown.Folktails (wood slot, FT) and RoofPlanks.IronTeeth (wood slot, IT) must sample the same normalized window; both are representative dark raw-timber tones and both stay under their class std budget inside this window",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          256,
+          256
+        ],
+        "std": 13.55,
+        "std_by_channel": [
+          11.72,
+          13.55,
+          12.05
+        ],
+        "std_max": 16.0,
+        "target_rgb": [
+          38.0,
+          40.0,
+          31.0
+        ],
+        "uv_rect": [
+          0.003906,
+          0.011719,
+          0.253906,
+          0.261719
+        ]
+      },
+      "patch_class": "roof_planks",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.5,
+          0.5
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 357.8,
+      "shared_uv_group": "construction_wood",
+      "texture": "RoofPlanks_D.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\RoofPlanks_D.png",
+      "texture_sha256": "e3379a99496304fae3817a8678491998a2f2b85cba186ef96a41fdf1b7c7599a",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra",
+      "tile_meters": 2.2,
+      "tile_meters_band": [
+        2.0,
+        2.4
+      ],
+      "used_in_material_map": [
+        "Advanced.IronTeeth.M_HDBF_Wood.Construction",
+        "Basic.IronTeeth.M_HDBF_Fabric",
+        "Basic.IronTeeth.M_HDBF_Wood.Construction",
+        "Intermediate.IronTeeth.M_HDBF_Wood.Construction",
+        "Top.IronTeeth.M_HDBF_Wood.Construction"
+      ],
+      "uv_canvas": {
+        "meaning": "the whole vanilla _D texture (full-bleed tileable surface texture)",
+        "pixel_rect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "size_px": [
+          1024,
+          1024
+        ],
+        "stats": {
+          "color_distance": 0.67,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            38.62,
+            40.23,
+            31.07
+          ],
+          "std": 14.26,
+          "std_by_channel": [
+            11.81,
+            14.26,
+            12.5
+          ],
+          "std_max": null,
+          "target_rgb": [
+            38.0,
+            40.0,
+            31.0
+          ]
+        },
+        "uv_rect": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ]
+      },
+      "uv_reason": "full-bleed roof-plank field (IronTeeth basic roof); tileable",
+      "wrap": "repeat",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "WindowsAtlas.Folktails": {
+      "canvas_meters": [
+        3.0097,
+        3.0097
+      ],
+      "coverage_u_m": 2.96,
+      "coverage_v_m": 2.96,
+      "material": "WindowsAtlas.Folktails",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 29.43,
+        "color_distance_max": 45.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          128.04,
+          138.22,
+          144.23
+        ],
+        "mean_rgb_tinted": [
+          128.04,
+          138.22,
+          144.23
+        ],
+        "pixel_rect": [
+          772,
+          772,
+          1020,
+          1020
+        ],
+        "reason": "ART-07 large canvas: flat glass gradient pane (bottom-right of the window atlas); frames, round windows and the atlas backdrop are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          248,
+          248
+        ],
+        "std": 14.69,
+        "std_by_channel": [
+          14.69,
+          11.73,
+          11.75
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          140.0,
+          154.0,
+          166.0
+        ],
+        "uv_rect": [
+          0.75390625,
+          0.00390625,
+          0.99609375,
+          0.24609375
+        ]
+      },
+      "patch_class": "glass",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.875,
+          0.125
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 82.4,
+      "shared_uv_group": null,
+      "texture": "WindowsAtlas_D.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\WindowsAtlas_D.Folktails.png",
+      "texture_sha256": "32b5598efeb9f92c581e71d894724266bbfa5366bc45d6d8967e4dfb1b3c13ef",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Advanced.Folktails.M_HDBF_Glass",
+        "Intermediate.Folktails.M_HDBF_Glass",
+        "Top.Folktails.M_HDBF_Glass"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          772,
+          772,
+          1020,
+          1020
+        ],
+        "size_px": [
+          248,
+          248
+        ],
+        "stats": {
+          "color_distance": 29.43,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            128.04,
+            138.22,
+            144.23
+          ],
+          "std": 14.69,
+          "std_by_channel": [
+            14.69,
+            11.73,
+            11.75
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            140.0,
+            154.0,
+            166.0
+          ]
+        },
+        "uv_rect": [
+          0.75390625,
+          0.00390625,
+          0.99609375,
+          0.24609375
+        ]
+      },
+      "uv_reason": "flat glass gradient pane (bottom-right of the window atlas); frames, round windows and the atlas backdrop are excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    },
+    "WindowsAtlas.IronTeeth": {
+      "canvas_meters": [
+        3.0097,
+        3.0097
+      ],
+      "coverage_u_m": 2.96,
+      "coverage_v_m": 2.96,
+      "material": "WindowsAtlas.IronTeeth",
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mode": "patch",
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 29.43,
+        "color_distance_max": 45.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          128.04,
+          138.22,
+          144.23
+        ],
+        "mean_rgb_tinted": [
+          128.04,
+          138.22,
+          144.23
+        ],
+        "pixel_rect": [
+          772,
+          772,
+          1020,
+          1020
+        ],
+        "reason": "ART-07 large canvas: flat glass gradient pane (bottom-right of the window atlas); frames, round windows and the atlas backdrop are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          248,
+          248
+        ],
+        "std": 14.69,
+        "std_by_channel": [
+          14.69,
+          11.73,
+          11.75
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          140.0,
+          154.0,
+          166.0
+        ],
+        "uv_rect": [
+          0.75390625,
+          0.00390625,
+          0.99609375,
+          0.24609375
+        ]
+      },
+      "patch_class": "glass",
+      "projection": {
+        "axes": {
+          "+X": [
+            "y",
+            "z"
+          ],
+          "+Y": [
+            "x",
+            "z"
+          ],
+          "+Z": [
+            "x",
+            "y"
+          ],
+          "-X": [
+            "y",
+            "z"
+          ],
+          "-Y": [
+            "x",
+            "z"
+          ],
+          "-Z": [
+            "x",
+            "y"
+          ]
+        },
+        "note": "uv = uv_center + (world_uv - world_center) * px_per_m / texture_size; dominant face normal picks the projection plane (+-X -> U=y,V=z; +-Y -> U=x,V=z; +-Z -> U=x,V=y); no UV ever leaves the material canvas because the runtime AutoAtlaser remaps uv into the material's atlas cell (UV>1 would sample another material)",
+        "uv_center": [
+          0.875,
+          0.125
+        ],
+        "world_center": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "px_per_m": 82.4,
+      "shared_uv_group": null,
+      "texture": "WindowsAtlas_D.IronTeeth.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\WindowsAtlas_D.IronTeeth.png",
+      "texture_sha256": "f8caf53222c65e17ef16c34edbca8abf7cdfd0b928105239ee137a5bd28751f2",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra",
+      "tile_meters": null,
+      "tile_meters_band": null,
+      "used_in_material_map": [
+        "Advanced.IronTeeth.M_HDBF_Glass",
+        "Intermediate.IronTeeth.M_HDBF_Glass",
+        "Top.IronTeeth.M_HDBF_Glass"
+      ],
+      "uv_canvas": {
+        "meaning": "curated coherent region of the vanilla _D texture sheet (atlas-sheet material)",
+        "pixel_rect": [
+          772,
+          772,
+          1020,
+          1020
+        ],
+        "size_px": [
+          248,
+          248
+        ],
+        "stats": {
+          "color_distance": 29.43,
+          "hazard_fraction": 0.0,
+          "mean_rgb": [
+            128.04,
+            138.22,
+            144.23
+          ],
+          "std": 14.69,
+          "std_by_channel": [
+            14.69,
+            11.73,
+            11.75
+          ],
+          "std_max": 30.0,
+          "target_rgb": [
+            140.0,
+            154.0,
+            166.0
+          ]
+        },
+        "uv_rect": [
+          0.75390625,
+          0.00390625,
+          0.99609375,
+          0.24609375
+        ]
+      },
+      "uv_reason": "flat glass gradient pane (bottom-right of the window atlas); frames, round windows and the atlas backdrop are excluded",
+      "wrap": "clamp",
+      "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+    }
+  },
+  "schema": "hdbf.material_texture_map/v1",
+  "texture_patches": {
+    "BaseMetal_D1.png": {
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 5.19,
+        "color_distance_max": 22.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          109.45,
+          97.55,
+          74.21
+        ],
+        "mean_rgb_tinted": [
+          109.45,
+          97.55,
+          74.21
+        ],
+        "pixel_rect": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "reason": "ART-07 large canvas: plain worn sheet-metal plate of the metal sheet; the grille, ribs, hexagon grid and tile blocks are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          496,
+          496
+        ],
+        "std": 14.45,
+        "std_by_channel": [
+          12.06,
+          13.52,
+          14.45
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          112.0,
+          100.0,
+          78.0
+        ],
+        "uv_rect": [
+          0.0078125,
+          0.5078125,
+          0.4921875,
+          0.9921875
+        ]
+      },
+      "patch_class": "metal",
+      "shared_uv_group": "construction_metal",
+      "texture": "BaseMetal_D1.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\BaseMetal_D1.png",
+      "texture_sha256": "e8d758b0f22a02224534f15e742100d2862b3e4e3c7303de3800253c4ccea9aa",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra"
+    },
+    "BaseMetal_D2.png": {
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 6.62,
+        "color_distance_max": 22.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          107.96,
+          103.25,
+          103.34
+        ],
+        "mean_rgb_tinted": [
+          107.96,
+          103.25,
+          103.34
+        ],
+        "pixel_rect": [
+          8,
+          8,
+          504,
+          504
+        ],
+        "reason": "ART-07 large canvas: plain worn sheet-metal plate of the second metal sheet (same atlas layout, so the shared construction UV set stays valid)",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          496,
+          496
+        ],
+        "std": 14.68,
+        "std_by_channel": [
+          14.21,
+          14.68,
+          14.53
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          112.0,
+          107.0,
+          107.0
+        ],
+        "uv_rect": [
+          0.0078125,
+          0.5078125,
+          0.4921875,
+          0.9921875
+        ]
+      },
+      "patch_class": "metal",
+      "shared_uv_group": "construction_metal",
+      "texture": "BaseMetal_D2.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\BaseMetal_D2.png",
+      "texture_sha256": "56e4cac79f4e52f3857b7443101222284c6b7a82355f8adcbcf8e658ccb11a29",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra"
+    },
+    "BaseWood_1K_D_Brown.png": {
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 15.68,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          47.21,
+          33.02,
+          21.69
+        ],
+        "mean_rgb_tinted": [
+          47.21,
+          33.02,
+          21.69
+        ],
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "reason": "ART-07 large canvas: vertical-plank field of the wood sheet; the variant bundles, plank ends and blank canvas margins of the artefact sheet are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "std": 11.73,
+        "std_by_channel": [
+          11.73,
+          11.18,
+          7.47
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          56.0,
+          43.0,
+          30.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "patch_class": "wood",
+      "shared_uv_group": "construction_wood",
+      "texture": "BaseWood_1K_D_Brown.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_Brown.png",
+      "texture_sha256": "f623aac2bb48cdb8e11ae11b82f11615801db7c5052aa5c106398a61bb11b006",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all"
+    },
+    "BaseWood_1K_D_Grey.png": {
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 4.29,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          140.8,
+          135.09,
+          126.49
+        ],
+        "mean_rgb_tinted": [
+          87.66,
+          78.3,
+          66.5
+        ],
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "reason": "ART-07 large canvas: vertical-plank field of the grey wood sheet (vanilla _Color tints it grey); variant bundles and canvas margins excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "std": 27.59,
+        "std_by_channel": [
+          27.38,
+          27.59,
+          27.18
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          138.0,
+          133.0,
+          124.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "patch_class": "wood",
+      "shared_uv_group": null,
+      "texture": "BaseWood_1K_D_Grey.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_Grey.png",
+      "texture_sha256": "4aae49ffbf9f6014f6f96849ba98136ccb8975b0a38fe91fa64fc96de827da70",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all"
+    },
+    "BaseWood_1K_D_White.png": {
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 1.4,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          151.21,
+          138.31,
+          121.93
+        ],
+        "mean_rgb_tinted": [
+          134.09,
+          119.51,
+          101.49
+        ],
+        "pixel_rect": [
+          4,
+          4,
+          512,
+          444
+        ],
+        "reason": "ART-07 large canvas: vertical-plank field of the whitewashed wood sheet (vanilla _Color tints it pale); canvas margins excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          508,
+          440
+        ],
+        "std": 24.76,
+        "std_by_channel": [
+          19.76,
+          21.59,
+          24.76
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          152.0,
+          139.0,
+          121.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.56640625,
+          0.5,
+          0.99609375
+        ]
+      },
+      "patch_class": "wood",
+      "shared_uv_group": null,
+      "texture": "BaseWood_1K_D_White.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_White.png",
+      "texture_sha256": "02adce75b4809d6c0c4c3bef8775cc73f8c867ef025455ad8d20c08676d371c4",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all"
+    },
+    "Details_D.Folktails.png": {
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 1.33,
+        "color_distance_max": 25.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          105.93,
+          81.34,
+          48.89
+        ],
+        "mean_rgb_tinted": [
+          105.93,
+          81.34,
+          48.89
+        ],
+        "pixel_rect": [
+          4,
+          516,
+          508,
+          1012
+        ],
+        "reason": "ART-07 large canvas: framed dark-timber wall/roof panels of the detail atlas; the faction banner, sack, flag ribbon and crate half are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          504,
+          496
+        ],
+        "std": 25.33,
+        "std_by_channel": [
+          25.33,
+          22.84,
+          18.2
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          105.0,
+          81.0,
+          48.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.01171875,
+          0.49609375,
+          0.49609375
+        ]
+      },
+      "patch_class": "details",
+      "shared_uv_group": null,
+      "texture": "Details_D.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Details_D.Folktails.png",
+      "texture_sha256": "14ac2d0ecaf25153dda260fd66e2d88a52d8f61db953982de94337bb76da237e",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra"
+    },
+    "Details_D.IronTeeth.png": {
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 5.72,
+        "color_distance_max": 25.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          84.63,
+          72.14,
+          55.46
+        ],
+        "mean_rgb_tinted": [
+          84.63,
+          72.14,
+          55.46
+        ],
+        "pixel_rect": [
+          4,
+          516,
+          508,
+          1012
+        ],
+        "reason": "ART-07 large canvas: framed dark-timber wall/roof panels of the IronTeeth detail atlas; the faction banner, sack, flag ribbon and crate half are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          504,
+          496
+        ],
+        "std": 28.63,
+        "std_by_channel": [
+          28.63,
+          24.69,
+          19.29
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          88.0,
+          76.0,
+          58.0
+        ],
+        "uv_rect": [
+          0.00390625,
+          0.01171875,
+          0.49609375,
+          0.49609375
+        ]
+      },
+      "patch_class": "details",
+      "shared_uv_group": null,
+      "texture": "Details_D.IronTeeth.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Details_D.IronTeeth.png",
+      "texture_sha256": "8c45aee96164608273d106d4a529e5776d277af290561327f04cbc44ab6b4298",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra"
+    },
+    "IrregularPlanks_D_Brown.png": {
+      "patch": {
+        "color_distance": 1.69,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          50.97,
+          37.95,
+          26.16
+        ],
+        "mean_rgb_tinted": {
+          "IrregularPlanks_Brown.Folktails": [
+            50.97,
+            37.95,
+            26.16
+          ]
+        },
+        "pixel_rect": [
+          4,
+          204,
+          260,
+          460
+        ],
+        "reason": "dark irregular plank field, single-plank tone",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          256,
+          256
+        ],
+        "std": 17.88,
+        "std_by_channel": [
+          17.88,
+          16.44,
+          11.09
+        ],
+        "std_max": 18.0,
+        "target_rgb": [
+          52.0,
+          39.0,
+          27.0
+        ],
+        "uv_rect": [
+          0.003906,
+          0.550781,
+          0.253906,
+          0.800781
+        ]
+      },
+      "patch_class": "wood",
+      "shared_uv_group": null,
+      "texture": "IrregularPlanks_D_Brown.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\IrregularPlanks_D_Brown.png",
+      "texture_sha256": "49e2f0a787bdc5513f159dd349306bcd71d00458f84874249b3349edd28a514b",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all"
+    },
+    "Moss_D.Folktails.png": {
+      "patch": {
+        "color_distance": 0.44,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          43.2,
+          48.63,
+          20.88
+        ],
+        "mean_rgb_tinted": {
+          "Moss.Folktails": [
+            43.2,
+            48.63,
+            20.88
+          ]
+        },
+        "pixel_rect": [
+          188,
+          292,
+          444,
+          548
+        ],
+        "reason": "uniform moss/foliage area (green accents of the basic tier)",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          256,
+          256
+        ],
+        "std": 13.1,
+        "std_by_channel": [
+          12.2,
+          13.1,
+          6.69
+        ],
+        "std_max": 16.0,
+        "target_rgb": [
+          43.0,
+          49.0,
+          21.0
+        ],
+        "uv_rect": [
+          0.183594,
+          0.464844,
+          0.433594,
+          0.714844
+        ]
+      },
+      "patch_class": "moss",
+      "shared_uv_group": null,
+      "texture": "Moss_D.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\Moss_D.Folktails.png",
+      "texture_sha256": "e147a3c3dc196634b68563817d22818d1e4b26bf8dcadbf80c900f593eaa5fae",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all"
+    },
+    "PlanksWithMetal_D.png": {
+      "patch": {
+        "color_distance": 0.46,
+        "color_distance_max": 30.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          94.91,
+          73.74,
+          57.63
+        ],
+        "mean_rgb_tinted": {
+          "IrregularPlanks_MetalForged.IronTeeth": [
+            94.91,
+            73.74,
+            57.63
+          ]
+        },
+        "pixel_rect": [
+          636,
+          372,
+          860,
+          596
+        ],
+        "reason": "copper/forged plank field between the forged steel bands (small detail/accent material on the advanced/top tiers); the class budget 27 is the texture's inherent flat-window minimum for painted planks + steel bands",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          224,
+          224
+        ],
+        "std": 26.26,
+        "std_by_channel": [
+          25.27,
+          21.35,
+          26.26
+        ],
+        "std_max": 27.0,
+        "target_rgb": [
+          95.0,
+          74.0,
+          58.0
+        ],
+        "uv_rect": [
+          0.621094,
+          0.417969,
+          0.839844,
+          0.636719
+        ]
+      },
+      "patch_class": "forged_planks",
+      "shared_uv_group": null,
+      "texture": "PlanksWithMetal_D.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\PlanksWithMetal_D.png",
+      "texture_sha256": "8dbe8731000415e14b45a7ee8ed25badc13af11b0b19ae809f3f2739554f23a8",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all"
+    },
+    "Plaster_D_White.Folktails.png": {
+      "patch": {
+        "color_distance": 4.74,
+        "color_distance_max": 12.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          176.09,
+          159.81,
+          141.2
+        ],
+        "mean_rgb_tinted": {
+          "Plaster_White.Folktails": [
+            176.09,
+            159.81,
+            141.2
+          ]
+        },
+        "pixel_rect": [
+          468,
+          4,
+          788,
+          324
+        ],
+        "reason": "large smooth white-plaster area (cream flat roof / plaster walls)",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          320,
+          320
+        ],
+        "std": 9.97,
+        "std_by_channel": [
+          6.36,
+          7.35,
+          9.97
+        ],
+        "std_max": 10.0,
+        "target_rgb": [
+          174.0,
+          157.0,
+          138.0
+        ],
+        "uv_rect": [
+          0.457031,
+          0.683594,
+          0.769531,
+          0.996094
+        ]
+      },
+      "patch_class": "plaster",
+      "shared_uv_group": null,
+      "texture": "Plaster_D_White.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Plaster_D_White.Folktails.png",
+      "texture_sha256": "1a3b0dd719832eae461b0acd77e0a9235d7a485d671ffd2e4c324736b6d71930",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra"
+    },
+    "Plaster_D_White.IronTeeth.png": {
+      "patch": {
+        "color_distance": 4.74,
+        "color_distance_max": 12.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          176.09,
+          159.81,
+          141.2
+        ],
+        "mean_rgb_tinted": {
+          "Plaster_Orange.IronTeeth": [
+            147.09,
+            77.09,
+            36.54
+          ]
+        },
+        "pixel_rect": [
+          468,
+          4,
+          788,
+          324
+        ],
+        "reason": "large smooth white-plaster area; the orange IronTeeth plaster variant is supplied by the material _Color tint",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          320,
+          320
+        ],
+        "std": 9.97,
+        "std_by_channel": [
+          6.36,
+          7.35,
+          9.97
+        ],
+        "std_max": 10.0,
+        "target_rgb": [
+          174.0,
+          157.0,
+          138.0
+        ],
+        "uv_rect": [
+          0.457031,
+          0.683594,
+          0.769531,
+          0.996094
+        ]
+      },
+      "patch_class": "plaster",
+      "shared_uv_group": null,
+      "texture": "Plaster_D_White.IronTeeth.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Plaster_D_White.IronTeeth.png",
+      "texture_sha256": "1a3b0dd719832eae461b0acd77e0a9235d7a485d671ffd2e4c324736b6d71930",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra"
+    },
+    "RoofPlanks_D.png": {
+      "patch": {
+        "color_distance": 0.72,
+        "color_distance_max": 18.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          37.85,
+          39.6,
+          30.42
+        ],
+        "mean_rgb_tinted": {
+          "RoofPlanks.IronTeeth": [
+            37.85,
+            39.6,
+            30.42
+          ]
+        },
+        "pixel_rect": [
+          4,
+          756,
+          260,
+          1012
+        ],
+        "reason": "shared construction-stage UV window (construction_wood): construction stage shares one UV set across factions: BaseWood_Brown.Folktails (wood slot, FT) and RoofPlanks.IronTeeth (wood slot, IT) must sample the same normalized window; both are representative dark raw-timber tones and both stay under their class std budget inside this window",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          256,
+          256
+        ],
+        "std": 13.55,
+        "std_by_channel": [
+          11.72,
+          13.55,
+          12.05
+        ],
+        "std_max": 16.0,
+        "target_rgb": [
+          38.0,
+          40.0,
+          31.0
+        ],
+        "uv_rect": [
+          0.003906,
+          0.011719,
+          0.253906,
+          0.261719
+        ]
+      },
+      "patch_class": "roof_planks",
+      "shared_uv_group": "construction_wood",
+      "texture": "RoofPlanks_D.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\RoofPlanks_D.png",
+      "texture_sha256": "e3379a99496304fae3817a8678491998a2f2b85cba186ef96a41fdf1b7c7599a",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra"
+    },
+    "WindowsAtlas_D.Folktails.png": {
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 29.43,
+        "color_distance_max": 45.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          128.04,
+          138.22,
+          144.23
+        ],
+        "mean_rgb_tinted": [
+          128.04,
+          138.22,
+          144.23
+        ],
+        "pixel_rect": [
+          772,
+          772,
+          1020,
+          1020
+        ],
+        "reason": "ART-07 large canvas: flat glass gradient pane (bottom-right of the window atlas); frames, round windows and the atlas backdrop are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          248,
+          248
+        ],
+        "std": 14.69,
+        "std_by_channel": [
+          14.69,
+          11.73,
+          11.75
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          140.0,
+          154.0,
+          166.0
+        ],
+        "uv_rect": [
+          0.75390625,
+          0.00390625,
+          0.99609375,
+          0.24609375
+        ]
+      },
+      "patch_class": "glass",
+      "shared_uv_group": null,
+      "texture": "WindowsAtlas_D.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\WindowsAtlas_D.Folktails.png",
+      "texture_sha256": "32b5598efeb9f92c581e71d894724266bbfa5366bc45d6d8967e4dfb1b3c13ef",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra"
+    },
+    "WindowsAtlas_D.IronTeeth.png": {
+      "patch": {
+        "art07_canvas": true,
+        "color_distance": 29.43,
+        "color_distance_max": 45.0,
+        "hard_std_cap": 30.0,
+        "hazard_fraction": 0.0,
+        "mean_rgb": [
+          128.04,
+          138.22,
+          144.23
+        ],
+        "mean_rgb_tinted": [
+          128.04,
+          138.22,
+          144.23
+        ],
+        "pixel_rect": [
+          772,
+          772,
+          1020,
+          1020
+        ],
+        "reason": "ART-07 large canvas: flat glass gradient pane (bottom-right of the window atlas); frames, round windows and the atlas backdrop are excluded",
+        "reject_tags": [
+          "hazard-stripes",
+          "faction-banner/logo",
+          "text",
+          "uv-margin/canvas",
+          "repair-plate",
+          "plank-seam",
+          "grille/rib/pattern"
+        ],
+        "size_px": [
+          248,
+          248
+        ],
+        "std": 14.69,
+        "std_by_channel": [
+          14.69,
+          11.73,
+          11.75
+        ],
+        "std_max": 30.0,
+        "target_rgb": [
+          140.0,
+          154.0,
+          166.0
+        ],
+        "uv_rect": [
+          0.75390625,
+          0.00390625,
+          0.99609375,
+          0.24609375
+        ]
+      },
+      "patch_class": "glass",
+      "shared_uv_group": null,
+      "texture": "WindowsAtlas_D.IronTeeth.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\WindowsAtlas_D.IronTeeth.png",
+      "texture_sha256": "f8caf53222c65e17ef16c34edbca8abf7cdfd0b928105239ee137a5bd28751f2",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-extra"
+    }
+  },
+  "texture_roots": {
+    "vanilla-tex-all": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all",
+    "vanilla-tex-extra": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra"
+  },
+  "thresholds": {
+    "color_distance_max": 18.0,
+    "hard_std_cap": 30.0,
+    "patch_size_range_px": [
+      128,
+      512
+    ],
+    "std_definition": "max over R,G,B of the population std of the patch pixels (raw sRGB 0..255 bytes) - recomputed by art/png_stats.py",
+    "std_max_by_class": {
+      "details": 26.0,
+      "forged_planks": 27.0,
+      "glass": 12.0,
+      "metal": 14.0,
+      "moss": 16.0,
+      "plaster": 10.0,
+      "roof_planks": 16.0,
+      "wood": 18.0
+    },
+    "std_max_default": 18.0
+  },
+  "unused_materials": {
+    "PaintedMetal.Folktails": {
+      "hazard_reference_pixel_rect": [
+        64,
+        64,
+        320,
+        320
+      ],
+      "hazard_reference_stats": {
+        "mean_rgb": [
+          107.98,
+          89.62,
+          37.06
+        ],
+        "std": 58.83,
+        "std_by_channel": [
+          58.8325,
+          44.8709,
+          19.9075
+        ]
+      },
+      "hazard_reference_uv_rect": [
+        0.0625,
+        0.6875,
+        0.3125,
+        0.9375
+      ],
+      "material": "PaintedMetal.Folktails",
+      "policy": "never use on a shell or any large face (ART-05 user bug)",
+      "reason": "whole albedo is yellow/black hazard stripe paint - the texture that made the top tier look like a warning sign",
+      "texture": "PaintedMetal_D.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\PaintedMetal_D.Folktails.png",
+      "texture_sha256": "240f11af8472973b376899902bdf1c7e634e7d9c2bfca386cee80d2fb39c41f7",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all"
+    },
+    "PaintedMetal.IronTeeth": {
+      "hazard_reference_pixel_rect": [
+        64,
+        64,
+        320,
+        320
+      ],
+      "hazard_reference_stats": {
+        "mean_rgb": [
+          58.76,
+          69.25,
+          72.14
+        ],
+        "std": 30.6,
+        "std_by_channel": [
+          15.73,
+          24.6126,
+          30.6046
+        ]
+      },
+      "hazard_reference_uv_rect": [
+        0.0625,
+        0.6875,
+        0.3125,
+        0.9375
+      ],
+      "material": "PaintedMetal.IronTeeth",
+      "policy": "never use on a shell or any large face (ART-05 user bug)",
+      "reason": "whole albedo is blue/black hazard stripe paint",
+      "texture": "PaintedMetal_D.IronTeeth.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\PaintedMetal_D.IronTeeth.png",
+      "texture_sha256": "bf92c8ff3cb19deb047f37137360b6770c0176529d65e500e911930b7684b6f8",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_source": "vanilla-tex-all"
+    }
+  },
+  "uv_convention": "pixel_rect = [x0, y0, x1, y1], TOP-LEFT pixel origin, exclusive x1/y1 (same as art/atlas_layout.REGIONS and art/png_stats.py). uv_rect = [u0, v0, u1, v1] with u0=x0/W, u1=x1/W, v0=1-y1/H, v1=1-y0/H (bottom-left UV origin, i.e. art/atlas_layout.px_rect_to_uv flips v).",
+  "uv_mapping": {
+    "atlas_cell_safe": true,
+    "contract": "art/ART07_UV_TILING.md",
+    "densities": {
+      "BaseMetal.Folktails": {
+        "canvas_meters": [
+          3.0244,
+          3.0244
+        ],
+        "canvas_pixels": [
+          496,
+          496
+        ],
+        "mode": "patch",
+        "px_per_m": 164.0,
+        "tile_meters": null
+      },
+      "BaseMetal.IronTeeth": {
+        "canvas_meters": [
+          3.0244,
+          3.0244
+        ],
+        "canvas_pixels": [
+          496,
+          496
+        ],
+        "mode": "patch",
+        "px_per_m": 164.0,
+        "tile_meters": null
+      },
+      "BaseWood_Brown.Folktails": {
+        "canvas_meters": [
+          3.4962,
+          3.0282
+        ],
+        "canvas_pixels": [
+          508,
+          440
+        ],
+        "mode": "patch",
+        "px_per_m": 145.3,
+        "tile_meters": null
+      },
+      "BaseWood_DarkBrown.IronTeeth": {
+        "canvas_meters": [
+          3.4962,
+          3.0282
+        ],
+        "canvas_pixels": [
+          508,
+          440
+        ],
+        "mode": "patch",
+        "px_per_m": 145.3,
+        "tile_meters": null
+      },
+      "BaseWood_Grey.IronTeeth": {
+        "canvas_meters": [
+          3.4962,
+          3.0282
+        ],
+        "canvas_pixels": [
+          508,
+          440
+        ],
+        "mode": "patch",
+        "px_per_m": 145.3,
+        "tile_meters": null
+      },
+      "BaseWood_LightBrown.Folktails": {
+        "canvas_meters": [
+          3.4962,
+          3.0282
+        ],
+        "canvas_pixels": [
+          508,
+          440
+        ],
+        "mode": "patch",
+        "px_per_m": 145.3,
+        "tile_meters": null
+      },
+      "BaseWood_White.Folktails": {
+        "canvas_meters": [
+          3.4962,
+          3.0282
+        ],
+        "canvas_pixels": [
+          508,
+          440
+        ],
+        "mode": "patch",
+        "px_per_m": 145.3,
+        "tile_meters": null
+      },
+      "Details.Folktails": {
+        "canvas_meters": [
+          3.0732,
+          3.0244
+        ],
+        "canvas_pixels": [
+          504,
+          496
+        ],
+        "mode": "patch",
+        "px_per_m": 164.0,
+        "tile_meters": null
+      },
+      "Details.IronTeeth": {
+        "canvas_meters": [
+          3.0732,
+          3.0244
+        ],
+        "canvas_pixels": [
+          504,
+          496
+        ],
+        "mode": "patch",
+        "px_per_m": 164.0,
+        "tile_meters": null
+      },
+      "IrregularPlanks_Brown.Folktails": {
+        "canvas_meters": [
+          3.0118,
+          3.0118
+        ],
+        "canvas_pixels": [
+          1024,
+          1024
+        ],
+        "mode": "tile",
+        "px_per_m": 340.0,
+        "tile_meters": 2.4
+      },
+      "IrregularPlanks_MetalForged.IronTeeth": {
+        "canvas_meters": [
+          3.0118,
+          3.0118
+        ],
+        "canvas_pixels": [
+          1024,
+          1024
+        ],
+        "mode": "tile",
+        "px_per_m": 340.0,
+        "tile_meters": 2.2
+      },
+      "Moss.Folktails": {
+        "canvas_meters": [
+          3.0021,
+          3.0021
+        ],
+        "canvas_pixels": [
+          1024,
+          1024
+        ],
+        "mode": "tile",
+        "px_per_m": 341.1,
+        "tile_meters": 2.2
+      },
+      "Plaster_Orange.IronTeeth": {
+        "canvas_meters": [
+          3.0118,
+          3.0118
+        ],
+        "canvas_pixels": [
+          1024,
+          1024
+        ],
+        "mode": "tile",
+        "px_per_m": 340.0,
+        "tile_meters": 2.6
+      },
+      "Plaster_White.Folktails": {
+        "canvas_meters": [
+          3.0118,
+          3.0118
+        ],
+        "canvas_pixels": [
+          1024,
+          1024
+        ],
+        "mode": "tile",
+        "px_per_m": 340.0,
+        "tile_meters": 2.6
+      },
+      "RoofPlanks.IronTeeth": {
+        "canvas_meters": [
+          2.8619,
+          2.8619
+        ],
+        "canvas_pixels": [
+          1024,
+          1024
+        ],
+        "mode": "tile",
+        "px_per_m": 357.8,
+        "tile_meters": 2.2
+      },
+      "WindowsAtlas.Folktails": {
+        "canvas_meters": [
+          3.0097,
+          3.0097
+        ],
+        "canvas_pixels": [
+          248,
+          248
+        ],
+        "mode": "patch",
+        "px_per_m": 82.4,
+        "tile_meters": null
+      },
+      "WindowsAtlas.IronTeeth": {
+        "canvas_meters": [
+          3.0097,
+          3.0097
+        ],
+        "canvas_pixels": [
+          248,
+          248
+        ],
+        "mode": "patch",
+        "px_per_m": 82.4,
+        "tile_meters": null
+      }
+    },
+    "generator": "art/material_uv_policy.py",
+    "no_uv_outside_canvas": true,
+    "schema": "hdbf.world_uv/v1",
+    "texel_density_target_px_per_m": [
+      300.0,
+      600.0
+    ],
+    "uv_guard_texels": 2,
+    "world_center": [
+      0.0,
+      0.0,
+      0.5
+    ],
+    "wrap_evidence": "Texture2D.m_WrapMode = 0 (Repeat), m_FilterMode = 2 (Trilinear), m_Aniso = 16 in resources.assets; Repeat is real but never reached in game because AutoAtlaser remaps the mesh UV into the material's atlas cell (see art/ART07_UV_TILING.md section 1)"
+  }
+}

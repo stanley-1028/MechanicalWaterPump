@@ -1,0 +1,146 @@
+<Project>
+
+  <!--
+    Reference set for assemblies that run inside Timberborn.
+
+    Only the game assemblies MWP actually touches are referenced, and Private=false keeps
+    them out of the shipped output (the game supplies them). A project that needs more
+    simply adds its own ItemGroup (e.g. MWP.UI references the Timberborn UI assemblies,
+    MWP.Integration intentionally references none beyond this set).
+
+    Game version this set was verified against: 1.1.2.8-ffc2de0-sw
+    (see docs/API_FACTS_MWP.md, evidence collected with tools/ApiIndex).
+  -->
+
+  <ItemGroup Condition=" '$(MwpGameProject)' == 'true' ">
+    <Reference Include="UnityEngine">
+      <HintPath>$(TimberbornManagedDir)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(TimberbornManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>$(TimberbornManagedDir)\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Common">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Common.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.BlueprintSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.BlueprintSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.BlockSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.BlockSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.BaseComponentSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.BaseComponentSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.TickSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.TickSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.EntitySystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.EntitySystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.SingletonSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.SingletonSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.TimeSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.TimeSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.TemplateSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.TemplateSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.TemplateInstantiation">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.TemplateInstantiation.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Buildings">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Buildings.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.BuildingsNavigation">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.BuildingsNavigation.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.InventorySystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.InventorySystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.SimpleOutputBuildings">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.SimpleOutputBuildings.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Goods">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Goods.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.WorldPersistence">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.WorldPersistence.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Persistence">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Persistence.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Modding">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Modding.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.ModManagerScene">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.ModManagerScene.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Versioning">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Versioning.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.MechanicalSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.MechanicalSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.WaterSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.WaterSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.WaterBuildings">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.WaterBuildings.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.WaterObjects">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.WaterObjects.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Navigation">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Navigation.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.GameDistricts">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.GameDistricts.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bindito.Core">
+      <HintPath>$(TimberbornManagedDir)\Bindito.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Blueprint spec arrays must be ImmutableArray<T>: BasicDeserializer only recurses element-wise
+         for ImmutableArray, while T[]/List<T> go through primitive serialization and corrupt custom
+         elements (verified with ApiIndex IL, e.g. BuildingSpec.BuildingCost). netstandard2.1 does not
+         ship the type, the game supplies the assembly. -->
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>$(TimberbornManagedDir)\System.Collections.Immutable.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

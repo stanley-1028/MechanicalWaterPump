@@ -1,0 +1,26 @@
+# member dump for Timberborn.WaterSystem.WaterInput, Timberborn.WaterSystem.WaterInputPipe, Timberborn.WaterSystem.ManufactoryWaterConsumer, Timberborn.WaterSystem.WaterService
+
+=== Timberborn.WaterSystem.WaterService   [Timberborn.WaterSystem]
+  kind: class   base: System.Object
+  interfaces: Timberborn.WaterSystem.IWaterService
+  field Timberborn.WaterSystem.WaterSourceRegistry _waterSourceRegistry
+  field Timberborn.WaterSystem.WaterChangeService _waterChangeService
+  field Timberborn.WaterSystem.WaterSimulator _waterSimulator
+  field Timberborn.WaterSystem.FlowLimiterService _flowLimiterService
+  method public System.Void .ctor(Timberborn.WaterSystem.WaterSourceRegistry waterSourceRegistry, Timberborn.WaterSystem.WaterChangeService waterChangeService, Timberborn.WaterSystem.WaterSimulator waterSimulator, Timberborn.WaterSystem.FlowLimiterService flowLimiterService)
+  method public System.Void AddFullObstacle(UnityEngine.Vector3Int coordinates)
+  method public System.Void RemoveFullObstacle(UnityEngine.Vector3Int coordinates)
+  method public System.Void AddHorizontalObstacle(UnityEngine.Vector3Int coordinates)
+  method public System.Void RemoveHorizontalObstacle(UnityEngine.Vector3Int coordinates)
+  method public System.Void RegisterWaterSource(Timberborn.WaterSystem.IWaterSource waterSource)
+  method public System.Void UnregisterWaterSource(Timberborn.WaterSystem.IWaterSource waterSource)
+  method public System.Void AddCleanWater(UnityEngine.Vector3Int coordinates, System.Single depth)
+  method public System.Void RemoveCleanWater(UnityEngine.Vector3Int coordinates, System.Single depth)
+  method public System.Void AddContaminatedWater(UnityEngine.Vector3Int coordinates, System.Single depth)
+  method public System.Void RemoveContaminatedWater(UnityEngine.Vector3Int coordinates, System.Single depth)
+  method public System.Void SetPartialObstacle(UnityEngine.Vector3Int coordinates, System.Single height)
+  method public System.Void RemovePartialObstacle(UnityEngine.Vector3Int coordinates)
+  method public System.Void SetInflowLimit(UnityEngine.Vector3Int coordinates, System.Single inflowLimit)
+  method public System.Void RemoveInflowLimit(UnityEngine.Vector3Int coordinates)
+  method public System.Void AddDirectionLimiter(UnityEngine.Vector3Int coordinates, Timberborn.WaterSystem.FlowDirection flowDirection)
+  method public System.Void RemoveDirectionLimiter(UnityEngine.Vector3Int coordinates)

@@ -1,0 +1,60 @@
+# member dump for UnityEngine\.UIElements\.(WhiteSpace|DisplayStyle|FlexDirection|Justify|Align|LengthUnit|Overflow|Position)$
+
+=== UnityEngine.UIElements.LengthUnit   [UnityEngine.UIElementsModule]
+  kind: enum   base: System.Enum
+  field System.Int32 value__
+  field static UnityEngine.UIElements.LengthUnit Pixel
+  field static UnityEngine.UIElements.LengthUnit Percent
+
+=== UnityEngine.UIElements.Position   [UnityEngine.UIElementsModule]
+  kind: enum   base: System.Enum
+  field System.Int32 value__
+  field static UnityEngine.UIElements.Position Relative
+  field static UnityEngine.UIElements.Position Absolute
+
+=== UnityEngine.UIElements.Overflow   [UnityEngine.UIElementsModule]
+  kind: enum   base: System.Enum
+  field System.Int32 value__
+  field static UnityEngine.UIElements.Overflow Visible
+  field static UnityEngine.UIElements.Overflow Hidden
+
+=== UnityEngine.UIElements.FlexDirection   [UnityEngine.UIElementsModule]
+  kind: enum   base: System.Enum
+  field System.Int32 value__
+  field static UnityEngine.UIElements.FlexDirection Column
+  field static UnityEngine.UIElements.FlexDirection ColumnReverse
+  field static UnityEngine.UIElements.FlexDirection Row
+  field static UnityEngine.UIElements.FlexDirection RowReverse
+
+=== UnityEngine.UIElements.Align   [UnityEngine.UIElementsModule]
+  kind: enum   base: System.Enum
+  field System.Int32 value__
+  field static UnityEngine.UIElements.Align Auto
+  field static UnityEngine.UIElements.Align FlexStart
+  field static UnityEngine.UIElements.Align Center
+  field static UnityEngine.UIElements.Align FlexEnd
+  field static UnityEngine.UIElements.Align Stretch
+
+=== UnityEngine.UIElements.Justify   [UnityEngine.UIElementsModule]
+  kind: enum   base: System.Enum
+  field System.Int32 value__
+  field static UnityEngine.UIElements.Justify FlexStart
+  field static UnityEngine.UIElements.Justify Center
+  field static UnityEngine.UIElements.Justify FlexEnd
+  field static UnityEngine.UIElements.Justify SpaceBetween
+  field static UnityEngine.UIElements.Justify SpaceAround
+  field static UnityEngine.UIElements.Justify SpaceEvenly
+
+=== UnityEngine.UIElements.WhiteSpace   [UnityEngine.UIElementsModule]
+  kind: enum   base: System.Enum
+  field System.Int32 value__
+  field static UnityEngine.UIElements.WhiteSpace Normal
+  field static UnityEngine.UIElements.WhiteSpace NoWrap
+  field static UnityEngine.UIElements.WhiteSpace Pre
+  field static UnityEngine.UIElements.WhiteSpace PreWrap
+
+=== UnityEngine.UIElements.DisplayStyle   [UnityEngine.UIElementsModule]
+  kind: enum   base: System.Enum
+  field System.Int32 value__
+  field static UnityEngine.UIElements.DisplayStyle Flex
+  field static UnityEngine.UIElements.DisplayStyle None

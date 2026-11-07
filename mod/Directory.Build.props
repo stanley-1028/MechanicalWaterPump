@@ -1,0 +1,44 @@
+<Project>
+
+  <!--
+    Shared build settings for the Mechanical Water Pump (MWP) mod.
+
+    Timberborn mod assemblies are loaded by the game's Mono runtime, so every assembly that
+    ships to players targets netstandard2.1. MWP.Core and the test runner are different:
+    Core is deliberately reference-free so it can be unit tested outside the game, and tools
+    run on modern .NET.
+
+    TimberbornDir can be overridden on the command line:
+        dotnet build -p:TimberbornDir="D:\SteamLibrary\steamapps\common\Timberborn"
+  -->
+
+  <PropertyGroup>
+    <TimberbornDir Condition=" '$(TimberbornDir)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\Timberborn</TimberbornDir>
+    <TimberbornManagedDir>$(TimberbornDir)\Timberborn_Data\Managed</TimberbornManagedDir>
+
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <!-- REQ-NFR-02: warnings are errors. The staging build must stay at 0 warnings. -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors />
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <Deterministic>true</Deterministic>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <DebugType>portable</DebugType>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <!-- Game-facing projects set TargetFramework=netstandard2.1 in their own csproj
+       (a props file is imported before the project body, so it cannot branch on a
+       property that the project body defines later). -->
+  <PropertyGroup Condition=" '$(MwpGameProject)' == 'true' ">
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+</Project>

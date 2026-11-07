@@ -1,0 +1,1146 @@
+# member dump for Timberborn\.CoreUI\..*, Timberborn\.InputSystemUI\.Bindable.*
+
+=== Timberborn.CoreUI.AlternateClickable   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.String AlternateClass
+  field static System.String AlternateClickableActionKey
+  field UnityEngine.UIElements.VisualElement <Root>k__BackingField
+  field Timberborn.InputSystem.InputService _inputService
+  field System.Action _mainAction
+  field System.Action _alternateAction
+  prop UnityEngine.UIElements.VisualElement Root {get}
+  prop System.Boolean IsAlternating {get}
+  method public UnityEngine.UIElements.VisualElement get_Root()
+  method public System.Void .ctor(Timberborn.InputSystem.InputService inputService, UnityEngine.UIElements.VisualElement root, System.Action mainAction, System.Action alternateAction)
+  method public System.Void Update()
+  method public System.Void OnClick(UnityEngine.UIElements.ClickEvent evt)
+  method private System.Boolean get_IsAlternating()
+  method private static System.Void .cctor()
+
+=== Timberborn.CoreUI.AlternateClickableFactory   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field Timberborn.InputSystem.InputService _inputService
+  method public System.Void .ctor(Timberborn.InputSystem.InputService inputService)
+  method public Timberborn.CoreUI.AlternateClickable Create(UnityEngine.UIElements.VisualElement visualElement, System.Action mainAction, System.Action alternateAction)
+
+=== Timberborn.CoreUI.BarChart   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field static System.Single MinimumNonZeroFillRate
+  field static CustomStyleProperty<UnityEngine.Color> BackgroundHoverProperty
+  field System.Int32 _maxBarsAmount
+  field List<Timberborn.CoreUI.IBarChartDataPoint> _dataPoints
+  field System.Single _maxValue
+  field UnityEngine.Color _color
+  field UnityEngine.Color _hoverColor
+  field System.Int32 _hoveredBarIndex
+  prop Timberborn.CoreUI.IBarChartDataPoint HoveredDataPoint {get}
+  prop System.Int32 MaxBarsAmount {get}
+  method public System.Void .ctor()
+  method public Timberborn.CoreUI.IBarChartDataPoint get_HoveredDataPoint()
+  method public System.Int32 get_MaxBarsAmount()
+  method public System.Void Update(List<Timberborn.CoreUI.IBarChartDataPoint> dataPoints, System.Single maxValue, UnityEngine.Color color, UnityEngine.Color hoverColor)
+  method private System.Void OnMouseMove(UnityEngine.UIElements.MouseMoveEvent evt)
+  method private System.Void SetHoveredBar(System.Int32 index)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  method private System.Void DrawBars(UnityEngine.UIElements.Painter2D painter, System.Single totalHeight, System.Single totalWidth, System.Single barWidth)
+  method private System.Void DrawHover(UnityEngine.UIElements.Painter2D painter, System.Single totalHeight, System.Single barWidth)
+  method private static System.Void DrawRect(UnityEngine.UIElements.Painter2D painter, System.Single x, System.Single y, System.Single width, System.Single height)
+  method private static System.Single GetFillRate(System.Single value, System.Single maxValue)
+  method private System.Single SnapToPixel(System.Single value)
+  method private static System.Void .cctor()
+  method private System.Void <.ctor>b__8_0(UnityEngine.UIElements.MouseLeaveEvent _)
+  nested Timberborn.CoreUI.BarChart+.UxmlSerializedData
+
+=== Timberborn.CoreUI.BarChart+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 _maxBarsAmount
+  field UnityEngine.UIElements.UxmlSerializedData+.UxmlAttributeFlags _maxBarsAmount_UxmlAttributeFlags
+  method public static System.Void Register()
+  method public System.Object CreateInstance()
+  method public System.Void Deserialize(System.Object obj)
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.ButtonClickabilityInitializer   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.CoreUI.IVisualElementInitializer
+  field static List<UnityEngine.EventModifiers> EventModifiers
+  method public System.Void InitializeVisualElement(UnityEngine.UIElements.VisualElement visualElement)
+  method private static System.Void MakeButtonClickableWithAnyModifier(UnityEngine.UIElements.Button button)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+
+=== Timberborn.CoreUI.ColorParser   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  method public static System.Boolean TryGetColorFromText(System.String text, out ref UnityEngine.Color color)
+
+=== Timberborn.CoreUI.CoreUIConfigurator   [Timberborn.CoreUI]
+  kind: class   base: Bindito.Core.Configurator
+  [type attr] Bindito.Core.ContextAttribute
+  [type attr] Bindito.Core.ContextAttribute
+  [type attr] Bindito.Core.ContextAttribute
+  method System.Void Configure()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.DelayedButtonEnabler   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.IUpdatableSingleton
+  field static System.Int32 DelayInSeconds
+  field List<Timberborn.CoreUI.DelayedButtonEnabler+.DelayedButton> _delayedButtons
+  method public System.Void Add(UnityEngine.UIElements.Button button)
+  method public System.Void UpdateSingleton()
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+  nested Timberborn.CoreUI.DelayedButtonEnabler+.DelayedButton
+
+=== Timberborn.CoreUI.DelayedButtonEnabler+.DelayedButton   [Timberborn.CoreUI]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field UnityEngine.UIElements.Button <Button>k__BackingField
+  field System.Single <EnableTime>k__BackingField
+  prop UnityEngine.UIElements.Button Button {get}
+  prop System.Single EnableTime {get}
+  method public UnityEngine.UIElements.Button get_Button()
+  method public System.Single get_EnableTime()
+  method public System.Void .ctor(UnityEngine.UIElements.Button button, System.Single enableTime)
+
+=== Timberborn.CoreUI.DialogBox   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.CoreUI.IPanelController
+  field Timberborn.CoreUI.PanelStack _panelStack
+  field System.Action _confirmButtonCallback
+  field System.Action _cancelButtonCallback
+  field UnityEngine.UIElements.VisualElement _root
+  prop System.Boolean IsDialog {get}
+  method public System.Void .ctor(Timberborn.CoreUI.PanelStack panelStack, System.Action confirmButtonCallback, System.Action cancelButtonCallback, UnityEngine.UIElements.VisualElement root)
+  method public UnityEngine.UIElements.VisualElement GetPanel()
+  method public System.Boolean OnUIConfirmed()
+  method public System.Void OnUICancelled()
+  method public System.Void Close()
+  method private System.Boolean get_IsDialog()
+
+=== Timberborn.CoreUI.DialogBoxShower   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.CoreUI.PanelStack _panelStack
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc, Timberborn.CoreUI.PanelStack panelStack, Timberborn.CoreUI.VisualElementLoader visualElementLoader)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder Create()
+  method private System.Void Show(Timberborn.CoreUI.DialogBox dialogBox, System.Boolean hideTop)
+  nested Timberborn.CoreUI.DialogBoxShower+.Builder
+
+=== Timberborn.CoreUI.DialogBoxShower+.Builder   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field Timberborn.CoreUI.DialogBoxShower _dialogBoxShower
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.CoreUI.PanelStack _panelStack
+  field UnityEngine.UIElements.VisualElement _root
+  field System.Action _confirmAction
+  field System.Action _cancelAction
+  field System.Action _infoAction
+  field System.String _confirmText
+  field System.String _cancelText
+  field System.String _infoText
+  method public System.Void .ctor(Timberborn.CoreUI.DialogBoxShower dialogBoxShower, Timberborn.Localization.ILoc loc, Timberborn.CoreUI.PanelStack panelStack, UnityEngine.UIElements.VisualElement root)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetMessage(System.String text)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetLocalizedMessage(System.String locKey)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetConfirmButton(System.Action confirmAction)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetConfirmButton(System.Action confirmAction, System.String confirmText)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetCancelButton(System.Action cancelAction)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetCancelButton(System.Action cancelAction, System.String cancelText)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetDefaultCancelButton()
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetDefaultCancelButton(System.String cancelText)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetInfoButton(System.Action infoAction, System.String infoText)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetOffset(UnityEngine.Vector2Int offsetInPixels)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder SetMaxWidth(System.Int32 maxWidth)
+  method public Timberborn.CoreUI.DialogBoxShower+.Builder AddContent(UnityEngine.UIElements.VisualElement content)
+  method public Timberborn.CoreUI.DialogBox Show()
+  method public System.Void HideTopAndShow()
+  method private Timberborn.CoreUI.DialogBox CreateDialogBox()
+  method private System.Void SetupButtons(Timberborn.CoreUI.DialogBox dialogBox)
+  method private System.Void SetupButtonsText(UnityEngine.UIElements.Button confirmButton, UnityEngine.UIElements.Button cancelButton, UnityEngine.UIElements.Button infoButton)
+  method private System.Void SetupButtonsActions(Timberborn.CoreUI.DialogBox dialogBox, UnityEngine.UIElements.Button confirmButton, UnityEngine.UIElements.Button cancelButton, UnityEngine.UIElements.Button infoButton)
+  method private static System.Void EmptyCallback()
+  method private static System.Void OffsetBox(UnityEngine.UIElements.VisualElement box, UnityEngine.Vector2Int offsetInPixels)
+  nested Timberborn.CoreUI.DialogBoxShower+.Builder+.<>c__DisplayClass28_0
+
+=== Timberborn.CoreUI.DialogBoxShower+.Builder+.<>c__DisplayClass28_0   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Timberborn.CoreUI.DialogBox dialogBox
+  field Timberborn.CoreUI.DialogBoxShower+.Builder <>4__this
+  method public System.Void .ctor()
+  method System.Void <SetupButtonsActions>b__0(UnityEngine.UIElements.ClickEvent _)
+  method System.Void <SetupButtonsActions>b__1(UnityEngine.UIElements.ClickEvent _)
+  method System.Void <SetupButtonsActions>b__2(UnityEngine.UIElements.ClickEvent _)
+
+=== Timberborn.CoreUI.DoubleSidedProgressBar   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field static CustomStyleProperty<System.String> BackgroundImageProperty
+  field UnityEngine.Sprite _image
+  field System.Int32 _minimumLengthPx
+  field System.Single _min
+  field System.Single _max
+  field System.Single _progress
+  method public System.Void .ctor()
+  method public System.Void SetMinimumLength(System.Int32 minimumLengthPx)
+  method public System.Void UpdateProgress(System.Single progress, System.Single min, System.Single max)
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  method private System.Void WriteMesh(ref ref Timberborn.CoreUI.MeshWriter meshWriter)
+  method private System.Void CalculateBarParameters(System.Single rectWidth, out ref System.Single startWidth, out ref System.Single endWidth, out ref System.Single progress)
+  method private System.Boolean IsDoubleSided()
+  method private System.Void CalculateDoubleSidedWidths(System.Single rectWidth, System.Single progress, out ref System.Single startWidth, out ref System.Single endWidth)
+  method private static System.Void FlipDoubleSidedWidths(ref ref System.Single startWidth, ref ref System.Single endWidth)
+  method private System.Single CalculateSingleSidedWidth(System.Single rectWidth, System.Single progress)
+  method private static UnityEngine.UIElements.Vertex CreateVertex(System.Single x, System.Single y, System.Single uvX, System.Single uvY)
+  method private static System.Void .cctor()
+  nested Timberborn.CoreUI.DoubleSidedProgressBar+.UxmlSerializedData
+
+=== Timberborn.CoreUI.DoubleSidedProgressBar+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.GradientPointSpec   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: IEquatable<Timberborn.CoreUI.GradientPointSpec>
+  [type attr] System.Runtime.CompilerServices.NullableContextAttribute
+  [type attr] System.Runtime.CompilerServices.NullableAttribute
+  field UnityEngine.Color <Color>k__BackingField
+  field System.Single <Time>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop UnityEngine.Color Color {get/set}
+  prop System.Single Time {get/set}
+  method System.Type get_EqualityContract()
+  method public UnityEngine.Color get_Color()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Color(UnityEngine.Color value)
+  method public System.Single get_Time()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_Time(System.Single value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.CoreUI.GradientPointSpec left, Timberborn.CoreUI.GradientPointSpec right)
+  method public static System.Boolean op_Equality(Timberborn.CoreUI.GradientPointSpec left, Timberborn.CoreUI.GradientPointSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.CoreUI.GradientPointSpec other)
+  method public Timberborn.CoreUI.GradientPointSpec <Clone>$()
+  method System.Void .ctor(Timberborn.CoreUI.GradientPointSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.Graph   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field UnityEngine.UIElements.VisualElement <contentContainer>k__BackingField
+  field List<Timberborn.CoreUI.GraphDefinition> _graphDefinitions
+  field Action<UnityEngine.UIElements.VisualElement, System.Int32> _tooltipRegistrarAction
+  prop UnityEngine.UIElements.VisualElement contentContainer {get}
+  method public UnityEngine.UIElements.VisualElement get_contentContainer()
+  method public System.Void .ctor()
+  method public System.Void AddGraphDefinition(Timberborn.CoreUI.GraphDefinition graphDefinition, Action<UnityEngine.UIElements.VisualElement, System.Int32> tooltipRegistrarAction)
+  method public System.Void ClearGraphDefinitions()
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext ctx)
+  method private System.Void PaintGraph(Timberborn.CoreUI.GraphDefinition graphDefinition, UnityEngine.UIElements.Painter2D painter, System.Single minValue, System.Single maxValue)
+  method private System.Void AddBackgrounds(System.Int32 dataPoints)
+  method private static System.Void EnableEdgeClasses(UnityEngine.UIElements.VisualElement root, System.Boolean isFirst, System.Boolean isLast)
+  nested Timberborn.CoreUI.Graph+.UxmlSerializedData
+
+=== Timberborn.CoreUI.Graph+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.GraphDefinition   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field UnityEngine.Color <Color>k__BackingField
+  field System.Boolean <IsVisible>k__BackingField
+  field System.Single <MaxValue>k__BackingField
+  field System.Single <MinValue>k__BackingField
+  field List<System.Single> _dataPoints
+  prop UnityEngine.Color Color {get}
+  prop System.Boolean IsVisible {get/set}
+  prop System.Single MaxValue {get/set}
+  prop System.Single MinValue {get/set}
+  prop ReadOnlyList<System.Single> DataPoints {get}
+  method public UnityEngine.Color get_Color()
+  method public System.Boolean get_IsVisible()
+  method private System.Void set_IsVisible(System.Boolean value)
+  method public System.Single get_MaxValue()
+  method private System.Void set_MaxValue(System.Single value)
+  method public System.Single get_MinValue()
+  method private System.Void set_MinValue(System.Single value)
+  method public System.Void .ctor(UnityEngine.Color color, System.Boolean isVisible)
+  method public ReadOnlyList<System.Single> get_DataPoints()
+  method public System.Void AddDataPoint(System.Single value)
+  method public System.Void Clear()
+  method public System.Void SetVisibility(System.Boolean state)
+
+=== Timberborn.CoreUI.HyperlinkInitializer   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  method public System.Void Initialize(UnityEngine.UIElements.Label label, System.Action openLinkCallback)
+  method private static System.Void AddUnityRequiredValue(UnityEngine.UIElements.Label label)
+  method public System.Void .ctor()
+  nested Timberborn.CoreUI.HyperlinkInitializer+.<>c__DisplayClass0_0
+
+=== Timberborn.CoreUI.HyperlinkInitializer+.<>c__DisplayClass0_0   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Action openLinkCallback
+  field UnityEngine.UIElements.Label label
+  field System.String highlightedText
+  field System.String originalText
+  method public System.Void .ctor()
+  method System.Void <Initialize>b__0(UnityEngine.UIElements.Experimental.PointerDownLinkTagEvent _)
+  method System.Void <Initialize>b__1(UnityEngine.UIElements.Experimental.PointerOverLinkTagEvent _)
+  method System.Void <Initialize>b__2(UnityEngine.UIElements.Experimental.PointerOutLinkTagEvent _)
+
+=== Timberborn.CoreUI.IBarChartDataPoint   [Timberborn.CoreUI]
+  kind: interface   base: -
+  prop System.Single Value {get}
+  method public System.Single get_Value()
+
+=== Timberborn.CoreUI.ILocalizableElement   [Timberborn.CoreUI]
+  kind: interface   base: -
+  prop System.Boolean IsSet {get}
+  method public System.Boolean get_IsSet()
+  method public System.Void Localize(Timberborn.Localization.ILoc loc)
+
+=== Timberborn.CoreUI.IPanelBlocker   [Timberborn.CoreUI]
+  kind: interface   base: -
+
+=== Timberborn.CoreUI.IPanelController   [Timberborn.CoreUI]
+  kind: interface   base: -
+  method public UnityEngine.UIElements.VisualElement GetPanel()
+  method public System.Boolean OnUIConfirmed()
+  method public System.Void OnUICancelled()
+
+=== Timberborn.CoreUI.IVisualElementInitializer   [Timberborn.CoreUI]
+  kind: interface   base: -
+  method public System.Void InitializeVisualElement(UnityEngine.UIElements.VisualElement visualElement)
+
+=== Timberborn.CoreUI.InputBox   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.CoreUI.IPanelController
+  field Timberborn.CoreUI.PanelStack _panelStack
+  field Action<System.String> _confirmButtonCallback
+  field UnityEngine.UIElements.VisualElement _root
+  field UnityEngine.UIElements.TextField _input
+  method public System.Void .ctor(Timberborn.CoreUI.PanelStack panelStack, Action<System.String> confirmButtonCallback, UnityEngine.UIElements.VisualElement root, UnityEngine.UIElements.TextField input)
+  method public UnityEngine.UIElements.VisualElement GetPanel()
+  method public System.Boolean OnUIConfirmed()
+  method public System.Void OnUICancelled()
+
+=== Timberborn.CoreUI.InputBoxShower   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.Int32 CharacterLimit
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.CoreUI.PanelStack _panelStack
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.InputSystem.InputService _inputService
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc, Timberborn.CoreUI.PanelStack panelStack, Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.InputSystem.InputService inputService)
+  method public Timberborn.CoreUI.InputBoxShower+.Builder Create()
+  method private System.Void Show(Timberborn.CoreUI.InputBox inputBox)
+  method private static System.Void .cctor()
+  nested Timberborn.CoreUI.InputBoxShower+.Builder
+
+=== Timberborn.CoreUI.InputBoxShower+.Builder   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field Timberborn.CoreUI.InputBoxShower _inputBoxShower
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.CoreUI.PanelStack _panelStack
+  field Timberborn.InputSystem.InputService _inputService
+  field UnityEngine.UIElements.VisualElement _root
+  field UnityEngine.UIElements.TextField _input
+  field Action<System.String> _confirmAction
+  method public System.Void .ctor(Timberborn.CoreUI.InputBoxShower inputBoxShower, Timberborn.Localization.ILoc loc, Timberborn.CoreUI.PanelStack panelStack, Timberborn.InputSystem.InputService inputService, UnityEngine.UIElements.VisualElement root, UnityEngine.UIElements.TextField input)
+  method public Timberborn.CoreUI.InputBoxShower+.Builder SetDefaultValue(System.String value)
+  method public Timberborn.CoreUI.InputBoxShower+.Builder SetLocalizedMessage(System.String locKey)
+  method public Timberborn.CoreUI.InputBoxShower+.Builder SetConfirmButton(Action<System.String> confirmAction)
+  method public System.Void Show()
+  nested Timberborn.CoreUI.InputBoxShower+.Builder+.<>c
+  nested Timberborn.CoreUI.InputBoxShower+.Builder+.<>c__DisplayClass11_0
+
+=== Timberborn.CoreUI.InputBoxShower+.Builder+.<>c   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.CoreUI.InputBoxShower+.Builder+.<>c <>9
+  field static Action<System.String> <>9__7_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.Void <.ctor>b__7_0(System.String _)
+
+=== Timberborn.CoreUI.InputBoxShower+.Builder+.<>c__DisplayClass11_0   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Timberborn.CoreUI.InputBox inputBox
+  method public System.Void .ctor()
+  method System.Void <Show>b__0()
+  method System.Void <Show>b__1()
+  method System.Void <Show>b__2(UnityEngine.UIElements.ClickEvent _)
+  method System.Void <Show>b__3(UnityEngine.UIElements.ClickEvent _)
+
+=== Timberborn.CoreUI.IntegerSliderFactory   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.Int32 WidthPerDigit
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader)
+  method public UnityEngine.UIElements.VisualElement Create(System.Int32 current, System.Int32 max, Action<System.Int32> callback)
+  method private static System.Void ChangeValue(ChangeEvent<System.Single> changeEvent, UnityEngine.UIElements.IntegerField integerField, UnityEngine.UIElements.Slider slider, System.Int32 max, Action<System.Int32> callback)
+  method private static System.Void ChangeValue(System.Int32 newValue, UnityEngine.UIElements.IntegerField integerField, UnityEngine.UIElements.Slider slider, System.Int32 max, Action<System.Int32> callback)
+  method private static System.Void RefreshUI(UnityEngine.UIElements.IntegerField integerField, UnityEngine.UIElements.Slider slider, System.Int32 current, System.Int32 max)
+  method private static System.Void .cctor()
+  nested Timberborn.CoreUI.IntegerSliderFactory+.<>c__DisplayClass3_0
+
+=== Timberborn.CoreUI.IntegerSliderFactory+.<>c__DisplayClass3_0   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field UnityEngine.UIElements.IntegerField integerField
+  field UnityEngine.UIElements.Slider slider
+  field System.Int32 max
+  field Action<System.Int32> callback
+  method public System.Void .ctor()
+  method System.Void <Create>b__0(ChangeEvent<System.Single> changeEvent)
+  method System.Void <Create>b__1(System.Int32 newValue)
+
+=== Timberborn.CoreUI.LocalizableButton   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Button
+  interfaces: Timberborn.CoreUI.ILocalizableElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field System.String _textLocKey
+  field Timberborn.CoreUI.NineSliceBackground _nineSliceBackground
+  prop System.Boolean IsSet {get}
+  method public System.Void .ctor()
+  method public System.Boolean get_IsSet()
+  method public System.Void Localize(Timberborn.Localization.ILoc loc)
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  nested Timberborn.CoreUI.LocalizableButton+.UxmlSerializedData
+
+=== Timberborn.CoreUI.LocalizableButton+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Button+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.String _textLocKey
+  field UnityEngine.UIElements.UxmlSerializedData+.UxmlAttributeFlags _textLocKey_UxmlAttributeFlags
+  method public static System.Void Register()
+  method public System.Object CreateInstance()
+  method public System.Void Deserialize(System.Object obj)
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.LocalizableLabel   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Label
+  interfaces: Timberborn.CoreUI.ILocalizableElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field System.String _textLocKey
+  field Timberborn.CoreUI.NineSliceBackground _nineSliceBackground
+  prop System.Boolean IsSet {get}
+  method public System.Void .ctor()
+  method public System.Boolean get_IsSet()
+  method public System.Void Localize(Timberborn.Localization.ILoc loc)
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  nested Timberborn.CoreUI.LocalizableLabel+.UxmlSerializedData
+
+=== Timberborn.CoreUI.LocalizableLabel+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Label+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.String _textLocKey
+  field UnityEngine.UIElements.UxmlSerializedData+.UxmlAttributeFlags _textLocKey_UxmlAttributeFlags
+  method public static System.Void Register()
+  method public System.Object CreateInstance()
+  method public System.Void Deserialize(System.Object obj)
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.LocalizableSlider   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Slider
+  interfaces: Timberborn.CoreUI.ILocalizableElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field System.String _textLocKey
+  prop System.Boolean IsSet {get}
+  method public System.Boolean get_IsSet()
+  method public System.Void Localize(Timberborn.Localization.ILoc loc)
+  method public System.Void .ctor()
+  nested Timberborn.CoreUI.LocalizableSlider+.UxmlSerializedData
+
+=== Timberborn.CoreUI.LocalizableSlider+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Slider+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.String _textLocKey
+  field UnityEngine.UIElements.UxmlSerializedData+.UxmlAttributeFlags _textLocKey_UxmlAttributeFlags
+  method public static System.Void Register()
+  method public System.Object CreateInstance()
+  method public System.Void Deserialize(System.Object obj)
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.LocalizableSliderInt   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.SliderInt
+  interfaces: Timberborn.CoreUI.ILocalizableElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field System.String _textLocKey
+  prop System.Boolean IsSet {get}
+  method public System.Boolean get_IsSet()
+  method public System.Void Localize(Timberborn.Localization.ILoc loc)
+  method public System.Void .ctor()
+  nested Timberborn.CoreUI.LocalizableSliderInt+.UxmlSerializedData
+
+=== Timberborn.CoreUI.LocalizableSliderInt+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.SliderInt+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.String _textLocKey
+  field UnityEngine.UIElements.UxmlSerializedData+.UxmlAttributeFlags _textLocKey_UxmlAttributeFlags
+  method public static System.Void Register()
+  method public System.Object CreateInstance()
+  method public System.Void Deserialize(System.Object obj)
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.LocalizableToggle   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Toggle
+  interfaces: Timberborn.CoreUI.ILocalizableElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field System.String _textLocKey
+  field Timberborn.CoreUI.NineSliceBackground _nineSliceBackground
+  prop System.Boolean IsSet {get}
+  method public System.Void .ctor()
+  method public System.Boolean get_IsSet()
+  method public System.Void Localize(Timberborn.Localization.ILoc loc)
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  nested Timberborn.CoreUI.LocalizableToggle+.UxmlSerializedData
+
+=== Timberborn.CoreUI.LocalizableToggle+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Toggle+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.String _textLocKey
+  field UnityEngine.UIElements.UxmlSerializedData+.UxmlAttributeFlags _textLocKey_UxmlAttributeFlags
+  method public static System.Void Register()
+  method public System.Object CreateInstance()
+  method public System.Void Deserialize(System.Object obj)
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.MeshWriter   [Timberborn.CoreUI]
+  kind: struct   base: System.ValueType
+  field System.Int32 <VertexCount>k__BackingField
+  field System.Boolean _writing
+  field UnityEngine.UIElements.MeshWriteData _meshWriteData
+  field System.Int32 _indexCount
+  prop System.Int32 VertexCount {get/set}
+  method public System.Int32 get_VertexCount()
+  method private System.Void set_VertexCount(System.Int32 value)
+  method public System.Void .ctor(System.Int32 vertexCount, System.Int32 indexCount)
+  method public System.Void StartWriting(UnityEngine.UIElements.MeshGenerationContext meshGenerationContext, UnityEngine.Texture texture)
+  method public System.Void SetNextIndex(System.UInt16 index)
+  method public System.Void SetNextVertex(UnityEngine.UIElements.Vertex vertex)
+
+=== Timberborn.CoreUI.NineSliceBackground   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static CustomStyleProperty<System.String> BackgroundImageProperty
+  field static CustomStyleProperty<UnityEngine.Color> BackgroundTintProperty
+  field static CustomStyleProperty<System.Int32> BackgroundSliceProperty
+  field static CustomStyleProperty<System.Int32> BackgroundSliceTopProperty
+  field static CustomStyleProperty<System.Int32> BackgroundSliceRightProperty
+  field static CustomStyleProperty<System.Int32> BackgroundSliceBottomProperty
+  field static CustomStyleProperty<System.Int32> BackgroundSliceLeftProperty
+  field static CustomStyleProperty<System.Single> BackgroundSliceScaleProperty
+  field UnityEngine.Sprite _image
+  field UnityEngine.Color32 _tint
+  field System.Int32 _sliceBottom
+  field System.Int32 _sliceLeft
+  field System.Int32 _sliceRight
+  field System.Single _sliceScale
+  field System.Int32 _sliceTop
+  prop System.Boolean IsNineSlice {get}
+  method public System.Boolean get_IsNineSlice()
+  method public System.Void GetDataFromStyle(UnityEngine.UIElements.ICustomStyle customStyle)
+  method public System.Void GenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc, UnityEngine.Rect paddingRect)
+  method private System.Void WriteMesh(ref ref Timberborn.CoreUI.MeshWriter meshWriter, UnityEngine.Rect paddingRect)
+  method private System.Void AddRectangle(ref ref Timberborn.CoreUI.MeshWriter meshWriter, System.Single x0, System.Single y0, System.Single x1, System.Single y1, System.Single u0, System.Single v0, System.Single u1, System.Single v1)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+
+=== Timberborn.CoreUI.NineSliceButton   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Button
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field Timberborn.CoreUI.NineSliceBackground _nineSliceBackground
+  method public System.Void .ctor()
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  nested Timberborn.CoreUI.NineSliceButton+.UxmlSerializedData
+
+=== Timberborn.CoreUI.NineSliceButton+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Button+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.NineSliceFloatField   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.FloatField
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field Timberborn.CoreUI.NineSliceBackground _nineSliceBackground
+  method public System.Void .ctor()
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  nested Timberborn.CoreUI.NineSliceFloatField+.UxmlSerializedData
+
+=== Timberborn.CoreUI.NineSliceFloatField+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.FloatField+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.NineSliceIntegerField   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.IntegerField
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field Timberborn.CoreUI.NineSliceBackground _nineSliceBackground
+  method public System.Void .ctor()
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  nested Timberborn.CoreUI.NineSliceIntegerField+.UxmlSerializedData
+
+=== Timberborn.CoreUI.NineSliceIntegerField+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.IntegerField+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.NineSliceLabel   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Label
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field Timberborn.CoreUI.NineSliceBackground _nineSliceBackground
+  method public System.Void .ctor()
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  nested Timberborn.CoreUI.NineSliceLabel+.UxmlSerializedData
+
+=== Timberborn.CoreUI.NineSliceLabel+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.Label+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.NineSliceTextField   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.TextField
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field Timberborn.CoreUI.NineSliceBackground _nineSliceBackground
+  method public System.Void .ctor()
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  nested Timberborn.CoreUI.NineSliceTextField+.UxmlSerializedData
+
+=== Timberborn.CoreUI.NineSliceTextField+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.TextField+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.NineSliceVisualElement   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field Timberborn.CoreUI.NineSliceBackground _nineSliceBackground
+  method public System.Void .ctor()
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  nested Timberborn.CoreUI.NineSliceVisualElement+.UxmlSerializedData
+
+=== Timberborn.CoreUI.NineSliceVisualElement+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.PanelHiddenEvent   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field System.Boolean <AnyPanelShown>k__BackingField
+  field System.Boolean <UnlockSpeed>k__BackingField
+  field System.Boolean <WasDialog>k__BackingField
+  prop System.Boolean AnyPanelShown {get}
+  prop System.Boolean UnlockSpeed {get}
+  prop System.Boolean WasDialog {get}
+  method public System.Boolean get_AnyPanelShown()
+  method public System.Boolean get_UnlockSpeed()
+  method public System.Boolean get_WasDialog()
+  method public System.Void .ctor(System.Boolean anyPanelShown, System.Boolean unlockSpeed, System.Boolean wasDialog)
+
+=== Timberborn.CoreUI.PanelShownEvent   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field System.Boolean <IsDialog>k__BackingField
+  field System.Boolean <LockSpeed>k__BackingField
+  prop System.Boolean IsDialog {get}
+  prop System.Boolean LockSpeed {get}
+  method public System.Boolean get_IsDialog()
+  method public System.Boolean get_LockSpeed()
+  method public System.Void .ctor(System.Boolean isDialog, System.Boolean lockSpeed)
+
+=== Timberborn.CoreUI.PanelStack   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.InputSystem.IInputProcessor
+  field static System.String OverlayKey
+  field Timberborn.UISound.UISoundController _uiSoundController
+  field Timberborn.InputSystem.InputService _inputService
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Timberborn.RootProviders.RootVisualElementProvider _rootVisualElementProvider
+  field UnityEngine.UIElements.VisualElement _root
+  field UnityEngine.UIElements.VisualElement _container
+  field Stack<Timberborn.CoreUI.StackedPanel> _stack
+  prop Timberborn.CoreUI.StackedPanel TopPanel {get}
+  method public System.Void .ctor(Timberborn.UISound.UISoundController uiSoundController, Timberborn.InputSystem.InputService inputService, Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.SingletonSystem.EventBus eventBus, Timberborn.RootProviders.RootVisualElementProvider rootVisualElementProvider)
+  method public UnityEngine.UIElements.VisualElement Initialize(System.String visualTreeAssetName, System.String containerName)
+  method public System.Void OnUIVisibilityChanged(Timberborn.CoreUI.UIVisibilityChangedEvent uiVisibilityChangedEvent)
+  method public System.Boolean ProcessInput()
+  method public System.Void Push(Timberborn.CoreUI.IPanelController panelController)
+  method public System.Void PushOverlay(Timberborn.CoreUI.IPanelController panelController)
+  method public System.Void PushDialog(Timberborn.CoreUI.IPanelController panelController)
+  method public System.Void HideAndPushDialog(Timberborn.CoreUI.IPanelController panelController)
+  method public System.Void HideAndPush(Timberborn.CoreUI.IPanelController panelController)
+  method public System.Void HideAndPushWithoutPause(Timberborn.CoreUI.IPanelController panelController)
+  method public System.Void HideAndPushOverlay(Timberborn.CoreUI.IPanelController panelController)
+  method public System.Void Pop(Timberborn.CoreUI.IPanelController panelController)
+  method public System.Boolean ContainsPanelBlocker()
+  method public System.Boolean IsPanelOnTop(Timberborn.CoreUI.IPanelController panelController)
+  method private Timberborn.CoreUI.StackedPanel get_TopPanel()
+  method private System.Boolean ProcessUICancel()
+  method private System.Boolean ProcessUIConfirm()
+  method private UnityEngine.UIElements.VisualElement GetPanel(Timberborn.CoreUI.IPanelController panelController, System.Boolean showOverlay)
+  method private System.Void Push(Timberborn.CoreUI.IPanelController panelController, System.Boolean hideTop, System.Boolean showOverlay, System.Boolean isDialog, System.Boolean lockSpeed)
+  method private System.Void Push(Timberborn.CoreUI.StackedPanel panel)
+  method private System.Void Show(Timberborn.CoreUI.StackedPanel panel)
+  method private System.Void Hide(Timberborn.CoreUI.StackedPanel panel)
+  method private System.Void ShowTop()
+  method private static System.Void .cctor()
+  nested Timberborn.CoreUI.PanelStack+.<>c
+
+=== Timberborn.CoreUI.PanelStack+.<>c   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.CoreUI.PanelStack+.<>c <>9
+  field static Func<Timberborn.CoreUI.StackedPanel, System.Boolean> <>9__21_0
+  field static Func<Timberborn.CoreUI.StackedPanel, System.Boolean> <>9__31_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.Boolean <ContainsPanelBlocker>b__21_0(Timberborn.CoreUI.StackedPanel stack)
+  method System.Boolean <Hide>b__31_0(Timberborn.CoreUI.StackedPanel stack)
+
+=== Timberborn.CoreUI.PreciseSlider   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field System.Single <Value>k__BackingField
+  field UnityEngine.UIElements.Slider _slider
+  field UnityEngine.UIElements.VisualElement _marker
+  field Action<System.Single> _valueChangedCallback
+  field System.Single _step
+  field Nullable<System.Single> _markerValue
+  field System.Boolean _suppressCallback
+  prop System.Single Value {get/set}
+  method public System.Single get_Value()
+  method private System.Void set_Value(System.Single value)
+  method public System.Void .ctor()
+  method public System.Void SetValueChangedCallback(Action<System.Single> valueChangedCallback)
+  method public System.Void UpdateValuesWithoutNotify(System.Single value, System.Single maxValue)
+  method public System.Void UpdateValuesWithoutNotify(System.Single value, System.Single minValue, System.Single maxValue)
+  method public System.Void SetValueWithoutNotify(System.Single value)
+  method public System.Void SetStepWithoutNotify(System.Single step)
+  method public System.Void SetMarker(System.Single value)
+  method public System.Void ClearMarker()
+  method private System.Void OnDecreaseClicked(UnityEngine.UIElements.ClickEvent evt)
+  method private System.Void OnIncreaseClicked(UnityEngine.UIElements.ClickEvent evt)
+  method private System.Void OnSliderValueChanged(ChangeEvent<System.Single> evt)
+  method private System.Void OnGeometryChangedEvent(UnityEngine.UIElements.GeometryChangedEvent evt)
+  method private System.Void UpdateValue(System.Single value, System.Single previousValue, System.Boolean invokeCallback)
+  method private System.Void UpdateMarker()
+  nested Timberborn.CoreUI.PreciseSlider+.UxmlSerializedData
+
+=== Timberborn.CoreUI.PreciseSlider+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.ProgressBar   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field UnityEngine.UIElements.VisualElement <contentContainer>k__BackingField
+  field Timberborn.CoreUI.SimpleProgressBar _simpleProgressBar
+  prop UnityEngine.UIElements.VisualElement contentContainer {get}
+  method public UnityEngine.UIElements.VisualElement get_contentContainer()
+  method public System.Void .ctor()
+  method public System.Void SetProgress(System.Single progress)
+  nested Timberborn.CoreUI.ProgressBar+.UxmlSerializedData
+
+=== Timberborn.CoreUI.ProgressBar+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.RadioToggle   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.String SelectedClass
+  field EventHandler<System.Int32> RadioButtonSelected
+  field ImmutableArray<UnityEngine.UIElements.VisualElement> _radioButtons
+  event EventHandler<System.Int32> RadioButtonSelected
+  method public System.Void add_RadioButtonSelected(EventHandler<System.Int32> value)
+  method public System.Void remove_RadioButtonSelected(EventHandler<System.Int32> value)
+  method private System.Void .ctor(IEnumerable<UnityEngine.UIElements.VisualElement> radioButtons)
+  method public static Timberborn.CoreUI.RadioToggle Create(IEnumerable<UnityEngine.UIElements.VisualElement> radioButtons)
+  method public System.Void Update(System.Int32 selectedIndex)
+  method private static System.Void .cctor()
+  nested Timberborn.CoreUI.RadioToggle+.<>c__DisplayClass6_0
+  nested Timberborn.CoreUI.RadioToggle+.<>c__DisplayClass6_1
+
+=== Timberborn.CoreUI.RadioToggle+.<>c__DisplayClass6_0   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Timberborn.CoreUI.RadioToggle radioButtonToggle
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.RadioToggle+.<>c__DisplayClass6_1   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 capturedIndex
+  field Timberborn.CoreUI.RadioToggle+.<>c__DisplayClass6_0 CS$<>8__locals1
+  method public System.Void .ctor()
+  method System.Void <Create>b__0(UnityEngine.UIElements.ClickEvent _)
+
+=== Timberborn.CoreUI.RadioToggleFactory   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.Localization.ILoc _loc
+  method System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.Localization.ILoc loc)
+  method public Timberborn.CoreUI.RadioToggle CreateLocalizable(IEnumerable<System.String> optionLocKeys, UnityEngine.UIElements.VisualElement parent)
+  method public Timberborn.CoreUI.RadioToggle CreateLocalizable(System.String optionLocKeyPrefix, UnityEngine.UIElements.VisualElement parent)
+  method private Timberborn.CoreUI.RadioToggle Create(IEnumerable<System.String> options, UnityEngine.UIElements.VisualElement parent)
+  method private UnityEngine.UIElements.VisualElement CreateRadioButton(System.String option)
+  method private System.String <CreateLocalizable>b__3_0(System.String optionLocKey)
+  nested Timberborn.CoreUI.RadioToggleFactory+.<>c__DisplayClass4_0`1
+
+=== Timberborn.CoreUI.RadioToggleFactory+.<>c__DisplayClass4_0`1   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.String optionLocKeyPrefix
+  method public System.Void .ctor()
+  method System.String <CreateLocalizable>b__0(T value)
+
+=== Timberborn.CoreUI.RotatingBackground   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field static CustomStyleProperty<System.String> BackgroundImageProperty
+  field static UnityEngine.Color32 White
+  field UnityEngine.Sprite _image
+  field System.Single _angle
+  method public System.Void .ctor()
+  method public System.Void SetRotation(System.Single angle)
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  method private System.Void WriteMesh(ref ref Timberborn.CoreUI.MeshWriter meshWriter)
+  method private static UnityEngine.Vector3 RotateVertex(UnityEngine.Vector3 input, UnityEngine.Vector3 center, UnityEngine.Quaternion quaternion)
+  method private static System.Void .cctor()
+  nested Timberborn.CoreUI.RotatingBackground+.UxmlSerializedData
+
+=== Timberborn.CoreUI.RotatingBackground+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.RowShader   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.String ShadedClass
+  method public System.Void ShadeRows(UnityEngine.UIElements.VisualElement visualElement)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+
+=== Timberborn.CoreUI.ScrollBarInitializationService   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.String VerticalDraggerClass
+  field static System.String VerticalTrackerClass
+  field static System.String HorizontalDraggerClass
+  field static System.String HorizontalTrackerClass
+  method public System.Void InitializeVisualElement(UnityEngine.UIElements.VisualElement visualElement)
+  method private static System.Void SetScrollView(UnityEngine.UIElements.ScrollView scrollView)
+  method private static System.Void AddNineSliceElements(UnityEngine.UIElements.VisualElement root, System.String draggerClass, System.String trackerClass)
+  method public System.Void .ctor()
+  method private static System.Void .cctor()
+
+=== Timberborn.CoreUI.ScrollBarInitializer   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.CoreUI.IVisualElementInitializer
+  field Timberborn.CoreUI.ScrollBarInitializationService _scrollBarInitializationService
+  method public System.Void .ctor(Timberborn.CoreUI.ScrollBarInitializationService scrollBarInitializationService)
+  method public System.Void InitializeVisualElement(UnityEngine.UIElements.VisualElement visualElement)
+
+=== Timberborn.CoreUI.SimpleProgressBar   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement
+  [type attr] UnityEngine.UIElements.UxmlElementAttribute
+  field static CustomStyleProperty<System.String> BackgroundImageProperty
+  field UnityEngine.Sprite _image
+  field System.Single _progress
+  method public System.Void .ctor()
+  method public System.Void SetProgress(System.Single progress)
+  method private System.Void OnCustomStyleResolved(UnityEngine.UIElements.CustomStyleResolvedEvent e)
+  method private System.Void OnGenerateVisualContent(UnityEngine.UIElements.MeshGenerationContext mgc)
+  method private System.Void WriteMesh(ref ref Timberborn.CoreUI.MeshWriter meshWriter)
+  method private static UnityEngine.UIElements.Vertex CreateVertex(System.Single x, System.Single y, System.Single uvX, System.Single uvY)
+  method private static System.Void .cctor()
+  nested Timberborn.CoreUI.SimpleProgressBar+.UxmlSerializedData
+
+=== Timberborn.CoreUI.SimpleProgressBar+.UxmlSerializedData   [Timberborn.CoreUI]
+  kind: class   base: UnityEngine.UIElements.VisualElement+.UxmlSerializedData
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  method public System.Object CreateInstance()
+  method public System.Void .ctor()
+
+=== Timberborn.CoreUI.SpecialStrings   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.String RowStarter
+  field static System.String ArrowUp
+  field static System.String SizeSeparator
+  field static System.String NonBreakingSpace
+  method private static System.Void .cctor()
+
+=== Timberborn.CoreUI.StackedPanel   [Timberborn.CoreUI]
+  kind: struct   base: System.ValueType
+  [type attr] System.Runtime.CompilerServices.IsReadOnlyAttribute
+  field Timberborn.CoreUI.IPanelController <PanelController>k__BackingField
+  field UnityEngine.UIElements.VisualElement <VisualElement>k__BackingField
+  field System.Boolean <TopHidden>k__BackingField
+  field System.Boolean <IsOverlay>k__BackingField
+  field System.Boolean <IsDialog>k__BackingField
+  field System.Boolean <LockSpeed>k__BackingField
+  prop Timberborn.CoreUI.IPanelController PanelController {get}
+  prop UnityEngine.UIElements.VisualElement VisualElement {get}
+  prop System.Boolean TopHidden {get}
+  prop System.Boolean IsOverlay {get}
+  prop System.Boolean IsDialog {get}
+  prop System.Boolean LockSpeed {get}
+  method public Timberborn.CoreUI.IPanelController get_PanelController()
+  method public UnityEngine.UIElements.VisualElement get_VisualElement()
+  method public System.Boolean get_TopHidden()
+  method public System.Boolean get_IsOverlay()
+  method public System.Boolean get_IsDialog()
+  method public System.Boolean get_LockSpeed()
+  method public System.Void .ctor(Timberborn.CoreUI.IPanelController panelController, UnityEngine.UIElements.VisualElement visualElement, System.Boolean topHidden, System.Boolean isOverlay, System.Boolean isDialog, System.Boolean lockSpeed)
+
+=== Timberborn.CoreUI.TextElementInitializer   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.CoreUI.IVisualElementInitializer
+  field Timberborn.InputSystem.InputBlocker _inputBlocker
+  method public System.Void .ctor(Timberborn.InputSystem.InputBlocker inputBlocker)
+  method public System.Void InitializeVisualElement(UnityEngine.UIElements.VisualElement visualElement)
+  method private System.Void OnFocusIn(UnityEngine.UIElements.FocusInEvent evt)
+  method private System.Void OnFocusOut(UnityEngine.UIElements.FocusOutEvent evt)
+
+=== Timberborn.CoreUI.TextFields   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  method public static System.Void InitializeIntegerField(UnityEngine.UIElements.IntegerField integerField, System.Int32 startingValue, System.Int32 minValue, System.Int32 maxValue, Action<System.Int32> afterEditingCallback)
+  method public static System.Void InitializeFloatField(UnityEngine.UIElements.FloatField floatField, System.Single startingValue, System.Single minValue, System.Single maxValue, Action<System.Single> afterEditingCallback)
+  nested Timberborn.CoreUI.TextFields+.<>c__DisplayClass0_0
+  nested Timberborn.CoreUI.TextFields+.<>c__DisplayClass1_0
+
+=== Timberborn.CoreUI.TextFields+.<>c__DisplayClass0_0   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field UnityEngine.UIElements.IntegerField integerField
+  field System.Int32 minValue
+  field System.Int32 maxValue
+  field Action<System.Int32> afterEditingCallback
+  method public System.Void .ctor()
+  method System.Void <InitializeIntegerField>b__0(UnityEngine.UIElements.FocusOutEvent _)
+
+=== Timberborn.CoreUI.TextFields+.<>c__DisplayClass1_0   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Single minValue
+  field System.Single maxValue
+  field UnityEngine.UIElements.FloatField floatField
+  field Action<System.Single> afterEditingCallback
+  method public System.Void .ctor()
+  method System.Void <InitializeFloatField>b__0(ChangeEvent<System.Single> evt)
+
+=== Timberborn.CoreUI.UIScaler   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton, Timberborn.SingletonSystem.IUnloadableSingleton
+  field static System.Single MinScaleFactor
+  field static System.Single MaxScaleFactor
+  field Timberborn.CoreUI.UISettings _uiSettings
+  field Timberborn.AssetSystem.IAssetLoader _assetLoader
+  field UnityEngine.UIElements.PanelSettings _panelSettings
+  method public System.Void .ctor(Timberborn.CoreUI.UISettings uiSettings, Timberborn.AssetSystem.IAssetLoader assetLoader)
+  method public System.Void Load()
+  method public System.Void Unload()
+  method public System.Single ClampScaleFactor(System.Single value)
+  method private System.Void SetScaleFactor()
+  method private static System.Void .cctor()
+  method private System.Void <Load>b__6_0(System.Object _, SettingChangedEventArgs<System.Single> _)
+
+=== Timberborn.CoreUI.UISettings   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.Single UIScaleStep
+  field static System.String ShowFpsKey
+  field static System.String UIScaleFactorKey
+  field static System.String RunInBackgroundKey
+  field EventHandler<SettingChangedEventArgs<System.Single>> UIScaleFactorChanged
+  field EventHandler<SettingChangedEventArgs<System.Boolean>> RunInBackgroundChanged
+  field Timberborn.SettingsSystem.ISettings _settings
+  prop System.Boolean ShowFps {get/set}
+  prop System.Boolean HasStoredUIScaleFactor {get}
+  prop System.Single UIScaleFactor {get/set}
+  prop System.Boolean RunInBackground {get/set}
+  event EventHandler<SettingChangedEventArgs<System.Single>> UIScaleFactorChanged
+  event EventHandler<SettingChangedEventArgs<System.Boolean>> RunInBackgroundChanged
+  method public System.Void add_UIScaleFactorChanged(EventHandler<SettingChangedEventArgs<System.Single>> value)
+  method public System.Void remove_UIScaleFactorChanged(EventHandler<SettingChangedEventArgs<System.Single>> value)
+  method public System.Void add_RunInBackgroundChanged(EventHandler<SettingChangedEventArgs<System.Boolean>> value)
+  method public System.Void remove_RunInBackgroundChanged(EventHandler<SettingChangedEventArgs<System.Boolean>> value)
+  method public System.Void .ctor(Timberborn.SettingsSystem.ISettings settings)
+  method public System.Boolean get_ShowFps()
+  method public System.Void set_ShowFps(System.Boolean value)
+  method public System.Boolean get_HasStoredUIScaleFactor()
+  method public System.Single get_UIScaleFactor()
+  method public System.Void set_UIScaleFactor(System.Single value)
+  method public System.Boolean get_RunInBackground()
+  method public System.Void set_RunInBackground(System.Boolean value)
+  method private static System.Void .cctor()
+
+=== Timberborn.CoreUI.UISoundInitializer   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.CoreUI.IVisualElementInitializer
+  field static CustomStyleProperty<System.String> ClickSoundProperty
+  field static System.String NoSoundValue
+  field Timberborn.UISound.UISoundController _uiSoundController
+  method public System.Void .ctor(Timberborn.UISound.UISoundController uiSoundController)
+  method public System.Void InitializeVisualElement(UnityEngine.UIElements.VisualElement visualElement)
+  method private System.Void PlayUISound(UnityEngine.UIElements.EventBase clickEvent)
+  method private static System.Void .cctor()
+
+=== Timberborn.CoreUI.UIVisibilityChangedEvent   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field System.Boolean <UIVisible>k__BackingField
+  prop System.Boolean UIVisible {get}
+  method public System.Boolean get_UIVisible()
+  method public System.Void .ctor(System.Boolean uiVisible)
+
+=== Timberborn.CoreUI.Underlay   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.SingletonSystem.ILoadableSingleton
+  field UnityEngine.UIElements.VisualElement <Root>k__BackingField
+  field Timberborn.RootProviders.RootVisualElementProvider _rootVisualElementProvider
+  prop UnityEngine.UIElements.VisualElement Root {get/set}
+  method public UnityEngine.UIElements.VisualElement get_Root()
+  method private System.Void set_Root(UnityEngine.UIElements.VisualElement value)
+  method public System.Void .ctor(Timberborn.RootProviders.RootVisualElementProvider rootVisualElementProvider)
+  method public System.Void Load()
+  method public System.Void Add(UnityEngine.UIElements.VisualElement element)
+  method public System.Void Remove(UnityEngine.UIElements.VisualElement element)
+  method private System.Void Disable()
+  method private System.Void Enable()
+
+=== Timberborn.CoreUI.VisualElementExtensions   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.ExtensionAttribute
+  method public static System.Void ToggleDisplayStyle(UnityEngine.UIElements.VisualElement visualElement, System.Boolean visible)
+  method public static System.Boolean IsDisplayed(UnityEngine.UIElements.VisualElement visualElement)
+  method public static System.Void SetHeightAsPercent(UnityEngine.UIElements.VisualElement visualElement, System.Single value01)
+  method public static System.Boolean IsFocused(UnityEngine.UIElements.VisualElement visualElement)
+  method public static System.Void SetConfirmCancelActions(UnityEngine.UIElements.VisualElement visualElement, Timberborn.InputSystem.InputService inputService, System.Action confirmAction, System.Action cancelAction)
+  nested Timberborn.CoreUI.VisualElementExtensions+.<>c__DisplayClass4_0
+
+=== Timberborn.CoreUI.VisualElementExtensions+.<>c__DisplayClass4_0   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Timberborn.InputSystem.InputService inputService
+  field System.Action confirmAction
+  field System.Action cancelAction
+  method public System.Void .ctor()
+  method System.Void <SetConfirmCancelActions>b__0(UnityEngine.UIElements.FocusOutEvent _)
+
+=== Timberborn.CoreUI.VisualElementInitializer   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field List<Timberborn.CoreUI.IVisualElementInitializer> _visualElementInitializers
+  method public System.Void .ctor(IEnumerable<Timberborn.CoreUI.IVisualElementInitializer> visualElementInitializers)
+  method public System.Void InitializeVisualElement(UnityEngine.UIElements.VisualElement visualElement)
+  method private System.Void InitializeWithEveryInitializer(UnityEngine.UIElements.VisualElement visualElement)
+
+=== Timberborn.CoreUI.VisualElementLoader   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.String ViewsDirectory
+  field Timberborn.AssetSystem.IAssetLoader _assetLoader
+  field Timberborn.CoreUI.VisualElementInitializer _visualElementInitializer
+  method public System.Void .ctor(Timberborn.AssetSystem.IAssetLoader assetLoader, Timberborn.CoreUI.VisualElementInitializer visualElementInitializer)
+  method public UnityEngine.UIElements.VisualElement LoadVisualElement(System.String elementName)
+  method public UnityEngine.UIElements.VisualTreeAsset LoadVisualTreeAsset(System.String elementName)
+  method private UnityEngine.UIElements.VisualElement LoadVisualElement(UnityEngine.UIElements.VisualTreeAsset visualTreeAsset)
+  method private static System.Void .cctor()
+
+=== Timberborn.CoreUI.VisualElementLocalizer   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.CoreUI.IVisualElementInitializer
+  field Timberborn.Localization.ILoc _loc
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc)
+  method public System.Void InitializeVisualElement(UnityEngine.UIElements.VisualElement visualElement)
+  method private static System.String ElementPath(UnityEngine.UIElements.VisualElement visualElement)
+
+=== Timberborn.InputSystemUI.BindableButton   [Timberborn.InputSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.InputSystem.IInputProcessor
+  field Timberborn.InputSystem.InputService _inputService
+  field UnityEngine.UIElements.VisualElement _button
+  field System.String _bindingKey
+  field System.Action _action
+  field System.Boolean _blockInput
+  field System.Boolean _isBound
+  method public System.Void .ctor(Timberborn.InputSystem.InputService inputService, UnityEngine.UIElements.VisualElement button, System.String bindingKey, System.Action action, System.Boolean blockInput)
+  method public System.Void Bind()
+  method public System.Void Unbind()
+  method public System.Void Enable()
+  method public System.Void Disable()
+  method public System.Boolean ProcessInput()
+
+=== Timberborn.InputSystemUI.BindableButtonFactory   [Timberborn.InputSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.InputSystem.InputService _inputService
+  method public System.Void .ctor(Timberborn.InputSystem.InputService inputService)
+  method public Timberborn.InputSystemUI.BindableButton Create(UnityEngine.UIElements.VisualElement button, System.String bindingKey, System.Action action, System.Boolean blockInput)
+  method public Timberborn.InputSystemUI.BindableButton CreateAndBind(UnityEngine.UIElements.VisualElement button, System.String bindingKey, System.Action action)
+  nested Timberborn.InputSystemUI.BindableButtonFactory+.<>c__DisplayClass2_0
+
+=== Timberborn.InputSystemUI.BindableButtonFactory+.<>c__DisplayClass2_0   [Timberborn.InputSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Action action
+  method public System.Void .ctor()
+  method System.Void <Create>b__0(UnityEngine.UIElements.ClickEvent _)
+
+=== Timberborn.InputSystemUI.BindableToggle   [Timberborn.InputSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.InputSystem.IInputProcessor
+  field Timberborn.InputSystem.InputService _inputService
+  field UnityEngine.UIElements.Toggle _toggle
+  field System.String _bindingKey
+  field Action<System.Boolean> _toggleAction
+  field Func<System.Boolean> _valueGetter
+  field System.Boolean _isBound
+  method public System.Void .ctor(Timberborn.InputSystem.InputService inputService, UnityEngine.UIElements.Toggle toggle, System.String bindingKey, Action<System.Boolean> toggleAction, Func<System.Boolean> valueGetter)
+  method public System.Void Bind()
+  method public System.Void Unbind()
+  method public System.Void Enable()
+  method public System.Void Disable()
+  method public System.Boolean ProcessInput()
+  method public System.Void Update()
+
+=== Timberborn.InputSystemUI.BindableToggleFactory   [Timberborn.InputSystemUI]
+  kind: class   base: System.Object
+  field Timberborn.InputSystem.InputService _inputService
+  method public System.Void .ctor(Timberborn.InputSystem.InputService inputService)
+  method public Timberborn.InputSystemUI.BindableToggle Create(UnityEngine.UIElements.Toggle toggle, System.String bindingKey, Action<System.Boolean> toggleAction, Func<System.Boolean> valueGetter)
+  method public Timberborn.InputSystemUI.BindableToggle CreateAndBind(UnityEngine.UIElements.Toggle toggle, System.String bindingKey, Action<System.Boolean> toggleAction, Func<System.Boolean> valueGetter)
+  nested Timberborn.InputSystemUI.BindableToggleFactory+.<>c__DisplayClass2_0
+
+=== Timberborn.InputSystemUI.BindableToggleFactory+.<>c__DisplayClass2_0   [Timberborn.InputSystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field Action<System.Boolean> toggleAction
+  method public System.Void .ctor()
+  method System.Void <Create>b__0(ChangeEvent<System.Boolean> evt)

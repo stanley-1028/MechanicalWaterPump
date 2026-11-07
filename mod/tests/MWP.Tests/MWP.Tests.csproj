@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    L1 test runner. Zero NuGet dependencies on purpose: this machine cannot reach nuget.org,
+    and the requirements only need deterministic assertions over pure Core functions
+    (REQ-NFR-07 / REQ-TEST-01..05).
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>MWP.Tests</AssemblyName>
+    <RootNamespace>MWP.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MWP.Core\MWP.Core.csproj" />
+  </ItemGroup>
+
+</Project>

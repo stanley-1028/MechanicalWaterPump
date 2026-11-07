@@ -1,0 +1,868 @@
+# member dump for UnityEngine\.UIElements\.(Length|StyleLength|StyleColor|StyleFloat|IStyle|StyleEnum.*|Color)$, UnityEngine\.(Color|Rect)$
+
+=== UnityEngine.Rect   [UnityEngine.CoreModule]
+  kind: struct   base: System.ValueType
+  interfaces: IEquatable<UnityEngine.Rect>, System.IFormattable
+  [type attr] UnityEngine.NativeClassAttribute
+  [type attr] UnityEngine.Scripting.RequiredByNativeCodeAttribute
+  [type attr] UnityEngine.Bindings.NativeHeaderAttribute
+  field System.Single m_XMin
+  field System.Single m_YMin
+  field System.Single m_Width
+  field System.Single m_Height
+  field static UnityEngine.Rect kZero
+  prop UnityEngine.Rect zero {get}
+  prop System.Single x {get/set}
+  prop System.Single y {get/set}
+  prop UnityEngine.Vector2 position {get/set}
+  prop UnityEngine.Vector2 center {get/set}
+  prop UnityEngine.Vector2 min {get/set}
+  prop UnityEngine.Vector2 max {get/set}
+  prop System.Single width {get/set}
+  prop System.Single height {get/set}
+  prop UnityEngine.Vector2 size {get/set}
+  prop System.Single xMin {get/set}
+  prop System.Single yMin {get/set}
+  prop System.Single xMax {get/set}
+  prop System.Single yMax {get/set}
+  prop System.Single left {get}
+  prop System.Single right {get}
+  prop System.Single top {get}
+  prop System.Single bottom {get}
+  method public System.Void .ctor(System.Single x, System.Single y, System.Single width, System.Single height)
+  method public System.Void .ctor(UnityEngine.Vector2 position, UnityEngine.Vector2 size)
+  method public System.Void .ctor(ref ref UnityEngine.Vector2 position, ref ref UnityEngine.Vector2 size)
+  method public System.Void .ctor(UnityEngine.Rect source)
+  method public System.Void .ctor(ref ref UnityEngine.Rect source)
+  method public static UnityEngine.Rect get_zero()
+  method public static UnityEngine.Rect MinMaxRect(System.Single xmin, System.Single ymin, System.Single xmax, System.Single ymax)
+  method public System.Void Set(System.Single x, System.Single y, System.Single width, System.Single height)
+  method public System.Single get_x()
+  method public System.Void set_x(System.Single value)
+  method public System.Single get_y()
+  method public System.Void set_y(System.Single value)
+  method public UnityEngine.Vector2 get_position()
+  method public System.Void set_position(UnityEngine.Vector2 value)
+  method public UnityEngine.Vector2 get_center()
+  method public System.Void set_center(UnityEngine.Vector2 value)
+  method public UnityEngine.Vector2 get_min()
+  method public System.Void set_min(UnityEngine.Vector2 value)
+  method public UnityEngine.Vector2 get_max()
+  method public System.Void set_max(UnityEngine.Vector2 value)
+  method public System.Single get_width()
+  method public System.Void set_width(System.Single value)
+  method public System.Single get_height()
+  method public System.Void set_height(System.Single value)
+  method public UnityEngine.Vector2 get_size()
+  method public System.Void set_size(UnityEngine.Vector2 value)
+  method public System.Single get_xMin()
+  method public System.Void set_xMin(System.Single value)
+  method public System.Single get_yMin()
+  method public System.Void set_yMin(System.Single value)
+  method public System.Single get_xMax()
+  method public System.Void set_xMax(System.Single value)
+  method public System.Single get_yMax()
+  method public System.Void set_yMax(System.Single value)
+  method public System.Boolean Contains(UnityEngine.Vector2 point)
+  method public System.Boolean Contains(ref ref UnityEngine.Vector2 point)
+  method public System.Boolean Contains(UnityEngine.Vector3 point)
+  method public System.Boolean Contains(ref ref UnityEngine.Vector3 point)
+  method public System.Boolean Contains(UnityEngine.Vector3 point, System.Boolean allowInverse)
+  method public System.Boolean Contains(ref ref UnityEngine.Vector3 point, System.Boolean allowInverse)
+  method public System.Boolean Overlaps(UnityEngine.Rect other)
+  method public System.Boolean Overlaps(ref ref UnityEngine.Rect other)
+  method private static System.Boolean UnorderedOverlaps(ref ref UnityEngine.Rect lhs, ref ref UnityEngine.Rect rhs)
+  method public System.Boolean Overlaps(UnityEngine.Rect other, System.Boolean allowInverse)
+  method public System.Boolean Overlaps(ref ref UnityEngine.Rect other, System.Boolean allowInverse)
+  method public static UnityEngine.Vector2 NormalizedToPoint(UnityEngine.Rect rectangle, UnityEngine.Vector2 normalizedRectCoordinates)
+  method public static UnityEngine.Vector2 NormalizedToPoint(ref ref UnityEngine.Rect rectangle, ref ref UnityEngine.Vector2 normalizedRectCoordinates)
+  method public static UnityEngine.Vector2 PointToNormalized(UnityEngine.Rect rectangle, UnityEngine.Vector2 point)
+  method public static UnityEngine.Vector2 PointToNormalized(ref ref UnityEngine.Rect rectangle, ref ref UnityEngine.Vector2 point)
+  method public static System.Boolean op_Inequality(UnityEngine.Rect lhs, UnityEngine.Rect rhs)
+  method public static System.Boolean op_Equality(UnityEngine.Rect lhs, UnityEngine.Rect rhs)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object other)
+  method public System.Boolean Equals(UnityEngine.Rect other)
+  method public System.Boolean Equals(ref ref UnityEngine.Rect other)
+  method public System.String ToString()
+  method public System.String ToString(System.String format)
+  method public System.String ToString(System.String format, System.IFormatProvider formatProvider)
+  method public System.Single get_left()
+  method public System.Single get_right()
+  method public System.Single get_top()
+  method public System.Single get_bottom()
+  method private static System.Void .cctor()
+
+=== UnityEngine.Color   [UnityEngine.CoreModule]
+  kind: struct   base: System.ValueType
+  interfaces: IEquatable<UnityEngine.Color>, System.IFormattable
+  [type attr] UnityEngine.Scripting.RequiredByNativeCodeAttribute
+  [type attr] UnityEngine.NativeClassAttribute
+  [type attr] UnityEngine.Bindings.NativeHeaderAttribute
+  [type attr] System.Reflection.DefaultMemberAttribute
+  field System.Single r
+  field System.Single g
+  field System.Single b
+  field System.Single a
+  prop System.Single grayscale {get}
+  prop UnityEngine.Color linear {get}
+  prop UnityEngine.Color gamma {get}
+  prop System.Single maxColorComponent {get}
+  prop System.Single Item {get/set}
+  prop UnityEngine.Color aliceBlue {get}
+  prop UnityEngine.Color antiqueWhite {get}
+  prop UnityEngine.Color aquamarine {get}
+  prop UnityEngine.Color azure {get}
+  prop UnityEngine.Color beige {get}
+  prop UnityEngine.Color bisque {get}
+  prop UnityEngine.Color black {get}
+  prop UnityEngine.Color blanchedAlmond {get}
+  prop UnityEngine.Color blue {get}
+  prop UnityEngine.Color blueViolet {get}
+  prop UnityEngine.Color brown {get}
+  prop UnityEngine.Color burlywood {get}
+  prop UnityEngine.Color cadetBlue {get}
+  prop UnityEngine.Color chartreuse {get}
+  prop UnityEngine.Color chocolate {get}
+  prop UnityEngine.Color clear {get}
+  prop UnityEngine.Color coral {get}
+  prop UnityEngine.Color cornflowerBlue {get}
+  prop UnityEngine.Color cornsilk {get}
+  prop UnityEngine.Color crimson {get}
+  prop UnityEngine.Color cyan {get}
+  prop UnityEngine.Color darkBlue {get}
+  prop UnityEngine.Color darkCyan {get}
+  prop UnityEngine.Color darkGoldenRod {get}
+  prop UnityEngine.Color darkGray {get}
+  prop UnityEngine.Color darkGreen {get}
+  prop UnityEngine.Color darkKhaki {get}
+  prop UnityEngine.Color darkMagenta {get}
+  prop UnityEngine.Color darkOliveGreen {get}
+  prop UnityEngine.Color darkOrange {get}
+  prop UnityEngine.Color darkOrchid {get}
+  prop UnityEngine.Color darkRed {get}
+  prop UnityEngine.Color darkSalmon {get}
+  prop UnityEngine.Color darkSeaGreen {get}
+  prop UnityEngine.Color darkSlateBlue {get}
+  prop UnityEngine.Color darkSlateGray {get}
+  prop UnityEngine.Color darkTurquoise {get}
+  prop UnityEngine.Color darkViolet {get}
+  prop UnityEngine.Color deepPink {get}
+  prop UnityEngine.Color deepSkyBlue {get}
+  prop UnityEngine.Color dimGray {get}
+  prop UnityEngine.Color dodgerBlue {get}
+  prop UnityEngine.Color firebrick {get}
+  prop UnityEngine.Color floralWhite {get}
+  prop UnityEngine.Color forestGreen {get}
+  prop UnityEngine.Color gainsboro {get}
+  prop UnityEngine.Color ghostWhite {get}
+  prop UnityEngine.Color gold {get}
+  prop UnityEngine.Color goldenRod {get}
+  prop UnityEngine.Color gray {get}
+  prop UnityEngine.Color grey {get}
+  prop UnityEngine.Color gray1 {get}
+  prop UnityEngine.Color gray2 {get}
+  prop UnityEngine.Color gray3 {get}
+  prop UnityEngine.Color gray4 {get}
+  prop UnityEngine.Color gray5 {get}
+  prop UnityEngine.Color gray6 {get}
+  prop UnityEngine.Color gray7 {get}
+  prop UnityEngine.Color gray8 {get}
+  prop UnityEngine.Color gray9 {get}
+  prop UnityEngine.Color green {get}
+  prop UnityEngine.Color greenYellow {get}
+  prop UnityEngine.Color honeydew {get}
+  prop UnityEngine.Color hotPink {get}
+  prop UnityEngine.Color indianRed {get}
+  prop UnityEngine.Color indigo {get}
+  prop UnityEngine.Color ivory {get}
+  prop UnityEngine.Color khaki {get}
+  prop UnityEngine.Color lavender {get}
+  prop UnityEngine.Color lavenderBlush {get}
+  prop UnityEngine.Color lawnGreen {get}
+  prop UnityEngine.Color lemonChiffon {get}
+  prop UnityEngine.Color lightBlue {get}
+  prop UnityEngine.Color lightCoral {get}
+  prop UnityEngine.Color lightCyan {get}
+  prop UnityEngine.Color lightGoldenRod {get}
+  prop UnityEngine.Color lightGoldenRodYellow {get}
+  prop UnityEngine.Color lightGray {get}
+  prop UnityEngine.Color lightGreen {get}
+  prop UnityEngine.Color lightPink {get}
+  prop UnityEngine.Color lightSalmon {get}
+  prop UnityEngine.Color lightSeaGreen {get}
+  prop UnityEngine.Color lightSkyBlue {get}
+  prop UnityEngine.Color lightSlateBlue {get}
+  prop UnityEngine.Color lightSlateGray {get}
+  prop UnityEngine.Color lightSteelBlue {get}
+  prop UnityEngine.Color lightYellow {get}
+  prop UnityEngine.Color limeGreen {get}
+  prop UnityEngine.Color linen {get}
+  prop UnityEngine.Color magenta {get}
+  prop UnityEngine.Color maroon {get}
+  prop UnityEngine.Color mediumAquamarine {get}
+  prop UnityEngine.Color mediumBlue {get}
+  prop UnityEngine.Color mediumOrchid {get}
+  prop UnityEngine.Color mediumPurple {get}
+  prop UnityEngine.Color mediumSeaGreen {get}
+  prop UnityEngine.Color mediumSlateBlue {get}
+  prop UnityEngine.Color mediumSpringGreen {get}
+  prop UnityEngine.Color mediumTurquoise {get}
+  prop UnityEngine.Color mediumVioletRed {get}
+  prop UnityEngine.Color midnightBlue {get}
+  prop UnityEngine.Color mintCream {get}
+  prop UnityEngine.Color mistyRose {get}
+  prop UnityEngine.Color moccasin {get}
+  prop UnityEngine.Color navajoWhite {get}
+  prop UnityEngine.Color navyBlue {get}
+  prop UnityEngine.Color oldLace {get}
+  prop UnityEngine.Color olive {get}
+  prop UnityEngine.Color oliveDrab {get}
+  prop UnityEngine.Color orange {get}
+  prop UnityEngine.Color orangeRed {get}
+  prop UnityEngine.Color orchid {get}
+  prop UnityEngine.Color paleGoldenRod {get}
+  prop UnityEngine.Color paleGreen {get}
+  prop UnityEngine.Color paleTurquoise {get}
+  prop UnityEngine.Color paleVioletRed {get}
+  prop UnityEngine.Color papayaWhip {get}
+  prop UnityEngine.Color peachPuff {get}
+  prop UnityEngine.Color peru {get}
+  prop UnityEngine.Color pink {get}
+  prop UnityEngine.Color plum {get}
+  prop UnityEngine.Color powderBlue {get}
+  prop UnityEngine.Color purple {get}
+  prop UnityEngine.Color rebeccaPurple {get}
+  prop UnityEngine.Color red {get}
+  prop UnityEngine.Color rosyBrown {get}
+  prop UnityEngine.Color royalBlue {get}
+  prop UnityEngine.Color saddleBrown {get}
+  prop UnityEngine.Color salmon {get}
+  prop UnityEngine.Color sandyBrown {get}
+  prop UnityEngine.Color seaGreen {get}
+  prop UnityEngine.Color seashell {get}
+  prop UnityEngine.Color sienna {get}
+  prop UnityEngine.Color silver {get}
+  prop UnityEngine.Color skyBlue {get}
+  prop UnityEngine.Color slateBlue {get}
+  prop UnityEngine.Color slateGray {get}
+  prop UnityEngine.Color snow {get}
+  prop UnityEngine.Color softRed {get}
+  prop UnityEngine.Color softBlue {get}
+  prop UnityEngine.Color softGreen {get}
+  prop UnityEngine.Color softYellow {get}
+  prop UnityEngine.Color springGreen {get}
+  prop UnityEngine.Color steelBlue {get}
+  prop UnityEngine.Color tan {get}
+  prop UnityEngine.Color teal {get}
+  prop UnityEngine.Color thistle {get}
+  prop UnityEngine.Color tomato {get}
+  prop UnityEngine.Color turquoise {get}
+  prop UnityEngine.Color violet {get}
+  prop UnityEngine.Color violetRed {get}
+  prop UnityEngine.Color wheat {get}
+  prop UnityEngine.Color white {get}
+  prop UnityEngine.Color whiteSmoke {get}
+  prop UnityEngine.Color yellow {get}
+  prop UnityEngine.Color yellowGreen {get}
+  prop UnityEngine.Color yellowNice {get}
+  method public System.Void .ctor(System.Single r, System.Single g, System.Single b, System.Single a)
+  method public System.Void .ctor(System.Single r, System.Single g, System.Single b)
+  method public System.String ToString()
+  method public System.String ToString(System.String format)
+  method public System.String ToString(System.String format, System.IFormatProvider formatProvider)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object other)
+  method public System.Boolean Equals(UnityEngine.Color other)
+  method public System.Boolean Equals(ref ref UnityEngine.Color other)
+  method public static UnityEngine.Color op_Addition(UnityEngine.Color a, UnityEngine.Color b)
+  method public static UnityEngine.Color op_Subtraction(UnityEngine.Color a, UnityEngine.Color b)
+  method public static UnityEngine.Color op_Multiply(UnityEngine.Color a, UnityEngine.Color b)
+  method public static UnityEngine.Color op_Multiply(UnityEngine.Color a, UnityEngine.Vector4 b)
+  method public static UnityEngine.Color op_Multiply(UnityEngine.Color a, System.Single b)
+  method public static UnityEngine.Color op_Multiply(System.Single b, UnityEngine.Color a)
+  method public static UnityEngine.Color op_Division(UnityEngine.Color a, System.Single b)
+  method public static System.Boolean op_Equality(UnityEngine.Color lhs, UnityEngine.Color rhs)
+  method public static System.Boolean op_Inequality(UnityEngine.Color lhs, UnityEngine.Color rhs)
+  method public static UnityEngine.Color Lerp(UnityEngine.Color a, UnityEngine.Color b, System.Single t)
+  method public static UnityEngine.Color Lerp(ref ref UnityEngine.Color a, ref ref UnityEngine.Color b, System.Single t)
+  method public static UnityEngine.Color LerpUnclamped(UnityEngine.Color a, UnityEngine.Color b, System.Single t)
+  method public static UnityEngine.Color LerpUnclamped(ref ref UnityEngine.Color a, ref ref UnityEngine.Color b, System.Single t)
+  method UnityEngine.Color RGBMultiplied(System.Single multiplier)
+  method UnityEngine.Color AlphaMultiplied(System.Single multiplier)
+  method UnityEngine.Color RGBMultiplied(UnityEngine.Color multiplier)
+  method UnityEngine.Color RGBMultiplied(ref ref UnityEngine.Color multiplier)
+  method public System.Single get_grayscale()
+  method public UnityEngine.Color get_linear()
+  method public UnityEngine.Color get_gamma()
+  method public System.Single get_maxColorComponent()
+  method public static UnityEngine.Vector4 op_Implicit(UnityEngine.Color c)
+  method public static UnityEngine.Color op_Implicit(UnityEngine.Vector4 v)
+  method public System.Single get_Item(System.Int32 index)
+  method public System.Void set_Item(System.Int32 index, System.Single value)
+  method public static System.Void RGBToHSV(UnityEngine.Color rgbColor, out ref System.Single H, out ref System.Single S, out ref System.Single V)
+  method public static System.Void RGBToHSV(ref ref UnityEngine.Color rgbColor, out ref System.Single H, out ref System.Single S, out ref System.Single V)
+  method private static System.Void RGBToHSVHelper(System.Single offset, System.Single dominantcolor, System.Single colorone, System.Single colortwo, out ref System.Single H, out ref System.Single S, out ref System.Single V)
+  method public static UnityEngine.Color HSVToRGB(System.Single H, System.Single S, System.Single V)
+  method public static UnityEngine.Color HSVToRGB(System.Single H, System.Single S, System.Single V, System.Boolean hdr)
+  method public static UnityEngine.Color get_aliceBlue()
+  method public static UnityEngine.Color get_antiqueWhite()
+  method public static UnityEngine.Color get_aquamarine()
+  method public static UnityEngine.Color get_azure()
+  method public static UnityEngine.Color get_beige()
+  method public static UnityEngine.Color get_bisque()
+  method public static UnityEngine.Color get_black()
+  method public static UnityEngine.Color get_blanchedAlmond()
+  method public static UnityEngine.Color get_blue()
+  method public static UnityEngine.Color get_blueViolet()
+  method public static UnityEngine.Color get_brown()
+  method public static UnityEngine.Color get_burlywood()
+  method public static UnityEngine.Color get_cadetBlue()
+  method public static UnityEngine.Color get_chartreuse()
+  method public static UnityEngine.Color get_chocolate()
+  method public static UnityEngine.Color get_clear()
+  method public static UnityEngine.Color get_coral()
+  method public static UnityEngine.Color get_cornflowerBlue()
+  method public static UnityEngine.Color get_cornsilk()
+  method public static UnityEngine.Color get_crimson()
+  method public static UnityEngine.Color get_cyan()
+  method public static UnityEngine.Color get_darkBlue()
+  method public static UnityEngine.Color get_darkCyan()
+  method public static UnityEngine.Color get_darkGoldenRod()
+  method public static UnityEngine.Color get_darkGray()
+  method public static UnityEngine.Color get_darkGreen()
+  method public static UnityEngine.Color get_darkKhaki()
+  method public static UnityEngine.Color get_darkMagenta()
+  method public static UnityEngine.Color get_darkOliveGreen()
+  method public static UnityEngine.Color get_darkOrange()
+  method public static UnityEngine.Color get_darkOrchid()
+  method public static UnityEngine.Color get_darkRed()
+  method public static UnityEngine.Color get_darkSalmon()
+  method public static UnityEngine.Color get_darkSeaGreen()
+  method public static UnityEngine.Color get_darkSlateBlue()
+  method public static UnityEngine.Color get_darkSlateGray()
+  method public static UnityEngine.Color get_darkTurquoise()
+  method public static UnityEngine.Color get_darkViolet()
+  method public static UnityEngine.Color get_deepPink()
+  method public static UnityEngine.Color get_deepSkyBlue()
+  method public static UnityEngine.Color get_dimGray()
+  method public static UnityEngine.Color get_dodgerBlue()
+  method public static UnityEngine.Color get_firebrick()
+  method public static UnityEngine.Color get_floralWhite()
+  method public static UnityEngine.Color get_forestGreen()
+  method public static UnityEngine.Color get_gainsboro()
+  method public static UnityEngine.Color get_ghostWhite()
+  method public static UnityEngine.Color get_gold()
+  method public static UnityEngine.Color get_goldenRod()
+  method public static UnityEngine.Color get_gray()
+  method public static UnityEngine.Color get_grey()
+  method public static UnityEngine.Color get_gray1()
+  method public static UnityEngine.Color get_gray2()
+  method public static UnityEngine.Color get_gray3()
+  method public static UnityEngine.Color get_gray4()
+  method public static UnityEngine.Color get_gray5()
+  method public static UnityEngine.Color get_gray6()
+  method public static UnityEngine.Color get_gray7()
+  method public static UnityEngine.Color get_gray8()
+  method public static UnityEngine.Color get_gray9()
+  method public static UnityEngine.Color get_green()
+  method public static UnityEngine.Color get_greenYellow()
+  method public static UnityEngine.Color get_honeydew()
+  method public static UnityEngine.Color get_hotPink()
+  method public static UnityEngine.Color get_indianRed()
+  method public static UnityEngine.Color get_indigo()
+  method public static UnityEngine.Color get_ivory()
+  method public static UnityEngine.Color get_khaki()
+  method public static UnityEngine.Color get_lavender()
+  method public static UnityEngine.Color get_lavenderBlush()
+  method public static UnityEngine.Color get_lawnGreen()
+  method public static UnityEngine.Color get_lemonChiffon()
+  method public static UnityEngine.Color get_lightBlue()
+  method public static UnityEngine.Color get_lightCoral()
+  method public static UnityEngine.Color get_lightCyan()
+  method public static UnityEngine.Color get_lightGoldenRod()
+  method public static UnityEngine.Color get_lightGoldenRodYellow()
+  method public static UnityEngine.Color get_lightGray()
+  method public static UnityEngine.Color get_lightGreen()
+  method public static UnityEngine.Color get_lightPink()
+  method public static UnityEngine.Color get_lightSalmon()
+  method public static UnityEngine.Color get_lightSeaGreen()
+  method public static UnityEngine.Color get_lightSkyBlue()
+  method public static UnityEngine.Color get_lightSlateBlue()
+  method public static UnityEngine.Color get_lightSlateGray()
+  method public static UnityEngine.Color get_lightSteelBlue()
+  method public static UnityEngine.Color get_lightYellow()
+  method public static UnityEngine.Color get_limeGreen()
+  method public static UnityEngine.Color get_linen()
+  method public static UnityEngine.Color get_magenta()
+  method public static UnityEngine.Color get_maroon()
+  method public static UnityEngine.Color get_mediumAquamarine()
+  method public static UnityEngine.Color get_mediumBlue()
+  method public static UnityEngine.Color get_mediumOrchid()
+  method public static UnityEngine.Color get_mediumPurple()
+  method public static UnityEngine.Color get_mediumSeaGreen()
+  method public static UnityEngine.Color get_mediumSlateBlue()
+  method public static UnityEngine.Color get_mediumSpringGreen()
+  method public static UnityEngine.Color get_mediumTurquoise()
+  method public static UnityEngine.Color get_mediumVioletRed()
+  method public static UnityEngine.Color get_midnightBlue()
+  method public static UnityEngine.Color get_mintCream()
+  method public static UnityEngine.Color get_mistyRose()
+  method public static UnityEngine.Color get_moccasin()
+  method public static UnityEngine.Color get_navajoWhite()
+  method public static UnityEngine.Color get_navyBlue()
+  method public static UnityEngine.Color get_oldLace()
+  method public static UnityEngine.Color get_olive()
+  method public static UnityEngine.Color get_oliveDrab()
+  method public static UnityEngine.Color get_orange()
+  method public static UnityEngine.Color get_orangeRed()
+  method public static UnityEngine.Color get_orchid()
+  method public static UnityEngine.Color get_paleGoldenRod()
+  method public static UnityEngine.Color get_paleGreen()
+  method public static UnityEngine.Color get_paleTurquoise()
+  method public static UnityEngine.Color get_paleVioletRed()
+  method public static UnityEngine.Color get_papayaWhip()
+  method public static UnityEngine.Color get_peachPuff()
+  method public static UnityEngine.Color get_peru()
+  method public static UnityEngine.Color get_pink()
+  method public static UnityEngine.Color get_plum()
+  method public static UnityEngine.Color get_powderBlue()
+  method public static UnityEngine.Color get_purple()
+  method public static UnityEngine.Color get_rebeccaPurple()
+  method public static UnityEngine.Color get_red()
+  method public static UnityEngine.Color get_rosyBrown()
+  method public static UnityEngine.Color get_royalBlue()
+  method public static UnityEngine.Color get_saddleBrown()
+  method public static UnityEngine.Color get_salmon()
+  method public static UnityEngine.Color get_sandyBrown()
+  method public static UnityEngine.Color get_seaGreen()
+  method public static UnityEngine.Color get_seashell()
+  method public static UnityEngine.Color get_sienna()
+  method public static UnityEngine.Color get_silver()
+  method public static UnityEngine.Color get_skyBlue()
+  method public static UnityEngine.Color get_slateBlue()
+  method public static UnityEngine.Color get_slateGray()
+  method public static UnityEngine.Color get_snow()
+  method public static UnityEngine.Color get_softRed()
+  method public static UnityEngine.Color get_softBlue()
+  method public static UnityEngine.Color get_softGreen()
+  method public static UnityEngine.Color get_softYellow()
+  method public static UnityEngine.Color get_springGreen()
+  method public static UnityEngine.Color get_steelBlue()
+  method public static UnityEngine.Color get_tan()
+  method public static UnityEngine.Color get_teal()
+  method public static UnityEngine.Color get_thistle()
+  method public static UnityEngine.Color get_tomato()
+  method public static UnityEngine.Color get_turquoise()
+  method public static UnityEngine.Color get_violet()
+  method public static UnityEngine.Color get_violetRed()
+  method public static UnityEngine.Color get_wheat()
+  method public static UnityEngine.Color get_white()
+  method public static UnityEngine.Color get_whiteSmoke()
+  method public static UnityEngine.Color get_yellow()
+  method public static UnityEngine.Color get_yellowGreen()
+  method public static UnityEngine.Color get_yellowNice()
+
+=== UnityEngine.UIElements.IStyle   [UnityEngine.UIElementsModule]
+  kind: interface   base: -
+  prop StyleEnum<UnityEngine.UIElements.Align> alignContent {get/set}
+  prop StyleEnum<UnityEngine.UIElements.Align> alignItems {get/set}
+  prop StyleEnum<UnityEngine.UIElements.Align> alignSelf {get/set}
+  prop UnityEngine.UIElements.StyleRatio aspectRatio {get/set}
+  prop UnityEngine.UIElements.StyleColor backgroundColor {get/set}
+  prop UnityEngine.UIElements.StyleBackground backgroundImage {get/set}
+  prop UnityEngine.UIElements.StyleBackgroundPosition backgroundPositionX {get/set}
+  prop UnityEngine.UIElements.StyleBackgroundPosition backgroundPositionY {get/set}
+  prop UnityEngine.UIElements.StyleBackgroundRepeat backgroundRepeat {get/set}
+  prop UnityEngine.UIElements.StyleBackgroundSize backgroundSize {get/set}
+  prop UnityEngine.UIElements.StyleColor borderBottomColor {get/set}
+  prop UnityEngine.UIElements.StyleLength borderBottomLeftRadius {get/set}
+  prop UnityEngine.UIElements.StyleLength borderBottomRightRadius {get/set}
+  prop UnityEngine.UIElements.StyleFloat borderBottomWidth {get/set}
+  prop UnityEngine.UIElements.StyleColor borderLeftColor {get/set}
+  prop UnityEngine.UIElements.StyleFloat borderLeftWidth {get/set}
+  prop UnityEngine.UIElements.StyleColor borderRightColor {get/set}
+  prop UnityEngine.UIElements.StyleFloat borderRightWidth {get/set}
+  prop UnityEngine.UIElements.StyleColor borderTopColor {get/set}
+  prop UnityEngine.UIElements.StyleLength borderTopLeftRadius {get/set}
+  prop UnityEngine.UIElements.StyleLength borderTopRightRadius {get/set}
+  prop UnityEngine.UIElements.StyleFloat borderTopWidth {get/set}
+  prop UnityEngine.UIElements.StyleLength bottom {get/set}
+  prop UnityEngine.UIElements.StyleColor color {get/set}
+  prop UnityEngine.UIElements.StyleCursor cursor {get/set}
+  prop StyleEnum<UnityEngine.UIElements.DisplayStyle> display {get/set}
+  prop StyleList<UnityEngine.UIElements.FilterFunction> filter {get/set}
+  prop UnityEngine.UIElements.StyleLength flexBasis {get/set}
+  prop StyleEnum<UnityEngine.UIElements.FlexDirection> flexDirection {get/set}
+  prop UnityEngine.UIElements.StyleFloat flexGrow {get/set}
+  prop UnityEngine.UIElements.StyleFloat flexShrink {get/set}
+  prop StyleEnum<UnityEngine.UIElements.Wrap> flexWrap {get/set}
+  prop UnityEngine.UIElements.StyleLength fontSize {get/set}
+  prop UnityEngine.UIElements.StyleLength height {get/set}
+  prop StyleEnum<UnityEngine.UIElements.Justify> justifyContent {get/set}
+  prop UnityEngine.UIElements.StyleLength left {get/set}
+  prop UnityEngine.UIElements.StyleLength letterSpacing {get/set}
+  prop UnityEngine.UIElements.StyleLength marginBottom {get/set}
+  prop UnityEngine.UIElements.StyleLength marginLeft {get/set}
+  prop UnityEngine.UIElements.StyleLength marginRight {get/set}
+  prop UnityEngine.UIElements.StyleLength marginTop {get/set}
+  prop UnityEngine.UIElements.StyleLength maxHeight {get/set}
+  prop UnityEngine.UIElements.StyleLength maxWidth {get/set}
+  prop UnityEngine.UIElements.StyleLength minHeight {get/set}
+  prop UnityEngine.UIElements.StyleLength minWidth {get/set}
+  prop UnityEngine.UIElements.StyleFloat opacity {get/set}
+  prop StyleEnum<UnityEngine.UIElements.Overflow> overflow {get/set}
+  prop UnityEngine.UIElements.StyleLength paddingBottom {get/set}
+  prop UnityEngine.UIElements.StyleLength paddingLeft {get/set}
+  prop UnityEngine.UIElements.StyleLength paddingRight {get/set}
+  prop UnityEngine.UIElements.StyleLength paddingTop {get/set}
+  prop StyleEnum<UnityEngine.UIElements.Position> position {get/set}
+  prop UnityEngine.UIElements.StyleLength right {get/set}
+  prop UnityEngine.UIElements.StyleRotate rotate {get/set}
+  prop UnityEngine.UIElements.StyleScale scale {get/set}
+  prop StyleEnum<UnityEngine.UIElements.TextOverflow> textOverflow {get/set}
+  prop UnityEngine.UIElements.StyleTextShadow textShadow {get/set}
+  prop UnityEngine.UIElements.StyleLength top {get/set}
+  prop UnityEngine.UIElements.StyleTransformOrigin transformOrigin {get/set}
+  prop StyleList<UnityEngine.UIElements.TimeValue> transitionDelay {get/set}
+  prop StyleList<UnityEngine.UIElements.TimeValue> transitionDuration {get/set}
+  prop StyleList<UnityEngine.UIElements.StylePropertyName> transitionProperty {get/set}
+  prop StyleList<UnityEngine.UIElements.EasingFunction> transitionTimingFunction {get/set}
+  prop UnityEngine.UIElements.StyleTranslate translate {get/set}
+  prop UnityEngine.UIElements.StyleColor unityBackgroundImageTintColor {get/set}
+  prop StyleEnum<UnityEngine.UIElements.EditorTextRenderingMode> unityEditorTextRenderingMode {get/set}
+  prop UnityEngine.UIElements.StyleFont unityFont {get/set}
+  prop UnityEngine.UIElements.StyleFontDefinition unityFontDefinition {get/set}
+  prop StyleEnum<UnityEngine.FontStyle> unityFontStyleAndWeight {get/set}
+  prop UnityEngine.UIElements.StyleMaterialDefinition unityMaterial {get/set}
+  prop StyleEnum<UnityEngine.UIElements.OverflowClipBox> unityOverflowClipBox {get/set}
+  prop UnityEngine.UIElements.StyleLength unityParagraphSpacing {get/set}
+  prop UnityEngine.UIElements.StyleInt unitySliceBottom {get/set}
+  prop UnityEngine.UIElements.StyleInt unitySliceLeft {get/set}
+  prop UnityEngine.UIElements.StyleInt unitySliceRight {get/set}
+  prop UnityEngine.UIElements.StyleFloat unitySliceScale {get/set}
+  prop UnityEngine.UIElements.StyleInt unitySliceTop {get/set}
+  prop StyleEnum<UnityEngine.UIElements.SliceType> unitySliceType {get/set}
+  prop StyleEnum<UnityEngine.TextAnchor> unityTextAlign {get/set}
+  prop UnityEngine.UIElements.StyleTextAutoSize unityTextAutoSize {get/set}
+  prop StyleEnum<UnityEngine.TextGeneratorType> unityTextGenerator {get/set}
+  prop UnityEngine.UIElements.StyleColor unityTextOutlineColor {get/set}
+  prop UnityEngine.UIElements.StyleFloat unityTextOutlineWidth {get/set}
+  prop StyleEnum<UnityEngine.UIElements.TextOverflowPosition> unityTextOverflowPosition {get/set}
+  prop StyleEnum<UnityEngine.UIElements.Visibility> visibility {get/set}
+  prop StyleEnum<UnityEngine.UIElements.WhiteSpace> whiteSpace {get/set}
+  prop UnityEngine.UIElements.StyleLength width {get/set}
+  prop UnityEngine.UIElements.StyleLength wordSpacing {get/set}
+  prop StyleEnum<UnityEngine.ScaleMode> unityBackgroundScaleMode {get/set}
+  method public StyleEnum<UnityEngine.UIElements.Align> get_alignContent()
+  method public System.Void set_alignContent(StyleEnum<UnityEngine.UIElements.Align> value)
+  method public StyleEnum<UnityEngine.UIElements.Align> get_alignItems()
+  method public System.Void set_alignItems(StyleEnum<UnityEngine.UIElements.Align> value)
+  method public StyleEnum<UnityEngine.UIElements.Align> get_alignSelf()
+  method public System.Void set_alignSelf(StyleEnum<UnityEngine.UIElements.Align> value)
+  method public UnityEngine.UIElements.StyleRatio get_aspectRatio()
+  method public System.Void set_aspectRatio(UnityEngine.UIElements.StyleRatio value)
+  method public UnityEngine.UIElements.StyleColor get_backgroundColor()
+  method public System.Void set_backgroundColor(UnityEngine.UIElements.StyleColor value)
+  method public UnityEngine.UIElements.StyleBackground get_backgroundImage()
+  method public System.Void set_backgroundImage(UnityEngine.UIElements.StyleBackground value)
+  method public UnityEngine.UIElements.StyleBackgroundPosition get_backgroundPositionX()
+  method public System.Void set_backgroundPositionX(UnityEngine.UIElements.StyleBackgroundPosition value)
+  method public UnityEngine.UIElements.StyleBackgroundPosition get_backgroundPositionY()
+  method public System.Void set_backgroundPositionY(UnityEngine.UIElements.StyleBackgroundPosition value)
+  method public UnityEngine.UIElements.StyleBackgroundRepeat get_backgroundRepeat()
+  method public System.Void set_backgroundRepeat(UnityEngine.UIElements.StyleBackgroundRepeat value)
+  method public UnityEngine.UIElements.StyleBackgroundSize get_backgroundSize()
+  method public System.Void set_backgroundSize(UnityEngine.UIElements.StyleBackgroundSize value)
+  method public UnityEngine.UIElements.StyleColor get_borderBottomColor()
+  method public System.Void set_borderBottomColor(UnityEngine.UIElements.StyleColor value)
+  method public UnityEngine.UIElements.StyleLength get_borderBottomLeftRadius()
+  method public System.Void set_borderBottomLeftRadius(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_borderBottomRightRadius()
+  method public System.Void set_borderBottomRightRadius(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleFloat get_borderBottomWidth()
+  method public System.Void set_borderBottomWidth(UnityEngine.UIElements.StyleFloat value)
+  method public UnityEngine.UIElements.StyleColor get_borderLeftColor()
+  method public System.Void set_borderLeftColor(UnityEngine.UIElements.StyleColor value)
+  method public UnityEngine.UIElements.StyleFloat get_borderLeftWidth()
+  method public System.Void set_borderLeftWidth(UnityEngine.UIElements.StyleFloat value)
+  method public UnityEngine.UIElements.StyleColor get_borderRightColor()
+  method public System.Void set_borderRightColor(UnityEngine.UIElements.StyleColor value)
+  method public UnityEngine.UIElements.StyleFloat get_borderRightWidth()
+  method public System.Void set_borderRightWidth(UnityEngine.UIElements.StyleFloat value)
+  method public UnityEngine.UIElements.StyleColor get_borderTopColor()
+  method public System.Void set_borderTopColor(UnityEngine.UIElements.StyleColor value)
+  method public UnityEngine.UIElements.StyleLength get_borderTopLeftRadius()
+  method public System.Void set_borderTopLeftRadius(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_borderTopRightRadius()
+  method public System.Void set_borderTopRightRadius(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleFloat get_borderTopWidth()
+  method public System.Void set_borderTopWidth(UnityEngine.UIElements.StyleFloat value)
+  method public UnityEngine.UIElements.StyleLength get_bottom()
+  method public System.Void set_bottom(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleColor get_color()
+  method public System.Void set_color(UnityEngine.UIElements.StyleColor value)
+  method public UnityEngine.UIElements.StyleCursor get_cursor()
+  method public System.Void set_cursor(UnityEngine.UIElements.StyleCursor value)
+  method public StyleEnum<UnityEngine.UIElements.DisplayStyle> get_display()
+  method public System.Void set_display(StyleEnum<UnityEngine.UIElements.DisplayStyle> value)
+  method public StyleList<UnityEngine.UIElements.FilterFunction> get_filter()
+  method public System.Void set_filter(StyleList<UnityEngine.UIElements.FilterFunction> value)
+  method public UnityEngine.UIElements.StyleLength get_flexBasis()
+  method public System.Void set_flexBasis(UnityEngine.UIElements.StyleLength value)
+  method public StyleEnum<UnityEngine.UIElements.FlexDirection> get_flexDirection()
+  method public System.Void set_flexDirection(StyleEnum<UnityEngine.UIElements.FlexDirection> value)
+  method public UnityEngine.UIElements.StyleFloat get_flexGrow()
+  method public System.Void set_flexGrow(UnityEngine.UIElements.StyleFloat value)
+  method public UnityEngine.UIElements.StyleFloat get_flexShrink()
+  method public System.Void set_flexShrink(UnityEngine.UIElements.StyleFloat value)
+  method public StyleEnum<UnityEngine.UIElements.Wrap> get_flexWrap()
+  method public System.Void set_flexWrap(StyleEnum<UnityEngine.UIElements.Wrap> value)
+  method public UnityEngine.UIElements.StyleLength get_fontSize()
+  method public System.Void set_fontSize(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_height()
+  method public System.Void set_height(UnityEngine.UIElements.StyleLength value)
+  method public StyleEnum<UnityEngine.UIElements.Justify> get_justifyContent()
+  method public System.Void set_justifyContent(StyleEnum<UnityEngine.UIElements.Justify> value)
+  method public UnityEngine.UIElements.StyleLength get_left()
+  method public System.Void set_left(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_letterSpacing()
+  method public System.Void set_letterSpacing(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_marginBottom()
+  method public System.Void set_marginBottom(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_marginLeft()
+  method public System.Void set_marginLeft(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_marginRight()
+  method public System.Void set_marginRight(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_marginTop()
+  method public System.Void set_marginTop(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_maxHeight()
+  method public System.Void set_maxHeight(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_maxWidth()
+  method public System.Void set_maxWidth(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_minHeight()
+  method public System.Void set_minHeight(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_minWidth()
+  method public System.Void set_minWidth(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleFloat get_opacity()
+  method public System.Void set_opacity(UnityEngine.UIElements.StyleFloat value)
+  method public StyleEnum<UnityEngine.UIElements.Overflow> get_overflow()
+  method public System.Void set_overflow(StyleEnum<UnityEngine.UIElements.Overflow> value)
+  method public UnityEngine.UIElements.StyleLength get_paddingBottom()
+  method public System.Void set_paddingBottom(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_paddingLeft()
+  method public System.Void set_paddingLeft(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_paddingRight()
+  method public System.Void set_paddingRight(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_paddingTop()
+  method public System.Void set_paddingTop(UnityEngine.UIElements.StyleLength value)
+  method public StyleEnum<UnityEngine.UIElements.Position> get_position()
+  method public System.Void set_position(StyleEnum<UnityEngine.UIElements.Position> value)
+  method public UnityEngine.UIElements.StyleLength get_right()
+  method public System.Void set_right(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleRotate get_rotate()
+  method public System.Void set_rotate(UnityEngine.UIElements.StyleRotate value)
+  method public UnityEngine.UIElements.StyleScale get_scale()
+  method public System.Void set_scale(UnityEngine.UIElements.StyleScale value)
+  method public StyleEnum<UnityEngine.UIElements.TextOverflow> get_textOverflow()
+  method public System.Void set_textOverflow(StyleEnum<UnityEngine.UIElements.TextOverflow> value)
+  method public UnityEngine.UIElements.StyleTextShadow get_textShadow()
+  method public System.Void set_textShadow(UnityEngine.UIElements.StyleTextShadow value)
+  method public UnityEngine.UIElements.StyleLength get_top()
+  method public System.Void set_top(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleTransformOrigin get_transformOrigin()
+  method public System.Void set_transformOrigin(UnityEngine.UIElements.StyleTransformOrigin value)
+  method public StyleList<UnityEngine.UIElements.TimeValue> get_transitionDelay()
+  method public System.Void set_transitionDelay(StyleList<UnityEngine.UIElements.TimeValue> value)
+  method public StyleList<UnityEngine.UIElements.TimeValue> get_transitionDuration()
+  method public System.Void set_transitionDuration(StyleList<UnityEngine.UIElements.TimeValue> value)
+  method public StyleList<UnityEngine.UIElements.StylePropertyName> get_transitionProperty()
+  method public System.Void set_transitionProperty(StyleList<UnityEngine.UIElements.StylePropertyName> value)
+  method public StyleList<UnityEngine.UIElements.EasingFunction> get_transitionTimingFunction()
+  method public System.Void set_transitionTimingFunction(StyleList<UnityEngine.UIElements.EasingFunction> value)
+  method public UnityEngine.UIElements.StyleTranslate get_translate()
+  method public System.Void set_translate(UnityEngine.UIElements.StyleTranslate value)
+  method public UnityEngine.UIElements.StyleColor get_unityBackgroundImageTintColor()
+  method public System.Void set_unityBackgroundImageTintColor(UnityEngine.UIElements.StyleColor value)
+  method public StyleEnum<UnityEngine.UIElements.EditorTextRenderingMode> get_unityEditorTextRenderingMode()
+  method public System.Void set_unityEditorTextRenderingMode(StyleEnum<UnityEngine.UIElements.EditorTextRenderingMode> value)
+  method public UnityEngine.UIElements.StyleFont get_unityFont()
+  method public System.Void set_unityFont(UnityEngine.UIElements.StyleFont value)
+  method public UnityEngine.UIElements.StyleFontDefinition get_unityFontDefinition()
+  method public System.Void set_unityFontDefinition(UnityEngine.UIElements.StyleFontDefinition value)
+  method public StyleEnum<UnityEngine.FontStyle> get_unityFontStyleAndWeight()
+  method public System.Void set_unityFontStyleAndWeight(StyleEnum<UnityEngine.FontStyle> value)
+  method public UnityEngine.UIElements.StyleMaterialDefinition get_unityMaterial()
+  method public System.Void set_unityMaterial(UnityEngine.UIElements.StyleMaterialDefinition value)
+  method public StyleEnum<UnityEngine.UIElements.OverflowClipBox> get_unityOverflowClipBox()
+  method public System.Void set_unityOverflowClipBox(StyleEnum<UnityEngine.UIElements.OverflowClipBox> value)
+  method public UnityEngine.UIElements.StyleLength get_unityParagraphSpacing()
+  method public System.Void set_unityParagraphSpacing(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleInt get_unitySliceBottom()
+  method public System.Void set_unitySliceBottom(UnityEngine.UIElements.StyleInt value)
+  method public UnityEngine.UIElements.StyleInt get_unitySliceLeft()
+  method public System.Void set_unitySliceLeft(UnityEngine.UIElements.StyleInt value)
+  method public UnityEngine.UIElements.StyleInt get_unitySliceRight()
+  method public System.Void set_unitySliceRight(UnityEngine.UIElements.StyleInt value)
+  method public UnityEngine.UIElements.StyleFloat get_unitySliceScale()
+  method public System.Void set_unitySliceScale(UnityEngine.UIElements.StyleFloat value)
+  method public UnityEngine.UIElements.StyleInt get_unitySliceTop()
+  method public System.Void set_unitySliceTop(UnityEngine.UIElements.StyleInt value)
+  method public StyleEnum<UnityEngine.UIElements.SliceType> get_unitySliceType()
+  method public System.Void set_unitySliceType(StyleEnum<UnityEngine.UIElements.SliceType> value)
+  method public StyleEnum<UnityEngine.TextAnchor> get_unityTextAlign()
+  method public System.Void set_unityTextAlign(StyleEnum<UnityEngine.TextAnchor> value)
+  method public UnityEngine.UIElements.StyleTextAutoSize get_unityTextAutoSize()
+  method public System.Void set_unityTextAutoSize(UnityEngine.UIElements.StyleTextAutoSize value)
+  method public StyleEnum<UnityEngine.TextGeneratorType> get_unityTextGenerator()
+  method public System.Void set_unityTextGenerator(StyleEnum<UnityEngine.TextGeneratorType> value)
+  method public UnityEngine.UIElements.StyleColor get_unityTextOutlineColor()
+  method public System.Void set_unityTextOutlineColor(UnityEngine.UIElements.StyleColor value)
+  method public UnityEngine.UIElements.StyleFloat get_unityTextOutlineWidth()
+  method public System.Void set_unityTextOutlineWidth(UnityEngine.UIElements.StyleFloat value)
+  method public StyleEnum<UnityEngine.UIElements.TextOverflowPosition> get_unityTextOverflowPosition()
+  method public System.Void set_unityTextOverflowPosition(StyleEnum<UnityEngine.UIElements.TextOverflowPosition> value)
+  method public StyleEnum<UnityEngine.UIElements.Visibility> get_visibility()
+  method public System.Void set_visibility(StyleEnum<UnityEngine.UIElements.Visibility> value)
+  method public StyleEnum<UnityEngine.UIElements.WhiteSpace> get_whiteSpace()
+  method public System.Void set_whiteSpace(StyleEnum<UnityEngine.UIElements.WhiteSpace> value)
+  method public UnityEngine.UIElements.StyleLength get_width()
+  method public System.Void set_width(UnityEngine.UIElements.StyleLength value)
+  method public UnityEngine.UIElements.StyleLength get_wordSpacing()
+  method public System.Void set_wordSpacing(UnityEngine.UIElements.StyleLength value)
+  method public StyleEnum<UnityEngine.ScaleMode> get_unityBackgroundScaleMode()
+  method public System.Void set_unityBackgroundScaleMode(StyleEnum<UnityEngine.ScaleMode> value)
+  method public System.Void Clear(System.Boolean clearSourceAssetStyles)
+
+=== UnityEngine.UIElements.Length   [UnityEngine.UIElementsModule]
+  kind: struct   base: System.ValueType
+  interfaces: IEquatable<UnityEngine.UIElements.Length>
+  field static System.Single k_MaxValue
+  field System.Single m_Value
+  field UnityEngine.UIElements.Layout.LayoutUnit m_Unit
+  prop System.Single value {get/set}
+  prop UnityEngine.UIElements.LengthUnit unit {get/set}
+  prop System.Single pixelValue {get}
+  prop UnityEngine.UIElements.Layout.LayoutUnit layoutUnit {get}
+  method public static UnityEngine.UIElements.Length Pixels(System.Single value)
+  method public static UnityEngine.UIElements.Length Percent(System.Single value)
+  method public static UnityEngine.UIElements.Length Auto()
+  method public static UnityEngine.UIElements.Length None()
+  method public System.Single get_value()
+  method public System.Void set_value(System.Single value)
+  method public UnityEngine.UIElements.LengthUnit get_unit()
+  method public System.Void set_unit(UnityEngine.UIElements.LengthUnit value)
+  method System.Single get_pixelValue()
+  method UnityEngine.UIElements.Layout.LayoutUnit get_layoutUnit()
+  method public System.Boolean IsAuto()
+  method public System.Boolean IsNone()
+  method public System.Void .ctor(System.Single value)
+  method public System.Void .ctor(System.Single value, UnityEngine.UIElements.LengthUnit unit)
+  method private System.Void .ctor(System.Single value, UnityEngine.UIElements.Layout.LayoutUnit unit)
+  method public static UnityEngine.UIElements.Length op_Implicit(System.Single value)
+  method static System.Boolean Approximately(UnityEngine.UIElements.Length lhs, UnityEngine.UIElements.Length rhs)
+  method public static System.Boolean op_Equality(UnityEngine.UIElements.Length lhs, UnityEngine.UIElements.Length rhs)
+  method public static System.Boolean op_Inequality(UnityEngine.UIElements.Length lhs, UnityEngine.UIElements.Length rhs)
+  method public System.Boolean Equals(UnityEngine.UIElements.Length other)
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Int32 GetHashCode()
+  method public System.String ToString()
+  method static UnityEngine.UIElements.Length ParseString(System.String str, UnityEngine.UIElements.Length defaultValue)
+  nested UnityEngine.UIElements.Length+.PropertyBag
+
+=== UnityEngine.UIElements.StyleColor   [UnityEngine.UIElementsModule]
+  kind: struct   base: System.ValueType
+  interfaces: IStyleValue<UnityEngine.Color>, IEquatable<UnityEngine.UIElements.StyleColor>
+  field UnityEngine.Color m_Value
+  field UnityEngine.UIElements.StyleKeyword m_Keyword
+  prop UnityEngine.Color value {get/set}
+  prop UnityEngine.UIElements.StyleKeyword keyword {get/set}
+  method public UnityEngine.Color get_value()
+  method public System.Void set_value(UnityEngine.Color value)
+  method public UnityEngine.UIElements.StyleKeyword get_keyword()
+  method public System.Void set_keyword(UnityEngine.UIElements.StyleKeyword value)
+  method public System.Void .ctor(UnityEngine.Color v)
+  method public System.Void .ctor(UnityEngine.UIElements.StyleKeyword keyword)
+  method System.Void .ctor(UnityEngine.Color v, UnityEngine.UIElements.StyleKeyword keyword)
+  method public static System.Boolean op_Equality(UnityEngine.UIElements.StyleColor lhs, UnityEngine.UIElements.StyleColor rhs)
+  method public static System.Boolean op_Inequality(UnityEngine.UIElements.StyleColor lhs, UnityEngine.UIElements.StyleColor rhs)
+  method public static System.Boolean op_Equality(UnityEngine.UIElements.StyleColor lhs, UnityEngine.Color rhs)
+  method public static System.Boolean op_Inequality(UnityEngine.UIElements.StyleColor lhs, UnityEngine.Color rhs)
+  method public static UnityEngine.UIElements.StyleColor op_Implicit(UnityEngine.UIElements.StyleKeyword keyword)
+  method public static UnityEngine.UIElements.StyleColor op_Implicit(UnityEngine.Color v)
+  method public System.Boolean Equals(UnityEngine.UIElements.StyleColor other)
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Int32 GetHashCode()
+  method public System.String ToString()
+
+=== UnityEngine.UIElements.StyleEnum`1   [UnityEngine.UIElementsModule]
+  kind: struct   base: System.ValueType
+  interfaces: IStyleValue<T>, IEquatable<StyleEnum<T>>
+  field T m_Value
+  field UnityEngine.UIElements.StyleKeyword m_Keyword
+  prop T value {get/set}
+  prop UnityEngine.UIElements.StyleKeyword keyword {get/set}
+  method public T get_value()
+  method public System.Void set_value(T value)
+  method public UnityEngine.UIElements.StyleKeyword get_keyword()
+  method public System.Void set_keyword(UnityEngine.UIElements.StyleKeyword value)
+  method public System.Void .ctor(T v)
+  method public System.Void .ctor(UnityEngine.UIElements.StyleKeyword keyword)
+  method System.Void .ctor(T v, UnityEngine.UIElements.StyleKeyword keyword)
+  method public static System.Boolean op_Equality(StyleEnum<T> lhs, StyleEnum<T> rhs)
+  method public static System.Boolean op_Inequality(StyleEnum<T> lhs, StyleEnum<T> rhs)
+  method public static StyleEnum<T> op_Implicit(UnityEngine.UIElements.StyleKeyword keyword)
+  method public static StyleEnum<T> op_Implicit(T v)
+  method public System.Boolean Equals(StyleEnum<T> other)
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Int32 GetHashCode()
+  method public System.String ToString()
+  method static System.Boolean TryParseString(System.String str, out ref StyleEnum<T> styleEnum)
+
+=== UnityEngine.UIElements.StyleFloat   [UnityEngine.UIElementsModule]
+  kind: struct   base: System.ValueType
+  interfaces: IStyleValue<System.Single>, IEquatable<UnityEngine.UIElements.StyleFloat>
+  field System.Single m_Value
+  field UnityEngine.UIElements.StyleKeyword m_Keyword
+  prop System.Single value {get/set}
+  prop UnityEngine.UIElements.StyleKeyword keyword {get/set}
+  method public System.Single get_value()
+  method public System.Void set_value(System.Single value)
+  method public UnityEngine.UIElements.StyleKeyword get_keyword()
+  method public System.Void set_keyword(UnityEngine.UIElements.StyleKeyword value)
+  method public System.Void .ctor(System.Single v)
+  method public System.Void .ctor(UnityEngine.UIElements.StyleKeyword keyword)
+  method System.Void .ctor(System.Single v, UnityEngine.UIElements.StyleKeyword keyword)
+  method public static System.Boolean op_Equality(UnityEngine.UIElements.StyleFloat lhs, UnityEngine.UIElements.StyleFloat rhs)
+  method public static System.Boolean op_Inequality(UnityEngine.UIElements.StyleFloat lhs, UnityEngine.UIElements.StyleFloat rhs)
+  method public static UnityEngine.UIElements.StyleFloat op_Implicit(UnityEngine.UIElements.StyleKeyword keyword)
+  method public static UnityEngine.UIElements.StyleFloat op_Implicit(System.Single v)
+  method public System.Boolean Equals(UnityEngine.UIElements.StyleFloat other)
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Int32 GetHashCode()
+  method public System.String ToString()
+
+=== UnityEngine.UIElements.StyleLength   [UnityEngine.UIElementsModule]
+  kind: struct   base: System.ValueType
+  interfaces: IStyleValue<UnityEngine.UIElements.Length>, IEquatable<UnityEngine.UIElements.StyleLength>
+  field UnityEngine.UIElements.Length m_Value
+  field UnityEngine.UIElements.StyleKeyword m_Keyword
+  prop UnityEngine.UIElements.Length value {get/set}
+  prop UnityEngine.UIElements.StyleKeyword keyword {get/set}
+  method public UnityEngine.UIElements.Length get_value()
+  method public System.Void set_value(UnityEngine.UIElements.Length value)
+  method public UnityEngine.UIElements.StyleKeyword get_keyword()
+  method public System.Void set_keyword(UnityEngine.UIElements.StyleKeyword value)
+  method public System.Void .ctor(System.Single v)
+  method public System.Void .ctor(UnityEngine.UIElements.Length v)
+  method public System.Void .ctor(UnityEngine.UIElements.StyleKeyword keyword)
+  method System.Void .ctor(UnityEngine.UIElements.Length v, UnityEngine.UIElements.StyleKeyword keyword)
+  method public static System.Boolean op_Equality(UnityEngine.UIElements.StyleLength lhs, UnityEngine.UIElements.StyleLength rhs)
+  method public static System.Boolean op_Inequality(UnityEngine.UIElements.StyleLength lhs, UnityEngine.UIElements.StyleLength rhs)
+  method public static UnityEngine.UIElements.StyleLength op_Implicit(UnityEngine.UIElements.StyleKeyword keyword)
+  method public static UnityEngine.UIElements.StyleLength op_Implicit(System.Single v)
+  method public static UnityEngine.UIElements.StyleLength op_Implicit(UnityEngine.UIElements.Length v)
+  method public System.Boolean Equals(UnityEngine.UIElements.StyleLength other)
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Int32 GetHashCode()
+  method public System.String ToString()
