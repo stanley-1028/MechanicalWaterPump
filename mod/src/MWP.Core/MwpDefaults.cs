@@ -12,7 +12,7 @@ namespace MWP.Core
         public const string ModId = "MechanicalWaterPump";
 
         /// <summary>Display version shipped in the manifest.</summary>
-        public const string ModVersion = "0.2.0";
+        public const string ModVersion = "0.2.1";
 
         /// <summary>Name of the JSON configuration file in the mod root (config schema 2).</summary>
         public const string ConfigFileName = "MWP_Config.json";

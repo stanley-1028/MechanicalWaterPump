@@ -6,10 +6,10 @@
 - Steam 工作坊：https://steamcommunity.com/sharedfiles/filedetails/?id=3835434644
 - 封面 AI 提示詞：[`mod/workshop/COVER_PROMPTS.md`](mod/workshop/COVER_PROMPTS.md)
 - GitHub：https://github.com/stanley-1028/MechanicalWaterPump
-  （release v0.2.0：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.0）
+  （release v0.2.1：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.1；v0.2.0：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.0）
 - 需求（權威）：[`機械水泵模組需求文檔.md`](機械水泵模組需求文檔.md)（v0.2，以 §20 為準）
 - 遊戲版本：Timberborn `1.1.2.8-ffc2de0-sw`（本機已安裝，Managed 組件可直接引用）
-- 交付狀態：**0.2.0 後續修復：搬運實機驗證通過（BUG-04）＋新增「無搬運站」狀態回饋（BUG-05）**（2026-11-08）；
+- 交付狀態：**v0.2.1：搬運實機驗證通過（BUG-04）＋新增「無搬運站」狀態回饋（BUG-05）**（2026-11-08）；
   v0.2.0 程式與資料完成、離線驗證全綠：
   `build.ps1` exit 0、4 個組件 0 warning、單元測試 `PASS 213/213`、資料/組件驗證 `VALIDATION PASSED`、
   staged 套件 `mod/build/MWP`（4 DLL + 8 藍圖 + 2 collections + 三語系 + config + 8 圖示，237 KB）。

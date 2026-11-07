@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — 0.2.0 post-release fixes (2026-11-08)
+## 0.2.1 — 2026-11-08
 
 ### Fixed
 - **BUG-04 in-game confirmation (2026-11-08)**: the hauler-chain decorator trio from 0.2.0
