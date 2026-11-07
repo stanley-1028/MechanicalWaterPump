@@ -1,0 +1,38 @@
+# member dump for Timberborn\.TemplateInstantiation\.TemplateModule.*
+
+=== Timberborn.TemplateInstantiation.TemplateModule   [Timberborn.TemplateInstantiation]
+  kind: class   base: System.Object
+  field FrozenDictionary<System.Type, ImmutableArray<Timberborn.TemplateInstantiation.DecoratorDefinition>> <Decorators>k__BackingField
+  field static JetBrains.Annotations.ImplicitUseKindFlags Flags
+  prop FrozenDictionary<System.Type, ImmutableArray<Timberborn.TemplateInstantiation.DecoratorDefinition>> Decorators {get}
+  method public FrozenDictionary<System.Type, ImmutableArray<Timberborn.TemplateInstantiation.DecoratorDefinition>> get_Decorators()
+  method private System.Void .ctor(Dictionary<System.Type, List<Timberborn.TemplateInstantiation.DecoratorDefinition>> decorators)
+  nested Timberborn.TemplateInstantiation.TemplateModule+.Builder
+  nested Timberborn.TemplateInstantiation.TemplateModule+.<>c
+
+=== Timberborn.TemplateInstantiation.TemplateModule+.Builder   [Timberborn.TemplateInstantiation]
+  kind: class   base: System.Object
+  field Dictionary<System.Type, List<Timberborn.TemplateInstantiation.DecoratorDefinition>> _decorators
+  method public System.Void AddDecorator()
+  method public System.Void AddDedicatedDecorator(IDedicatedDecoratorInitializer<TSubject, TDecorator> initializer)
+  method public Timberborn.TemplateInstantiation.TemplateModule Build()
+  method public System.Void .ctor()
+  nested Timberborn.TemplateInstantiation.TemplateModule+.Builder+.<>c__DisplayClass2_0`2
+
+=== Timberborn.TemplateInstantiation.TemplateModule+.Builder+.<>c__DisplayClass2_0`2   [Timberborn.TemplateInstantiation]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field IDedicatedDecoratorInitializer<TSubject, TDecorator> initializer
+  method public System.Void .ctor()
+  method System.Void <AddDedicatedDecorator>b__0(System.Object subject, System.Object decorator)
+
+=== Timberborn.TemplateInstantiation.TemplateModule+.<>c   [Timberborn.TemplateInstantiation]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.TemplateInstantiation.TemplateModule+.<>c <>9
+  field static Func<KeyValuePair<System.Type, List<Timberborn.TemplateInstantiation.DecoratorDefinition>>, System.Type> <>9__3_0
+  field static Func<KeyValuePair<System.Type, List<Timberborn.TemplateInstantiation.DecoratorDefinition>>, ImmutableArray<Timberborn.TemplateInstantiation.DecoratorDefinition>> <>9__3_1
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.Type <.ctor>b__3_0(KeyValuePair<System.Type, List<Timberborn.TemplateInstantiation.DecoratorDefinition>> pair)
+  method ImmutableArray<Timberborn.TemplateInstantiation.DecoratorDefinition> <.ctor>b__3_1(KeyValuePair<System.Type, List<Timberborn.TemplateInstantiation.DecoratorDefinition>> pair)

@@ -1,9 +1,12 @@
 using System;
 using MWP.Core;
 using Timberborn.BaseComponentSystem;
+using Timberborn.CoreUI;
 using Timberborn.EntityPanelSystem;
 using Timberborn.EntitySystem;
 using Timberborn.Localization;
+using Timberborn.SimpleOutputBuildingsUI;
+using Timberborn.WaterBuildings;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,8 +16,9 @@ namespace MWP.UI.Panels
     /// Entity panel fragment for the four pump tiers (CONTRACT §10, REQ-UI-01/02/03/07,
     /// REQ-MAINT-10).
     ///
-    /// The whole fragment is authored in code with UIElements and needs no UXML/USS asset or
-    /// prefab. It is added to the vanilla panel through the game's own
+    /// The fragment is authored in code with the game's own UIElements controls and USS classes
+    /// (see <see cref="MwpPumpPanelStyles"/>), so it looks like the native entity-panel fragments
+    /// without shipping a UXML/USS asset. It is added to the vanilla panel through the game's own
     /// <see cref="EntityPanelModule"/> multi-binding (see <see cref="MwpEntityPanelModuleProvider"/>).
     ///
     /// Behaviour:
@@ -24,6 +28,11 @@ namespace MWP.UI.Panels
     ///   only when the value fingerprint changed (dirty marker, REQ-PERF-04);
     /// * never throws: a failing query hides the fragment instead of breaking the panel;
     /// * commands are bound to <see cref="IMwpPumpCommands"/> and carry this pump's entity id only.
+    ///
+    /// Power, internal Water stock and intake depth are rendered by the game's own
+    /// <c>MechanicalNodeFragment</c>, <c>SimpleOutputInventoryFragment</c> and
+    /// <c>WaterInputPipeDepthFragment</c>, so the pump panel only keeps a fallback row for the
+    /// stock/depth when the matching vanilla component is missing.
     /// </summary>
     public sealed class MwpPumpPanelFragment : IEntityPanelFragment
     {
@@ -33,6 +42,7 @@ namespace MWP.UI.Panels
         private readonly IMwpPumpQuery _query;
         private readonly IMwpPumpCommands _commands;
         private readonly ILoc _loc;
+        private readonly VisualElementLoader _visualElementLoader;
 
         private MwpPumpPanelView? _view;
         private BaseComponent? _entity;
@@ -41,23 +51,29 @@ namespace MWP.UI.Panels
         private bool _hasSnapshot;
         private bool _forceNextRender;
         private bool _lastPaused;
+        private bool _showInventoryRow;
+        private bool _showDepthRow;
         private float _nextRefreshTime;
 
         /// <summary>Creates the fragment; Bindito injects the query, command and localization services.</summary>
         /// <param name="query">Read-only pump query registered by the gameplay assembly.</param>
         /// <param name="commands">Per-pump command surface registered by the gameplay assembly.</param>
         /// <param name="loc">Localization service.</param>
-        public MwpPumpPanelFragment(IMwpPumpQuery query, IMwpPumpCommands commands, ILoc loc)
+        /// <param name="visualElementLoader">Game service used to take a native button from a vanilla UXML template.</param>
+        public MwpPumpPanelFragment(IMwpPumpQuery query, IMwpPumpCommands commands, ILoc loc,
+            VisualElementLoader visualElementLoader)
         {
             _query = query ?? throw new ArgumentNullException(nameof(query));
             _commands = commands ?? throw new ArgumentNullException(nameof(commands));
             _loc = loc ?? throw new ArgumentNullException(nameof(loc));
+            _visualElementLoader = visualElementLoader ?? throw new ArgumentNullException(nameof(visualElementLoader));
         }
 
         /// <inheritdoc />
         public VisualElement InitializeFragment()
         {
-            _view = new MwpPumpPanelView(_loc, OnMaintainRequested, OnAutoMaintenanceChanged, OnPauseToggled);
+            _view = new MwpPumpPanelView(_loc, _visualElementLoader, OnMaintainRequested,
+                OnAutoMaintenanceChanged, OnPauseToggled);
             return _view.Root;
         }
 
@@ -66,11 +82,24 @@ namespace MWP.UI.Panels
         {
             _entity = entity;
             _entityId = ResolveEntityId(entity);
+            ResolveNativeSections(entity);
             _hasSnapshot = false;
             _forceNextRender = true;
             _lastFingerprint = 0L;
             _nextRefreshTime = 0f;
             Refresh(force: true);
+        }
+
+        /// <summary>
+        /// Detects whether the vanilla fragments will render the inventory stock and the intake
+        /// depth for this entity. Both are shown by the game's own bottom/top fragments; our rows
+        /// exist only as a fallback for the (unexpected) case where the enabling component is
+        /// missing, so the player never loses information.
+        /// </summary>
+        private void ResolveNativeSections(BaseComponent entity)
+        {
+            _showInventoryRow = entity.GetComponent<SimpleOutputInventoryFragmentEnabler>() == null;
+            _showDepthRow = entity.GetComponent<WaterInputPipeCoordinates>() == null;
         }
 
         /// <inheritdoc />
@@ -106,10 +135,7 @@ namespace MWP.UI.Panels
 
         private void OnMaintainRequested()
         {
-            if (_entityId == Guid.Empty)
-            {
-                return;
-            }
+            if (_entityId == Guid.Empty) { return; }
 
             _commands.RequestMaintenance(_entityId);
             RequestQuickResync();
@@ -117,10 +143,7 @@ namespace MWP.UI.Panels
 
         private void OnAutoMaintenanceChanged(bool enabled)
         {
-            if (_entityId == Guid.Empty)
-            {
-                return;
-            }
+            if (_entityId == Guid.Empty) { return; }
 
             _commands.SetAutoMaintenance(_entityId, enabled);
             RequestQuickResync();
@@ -128,10 +151,7 @@ namespace MWP.UI.Panels
 
         private void OnPauseToggled()
         {
-            if (_entityId == Guid.Empty)
-            {
-                return;
-            }
+            if (_entityId == Guid.Empty) { return; }
 
             _commands.SetPaused(_entityId, !_lastPaused);
             RequestQuickResync();
@@ -183,7 +203,7 @@ namespace MWP.UI.Panels
             _lastFingerprint = fingerprint;
             _hasSnapshot = true;
             _forceNextRender = false;
-            MwpPumpPanelData data = MwpPumpPanelDataFactory.Create(in snapshot, _loc);
+            MwpPumpPanelData data = MwpPumpPanelDataFactory.Create(in snapshot, _loc, _showInventoryRow, _showDepthRow);
             if (!data.HasData)
             {
                 Hide(view);
@@ -230,9 +250,6 @@ namespace MWP.UI.Panels
                 hash = hash * 31 + (int)snapshot.Tier;
                 hash = hash * 31 + (int)snapshot.State;
                 hash = hash * 31 + RoundTo(snapshot.EffectiveWaterPerHour, 10.0);
-                hash = hash * 31 + RoundTo(Clamp01(snapshot.PowerRatio), 100.0);
-                hash = hash * 31 + RoundTo(snapshot.PowerSupplyHp, 10.0);
-                hash = hash * 31 + snapshot.PowerRequiredHp;
                 hash = hash * 31 + RoundTo(Clamp01(snapshot.WaterQuality), 100.0);
                 hash = hash * 31 + RoundTo(Clamp100(snapshot.Condition), 1.0);
                 hash = hash * 31 + (snapshot.AutoMaintenance ? 1 : 0);

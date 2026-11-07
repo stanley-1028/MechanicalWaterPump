@@ -1,0 +1,75 @@
+
+=== Timberborn.WaterBuildings.WaterBuildingsConfigurator::ProvideTemplateModule   [Timberborn.WaterBuildings]
+  IL_0000: newobj System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInputSpec,Timberborn.WaterBuildings.WaterInput>()
+  IL_000b: dup
+  IL_000c: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInputPipeSpec,Timberborn.WaterBuildings.WaterInputPipe>()
+  IL_0011: dup
+  IL_0012: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInputPipe,Timberborn.WaterBuildings.WaterInputPipeCoordinates>()
+  IL_0017: dup
+  IL_0018: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInputPipe,Timberborn.Rendering.EntityMaterials>()
+  IL_001d: dup
+  IL_001e: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInputPipe,Timberborn.WaterBuildings.WaterInputPipeSegmentCreator>()
+  IL_0023: dup
+  IL_0024: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInputFixedSpec,Timberborn.WaterBuildings.WaterInputFixedCoordinates>()
+  IL_0029: dup
+  IL_002a: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.Buildings.BuildingSpec,Timberborn.WaterBuildings.PreviewWaterInputPipeBlocker>()
+  IL_002f: dup
+  IL_0030: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.Buildings.BuildingAccessible,Timberborn.WaterBuildings.AccessibleFloodableBuilding>()
+  IL_0035: dup
+  IL_0036: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.Buildings.BuildingAccessible,Timberborn.WaterObjects.BlockableFloodableObject>()
+  IL_003b: dup
+  IL_003c: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterMoverSpec,Timberborn.WaterBuildings.WaterMover>()
+  IL_0041: dup
+  IL_0042: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FloodgateSpec,Timberborn.WaterBuildings.Floodgate>()
+  IL_0047: dup
+  IL_0048: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.Floodgate,Timberborn.WaterBuildings.FloodgateGateCutoff>()
+  IL_004d: dup
+  IL_004e: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.Floodgate,Timberborn.Automation.AutoAutomatableNeeder>()
+  IL_0053: dup
+  IL_0054: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.ThrottlingValveSpec,Timberborn.WaterBuildings.ThrottlingValve>()
+  IL_0059: dup
+  IL_005a: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.ThrottlingValve,Timberborn.WaterBuildings.WaterObstacleController>()
+  IL_005f: dup
+  IL_0060: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.ThrottlingValve,Timberborn.Automation.AutoAutomatableNeeder>()
+  IL_0065: dup
+  IL_0066: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FillValveSpec,Timberborn.WaterBuildings.FillValve>()
+  IL_006b: dup
+  IL_006c: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FillValve,Timberborn.WaterBuildings.WaterObstacleController>()
+  IL_0071: dup
+  IL_0072: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FillValve,Timberborn.Automation.AutoAutomatableNeeder>()
+  IL_0077: dup
+  IL_0078: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.ImpermeableFloorSpec,Timberborn.PathSystem.DynamicPathModelUpdater>()
+  IL_007d: dup
+  IL_007e: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FloodableBuildingSpec,Timberborn.WaterBuildings.FloodableBuilding>()
+  IL_0083: dup
+  IL_0084: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.AccessibleFloodableBuilding,Timberborn.WaterBuildings.FloodableBuilding>()
+  IL_0089: dup
+  IL_008a: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FloodgateAnimationControllerSpec,Timberborn.WaterBuildings.FloodgateAnimationController>()
+  IL_008f: dup
+  IL_0090: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.StreamGaugeSpec,Timberborn.WaterBuildings.StreamGauge>()
+  IL_0095: dup
+  IL_0096: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.StreamGaugeAnimationControllerSpec,Timberborn.WaterBuildings.StreamGaugeAnimationController>()
+  IL_009b: dup
+  IL_009c: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterMoverParticleControllerSpec,Timberborn.WaterBuildings.WaterMoverParticleController>()
+  IL_00a1: dup
+  IL_00a2: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterMoverParticleController,Timberborn.Particles.ParticlesCache>()
+  IL_00a7: dup
+  IL_00a8: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterOutputSpec,Timberborn.WaterBuildings.WaterOutput>()
+  IL_00ad: dup
+  IL_00ae: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.TickableWaterBuildingSpec,Timberborn.WaterBuildings.TickableWaterBuilding>()
+  IL_00b3: dup
+  IL_00b4: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FloodableFireSpec,Timberborn.WaterBuildings.FloodableFire>()
+  IL_00b9: dup
+  IL_00ba: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterNeederSpec,Timberborn.WaterBuildings.WaterNeeder>()
+  IL_00bf: dup
+  IL_00c0: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FloodableBuilding,Timberborn.WaterBuildings.FloodedBuildingPreviewValidator>()
+  IL_00c5: dup
+  IL_00c6: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FloodableBuilding,Timberborn.WaterObjects.FloodableObject>()
+  IL_00cb: dup
+  IL_00cc: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInputPipe,Timberborn.WaterBuildings.WaterInputPipeValidator>()
+  IL_00d1: dup
+  IL_00d2: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInputPipe,Timberborn.WaterBuildings.WaterInputPipeObstructedStatus>()
+  IL_00d7: callvirt Timberborn.TemplateInstantiation.TemplateModule Timberborn.TemplateInstantiation.TemplateModule/Builder::Build()
+  IL_00dc: ret

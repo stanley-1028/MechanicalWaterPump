@@ -61,20 +61,26 @@ ROLE_MAP = {
         {"wood": "BaseWood_Grey.IronTeeth",
          "metal": "BaseWood_DarkBrown.IronTeeth",
          "detail": "IrregularPlanks_MetalForged.IronTeeth"},
+    # T11 interior pass: dark timber backboard ("wood"/"planks") + bright metal
+    # machinery/accents ("metal"/"detail") + glass windows ("glass").
     ("Advanced", "Folktails", False):
-        {"wood": "BaseWood_LightBrown.Folktails", "metal": "BaseMetal.Folktails",
-         "glass": "WindowsAtlas.Folktails", "detail": "Details.Folktails"},
+        {"wood": "BaseWood_Brown.Folktails", "planks": "BaseWood_Brown.Folktails",
+         "metal": "BaseMetal.Folktails", "detail": "Details.Folktails",
+         "glass": "WindowsAtlas.Folktails"},
     ("Advanced", "IronTeeth", False):
-        {"metal": "BaseMetal.IronTeeth", "wood": "BaseWood_Grey.IronTeeth",
-         "planks": "IrregularPlanks_MetalForged.IronTeeth",
+        {"wood": "BaseWood_DarkBrown.IronTeeth",
+         "planks": "BaseWood_DarkBrown.IronTeeth",
+         "metal": "BaseMetal.IronTeeth", "detail": "Details.IronTeeth",
          "glass": "WindowsAtlas.IronTeeth"},
     ("Top", "Folktails", False):
-        {"planks": "IrregularPlanks_Brown.Folktails", "metal": "BaseMetal.Folktails",
-         "glass": "WindowsAtlas.Folktails", "detail": "Details.Folktails"},
+        {"wood": "BaseWood_Brown.Folktails", "planks": "BaseWood_Brown.Folktails",
+         "metal": "BaseMetal.Folktails", "detail": "Details.Folktails",
+         "glass": "WindowsAtlas.Folktails"},
     ("Top", "IronTeeth", False):
-        {"metal": "BaseMetal.IronTeeth",
+        {"wood": "IrregularPlanks_MetalForged.IronTeeth",
          "planks": "IrregularPlanks_MetalForged.IronTeeth",
-         "detail": "Details.IronTeeth", "glass": "WindowsAtlas.IronTeeth"},
+         "metal": "BaseMetal.IronTeeth", "detail": "Details.IronTeeth",
+         "glass": "WindowsAtlas.IronTeeth"},
 }
 #: the construction greybox uses the same two vanilla materials for every tier.
 for _tier in C.TIERS:
@@ -168,7 +174,8 @@ class ModelBuilder():
             if name.startswith(prefix):
                 raise ValueError("part name %r collides with marker prefix %r"
                                  % (name, prefix))
-        if not animation or animation.get("type") not in ("rotation", "translation"):
+        if not animation or animation.get("type") not in ("rotation", "oscillation",
+                                                             "translation"):
             raise ValueError("part %r needs a rotation/translation animation spec"
                              % (name,))
         if name in {part["name"] for part in self.parts}:
@@ -548,7 +555,9 @@ class ModelBuilder():
             self.add_cylinder("z", (x, y, z + 0.07), radius, 0.14, 12, "metal")
             self.add_tube("z", (x, y, z + 0.14), radius + 0.03, radius - 0.01, 0.05,
                           12, "metal")
-            self.add_cylinder("z", (x, y, z + 0.17), radius * 0.82, 0.02, 12, "glass")
+            self.add_front_glass(x - radius * 0.82, x + radius * 0.82,
+                                 y - radius * 0.82, y + radius * 0.82,
+                                 z + 0.16, z + 0.18, "glass")
             self.add_bar((x - radius * 0.4, y - radius * 0.2, z + 0.19),
                          (x + radius * 0.3, y + radius * 0.35, z + 0.19),
                          0.02, 0.02, "metal", up=(0.0, 0.0, 1.0))
@@ -569,6 +578,45 @@ class ModelBuilder():
         # mullions
         mx = (x0 + x1) * 0.5
         self.add_box((mx - 0.03, y0, z), (mx + 0.03, y1, z + 0.09), role_frame)
+
+    def add_front_glass(self, x0, x1, y0, y1, z0, z1, role="glass"):
+        """Two front/back-only glass quads (no side faces).
+
+        Only +-Z faces means the material's UV world-plane union stays in the
+        (X, Y) plane; adding side faces of a thin box would mix the Z world axis
+        into the same material plan and waste texel density.
+        """
+        material_name = self.material(role)
+        self.add_quad((x0, y0, z1), (x1, y0, z1), (x1, y1, z1), (x0, y1, z1),
+                      (0.0, 0.0, 1.0), material_name)
+        self.add_quad((x1, y0, z0), (x0, y0, z0), (x0, y1, z0), (x1, y1, z0),
+                      (0.0, 0.0, -1.0), material_name)
+
+    def add_window_open(self, x0, x1, y0, y1, z, role_frame="metal",
+                        role_glass="glass", glass_top_row=True):
+        """Framed inspection bay whose centre is OPEN (machinery visible behind).
+
+        The frame + mullions read as a big industrial window; a glass strip is
+        kept on the top row so the material is still present and the bay still
+        reads as glazing, while the lower/centre panes are open and show the
+        shaft / gauges / pipes placed just behind the front face.
+        """
+        if not self.has_role(role_glass):
+            role_glass = role_frame
+        t = 0.08
+        self.add_box((x0, y0, z), (x1, y0 + t, z + 0.12), role_frame)
+        self.add_box((x0, y1 - t, z), (x1, y1, z + 0.12), role_frame)
+        self.add_box((x0, y0, z), (x0 + t, y1, z + 0.12), role_frame)
+        self.add_box((x1 - t, y0, z), (x1, y1, z + 0.12), role_frame)
+        for fraction in (1.0 / 3.0, 2.0 / 3.0):
+            mx = x0 + (x1 - x0) * fraction
+            self.add_box((mx - 0.035, y0, z), (mx + 0.035, y1, z + 0.10), role_frame)
+        self.add_box((x0 + t, y0 + (y1 - y0) * 0.58, z),
+                     (x1 - t, y0 + (y1 - y0) * 0.58 + 0.05, z + 0.09), role_frame)
+        if glass_top_row:
+            self.add_front_glass(x0 + t + 0.02, x1 - t - 0.02,
+                                 y0 + (y1 - y0) * 0.64, y1 - t - 0.02,
+                                 z + 0.02, z + 0.045, role_glass)
 
     def add_canopy(self, y, overhang=0.0, thickness=0.14, role="wood"):
         w, d = self.width, self.depth
@@ -869,10 +917,14 @@ def build_intermediate(b, data):
 
 
 def build_advanced(b, data):
-    """Mk III: metal frame, THREE-stage pump, glass window, treated planks, gauges."""
+    """Mk III (T11 interior pass): open metal frame, twin internal flywheels, three-stage
+    pump, crankshaft + connecting rods, packed glass window (shaft / gauge / valve /
+    tank / pipes), dark timber backboard for contrast, bright metal machinery."""
     w, h, d = b.width, b.height, b.depth
     b.add_base_frame(metal="metal")
+    b.add_box((0.20, 0.40, 0.20), (w - 0.20, 0.50, d - 0.20), "planks")
     column = 0.14
+    # --- open metal frame (both sides are open so machinery is visible) ---
     for x in (0.0, w - column):
         for z in (0.0, d - column):
             b.add_box((x, 0.42, z), (x + column, h - 0.28, z + column), "metal")
@@ -882,51 +934,99 @@ def build_advanced(b, data):
         b.add_box((0.0, y, 0.06), (0.06, y + 0.10, d - 0.06), "metal")
         b.add_box((w - 0.06, y, 0.06), (w, y + 0.10, d - 0.06), "metal")
     b.add_bar((0.10, 0.55, 0.10), (w - 0.10, 1.22, 0.10), 0.06, 0.06, "metal")
-    b.add_bar((w - 0.10, 0.55, d - 0.10), (0.10, 1.22, d - 0.10), 0.06, 0.06, "metal")
-    # treated plank cladding (lower side panels + back panel)
-    for x in (0.12, w - 0.18):
-        b.add_box((x, 0.50, 0.40), (x + 0.06, 1.20, d - 0.40), "planks")
-    b.add_box((0.20, 0.50, d - 0.20), (w - 0.20, 1.18, d - 0.12), "planks")
-    # three-stage pump barrels + manifold along X (static)
+    b.add_bar((w - 0.10, 0.55, d - 0.10), (0.10, 1.22, d - 0.10), 0.06, 0.06,
+              "metal")
+    # --- dark timber backboard (contrast) with battens ---
+    b.add_box((0.18, 0.50, d - 0.16), (w - 0.18, 3.50, d - 0.06), "planks")
+    for index in range(5):
+        x = 0.22 + index * (w - 0.44) / 5.0
+        b.add_box((x, 0.55, d - 0.18), (x + 0.05, 3.45, d - 0.14), "wood")
+    # low side skirts (kept low so the open frame shows the machinery)
+    for x in (0.18, w - 0.24):
+        b.add_box((x, 0.50, 0.35), (x + 0.06, 1.05, d - 0.35), "planks")
+    # --- three-stage pump barrels + upper manifold ---
     for px in (w * 0.5 - 0.46, w * 0.5, w * 0.5 + 0.46):
         b.add_cylinder("y", (px, 1.22, d * 0.66), 0.29, 1.30, 12, "metal")
-        b.add_tube("y", (px, 0.60, d * 0.66), 0.31, 0.23, 0.09, 12, "metal")
-        b.add_tube("y", (px, 1.78, d * 0.66), 0.31, 0.23, 0.09, 12, "metal")
+        b.add_tube("y", (px, 0.60, d * 0.66), 0.33, 0.24, 0.09, 12, "detail")
+        b.add_tube("y", (px, 1.78, d * 0.66), 0.33, 0.24, 0.09, 12, "detail")
+        b.add_cylinder("y", (px, 1.92, d * 0.66), 0.20, 0.12, 10, "metal")
     b.add_cylinder("x", (w * 0.5, 2.28, d * 0.66), 0.11, w - 0.70, 12, "metal")
-    b.add_tube("x", (w * 0.5, 2.28, d * 0.66), 0.16, 0.11, 0.10, 12, "metal")
-    # ANIMATED piston rods (3 stages, phases 0 / 1/3 / 2/3)
+    b.add_tube("x", (w * 0.5, 2.28, d * 0.66), 0.16, 0.11, 0.10, 12, "detail")
+    b.add_cylinder("x", (w * 0.5, 1.10, d * 0.66), 0.09, w - 0.60, 12, "metal")
+    # --- ANIMATED: twin flywheels + drive shaft (one rotating node) ---
+    b.begin_part("#AnimatedFlywheel", [w * 0.5, 1.55, 1.55],
+                 {"type": "rotation", "axis": "x", "turns": 2.0})
+    b.add_cylinder("x", (w * 0.5, 1.55, 1.55), 0.11, w - 0.55, 12, "metal")
+    for x in (0.42, w - 0.42):
+        b.add_cylinder("x", (x, 1.55, 1.55), 0.22, 0.14, 10, "detail")
+        b.add_gear("x", (x, 1.55, 1.55), 0.96, 0.16, 12, "metal", spokes=6)
+    b.end_part()
+    # --- ANIMATED: two head pulleys + shaft (belt driven, fast) ---
+    b.begin_part("#AnimatedHeadPulley", [w * 0.5, 2.85, 1.55],
+                 {"type": "rotation", "axis": "x", "turns": 8.0})
+    b.add_cylinder("x", (w * 0.5, 2.85, 1.55), 0.07, w - 0.60, 10, "metal")
+    for x in (0.42, w - 0.42):
+        b.add_gear("x", (x, 2.85, 1.55), 0.30, 0.14, 9, "metal", spokes=3)
+    b.end_part()
+    b.add_belt(0.42, (1.55, 1.55), 0.96, (2.85, 1.55), 0.30, 0.08, "detail")
+    b.add_belt(w - 0.42, (1.55, 1.55), 0.96, (2.85, 1.55), 0.30, 0.08, "detail")
+    # --- ANIMATED: crankshaft with crank discs + pins ---
+    b.begin_part("#AnimatedCrankshaft", [w * 0.5, 0.95, 1.15],
+                 {"type": "rotation", "axis": "x", "turns": 2.0})
+    b.add_cylinder("x", (w * 0.5, 0.95, 1.15), 0.09, w - 0.55, 12, "metal")
+    for px in (w * 0.5 - 0.46, w * 0.5, w * 0.5 + 0.46):
+        b.add_cylinder("x", (px, 0.95, 1.15), 0.22, 0.10, 12, "detail")
+        b.add_cylinder("x", (px, 0.95, 1.30), 0.06, 0.14, 8, "metal")
+    b.end_part()
+    # --- ANIMATED: three connecting rods (oscillating, phased like the pistons) ---
+    for index, px in enumerate((w * 0.5 - 0.46, w * 0.5, w * 0.5 + 0.46)):
+        b.begin_part("#AnimatedRod%d" % (index + 1), [px, 0.95, 1.30],
+                     {"type": "oscillation", "axis": "x", "amplitude": 0.05,
+                      "cycles": 4.0, "phase": index / 3.0})
+        b.add_bar((px, 0.95, 1.30), (px, 2.05, 1.90), 0.07, 0.05, "detail",
+                  up=(1.0, 0.0, 0.0))
+        b.end_part()
+    # --- ANIMATED: three piston rods + crossheads (vertical, phased) ---
     for index, px in enumerate((w * 0.5 - 0.46, w * 0.5, w * 0.5 + 0.46)):
         b.begin_part("#AnimatedPiston%d" % (index + 1), [px, 2.22, d * 0.66],
                      {"type": "translation", "axis": "y", "amplitude": 0.06,
                       "cycles": 4.0, "phase": index / 3.0})
         b.add_cylinder("y", (px, 2.22, d * 0.66), 0.06, 0.44, 8, "metal")
         b.add_box((px - 0.17, 2.30, d * 0.66 - 0.12),
-                  (px + 0.17, 2.42, d * 0.66 + 0.12), "metal")
+                  (px + 0.17, 2.42, d * 0.66 + 0.12), "detail")
         b.end_part()
-    # solid upper back + left panels (machine hall), front/right stay open
-    b.add_box((0.18, 1.30, d - 0.16), (w - 0.18, 3.30, d - 0.06), "planks")
-    b.add_box((0.06, 1.30, 0.20), (0.18, 3.30, d - 0.20), "metal")
-    # glass inspection window on the front face
-    b.add_window(0.52, w - 0.52, 1.42, 2.16, 0.0)
-    # ANIMATED flywheel + gear train OUTSIDE the frame (the camera side)
-    b.begin_part("#AnimatedFlywheel", [w - 0.10, 1.55, 1.50],
+    # --- open glazed inspection bay: machinery directly behind the opening ---
+    b.add_window_open(0.45, w - 0.45, 1.30, 2.30, 0.0)
+    b.begin_part("#AnimatedWindowShaft", [w * 0.5, 1.85, 0.45],
                  {"type": "rotation", "axis": "x", "turns": 2.0})
-    b.add_gear("x", (w - 0.10, 1.55, 1.50), 1.00, 0.16, 12, "metal", spokes=6)
+    b.add_cylinder("x", (w * 0.5, 1.85, 0.45), 0.07, w - 0.85, 10, "metal")
+    for x in (0.85, w - 0.85):
+        b.add_gear("x", (x, 1.85, 0.45), 0.18, 0.08, 8, "metal", spokes=3)
     b.end_part()
-    b.begin_part("#AnimatedHeadPulley", [w - 0.10, 2.85, 1.50],
-                 {"type": "rotation", "axis": "x", "turns": 6.0})
-    b.add_gear("x", (w - 0.10, 2.85, 1.50), 0.30, 0.14, 9, "metal", spokes=4)
-    b.end_part()
-    b.begin_part("#AnimatedGearboxGear", [w - 0.10, 2.30, 2.55],
-                 {"type": "rotation", "axis": "x", "turns": -4.0})
-    b.add_gear("x", (w - 0.10, 2.30, 2.55), 0.35, 0.14, 10, "metal", spokes=4)
-    b.end_part()
-    b.add_belt(w - 0.10, (1.55, 1.50), 1.00, (2.85, 1.50), 0.30, 0.08, "detail")
-    # gauges on the frame + ANIMATED power shaft
+    # gauge / valve wheel / pipe / small tank visible through the window
+    b.add_gauge(0.95, 1.62, 0.20, "front", 0.13)
+    b.add_gauge(2.05, 1.62, 0.20, "front", 0.13)
+    b.add_cylinder("z", (2.25, 1.55, 0.45), 0.16, 0.08, 12, "detail")
+    for index in range(4):
+        angle = TAU * index / 4.0
+        b.add_bar((2.25, 1.55, 0.45),
+                  (2.25 + math.cos(angle) * 0.26, 1.55,
+                   0.45 + math.sin(angle) * 0.26), 0.045, 0.045, "metal",
+                  up=(0.0, 1.0, 0.0))
+    # small water tank (left front) + pipes
+    b.add_box((0.52, 0.62, 0.30), (0.86, 1.15, 0.80), "metal")
+    b.add_box((0.50, 1.10, 0.28), (0.88, 1.18, 0.82), "detail")
+    b.add_rivets((0.55, 0.90, 0.28), (0.83, 0.90, 0.28), 3, "detail", 0.025)
+    b.add_cylinder("y", (1.90, 1.55, 0.45), 0.055, 1.30, 10, "metal")
+    b.add_cylinder("x", (1.25, 1.72, 0.45), 0.055, 1.30, 10, "metal")
+    b.add_box((1.20, 1.66, 0.40), (1.30, 1.78, 0.50), "detail")
+    b.add_cylinder("z", (1.25, 1.72, 0.30), 0.07, 0.20, 10, "metal")
+    # internal cooling fins behind the pump on the upper right
+    b.add_fins(w - 0.32, 1.20, 2.35, 2.55, 3.15, 4, "detail")
+    b.add_cylinder("x", (w * 0.5, 3.05, 1.95), 0.06, w - 0.80, 10, "metal")
+    # gauges on the frame front + intake / outlet / roof / ladder / rivets
     b.add_gauge(0.56, 2.90, 0.16, "front", 0.14)
     b.add_gauge(w - 0.56, 2.90, 0.16, "front", 0.14)
-    b.add_power_shaft_parts(1.55, 1.50, radius=0.12, flange=0.28, turns=2.0)
-    # intake with riser + valve wheel, big outlet flange
     b.add_intake(0.68, 0.28, 0.48)
     b.add_cylinder("y", (w * 0.5, 1.00, d - 0.62), 0.32, 0.22, 12, "metal")
     for index in range(4):
@@ -936,90 +1036,136 @@ def build_advanced(b, data):
                    d - 0.62 + math.sin(angle) * 0.42), 0.05, 0.05, "metal",
                   up=(0.0, 1.0, 0.0))
     b.add_outlet(1.10, 0.24)
-    # roof: top face exactly y = height
     b.add_flat_roof(h, thickness=0.14, role="metal", beam_role="metal")
     b.add_ladder(w * 0.30, d - 0.05, 0.8, 2.2, "metal")
-    b.add_fins(w - 0.22, 1.00, 2.10, 1.62, 2.10, 4, "metal")
     b.add_rivets((0.25, 0.56, 0.06), (w - 0.25, 0.56, 0.06), 8, "metal")
     b.add_rivets((0.25, 0.56, d - 0.06), (w - 0.25, 0.56, d - 0.06), 8, "metal")
-    return {"kind": "metal frame, three-stage pump, glass window", "tier": "Advanced"}
+    return {"kind": "open metal frame, twin internal flywheels, crankshaft, "
+                    "glass window with machinery", "tier": "Advanced"}
 
 
 def build_top(b, data):
-    """Mk IV: heavy pump station, TWIN parallel barrels, heat fins, valves, big coupling."""
+    """Mk IV (T11 interior pass): heavy pump station with twin internal flywheels,
+    crankshaft, twin barrels, internal window machinery, valve wheels (animated),
+    dark timber backboard + bright metal, cooling fins and pipes."""
     w, h, d = b.width, b.height, b.depth
     b.add_base_frame(metal="metal")
+    b.add_box((0.20, 0.40, 0.20), (w - 0.20, 0.52, d - 0.20), "planks")
     column = 0.18
-    for x in (0.0, w * 0.5 - column * 0.5, w - column):
-        for z in (0.0, d - column):
-            b.add_box((x, 0.42, z), (x + column, h - 0.26, z + column), "metal")
+    # --- heavy open frame: four corners + one BACK centre column only (a front
+    # centre column would bisect the inspection bay / window view) ---
+    for x, z in ((0.0, 0.0), (w - column, 0.0), (0.0, d - column),
+                 (w - column, d - column), (w * 0.5 - column * 0.5, d - column)):
+        b.add_box((x, 0.42, z), (x + column, h - 0.26, z + column), "metal")
     for y in (1.05, 2.10):
         b.add_box((0.0, y, 0.0), (w, y + 0.12, 0.07), "metal")
         b.add_box((0.0, y, d - 0.07), (w, y + 0.12, d), "metal")
         b.add_box((0.0, y, 0.07), (0.07, y + 0.12, d - 0.07), "metal")
         b.add_box((w - 0.07, y, 0.07), (w, y + 0.12, d - 0.07), "metal")
-    # heavy plated cladding
-    b.add_box((0.20, 0.50, d - 0.20), (w - 0.20, 1.95, d - 0.10), "planks")
-    for x in (0.10, w - 0.22):
-        b.add_box((x, 0.50, 0.45), (x + 0.10, 1.62, d - 0.45), "planks")
-    # twin parallel barrels (horizontal, along Z) + saddles (static)
+    # --- dark timber backboard + battens, low side skirts ---
+    b.add_box((0.18, 0.50, d - 0.16), (w - 0.18, 3.55, d - 0.06), "planks")
+    for index in range(6):
+        x = 0.22 + index * (w - 0.44) / 6.0
+        b.add_box((x, 0.55, d - 0.18), (x + 0.05, 3.50, d - 0.14), "wood")
+    for x in (0.18, w - 0.24):
+        b.add_box((x, 0.50, 0.40), (x + 0.06, 1.10, d - 0.40), "planks")
+    # --- twin parallel pump barrels (horizontal, along Z) + saddles ---
     for px in (w * 0.5 - 0.62, w * 0.5 + 0.62):
         b.add_cylinder("z", (px, 2.38, d * 0.55), 0.42, d * 0.62, 16, "metal")
         for z in (0.60, d * 0.86):
-            b.add_tube("z", (px, 2.38, z), 0.50, 0.40, 0.14, 16, "metal")
-        b.add_box((px - 0.50, 1.84, d * 0.28), (px + 0.50, 1.96, d * 0.92), "metal")
-    # twin feed pipes from the intake manifold up into both barrels (static)
+            b.add_tube("z", (px, 2.38, z), 0.50, 0.40, 0.14, 16, "detail")
+        b.add_box((px - 0.50, 1.84, d * 0.28), (px + 0.50, 1.96, d * 0.92), "detail")
     for px in (w * 0.5 - 0.62, w * 0.5 + 0.62):
         b.add_cylinder("y", (px, 1.20, d * 0.86), 0.24, 2.10, 12, "metal")
-    # ANIMATED piston rams at the barrel fronts (phases 0 / 0.5)
+    # --- ANIMATED: twin flywheels + drive shaft (one rotating node) ---
+    b.begin_part("#AnimatedFlywheel", [w * 0.5, 1.45, 1.50],
+                 {"type": "rotation", "axis": "x", "turns": 2.0})
+    b.add_cylinder("x", (w * 0.5, 1.45, 1.50), 0.13, w - 0.55, 12, "metal")
+    for x in (0.34, w - 0.34):
+        b.add_cylinder("x", (x, 1.45, 1.50), 0.24, 0.16, 10, "detail")
+        b.add_gear("x", (x, 1.45, 1.50), 0.95, 0.18, 14, "metal", spokes=6)
+    b.end_part()
+    # --- ANIMATED: twin head pulleys + shaft ---
+    b.begin_part("#AnimatedHeadPulley", [w * 0.5, 2.85, 1.50],
+                 {"type": "rotation", "axis": "x", "turns": 8.0})
+    b.add_cylinder("x", (w * 0.5, 2.85, 1.50), 0.07, w - 0.60, 10, "metal")
+    for x in (0.34, w - 0.34):
+        b.add_gear("x", (x, 2.85, 1.50), 0.34, 0.16, 10, "metal", spokes=3)
+    b.end_part()
+    b.add_belt(0.34, (1.45, 1.50), 0.95, (2.85, 1.50), 0.34, 0.10, "detail")
+    b.add_belt(w - 0.34, (1.45, 1.50), 0.95, (2.85, 1.50), 0.34, 0.10, "detail")
+    # --- ANIMATED: crankshaft (front lower) with discs + pins ---
+    b.begin_part("#AnimatedCrankshaft", [w * 0.5, 0.95, 0.75],
+                 {"type": "rotation", "axis": "x", "turns": 2.0})
+    b.add_cylinder("x", (w * 0.5, 0.95, 0.75), 0.10, w - 0.60, 12, "metal")
+    for px in (w * 0.5 - 0.65, w * 0.5, w * 0.5 + 0.65):
+        b.add_cylinder("x", (px, 0.95, 0.75), 0.24, 0.12, 12, "detail")
+        b.add_cylinder("x", (px, 0.95, 0.90), 0.06, 0.16, 8, "metal")
+    b.end_part()
+    # --- open glazed inspection bay: machinery directly behind the opening ---
+    b.add_window_open(0.55, w - 0.55, 1.38, 1.92, 0.0)
+    b.begin_part("#AnimatedWindowShaft", [w * 0.5, 1.72, 0.50],
+                 {"type": "rotation", "axis": "x", "turns": 2.0})
+    b.add_cylinder("x", (w * 0.5, 1.72, 0.50), 0.08, w - 0.90, 10, "metal")
+    for x in (0.80, w - 0.80):
+        b.add_cylinder("x", (x, 1.72, 0.50), 0.18, 0.08, 10, "detail")
+    b.end_part()
+    # --- ANIMATED: two oscillating valve links behind the window ---
+    for index, px in enumerate((1.15, 1.85)):
+        b.begin_part("#AnimatedLink%d" % (index + 1), [px, 1.60, 0.55],
+                     {"type": "oscillation", "axis": "x", "amplitude": 0.10,
+                      "cycles": 4.0, "phase": index * 0.5})
+        b.add_bar((px, 1.60, 0.55), (px, 0.95, 0.60), 0.07, 0.05, "detail",
+                  up=(1.0, 0.0, 0.0))
+        b.end_part()
+    # --- ANIMATED: twin barrel pistons (phases 0 / 0.5) ---
     for index, px in enumerate((w * 0.5 - 0.62, w * 0.5 + 0.62)):
         b.begin_part("#AnimatedPiston%d" % (index + 1), [px, 2.38, 0.62],
                      {"type": "translation", "axis": "z", "amplitude": 0.06,
                       "cycles": 4.0, "phase": index * 0.5})
         b.add_cylinder("z", (px, 2.38, 0.62), 0.30, 0.62, 12, "metal")
-        b.add_cylinder("z", (px, 2.38, 0.34), 0.12, 0.20, 8, "metal")
+        b.add_cylinder("z", (px, 2.38, 0.34), 0.12, 0.20, 8, "detail")
         b.end_part()
-    # front output manifold + outlet
-    b.add_cylinder("x", (w * 0.5, 2.38, 0.52), 0.22, w - 0.70, 14, "metal")
-    b.add_tube("x", (w * 0.5, 2.38, 0.52), 0.28, 0.22, 0.12, 14, "metal")
-    b.add_box((w * 0.5 - 0.70, 2.06, 0.0), (w * 0.5 + 0.70, 2.16, 0.16), "metal")
-    b.add_outlet(1.18, 0.28)
-    # big valves with hand wheels on the feed pipes
-    for px in (w * 0.5 - 0.62, w * 0.5 + 0.62):
-        b.add_cylinder("y", (px, 2.66, d * 0.86), 0.30, 0.16, 12, "metal")
-        for index in range(4):
-            angle = TAU * index / 4.0
+    # --- ANIMATED: two valve hand wheels rotate slowly ---
+    for index, px in enumerate((w * 0.5 - 0.62, w * 0.5 + 0.62)):
+        b.begin_part("#AnimatedValveWheel%d" % (index + 1), [px, 2.74, d * 0.86],
+                     {"type": "rotation", "axis": "y",
+                      "turns": 1.0 if index == 0 else -1.0})
+        b.add_cylinder("y", (px, 2.74, d * 0.86), 0.30, 0.16, 12, "metal")
+        for tooth in range(4):
+            angle = TAU * tooth / 4.0
             b.add_bar((px, 2.74, d * 0.86),
                       (px + math.cos(angle) * 0.40, 2.74,
                        d * 0.86 + math.sin(angle) * 0.40), 0.06, 0.06, "detail",
                       up=(0.0, 1.0, 0.0))
-    # heat fins on the right-hand saddle
-    b.add_fins(w - 0.30, 1.10, 2.30, 1.65, 2.15, 7, "metal")
-    # upper back plated wall + ANIMATED flywheel / head pulley OUTSIDE the frame
-    b.add_box((0.18, 1.90, d - 0.16), (w - 0.18, 3.30, d - 0.06), "planks")
-    b.begin_part("#AnimatedFlywheel", [w - 0.12, 1.70, 1.60],
-                 {"type": "rotation", "axis": "x", "turns": 2.0})
-    b.add_gear("x", (w - 0.12, 1.70, 1.60), 1.24, 0.20, 14, "metal", spokes=7)
-    b.end_part()
-    b.begin_part("#AnimatedHeadPulley", [w - 0.12, 3.02, 1.60],
-                 {"type": "rotation", "axis": "x", "turns": 8.0})
-    b.add_gear("x", (w - 0.12, 3.02, 1.60), 0.34, 0.16, 10, "metal", spokes=4)
-    b.end_part()
-    b.add_belt(w - 0.12, (1.70, 1.60), 1.24, (3.02, 1.60), 0.34, 0.10, "detail")
-    b.add_power_shaft_parts(1.70, 1.60, radius=0.15, flange=0.38, turns=2.0)
+        b.end_part()
+    # --- front output manifold + outlet, internal pipes, tank, fins ---
+    b.add_cylinder("x", (w * 0.5, 2.38, 0.52), 0.22, w - 0.70, 14, "metal")
+    b.add_tube("x", (w * 0.5, 2.38, 0.52), 0.28, 0.22, 0.12, 14, "detail")
+    b.add_box((w * 0.5 - 0.70, 2.06, 0.0), (w * 0.5 + 0.70, 2.16, 0.16), "metal")
+    b.add_outlet(1.18, 0.28)
+    b.add_cylinder("x", (w * 0.5, 1.22, 0.80), 0.08, w - 0.70, 12, "metal")
+    b.add_cylinder("y", (1.90, 1.70, 0.55), 0.055, 1.00, 10, "metal")
+    b.add_box((0.52, 0.62, 0.30), (0.78, 1.15, 0.75), "metal")
+    b.add_box((0.50, 1.10, 0.28), (0.80, 1.18, 0.77), "detail")
+    b.add_gauge(1.00, 1.60, 0.20, "front", 0.13)
+    b.add_gauge(2.00, 1.60, 0.20, "front", 0.13)
+    for px in (w * 0.5 - 0.62, w * 0.5 + 0.62):
+        b.add_cylinder("y", (px, 2.66, d * 0.86), 0.30, 0.16, 12, "metal")
+    b.add_fins(1.52, 2.60, 3.40, 2.90, 3.50, 5, "detail")
+    b.add_cylinder("x", (w * 0.5, 3.05, 2.00), 0.07, w - 0.70, 10, "metal")
     b.add_box((0.0, 1.40, d * 0.5 - 0.30), (0.22, 2.00, d * 0.5 + 0.30), "metal")
     b.add_box((w - 0.22, 1.40, d * 0.5 - 0.30), (w, 2.00, d * 0.5 + 0.30), "metal")
-    # inspection window, gauges, roof (top face exactly y = height)
-    b.add_window(0.55, w - 0.55, 1.38, 1.92, 0.0)
-    b.add_gauge(0.60, 2.78, 0.16, "front", 0.15)
-    b.add_gauge(w - 0.60, 2.78, 0.16, "front", 0.15)
+    b.add_gauge(0.60, 2.95, 0.16, "front", 0.15)
+    b.add_gauge(w - 0.60, 2.95, 0.16, "front", 0.15)
     b.add_flat_roof(h, thickness=0.16, role="metal", beam_role="metal")
     b.add_box((w * 0.5 - 0.30, h - 0.34, d * 0.40), (w * 0.5 + 0.30, h - 0.16,
               d * 0.40 + 0.30), "metal")
     b.add_ladder(w * 0.74, d - 0.06, 0.8, 2.8, "metal")
     b.add_rivets((0.30, 1.20, d - 0.09), (w - 0.30, 1.20, d - 0.09), 9, "metal")
     b.add_rivets((0.30, 1.72, d - 0.09), (w - 0.30, 1.72, d - 0.09), 9, "metal")
-    return {"kind": "twin-barrel pump station, heat fins, valves", "tier": "Top"}
+    return {"kind": "twin-barrel pump station with internal flywheels, crankshaft, "
+                    "valve wheels and packed window", "tier": "Top"}
 
 
 def build_construction(b, data, tier):
@@ -1206,6 +1352,18 @@ def validate_model_data(data):
             if abs(turns - round(turns)) > 1e-9:
                 problems.append("part %s turns %.3f is not an integer (not seamless)"
                                 % (name, turns))
+        elif kind == "oscillation":
+            if animation.get("axis") not in ("x", "y", "z"):
+                problems.append("part %s oscillation axis %r" % (name, animation.get("axis")))
+            amplitude = float(animation.get("amplitude", 0.0))
+            cycles = float(animation.get("cycles", 0.0))
+            if amplitude <= 0.0:
+                problems.append("part %s oscillation amplitude <= 0" % name)
+            if abs(cycles - round(cycles)) > 1e-9 or cycles < 1:
+                problems.append("part %s oscillation cycles %.3f is not a positive integer"
+                                % (name, cycles))
+            if not 0.0 <= float(animation.get("phase", 0.0)) < 1.0:
+                problems.append("part %s oscillation phase outside [0,1)" % name)
         elif kind == "translation":
             if animation.get("axis") not in ("x", "y", "z"):
                 problems.append("part %s translation axis %r" % (name, animation.get("axis")))

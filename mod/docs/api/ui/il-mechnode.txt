@@ -1,0 +1,100 @@
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeFragment::InitializeFragment   [Timberborn.MechanicalSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld Timberborn.CoreUI.VisualElementLoader Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_visualElementLoader
+  IL_0007: ldstr "Game/EntityPanel/MechanicalNodeFragment"
+  IL_000c: callvirt UnityEngine.UIElements.VisualElement Timberborn.CoreUI.VisualElementLoader::LoadVisualElement(System.String)
+  IL_0011: stfld UnityEngine.UIElements.VisualElement Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_root
+  IL_0016: ldarg.0
+  IL_0017: ldfld Timberborn.MechanicalSystemUI.GeneratorFragmentService Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_generatorFragmentService
+  IL_001c: ldarg.0
+  IL_001d: ldfld UnityEngine.UIElements.VisualElement Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_root
+  IL_0022: ldstr "Generator"
+  IL_0027: ldnull
+  IL_0028: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Label>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_002d: callvirt System.Void Timberborn.MechanicalSystemUI.GeneratorFragmentService::Initialize(UnityEngine.UIElements.Label)
+  IL_0032: ldarg.0
+  IL_0033: ldfld Timberborn.MechanicalSystemUI.ConsumerFragmentService Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_consumerFragmentService
+  IL_0038: ldarg.0
+  IL_0039: ldfld UnityEngine.UIElements.VisualElement Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_root
+  IL_003e: ldstr "Consumer"
+  IL_0043: ldnull
+  IL_0044: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Label>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0049: callvirt System.Void Timberborn.MechanicalSystemUI.ConsumerFragmentService::Initialize(UnityEngine.UIElements.Label)
+  IL_004e: ldarg.0
+  IL_004f: ldfld Timberborn.MechanicalSystemUI.NetworkFragmentService Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_networkFragmentService
+  IL_0054: ldarg.0
+  IL_0055: ldfld UnityEngine.UIElements.VisualElement Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_root
+  IL_005a: ldstr "Network"
+  IL_005f: ldnull
+  IL_0060: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Label>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0065: callvirt System.Void Timberborn.MechanicalSystemUI.NetworkFragmentService::Initialize(UnityEngine.UIElements.Label)
+  IL_006a: ldarg.0
+  IL_006b: ldfld UnityEngine.UIElements.VisualElement Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_root
+  IL_0070: ldc.i4.0
+  IL_0071: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_0076: ldarg.0
+  IL_0077: ldfld UnityEngine.UIElements.VisualElement Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_root
+  IL_007c: ret
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeFragment::ShowFragment   [Timberborn.MechanicalSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.1
+  IL_0002: callvirt !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.MechanicalSystem.MechanicalNode>()
+  IL_0007: stfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_mechanicalNode
+  IL_000c: ret
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeFragment::ClearFragment   [Timberborn.MechanicalSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: ldnull
+  IL_0002: stfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_mechanicalNode
+  IL_0007: ldarg.0
+  IL_0008: ldfld Timberborn.MechanicalSystemUI.GeneratorFragmentService Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_generatorFragmentService
+  IL_000d: callvirt System.Void Timberborn.MechanicalSystemUI.GeneratorFragmentService::Hide()
+  IL_0012: ldarg.0
+  IL_0013: ldfld Timberborn.MechanicalSystemUI.ConsumerFragmentService Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_consumerFragmentService
+  IL_0018: callvirt System.Void Timberborn.MechanicalSystemUI.ConsumerFragmentService::Hide()
+  IL_001d: ldarg.0
+  IL_001e: ldfld Timberborn.MechanicalSystemUI.NetworkFragmentService Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_networkFragmentService
+  IL_0023: callvirt System.Void Timberborn.MechanicalSystemUI.NetworkFragmentService::Hide()
+  IL_0028: ldarg.0
+  IL_0029: ldfld UnityEngine.UIElements.VisualElement Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_root
+  IL_002e: ldc.i4.0
+  IL_002f: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_0034: ret
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeFragment::UpdateFragment   [Timberborn.MechanicalSystemUI]
+  IL_0000: ldc.i4.0
+  IL_0001: stloc.0
+  IL_0002: ldarg.0
+  IL_0003: ldfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_mechanicalNode
+  IL_0008: call System.Boolean Timberborn.BaseComponentSystem.BaseComponent::op_Implicit(Timberborn.BaseComponentSystem.BaseComponent)
+  IL_000d: brfalse.s IL_0052
+  IL_000f: ldarg.0
+  IL_0010: ldfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_mechanicalNode
+  IL_0015: callvirt System.Boolean Timberborn.BaseComponentSystem.BaseComponent::get_Enabled()
+  IL_001a: brfalse.s IL_0052
+  IL_001c: ldarg.0
+  IL_001d: ldfld Timberborn.MechanicalSystemUI.GeneratorFragmentService Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_generatorFragmentService
+  IL_0022: ldarg.0
+  IL_0023: ldfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_mechanicalNode
+  IL_0028: callvirt System.Boolean Timberborn.MechanicalSystemUI.GeneratorFragmentService::Update(Timberborn.MechanicalSystem.MechanicalNode)
+  IL_002d: ldarg.0
+  IL_002e: ldfld Timberborn.MechanicalSystemUI.ConsumerFragmentService Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_consumerFragmentService
+  IL_0033: ldarg.0
+  IL_0034: ldfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_mechanicalNode
+  IL_0039: callvirt System.Boolean Timberborn.MechanicalSystemUI.ConsumerFragmentService::Update(Timberborn.MechanicalSystem.MechanicalNode)
+  IL_003e: or
+  IL_003f: ldarg.0
+  IL_0040: ldfld Timberborn.MechanicalSystemUI.NetworkFragmentService Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_networkFragmentService
+  IL_0045: ldarg.0
+  IL_0046: ldfld Timberborn.MechanicalSystem.MechanicalNode Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_mechanicalNode
+  IL_004b: callvirt System.Boolean Timberborn.MechanicalSystemUI.NetworkFragmentService::Update(Timberborn.MechanicalSystem.MechanicalNode)
+  IL_0050: or
+  IL_0051: stloc.0
+  IL_0052: ldarg.0
+  IL_0053: ldfld UnityEngine.UIElements.VisualElement Timberborn.MechanicalSystemUI.MechanicalNodeFragment::_root
+  IL_0058: ldloc.0
+  IL_0059: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_005e: ret

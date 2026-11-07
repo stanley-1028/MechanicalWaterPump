@@ -1,0 +1,33 @@
+
+=== Timberborn.CoreUI.ProgressBar::get_contentContainer   [Timberborn.CoreUI]
+  IL_0000: ldarg.0
+  IL_0001: ldfld UnityEngine.UIElements.VisualElement Timberborn.CoreUI.ProgressBar::<contentContainer>k__BackingField
+  IL_0006: ret
+
+=== Timberborn.CoreUI.ProgressBar::.ctor   [Timberborn.CoreUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void UnityEngine.UIElements.VisualElement::.ctor()
+  IL_0006: ldstr "UI/Views/Core/ProgressBar"
+  IL_000b: call !!0 UnityEngine.Resources::Load<UnityEngine.UIElements.VisualTreeAsset>(System.String)
+  IL_0010: ldarg.0
+  IL_0011: callvirt System.Void UnityEngine.UIElements.VisualTreeAsset::CloneTree(UnityEngine.UIElements.VisualElement)
+  IL_0016: ldarg.0
+  IL_0017: ldarg.0
+  IL_0018: ldstr "Progress"
+  IL_001d: ldnull
+  IL_001e: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<Timberborn.CoreUI.SimpleProgressBar>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0023: stfld Timberborn.CoreUI.SimpleProgressBar Timberborn.CoreUI.ProgressBar::_simpleProgressBar
+  IL_0028: ldarg.0
+  IL_0029: ldarg.0
+  IL_002a: ldstr "ContentContainer"
+  IL_002f: ldnull
+  IL_0030: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0035: stfld UnityEngine.UIElements.VisualElement Timberborn.CoreUI.ProgressBar::<contentContainer>k__BackingField
+  IL_003a: ret
+
+=== Timberborn.CoreUI.ProgressBar::SetProgress   [Timberborn.CoreUI]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.CoreUI.SimpleProgressBar Timberborn.CoreUI.ProgressBar::_simpleProgressBar
+  IL_0006: ldarg.1
+  IL_0007: callvirt System.Void Timberborn.CoreUI.SimpleProgressBar::SetProgress(System.Single)
+  IL_000c: ret

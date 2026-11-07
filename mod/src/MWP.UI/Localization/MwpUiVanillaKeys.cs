@@ -5,9 +5,15 @@ namespace MWP.UI.Localization
     ///
     /// Keys that belong to MWP itself live in <see cref="MWP.Core.MwpLocKeys"/> (CONTRACT §8) and
     /// are checked against the three shipped CSVs by the data validator. The keys below are not
-    /// ours: they are baked into the installed game (verified by grepping the shipped
-    /// localization tables of Timberborn 1.1.2.8 for every constant here), so using them cannot
-    /// show a raw key to the player (REQ-UI-05) and needs no extra CSV rows.
+    /// ours: they are baked into the installed game (verified against the shipped localization
+    /// tables of Timberborn 1.1.2.8), so using them cannot show a raw key to the player
+    /// (REQ-UI-05) and needs no extra CSV rows.
+    ///
+    /// Power, hp values and the internal stock are no longer formatted here: those rows are
+    /// rendered by the game's own fragments (MechanicalNodeFragment, SimpleOutputInventoryFragment,
+    /// WaterInputPipeDepthFragment). The panel only formats the hint sentences and material names,
+    /// and every key is called with one fixed parameter-type list so the localization wrapper does
+    /// not report "parameter types have changed".
     /// </summary>
     public static class MwpUiVanillaKeys
     {
@@ -28,18 +34,5 @@ namespace MWP.UI.Localization
 
         /// <summary>Full sentence telling the player that no road connects the building (NoAccess hint).</summary>
         public const string HintNoAccess = "Status.Buildings.Unconnected";
-
-        /// <summary>
-        /// "Power input / maximum: {0} / {1} ({2}%)". Used as the tooltip of the power-supply row so
-        /// the delivered hp is visible next to the percentage (CONTRACT §10 item 2).
-        /// </summary>
-        public const string PowerDetail = "Mechanical.PowerInputMaximum";
-
-        /// <summary>
-        /// "{0} hp" / "{0} 匹馬力": the game's horsepower unit. The power tooltip formats its hp
-        /// values with this key so the unit follows the active language, exactly like the vanilla
-        /// mechanical-node formatter does.
-        /// </summary>
-        public const string PowerUnit = "Unit.HorsePower.NumberAndUnit";
     }
 }

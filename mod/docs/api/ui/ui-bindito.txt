@@ -1,0 +1,29 @@
+# member dump for Bindito\.Core\.IBindingBuilder.*, Bindito\.Core\.IMultiBindingBuilder.*, Bindito\.Core\.Configurator$
+
+=== Bindito.Core.Configurator   [Bindito.Core]
+  kind: class   base: System.Object
+  interfaces: Bindito.Core.IConfigurator
+  [type attr] JetBrains.Annotations.UsedImplicitlyAttribute
+  field Bindito.Core.IContainerDefinition _containerDefinition
+  method public System.Void Configure(Bindito.Core.IContainerDefinition containerDefinition)
+  method System.Void Configure()
+  method ISingleBindingBuilder<T> Bind()
+  method IMultiBindingBuilder<T> MultiBind()
+  method System.Void AddProvisionListener(Bindito.Core.IProvisionListener provisionListener)
+  method System.Void AddInjectionListener(Bindito.Core.IInjectionListener injectionListener)
+  method System.Void Install(Bindito.Core.IConfigurator configurator)
+  method System.Void InstallAll(System.String contextName)
+  method System.Void .ctor()
+
+=== Bindito.Core.IBindingBuilder`1   [Bindito.Core]
+  kind: interface   base: -
+  method public Bindito.Core.IScopeAssignee To()
+  method public Bindito.Core.IScopeAssignee ToProvider()
+  method public Bindito.Core.IScopeAssignee ToProvider(IProvider<TBound> provider)
+  method public Bindito.Core.IScopeAssignee ToProvider(Func<TBound> provider)
+  method public Bindito.Core.IExportAssignee ToInstance(TBound instance)
+  method public Bindito.Core.IExportAssignee ToExisting()
+
+=== Bindito.Core.IMultiBindingBuilder`1   [Bindito.Core]
+  kind: interface   base: -
+  interfaces: IBindingBuilder<TBound>

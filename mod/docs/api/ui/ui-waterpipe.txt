@@ -1,0 +1,158 @@
+# member dump for Timberborn\.WaterBuildings\.WaterInputPipe.*
+
+=== Timberborn.WaterBuildings.WaterInputPipe   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity, Timberborn.EntitySystem.IDeletableEntity
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Timberborn.WaterBuildings.PreviewWaterInputPipeBlockerService _previewWaterInputPipeBlockerService
+  field Timberborn.WaterBuildings.WaterInputPipeCoordinates _waterInputPipeCoordinates
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.BlockObjectModelSystem.BlockObjectModelController _blockObjectModelController
+  field Timberborn.SelectionSystem.HighlightableObject _highlightableObject
+  field Timberborn.WaterBuildings.WaterInputPipeSegmentCreator _waterInputPipeSegmentCreator
+  field List<Timberborn.WaterBuildings.PipeSegment> _pipeSegments
+  method public System.Void .ctor(Timberborn.SingletonSystem.EventBus eventBus, Timberborn.WaterBuildings.PreviewWaterInputPipeBlockerService previewWaterInputPipeBlockerService)
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method public System.Void DeleteEntity()
+  method public System.Void OnPreviewPipeBlockingCoordinatesChanged(Timberborn.WaterBuildings.PreviewBlockingCoordinatesChangedEvent e)
+  method private System.Void OnWaterPipeCoordinatesChanged(System.Object sender, UnityEngine.Vector3Int coordinates)
+  method private System.Boolean ShouldUpdatePipe(ReadOnlyList<UnityEngine.Vector3Int> changedCoordinates)
+  method private System.Void UpdatePipe()
+  method private System.Boolean CanShowPipeSegment(UnityEngine.Vector3Int gridPosition)
+  method private System.Void ShowPipeSegment(System.Int32 index, UnityEngine.Vector3Int gridPosition)
+  method private Timberborn.WaterBuildings.PipeSegment GetOrCreatePipeSegment(System.Int32 index)
+  method private System.Boolean IsEndSegment(System.Int32 index, UnityEngine.Vector3Int gridPosition)
+  method private System.Void DisablePipeSegmentsAfter(System.Int32 index)
+
+=== Timberborn.WaterBuildings.WaterInputPipeCoordinates   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity, Timberborn.EntitySystem.IDeletableEntity, Timberborn.BlockSystem.IPostPlacementChangeListener, Timberborn.EntitySystem.IPostInitializableEntity, Timberborn.WorldPersistence.IPersistentEntity, Timberborn.WaterBuildings.IWaterInputCoordinates, IDuplicable<Timberborn.WaterBuildings.WaterInputPipeCoordinates>, Timberborn.DuplicationSystem.IDuplicable
+  field static Timberborn.BlockSystem.BlockOccupations InvalidOccupations
+  field static Timberborn.WorldPersistence.ComponentKey ComponentKey
+  field static PropertyKey<System.Int32> DepthLimitKey
+  field static PropertyKey<System.Boolean> UseDepthLimitKey
+  field EventHandler<UnityEngine.Vector3Int> CoordinatesChanged
+  field UnityEngine.Vector3Int <Coordinates>k__BackingField
+  field System.Int32 <Depth>k__BackingField
+  field System.Int32 <DepthLimit>k__BackingField
+  field System.Boolean <UseDepthLimit>k__BackingField
+  field Timberborn.TerrainSystem.ITerrainService _terrainService
+  field Timberborn.BlockSystem.IBlockService _blockService
+  field Timberborn.SingletonSystem.EventBus _eventBus
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.WaterBuildings.WaterInputSpec _waterInputSpec
+  field Timberborn.WaterBuildings.WaterInputPipeSpec _waterInputPipeSpec
+  field List<Timberborn.BlockSystem.BlockObject> _blockObjectCache
+  prop UnityEngine.Vector3Int Coordinates {get/set}
+  prop System.Int32 Depth {get/set}
+  prop System.Int32 DepthLimit {get/set}
+  prop System.Boolean UseDepthLimit {get/set}
+  prop System.Boolean IsBlocked {get}
+  event EventHandler<UnityEngine.Vector3Int> CoordinatesChanged
+  method public System.Void add_CoordinatesChanged(EventHandler<UnityEngine.Vector3Int> value)
+  method public System.Void remove_CoordinatesChanged(EventHandler<UnityEngine.Vector3Int> value)
+  method public UnityEngine.Vector3Int get_Coordinates()
+  method private System.Void set_Coordinates(UnityEngine.Vector3Int value)
+  method public System.Int32 get_Depth()
+  method private System.Void set_Depth(System.Int32 value)
+  method public System.Int32 get_DepthLimit()
+  method private System.Void set_DepthLimit(System.Int32 value)
+  method public System.Boolean get_UseDepthLimit()
+  method private System.Void set_UseDepthLimit(System.Boolean value)
+  method public System.Void .ctor(Timberborn.TerrainSystem.ITerrainService terrainService, Timberborn.BlockSystem.IBlockService blockService, Timberborn.SingletonSystem.EventBus eventBus)
+  method public System.Boolean get_IsBlocked()
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method public System.Void PostInitializeEntity()
+  method public System.Void DeleteEntity()
+  method public System.Void Save(Timberborn.WorldPersistence.IEntitySaver entitySaver)
+  method public System.Void Load(Timberborn.WorldPersistence.IEntityLoader entityLoader)
+  method public System.Void DuplicateFrom(Timberborn.WaterBuildings.WaterInputPipeCoordinates source)
+  method public System.Void OnPostPlacementChanged()
+  method public System.Void SetDepthLimit(System.Int32 depth)
+  method public System.Void DisableDepthLimit()
+  method public System.Void OnBlockObjectSetEvent(Timberborn.BlockSystem.BlockObjectSetEvent blockObjectSetEvent)
+  method public System.Void OnBlockObjectUnsetEvent(Timberborn.BlockSystem.BlockObjectUnsetEvent blockObjectUnsetEvent)
+  method private System.Void OnTerrainHeightChanged(System.Object sender, Timberborn.TerrainSystem.TerrainHeightChangeEventArgs terrainHeightChangeEventArgs)
+  method private System.Boolean ShouldUpdate(Timberborn.BlockSystem.PositionedBlocks changedBlocks)
+  method private System.Void UpdateCoordinatesAndDepth()
+  method private System.Int32 GetZCoordinateLimitedByDepth(UnityEngine.Vector3Int startCoordinates)
+  method private System.Boolean IsTileOccupied(UnityEngine.Vector3Int coordinates)
+  method private System.Boolean HasOccupyingObject()
+  method private static System.Void .cctor()
+
+=== Timberborn.WaterBuildings.WaterInputPipeObstructedStatus   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntitySystem.IInitializableEntity
+  field static System.String PipeObstructedLocKey
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.BlockSystem.BlockObject _blockObject
+  field Timberborn.StatusSystem.StatusToggle _statusToggle
+  field Timberborn.WaterBuildings.WaterInputPipeCoordinates _waterInputPipeCoordinates
+  method private System.Void .ctor(Timberborn.Localization.ILoc loc)
+  method public System.Void Awake()
+  method public System.Void InitializeEntity()
+  method private System.Void OnCoordinatesChanged()
+  method private System.Boolean IsWaterInputLimitedToZero()
+  method private static System.Void .cctor()
+  method private System.Void <InitializeEntity>b__7_0(System.Object _, UnityEngine.Vector3Int _)
+
+=== Timberborn.WaterBuildings.WaterInputPipeSegmentCreator   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent
+  field static System.Single[] PipeRotations
+  field Timberborn.PrefabOptimization.OptimizedPrefabInstantiator _optimizedPrefabInstantiator
+  field Timberborn.AssetSystem.IAssetLoader _assetLoader
+  field Timberborn.Common.IRandomNumberGenerator _randomNumberGenerator
+  field Timberborn.Rendering.MaterialColorer _materialColorer
+  field Timberborn.Rendering.EntityMaterials _entityMaterials
+  field UnityEngine.GameObject _prefab
+  field UnityEngine.Transform _parent
+  method public System.Void .ctor(Timberborn.PrefabOptimization.OptimizedPrefabInstantiator optimizedPrefabInstantiator, Timberborn.AssetSystem.IAssetLoader assetLoader, Timberborn.Common.IRandomNumberGenerator randomNumberGenerator, Timberborn.Rendering.MaterialColorer materialColorer)
+  method public System.Void Awake()
+  method public Timberborn.WaterBuildings.PipeSegment CreateFinished()
+  method public Timberborn.WaterBuildings.PipeSegment CreateUnfinished()
+  method private static System.Void .cctor()
+
+=== Timberborn.WaterBuildings.WaterInputPipeSpec   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BlueprintSystem.ComponentSpec
+  interfaces: IEquatable<Timberborn.WaterBuildings.WaterInputPipeSpec>
+  field System.String <PipeSegmentPrefabPath>k__BackingField
+  field System.String <PipeParentName>k__BackingField
+  field System.Int32 <MaxDepth>k__BackingField
+  prop System.Type EqualityContract {get}
+  prop System.String PipeSegmentPrefabPath {get/set}
+  prop System.String PipeParentName {get/set}
+  prop System.Int32 MaxDepth {get/set}
+  method System.Type get_EqualityContract()
+  method public System.String get_PipeSegmentPrefabPath()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_PipeSegmentPrefabPath(System.String value)
+  method public System.String get_PipeParentName()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_PipeParentName(System.String value)
+  method public System.Int32 get_MaxDepth()
+  method public System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) set_MaxDepth(System.Int32 value)
+  method public System.String ToString()
+  method System.Boolean PrintMembers(System.Text.StringBuilder builder)
+  method public static System.Boolean op_Inequality(Timberborn.WaterBuildings.WaterInputPipeSpec left, Timberborn.WaterBuildings.WaterInputPipeSpec right)
+  method public static System.Boolean op_Equality(Timberborn.WaterBuildings.WaterInputPipeSpec left, Timberborn.WaterBuildings.WaterInputPipeSpec right)
+  method public System.Int32 GetHashCode()
+  method public System.Boolean Equals(System.Object obj)
+  method public System.Boolean Equals(Timberborn.BlueprintSystem.ComponentSpec other)
+  method public System.Boolean Equals(Timberborn.WaterBuildings.WaterInputPipeSpec other)
+  method public Timberborn.BlueprintSystem.ComponentSpec <Clone>$()
+  method System.Void .ctor(Timberborn.WaterBuildings.WaterInputPipeSpec original)
+  method public System.Void .ctor()
+
+=== Timberborn.WaterBuildings.WaterInputPipeValidator   [Timberborn.WaterBuildings]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.BlockSystem.IPreviewValidator
+  field static System.String PipeObstructedKey
+  field static ReadOnlyHashSet<Timberborn.BaseComponentSystem.BaseComponent> EmptyHashSet
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.WaterBuildings.WaterInputPipeCoordinates _waterInputPipeCoordinates
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc)
+  method public System.Void Awake()
+  method public System.Boolean IsValid(out ref System.String warningMessage)
+  method public ReadOnlyHashSet<Timberborn.BaseComponentSystem.BaseComponent> InvalidatedObjects(out ref System.String warningMessage)
+  method private static System.Void .cctor()

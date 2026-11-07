@@ -34,21 +34,33 @@
     "art/previews/Intermediate.IronTeeth_anim_f081.png",
     "art/previews/Advanced.Folktails_iso.png",
     "art/previews/Advanced.Folktails_iso50.png",
+    "art/previews/Advanced.Folktails_left_front.png",
+    "art/previews/Advanced.Folktails_right_front.png",
+    "art/previews/Advanced.Folktails_front_window.png",
     "art/previews/Advanced.Folktails_anim_f001.png",
     "art/previews/Advanced.Folktails_anim_f041.png",
     "art/previews/Advanced.Folktails_anim_f081.png",
     "art/previews/Advanced.IronTeeth_iso.png",
     "art/previews/Advanced.IronTeeth_iso50.png",
+    "art/previews/Advanced.IronTeeth_left_front.png",
+    "art/previews/Advanced.IronTeeth_right_front.png",
+    "art/previews/Advanced.IronTeeth_front_window.png",
     "art/previews/Advanced.IronTeeth_anim_f001.png",
     "art/previews/Advanced.IronTeeth_anim_f041.png",
     "art/previews/Advanced.IronTeeth_anim_f081.png",
     "art/previews/Top.Folktails_iso.png",
     "art/previews/Top.Folktails_iso50.png",
+    "art/previews/Top.Folktails_left_front.png",
+    "art/previews/Top.Folktails_right_front.png",
+    "art/previews/Top.Folktails_front_window.png",
     "art/previews/Top.Folktails_anim_f001.png",
     "art/previews/Top.Folktails_anim_f041.png",
     "art/previews/Top.Folktails_anim_f081.png",
     "art/previews/Top.IronTeeth_iso.png",
     "art/previews/Top.IronTeeth_iso50.png",
+    "art/previews/Top.IronTeeth_left_front.png",
+    "art/previews/Top.IronTeeth_right_front.png",
+    "art/previews/Top.IronTeeth_front_window.png",
     "art/previews/Top.IronTeeth_anim_f001.png",
     "art/previews/Top.IronTeeth_anim_f041.png",
     "art/previews/Top.IronTeeth_anim_f081.png",
@@ -147,7 +159,21 @@
   "composites": [
     "art/previews/icons_contact_4x2.png",
     "art/previews/tiers_factions_iso_grid.png",
-    "art/previews/animation_phases_grid.png"
+    "art/previews/animation_phases_grid.png",
+    "art/previews/t11_mk3_mk4_angles_grid.png"
   ],
-  "note": "T10 deliverable B: winding fixed + node animations restored; Mk I/II all-wood"
+  "t11_extra_views": {
+    "Advanced": [
+      "left_front",
+      "right_front",
+      "front_window"
+    ],
+    "Top": [
+      "left_front",
+      "right_front",
+      "front_window"
+    ]
+  },
+  "lighting": "daylight preview: sun 3.7 + fill 520 + sky 0.28/0.33/0.41, exposure 0.30",
+  "note": "T11 interior pass: Mk III/IV internal flywheels/crankshaft/window machinery; winding fix + animations + all-wood Mk I/II retained"
 }

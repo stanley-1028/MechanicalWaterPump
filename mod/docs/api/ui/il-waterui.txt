@@ -1,0 +1,435 @@
+
+=== Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator::Configure   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.FillValveMarker>()
+  IL_0006: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_000b: pop
+  IL_000c: ldarg.0
+  IL_000d: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterOutputParticleLength>()
+  IL_0012: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_0017: pop
+  IL_0018: ldarg.0
+  IL_0019: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.FloodedBuildingStatus>()
+  IL_001e: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_0023: pop
+  IL_0024: ldarg.0
+  IL_0025: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.NeedsWaterBuildingStatus>()
+  IL_002a: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_002f: pop
+  IL_0030: ldarg.0
+  IL_0031: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterDirectionPreviewMarker>()
+  IL_0036: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_003b: pop
+  IL_003c: ldarg.0
+  IL_003d: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterBuildingDescriber>()
+  IL_0042: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_0047: pop
+  IL_0048: ldarg.0
+  IL_0049: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterInputPipeSpecDescriber>()
+  IL_004e: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_0053: pop
+  IL_0054: ldarg.0
+  IL_0055: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterOutputParticle>()
+  IL_005a: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_005f: pop
+  IL_0060: ldarg.0
+  IL_0061: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterOutputParticleColorer>()
+  IL_0066: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_006b: pop
+  IL_006c: ldarg.0
+  IL_006d: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.FloodgateFragment>()
+  IL_0072: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_0077: pop
+  IL_0078: ldarg.0
+  IL_0079: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.ThrottlingValveFragment>()
+  IL_007e: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_0083: pop
+  IL_0084: ldarg.0
+  IL_0085: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.ThrottlingValveDebugFragment>()
+  IL_008a: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_008f: pop
+  IL_0090: ldarg.0
+  IL_0091: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.FillValveFragment>()
+  IL_0096: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_009b: pop
+  IL_009c: ldarg.0
+  IL_009d: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.StreamGaugeFragment>()
+  IL_00a2: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_00a7: pop
+  IL_00a8: ldarg.0
+  IL_00a9: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterMoverToggleFactory>()
+  IL_00ae: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_00b3: pop
+  IL_00b4: ldarg.0
+  IL_00b5: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterMoverFragment>()
+  IL_00ba: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_00bf: pop
+  IL_00c0: ldarg.0
+  IL_00c1: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment>()
+  IL_00c6: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_00cb: pop
+  IL_00cc: ldarg.0
+  IL_00cd: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.WaterBuildingsUI.WaterOutputParticleColors>()
+  IL_00d2: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_00d7: pop
+  IL_00d8: ldarg.0
+  IL_00d9: call Bindito.Core.IMultiBindingBuilder`1<!!0> Bindito.Core.Configurator::MultiBind<Timberborn.TemplateInstantiation.TemplateModule>()
+  IL_00de: ldnull
+  IL_00df: ldftn Timberborn.TemplateInstantiation.TemplateModule Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator::ProvideTemplateModule()
+  IL_00e5: newobj System.Void System.Func`1<Timberborn.TemplateInstantiation.TemplateModule>::.ctor(System.Object,System.IntPtr)
+  IL_00ea: callvirt Bindito.Core.IScopeAssignee Bindito.Core.IBindingBuilder`1<Timberborn.TemplateInstantiation.TemplateModule>::ToProvider(System.Func`1<!0>)
+  IL_00ef: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_00f4: pop
+  IL_00f5: ldarg.0
+  IL_00f6: call Bindito.Core.IMultiBindingBuilder`1<!!0> Bindito.Core.Configurator::MultiBind<Timberborn.EntityPanelSystem.EntityPanelModule>()
+  IL_00fb: callvirt Bindito.Core.IScopeAssignee Bindito.Core.IBindingBuilder`1<Timberborn.EntityPanelSystem.EntityPanelModule>::ToProvider<Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider>()
+  IL_0100: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_0105: pop
+  IL_0106: ret
+
+=== Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator::ProvideTemplateModule   [Timberborn.WaterBuildingsUI]
+  IL_0000: newobj System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FloodableBuilding,Timberborn.WaterBuildingsUI.FloodedBuildingStatus>()
+  IL_000b: dup
+  IL_000c: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.IWaterNeedingBuilding,Timberborn.WaterBuildingsUI.NeedsWaterBuildingStatus>()
+  IL_0011: dup
+  IL_0012: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.IWaterNeedingBuilding,Timberborn.WaterBuildingsUI.WaterBuildingDescriber>()
+  IL_0017: dup
+  IL_0018: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInput,Timberborn.WaterBuildingsUI.WaterBuildingDescriber>()
+  IL_001d: dup
+  IL_001e: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterInputPipeSpec,Timberborn.WaterBuildingsUI.WaterInputPipeSpecDescriber>()
+  IL_0023: dup
+  IL_0024: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.StreamGauge,Timberborn.WaterBuildingsUI.WaterBuildingDescriber>()
+  IL_0029: dup
+  IL_002a: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.WaterWheelSpec,Timberborn.WaterBuildingsUI.WaterBuildingDescriber>()
+  IL_002f: dup
+  IL_0030: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildingsUI.WaterOutputParticleSpec,Timberborn.WaterBuildingsUI.WaterOutputParticle>()
+  IL_0035: dup
+  IL_0036: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildingsUI.WaterOutputParticle,Timberborn.WaterBuildingsUI.WaterOutputParticleColorer>()
+  IL_003b: dup
+  IL_003c: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildingsUI.WaterOutputParticle,Timberborn.WaterBuildingsUI.WaterOutputParticleLength>()
+  IL_0041: dup
+  IL_0042: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.ThrottlingValve,Timberborn.WaterBuildingsUI.WaterDirectionPreviewMarker>()
+  IL_0047: dup
+  IL_0048: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FillValve,Timberborn.WaterBuildingsUI.WaterDirectionPreviewMarker>()
+  IL_004d: dup
+  IL_004e: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.WaterBuildings.FillValve,Timberborn.WaterBuildingsUI.FillValveMarker>()
+  IL_0053: callvirt Timberborn.TemplateInstantiation.TemplateModule Timberborn.TemplateInstantiation.TemplateModule/Builder::Build()
+  IL_0058: ret
+
+=== Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator::.ctor   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Bindito.Core.Configurator::.ctor()
+  IL_0006: ret
+
+=== Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.WaterBuildingsUI.FloodgateFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_floodgateFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.WaterBuildingsUI.ThrottlingValveFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_throttlingValveFragment
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.WaterBuildingsUI.ThrottlingValveDebugFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_throttlingValveDebugFragment
+  IL_001b: ldarg.0
+  IL_001c: ldarg.s fillValveFragment
+  IL_001e: stfld Timberborn.WaterBuildingsUI.FillValveFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_fillValveFragment
+  IL_0023: ldarg.0
+  IL_0024: ldarg.s streamGaugeFragment
+  IL_0026: stfld Timberborn.WaterBuildingsUI.StreamGaugeFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_streamGaugeFragment
+  IL_002b: ldarg.0
+  IL_002c: ldarg.s waterMoverFragment
+  IL_002e: stfld Timberborn.WaterBuildingsUI.WaterMoverFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_waterMoverFragment
+  IL_0033: ldarg.0
+  IL_0034: ldarg.s waterInputPipeDepthFragment
+  IL_0036: stfld Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_waterInputPipeDepthFragment
+  IL_003b: ret
+
+=== Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.WaterBuildingsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.WaterBuildingsUI.FloodgateFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_floodgateFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.WaterBuildingsUI.ThrottlingValveFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_throttlingValveFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: dup
+  IL_0020: ldarg.0
+  IL_0021: ldfld Timberborn.WaterBuildingsUI.ThrottlingValveDebugFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_throttlingValveDebugFragment
+  IL_0026: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_002b: dup
+  IL_002c: ldarg.0
+  IL_002d: ldfld Timberborn.WaterBuildingsUI.FillValveFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_fillValveFragment
+  IL_0032: ldc.i4.0
+  IL_0033: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0038: dup
+  IL_0039: ldarg.0
+  IL_003a: ldfld Timberborn.WaterBuildingsUI.StreamGaugeFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_streamGaugeFragment
+  IL_003f: ldc.i4.0
+  IL_0040: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0045: dup
+  IL_0046: ldarg.0
+  IL_0047: ldfld Timberborn.WaterBuildingsUI.WaterMoverFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_waterMoverFragment
+  IL_004c: ldc.i4.0
+  IL_004d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0052: dup
+  IL_0053: ldarg.0
+  IL_0054: ldfld Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_waterInputPipeDepthFragment
+  IL_0059: ldc.i4.0
+  IL_005a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_005f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0064: ret
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::.ctor   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldstr "WaterInputCoordinates.Depth"
+  IL_0006: call Timberborn.Localization.Phrase Timberborn.Localization.Phrase::New(System.String)
+  IL_000b: ldnull
+  IL_000c: call Timberborn.Localization.Phrase Timberborn.UIFormatters.UnitFormatter::FormatDistance<System.Int32>(Timberborn.Localization.Phrase,System.String)
+  IL_0011: stfld Timberborn.Localization.Phrase Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_limitPhrase
+  IL_0016: ldarg.0
+  IL_0017: ldstr "WaterInputCoordinates.Limit"
+  IL_001c: call Timberborn.Localization.Phrase Timberborn.Localization.Phrase::New(System.String)
+  IL_0021: ldnull
+  IL_0022: call Timberborn.Localization.Phrase Timberborn.UIFormatters.UnitFormatter::FormatDistance<System.Int32>(Timberborn.Localization.Phrase,System.String)
+  IL_0027: stfld Timberborn.Localization.Phrase Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_depthPhrase
+  IL_002c: ldarg.0
+  IL_002d: call System.Void System.Object::.ctor()
+  IL_0032: ldarg.0
+  IL_0033: ldarg.1
+  IL_0034: stfld Timberborn.CoreUI.VisualElementLoader Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_visualElementLoader
+  IL_0039: ldarg.0
+  IL_003a: ldarg.2
+  IL_003b: stfld Timberborn.Localization.ILoc Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_loc
+  IL_0040: ret
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::InitializeFragment   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldstr "Game/EntityPanel/WaterInputDepthFragment"
+  IL_0005: stloc.0
+  IL_0006: ldarg.0
+  IL_0007: ldarg.0
+  IL_0008: ldfld Timberborn.CoreUI.VisualElementLoader Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_visualElementLoader
+  IL_000d: ldloc.0
+  IL_000e: callvirt UnityEngine.UIElements.VisualElement Timberborn.CoreUI.VisualElementLoader::LoadVisualElement(System.String)
+  IL_0013: stfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_0018: ldarg.0
+  IL_0019: ldfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_001e: ldc.i4.0
+  IL_001f: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_0024: ldarg.0
+  IL_0025: ldarg.0
+  IL_0026: ldfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_002b: ldstr "Depth"
+  IL_0030: ldnull
+  IL_0031: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Label>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0036: stfld UnityEngine.UIElements.Label Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_depth
+  IL_003b: ldarg.0
+  IL_003c: ldarg.0
+  IL_003d: ldfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_0042: ldstr "Limit"
+  IL_0047: ldnull
+  IL_0048: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Label>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_004d: stfld UnityEngine.UIElements.Label Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_limit
+  IL_0052: ldarg.0
+  IL_0053: ldarg.0
+  IL_0054: ldfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_0059: ldstr "IncreaseDepth"
+  IL_005e: ldnull
+  IL_005f: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Button>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0064: stfld UnityEngine.UIElements.Button Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_increaseDepth
+  IL_0069: ldarg.0
+  IL_006a: ldfld UnityEngine.UIElements.Button Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_increaseDepth
+  IL_006f: ldarg.0
+  IL_0070: ldftn System.Void Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::IncreaseDepth(UnityEngine.UIElements.ClickEvent)
+  IL_0076: newobj System.Void UnityEngine.UIElements.EventCallback`1<UnityEngine.UIElements.ClickEvent>::.ctor(System.Object,System.IntPtr)
+  IL_007b: ldc.i4.0
+  IL_007c: callvirt System.Void UnityEngine.UIElements.CallbackEventHandler::RegisterCallback<UnityEngine.UIElements.ClickEvent>(UnityEngine.UIElements.EventCallback`1<!!0>,UnityEngine.UIElements.TrickleDown)
+  IL_0081: ldarg.0
+  IL_0082: ldarg.0
+  IL_0083: ldfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_0088: ldstr "DecreaseDepth"
+  IL_008d: ldnull
+  IL_008e: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Button>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0093: stfld UnityEngine.UIElements.Button Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_decreaseDepth
+  IL_0098: ldarg.0
+  IL_0099: ldfld UnityEngine.UIElements.Button Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_decreaseDepth
+  IL_009e: ldarg.0
+  IL_009f: ldftn System.Void Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::DecreaseDepth(UnityEngine.UIElements.ClickEvent)
+  IL_00a5: newobj System.Void UnityEngine.UIElements.EventCallback`1<UnityEngine.UIElements.ClickEvent>::.ctor(System.Object,System.IntPtr)
+  IL_00aa: ldc.i4.0
+  IL_00ab: callvirt System.Void UnityEngine.UIElements.CallbackEventHandler::RegisterCallback<UnityEngine.UIElements.ClickEvent>(UnityEngine.UIElements.EventCallback`1<!!0>,UnityEngine.UIElements.TrickleDown)
+  IL_00b0: ldarg.0
+  IL_00b1: ldarg.0
+  IL_00b2: ldfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_00b7: ldstr "UseDepthLimit"
+  IL_00bc: ldnull
+  IL_00bd: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Toggle>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_00c2: stfld UnityEngine.UIElements.Toggle Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_useDepthLimit
+  IL_00c7: ldarg.0
+  IL_00c8: ldfld UnityEngine.UIElements.Toggle Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_useDepthLimit
+  IL_00cd: ldarg.0
+  IL_00ce: ldftn System.Void Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::ToggleDepthLimit(UnityEngine.UIElements.ClickEvent)
+  IL_00d4: newobj System.Void UnityEngine.UIElements.EventCallback`1<UnityEngine.UIElements.ClickEvent>::.ctor(System.Object,System.IntPtr)
+  IL_00d9: ldc.i4.0
+  IL_00da: callvirt System.Void UnityEngine.UIElements.CallbackEventHandler::RegisterCallback<UnityEngine.UIElements.ClickEvent>(UnityEngine.UIElements.EventCallback`1<!!0>,UnityEngine.UIElements.TrickleDown)
+  IL_00df: ldarg.0
+  IL_00e0: ldfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_00e5: ret
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::ShowFragment   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.1
+  IL_0002: callvirt !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.WaterBuildings.WaterInputPipeSpec>()
+  IL_0007: stfld Timberborn.WaterBuildings.WaterInputPipeSpec Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeSpec
+  IL_000c: ldarg.0
+  IL_000d: ldfld Timberborn.WaterBuildings.WaterInputPipeSpec Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeSpec
+  IL_0012: ldnull
+  IL_0013: call System.Boolean Timberborn.WaterBuildings.WaterInputPipeSpec::op_Inequality(Timberborn.WaterBuildings.WaterInputPipeSpec,Timberborn.WaterBuildings.WaterInputPipeSpec)
+  IL_0018: brfalse.s IL_0032
+  IL_001a: ldarg.0
+  IL_001b: ldarg.1
+  IL_001c: callvirt !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.WaterBuildings.WaterInputPipeCoordinates>()
+  IL_0021: stfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0026: ldarg.0
+  IL_0027: ldfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_002c: ldc.i4.1
+  IL_002d: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_0032: ret
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::ClearFragment   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldnull
+  IL_0002: stfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0007: ldarg.0
+  IL_0008: ldnull
+  IL_0009: stfld Timberborn.WaterBuildings.WaterInputPipeSpec Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeSpec
+  IL_000e: ldarg.0
+  IL_000f: ldfld UnityEngine.UIElements.VisualElement Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_root
+  IL_0014: ldc.i4.0
+  IL_0015: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_001a: ret
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::UpdateFragment   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterBuildings.WaterInputPipeSpec Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeSpec
+  IL_0006: ldnull
+  IL_0007: call System.Boolean Timberborn.WaterBuildings.WaterInputPipeSpec::op_Inequality(Timberborn.WaterBuildings.WaterInputPipeSpec,Timberborn.WaterBuildings.WaterInputPipeSpec)
+  IL_000c: brfalse IL_00c3
+  IL_0011: ldarg.0
+  IL_0012: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0017: callvirt System.Boolean Timberborn.WaterBuildings.WaterInputPipeCoordinates::get_UseDepthLimit()
+  IL_001c: stloc.0
+  IL_001d: ldarg.0
+  IL_001e: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0023: callvirt System.Int32 Timberborn.WaterBuildings.WaterInputPipeCoordinates::get_DepthLimit()
+  IL_0028: stloc.1
+  IL_0029: ldarg.0
+  IL_002a: ldfld UnityEngine.UIElements.Button Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_increaseDepth
+  IL_002f: ldloc.0
+  IL_0030: brfalse.s IL_0042
+  IL_0032: ldloc.1
+  IL_0033: ldarg.0
+  IL_0034: ldfld Timberborn.WaterBuildings.WaterInputPipeSpec Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeSpec
+  IL_0039: callvirt System.Int32 Timberborn.WaterBuildings.WaterInputPipeSpec::get_MaxDepth()
+  IL_003e: clt
+  IL_0040: br.s IL_0043
+  IL_0042: ldc.i4.0
+  IL_0043: callvirt System.Void UnityEngine.UIElements.VisualElement::SetEnabled(System.Boolean)
+  IL_0048: ldarg.0
+  IL_0049: ldfld UnityEngine.UIElements.Button Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_decreaseDepth
+  IL_004e: ldloc.0
+  IL_004f: brfalse.s IL_0057
+  IL_0051: ldloc.1
+  IL_0052: ldc.i4.0
+  IL_0053: cgt
+  IL_0055: br.s IL_0058
+  IL_0057: ldc.i4.0
+  IL_0058: callvirt System.Void UnityEngine.UIElements.VisualElement::SetEnabled(System.Boolean)
+  IL_005d: ldarg.0
+  IL_005e: ldfld UnityEngine.UIElements.Label Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_limit
+  IL_0063: ldloc.0
+  IL_0064: callvirt System.Void UnityEngine.UIElements.VisualElement::SetEnabled(System.Boolean)
+  IL_0069: ldarg.0
+  IL_006a: ldfld UnityEngine.UIElements.Label Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_limit
+  IL_006f: ldarg.0
+  IL_0070: ldfld Timberborn.Localization.ILoc Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_loc
+  IL_0075: ldarg.0
+  IL_0076: ldfld Timberborn.Localization.Phrase Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_limitPhrase
+  IL_007b: ldarg.0
+  IL_007c: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0081: callvirt System.Int32 Timberborn.WaterBuildings.WaterInputPipeCoordinates::get_DepthLimit()
+  IL_0086: callvirt System.String Timberborn.Localization.ILoc::T<System.Int32>(Timberborn.Localization.Phrase,!!0)
+  IL_008b: callvirt System.Void UnityEngine.UIElements.TextElement::set_text(System.String)
+  IL_0090: ldarg.0
+  IL_0091: ldfld UnityEngine.UIElements.Label Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_depth
+  IL_0096: ldarg.0
+  IL_0097: ldfld Timberborn.Localization.ILoc Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_loc
+  IL_009c: ldarg.0
+  IL_009d: ldfld Timberborn.Localization.Phrase Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_depthPhrase
+  IL_00a2: ldarg.0
+  IL_00a3: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_00a8: callvirt System.Int32 Timberborn.WaterBuildings.WaterInputPipeCoordinates::get_Depth()
+  IL_00ad: callvirt System.String Timberborn.Localization.ILoc::T<System.Int32>(Timberborn.Localization.Phrase,!!0)
+  IL_00b2: callvirt System.Void UnityEngine.UIElements.TextElement::set_text(System.String)
+  IL_00b7: ldarg.0
+  IL_00b8: ldfld UnityEngine.UIElements.Toggle Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_useDepthLimit
+  IL_00bd: ldloc.0
+  IL_00be: callvirt System.Void UnityEngine.UIElements.BaseField`1<System.Boolean>::SetValueWithoutNotify(!0)
+  IL_00c3: ret
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::IncreaseDepth   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterBuildings.WaterInputPipeSpec Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeSpec
+  IL_0006: callvirt System.Int32 Timberborn.WaterBuildings.WaterInputPipeSpec::get_MaxDepth()
+  IL_000b: ldarg.0
+  IL_000c: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0011: callvirt System.Int32 Timberborn.WaterBuildings.WaterInputPipeCoordinates::get_DepthLimit()
+  IL_0016: ldc.i4.1
+  IL_0017: add
+  IL_0018: call System.Int32 System.Math::Min(System.Int32,System.Int32)
+  IL_001d: stloc.0
+  IL_001e: ldarg.0
+  IL_001f: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0024: ldloc.0
+  IL_0025: callvirt System.Void Timberborn.WaterBuildings.WaterInputPipeCoordinates::SetDepthLimit(System.Int32)
+  IL_002a: ret
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::DecreaseDepth   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldc.i4.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0007: callvirt System.Int32 Timberborn.WaterBuildings.WaterInputPipeCoordinates::get_DepthLimit()
+  IL_000c: ldc.i4.1
+  IL_000d: sub
+  IL_000e: call System.Int32 System.Math::Max(System.Int32,System.Int32)
+  IL_0013: stloc.0
+  IL_0014: ldarg.0
+  IL_0015: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_001a: ldloc.0
+  IL_001b: callvirt System.Void Timberborn.WaterBuildings.WaterInputPipeCoordinates::SetDepthLimit(System.Int32)
+  IL_0020: ret
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::ToggleDepthLimit   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0006: callvirt System.Boolean Timberborn.WaterBuildings.WaterInputPipeCoordinates::get_UseDepthLimit()
+  IL_000b: brfalse.s IL_0019
+  IL_000d: ldarg.0
+  IL_000e: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0013: callvirt System.Void Timberborn.WaterBuildings.WaterInputPipeCoordinates::DisableDepthLimit()
+  IL_0018: ret
+  IL_0019: ldarg.0
+  IL_001a: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_001f: ldarg.0
+  IL_0020: ldfld Timberborn.WaterBuildings.WaterInputPipeCoordinates Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment::_waterInputPipeCoordinates
+  IL_0025: callvirt System.Int32 Timberborn.WaterBuildings.WaterInputPipeCoordinates::get_Depth()
+  IL_002a: callvirt System.Void Timberborn.WaterBuildings.WaterInputPipeCoordinates::SetDepthLimit(System.Int32)
+  IL_002f: ret

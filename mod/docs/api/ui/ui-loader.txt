@@ -1,0 +1,12 @@
+# member dump for Timberborn\.CoreUI\.VisualElementLoader$
+
+=== Timberborn.CoreUI.VisualElementLoader   [Timberborn.CoreUI]
+  kind: class   base: System.Object
+  field static System.String ViewsDirectory
+  field Timberborn.AssetSystem.IAssetLoader _assetLoader
+  field Timberborn.CoreUI.VisualElementInitializer _visualElementInitializer
+  method public System.Void .ctor(Timberborn.AssetSystem.IAssetLoader assetLoader, Timberborn.CoreUI.VisualElementInitializer visualElementInitializer)
+  method public UnityEngine.UIElements.VisualElement LoadVisualElement(System.String elementName)
+  method public UnityEngine.UIElements.VisualTreeAsset LoadVisualTreeAsset(System.String elementName)
+  method private UnityEngine.UIElements.VisualElement LoadVisualElement(UnityEngine.UIElements.VisualTreeAsset visualTreeAsset)
+  method private static System.Void .cctor()

@@ -74,8 +74,30 @@ def animation_phases_grid():
     return target
 
 
+def t11_interior_grid():
+    """Mk III / Mk IV interior pass: 4 variants x {left_front, right_front,
+    front_window, iso50} day-light views."""
+    variants = [("Advanced", "Folktails"), ("Advanced", "IronTeeth"),
+                ("Top", "Folktails"), ("Top", "IronTeeth")]
+    views = ["left_front", "right_front", "front_window", "iso50"]
+    background = Image.new("RGB", (len(views) * CELL, len(variants) * CELL),
+                           (38, 41, 46))
+    for row, (tier, faction) in enumerate(variants):
+        for column, view in enumerate(views):
+            path = os.path.join(PREVIEWS, "%s.%s_%s.png" % (tier, faction, view))
+            if not os.path.isfile(path):
+                raise FileNotFoundError(path)
+            background.paste(cell(path), (column * CELL, row * CELL))
+    target = os.path.join(PREVIEWS, "t11_mk3_mk4_angles_grid.png")
+    background.save(target)
+    return target
+
+
 def main():
-    for producer in (icons_contact, tiers_factions_grid, animation_phases_grid):
+    producers = [icons_contact, tiers_factions_grid, animation_phases_grid]
+    if os.path.isfile(os.path.join(PREVIEWS, "Advanced.Folktails_left_front.png")):
+        producers.append(t11_interior_grid)
+    for producer in producers:
         path = producer()
         print("wrote %s" % os.path.relpath(path, os.path.dirname(HERE)))
 

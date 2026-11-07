@@ -46,6 +46,13 @@
       <HintPath>$(TimberbornManagedDir)\Timberborn.EntityNaming.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <!-- Native inventory entity-panel fragment enabler: the UI configurator decorates the pump
+         template with SimpleOutputInventoryFragmentEnabler, the same way the vanilla
+         SimpleOutputBuildingsUI/FieldsUI configurators do for their buildings. -->
+    <Reference Include="Timberborn.SimpleOutputBuildingsUI">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.SimpleOutputBuildingsUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
 
 </Project>

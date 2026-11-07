@@ -1,0 +1,49 @@
+
+=== Timberborn.CoreUI.VisualElementLoader::.ctor   [Timberborn.CoreUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.AssetSystem.IAssetLoader Timberborn.CoreUI.VisualElementLoader::_assetLoader
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.CoreUI.VisualElementInitializer Timberborn.CoreUI.VisualElementLoader::_visualElementInitializer
+  IL_0014: ret
+
+=== Timberborn.CoreUI.VisualElementLoader::LoadVisualElement   [Timberborn.CoreUI]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldarg.1
+  IL_0003: call UnityEngine.UIElements.VisualTreeAsset Timberborn.CoreUI.VisualElementLoader::LoadVisualTreeAsset(System.String)
+  IL_0008: call UnityEngine.UIElements.VisualElement Timberborn.CoreUI.VisualElementLoader::LoadVisualElement(UnityEngine.UIElements.VisualTreeAsset)
+  IL_000d: ret
+
+=== Timberborn.CoreUI.VisualElementLoader::LoadVisualTreeAsset   [Timberborn.CoreUI]
+  IL_0000: ldsfld System.String Timberborn.CoreUI.VisualElementLoader::ViewsDirectory
+  IL_0005: ldstr "/"
+  IL_000a: ldarg.1
+  IL_000b: call System.String System.String::Concat(System.String,System.String,System.String)
+  IL_0010: stloc.0
+  IL_0011: ldarg.0
+  IL_0012: ldfld Timberborn.AssetSystem.IAssetLoader Timberborn.CoreUI.VisualElementLoader::_assetLoader
+  IL_0017: ldloc.0
+  IL_0018: callvirt !!0 Timberborn.AssetSystem.IAssetLoader::Load<UnityEngine.UIElements.VisualTreeAsset>(System.String)
+  IL_001d: ret
+
+=== Timberborn.CoreUI.VisualElementLoader::LoadVisualElement   [Timberborn.CoreUI]
+  IL_0000: ldarg.1
+  IL_0001: callvirt UnityEngine.UIElements.TemplateContainer UnityEngine.UIElements.VisualTreeAsset::CloneTree()
+  IL_0006: ldc.i4.0
+  IL_0007: callvirt UnityEngine.UIElements.VisualElement UnityEngine.UIElements.VisualElement::ElementAt(System.Int32)
+  IL_000c: stloc.0
+  IL_000d: ldarg.0
+  IL_000e: ldfld Timberborn.CoreUI.VisualElementInitializer Timberborn.CoreUI.VisualElementLoader::_visualElementInitializer
+  IL_0013: ldloc.0
+  IL_0014: callvirt System.Void Timberborn.CoreUI.VisualElementInitializer::InitializeVisualElement(UnityEngine.UIElements.VisualElement)
+  IL_0019: ldloc.0
+  IL_001a: ret
+
+=== Timberborn.CoreUI.VisualElementLoader::.cctor   [Timberborn.CoreUI]
+  IL_0000: ldstr "UI/Views"
+  IL_0005: stsfld System.String Timberborn.CoreUI.VisualElementLoader::ViewsDirectory
+  IL_000a: ret

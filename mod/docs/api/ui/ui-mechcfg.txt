@@ -1,0 +1,17 @@
+# member dump for Timberborn\.MechanicalSystemUI\.MechanicalSystemUIConfigurator.*
+
+=== Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator   [Timberborn.MechanicalSystemUI]
+  kind: class   base: Bindito.Core.Configurator
+  [type attr] Bindito.Core.ContextAttribute
+  method System.Void Configure()
+  method private static Timberborn.TemplateInstantiation.TemplateModule ProvideTemplateModule()
+  method public System.Void .ctor()
+  nested Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator+.EntityPanelModuleProvider
+
+=== Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator+.EntityPanelModuleProvider   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: IProvider<Timberborn.EntityPanelSystem.EntityPanelModule>
+  field Timberborn.MechanicalSystemUI.MechanicalNodeFragment _mechanicalNodeFragment
+  field Timberborn.MechanicalSystemUI.BatteryFragment _batteryFragment
+  method public System.Void .ctor(Timberborn.MechanicalSystemUI.MechanicalNodeFragment mechanicalNodeFragment, Timberborn.MechanicalSystemUI.BatteryFragment batteryFragment)
+  method public Timberborn.EntityPanelSystem.EntityPanelModule Get()

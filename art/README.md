@@ -4,6 +4,25 @@
 取代 `mod/docs/ART_PLACEHOLDER.md` 記錄的「暫代原版模型」。所有輸出都是**離線產生**，
 **未在遊戲中驗證**（本輪沒有部署、沒有啟動 Timberborn）。
 
+**T11 內裝密度強化（2026-11-07，Mk III / Mk IV）**：
+* 使用者實機回饋「Mk III/IV 內部像空箱」→ 這一輪把機械**移進開放框架內**：
+  * Mk III：左右各一組**內部飛輪**（含貫穿傳動軸，同一個 `#AnimatedFlywheel` 節點）、
+    左右兩組頭部皮帶輪、**曲軸＋3 支往復連桿**、3 支活塞、貫穿窗後的傳動軸；
+    玻璃檢視窗改為**開放式框架窗**（上緣保留玻璃 strip），窗後直接看得到傳動軸、
+    壓力錶、閥門手輪、銅管、小儲水罐；暗木背板（BaseWood_Brown / DarkBrown）＋
+    亮金屬（BaseMetal / Details）提高日夜對比。
+  * Mk IV：左右兩組內部飛輪＋傳動軸、雙頭部皮帶輪、前下方曲軸、窗後傳動軸＋雙壓力錶、
+    兩支擺動連桿、兩支活塞、**兩個會旋轉的閥門手輪**、內部冷卻散熱片、雙管與歧管、
+    暗木背板＋亮金屬；移除正面中央立柱避免擋住檢視窗。
+* **新增動畫型別 `oscillation`**（連桿/擺臂）：`angle(t)=amplitude*sin(2π(cycles*t+phase))`，
+  與 rotation/translation 一樣整數週期、首尾同值；`mwp_scene.py`、匯出器、validator
+  C12/C15/C16 都已支援（C16 對「薄板/連桿」以最薄軸判定旋轉軸）。
+* Mk III **6,020 tris / 2 個陣營**、Mk IV **5,484 tris**（≤8k 目標）；每檔 10 個 `#Animated*`
+  節點、不 merge；winding 修正（單次 reverse_faces、signed volume>0）與 C15/C16/C17 保留。
+* 預覽新增**白天光照**多角度：`iso`、`left_front`（與使用者截圖同側）、`right_front`、
+  `front_window`（正面看進窗內）、`iso50`、3 個動畫相位。
+* validator 仍全 PASS（322 checks）。
+
 **T10 修正（2026-11-07，交付 A 靜態診斷版 + 交付 B 動畫修復版）**：
 * **根因：winding / 法線內外翻**（T9 regression）。T9 把 mesh 建構搬進 `mwp_scene.py`
   時掉了 T6 exporter 的「單次 `reverse_faces`」；官方插件會透過 det=-1 的反射映射再
@@ -110,8 +129,8 @@ X=寬、Y=高（向上）、Z=深；**正面（出水/取貨）在 Z=0、進水�
 |---|---|---|
 | Basic | Flywheel / HeadPulley / HeadShaft / DriveShaft / Piston | 飛輪 2 圈、頭部皮帶輪＋軸 8 圈、傳動軸 2 圈、活塞 4 往復 |
 | Intermediate | Flywheel / HeadPulley / GearboxGear / GearboxPinion / DriveShaft / Piston | 飛輪 2 圈、齒輪 4 圈／反向 4 圈、皮帶輪 6 圈、傳動軸 2 圈、雙缸活塞 4 往復 |
-| Advanced | Flywheel / HeadPulley / GearboxGear / DriveShaft / Piston1-3 | 飛輪 2 圈、皮帶輪 6 圈、齒輪反向 4 圈、傳動軸 2 圈、三段活塞 4 往復相位 0/⅓/⅔ |
-| Top | Flywheel / HeadPulley / DriveShaft / Piston1-2 | 飛輪 2 圈、皮帶輪 8 圈、傳動軸 2 圈、雙管活塞 4 往復相位 0/½ |
+| Advanced（T11） | Flywheel / HeadPulley / Crankshaft / WindowShaft / Piston1-3 / Rod1-3 | 左右飛輪＋傳動軸 2 圈、雙皮帶輪 8 圈、曲軸 2 圈、窗後傳動軸 2 圈、三段活塞 4 往復（相位 0/⅓/⅔）、三支連桿擺動（oscillation） |
+| Top（T11） | Flywheel / HeadPulley / Crankshaft / WindowShaft / Piston1-2 / ValveWheel1-2 / Link1-2 | 左右飛輪＋傳動軸 2 圈、雙皮帶輪 8 圈、曲軸 2 圈、窗後傳動軸 2 圈、雙管活塞 4 往復（相位 0/½）、兩個閥門手輪 1 圈（反向）、兩支擺動連桿 |
 
 > 速度：120 frames @ 24 fps = 5 秒一循環；飛輪 2 圈（0.4 rev/s）、小皮帶輪 6–8 圈、
 > 傳動軸 2 圈、活塞 4 往復（每轉 2 行程）。全部為整數圈/週期 → 首尾同值。
@@ -132,8 +151,8 @@ X=寬、Y=高（向上）、Z=深；**正面（出水/取貨）在 Z=0、進水�
 |---|---|---|
 | Mk I（T10 全木） | BaseWood_Brown, BaseWood_LightBrown, IrregularPlanks_Brown | BaseWood_DarkBrown, BaseWood_Grey, IrregularPlanks_MetalForged |
 | Mk II（T10 全木） | BaseWood_LightBrown, BaseWood_Brown, IrregularPlanks_Brown | BaseWood_Grey, BaseWood_DarkBrown, IrregularPlanks_MetalForged |
-| Mk III | BaseWood_LightBrown, BaseMetal, WindowsAtlas, Details | BaseMetal, BaseWood_Grey, WindowsAtlas, IrregularPlanks_MetalForged |
-| Mk IV | IrregularPlanks_Brown, BaseMetal, WindowsAtlas, Details | BaseMetal, IrregularPlanks_MetalForged, Details, WindowsAtlas |
+| Mk III（T11 暗木＋亮金屬） | BaseWood_Brown, BaseMetal, WindowsAtlas, Details | BaseWood_DarkBrown, BaseMetal, WindowsAtlas, Details |
+| Mk IV（T11 暗木＋亮金屬） | BaseWood_Brown, BaseMetal, WindowsAtlas, Details | IrregularPlanks_MetalForged, BaseMetal, WindowsAtlas, Details |
 | ConstructionStage0 | BaseWood_Brown, BaseMetal | BaseWood_DarkBrown, BaseMetal |
 
 **刻意偏離：** `PaintedMetal.*` 完全不用（albedo 是黃/黑、藍/黑警示條紋）；
@@ -193,7 +212,7 @@ C15 逐幀對照來源動畫公式、C16 動作軸 vs 幾何軸、C17 merge 檢�
 C13 `mod/data` 與 `art/timbermesh` 16/16 SHA-256 相同；C14 manifest 覆蓋 16 檔、
 sha256/動畫欄位相符、0 failures。
 
-本輪實跑：**16/16 FILES PASS、322 checks PASS、OVERALL VERDICT: PASS（exit 0）**。
+本輪（T11）實跑：**16/16 FILES PASS、322 checks PASS、OVERALL VERDICT: PASS（exit 0）**。
 
 ## 8. 確定性（本輪實測）
 

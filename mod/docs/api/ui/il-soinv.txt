@@ -1,0 +1,86 @@
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::InitializeFragment   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld Timberborn.CoreUI.VisualElementLoader Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_visualElementLoader
+  IL_0007: ldstr "Game/EntityPanel/SimpleOutputInventoryFragment"
+  IL_000c: callvirt UnityEngine.UIElements.VisualElement Timberborn.CoreUI.VisualElementLoader::LoadVisualElement(System.String)
+  IL_0011: stfld UnityEngine.UIElements.VisualElement Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_root
+  IL_0016: ldarg.0
+  IL_0017: ldfld UnityEngine.UIElements.VisualElement Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_root
+  IL_001c: ldc.i4.0
+  IL_001d: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_0022: ldarg.0
+  IL_0023: ldarg.0
+  IL_0024: ldfld Timberborn.InventorySystemUI.InventoryFragmentBuilderFactory Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_inventoryFragmentBuilderFactory
+  IL_0029: ldarg.0
+  IL_002a: ldfld UnityEngine.UIElements.VisualElement Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_root
+  IL_002f: callvirt Timberborn.InventorySystemUI.InventoryFragment/Builder Timberborn.InventorySystemUI.InventoryFragmentBuilderFactory::CreateBuilder(UnityEngine.UIElements.VisualElement)
+  IL_0034: callvirt Timberborn.InventorySystemUI.InventoryFragment/Builder Timberborn.InventorySystemUI.InventoryFragment/Builder::ShowRowLimit()
+  IL_0039: callvirt Timberborn.InventorySystemUI.InventoryFragment/Builder Timberborn.InventorySystemUI.InventoryFragment/Builder::ShowNoGoodInStockMessage()
+  IL_003e: callvirt Timberborn.InventorySystemUI.InventoryFragment Timberborn.InventorySystemUI.InventoryFragment/Builder::Build()
+  IL_0043: stfld Timberborn.InventorySystemUI.InventoryFragment Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_inventoryFragment
+  IL_0048: ldarg.0
+  IL_0049: ldfld UnityEngine.UIElements.VisualElement Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_root
+  IL_004e: ret
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::ShowFragment   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.1
+  IL_0002: callvirt !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.SimpleOutputBuildings.SimpleOutputInventory>()
+  IL_0007: stfld Timberborn.SimpleOutputBuildings.SimpleOutputInventory Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_simpleOutputInventory
+  IL_000c: ldarg.0
+  IL_000d: ldfld Timberborn.SimpleOutputBuildings.SimpleOutputInventory Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_simpleOutputInventory
+  IL_0012: call System.Boolean Timberborn.BaseComponentSystem.BaseComponent::op_Implicit(Timberborn.BaseComponentSystem.BaseComponent)
+  IL_0017: brfalse.s IL_003d
+  IL_0019: ldarg.1
+  IL_001a: callvirt !!0 Timberborn.BaseComponentSystem.BaseComponent::GetComponent<Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragmentEnabler>()
+  IL_001f: call System.Boolean Timberborn.BaseComponentSystem.BaseComponent::op_Implicit(Timberborn.BaseComponentSystem.BaseComponent)
+  IL_0024: brfalse.s IL_003d
+  IL_0026: ldarg.0
+  IL_0027: ldfld Timberborn.InventorySystemUI.InventoryFragment Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_inventoryFragment
+  IL_002c: ldarg.0
+  IL_002d: ldfld Timberborn.SimpleOutputBuildings.SimpleOutputInventory Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_simpleOutputInventory
+  IL_0032: callvirt Timberborn.InventorySystem.Inventory Timberborn.SimpleOutputBuildings.SimpleOutputInventory::get_Inventory()
+  IL_0037: callvirt System.Void Timberborn.InventorySystemUI.InventoryFragment::ShowFragment(Timberborn.InventorySystem.Inventory)
+  IL_003c: ret
+  IL_003d: ldarg.0
+  IL_003e: ldnull
+  IL_003f: stfld Timberborn.SimpleOutputBuildings.SimpleOutputInventory Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_simpleOutputInventory
+  IL_0044: ret
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::ClearFragment   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldnull
+  IL_0002: stfld Timberborn.SimpleOutputBuildings.SimpleOutputInventory Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_simpleOutputInventory
+  IL_0007: ldarg.0
+  IL_0008: ldfld Timberborn.InventorySystemUI.InventoryFragment Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_inventoryFragment
+  IL_000d: callvirt System.Void Timberborn.InventorySystemUI.InventoryFragment::ClearFragment()
+  IL_0012: ldarg.0
+  IL_0013: ldfld UnityEngine.UIElements.VisualElement Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_root
+  IL_0018: ldc.i4.0
+  IL_0019: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_001e: ret
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::UpdateFragment   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldfld Timberborn.SimpleOutputBuildings.SimpleOutputInventory Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_simpleOutputInventory
+  IL_0006: call System.Boolean Timberborn.BaseComponentSystem.BaseComponent::op_Implicit(Timberborn.BaseComponentSystem.BaseComponent)
+  IL_000b: brfalse.s IL_0032
+  IL_000d: ldarg.0
+  IL_000e: ldfld Timberborn.SimpleOutputBuildings.SimpleOutputInventory Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_simpleOutputInventory
+  IL_0013: callvirt System.Boolean Timberborn.BaseComponentSystem.BaseComponent::get_Enabled()
+  IL_0018: brfalse.s IL_0032
+  IL_001a: ldarg.0
+  IL_001b: ldfld Timberborn.InventorySystemUI.InventoryFragment Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_inventoryFragment
+  IL_0020: callvirt System.Void Timberborn.InventorySystemUI.InventoryFragment::UpdateFragment()
+  IL_0025: ldarg.0
+  IL_0026: ldfld UnityEngine.UIElements.VisualElement Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_root
+  IL_002b: ldc.i4.1
+  IL_002c: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_0031: ret
+  IL_0032: ldarg.0
+  IL_0033: ldfld UnityEngine.UIElements.VisualElement Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::_root
+  IL_0038: ldc.i4.0
+  IL_0039: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_003e: ret

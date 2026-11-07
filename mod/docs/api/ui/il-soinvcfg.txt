@@ -1,0 +1,39 @@
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator::Configure   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragmentEnabler>()
+  IL_0006: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsTransient()
+  IL_000b: pop
+  IL_000c: ldarg.0
+  IL_000d: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment>()
+  IL_0012: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_0017: pop
+  IL_0018: ldarg.0
+  IL_0019: call Bindito.Core.IMultiBindingBuilder`1<!!0> Bindito.Core.Configurator::MultiBind<Timberborn.EntityPanelSystem.EntityPanelModule>()
+  IL_001e: callvirt Bindito.Core.IScopeAssignee Bindito.Core.IBindingBuilder`1<Timberborn.EntityPanelSystem.EntityPanelModule>::ToProvider<Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator/EntityPanelModuleProvider>()
+  IL_0023: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_0028: pop
+  IL_0029: ret
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator::.ctor   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Bindito.Core.Configurator::.ctor()
+  IL_0006: ret
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator/EntityPanelModuleProvider::_simpleOutputInventoryFragment
+  IL_000d: ret
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator/EntityPanelModuleProvider::_simpleOutputInventoryFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret

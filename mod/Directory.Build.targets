@@ -81,6 +81,10 @@
       <HintPath>$(TimberbornManagedDir)\Timberborn.SimpleOutputBuildings.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="Timberborn.SimpleOutputBuildingsUI">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.SimpleOutputBuildingsUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="Timberborn.Goods">
       <HintPath>$(TimberbornManagedDir)\Timberborn.Goods.dll</HintPath>
       <Private>false</Private>
@@ -127,6 +131,16 @@
     </Reference>
     <Reference Include="Timberborn.GameDistricts">
       <HintPath>$(TimberbornManagedDir)\Timberborn.GameDistricts.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Hauling bridge for the worker-free pump: HaulCandidate + EmptyOutputWorkplaceBehavior +
+         SimpleOutputInventoryHaulBehaviorProvider (see MwpGameConfigurator). -->
+    <Reference Include="Timberborn.Emptying">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Emptying.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Hauling">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Hauling.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Bindito.Core">

@@ -335,7 +335,7 @@ def check_contract(spec, stats, data, animations_enabled):
                 problems.append("part %s quaternion track not continuous (dot=%s)"
                                 % (name, summary["min_consecutive_quaternion_dot"]))
             animation = part["animation"]
-            if animation["type"] == "rotation":
+            if animation["type"] in ("rotation", "oscillation"):
                 if not summary["channels"]["rotation"]:
                     problems.append("part %s rotation does not animate" % name)
             else:

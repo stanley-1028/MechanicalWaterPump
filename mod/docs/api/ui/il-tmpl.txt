@@ -1,0 +1,87 @@
+
+=== Timberborn.FieldsUI.FieldsUIConfigurator::Configure   [Timberborn.FieldsUI]
+  IL_0000: ldarg.0
+  IL_0001: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.FieldsUI.FarmHouseFragment>()
+  IL_0006: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_000b: pop
+  IL_000c: ldarg.0
+  IL_000d: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.FieldsUI.FieldsButton>()
+  IL_0012: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_0017: pop
+  IL_0018: ldarg.0
+  IL_0019: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.FieldsUI.FarmHouseToggleFactory>()
+  IL_001e: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_0023: pop
+  IL_0024: ldarg.0
+  IL_0025: call Bindito.Core.ISingleBindingBuilder`1<!!0> Bindito.Core.Configurator::Bind<Timberborn.FieldsUI.FarmHouseBatchControlRowItemFactory>()
+  IL_002a: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_002f: pop
+  IL_0030: ldarg.0
+  IL_0031: call Bindito.Core.IMultiBindingBuilder`1<!!0> Bindito.Core.Configurator::MultiBind<Timberborn.TemplateInstantiation.TemplateModule>()
+  IL_0036: ldnull
+  IL_0037: ldftn Timberborn.TemplateInstantiation.TemplateModule Timberborn.FieldsUI.FieldsUIConfigurator::ProvideTemplateModule()
+  IL_003d: newobj System.Void System.Func`1<Timberborn.TemplateInstantiation.TemplateModule>::.ctor(System.Object,System.IntPtr)
+  IL_0042: callvirt Bindito.Core.IScopeAssignee Bindito.Core.IBindingBuilder`1<Timberborn.TemplateInstantiation.TemplateModule>::ToProvider(System.Func`1<!0>)
+  IL_0047: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_004c: pop
+  IL_004d: ldarg.0
+  IL_004e: call Bindito.Core.IMultiBindingBuilder`1<!!0> Bindito.Core.Configurator::MultiBind<Timberborn.EntityPanelSystem.EntityPanelModule>()
+  IL_0053: callvirt Bindito.Core.IScopeAssignee Bindito.Core.IBindingBuilder`1<Timberborn.EntityPanelSystem.EntityPanelModule>::ToProvider<Timberborn.FieldsUI.FieldsUIConfigurator/EntityPanelModuleProvider>()
+  IL_0058: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_005d: pop
+  IL_005e: ldarg.0
+  IL_005f: call Bindito.Core.IMultiBindingBuilder`1<!!0> Bindito.Core.Configurator::MultiBind<Timberborn.BottomBarSystem.BottomBarModule>()
+  IL_0064: callvirt Bindito.Core.IScopeAssignee Bindito.Core.IBindingBuilder`1<Timberborn.BottomBarSystem.BottomBarModule>::ToProvider<Timberborn.FieldsUI.FieldsUIConfigurator/BottomBarModuleProvider>()
+  IL_0069: callvirt Bindito.Core.IExportAssignee Bindito.Core.IScopeAssignee::AsSingleton()
+  IL_006e: pop
+  IL_006f: ret
+
+=== Timberborn.FieldsUI.FieldsUIConfigurator::ProvideTemplateModule   [Timberborn.FieldsUI]
+  IL_0000: newobj System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.Fields.FarmHouse,Timberborn.YielderFinding.YieldStatus>()
+  IL_000b: dup
+  IL_000c: callvirt System.Void Timberborn.TemplateInstantiation.TemplateModule/Builder::AddDecorator<Timberborn.Fields.FarmHouse,Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragmentEnabler>()
+  IL_0011: callvirt Timberborn.TemplateInstantiation.TemplateModule Timberborn.TemplateInstantiation.TemplateModule/Builder::Build()
+  IL_0016: ret
+
+=== Timberborn.FieldsUI.FieldsUIConfigurator::.ctor   [Timberborn.FieldsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Bindito.Core.Configurator::.ctor()
+  IL_0006: ret
+
+=== Timberborn.FieldsUI.FieldsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.FieldsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.FieldsUI.FarmHouseFragment Timberborn.FieldsUI.FieldsUIConfigurator/EntityPanelModuleProvider::_farmHouseFragment
+  IL_000d: ret
+
+=== Timberborn.FieldsUI.FieldsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.FieldsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.FieldsUI.FarmHouseFragment Timberborn.FieldsUI.FieldsUIConfigurator/EntityPanelModuleProvider::_farmHouseFragment
+  IL_000c: ldc.i4.1
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.FieldsUI.FieldsUIConfigurator+.BottomBarModuleProvider::.ctor   [Timberborn.FieldsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.FieldsUI.FieldsButton Timberborn.FieldsUI.FieldsUIConfigurator/BottomBarModuleProvider::_fieldsButton
+  IL_000d: ret
+
+=== Timberborn.FieldsUI.FieldsUIConfigurator+.BottomBarModuleProvider::Get   [Timberborn.FieldsUI]
+  IL_0000: newobj System.Void Timberborn.BottomBarSystem.BottomBarModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.FieldsUI.FieldsButton Timberborn.FieldsUI.FieldsUIConfigurator/BottomBarModuleProvider::_fieldsButton
+  IL_000c: ldc.i4.s 30
+  IL_000e: callvirt System.Void Timberborn.BottomBarSystem.BottomBarModule/Builder::AddLeftSectionElement(Timberborn.BottomBarSystem.IBottomBarElementsProvider,System.Int32)
+  IL_0013: callvirt Timberborn.BottomBarSystem.BottomBarModule Timberborn.BottomBarSystem.BottomBarModule/Builder::Build()
+  IL_0018: ret

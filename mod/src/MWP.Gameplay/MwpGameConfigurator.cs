@@ -1,6 +1,9 @@
 using Bindito.Core;
 using MWP.Core;
 using MWP.Gameplay.Components;
+using Timberborn.Emptying;
+using Timberborn.Hauling;
+using Timberborn.SimpleOutputBuildings;
 using Timberborn.TemplateInstantiation;
 
 namespace MWP.Gameplay
@@ -49,6 +52,21 @@ namespace MWP.Gameplay
         {
             var builder = new TemplateModule.Builder();
             builder.AddDecorator<MechanicalWaterPumpSpec, MwpPumpController>();
+
+            // Hauling bridge (2026-11-07 fix): a building with a SimpleOutputInventory only gets
+            // haulers if it carries the same decorator set vanilla uses for output buildings
+            // (GathererFlag / FarmHouse / BuilderHub): HaulCandidate + EmptyOutputWorkplaceBehavior
+            // + SimpleOutputInventoryHaulBehaviorProvider. Without it beavers never carry the pump's
+            // water to tanks. Verified with ApiIndex IL:
+            //  - HaulCandidate.Awake collects GetComponents<IHaulBehaviorProvider>(), so the provider
+            //    must be decorated before HaulCandidate;
+            //  - provider.GetWeightedBehaviors needs EmptyOutputWorkplaceBehavior, which is resolved
+            //    with GetComponent in its Awake;
+            //  - HaulingConfigurator adds HaulPrioritizable to every HaulCandidate, and
+            //    BuildingsConfigurator adds BlockableObject to every BuildingSpec (no extra spec needed).
+            builder.AddDecorator<SimpleOutputInventory, EmptyOutputWorkplaceBehavior>();
+            builder.AddDecorator<SimpleOutputInventory, SimpleOutputInventoryHaulBehaviorProvider>();
+            builder.AddDecorator<SimpleOutputInventory, HaulCandidate>();
             return builder.Build();
         }
     }

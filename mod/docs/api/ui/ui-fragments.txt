@@ -1,0 +1,173 @@
+# member dump for Timberborn\.SimpleOutputBuildingsUI\..*, Timberborn\.MechanicalSystemUI\.MechanicalNodeFragment$, Timberborn\.WaterBuildingsUI\..*WaterInput.*, Timberborn\.InventorySystemUI\..*Fragment.*
+
+=== Timberborn.InventorySystemUI.InventoryDebugFragment   [Timberborn.InventorySystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field Timberborn.EntityPanelSystem.DebugFragmentFactory _debugFragmentFactory
+  field Timberborn.Goods.IGoodService _goodService
+  field Timberborn.GoodsUI.GoodDescriber _goodDescriber
+  field Timberborn.InventorySystemUI.ModifyInventoryBox _modifyInventoryBox
+  field UnityEngine.UIElements.Label _text
+  field List<Timberborn.InventorySystem.Inventory> _inventories
+  field System.Text.StringBuilder _description
+  field UnityEngine.UIElements.VisualElement _root
+  method public System.Void .ctor(Timberborn.EntityPanelSystem.DebugFragmentFactory debugFragmentFactory, Timberborn.Goods.IGoodService goodService, Timberborn.GoodsUI.GoodDescriber goodDescriber, Timberborn.InventorySystemUI.ModifyInventoryBox modifyInventoryBox)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method private System.Void OnModifyInventoryButtonClick()
+  method private System.Void UpdateContent()
+  method private System.Void DescribeInventory(Timberborn.InventorySystem.Inventory inventory, System.Text.StringBuilder description)
+  method private System.Void DescribeGood(Timberborn.InventorySystem.Inventory inventory, System.String goodId, System.Text.StringBuilder description)
+  nested Timberborn.InventorySystemUI.InventoryDebugFragment+.<>c
+
+=== Timberborn.InventorySystemUI.InventoryDebugFragment+.<>c   [Timberborn.InventorySystemUI]
+  kind: class   base: System.Object
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field static Timberborn.InventorySystemUI.InventoryDebugFragment+.<>c <>9
+  field static Func<Timberborn.InventorySystem.Inventory, System.Boolean> <>9__13_0
+  method private static System.Void .cctor()
+  method public System.Void .ctor()
+  method System.Boolean <OnModifyInventoryButtonClick>b__13_0(Timberborn.InventorySystem.Inventory inventory)
+
+=== Timberborn.InventorySystemUI.InventoryFragment   [Timberborn.InventorySystemUI]
+  kind: class   base: System.Object
+  field Timberborn.InventorySystemUI.InformationalRowsFactory _informationalRowsFactory
+  field UnityEngine.UIElements.VisualElement _root
+  field UnityEngine.UIElements.ScrollView _rowsRoot
+  field System.Boolean _showEmptyRows
+  field UnityEngine.UIElements.Label _noGoodInStockMessage
+  field System.Boolean _showNoGoodInStockMessage
+  field List<Timberborn.InventorySystemUI.InformationalRow> _rows
+  field Timberborn.InventorySystem.Inventory _inventory
+  field System.Boolean _showRowLimit
+  method private System.Void .ctor(Timberborn.InventorySystemUI.InformationalRowsFactory informationalRowsFactory, UnityEngine.UIElements.VisualElement root, UnityEngine.UIElements.ScrollView rowsRoot, System.Boolean showEmptyRows, System.Boolean showRowLimit, UnityEngine.UIElements.Label noGoodInStockMessage, System.Boolean showNoGoodInStockMessage)
+  method public System.Void ShowFragment(Timberborn.InventorySystem.Inventory inventory)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method private System.Void UpdateInventoryRows()
+  nested Timberborn.InventorySystemUI.InventoryFragment+.Builder
+
+=== Timberborn.InventorySystemUI.InventoryFragment+.Builder   [Timberborn.InventorySystemUI]
+  kind: class   base: System.Object
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.InventorySystemUI.InformationalRowsFactory _informationalRowsFactory
+  field UnityEngine.UIElements.VisualElement _root
+  field System.Boolean _showEmptyRows
+  field System.Boolean _showRowLimit
+  field System.Boolean _showNoGoodInStockMessage
+  field System.String _simpleHeaderLocKey
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.InventorySystemUI.InformationalRowsFactory informationalRowsFactory, UnityEngine.UIElements.VisualElement root)
+  method public Timberborn.InventorySystemUI.InventoryFragment+.Builder ShowEmptyRows()
+  method public Timberborn.InventorySystemUI.InventoryFragment+.Builder ShowRowLimit()
+  method public Timberborn.InventorySystemUI.InventoryFragment+.Builder ShowNoGoodInStockMessage()
+  method public Timberborn.InventorySystemUI.InventoryFragment Build()
+
+=== Timberborn.InventorySystemUI.InventoryFragmentBuilderFactory   [Timberborn.InventorySystemUI]
+  kind: class   base: System.Object
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.InventorySystemUI.InformationalRowsFactory _informationalRowsFactory
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.InventorySystemUI.InformationalRowsFactory informationalRowsFactory)
+  method public Timberborn.InventorySystemUI.InventoryFragment+.Builder CreateBuilder(UnityEngine.UIElements.VisualElement root)
+
+=== Timberborn.MechanicalSystemUI.MechanicalNodeFragment   [Timberborn.MechanicalSystemUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.MechanicalSystemUI.GeneratorFragmentService _generatorFragmentService
+  field Timberborn.MechanicalSystemUI.ConsumerFragmentService _consumerFragmentService
+  field Timberborn.MechanicalSystemUI.NetworkFragmentService _networkFragmentService
+  field UnityEngine.UIElements.VisualElement _root
+  field Timberborn.MechanicalSystem.MechanicalNode _mechanicalNode
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.MechanicalSystemUI.GeneratorFragmentService generatorFragmentService, Timberborn.MechanicalSystemUI.ConsumerFragmentService consumerFragmentService, Timberborn.MechanicalSystemUI.NetworkFragmentService networkFragmentService)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator   [Timberborn.SimpleOutputBuildingsUI]
+  kind: class   base: Bindito.Core.Configurator
+  [type attr] Bindito.Core.ContextAttribute
+  method System.Void Configure()
+  method public System.Void .ctor()
+  nested Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator+.EntityPanelModuleProvider
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator+.EntityPanelModuleProvider   [Timberborn.SimpleOutputBuildingsUI]
+  kind: class   base: System.Object
+  interfaces: IProvider<Timberborn.EntityPanelSystem.EntityPanelModule>
+  field Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment _simpleOutputInventoryFragment
+  method public System.Void .ctor(Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment simpleOutputInventoryFragment)
+  method public Timberborn.EntityPanelSystem.EntityPanelModule Get()
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment   [Timberborn.SimpleOutputBuildingsUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.InventorySystemUI.InventoryFragmentBuilderFactory _inventoryFragmentBuilderFactory
+  field Timberborn.InventorySystemUI.InventoryFragment _inventoryFragment
+  field Timberborn.SimpleOutputBuildings.SimpleOutputInventory _simpleOutputInventory
+  field UnityEngine.UIElements.VisualElement _root
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.InventorySystemUI.InventoryFragmentBuilderFactory inventoryFragmentBuilderFactory)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragmentEnabler   [Timberborn.SimpleOutputBuildingsUI]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  method public System.Void .ctor()
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment   [Timberborn.WaterBuildingsUI]
+  kind: class   base: System.Object
+  interfaces: Timberborn.EntityPanelSystem.IEntityPanelFragment
+  field Timberborn.CoreUI.VisualElementLoader _visualElementLoader
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.WaterBuildings.WaterInputPipeCoordinates _waterInputPipeCoordinates
+  field Timberborn.WaterBuildings.WaterInputPipeSpec _waterInputPipeSpec
+  field UnityEngine.UIElements.VisualElement _root
+  field UnityEngine.UIElements.Label _depth
+  field UnityEngine.UIElements.Label _limit
+  field UnityEngine.UIElements.Button _increaseDepth
+  field UnityEngine.UIElements.Button _decreaseDepth
+  field UnityEngine.UIElements.Toggle _useDepthLimit
+  field Timberborn.Localization.Phrase _limitPhrase
+  field Timberborn.Localization.Phrase _depthPhrase
+  method public System.Void .ctor(Timberborn.CoreUI.VisualElementLoader visualElementLoader, Timberborn.Localization.ILoc loc)
+  method public UnityEngine.UIElements.VisualElement InitializeFragment()
+  method public System.Void ShowFragment(Timberborn.BaseComponentSystem.BaseComponent entity)
+  method public System.Void ClearFragment()
+  method public System.Void UpdateFragment()
+  method private System.Void IncreaseDepth(UnityEngine.UIElements.ClickEvent evt)
+  method private System.Void DecreaseDepth(UnityEngine.UIElements.ClickEvent evt)
+  method private System.Void ToggleDepthLimit(UnityEngine.UIElements.ClickEvent evt)
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeSpecDescriber   [Timberborn.WaterBuildingsUI]
+  kind: class   base: Timberborn.BaseComponentSystem.BaseComponent
+  interfaces: Timberborn.BaseComponentSystem.IAwakableComponent, Timberborn.EntityPanelSystem.IEntityDescriber
+  field Timberborn.Localization.ILoc _loc
+  field Timberborn.WaterBuildings.WaterInputPipeSpec _waterInputPipeSpec
+  field Timberborn.Localization.Phrase _maxDepthPhrase
+  method public System.Void .ctor(Timberborn.Localization.ILoc loc)
+  method public System.Void Awake()
+  method public IEnumerable<Timberborn.EntityPanelSystem.EntityDescription> DescribeEntity()
+  nested Timberborn.WaterBuildingsUI.WaterInputPipeSpecDescriber+.<DescribeEntity>d__5
+
+=== Timberborn.WaterBuildingsUI.WaterInputPipeSpecDescriber+.<DescribeEntity>d__5   [Timberborn.WaterBuildingsUI]
+  kind: class   base: System.Object
+  interfaces: IEnumerable<Timberborn.EntityPanelSystem.EntityDescription>, System.Collections.IEnumerable, IEnumerator<Timberborn.EntityPanelSystem.EntityDescription>, System.Collections.IEnumerator, System.IDisposable
+  [type attr] System.Runtime.CompilerServices.CompilerGeneratedAttribute
+  field System.Int32 <>1__state
+  field Timberborn.EntityPanelSystem.EntityDescription <>2__current
+  field System.Int32 <>l__initialThreadId
+  field Timberborn.WaterBuildingsUI.WaterInputPipeSpecDescriber <>4__this
+  prop Timberborn.EntityPanelSystem.EntityDescription System.Collections.Generic.IEnumerator<Timberborn.EntityPanelSystem.EntityDescription>.Current {get}
+  prop System.Object System.Collections.IEnumerator.Current {get}
+  method public System.Void .ctor(System.Int32 <>1__state)
+  method private System.Void System.IDisposable.Dispose()
+  method private System.Boolean MoveNext()
+  method private Timberborn.EntityPanelSystem.EntityDescription System.Collections.Generic.IEnumerator<Timberborn.EntityPanelSystem.EntityDescription>.get_Current()
+  method private System.Void System.Collections.IEnumerator.Reset()
+  method private System.Object System.Collections.IEnumerator.get_Current()
+  method private IEnumerator<Timberborn.EntityPanelSystem.EntityDescription> System.Collections.Generic.IEnumerable<Timberborn.EntityPanelSystem.EntityDescription>.GetEnumerator()
+  method private System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()

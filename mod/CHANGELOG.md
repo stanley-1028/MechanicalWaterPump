@@ -26,6 +26,19 @@ Mod version `0.2.0`, save schema **2**, config schema **2**.
 - Documentation: `docs/CONTRACT.md`, `docs/API_FACTS_MWP.md`, `docs/ARCHITECTURE.md`,
   `docs/REQ_TRACEABILITY.md`, `docs/VERIFICATION.md`, `docs/ART_PLACEHOLDER.md`.
 
+### Changed (native UI, 2026-11-07)
+- The pump panel is now built from the game's own UI resources instead of code-only inline styles:
+  nine-slice `entity-sub-panel` sections, `entity-panel__text` typography, native `ProgressBar`
+  controls, native nine-slice buttons taken from a vanilla fragment template
+  (`entity-fragment__button`), and the native toggle classes.
+- Rows that vanilla fragments already render are no longer duplicated: mechanical power
+  (`MechanicalNodeFragment`), water stock (`SimpleOutputInventoryFragment`, enabled through the
+  `SimpleOutputInventoryFragmentEnabler` decorator) and intake depth
+  (`WaterInputPipeDepthFragment`). Fallback rows remain only when the component is absent.
+- Fixed the `TextLocalizationWrapper parameter types have changed` log warning: the shared
+  `Unit.HorsePower.NumberAndUnit` key was called with a string while the game formatter calls it
+  with a number; the old power tooltip was removed.
+
 ### Added (visual upgrade, 2026-11-06)
 - **Node animations** on all eight finished pump models: flywheel, head pulley, drive shaft and
   piston child nodes are animated (120 frames @24 fps, seamless loop, 46 animated channels total,
@@ -62,6 +75,15 @@ Mod version `0.2.0`, save schema **2**, config schema **2**.
   every balance spec are unchanged; `gen_blueprints.py` reproduces the layout.
 
 ### Fixed
+- **BUG-04 (2026-11-07, in-game: beavers never hauled the pump water)**: a building with a
+  `SimpleOutputInventory` only becomes a haul destination when it carries the decorator trio
+  vanilla output buildings use (`HaulCandidate` + `EmptyOutputWorkplaceBehavior` +
+  `SimpleOutputInventoryHaulBehaviorProvider`); the mod had none, so hauler AI could not even see
+  the pump inventory. Added the trio to `MwpGameConfigurator.ProvideTemplateModule()`, ordered per
+  IL (`HaulCandidate.Awake` collects `GetComponents<IHaulBehaviorProvider>()`, so the provider must
+  be decorated first). One-time `MWP/Info/ModelDiag` now also logs
+  `hauling: HaulCandidate=... providers=...` for verification. **In-game confirmation pending.**
+
 - **BUG-03 (2026-11-07, in-game)**: models looked inside-out/crumpled in game (hollow frames,
   fragmented gears) although Blender previews were fine. Root cause: the T9 refactor moved mesh
   construction into `mwp_scene._fill_mesh()` and dropped the single `bmesh.ops.reverse_faces` call

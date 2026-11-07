@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
+using Timberborn.Hauling;
 using UnityEngine;
 
 namespace MWP.Gameplay.Components
@@ -31,11 +33,24 @@ namespace MWP.Gameplay.Components
                     .Append(" root=").Append(GameObject.name)
                     .Append(" children=").Append(GameObject.transform.childCount);
                 AppendModelChildren(builder, GameObject.transform, 0);
+                AppendHaulingState(builder);
                 _runtime.RawLog.Info("MWP/Info/ModelDiag/" + _entityId.ToString("N"), builder.ToString());
             }
             catch (Exception)
             {
                 // Diagnostics must never break the pump.
+            }
+        }
+
+        private void AppendHaulingState(StringBuilder builder)
+        {
+            var providers = new List<IHaulBehaviorProvider>();
+            GetComponents(providers);
+            builder.Append("\nhauling: HaulCandidate=").Append(GetComponent<HaulCandidate>() != null ? "yes" : "no")
+                .Append(" providers=").Append(providers.Count);
+            foreach (IHaulBehaviorProvider provider in providers)
+            {
+                builder.Append(' ').Append(provider.GetType().Name);
             }
         }
 

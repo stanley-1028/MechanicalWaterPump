@@ -1,0 +1,93 @@
+
+=== Timberborn.DemolishingUI.DemolishableFragment::InitializeFragment   [Timberborn.DemolishingUI]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld Timberborn.CoreUI.VisualElementLoader Timberborn.DemolishingUI.DemolishableFragment::_visualElementLoader
+  IL_0007: ldstr "Game/EntityPanel/DemolishableFragment"
+  IL_000c: callvirt UnityEngine.UIElements.VisualElement Timberborn.CoreUI.VisualElementLoader::LoadVisualElement(System.String)
+  IL_0011: stfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_0016: ldarg.0
+  IL_0017: ldarg.0
+  IL_0018: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_001d: ldstr "ButtonWrapper"
+  IL_0022: ldnull
+  IL_0023: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0028: stfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_buttonWrapper
+  IL_002d: ldarg.0
+  IL_002e: ldarg.0
+  IL_002f: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_0034: ldstr "Button"
+  IL_0039: ldnull
+  IL_003a: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Button>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_003f: stfld UnityEngine.UIElements.Button Timberborn.DemolishingUI.DemolishableFragment::_button
+  IL_0044: ldarg.0
+  IL_0045: ldfld UnityEngine.UIElements.Button Timberborn.DemolishingUI.DemolishableFragment::_button
+  IL_004a: ldarg.0
+  IL_004b: ldftn System.Void Timberborn.DemolishingUI.DemolishableFragment::<InitializeFragment>b__22_0(UnityEngine.UIElements.ClickEvent)
+  IL_0051: newobj System.Void UnityEngine.UIElements.EventCallback`1<UnityEngine.UIElements.ClickEvent>::.ctor(System.Object,System.IntPtr)
+  IL_0056: ldc.i4.0
+  IL_0057: callvirt System.Void UnityEngine.UIElements.CallbackEventHandler::RegisterCallback<UnityEngine.UIElements.ClickEvent>(UnityEngine.UIElements.EventCallback`1<!!0>,UnityEngine.UIElements.TrickleDown)
+  IL_005c: ldarg.0
+  IL_005d: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_0062: ldstr "PriorityWrapper"
+  IL_0067: ldnull
+  IL_0068: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_006d: stloc.0
+  IL_006e: ldarg.0
+  IL_006f: ldarg.0
+  IL_0070: ldfld Timberborn.BuilderPrioritySystemUI.BuilderPriorityToggleGroupFactory Timberborn.DemolishingUI.DemolishableFragment::_builderPriorityToggleGroupFactory
+  IL_0075: ldloc.0
+  IL_0076: ldsfld System.String Timberborn.DemolishingUI.DemolishableFragment::PriorityLabelLocKey
+  IL_007b: callvirt Timberborn.PrioritySystemUI.PriorityToggleGroup Timberborn.BuilderPrioritySystemUI.BuilderPriorityToggleGroupFactory::Create(UnityEngine.UIElements.VisualElement,System.String)
+  IL_0080: stfld Timberborn.PrioritySystemUI.PriorityToggleGroup Timberborn.DemolishingUI.DemolishableFragment::_priorityToggleGroup
+  IL_0085: ldarg.0
+  IL_0086: ldarg.0
+  IL_0087: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_008c: ldstr "ProgressBar"
+  IL_0091: ldnull
+  IL_0092: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<Timberborn.CoreUI.ProgressBar>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0097: stfld Timberborn.CoreUI.ProgressBar Timberborn.DemolishingUI.DemolishableFragment::_progressBar
+  IL_009c: ldarg.0
+  IL_009d: ldarg.0
+  IL_009e: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_00a3: ldstr "Progress"
+  IL_00a8: ldnull
+  IL_00a9: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Label>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_00ae: stfld UnityEngine.UIElements.Label Timberborn.DemolishingUI.DemolishableFragment::_progressLabel
+  IL_00b3: ldarg.0
+  IL_00b4: ldarg.0
+  IL_00b5: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_00ba: ldstr "HidableWrapper"
+  IL_00bf: ldnull
+  IL_00c0: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_00c5: stfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_hidable
+  IL_00ca: ldarg.0
+  IL_00cb: ldarg.0
+  IL_00cc: ldfld Timberborn.DemolishingUI.DemolishableScienceRewardLabelFactory Timberborn.DemolishingUI.DemolishableFragment::_demolishableScienceRewardLabelFactory
+  IL_00d1: callvirt Timberborn.DemolishingUI.DemolishableScienceRewardLabel Timberborn.DemolishingUI.DemolishableScienceRewardLabelFactory::Create()
+  IL_00d6: stfld Timberborn.DemolishingUI.DemolishableScienceRewardLabel Timberborn.DemolishingUI.DemolishableFragment::_demolishableScienceRewardLabel
+  IL_00db: ldarg.0
+  IL_00dc: ldarg.0
+  IL_00dd: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_00e2: ldstr "ScienceRewardWrapper"
+  IL_00e7: ldnull
+  IL_00e8: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.VisualElement>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_00ed: stfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_scienceRewardWrapper
+  IL_00f2: ldarg.0
+  IL_00f3: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_scienceRewardWrapper
+  IL_00f8: ldarg.0
+  IL_00f9: ldfld Timberborn.DemolishingUI.DemolishableScienceRewardLabel Timberborn.DemolishingUI.DemolishableFragment::_demolishableScienceRewardLabel
+  IL_00fe: callvirt UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableScienceRewardLabel::get_Root()
+  IL_0103: callvirt System.Void UnityEngine.UIElements.VisualElement::Add(UnityEngine.UIElements.VisualElement)
+  IL_0108: ldarg.0
+  IL_0109: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_010e: ldc.i4.0
+  IL_010f: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_0114: ldarg.0
+  IL_0115: ldfld UnityEngine.UIElements.VisualElement Timberborn.DemolishingUI.DemolishableFragment::_root
+  IL_011a: ret
+
+=== Timberborn.DemolishingUI.DemolishableFragment::<InitializeFragment>b__22_0   [Timberborn.DemolishingUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void Timberborn.DemolishingUI.DemolishableFragment::ChangeDemolishState()
+  IL_0006: ret

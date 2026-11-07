@@ -1,30 +1,29 @@
-MWP art determinism + animation/UV evidence (T10-B, MWP-ART-v2, winding fixed)
+MWP art determinism + animation/UV evidence (T11 interior pass, MWP-ART-v2)
 generated_by: art/gen_models.py + art/export_timbermesh.py, Blender 4.2.1 LTS, CPython 3.14.7
 
-winding fix (T10): art/mwp_scene.py::_fill_mesh() performs the single reverse_faces
-  flip required by the official plugin's det=-1 blender->export mapping. Validator
-  asserts signed volume > 0 per node (all 16 models, all nodes OUTWARD).
-  Root cause evidence: art/reports/t10/winding-diagnosis.txt
+T11 changes: Mk III / Mk IV interior density pass (internal twin flywheels, crankshaft,
+  window-back machinery, valve wheels, oscillation links). Winding fix (single reverse_faces,
+  positive signed volume) and node-animation contract unchanged.
 
-1) geometry+animation sources art/models/*.json: two consecutive §gen_models.py§ runs -> 16/16 identical
-2) .timbermesh: two consecutive Blender export runs -> 16/16 SHA-256 identical (includes nodeAnimations)
-3) static diagnostic mode (MWP_DISABLE_ANIMATIONS=1) supported by the same pipeline/validator
+1) geometry+animation sources art/models/*.json: two consecutive `python art/gen_models.py` runs
+   -> 16/16 SHA-256 identical (PASS)
+2) .timbermesh: two consecutive Blender export runs -> 16/16 SHA-256 identical (PASS)
 
 animation contract: node animations (TimbermeshAnimations.IAnimator); NOT vertex animations
   single_animation=True use_vertex_animations=False merge_meshes=True
   24 fps, frames 1..120 (120 frames/clip), clip name 'Default'
-  validator C15 compares every frame with the source animation formula (+-2e-3),
-  C16 checks motion axis vs part geometry, C17 checks parts are not merged.
+  types used: rotation / translation / oscillation (new in T11); C15 compares every frame
+  with the source formula, C16 checks the motion axis vs part geometry, C17 checks no merge.
 
 file                                                    bytes   tris  anim nodes frames sha256
 MWP.Pump.Basic.Folktails.Model                          49919   2072     5 9     120    d182c2bbbca10ee519fdf99cab3679be3380ec39587e37158b1dd5db18fcfbc3
 MWP.Pump.Basic.IronTeeth.Model                          49921   2072     5 9     120    618428a2b88cda32bee773e76328c46d97d63f05be1eaefbb29e497441f141ce
 MWP.Pump.Intermediate.Folktails.Model                   66135   2788     6 10    120    1f3d86ac6dd734d3a7ed0511afb3c6a0fbf981a1e9a376c68763391e0f0c945d
 MWP.Pump.Intermediate.IronTeeth.Model                   66163   2788     6 10    120    7f7428de93b808a3d554e303352f1ef1ed868a1c48a4370e70aed8fbd758e0dc
-MWP.Pump.Advanced.Folktails.Model                       89948   3948     7 11    120    8404b174c8a2d6dc7d88b2a8be95c15a42fd91dfdead899c4e9db7fe17dd98f1
-MWP.Pump.Advanced.IronTeeth.Model                       89977   3948     7 11    120    27c77e37971658cac5f180781f29e9c44c777f1eb711c2b715113827ae59bc8e
-MWP.Pump.Top.Folktails.Model                            82155   3768     5 9     120    054709863030ab1565ceab47869528d424a7934c2ef46995ef2a12d43400a410
-MWP.Pump.Top.IronTeeth.Model                            82163   3768     5 9     120    0d57313e5b62ad6e3eb17ecfa4b1352cca4a8fd9dc0f9e806d7a12ccef1fb147
+MWP.Pump.Advanced.Folktails.Model                      133997   5860    10 14    120    acab7ff856c6e9740dfe12206e71bf602891bed80df9d7371293b2059d90e25e
+MWP.Pump.Advanced.IronTeeth.Model                      134014   5860    10 14    120    127e37e84524ec692e2ebe9e17485f26e254fa101b2653bcb8c5248ea05c0ac3
+MWP.Pump.Top.Folktails.Model                           119381   5312    10 14    120    3aa105aa6536e2ba6495cc70634b563bf6b9d3b75f0254f1bdf99618be3ffc78
+MWP.Pump.Top.IronTeeth.Model                           119377   5312    10 14    120    d6aaa534c726136ced2fa4bc3d72fa02d9a0a76035b388f9991f5ecc3cb9413e
 MWP.Pump.Basic.Folktails.ConstructionStage0.Model        9459    628     0 4     0      c8880add6e89260efdc012954b9242831d1fc8a91e81e97c741386eede446cf7
 MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model        9463    628     0 4     0      067e47efc3fa184ddbe9a958b956a62460a9ba08ac00bf51366a3567eaaffe51
 MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model     9465    628     0 4     0      ec86551b69602e14258688b8c44d4bbc8d5d681cc02bc39531fa34fc50747b9f
@@ -39,10 +38,10 @@ Animated node names and channels:
   MWP.Pump.Basic.IronTeeth.Model                       Piston: trans y amp0.06 cyc4 ph0; Flywheel: rot x x2; HeadPulley: rot x x8; HeadShaft: rot x x8; DriveShaft: rot x x2
   MWP.Pump.Intermediate.Folktails.Model                Piston: trans y amp0.06 cyc4 ph0; GearboxGear: rot x x4; GearboxPinion: rot x x-4; Flywheel: rot x x2; HeadPulley: rot x x6; DriveShaft: rot x x2
   MWP.Pump.Intermediate.IronTeeth.Model                Piston: trans y amp0.06 cyc4 ph0; GearboxGear: rot x x4; GearboxPinion: rot x x-4; Flywheel: rot x x2; HeadPulley: rot x x6; DriveShaft: rot x x2
-  MWP.Pump.Advanced.Folktails.Model                    Piston1: trans y amp0.06 cyc4 ph0; Piston2: trans y amp0.06 cyc4 ph0.333333; Piston3: trans y amp0.06 cyc4 ph0.666667; Flywheel: rot x x2; HeadPulley: rot x x6; GearboxGear: rot x x-4; DriveShaft: rot x x2
-  MWP.Pump.Advanced.IronTeeth.Model                    Piston1: trans y amp0.06 cyc4 ph0; Piston2: trans y amp0.06 cyc4 ph0.333333; Piston3: trans y amp0.06 cyc4 ph0.666667; Flywheel: rot x x2; HeadPulley: rot x x6; GearboxGear: rot x x-4; DriveShaft: rot x x2
-  MWP.Pump.Top.Folktails.Model                         Piston1: trans z amp0.06 cyc4 ph0; Piston2: trans z amp0.06 cyc4 ph0.5; Flywheel: rot x x2; HeadPulley: rot x x8; DriveShaft: rot x x2
-  MWP.Pump.Top.IronTeeth.Model                         Piston1: trans z amp0.06 cyc4 ph0; Piston2: trans z amp0.06 cyc4 ph0.5; Flywheel: rot x x2; HeadPulley: rot x x8; DriveShaft: rot x x2
+  MWP.Pump.Advanced.Folktails.Model                    Flywheel: rot x x2; HeadPulley: rot x x8; Crankshaft: rot x x2; Rod1: osc x amp0.05 cyc4 ph0; Rod2: osc x amp0.05 cyc4 ph0.333333; Rod3: osc x amp0.05 cyc4 ph0.666667; Piston1: trans y amp0.06 cyc4 ph0; Piston2: trans y amp0.06 cyc4 ph0.333333; Piston3: trans y amp0.06 cyc4 ph0.666667; WindowShaft: rot x x2
+  MWP.Pump.Advanced.IronTeeth.Model                    Flywheel: rot x x2; HeadPulley: rot x x8; Crankshaft: rot x x2; Rod1: osc x amp0.05 cyc4 ph0; Rod2: osc x amp0.05 cyc4 ph0.333333; Rod3: osc x amp0.05 cyc4 ph0.666667; Piston1: trans y amp0.06 cyc4 ph0; Piston2: trans y amp0.06 cyc4 ph0.333333; Piston3: trans y amp0.06 cyc4 ph0.666667; WindowShaft: rot x x2
+  MWP.Pump.Top.Folktails.Model                         Flywheel: rot x x2; HeadPulley: rot x x8; Crankshaft: rot x x2; WindowShaft: rot x x2; Link1: osc x amp0.1 cyc4 ph0; Link2: osc x amp0.1 cyc4 ph0.5; Piston1: trans z amp0.06 cyc4 ph0; Piston2: trans z amp0.06 cyc4 ph0.5; ValveWheel1: rot y x1; ValveWheel2: rot y x-1
+  MWP.Pump.Top.IronTeeth.Model                         Flywheel: rot x x2; HeadPulley: rot x x8; Crankshaft: rot x x2; WindowShaft: rot x x2; Link1: osc x amp0.1 cyc4 ph0; Link2: osc x amp0.1 cyc4 ph0.5; Piston1: trans z amp0.06 cyc4 ph0; Piston2: trans z amp0.06 cyc4 ph0.5; ValveWheel1: rot y x1; ValveWheel2: rot y x-1
   MWP.Pump.Basic.Folktails.ConstructionStage0.Model    static (construction)
   MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model    static (construction)
   MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model static (construction)
@@ -52,32 +51,14 @@ Animated node names and channels:
   MWP.Pump.Top.Folktails.ConstructionStage0.Model      static (construction)
   MWP.Pump.Top.IronTeeth.ConstructionStage0.Model      static (construction)
 
-ART-07 UV texel density (px/m) per model:
-  MWP.Pump.Basic.Folktails.Model                       BaseWood_Brown=145.3, BaseWood_LightBrown=145.3, IrregularPlanks_Brown=340.0
-  MWP.Pump.Basic.IronTeeth.Model                       BaseWood_DarkBrown=145.3, BaseWood_Grey=145.3, IrregularPlanks_MetalForged=340.0
-  MWP.Pump.Intermediate.Folktails.Model                BaseWood_Brown=145.3, BaseWood_LightBrown=145.3, IrregularPlanks_Brown=340.0
-  MWP.Pump.Intermediate.IronTeeth.Model                BaseWood_DarkBrown=145.3, BaseWood_Grey=145.3, IrregularPlanks_MetalForged=340.0
-  MWP.Pump.Advanced.Folktails.Model                    BaseMetal=123.0, BaseWood_LightBrown=132.1, Details=164.0, WindowsAtlas=81.7
-  MWP.Pump.Advanced.IronTeeth.Model                    BaseMetal=123.0, BaseWood_Grey=145.3, IrregularPlanks_MetalForged=340.0, WindowsAtlas=81.7
-  MWP.Pump.Top.Folktails.Model                         BaseMetal=123.0, Details=139.7, IrregularPlanks_Brown=255.0, WindowsAtlas=82.4
-  MWP.Pump.Top.IronTeeth.Model                         BaseMetal=123.0, Details=139.7, IrregularPlanks_MetalForged=255.0, WindowsAtlas=82.4
-  MWP.Pump.Basic.Folktails.ConstructionStage0.Model    BaseMetal=164.0, BaseWood_Brown=145.3
-  MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model    BaseMetal=164.0, BaseWood_DarkBrown=145.3
-  MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model BaseMetal=164.0, BaseWood_Brown=145.3
-  MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model BaseMetal=164.0, BaseWood_DarkBrown=145.3
-  MWP.Pump.Advanced.Folktails.ConstructionStage0.Model BaseMetal=125.2, BaseWood_Brown=145.3
-  MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model BaseMetal=125.2, BaseWood_DarkBrown=145.3
-  MWP.Pump.Top.Folktails.ConstructionStage0.Model      BaseMetal=125.2, BaseWood_Brown=109.0
-  MWP.Pump.Top.IronTeeth.ConstructionStage0.Model      BaseMetal=125.2, BaseWood_DarkBrown=109.0
-
-Material sets (T10: Mk I / Mk II are all-wood):
+Material sets (Mk I/II all-wood; Mk III/IV dark timber + bright metal + glass):
   MWP.Pump.Basic.Folktails.Model                       ['BaseWood_Brown.Folktails', 'BaseWood_LightBrown.Folktails', 'IrregularPlanks_Brown.Folktails']
   MWP.Pump.Basic.IronTeeth.Model                       ['BaseWood_DarkBrown.IronTeeth', 'BaseWood_Grey.IronTeeth', 'IrregularPlanks_MetalForged.IronTeeth']
   MWP.Pump.Intermediate.Folktails.Model                ['BaseWood_LightBrown.Folktails', 'BaseWood_Brown.Folktails', 'IrregularPlanks_Brown.Folktails']
   MWP.Pump.Intermediate.IronTeeth.Model                ['BaseWood_Grey.IronTeeth', 'BaseWood_DarkBrown.IronTeeth', 'IrregularPlanks_MetalForged.IronTeeth']
-  MWP.Pump.Advanced.Folktails.Model                    ['BaseWood_LightBrown.Folktails', 'BaseMetal.Folktails', 'WindowsAtlas.Folktails', 'Details.Folktails']
-  MWP.Pump.Advanced.IronTeeth.Model                    ['BaseWood_Grey.IronTeeth', 'BaseMetal.IronTeeth', 'IrregularPlanks_MetalForged.IronTeeth', 'WindowsAtlas.IronTeeth']
-  MWP.Pump.Top.Folktails.Model                         ['IrregularPlanks_Brown.Folktails', 'BaseMetal.Folktails', 'Details.Folktails', 'WindowsAtlas.Folktails']
+  MWP.Pump.Advanced.Folktails.Model                    ['BaseWood_Brown.Folktails', 'BaseMetal.Folktails', 'Details.Folktails', 'WindowsAtlas.Folktails']
+  MWP.Pump.Advanced.IronTeeth.Model                    ['BaseWood_DarkBrown.IronTeeth', 'BaseMetal.IronTeeth', 'Details.IronTeeth', 'WindowsAtlas.IronTeeth']
+  MWP.Pump.Top.Folktails.Model                         ['BaseWood_Brown.Folktails', 'BaseMetal.Folktails', 'Details.Folktails', 'WindowsAtlas.Folktails']
   MWP.Pump.Top.IronTeeth.Model                         ['IrregularPlanks_MetalForged.IronTeeth', 'BaseMetal.IronTeeth', 'Details.IronTeeth', 'WindowsAtlas.IronTeeth']
   MWP.Pump.Basic.Folktails.ConstructionStage0.Model    ['BaseWood_Brown.Folktails', 'BaseMetal.Folktails']
   MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model    ['BaseWood_DarkBrown.IronTeeth', 'BaseMetal.IronTeeth']
@@ -88,4 +69,23 @@ Material sets (T10: Mk I / Mk II are all-wood):
   MWP.Pump.Top.Folktails.ConstructionStage0.Model      ['BaseWood_Brown.Folktails', 'BaseMetal.Folktails']
   MWP.Pump.Top.IronTeeth.ConstructionStage0.Model      ['BaseWood_DarkBrown.IronTeeth', 'BaseMetal.IronTeeth']
 
+ART-07 UV texel density (px/m) per model:
+  MWP.Pump.Basic.Folktails.Model                       BaseWood_Brown=145.3, BaseWood_LightBrown=145.3, IrregularPlanks_Brown=340.0
+  MWP.Pump.Basic.IronTeeth.Model                       BaseWood_DarkBrown=145.3, BaseWood_Grey=145.3, IrregularPlanks_MetalForged=340.0
+  MWP.Pump.Intermediate.Folktails.Model                BaseWood_Brown=145.3, BaseWood_LightBrown=145.3, IrregularPlanks_Brown=340.0
+  MWP.Pump.Intermediate.IronTeeth.Model                BaseWood_DarkBrown=145.3, BaseWood_Grey=145.3, IrregularPlanks_MetalForged=340.0
+  MWP.Pump.Advanced.Folktails.Model                    BaseMetal=123.0, BaseWood_Brown=124.6, Details=164.0, WindowsAtlas=82.4
+  MWP.Pump.Advanced.IronTeeth.Model                    BaseMetal=123.0, BaseWood_DarkBrown=124.6, Details=164.0, WindowsAtlas=82.4
+  MWP.Pump.Top.Folktails.Model                         BaseMetal=123.0, BaseWood_Brown=109.0, Details=136.7, WindowsAtlas=82.4
+  MWP.Pump.Top.IronTeeth.Model                         BaseMetal=123.0, Details=136.7, IrregularPlanks_MetalForged=255.0, WindowsAtlas=82.4
+  MWP.Pump.Basic.Folktails.ConstructionStage0.Model    BaseMetal=164.0, BaseWood_Brown=145.3
+  MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model    BaseMetal=164.0, BaseWood_DarkBrown=145.3
+  MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model BaseMetal=164.0, BaseWood_Brown=145.3
+  MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model BaseMetal=164.0, BaseWood_DarkBrown=145.3
+  MWP.Pump.Advanced.Folktails.ConstructionStage0.Model BaseMetal=125.2, BaseWood_Brown=145.3
+  MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model BaseMetal=125.2, BaseWood_DarkBrown=145.3
+  MWP.Pump.Top.Folktails.ConstructionStage0.Model      BaseMetal=125.2, BaseWood_Brown=109.0
+  MWP.Pump.Top.IronTeeth.ConstructionStage0.Model      BaseMetal=125.2, BaseWood_DarkBrown=109.0
+
+TOTAL: 815844 bytes / 37232 triangles / 62 animated node animations / 16 files
 EXPORT DETERMINISM RESULT: PASS

@@ -199,17 +199,18 @@ MATERIALS = {
     ("Intermediate", "IronTeeth", False):
         ["BaseWood_Grey.IronTeeth", "BaseWood_DarkBrown.IronTeeth",
          "IrregularPlanks_MetalForged.IronTeeth"],
+    # T11 interior pass: dark timber backboard + bright metal machinery + glass.
     ("Advanced", "Folktails", False):
-        ["BaseWood_LightBrown.Folktails", "BaseMetal.Folktails",
+        ["BaseWood_Brown.Folktails", "BaseMetal.Folktails",
          "WindowsAtlas.Folktails", "Details.Folktails"],
     ("Advanced", "IronTeeth", False):
-        ["BaseMetal.IronTeeth", "BaseWood_Grey.IronTeeth",
-         "WindowsAtlas.IronTeeth", "IrregularPlanks_MetalForged.IronTeeth"],
+        ["BaseWood_DarkBrown.IronTeeth", "BaseMetal.IronTeeth",
+         "WindowsAtlas.IronTeeth", "Details.IronTeeth"],
     ("Top", "Folktails", False):
-        ["IrregularPlanks_Brown.Folktails", "BaseMetal.Folktails",
+        ["BaseWood_Brown.Folktails", "BaseMetal.Folktails",
          "WindowsAtlas.Folktails", "Details.Folktails"],
     ("Top", "IronTeeth", False):
-        ["BaseMetal.IronTeeth", "IrregularPlanks_MetalForged.IronTeeth",
+        ["IrregularPlanks_MetalForged.IronTeeth", "BaseMetal.IronTeeth",
          "Details.IronTeeth", "WindowsAtlas.IronTeeth"],
 }
 for _tier in TIERS:

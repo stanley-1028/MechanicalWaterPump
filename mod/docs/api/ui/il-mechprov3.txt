@@ -1,0 +1,1470 @@
+
+=== Timberborn.ActivatorSystemUI.ActivatorSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.ActivatorSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.ActivatorSystemUI.TimedComponentActivatorFragment Timberborn.ActivatorSystemUI.ActivatorSystemUIConfigurator/EntityPanelModuleProvider::_timedComponentActivatorFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.ActivatorSystemUI.TimedComponentActivatorSettingsFragment Timberborn.ActivatorSystemUI.ActivatorSystemUIConfigurator/EntityPanelModuleProvider::_timedComponentActivatorSettingsFragment
+  IL_0014: ret
+
+=== Timberborn.ActivatorSystemUI.ActivatorSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.ActivatorSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.ActivatorSystemUI.TimedComponentActivatorFragment Timberborn.ActivatorSystemUI.ActivatorSystemUIConfigurator/EntityPanelModuleProvider::_timedComponentActivatorFragment
+  IL_000c: ldc.i4.s 10
+  IL_000e: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0013: dup
+  IL_0014: ldarg.0
+  IL_0015: ldfld Timberborn.ActivatorSystemUI.TimedComponentActivatorSettingsFragment Timberborn.ActivatorSystemUI.ActivatorSystemUIConfigurator/EntityPanelModuleProvider::_timedComponentActivatorSettingsFragment
+  IL_001a: ldc.i4.s 11
+  IL_001c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0021: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0026: ret
+
+=== Timberborn.AttractionsUI.AttractionsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.AttractionsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.AttractionsUI.AttractionFragment Timberborn.AttractionsUI.AttractionsUIConfigurator/EntityPanelModuleProvider::_attractionFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.AttractionsUI.AttractionLoadRateFragment Timberborn.AttractionsUI.AttractionsUIConfigurator/EntityPanelModuleProvider::_attractionLoadRateFragment
+  IL_0014: ret
+
+=== Timberborn.AttractionsUI.AttractionsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.AttractionsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.AttractionsUI.AttractionLoadRateFragment Timberborn.AttractionsUI.AttractionsUIConfigurator/EntityPanelModuleProvider::_attractionLoadRateFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.AttractionsUI.AttractionFragment Timberborn.AttractionsUI.AttractionsUIConfigurator/EntityPanelModuleProvider::_attractionFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0024: ret
+
+=== Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.AutomationBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.AutomationBuildingsUI.LeverFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_leverFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.AutomationBuildingsUI.RelayFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_relayFragment
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.AutomationBuildingsUI.MemoryFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_memoryFragment
+  IL_001b: ldarg.0
+  IL_001c: ldarg.s weatherStationFragment
+  IL_001e: stfld Timberborn.AutomationBuildingsUI.WeatherStationFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_weatherStationFragment
+  IL_0023: ldarg.0
+  IL_0024: ldarg.s chronometerFragment
+  IL_0026: stfld Timberborn.AutomationBuildingsUI.ChronometerFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_chronometerFragment
+  IL_002b: ldarg.0
+  IL_002c: ldarg.s scienceCounterFragment
+  IL_002e: stfld Timberborn.AutomationBuildingsUI.ScienceCounterFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_scienceCounterFragment
+  IL_0033: ldarg.0
+  IL_0034: ldarg.s resourceCounterFragment
+  IL_0036: stfld Timberborn.AutomationBuildingsUI.ResourceCounterFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_resourceCounterFragment
+  IL_003b: ldarg.0
+  IL_003c: ldarg.s populationCounterFragment
+  IL_003e: stfld Timberborn.AutomationBuildingsUI.PopulationCounterFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_populationCounterFragment
+  IL_0043: ldarg.0
+  IL_0044: ldarg.s powerMeterFragment
+  IL_0046: stfld Timberborn.AutomationBuildingsUI.PowerMeterFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_powerMeterFragment
+  IL_004b: ldarg.0
+  IL_004c: ldarg.s timerFragment
+  IL_004e: stfld Timberborn.AutomationBuildingsUI.TimerFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_timerFragment
+  IL_0053: ldarg.0
+  IL_0054: ldarg.s gateFragment
+  IL_0056: stfld Timberborn.AutomationBuildingsUI.GateFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_gateFragment
+  IL_005b: ldarg.0
+  IL_005c: ldarg.s indicatorFragment
+  IL_005e: stfld Timberborn.AutomationBuildingsUI.IndicatorFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_indicatorFragment
+  IL_0063: ldarg.0
+  IL_0064: ldarg.s speakerFragment
+  IL_0066: stfld Timberborn.AutomationBuildingsUI.SpeakerFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_speakerFragment
+  IL_006b: ldarg.0
+  IL_006c: ldarg.s depthSensorFragment
+  IL_006e: stfld Timberborn.AutomationBuildingsUI.DepthSensorFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_depthSensorFragment
+  IL_0073: ldarg.0
+  IL_0074: ldarg.s contaminationSensorFragment
+  IL_0076: stfld Timberborn.AutomationBuildingsUI.ContaminationSensorFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_contaminationSensorFragment
+  IL_007b: ldarg.0
+  IL_007c: ldarg.s flowSensorFragment
+  IL_007e: stfld Timberborn.AutomationBuildingsUI.FlowSensorFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_flowSensorFragment
+  IL_0083: ret
+
+=== Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.AutomationBuildingsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.AutomationBuildingsUI.LeverFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_leverFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.AutomationBuildingsUI.RelayFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_relayFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: dup
+  IL_0020: ldarg.0
+  IL_0021: ldfld Timberborn.AutomationBuildingsUI.MemoryFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_memoryFragment
+  IL_0026: ldc.i4.0
+  IL_0027: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_002c: dup
+  IL_002d: ldarg.0
+  IL_002e: ldfld Timberborn.AutomationBuildingsUI.WeatherStationFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_weatherStationFragment
+  IL_0033: ldc.i4.0
+  IL_0034: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0039: dup
+  IL_003a: ldarg.0
+  IL_003b: ldfld Timberborn.AutomationBuildingsUI.ChronometerFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_chronometerFragment
+  IL_0040: ldc.i4.0
+  IL_0041: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0046: dup
+  IL_0047: ldarg.0
+  IL_0048: ldfld Timberborn.AutomationBuildingsUI.ScienceCounterFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_scienceCounterFragment
+  IL_004d: ldc.i4.0
+  IL_004e: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0053: dup
+  IL_0054: ldarg.0
+  IL_0055: ldfld Timberborn.AutomationBuildingsUI.ResourceCounterFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_resourceCounterFragment
+  IL_005a: ldc.i4.0
+  IL_005b: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0060: dup
+  IL_0061: ldarg.0
+  IL_0062: ldfld Timberborn.AutomationBuildingsUI.PopulationCounterFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_populationCounterFragment
+  IL_0067: ldc.i4.0
+  IL_0068: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_006d: dup
+  IL_006e: ldarg.0
+  IL_006f: ldfld Timberborn.AutomationBuildingsUI.PowerMeterFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_powerMeterFragment
+  IL_0074: ldc.i4.0
+  IL_0075: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_007a: dup
+  IL_007b: ldarg.0
+  IL_007c: ldfld Timberborn.AutomationBuildingsUI.TimerFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_timerFragment
+  IL_0081: ldc.i4.0
+  IL_0082: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0087: dup
+  IL_0088: ldarg.0
+  IL_0089: ldfld Timberborn.AutomationBuildingsUI.GateFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_gateFragment
+  IL_008e: ldc.i4.0
+  IL_008f: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0094: dup
+  IL_0095: ldarg.0
+  IL_0096: ldfld Timberborn.AutomationBuildingsUI.IndicatorFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_indicatorFragment
+  IL_009b: ldc.i4.0
+  IL_009c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_00a1: dup
+  IL_00a2: ldarg.0
+  IL_00a3: ldfld Timberborn.AutomationBuildingsUI.SpeakerFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_speakerFragment
+  IL_00a8: ldc.i4.0
+  IL_00a9: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_00ae: dup
+  IL_00af: ldarg.0
+  IL_00b0: ldfld Timberborn.AutomationBuildingsUI.DepthSensorFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_depthSensorFragment
+  IL_00b5: ldc.i4.0
+  IL_00b6: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_00bb: dup
+  IL_00bc: ldarg.0
+  IL_00bd: ldfld Timberborn.AutomationBuildingsUI.ContaminationSensorFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_contaminationSensorFragment
+  IL_00c2: ldc.i4.0
+  IL_00c3: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_00c8: dup
+  IL_00c9: ldarg.0
+  IL_00ca: ldfld Timberborn.AutomationBuildingsUI.FlowSensorFragment Timberborn.AutomationBuildingsUI.AutomationBuildingsUIConfigurator/EntityPanelModuleProvider::_flowSensorFragment
+  IL_00cf: ldc.i4.0
+  IL_00d0: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_00d5: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_00da: ret
+
+=== Timberborn.AutomationUI.AutomationUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.AutomationUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.AutomationUI.TransmitterFragment Timberborn.AutomationUI.AutomationUIConfigurator/EntityPanelModuleProvider::_transmitterFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.AutomationUI.AutomatableFragment Timberborn.AutomationUI.AutomationUIConfigurator/EntityPanelModuleProvider::_automatableFragment
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.AutomationUI.SequentialTransmitterResetFragment Timberborn.AutomationUI.AutomationUIConfigurator/EntityPanelModuleProvider::_sequentialTransmitterResetFragment
+  IL_001b: ret
+
+=== Timberborn.AutomationUI.AutomationUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.AutomationUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.AutomationUI.SequentialTransmitterResetFragment Timberborn.AutomationUI.AutomationUIConfigurator/EntityPanelModuleProvider::_sequentialTransmitterResetFragment
+  IL_000c: ldc.i4.s 50
+  IL_000e: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0013: dup
+  IL_0014: ldarg.0
+  IL_0015: ldfld Timberborn.AutomationUI.TransmitterFragment Timberborn.AutomationUI.AutomationUIConfigurator/EntityPanelModuleProvider::_transmitterFragment
+  IL_001a: ldc.i4.s 100
+  IL_001c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0021: dup
+  IL_0022: ldarg.0
+  IL_0023: ldfld Timberborn.AutomationUI.AutomatableFragment Timberborn.AutomationUI.AutomationUIConfigurator/EntityPanelModuleProvider::_automatableFragment
+  IL_0028: ldc.i4.s 100
+  IL_002a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_002f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0034: ret
+
+=== Timberborn.BeaversUI.BeaversUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.BeaversUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.BeaversUI.AdulthoodFragment Timberborn.BeaversUI.BeaversUIConfigurator/EntityPanelModuleProvider::_adulthoodFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.BeaversUI.BeaverBuildingsFragment Timberborn.BeaversUI.BeaversUIConfigurator/EntityPanelModuleProvider::_beaverBuildingsFragment
+  IL_0014: ret
+
+=== Timberborn.BeaversUI.BeaversUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.BeaversUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.BeaversUI.AdulthoodFragment Timberborn.BeaversUI.BeaversUIConfigurator/EntityPanelModuleProvider::_adulthoodFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.BeaversUI.BeaverBuildingsFragment Timberborn.BeaversUI.BeaversUIConfigurator/EntityPanelModuleProvider::_beaverBuildingsFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0024: ret
+
+=== Timberborn.BehaviorSystemUI.BehaviorSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.BehaviorSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.BehaviorSystemUI.BehaviorManagerDebugFragment Timberborn.BehaviorSystemUI.BehaviorSystemUIConfigurator/EntityPanelModuleProvider::_behaviorManagerDebugFragment
+  IL_000d: ret
+
+=== Timberborn.BehaviorSystemUI.BehaviorSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.BehaviorSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.BehaviorSystemUI.BehaviorManagerDebugFragment Timberborn.BehaviorSystemUI.BehaviorSystemUIConfigurator/EntityPanelModuleProvider::_behaviorManagerDebugFragment
+  IL_000c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0011: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0016: ret
+
+=== Timberborn.BlueprintUISystem.BlueprintUISystemConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.BlueprintUISystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.BlueprintUISystem.BlueprintDebugFragment Timberborn.BlueprintUISystem.BlueprintUISystemConfigurator/EntityPanelModuleProvider::_blueprintDebugFragment
+  IL_000d: ret
+
+=== Timberborn.BlueprintUISystem.BlueprintUISystemConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.BlueprintUISystem]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.BlueprintUISystem.BlueprintDebugFragment Timberborn.BlueprintUISystem.BlueprintUISystemConfigurator/EntityPanelModuleProvider::_blueprintDebugFragment
+  IL_000c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0011: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0016: ret
+
+=== Timberborn.BonusSystemUI.BonusSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.BonusSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.BonusSystemUI.BonusManagerDebugFragment Timberborn.BonusSystemUI.BonusSystemUIConfigurator/EntityPanelModuleProvider::_bonusManagerDebugFragment
+  IL_000d: ret
+
+=== Timberborn.BonusSystemUI.BonusSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.BonusSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.BonusSystemUI.BonusManagerDebugFragment Timberborn.BonusSystemUI.BonusSystemUIConfigurator/EntityPanelModuleProvider::_bonusManagerDebugFragment
+  IL_000c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0011: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0016: ret
+
+=== Timberborn.BuildingsUI.BuildingsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.BuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.BuildingsUI.DeleteBuildingFragment Timberborn.BuildingsUI.BuildingsUIConfigurator/EntityPanelModuleProvider::_deleteBuildingFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.BuildingsUI.PausableBuildingFragment Timberborn.BuildingsUI.BuildingsUIConfigurator/EntityPanelModuleProvider::_pausableBuildingFragment
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.BuildingsUI.BuildingSoundControllerFragment Timberborn.BuildingsUI.BuildingsUIConfigurator/EntityPanelModuleProvider::_buildingSoundControllerFragment
+  IL_001b: ret
+
+=== Timberborn.BuildingsUI.BuildingsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.BuildingsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.BuildingsUI.PausableBuildingFragment Timberborn.BuildingsUI.BuildingsUIConfigurator/EntityPanelModuleProvider::_pausableBuildingFragment
+  IL_000c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0011: dup
+  IL_0012: ldarg.0
+  IL_0013: ldfld Timberborn.BuildingsUI.DeleteBuildingFragment Timberborn.BuildingsUI.BuildingsUIConfigurator/EntityPanelModuleProvider::_deleteBuildingFragment
+  IL_0018: ldc.i4.0
+  IL_0019: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddLeftHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001e: dup
+  IL_001f: ldarg.0
+  IL_0020: ldfld Timberborn.BuildingsUI.BuildingSoundControllerFragment Timberborn.BuildingsUI.BuildingsUIConfigurator/EntityPanelModuleProvider::_buildingSoundControllerFragment
+  IL_0025: ldc.i4.0
+  IL_0026: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_002b: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0030: ret
+
+=== Timberborn.CarryingUI.CarryingUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.CarryingUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.CarryingUI.GoodCarrierFragment Timberborn.CarryingUI.CarryingUIConfigurator/EntityPanelModuleProvider::_goodCarrierFragment
+  IL_000d: ret
+
+=== Timberborn.CarryingUI.CarryingUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.CarryingUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.CarryingUI.GoodCarrierFragment Timberborn.CarryingUI.CarryingUIConfigurator/EntityPanelModuleProvider::_goodCarrierFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.CharacterControlSystemUI.CharacterControlSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.CharacterControlSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.CharacterControlSystemUI.CharacterControlFragment Timberborn.CharacterControlSystemUI.CharacterControlSystemUIConfigurator/EntityPanelModuleProvider::_characterControlFragment
+  IL_000d: ret
+
+=== Timberborn.CharacterControlSystemUI.CharacterControlSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.CharacterControlSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.CharacterControlSystemUI.CharacterControlFragment Timberborn.CharacterControlSystemUI.CharacterControlSystemUIConfigurator/EntityPanelModuleProvider::_characterControlFragment
+  IL_000c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0011: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0016: ret
+
+=== Timberborn.ConstructionSitesUI.ConstructionSitesUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.ConstructionSitesUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.ConstructionSitesUI.ConstructionSiteDebugFragment Timberborn.ConstructionSitesUI.ConstructionSitesUIConfigurator/EntityPanelModuleProvider::_constructionSiteDebugFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.ConstructionSitesUI.ConstructionSiteFragment Timberborn.ConstructionSitesUI.ConstructionSitesUIConfigurator/EntityPanelModuleProvider::_constructionSiteFragment
+  IL_0014: ret
+
+=== Timberborn.ConstructionSitesUI.ConstructionSitesUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.ConstructionSitesUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.ConstructionSitesUI.ConstructionSiteFragment Timberborn.ConstructionSitesUI.ConstructionSitesUIConfigurator/EntityPanelModuleProvider::_constructionSiteFragment
+  IL_000c: ldc.i4 500
+  IL_0011: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0016: dup
+  IL_0017: ldarg.0
+  IL_0018: ldfld Timberborn.ConstructionSitesUI.ConstructionSiteDebugFragment Timberborn.ConstructionSitesUI.ConstructionSitesUIConfigurator/EntityPanelModuleProvider::_constructionSiteDebugFragment
+  IL_001d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0022: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0027: ret
+
+=== Timberborn.DecalSystemUI.DecalSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.DecalSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.DecalSystemUI.DecalSupplierFragment Timberborn.DecalSystemUI.DecalSystemUIConfigurator/EntityPanelModuleProvider::_decalSupplierFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.DecalSystemUI.FlippableDecalFragment Timberborn.DecalSystemUI.DecalSystemUIConfigurator/EntityPanelModuleProvider::_flippableDecalFragment
+  IL_0014: ret
+
+=== Timberborn.DecalSystemUI.DecalSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.DecalSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.DecalSystemUI.DecalSupplierFragment Timberborn.DecalSystemUI.DecalSystemUIConfigurator/EntityPanelModuleProvider::_decalSupplierFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.DecalSystemUI.FlippableDecalFragment Timberborn.DecalSystemUI.DecalSystemUIConfigurator/EntityPanelModuleProvider::_flippableDecalFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0024: ret
+
+=== Timberborn.DemolishingUI.DemolishingUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.DemolishingUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.DemolishingUI.DemolishableFragment Timberborn.DemolishingUI.DemolishingUIConfigurator/EntityPanelModuleProvider::_demolishableFragment
+  IL_000d: ret
+
+=== Timberborn.DemolishingUI.DemolishingUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.DemolishingUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.DemolishingUI.DemolishableFragment Timberborn.DemolishingUI.DemolishingUIConfigurator/EntityPanelModuleProvider::_demolishableFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.DeteriorationSystemUI.DeteriorationSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.DeteriorationSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.DeteriorationSystemUI.DeteriorableFragment Timberborn.DeteriorationSystemUI.DeteriorationSystemUIConfigurator/EntityPanelModuleProvider::_deteriorableFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.DeteriorationSystemUI.DeteriorableDebugFragment Timberborn.DeteriorationSystemUI.DeteriorationSystemUIConfigurator/EntityPanelModuleProvider::_deteriorableDebugFragment
+  IL_0014: ret
+
+=== Timberborn.DeteriorationSystemUI.DeteriorationSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.DeteriorationSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.DeteriorationSystemUI.DeteriorableFragment Timberborn.DeteriorationSystemUI.DeteriorationSystemUIConfigurator/EntityPanelModuleProvider::_deteriorableFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.DeteriorationSystemUI.DeteriorableDebugFragment Timberborn.DeteriorationSystemUI.DeteriorationSystemUIConfigurator/EntityPanelModuleProvider::_deteriorableDebugFragment
+  IL_0019: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_001e: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0023: ret
+
+=== Timberborn.DistributionSystemUI.DistributionSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.DistributionSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.DistributionSystemUI.DistrictCrossingFragment Timberborn.DistributionSystemUI.DistributionSystemUIConfigurator/EntityPanelModuleProvider::_districtCrossingFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.DistributionSystemUI.DistrictCrossingInventoryFragment Timberborn.DistributionSystemUI.DistributionSystemUIConfigurator/EntityPanelModuleProvider::_districtCrossingInventoryFragment
+  IL_0014: ret
+
+=== Timberborn.DistributionSystemUI.DistributionSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.DistributionSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.DistributionSystemUI.DistrictCrossingFragment Timberborn.DistributionSystemUI.DistributionSystemUIConfigurator/EntityPanelModuleProvider::_districtCrossingFragment
+  IL_000c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddSideFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0011: dup
+  IL_0012: ldarg.0
+  IL_0013: ldfld Timberborn.DistributionSystemUI.DistrictCrossingInventoryFragment Timberborn.DistributionSystemUI.DistributionSystemUIConfigurator/EntityPanelModuleProvider::_districtCrossingInventoryFragment
+  IL_0018: ldc.i4.0
+  IL_0019: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001e: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0023: ret
+
+=== Timberborn.DuplicationSystemUI.DuplicationSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.DuplicationSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.DuplicationSystemUI.DuplicateSettingsFragment Timberborn.DuplicationSystemUI.DuplicationSystemUIConfigurator/EntityPanelModuleProvider::_duplicateSettingsFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.DuplicationSystemUI.DuplicateObjectFragment Timberborn.DuplicationSystemUI.DuplicationSystemUIConfigurator/EntityPanelModuleProvider::_duplicateObjectFragment
+  IL_0014: ret
+
+=== Timberborn.DuplicationSystemUI.DuplicationSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.DuplicationSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.DuplicationSystemUI.DuplicateSettingsFragment Timberborn.DuplicationSystemUI.DuplicationSystemUIConfigurator/EntityPanelModuleProvider::_duplicateSettingsFragment
+  IL_000c: ldc.i4.s 10
+  IL_000e: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddLeftHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0013: dup
+  IL_0014: ldarg.0
+  IL_0015: ldfld Timberborn.DuplicationSystemUI.DuplicateObjectFragment Timberborn.DuplicationSystemUI.DuplicationSystemUIConfigurator/EntityPanelModuleProvider::_duplicateObjectFragment
+  IL_001a: ldc.i4.s 20
+  IL_001c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddLeftHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0021: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0026: ret
+
+=== Timberborn.DwellingSystemUI.DwellingSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.DwellingSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.DwellingSystemUI.DwellingUserFragment Timberborn.DwellingSystemUI.DwellingSystemUIConfigurator/EntityPanelModuleProvider::_dwellingUserFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.DwellingSystemUI.DwellingDebugFragment Timberborn.DwellingSystemUI.DwellingSystemUIConfigurator/EntityPanelModuleProvider::_dwellingDebugFragment
+  IL_0014: ret
+
+=== Timberborn.DwellingSystemUI.DwellingSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.DwellingSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.DwellingSystemUI.DwellingUserFragment Timberborn.DwellingSystemUI.DwellingSystemUIConfigurator/EntityPanelModuleProvider::_dwellingUserFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.DwellingSystemUI.DwellingDebugFragment Timberborn.DwellingSystemUI.DwellingSystemUIConfigurator/EntityPanelModuleProvider::_dwellingDebugFragment
+  IL_0019: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_001e: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0023: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanelSystemConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.EntityPanelSystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.EntityPanelSystem.UnselectObjectFragment Timberborn.EntityPanelSystem.EntityPanelSystemConfigurator/EntityPanelModuleProvider::_unselectObjectFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.EntityPanelSystem.FollowObjectFragment Timberborn.EntityPanelSystem.EntityPanelSystemConfigurator/EntityPanelModuleProvider::_followObjectFragment
+  IL_0014: ret
+
+=== Timberborn.EntityPanelSystem.EntityPanelSystemConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.EntityPanelSystem]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.EntityPanelSystem.UnselectObjectFragment Timberborn.EntityPanelSystem.EntityPanelSystemConfigurator/EntityPanelModuleProvider::_unselectObjectFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddRightHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.EntityPanelSystem.FollowObjectFragment Timberborn.EntityPanelSystem.EntityPanelSystemConfigurator/EntityPanelModuleProvider::_followObjectFragment
+  IL_0019: ldc.i4.s 10
+  IL_001b: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddRightHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0020: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0025: ret
+
+=== Timberborn.ExplosionsUI.ExplosionsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.ExplosionsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.ExplosionsUI.DynamiteFragment Timberborn.ExplosionsUI.ExplosionsUIConfigurator/EntityPanelModuleProvider::_dynamiteFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.ExplosionsUI.UnstableCoreFragment Timberborn.ExplosionsUI.ExplosionsUIConfigurator/EntityPanelModuleProvider::_unstableCoreFragment
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.ExplosionsUI.UnstableCoreDebugFragment Timberborn.ExplosionsUI.ExplosionsUIConfigurator/EntityPanelModuleProvider::_unstableCoreDebugFragment
+  IL_001b: ret
+
+=== Timberborn.ExplosionsUI.ExplosionsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.ExplosionsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.ExplosionsUI.DynamiteFragment Timberborn.ExplosionsUI.ExplosionsUIConfigurator/EntityPanelModuleProvider::_dynamiteFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.ExplosionsUI.UnstableCoreFragment Timberborn.ExplosionsUI.ExplosionsUIConfigurator/EntityPanelModuleProvider::_unstableCoreFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: dup
+  IL_0020: ldarg.0
+  IL_0021: ldfld Timberborn.ExplosionsUI.UnstableCoreDebugFragment Timberborn.ExplosionsUI.ExplosionsUIConfigurator/EntityPanelModuleProvider::_unstableCoreDebugFragment
+  IL_0026: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_002b: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0030: ret
+
+=== Timberborn.FieldsUI.FieldsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.FieldsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.FieldsUI.FarmHouseFragment Timberborn.FieldsUI.FieldsUIConfigurator/EntityPanelModuleProvider::_farmHouseFragment
+  IL_000d: ret
+
+=== Timberborn.FieldsUI.FieldsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.FieldsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.FieldsUI.FarmHouseFragment Timberborn.FieldsUI.FieldsUIConfigurator/EntityPanelModuleProvider::_farmHouseFragment
+  IL_000c: ldc.i4.1
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.FireworkSystemUI.FireworkSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.FireworkSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.FireworkSystemUI.FireworkLauncherFragment Timberborn.FireworkSystemUI.FireworkSystemUIConfigurator/EntityPanelModuleProvider::_fireworkLauncherFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.FireworkSystemUI.FireworkLauncherInventoryFragment Timberborn.FireworkSystemUI.FireworkSystemUIConfigurator/EntityPanelModuleProvider::_fireworkLauncherInventoryFragment
+  IL_0014: ret
+
+=== Timberborn.FireworkSystemUI.FireworkSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.FireworkSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.FireworkSystemUI.FireworkLauncherFragment Timberborn.FireworkSystemUI.FireworkSystemUIConfigurator/EntityPanelModuleProvider::_fireworkLauncherFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.FireworkSystemUI.FireworkLauncherInventoryFragment Timberborn.FireworkSystemUI.FireworkSystemUIConfigurator/EntityPanelModuleProvider::_fireworkLauncherInventoryFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0024: ret
+
+=== Timberborn.ForestryUI.ForestryUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.ForestryUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.ForestryUI.ForesterFragment Timberborn.ForestryUI.ForestryUIConfigurator/EntityPanelModuleProvider::_foresterFragment
+  IL_000d: ret
+
+=== Timberborn.ForestryUI.ForestryUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.ForestryUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.ForestryUI.ForesterFragment Timberborn.ForestryUI.ForestryUIConfigurator/EntityPanelModuleProvider::_foresterFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.GameDistrictsUI.GameDistrictsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.GameDistrictsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.GameDistrictsUI.DistrictCenterFragment Timberborn.GameDistrictsUI.GameDistrictsUIConfigurator/EntityPanelModuleProvider::_districtCenterFragment
+  IL_000d: ret
+
+=== Timberborn.GameDistrictsUI.GameDistrictsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.GameDistrictsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.GameDistrictsUI.DistrictCenterFragment Timberborn.GameDistrictsUI.GameDistrictsUIConfigurator/EntityPanelModuleProvider::_districtCenterFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.GatheringUI.GatheringUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.GatheringUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.GatheringUI.GatherablePrioritizerFragment Timberborn.GatheringUI.GatheringUIConfigurator/EntityPanelModuleProvider::_gatherablePrioritizerFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.GatheringUI.GatherableFragment Timberborn.GatheringUI.GatheringUIConfigurator/EntityPanelModuleProvider::_gatherableFragment
+  IL_0014: ret
+
+=== Timberborn.GatheringUI.GatheringUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.GatheringUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.GatheringUI.GatherablePrioritizerFragment Timberborn.GatheringUI.GatheringUIConfigurator/EntityPanelModuleProvider::_gatherablePrioritizerFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.GatheringUI.GatherableFragment Timberborn.GatheringUI.GatheringUIConfigurator/EntityPanelModuleProvider::_gatherableFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0024: ret
+
+=== Timberborn.GoodConsumingBuildingSystemUI.GoodConsumingBuildingSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.GoodConsumingBuildingSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.GoodConsumingBuildingSystemUI.GoodConsumingBuildingFragment Timberborn.GoodConsumingBuildingSystemUI.GoodConsumingBuildingSystemUIConfigurator/EntityPanelModuleProvider::_goodConsumingBuildingFragment
+  IL_000d: ret
+
+=== Timberborn.GoodConsumingBuildingSystemUI.GoodConsumingBuildingSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.GoodConsumingBuildingSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.GoodConsumingBuildingSystemUI.GoodConsumingBuildingFragment Timberborn.GoodConsumingBuildingSystemUI.GoodConsumingBuildingSystemUIConfigurator/EntityPanelModuleProvider::_goodConsumingBuildingFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.GoodStackSystemUI.GoodStackSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.GoodStackSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.GoodStackSystemUI.GoodStackFragment Timberborn.GoodStackSystemUI.GoodStackSystemUIConfigurator/EntityPanelModuleProvider::_goodStackFragment
+  IL_000d: ret
+
+=== Timberborn.GoodStackSystemUI.GoodStackSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.GoodStackSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.GoodStackSystemUI.GoodStackFragment Timberborn.GoodStackSystemUI.GoodStackSystemUIConfigurator/EntityPanelModuleProvider::_goodStackFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.GrowingUI.GrowingUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.GrowingUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.GrowingUI.GrowableFragment Timberborn.GrowingUI.GrowingUIConfigurator/EntityPanelModuleProvider::_growableFragment
+  IL_000d: ret
+
+=== Timberborn.GrowingUI.GrowingUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.GrowingUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.GrowingUI.GrowableFragment Timberborn.GrowingUI.GrowingUIConfigurator/EntityPanelModuleProvider::_growableFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.HaulingUI.HaulingUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.HaulingUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.HaulingUI.HaulCandidateDebugFragment Timberborn.HaulingUI.HaulingUIConfigurator/EntityPanelModuleProvider::_haulCandidateDebugFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.HaulingUI.HaulCandidateFragment Timberborn.HaulingUI.HaulingUIConfigurator/EntityPanelModuleProvider::_haulCandidateFragment
+  IL_0014: ret
+
+=== Timberborn.HaulingUI.HaulingUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.HaulingUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.HaulingUI.HaulCandidateDebugFragment Timberborn.HaulingUI.HaulingUIConfigurator/EntityPanelModuleProvider::_haulCandidateDebugFragment
+  IL_000c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0011: dup
+  IL_0012: ldarg.0
+  IL_0013: ldfld Timberborn.HaulingUI.HaulCandidateFragment Timberborn.HaulingUI.HaulingUIConfigurator/EntityPanelModuleProvider::_haulCandidateFragment
+  IL_0018: ldc.i4.s 10
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0024: ret
+
+=== Timberborn.HttpApiSystemUI.HttpApiSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.HttpApiSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.HttpApiSystemUI.HttpApiFragment Timberborn.HttpApiSystemUI.HttpApiSystemUIConfigurator/EntityPanelModuleProvider::_httpApiFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.HttpApiSystemUI.HttpAdapterFragment Timberborn.HttpApiSystemUI.HttpApiSystemUIConfigurator/EntityPanelModuleProvider::_httpAdapterFragment
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.HttpApiSystemUI.HttpLeverFragment Timberborn.HttpApiSystemUI.HttpApiSystemUIConfigurator/EntityPanelModuleProvider::_httpLeverFragment
+  IL_001b: ret
+
+=== Timberborn.HttpApiSystemUI.HttpApiSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.HttpApiSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.HttpApiSystemUI.HttpAdapterFragment Timberborn.HttpApiSystemUI.HttpApiSystemUIConfigurator/EntityPanelModuleProvider::_httpAdapterFragment
+  IL_000c: ldc.i4 200
+  IL_0011: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0016: dup
+  IL_0017: ldarg.0
+  IL_0018: ldfld Timberborn.HttpApiSystemUI.HttpLeverFragment Timberborn.HttpApiSystemUI.HttpApiSystemUIConfigurator/EntityPanelModuleProvider::_httpLeverFragment
+  IL_001d: ldc.i4 200
+  IL_0022: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0027: dup
+  IL_0028: ldarg.0
+  IL_0029: ldfld Timberborn.HttpApiSystemUI.HttpApiFragment Timberborn.HttpApiSystemUI.HttpApiSystemUIConfigurator/EntityPanelModuleProvider::_httpApiFragment
+  IL_002e: ldc.i4 300
+  IL_0033: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0038: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_003d: ret
+
+=== Timberborn.IlluminationUI.IlluminationUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.IlluminationUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.IlluminationUI.CustomizableIlluminatorFragment Timberborn.IlluminationUI.IlluminationUIConfigurator/EntityPanelModuleProvider::_customizableIlluminatorFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.IlluminationUI.CustomizeIlluminationFragment Timberborn.IlluminationUI.IlluminationUIConfigurator/EntityPanelModuleProvider::_customizeIlluminationFragment
+  IL_0014: ret
+
+=== Timberborn.IlluminationUI.IlluminationUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.IlluminationUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.IlluminationUI.CustomizeIlluminationFragment Timberborn.IlluminationUI.IlluminationUIConfigurator/EntityPanelModuleProvider::_customizeIlluminationFragment
+  IL_000c: ldc.i4.s 20
+  IL_000e: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddRightHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0013: dup
+  IL_0014: ldarg.0
+  IL_0015: ldfld Timberborn.IlluminationUI.CustomizableIlluminatorFragment Timberborn.IlluminationUI.IlluminationUIConfigurator/EntityPanelModuleProvider::_customizableIlluminatorFragment
+  IL_001a: ldc.i4 200
+  IL_001f: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0024: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0029: ret
+
+=== Timberborn.InventorySystemUI.InventorySystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.InventorySystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.InventorySystemUI.InventoryDebugFragment Timberborn.InventorySystemUI.InventorySystemUIConfigurator/EntityPanelModuleProvider::_inventoryDebugFragment
+  IL_000d: ret
+
+=== Timberborn.InventorySystemUI.InventorySystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.InventorySystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.InventorySystemUI.InventoryDebugFragment Timberborn.InventorySystemUI.InventorySystemUIConfigurator/EntityPanelModuleProvider::_inventoryDebugFragment
+  IL_000c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0011: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0016: ret
+
+=== Timberborn.MapEditorDemolishingUI.MapEditorDemolishingUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.MapEditorDemolishingUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.MapEditorDemolishingUI.DemolishableScienceRewardFragment Timberborn.MapEditorDemolishingUI.MapEditorDemolishingUIConfigurator/EntityPanelModuleProvider::_demolishableScienceRewardFragment
+  IL_000d: ret
+
+=== Timberborn.MapEditorDemolishingUI.MapEditorDemolishingUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.MapEditorDemolishingUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.MapEditorDemolishingUI.DemolishableScienceRewardFragment Timberborn.MapEditorDemolishingUI.MapEditorDemolishingUIConfigurator/EntityPanelModuleProvider::_demolishableScienceRewardFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.MapEditorStockpilesUI.MapEditorStockpilesUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.MapEditorStockpilesUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.MapEditorStockpilesUI.FixedStockpileFragment Timberborn.MapEditorStockpilesUI.MapEditorStockpilesUIConfigurator/EntityPanelModuleProvider::_fixedStockpileFragment
+  IL_000d: ret
+
+=== Timberborn.MapEditorStockpilesUI.MapEditorStockpilesUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.MapEditorStockpilesUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.MapEditorStockpilesUI.FixedStockpileFragment Timberborn.MapEditorStockpilesUI.MapEditorStockpilesUIConfigurator/EntityPanelModuleProvider::_fixedStockpileFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.MapEditorUI.MapEditorUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.MapEditorUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.MapEditorUI.DeleteBlockObjectFragment Timberborn.MapEditorUI.MapEditorUIConfigurator/EntityPanelModuleProvider::_deleteBlockObjectFragment
+  IL_000d: ret
+
+=== Timberborn.MapEditorUI.MapEditorUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.MapEditorUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.MapEditorUI.DeleteBlockObjectFragment Timberborn.MapEditorUI.MapEditorUIConfigurator/EntityPanelModuleProvider::_deleteBlockObjectFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddLeftHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.MapEditorWaterSourceSystemUI.MapEditorWaterSourceSystemConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.MapEditorWaterSourceSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.MapEditorWaterSourceSystemUI.WaterSourceFlowPreviewFragment Timberborn.MapEditorWaterSourceSystemUI.MapEditorWaterSourceSystemConfigurator/EntityPanelModuleProvider::_waterSourceFlowPreviewFragment
+  IL_000d: ret
+
+=== Timberborn.MapEditorWaterSourceSystemUI.MapEditorWaterSourceSystemConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.MapEditorWaterSourceSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.MapEditorWaterSourceSystemUI.WaterSourceFlowPreviewFragment Timberborn.MapEditorWaterSourceSystemUI.MapEditorWaterSourceSystemConfigurator/EntityPanelModuleProvider::_waterSourceFlowPreviewFragment
+  IL_000c: ldc.i4.s 50
+  IL_000e: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0013: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0018: ret
+
+=== Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.MechanicalSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.MechanicalSystemUI.MechanicalNodeFragment Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator/EntityPanelModuleProvider::_mechanicalNodeFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.MechanicalSystemUI.BatteryFragment Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator/EntityPanelModuleProvider::_batteryFragment
+  IL_0014: ret
+
+=== Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.MechanicalSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.MechanicalSystemUI.BatteryFragment Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator/EntityPanelModuleProvider::_batteryFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.MechanicalSystemUI.MechanicalNodeFragment Timberborn.MechanicalSystemUI.MechanicalSystemUIConfigurator/EntityPanelModuleProvider::_mechanicalNodeFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0024: ret
+
+=== Timberborn.NaturalResourcesLifecycleUI.NaturalResourcesLifecycleUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.NaturalResourcesLifecycleUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.NaturalResourcesLifecycleUI.DyingNaturalResourceFragment Timberborn.NaturalResourcesLifecycleUI.NaturalResourcesLifecycleUIConfigurator/EntityPanelModuleProvider::_dyingNaturalResourceFragment
+  IL_000d: ret
+
+=== Timberborn.NaturalResourcesLifecycleUI.NaturalResourcesLifecycleUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.NaturalResourcesLifecycleUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.NaturalResourcesLifecycleUI.DyingNaturalResourceFragment Timberborn.NaturalResourcesLifecycleUI.NaturalResourcesLifecycleUIConfigurator/EntityPanelModuleProvider::_dyingNaturalResourceFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.PlantingUI.PlantingUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.PlantingUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.PlantingUI.PlantablePrioritizerFragment Timberborn.PlantingUI.PlantingUIConfigurator/EntityPanelModuleProvider::_plantablePrioritizerFragment
+  IL_000d: ret
+
+=== Timberborn.PlantingUI.PlantingUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.PlantingUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.PlantingUI.PlantablePrioritizerFragment Timberborn.PlantingUI.PlantingUIConfigurator/EntityPanelModuleProvider::_plantablePrioritizerFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.PowerGenerationUI.PowerGenerationUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.PowerGenerationUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.PowerGenerationUI.AdjustableStrengthPowerGeneratorFragment Timberborn.PowerGenerationUI.PowerGenerationUIConfigurator/EntityPanelModuleProvider::_sliderFragment
+  IL_000d: ret
+
+=== Timberborn.PowerGenerationUI.PowerGenerationUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.PowerGenerationUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.PowerGenerationUI.AdjustableStrengthPowerGeneratorFragment Timberborn.PowerGenerationUI.PowerGenerationUIConfigurator/EntityPanelModuleProvider::_sliderFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.PowerManagementUI.PowerManagementUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.PowerManagementUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.PowerManagementUI.ClutchFragment Timberborn.PowerManagementUI.PowerManagementUIConfigurator/EntityPanelModuleProvider::_clutchFragment
+  IL_000d: ret
+
+=== Timberborn.PowerManagementUI.PowerManagementUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.PowerManagementUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.PowerManagementUI.ClutchFragment Timberborn.PowerManagementUI.PowerManagementUIConfigurator/EntityPanelModuleProvider::_clutchFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.RecoveredGoodSystemUI.RecoveredGoodSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.RecoveredGoodSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.RecoveredGoodSystemUI.DeleteRecoveredGoodStackFragment Timberborn.RecoveredGoodSystemUI.RecoveredGoodSystemUIConfigurator/EntityPanelModuleProvider::_deleteRecoveredGoodStackFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.RecoveredGoodSystemUI.RecoveredGoodStackFragment Timberborn.RecoveredGoodSystemUI.RecoveredGoodSystemUIConfigurator/EntityPanelModuleProvider::_recoveredGoodStackFragment
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.RecoveredGoodSystemUI.RecoveredGoodStackDisintegrationFragment Timberborn.RecoveredGoodSystemUI.RecoveredGoodSystemUIConfigurator/EntityPanelModuleProvider::_recoveredGoodStackDisintegrationFragment
+  IL_001b: ret
+
+=== Timberborn.RecoveredGoodSystemUI.RecoveredGoodSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.RecoveredGoodSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.RecoveredGoodSystemUI.DeleteRecoveredGoodStackFragment Timberborn.RecoveredGoodSystemUI.RecoveredGoodSystemUIConfigurator/EntityPanelModuleProvider::_deleteRecoveredGoodStackFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddLeftHeaderFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.RecoveredGoodSystemUI.RecoveredGoodStackFragment Timberborn.RecoveredGoodSystemUI.RecoveredGoodSystemUIConfigurator/EntityPanelModuleProvider::_recoveredGoodStackFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: dup
+  IL_0020: ldarg.0
+  IL_0021: ldfld Timberborn.RecoveredGoodSystemUI.RecoveredGoodStackDisintegrationFragment Timberborn.RecoveredGoodSystemUI.RecoveredGoodSystemUIConfigurator/EntityPanelModuleProvider::_recoveredGoodStackDisintegrationFragment
+  IL_0026: ldc.i4.0
+  IL_0027: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_002c: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0031: ret
+
+=== Timberborn.ReproductionUI.ReproductionUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.ReproductionUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.ReproductionUI.BreedingPodFragment Timberborn.ReproductionUI.ReproductionUIConfigurator/EntityPanelModuleProvider::_breedingPodFragment
+  IL_000d: ret
+
+=== Timberborn.ReproductionUI.ReproductionUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.ReproductionUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.ReproductionUI.BreedingPodFragment Timberborn.ReproductionUI.ReproductionUIConfigurator/EntityPanelModuleProvider::_breedingPodFragment
+  IL_000c: ldc.i4.s 20
+  IL_000e: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0013: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0018: ret
+
+=== Timberborn.RuinsModelShuffling.RuinsModelShufflingConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.RuinsModelShuffling]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.RuinsModelShuffling.RuinModelShufflingFragment Timberborn.RuinsModelShuffling.RuinsModelShufflingConfigurator/EntityPanelModuleProvider::_ruinModelShufflingFragment
+  IL_000d: ret
+
+=== Timberborn.RuinsModelShuffling.RuinsModelShufflingConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.RuinsModelShuffling]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.RuinsModelShuffling.RuinModelShufflingFragment Timberborn.RuinsModelShuffling.RuinsModelShufflingConfigurator/EntityPanelModuleProvider::_ruinModelShufflingFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.RuinsUI.RuinsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.RuinsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.RuinsUI.RuinFragment Timberborn.RuinsUI.RuinsUIConfigurator/EntityPanelModuleProvider::_ruinFragment
+  IL_000d: ret
+
+=== Timberborn.RuinsUI.RuinsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.RuinsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.RuinsUI.RuinFragment Timberborn.RuinsUI.RuinsUIConfigurator/EntityPanelModuleProvider::_ruinFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.ScienceSystemUI.ScienceSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.ScienceSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.ScienceSystemUI.ScienceNeedingBuildingFragment Timberborn.ScienceSystemUI.ScienceSystemUIConfigurator/EntityPanelModuleProvider::_scienceNeedingBuildingFragment
+  IL_000d: ret
+
+=== Timberborn.ScienceSystemUI.ScienceSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.ScienceSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.ScienceSystemUI.ScienceNeedingBuildingFragment Timberborn.ScienceSystemUI.ScienceSystemUIConfigurator/EntityPanelModuleProvider::_scienceNeedingBuildingFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator/EntityPanelModuleProvider::_simpleOutputInventoryFragment
+  IL_000d: ret
+
+=== Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.SimpleOutputBuildingsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator/EntityPanelModuleProvider::_simpleOutputInventoryFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.StatusSystemUI.StatusSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.StatusSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.StatusSystemUI.StatusListFragment Timberborn.StatusSystemUI.StatusSystemUIConfigurator/EntityPanelModuleProvider::_statusListFragment
+  IL_000d: ret
+
+=== Timberborn.StatusSystemUI.StatusSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.StatusSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.StatusSystemUI.StatusListFragment Timberborn.StatusSystemUI.StatusSystemUIConfigurator/EntityPanelModuleProvider::_statusListFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddFooterFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.StockpilePriorityUISystem.StockpilePriorityUISystemConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.StockpilePriorityUISystem]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.StockpilePriorityUISystem.StockpilePriorityFragment Timberborn.StockpilePriorityUISystem.StockpilePriorityUISystemConfigurator/EntityPanelModuleProvider::_stockpilePriorityFragment
+  IL_000d: ret
+
+=== Timberborn.StockpilePriorityUISystem.StockpilePriorityUISystemConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.StockpilePriorityUISystem]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.StockpilePriorityUISystem.StockpilePriorityFragment Timberborn.StockpilePriorityUISystem.StockpilePriorityUISystemConfigurator/EntityPanelModuleProvider::_stockpilePriorityFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.StockpilesUI.StockpilesUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.StockpilesUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.StockpilesUI.StockpileInventoryFragment Timberborn.StockpilesUI.StockpilesUIConfigurator/EntityPanelModuleProvider::_stockpileInventoryFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.StockpilesUI.StockpileInventoryDebugFragment Timberborn.StockpilesUI.StockpilesUIConfigurator/EntityPanelModuleProvider::_stockpileInventoryDebugFragment
+  IL_0014: ret
+
+=== Timberborn.StockpilesUI.StockpilesUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.StockpilesUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.StockpilesUI.StockpileInventoryFragment Timberborn.StockpilesUI.StockpilesUIConfigurator/EntityPanelModuleProvider::_stockpileInventoryFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddBottomFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.StockpilesUI.StockpileInventoryDebugFragment Timberborn.StockpilesUI.StockpilesUIConfigurator/EntityPanelModuleProvider::_stockpileInventoryDebugFragment
+  IL_0019: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_001e: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0023: ret
+
+=== Timberborn.StockpileVisualizationUI.StockpileVisualizationUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.StockpileVisualizationUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.StockpileVisualizationUI.StockpileGoodColumnVisualizerDebugFragment Timberborn.StockpileVisualizationUI.StockpileVisualizationUIConfigurator/EntityPanelModuleProvider::_stockpileGoodColumnVisualizerDebugFragment
+  IL_000d: ret
+
+=== Timberborn.StockpileVisualizationUI.StockpileVisualizationUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.StockpileVisualizationUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.StockpileVisualizationUI.StockpileGoodColumnVisualizerDebugFragment Timberborn.StockpileVisualizationUI.StockpileVisualizationUIConfigurator/EntityPanelModuleProvider::_stockpileGoodColumnVisualizerDebugFragment
+  IL_000c: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_0011: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0016: ret
+
+=== Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.WaterBuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.WaterBuildingsUI.FloodgateFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_floodgateFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.WaterBuildingsUI.ThrottlingValveFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_throttlingValveFragment
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.WaterBuildingsUI.ThrottlingValveDebugFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_throttlingValveDebugFragment
+  IL_001b: ldarg.0
+  IL_001c: ldarg.s fillValveFragment
+  IL_001e: stfld Timberborn.WaterBuildingsUI.FillValveFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_fillValveFragment
+  IL_0023: ldarg.0
+  IL_0024: ldarg.s streamGaugeFragment
+  IL_0026: stfld Timberborn.WaterBuildingsUI.StreamGaugeFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_streamGaugeFragment
+  IL_002b: ldarg.0
+  IL_002c: ldarg.s waterMoverFragment
+  IL_002e: stfld Timberborn.WaterBuildingsUI.WaterMoverFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_waterMoverFragment
+  IL_0033: ldarg.0
+  IL_0034: ldarg.s waterInputPipeDepthFragment
+  IL_0036: stfld Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_waterInputPipeDepthFragment
+  IL_003b: ret
+
+=== Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.WaterBuildingsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.WaterBuildingsUI.FloodgateFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_floodgateFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.WaterBuildingsUI.ThrottlingValveFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_throttlingValveFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: dup
+  IL_0020: ldarg.0
+  IL_0021: ldfld Timberborn.WaterBuildingsUI.ThrottlingValveDebugFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_throttlingValveDebugFragment
+  IL_0026: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_002b: dup
+  IL_002c: ldarg.0
+  IL_002d: ldfld Timberborn.WaterBuildingsUI.FillValveFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_fillValveFragment
+  IL_0032: ldc.i4.0
+  IL_0033: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0038: dup
+  IL_0039: ldarg.0
+  IL_003a: ldfld Timberborn.WaterBuildingsUI.StreamGaugeFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_streamGaugeFragment
+  IL_003f: ldc.i4.0
+  IL_0040: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0045: dup
+  IL_0046: ldarg.0
+  IL_0047: ldfld Timberborn.WaterBuildingsUI.WaterMoverFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_waterMoverFragment
+  IL_004c: ldc.i4.0
+  IL_004d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0052: dup
+  IL_0053: ldarg.0
+  IL_0054: ldfld Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment Timberborn.WaterBuildingsUI.WaterBuildingsUIConfigurator/EntityPanelModuleProvider::_waterInputPipeDepthFragment
+  IL_0059: ldc.i4.0
+  IL_005a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_005f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0064: ret
+
+=== Timberborn.WaterSourceSystemUI.WaterSourceSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.WaterSourceSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.WaterSourceSystemUI.WaterSourceFragment Timberborn.WaterSourceSystemUI.WaterSourceSystemUIConfigurator/EntityPanelModuleProvider::_waterSourceFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.WaterSourceSystemUI.WaterSourceRegulatorFragment Timberborn.WaterSourceSystemUI.WaterSourceSystemUIConfigurator/EntityPanelModuleProvider::_waterSourceRegulatorFragment
+  IL_0014: ret
+
+=== Timberborn.WaterSourceSystemUI.WaterSourceSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.WaterSourceSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.WaterSourceSystemUI.WaterSourceRegulatorFragment Timberborn.WaterSourceSystemUI.WaterSourceSystemUIConfigurator/EntityPanelModuleProvider::_waterSourceRegulatorFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.WaterSourceSystemUI.WaterSourceFragment Timberborn.WaterSourceSystemUI.WaterSourceSystemUIConfigurator/EntityPanelModuleProvider::_waterSourceFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0024: ret
+
+=== Timberborn.WellbeingUI.WellbeingUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.WellbeingUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.WellbeingUI.WellbeingFragment Timberborn.WellbeingUI.WellbeingUIConfigurator/EntityPanelModuleProvider::_wellbeingFragment
+  IL_000d: ret
+
+=== Timberborn.WellbeingUI.WellbeingUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.WellbeingUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.WellbeingUI.WellbeingFragment Timberborn.WellbeingUI.WellbeingUIConfigurator/EntityPanelModuleProvider::_wellbeingFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.WindSystemUI.WindSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.WindSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.WindSystemUI.WeathervaneFragment Timberborn.WindSystemUI.WindSystemUIConfigurator/EntityPanelModuleProvider::_weathervaneFragment
+  IL_000d: ret
+
+=== Timberborn.WindSystemUI.WindSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.WindSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.WindSystemUI.WeathervaneFragment Timberborn.WindSystemUI.WindSystemUIConfigurator/EntityPanelModuleProvider::_weathervaneFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.WondersUI.WondersUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.WondersUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.WondersUI.WonderFragment Timberborn.WondersUI.WondersUIConfigurator/EntityPanelModuleProvider::_wonderFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.WondersUI.WonderDebugFragment Timberborn.WondersUI.WondersUIConfigurator/EntityPanelModuleProvider::_wonderDebugFragment
+  IL_0014: ret
+
+=== Timberborn.WondersUI.WondersUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.WondersUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.WondersUI.WonderFragment Timberborn.WondersUI.WondersUIConfigurator/EntityPanelModuleProvider::_wonderFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.WondersUI.WonderDebugFragment Timberborn.WondersUI.WondersUIConfigurator/EntityPanelModuleProvider::_wonderDebugFragment
+  IL_0019: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddDiagnosticFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment)
+  IL_001e: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0023: ret
+
+=== Timberborn.WorkshopsUI.WorkshopsUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.WorkshopsUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.WorkshopsUI.ManufactoryFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_manufactoryFragment
+  IL_000d: ldarg.0
+  IL_000e: ldarg.2
+  IL_000f: stfld Timberborn.WorkshopsUI.ManufactoryTogglableRecipesFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_manufactoryTogglableRecipesFragment
+  IL_0014: ldarg.0
+  IL_0015: ldarg.3
+  IL_0016: stfld Timberborn.WorkshopsUI.ProductionProgressFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_productionProgressFragment
+  IL_001b: ldarg.0
+  IL_001c: ldarg.s productivityFragment
+  IL_001e: stfld Timberborn.WorkshopsUI.ProductivityFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_productivityFragment
+  IL_0023: ldarg.0
+  IL_0024: ldarg.s manufactoryInventoryFragment
+  IL_0026: stfld Timberborn.WorkshopsUI.ManufactoryInventoryFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_manufactoryInventoryFragment
+  IL_002b: ret
+
+=== Timberborn.WorkshopsUI.WorkshopsUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.WorkshopsUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.WorkshopsUI.ManufactoryFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_manufactoryFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: dup
+  IL_0013: ldarg.0
+  IL_0014: ldfld Timberborn.WorkshopsUI.ManufactoryTogglableRecipesFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_manufactoryTogglableRecipesFragment
+  IL_0019: ldc.i4.0
+  IL_001a: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_001f: dup
+  IL_0020: ldarg.0
+  IL_0021: ldfld Timberborn.WorkshopsUI.ManufactoryInventoryFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_manufactoryInventoryFragment
+  IL_0026: ldc.i4.s 20
+  IL_0028: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_002d: dup
+  IL_002e: ldarg.0
+  IL_002f: ldfld Timberborn.WorkshopsUI.ProductionProgressFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_productionProgressFragment
+  IL_0034: ldc.i4.0
+  IL_0035: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_003a: dup
+  IL_003b: ldarg.0
+  IL_003c: ldfld Timberborn.WorkshopsUI.ProductivityFragment Timberborn.WorkshopsUI.WorkshopsUIConfigurator/EntityPanelModuleProvider::_productivityFragment
+  IL_0041: ldc.i4.0
+  IL_0042: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0047: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_004c: ret
+
+=== Timberborn.WorkSystemUI.WorkSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.WorkSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.WorkSystemUI.WorkplaceFragment Timberborn.WorkSystemUI.WorkSystemUIConfigurator/EntityPanelModuleProvider::_workplaceFragment
+  IL_000d: ret
+
+=== Timberborn.WorkSystemUI.WorkSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.WorkSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.WorkSystemUI.WorkplaceFragment Timberborn.WorkSystemUI.WorkSystemUIConfigurator/EntityPanelModuleProvider::_workplaceFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddTopFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret
+
+=== Timberborn.ZiplineSystemUI.ZiplineSystemUIConfigurator+.EntityPanelModuleProvider::.ctor   [Timberborn.ZiplineSystemUI]
+  IL_0000: ldarg.0
+  IL_0001: call System.Void System.Object::.ctor()
+  IL_0006: ldarg.0
+  IL_0007: ldarg.1
+  IL_0008: stfld Timberborn.ZiplineSystemUI.ZiplineTowerFragment Timberborn.ZiplineSystemUI.ZiplineSystemUIConfigurator/EntityPanelModuleProvider::_ziplineTowerFragment
+  IL_000d: ret
+
+=== Timberborn.ZiplineSystemUI.ZiplineSystemUIConfigurator+.EntityPanelModuleProvider::Get   [Timberborn.ZiplineSystemUI]
+  IL_0000: newobj System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::.ctor()
+  IL_0005: dup
+  IL_0006: ldarg.0
+  IL_0007: ldfld Timberborn.ZiplineSystemUI.ZiplineTowerFragment Timberborn.ZiplineSystemUI.ZiplineSystemUIConfigurator/EntityPanelModuleProvider::_ziplineTowerFragment
+  IL_000c: ldc.i4.0
+  IL_000d: callvirt System.Void Timberborn.EntityPanelSystem.EntityPanelModule/Builder::AddMiddleFragment(Timberborn.EntityPanelSystem.IEntityPanelFragment,System.Int32)
+  IL_0012: callvirt Timberborn.EntityPanelSystem.EntityPanelModule Timberborn.EntityPanelSystem.EntityPanelModule/Builder::Build()
+  IL_0017: ret

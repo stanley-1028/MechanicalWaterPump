@@ -55,15 +55,16 @@ Cross-file checks:
   C15 per-frame node transform vs the source animation (animated mode only):
       every animated node's exported node-animation frames are compared, frame by
       frame, with the transform recomputed from the source JSON animation spec
-      (rotation: quaternion about the export axis by 2*pi*turns*t, with the
-      plugin's axis sign; translation: pivot + axis*amplitude*sin(2*pi*(cycles*t
-      + phase)); scale (1,1,1)), +-2e-3.  This catches rest-vs-curve axis or
+      (rotation: quaternion about the export axis by 2*pi*turns*t; oscillation:
+      quaternion about the export axis by amplitude*sin(2*pi*(cycles*t + phase));
+      translation: pivot + axis*amplitude*sin(2*pi*(cycles*t + phase)); all with
+      the plugin's axis sign and scale (1,1,1)), +-2e-3.  This catches rest-vs-curve axis or
       space mismatches (local vs world, wrong flip on curves only).
-  C16 rotation/translation axis vs part geometry (animated mode only): for a
-      rotation part the animated axis must be the part mesh's disc normal (the
-      thinnest symmetric bbox axis) or the cylinder shaft axis (the longest
-      symmetric bbox axis); for a translation part the motion axis must be one of
-      the two largest bbox axes.  This catches a part rotating/oscillating around
+  C16 rotation/oscillation/translation axis vs part geometry (animated mode
+      only): for a rotation/oscillation part the axis must be the thin axis of the
+      part (disc normal / flat plate / connecting link) or the long axis of a
+      symmetric shaft; for a translation part the motion axis must be one of the
+      two largest bbox axes.  This catches a part rotating/oscillating around
       an axis that does not match its own geometry.
   C17 merge check: the static root node must contain exactly the source static
       triangles, and every independent part node must contain exactly its own
@@ -594,7 +595,7 @@ def validate_file(report, spec, animations_enabled=True):
                 math.sqrt(sum((position[i] - positions[0][i]) ** 2 for i in range(3)))
                 for position in positions)
             kind = part["animation"]["type"]
-            if kind == "rotation" and rotation_delta < 1e-3:
+            if kind in ("rotation", "oscillation") and rotation_delta < 1e-3:
                 animation_ok = False
                 animation_details.append("%s rotation does not vary" % name)
             if kind == "translation" and position_delta < 1e-3:
@@ -631,6 +632,15 @@ def validate_file(report, spec, animations_enabled=True):
                 if animation["type"] == "rotation":
                     theta = 2.0 * math.pi * float(animation["turns"]) * t
                     half = theta * 0.5
+                    axis_unit = [0.0, 0.0, 0.0]
+                    axis_unit[axis_index] = -math.sin(half)
+                    expected_rotation = (axis_unit[0], axis_unit[1], axis_unit[2],
+                                         math.cos(half))
+                elif animation["type"] == "oscillation":
+                    angle = float(animation["amplitude"]) * math.sin(
+                        2.0 * math.pi * (float(animation["cycles"]) * t
+                                         + float(animation.get("phase", 0.0))))
+                    half = angle * 0.5
                     axis_unit = [0.0, 0.0, 0.0]
                     axis_unit[axis_index] = -math.sin(half)
                     expected_rotation = (axis_unit[0], axis_unit[1], axis_unit[2],
@@ -681,17 +691,19 @@ def validate_file(report, spec, animations_enabled=True):
             smallest, middle, largest = order[0], order[1], order[2]
             animation = part["animation"]
             expected = {"x": 0, "y": 1, "z": 2}[animation["axis"]]
-            if animation["type"] == "rotation":
+            if animation["type"] in ("rotation", "oscillation"):
                 symmetric_small = abs(extents[middle] - extents[largest]) <= 0.2 * extents[largest]
                 symmetric_large = abs(extents[smallest] - extents[middle]) <= 0.2 * extents[middle] if extents[middle] else False
-                disc = (expected == smallest and symmetric_small
-                        and extents[largest] >= 2.0 * max(extents[smallest], 1e-6))
-                shaft = (expected == largest and symmetric_large)
-                if not (disc or shaft):
+                disc = expected == smallest and symmetric_small
+                shaft = expected == largest and symmetric_large
+                plate = (expected == smallest
+                         and extents[smallest] <= 0.5 * max(extents[largest], 1e-6))
+                if not (disc or shaft or plate):
                     axis_ok = False
                 axis_details.append("%s %s(%s)" % (
-                    part["name"].replace("#Animated", ""),
-                    animation["axis"], "disc" if disc else ("shaft" if shaft else "MISMATCH")))
+                    part["name"].replace("#Animated", ""), animation["axis"],
+                    "disc" if disc else ("shaft" if shaft else
+                                         ("plate/link" if plate else "MISMATCH"))))
             else:
                 if expected not in (middle, largest):
                     axis_ok = False

@@ -26,3 +26,19 @@ dotnet mod/tools/ApiIndex/bin/Release/net9.0/ApiIndex.dll il   "<ManagedDir>" do
 | `ui-mechtext.txt`, `il-mechtext.txt` | `MechanicalNodeTextFormatter` shows `Mechanical.PowerInputMaximum` = "{0}/{1} ({2}%)" with args (delivered hp, required hp, percent) |
 | `ui-unitfmt.txt`, `il-unitfmt.txt` | `UnitFormatter.PowerUnitLocKey = "Unit.HorsePower.NumberAndUnit"`, the localized hp unit the power tooltip uses |
 | `ui-status.txt` | Vanilla status-system types (context only; the panel does not register status icons) |
+
+## Native entity-panel restyle evidence (T12 / v0.3)
+
+| File | What it proves for the native restyle |
+|---|---|
+| `il-loader.txt` | `VisualElementLoader.LoadVisualElement(name)` resolves `UI/Views/<name>` through the game asset loader, clones the template and runs `VisualElementInitializer` — this is how the panel takes a native button. |
+| `il-demolish2.txt` | `Timberborn.DemolishingUI.DemolishableFragment` loads `Game/EntityPanel/DemolishableFragment` and `Q<Button>("Button")` from it — the template the panel borrows its native nine-slice button from. |
+| `ui-fragments.txt` | `SimpleOutputInventoryFragment` requires `SimpleOutputInventoryFragmentEnabler`; `MechanicalNodeFragment`/`WaterInputPipeDepthFragment` are the game fragments that render power/depth/inventory for the pump. |
+| `il-soinv.txt` | `SimpleOutputInventoryFragment.InitializeFragment` loads its template and `ShowFragment` checks `SimpleOutputInventory` + `SimpleOutputInventoryFragmentEnabler` — hence the TemplateModule decorator in `MwpUiConfigurator`. |
+| `il-tmpl.txt` | Vanilla `FieldsUIConfigurator` registers `MultiBind<TemplateModule>().ToProvider(Func<TemplateModule>)` with `AddDecorator<FarmHouse, SimpleOutputInventoryFragmentEnabler>()` — the pattern the UI configurator copies. |
+| `il-tmbuilder.txt`, `ui-tmpl.txt` | `TemplateModule.Builder.AddDecorator<TSubject, TDecorator>()` signature. |
+| `il-watertmpl.txt` | `WaterInputPipeSpec` → `WaterInputPipe` → `WaterInputPipeCoordinates` decorator chain, which is what makes the vanilla depth fragment appear on the pump. |
+| `il-mechnode.txt` | `MechanicalNodeFragment` shows for any entity with a `MechanicalNode` (power rows appear automatically). |
+| `il-progressbar.txt`, `ui-coreui.txt` | `Timberborn.CoreUI.ProgressBar` is public and loads `UI/Views/Core/ProgressBar` itself; `NineSliceButton`/`LocalizableButton` are internal (CS0122), which is why the panel extracts a native button instead of constructing one. |
+| `ui-bindito.txt` | `IBindingBuilder<T>.ToProvider(Func<T>)` / `IMultiBindingBuilder<T>` used by the configurator. |
+| `il-locbtn.txt` | `LocalizableButton` is a Button that draws the nine-slice skin from custom style properties (the same skin the borrowed button has). |

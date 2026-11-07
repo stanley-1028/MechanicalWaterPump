@@ -1,200 +1,227 @@
 using MWP.Core;
-using UnityEngine;
+using Timberborn.CoreUI;
 using UnityEngine.UIElements;
 
 namespace MWP.UI.Panels
 {
     /// <summary>
-    /// Code-only styling for the pump panel.
+    /// Native-style building blocks for the pump panel.
     ///
-    /// The mod ships no UXML/USS asset (a mod assembly cannot reference the game's bundles), so
-    /// every control that is not a plain label gets explicit inline colors and sizes here. That
-    /// keeps the panel visible under the game's panel theme and costs nothing at runtime: all
-    /// colors are static readonly values and no style is touched per frame (REQ-PERF-04).
+    /// Every element here is the same control type the vanilla entity-panel fragments instantiate
+    /// and carries the same USS classes as the shipped UXML templates (`entity-sub-panel`,
+    /// `bg-sub-box--green`, `entity-panel__text`, `entity-panel__sub-text`,
+    /// `entity-panel__button-wrapper`, `entity-fragment__button--red/--green`, `game-toggle`,
+    /// `entity-panel__toggle`, `progress-bar`, `progress-bar--green`). The game's own style
+    /// sheets (`CoreStyle`, `CommonStyle`, `EntityPanelCommonStyle`, `EntityPanelGameStyle`,
+    /// `GameStyle`) are attached to the GameUI/EntityPanel roots, so these classes style the panel
+    /// exactly like the native fragments. No inline colour, font or size is set anywhere: the
+    /// only thing the code touches is class membership and display visibility (both are the same
+    /// operations the vanilla UXML/UQuery code does).
     /// </summary>
     public static class MwpPumpPanelStyles
     {
-        private static readonly Color BarTrack = new Color(0.13f, 0.15f, 0.17f, 1f);
-        private static readonly Color BarHigh = new Color(0.42f, 0.78f, 0.38f, 1f);
-        private static readonly Color BarMedium = new Color(0.93f, 0.78f, 0.28f, 1f);
-        private static readonly Color BarLow = new Color(0.90f, 0.55f, 0.22f, 1f);
-        private static readonly Color BarCritical = new Color(0.86f, 0.29f, 0.23f, 1f);
-        private static readonly Color ButtonBackground = new Color(0.24f, 0.42f, 0.62f, 1f);
-        private static readonly Color ButtonBorder = new Color(0.16f, 0.30f, 0.46f, 1f);
-        private static readonly Color HintText = new Color(0.72f, 0.75f, 0.78f, 1f);
-        private static readonly Color StatusGreen = new Color(0.42f, 0.78f, 0.38f, 1f);
-        private static readonly Color StatusBlue = new Color(0.35f, 0.63f, 0.95f, 1f);
-        private static readonly Color StatusOrange = new Color(0.93f, 0.60f, 0.24f, 1f);
-        private static readonly Color StatusYellow = new Color(0.93f, 0.78f, 0.28f, 1f);
-        private static readonly Color StatusRed = new Color(0.86f, 0.29f, 0.23f, 1f);
-        private static readonly Color StatusGrey = new Color(0.65f, 0.67f, 0.70f, 1f);
-        private static readonly Color ToggleMarkOn = new Color(0.42f, 0.78f, 0.38f, 1f);
-        private static readonly Color ToggleMarkOff = new Color(0.20f, 0.22f, 0.24f, 1f);
+        /// <summary>Nine-slice sub-panel background class used by every native entity sub-panel.</summary>
+        private const string SubPanelClass = "bg-sub-box--green";
 
-        /// <summary>Creates one wrapping label row and adds it to the panel.</summary>
-        /// <param name="parent">Panel root.</param>
+        /// <summary>Sub-panel padding class (8px 12px) from EntityPanelCommonStyle.uss.</summary>
+        private const string SectionClass = "entity-sub-panel";
+
+        /// <summary>Native body text (13px, rgb(204,204,204)).</summary>
+        private const string TextClass = "entity-panel__text";
+
+        /// <summary>Native secondary text (12px) used for explanations.</summary>
+        private const string SubTextClass = "entity-panel__sub-text";
+
+        /// <summary>Native 13px grey text; the base for the status row so a colour class can override it.</summary>
+        private const string StatusTextClass = "game-text-normal";
+
+        /// <summary>Native yellow warning text class (CommonStyle.uss).</summary>
+        private const string WarningTextClass = "text--yellow";
+
+        /// <summary>Native red text class (CommonStyle.uss).</summary>
+        private const string DangerTextClass = "game-text--red";
+
+        /// <summary>Native row that lays its buttons out centred (EntityPanelCommonStyle.uss).</summary>
+        private const string ButtonWrapperClass = "entity-panel__button-wrapper";
+
+        /// <summary>Native fragment button base class.</summary>
+        private const string ButtonClass = "entity-fragment__button";
+
+        /// <summary>Native red nine-slice button skin.</summary>
+        private const string ButtonDangerClass = "entity-fragment__button--red";
+
+        /// <summary>Native green nine-slice button skin.</summary>
+        private const string ButtonPositiveClass = "entity-fragment__button--green";
+
+        /// <summary>Native toggle class used by every entity-panel toggle.</summary>
+        private const string ToggleClass = "game-toggle";
+
+        /// <summary>Native entity-panel toggle spacing class.</summary>
+        private const string PanelToggleClass = "entity-panel__toggle";
+
+        /// <summary>Native progress-bar frame class.</summary>
+        private const string ProgressBarClass = "progress-bar";
+
+        /// <summary>Native green progress-bar fill variant.</summary>
+        private const string ProgressBarGreenClass = "progress-bar--green";
+
+        /// <summary>Creates a native nine-slice sub-panel section.</summary>
+        /// <returns>An empty section with the native background and padding.</returns>
+        public static NineSliceVisualElement CreateSection()
+        {
+            var section = new NineSliceVisualElement();
+            section.AddToClassList(SectionClass);
+            section.AddToClassList(SubPanelClass);
+            return section;
+        }
+
+        /// <summary>Creates one native body-text row and adds it to the section.</summary>
+        /// <param name="parent">Section (or wrapper) that receives the label.</param>
         /// <returns>The created label.</returns>
-        public static Label AddRow(VisualElement parent)
+        public static Label CreateTextRow(VisualElement parent)
         {
             var label = new Label();
-            label.style.whiteSpace = WhiteSpace.Normal;
+            label.AddToClassList(TextClass);
             parent.Add(label);
             return label;
         }
 
-        /// <summary>Styles the grey "next step" hint row.</summary>
-        /// <param name="label">Hint label.</param>
-        public static void ApplyHint(Label label) => label.style.color = HintText;
-
-        /// <summary>Styles a plain UIElements button so it stays readable without a themed USS asset.</summary>
-        /// <param name="button">Button to style.</param>
-        public static void ApplyButton(Button button)
+        /// <summary>Creates the status row with the native text class a colour variant can override.</summary>
+        /// <param name="parent">Section that receives the label.</param>
+        /// <returns>The created label.</returns>
+        public static Label CreateStatusRow(VisualElement parent)
         {
-            button.style.height = 22f;
-            button.style.marginTop = 2f;
-            button.style.marginBottom = 2f;
-            button.style.paddingLeft = 8f;
-            button.style.paddingRight = 8f;
-            button.style.backgroundColor = ButtonBackground;
-            button.style.color = Color.white;
-            button.style.borderTopWidth = 1f;
-            button.style.borderBottomWidth = 1f;
-            button.style.borderLeftWidth = 1f;
-            button.style.borderRightWidth = 1f;
-            button.style.borderTopColor = ButtonBorder;
-            button.style.borderBottomColor = ButtonBorder;
-            button.style.borderLeftColor = ButtonBorder;
-            button.style.borderRightColor = ButtonBorder;
-            button.style.borderTopLeftRadius = 3f;
-            button.style.borderTopRightRadius = 3f;
-            button.style.borderBottomLeftRadius = 3f;
-            button.style.borderBottomRightRadius = 3f;
-            button.style.unityTextAlign = TextAnchor.MiddleCenter;
+            var label = new Label();
+            label.AddToClassList(StatusTextClass);
+            parent.Add(label);
+            return label;
         }
 
-        /// <summary>Gives a UIElements toggle a predictable height inside the panel column.</summary>
-        /// <param name="toggle">Toggle to style.</param>
-        public static void ApplyToggle(Toggle toggle)
+        /// <summary>Creates one native secondary-text row (the "next step" hint).</summary>
+        /// <param name="parent">Section that receives the label.</param>
+        /// <returns>The created label.</returns>
+        public static Label CreateSubTextRow(VisualElement parent)
         {
-            toggle.style.height = 20f;
-            toggle.style.marginTop = 2f;
-            toggle.style.marginBottom = 2f;
+            var label = new Label();
+            label.AddToClassList(SubTextClass);
+            parent.Add(label);
+            return label;
+        }
+
+        /// <summary>Creates a native progress bar whose label overlays the fill.</summary>
+        /// <param name="parent">Section that receives the bar.</param>
+        /// <param name="label">Label placed inside the bar (native templates always do this).</param>
+        /// <param name="green">True for the native green variant, false for the default fill.</param>
+        /// <returns>The created progress bar; call <see cref="SetProgress"/> to update it.</returns>
+        public static global::Timberborn.CoreUI.ProgressBar CreateProgressBar(VisualElement parent, out Label label, bool green)
+        {
+            var bar = new global::Timberborn.CoreUI.ProgressBar();
+            bar.AddToClassList(ProgressBarClass);
+            if (green)
+            {
+                bar.AddToClassList(ProgressBarGreenClass);
+            }
+
+            label = CreateTextRow(bar);
+            parent.Add(bar);
+            return bar;
+        }
+
+        /// <summary>Creates the native centred button row.</summary>
+        /// <param name="parent">Section that receives the wrapper.</param>
+        /// <returns>The created wrapper element.</returns>
+        public static VisualElement CreateButtonWrapper(VisualElement parent)
+        {
+            var wrapper = new VisualElement();
+            wrapper.AddToClassList(ButtonWrapperClass);
+            parent.Add(wrapper);
+            return wrapper;
         }
 
         /// <summary>
-        /// Gives the toggle's checkmark a fixed size and a dark "off" fill. The game's theme is
-        /// expected to draw the checkmark image, but a mod panel cannot rely on it, so
-        /// <see cref="SetToggleMark"/> also colours the box as a shape+colour state cue (§12.4).
+        /// Applies the native fragment-button classes to a button. The game's own nine-slice
+        /// button element is internal in this build, so the panel obtains a real native button
+        /// from the vanilla UXML templates (see <c>MwpPumpPanelView</c>) and keeps it typed as
+        /// <see cref="Button"/>; this method only ensures the native classes/fallback are present.
         /// </summary>
-        /// <param name="mark">Checkmark element found inside the toggle, or null when the theme does not create one.</param>
-        public static void PrepareToggleMark(VisualElement? mark)
+        /// <param name="button">Native or fallback button.</param>
+        public static void ApplyFragmentButtonClasses(Button button)
         {
-            if (mark is null)
-            {
-                return;
-            }
-
-            mark.style.width = 12f;
-            mark.style.height = 12f;
-            mark.style.marginLeft = 2f;
-            mark.style.marginRight = 2f;
-            mark.style.borderTopLeftRadius = 2f;
-            mark.style.borderTopRightRadius = 2f;
-            mark.style.borderBottomLeftRadius = 2f;
-            mark.style.borderBottomRightRadius = 2f;
-            SetToggleMark(mark, false);
+            button.AddToClassList(TextClass);
+            button.AddToClassList(ButtonClass);
+            button.AddToClassList(ButtonDangerClass);
         }
 
-        /// <summary>Colours the toggle checkmark green when on and dark when off.</summary>
-        /// <param name="mark">Checkmark element found inside the toggle, or null.</param>
-        /// <param name="on">Current toggle value.</param>
-        public static void SetToggleMark(VisualElement? mark, bool on)
+        /// <summary>Creates a native game toggle with a localized label.</summary>
+        /// <param name="parent">Section that receives the toggle.</param>
+        /// <param name="label">Already localized toggle label.</param>
+        /// <returns>The created toggle.</returns>
+        public static Toggle CreateToggle(VisualElement parent, string label)
         {
-            if (mark is not null)
-            {
-                mark.style.backgroundColor = on ? ToggleMarkOn : ToggleMarkOff;
-            }
+            var toggle = new Toggle(label);
+            toggle.AddToClassList(ToggleClass);
+            toggle.AddToClassList(TextClass);
+            toggle.AddToClassList(PanelToggleClass);
+            parent.Add(toggle);
+            return toggle;
         }
 
-        /// <summary>Creates the condition progress bar and returns its fill element.</summary>
-        /// <param name="fill">The element whose width is the progress value.</param>
-        /// <returns>The bar track, ready to be added to the panel.</returns>
-        public static VisualElement CreateProgressBar(out VisualElement fill)
+        /// <summary>
+        /// Applies the native colour class that matches the status severity: red for "stopped hard",
+        /// yellow for "working but degraded", the default grey otherwise (requirements §12.2).
+        /// </summary>
+        /// <param name="label">Status label created with <see cref="CreateTextRow"/>-equivalent classes.</param>
+        /// <param name="state">Highest-priority pump state.</param>
+        public static void ApplyStatusColor(Label label, PumpState state)
         {
-            var track = new VisualElement();
-            track.style.height = 8f;
-            track.style.marginTop = 2f;
-            track.style.marginBottom = 4f;
-            track.style.backgroundColor = BarTrack;
-            track.style.borderTopLeftRadius = 2f;
-            track.style.borderTopRightRadius = 2f;
-            track.style.borderBottomLeftRadius = 2f;
-            track.style.borderBottomRightRadius = 2f;
-
-            fill = new VisualElement();
-            fill.style.height = Length.Percent(100f);
-            fill.style.width = Length.Percent(0f);
-            fill.style.backgroundColor = BarHigh;
-            track.Add(fill);
-            return track;
+            bool danger = state == PumpState.NoPower || state == PumpState.NeedsMaintenance;
+            bool warning = !danger && IsWarning(state);
+            label.EnableInClassList(DangerTextClass, danger);
+            label.EnableInClassList(WarningTextClass, warning);
         }
 
-        /// <summary>Applies a 0..100 condition value to the bar fill (width + colour).</summary>
-        /// <param name="fill">Bar fill element from <see cref="CreateProgressBar"/>.</param>
-        /// <param name="percent">Condition in percent.</param>
-        public static void SetProgress(VisualElement fill, double percent)
+        /// <summary>Switches the pause button between the native red (pause) and green (resume) skins.</summary>
+        /// <param name="button">Pause/resume button.</param>
+        /// <param name="paused">Current pause flag.</param>
+        public static void ApplyPauseColor(Button button, bool paused)
+        {
+            button.EnableInClassList(ButtonDangerClass, !paused);
+            button.EnableInClassList(ButtonPositiveClass, paused);
+        }
+
+        /// <summary>Shows or hides an element the same way the vanilla fragments do.</summary>
+        /// <param name="element">Element to toggle.</param>
+        /// <param name="visible">True to display it.</param>
+        public static void SetVisible(VisualElement element, bool visible) => element.ToggleDisplayStyle(visible);
+
+        /// <summary>Applies a 0..100 value to a native progress bar.</summary>
+        /// <param name="bar">Bar created by <see cref="CreateProgressBar"/>.</param>
+        /// <param name="percent">Progress in percent.</param>
+        public static void SetProgress(global::Timberborn.CoreUI.ProgressBar bar, double percent)
         {
             double clamped = double.IsNaN(percent) || double.IsInfinity(percent)
                 ? 0.0
-                : Mathf.Clamp((float)percent, 0f, 100f);
-            fill.style.width = Length.Percent((float)clamped);
-            fill.style.backgroundColor = BarColor(clamped);
+                : System.Math.Max(0.0, System.Math.Min(100.0, percent));
+            bar.SetProgress((float)(clamped / 100.0));
         }
 
-        /// <summary>Maps a pump state to the status color required by requirements §12.2.</summary>
-        /// <param name="state">Highest-priority pump state.</param>
-        /// <returns>Text color for the status row.</returns>
-        public static Color StatusColor(PumpState state)
+        private static bool IsWarning(PumpState state)
         {
             switch (state)
             {
-                case PumpState.Producing:
-                    return StatusGreen;
-                case PumpState.NoPower:
-                case PumpState.NeedsMaintenance:
-                    return StatusRed;
                 case PumpState.NoWater:
-                    return StatusBlue;
                 case PumpState.NoAccess:
-                case PumpState.Critical:
-                case PumpState.MissingMaintenanceMaterials:
-                case PumpState.NoAccessForMaintenance:
-                    return StatusOrange;
                 case PumpState.StorageFull:
                 case PumpState.MaintenanceDue:
-                case PumpState.LowPower:
+                case PumpState.Critical:
                 case PumpState.Maintaining:
-                    return StatusYellow;
-                case PumpState.Paused:
-                    return StatusGrey;
+                case PumpState.MissingMaintenanceMaterials:
+                case PumpState.NoAccessForMaintenance:
+                case PumpState.LowPower:
+                    return true;
                 default:
-                    return Color.white;
+                    return false;
             }
-        }
-
-        private static Color BarColor(double percent)
-        {
-            if (percent >= 75.0)
-            {
-                return BarHigh;
-            }
-
-            if (percent >= 50.0)
-            {
-                return BarMedium;
-            }
-
-            return percent >= 25.0 ? BarLow : BarCritical;
         }
     }
 }

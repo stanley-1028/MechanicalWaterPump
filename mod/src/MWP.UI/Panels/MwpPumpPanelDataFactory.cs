@@ -15,11 +15,13 @@ namespace MWP.UI.Panels
     /// instead of leaking a number to the player.
     ///
     /// Every MWP text comes from <see cref="MwpLocKeys"/>; the three "next step" hints and the
-    /// power-detail tooltip are base-game keys (see <see cref="MwpUiVanillaKeys"/>).
+    /// good display names are base-game keys (see <see cref="MwpUiVanillaKeys"/>). Only the
+    /// rows that no vanilla fragment renders are produced here: power, internal inventory and
+    /// intake depth come from the game's own middle/bottom fragments.
     /// </summary>
     public static class MwpPumpPanelDataFactory
     {
-        /// <summary>Locale-neutral placeholder used when a value is unknown (same glyph as HDBF).</summary>
+        /// <summary>Locale-neutral placeholder used when a value is unknown.</summary>
         private const string Unknown = "\u2014";
 
         /// <summary>Separator between two maintenance material stacks.</summary>
@@ -28,8 +30,11 @@ namespace MWP.UI.Panels
         /// <summary>Builds the panel payload for one snapshot.</summary>
         /// <param name="snapshot">Read model of the selected pump.</param>
         /// <param name="loc">Localization service used for every visible string.</param>
+        /// <param name="showInventoryRow">True when the vanilla inventory fragment cannot render the Water stock, so the panel keeps its own row.</param>
+        /// <param name="showDepthRow">True when the vanilla intake-depth fragment cannot render the depth, so the panel keeps its own row.</param>
         /// <returns>The formatted panel data; <see cref="MwpPumpPanelData.HasData"/> is false for unfinished buildings.</returns>
-        public static MwpPumpPanelData Create(in PumpSnapshot snapshot, ILoc loc)
+        public static MwpPumpPanelData Create(in PumpSnapshot snapshot, ILoc loc, bool showInventoryRow,
+            bool showDepthRow)
         {
             if (loc is null)
             {
@@ -50,30 +55,28 @@ namespace MWP.UI.Panels
             {
                 HasData = true,
                 State = snapshot.State,
-                Title = loc.T(MwpLocKeys.DisplayName(tier.TierName)),
-                TitleTooltip = loc.T(MwpLocKeys.TooltipWaterRate),
                 Status = status.Text,
                 StatusHint = status.Hint,
                 Rate = loc.T(MwpLocKeys.UiWaterRate, MwpDefaults.FormatRate(Clamp(snapshot.EffectiveWaterPerHour))),
-                PowerDemand = loc.T(MwpLocKeys.StatusPowerDemand, snapshot.PowerRequiredHp),
-                PowerSupply = loc.T(MwpLocKeys.StatusPowerSupply, PercentPoint(snapshot.PowerRatio)),
-                PowerTooltip = loc.T(MwpUiVanillaKeys.PowerDetail,
-                    loc.T(MwpUiVanillaKeys.PowerUnit, FormatDecimal(Clamp(snapshot.PowerSupplyHp))),
-                    loc.T(MwpUiVanillaKeys.PowerUnit, snapshot.PowerRequiredHp),
-                    PercentPoint(snapshot.PowerRatio)),
                 WaterQuality = loc.T(MwpLocKeys.StatusWaterQuality, PercentPoint(snapshot.WaterQuality)),
-                Depth = loc.T(MwpLocKeys.UiMaxDepth, tier.MaxDepth),
-                Inventory = loc.T(MwpLocKeys.UiInventory, snapshot.WaterInStock, snapshot.WaterCapacity),
+                Inventory = showInventoryRow
+                    ? loc.T(MwpLocKeys.UiInventory, snapshot.WaterInStock, snapshot.WaterCapacity)
+                    : string.Empty,
+                Depth = showDepthRow ? loc.T(MwpLocKeys.UiMaxDepth, tier.MaxDepth) : string.Empty,
+                ShowInventoryRow = showInventoryRow,
+                ShowDepthRow = showDepthRow,
                 Condition = loc.T(MwpLocKeys.UiCondition, conditionPercent),
+                ConditionPercent = conditionPercent,
+                MaintenanceVisible = snapshot.MaintenanceEnabled,
                 MaintenanceIn = loc.T(MwpLocKeys.UiMaintenanceIn, FormatDays(snapshot.MaintenanceDaysLeft)),
                 Materials = loc.T(MwpLocKeys.UiMaintenanceMaterials, FormatMaterials(loc, tier.MaintenanceMaterials)),
-                Pipe = loc.T(PipeKey(snapshot.PipeAdapter)),
-                PipeTooltip = loc.T(MwpLocKeys.TooltipPipeCompat),
+                IsMaintaining = snapshot.State == PumpState.Maintaining,
+                MaintainingPercent = PercentPoint(snapshot.MaintenanceProgress),
                 AutoMaintenance = snapshot.AutoMaintenance,
                 Paused = snapshot.Paused,
                 PauseLabel = loc.T(snapshot.Paused ? MwpLocKeys.UiResume : MwpLocKeys.UiPause),
-                ConditionPercent = conditionPercent,
-                MaintenanceVisible = snapshot.MaintenanceEnabled,
+                Pipe = loc.T(PipeKey(snapshot.PipeAdapter)),
+                PipeTooltip = loc.T(MwpLocKeys.TooltipPipeCompat),
             };
         }
 
@@ -219,9 +222,6 @@ namespace MWP.UI.Panels
 
             return MwpDefaults.FormatRate(days);
         }
-
-        /// <summary>Formats a possibly-NaN measurement with one decimal.</summary>
-        private static string FormatDecimal(double value) => MwpDefaults.FormatRate(Clamp(value));
 
         /// <summary>Rejects NaN/Infinity/negative values so no formatter ever prints "NaN" (REQ-SAFE-01).</summary>
         private static double Clamp(double value)

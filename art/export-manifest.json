@@ -86,26 +86,26 @@
       "IrregularPlanks_MetalForged.IronTeeth"
     ],
     "MWP.Pump.Advanced.Folktails.Model": [
-      "BaseWood_LightBrown.Folktails",
+      "BaseWood_Brown.Folktails",
       "BaseMetal.Folktails",
       "WindowsAtlas.Folktails",
       "Details.Folktails"
     ],
     "MWP.Pump.Advanced.IronTeeth.Model": [
+      "BaseWood_DarkBrown.IronTeeth",
       "BaseMetal.IronTeeth",
-      "BaseWood_Grey.IronTeeth",
       "WindowsAtlas.IronTeeth",
-      "IrregularPlanks_MetalForged.IronTeeth"
+      "Details.IronTeeth"
     ],
     "MWP.Pump.Top.Folktails.Model": [
-      "IrregularPlanks_Brown.Folktails",
+      "BaseWood_Brown.Folktails",
       "BaseMetal.Folktails",
       "WindowsAtlas.Folktails",
       "Details.Folktails"
     ],
     "MWP.Pump.Top.IronTeeth.Model": [
-      "BaseMetal.IronTeeth",
       "IrregularPlanks_MetalForged.IronTeeth",
+      "BaseMetal.IronTeeth",
       "Details.IronTeeth",
       "WindowsAtlas.IronTeeth"
     ],
@@ -1422,23 +1422,26 @@
         4.0,
         3.0
       ],
-      "triangles": 3948,
-      "vertices": 9399,
+      "triangles": 5860,
+      "vertices": 14296,
       "materials": [
-        "BaseWood_LightBrown.Folktails",
+        "BaseWood_Brown.Folktails",
         "BaseMetal.Folktails",
-        "WindowsAtlas.Folktails",
-        "Details.Folktails"
+        "Details.Folktails",
+        "WindowsAtlas.Folktails"
       ],
       "nodes": [
         "MWP.Pump.Advanced.Folktails.Model",
+        "#AnimatedFlywheel",
+        "#AnimatedHeadPulley",
+        "#AnimatedCrankshaft",
+        "#AnimatedRod1",
+        "#AnimatedRod2",
+        "#AnimatedRod3",
         "#AnimatedPiston1",
         "#AnimatedPiston2",
         "#AnimatedPiston3",
-        "#AnimatedFlywheel",
-        "#AnimatedHeadPulley",
-        "#AnimatedGearboxGear",
-        "#AnimatedDriveShaft",
+        "#AnimatedWindowShaft",
         "#Port#Power",
         "#Port#Pipe",
         "#Port#Logistics"
@@ -1464,842 +1467,72 @@
       "uv_bounds": {
         "MWP.Pump.Advanced.Folktails.Model": [
           0.009766,
-          0.005859,
-          0.976584,
+          0.02208,
+          0.959878,
           0.994141
         ],
+        "#AnimatedFlywheel": [
+          0.053809,
+          0.194248,
+          0.446191,
+          0.81126
+        ],
+        "#AnimatedHeadPulley": [
+          0.057813,
+          0.659834,
+          0.442188,
+          0.888135
+        ],
+        "#AnimatedCrankshaft": [
+          0.053809,
+          0.098154,
+          0.446191,
+          0.671014
+        ],
+        "#AnimatedRod1": [
+          0.169521,
+          0.130704,
+          0.316181,
+          0.312245
+        ],
+        "#AnimatedRod2": [
+          0.210245,
+          0.130704,
+          0.316181,
+          0.312245
+        ],
+        "#AnimatedRod3": [
+          0.210245,
+          0.130704,
+          0.324873,
+          0.312245
+        ],
         "#AnimatedPiston1": [
-          0.149102,
-          0.733184,
-          0.346094,
+          0.146299,
+          0.279131,
+          0.343291,
           0.802852
         ],
         "#AnimatedPiston2": [
-          0.222773,
-          0.733184,
-          0.346094,
+          0.219971,
+          0.279131,
+          0.343291,
           0.802852
         ],
         "#AnimatedPiston3": [
-          0.296445,
-          0.733184,
-          0.350898,
+          0.293643,
+          0.279131,
+          0.348096,
           0.802852
         ],
-        "#AnimatedFlywheel": [
-          0.089844,
-          0.569824,
-          0.487031,
-          0.816064
-        ],
-        "#AnimatedHeadPulley": [
-          0.201849,
-          0.653828,
-          0.48543,
-          0.888135
-        ],
-        "#AnimatedGearboxGear": [
-          0.363121,
-          0.743994,
-          0.48543,
-          0.857347
-        ],
-        "#AnimatedDriveShaft": [
-          0.009766,
-          0.660815,
-          0.490234,
-          0.72958
+        "#AnimatedWindowShaft": [
+          0.053008,
+          0.542197,
+          0.422168,
+          0.753604
         ]
       },
       "animations": {
-        "#AnimatedPiston1": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.059995,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
-        "#AnimatedPiston2": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.111947,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
-        "#AnimatedPiston3": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.111947,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
-        "#AnimatedFlywheel": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": true,
-            "translation": false,
-            "scale": false
-          },
-          "rotation_delta": 1.404849,
-          "position_delta": 0.0,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 0.998606
-        },
-        "#AnimatedHeadPulley": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": true,
-            "translation": false,
-            "scale": false
-          },
-          "rotation_delta": 1.404849,
-          "position_delta": 0.0,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 0.987481
-        },
-        "#AnimatedGearboxGear": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": true,
-            "translation": false,
-            "scale": false
-          },
-          "rotation_delta": 1.404849,
-          "position_delta": 0.0,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 0.994429
-        },
-        "#AnimatedDriveShaft": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": true,
-            "translation": false,
-            "scale": false
-          },
-          "rotation_delta": 1.404849,
-          "position_delta": 0.0,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 0.998606
-        }
-      },
-      "animated_nodes": [
-        "#AnimatedDriveShaft",
-        "#AnimatedFlywheel",
-        "#AnimatedGearboxGear",
-        "#AnimatedHeadPulley",
-        "#AnimatedPiston1",
-        "#AnimatedPiston2",
-        "#AnimatedPiston3"
-      ],
-      "nan": false,
-      "version": 0,
-      "name": "MWP.Pump.Advanced.Folktails.Model",
-      "stem": "MWP.Pump.Advanced.Folktails.Model",
-      "file": "art/timbermesh/MWP.Pump.Advanced.Folktails.Model.timbermesh",
-      "bytes": 89948,
-      "sha256": "8404b174c8a2d6dc7d88b2a8be95c15a42fd91dfdead899c4e9db7fe17dd98f1",
-      "source": "art/models/MWP.Pump.Advanced.Folktails.Model.json",
-      "tier": "Advanced",
-      "faction": "Folktails",
-      "construction": false,
-      "planned_materials": [
-        "BaseWood_LightBrown.Folktails",
-        "BaseMetal.Folktails",
-        "WindowsAtlas.Folktails",
-        "Details.Folktails"
-      ],
-      "quaternion_continuity_flips": 240,
-      "uv_stats": {
-        "BaseWood_LightBrown.Folktails": {
-          "px_per_m_u": 145.3,
-          "px_per_m_v": 132.121,
-          "native_px_per_m": 145.3,
-          "projected_span_m": [
-            3.0,
-            3.3
-          ]
-        },
-        "BaseMetal.Folktails": {
-          "px_per_m_u": 164.0,
-          "px_per_m_v": 123.0,
-          "native_px_per_m": 164.0,
-          "projected_span_m": [
-            3.0,
-            4.0
-          ]
-        },
-        "WindowsAtlas.Folktails": {
-          "px_per_m_u": 82.4,
-          "px_per_m_v": 81.748,
-          "native_px_per_m": 82.4,
-          "projected_span_m": [
-            2.5248,
-            2.9848
-          ]
-        },
-        "Details.Folktails": {
-          "px_per_m_u": 164.0,
-          "px_per_m_v": 164.0,
-          "native_px_per_m": 164.0,
-          "projected_span_m": [
-            2.4512,
-            2.4042
-          ]
-        }
-      },
-      "animations_enabled": true,
-      "animation_frames": 120,
-      "parts": [
-        {
-          "name": "#AnimatedPiston1",
-          "pivot": [
-            1.04,
-            2.22,
-            1.98
-          ],
-          "animation": {
-            "type": "translation",
-            "axis": "y",
-            "amplitude": 0.06,
-            "cycles": 4.0,
-            "phase": 0.0
-          },
-          "triangles": 44
-        },
-        {
-          "name": "#AnimatedPiston2",
-          "pivot": [
-            1.5,
-            2.22,
-            1.98
-          ],
-          "animation": {
-            "type": "translation",
-            "axis": "y",
-            "amplitude": 0.06,
-            "cycles": 4.0,
-            "phase": 0.3333333333333333
-          },
-          "triangles": 44
-        },
-        {
-          "name": "#AnimatedPiston3",
-          "pivot": [
-            1.96,
-            2.22,
-            1.98
-          ],
-          "animation": {
-            "type": "translation",
-            "axis": "y",
-            "amplitude": 0.06,
-            "cycles": 4.0,
-            "phase": 0.6666666666666666
-          },
-          "triangles": 44
-        },
-        {
-          "name": "#AnimatedFlywheel",
-          "pivot": [
-            2.9,
-            1.55,
-            1.5
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": 2.0
-          },
-          "triangles": 320
-        },
-        {
-          "name": "#AnimatedHeadPulley",
-          "pivot": [
-            2.9,
-            2.85,
-            1.5
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": 6.0
-          },
-          "triangles": 260
-        },
-        {
-          "name": "#AnimatedGearboxGear",
-          "pivot": [
-            2.9,
-            2.3,
-            2.55
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": -4.0
-          },
-          "triangles": 272
-        },
-        {
-          "name": "#AnimatedDriveShaft",
-          "pivot": [
-            1.5,
-            1.55,
-            1.5
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": 2.0
-          },
-          "triangles": 144
-        }
-      ]
-    },
-    {
-      "bounds_min": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "bounds_max": [
-        3.0,
-        4.0,
-        3.0
-      ],
-      "bounds_size": [
-        3.0,
-        4.0,
-        3.0
-      ],
-      "triangles": 3948,
-      "vertices": 9399,
-      "materials": [
-        "BaseWood_Grey.IronTeeth",
-        "BaseMetal.IronTeeth",
-        "IrregularPlanks_MetalForged.IronTeeth",
-        "WindowsAtlas.IronTeeth"
-      ],
-      "nodes": [
-        "MWP.Pump.Advanced.IronTeeth.Model",
-        "#AnimatedPiston1",
-        "#AnimatedPiston2",
-        "#AnimatedPiston3",
-        "#AnimatedFlywheel",
-        "#AnimatedHeadPulley",
-        "#AnimatedGearboxGear",
-        "#AnimatedDriveShaft",
-        "#Port#Power",
-        "#Port#Pipe",
-        "#Port#Logistics"
-      ],
-      "slots": {},
-      "ports": {
-        "#Port#Power": [
-          3.0,
-          2.0,
-          1.5
-        ],
-        "#Port#Pipe": [
-          1.5,
-          0.6499999761581421,
-          3.0
-        ],
-        "#Port#Logistics": [
-          1.5,
-          1.0,
-          0.0
-        ]
-      },
-      "uv_bounds": {
-        "MWP.Pump.Advanced.IronTeeth.Model": [
-          0.009766,
-          0.005859,
-          0.976584,
-          0.994092
-        ],
-        "#AnimatedPiston1": [
-          0.149102,
-          0.733184,
-          0.346094,
-          0.802852
-        ],
-        "#AnimatedPiston2": [
-          0.222773,
-          0.733184,
-          0.346094,
-          0.802852
-        ],
-        "#AnimatedPiston3": [
-          0.296445,
-          0.733184,
-          0.350898,
-          0.802852
-        ],
-        "#AnimatedFlywheel": [
-          0.089844,
-          0.569824,
-          0.487031,
-          0.816064
-        ],
-        "#AnimatedHeadPulley": [
-          0.201849,
-          0.653828,
-          0.48543,
-          0.888135
-        ],
-        "#AnimatedGearboxGear": [
-          0.363121,
-          0.743994,
-          0.48543,
-          0.857347
-        ],
-        "#AnimatedDriveShaft": [
-          0.009766,
-          0.660815,
-          0.490234,
-          0.72958
-        ]
-      },
-      "animations": {
-        "#AnimatedPiston1": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.059995,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
-        "#AnimatedPiston2": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.111947,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
-        "#AnimatedPiston3": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.111947,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
-        "#AnimatedFlywheel": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": true,
-            "translation": false,
-            "scale": false
-          },
-          "rotation_delta": 1.404849,
-          "position_delta": 0.0,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 0.998606
-        },
-        "#AnimatedHeadPulley": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": true,
-            "translation": false,
-            "scale": false
-          },
-          "rotation_delta": 1.404849,
-          "position_delta": 0.0,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 0.987481
-        },
-        "#AnimatedGearboxGear": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": true,
-            "translation": false,
-            "scale": false
-          },
-          "rotation_delta": 1.404849,
-          "position_delta": 0.0,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 0.994429
-        },
-        "#AnimatedDriveShaft": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": true,
-            "translation": false,
-            "scale": false
-          },
-          "rotation_delta": 1.404849,
-          "position_delta": 0.0,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 0.998606
-        }
-      },
-      "animated_nodes": [
-        "#AnimatedDriveShaft",
-        "#AnimatedFlywheel",
-        "#AnimatedGearboxGear",
-        "#AnimatedHeadPulley",
-        "#AnimatedPiston1",
-        "#AnimatedPiston2",
-        "#AnimatedPiston3"
-      ],
-      "nan": false,
-      "version": 0,
-      "name": "MWP.Pump.Advanced.IronTeeth.Model",
-      "stem": "MWP.Pump.Advanced.IronTeeth.Model",
-      "file": "art/timbermesh/MWP.Pump.Advanced.IronTeeth.Model.timbermesh",
-      "bytes": 89977,
-      "sha256": "27c77e37971658cac5f180781f29e9c44c777f1eb711c2b715113827ae59bc8e",
-      "source": "art/models/MWP.Pump.Advanced.IronTeeth.Model.json",
-      "tier": "Advanced",
-      "faction": "IronTeeth",
-      "construction": false,
-      "planned_materials": [
-        "BaseMetal.IronTeeth",
-        "BaseWood_Grey.IronTeeth",
-        "WindowsAtlas.IronTeeth",
-        "IrregularPlanks_MetalForged.IronTeeth"
-      ],
-      "quaternion_continuity_flips": 240,
-      "uv_stats": {
-        "BaseWood_Grey.IronTeeth": {
-          "px_per_m_u": 145.3,
-          "px_per_m_v": 145.3,
-          "native_px_per_m": 145.3,
-          "projected_span_m": [
-            3.0,
-            3.0
-          ]
-        },
-        "BaseMetal.IronTeeth": {
-          "px_per_m_u": 164.0,
-          "px_per_m_v": 123.0,
-          "native_px_per_m": 164.0,
-          "projected_span_m": [
-            3.0,
-            4.0
-          ]
-        },
-        "IrregularPlanks_MetalForged.IronTeeth": {
-          "px_per_m_u": 340.0,
-          "px_per_m_v": 340.0,
-          "native_px_per_m": 340.0,
-          "projected_span_m": [
-            2.82,
-            2.9
-          ]
-        },
-        "WindowsAtlas.IronTeeth": {
-          "px_per_m_u": 82.4,
-          "px_per_m_v": 81.748,
-          "native_px_per_m": 82.4,
-          "projected_span_m": [
-            2.5248,
-            2.9848
-          ]
-        }
-      },
-      "animations_enabled": true,
-      "animation_frames": 120,
-      "parts": [
-        {
-          "name": "#AnimatedPiston1",
-          "pivot": [
-            1.04,
-            2.22,
-            1.98
-          ],
-          "animation": {
-            "type": "translation",
-            "axis": "y",
-            "amplitude": 0.06,
-            "cycles": 4.0,
-            "phase": 0.0
-          },
-          "triangles": 44
-        },
-        {
-          "name": "#AnimatedPiston2",
-          "pivot": [
-            1.5,
-            2.22,
-            1.98
-          ],
-          "animation": {
-            "type": "translation",
-            "axis": "y",
-            "amplitude": 0.06,
-            "cycles": 4.0,
-            "phase": 0.3333333333333333
-          },
-          "triangles": 44
-        },
-        {
-          "name": "#AnimatedPiston3",
-          "pivot": [
-            1.96,
-            2.22,
-            1.98
-          ],
-          "animation": {
-            "type": "translation",
-            "axis": "y",
-            "amplitude": 0.06,
-            "cycles": 4.0,
-            "phase": 0.6666666666666666
-          },
-          "triangles": 44
-        },
-        {
-          "name": "#AnimatedFlywheel",
-          "pivot": [
-            2.9,
-            1.55,
-            1.5
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": 2.0
-          },
-          "triangles": 320
-        },
-        {
-          "name": "#AnimatedHeadPulley",
-          "pivot": [
-            2.9,
-            2.85,
-            1.5
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": 6.0
-          },
-          "triangles": 260
-        },
-        {
-          "name": "#AnimatedGearboxGear",
-          "pivot": [
-            2.9,
-            2.3,
-            2.55
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": -4.0
-          },
-          "triangles": 272
-        },
-        {
-          "name": "#AnimatedDriveShaft",
-          "pivot": [
-            1.5,
-            1.55,
-            1.5
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": 2.0
-          },
-          "triangles": 144
-        }
-      ]
-    },
-    {
-      "bounds_min": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "bounds_max": [
-        3.0,
-        4.0,
-        4.0
-      ],
-      "bounds_size": [
-        3.0,
-        4.0,
-        4.0
-      ],
-      "triangles": 3768,
-      "vertices": 8852,
-      "materials": [
-        "IrregularPlanks_Brown.Folktails",
-        "BaseMetal.Folktails",
-        "Details.Folktails",
-        "WindowsAtlas.Folktails"
-      ],
-      "nodes": [
-        "MWP.Pump.Top.Folktails.Model",
-        "#AnimatedPiston1",
-        "#AnimatedPiston2",
-        "#AnimatedFlywheel",
-        "#AnimatedHeadPulley",
-        "#AnimatedDriveShaft",
-        "#Port#Power",
-        "#Port#Pipe",
-        "#Port#Logistics"
-      ],
-      "slots": {},
-      "ports": {
-        "#Port#Power": [
-          3.0,
-          2.0,
-          2.0
-        ],
-        "#Port#Pipe": [
-          1.5,
-          0.6499999761581421,
-          4.0
-        ],
-        "#Port#Logistics": [
-          1.5,
-          1.0,
-          0.0
-        ]
-      },
-      "uv_bounds": {
-        "MWP.Pump.Top.Folktails.Model": [
-          0.001953,
-          0.001953,
-          0.998047,
-          0.998047
-        ],
-        "#AnimatedPiston1": [
-          0.038594,
-          0.538594,
-          0.151504,
-          0.83168
-        ],
-        "#AnimatedPiston2": [
-          0.038594,
-          0.538594,
-          0.300449,
-          0.83168
-        ],
-        "#AnimatedFlywheel": [
-          0.053428,
-          0.553428,
-          0.367715,
-          0.86291
-        ],
-        "#AnimatedHeadPulley": [
-          0.16185,
-          0.66185,
-          0.365312,
-          0.913359
-        ],
-        "#AnimatedDriveShaft": [
-          0.009766,
-          0.662424,
-          0.370117,
-          0.759609
-        ]
-      },
-      "animations": {
-        "#AnimatedPiston1": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.059995,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
-        "#AnimatedPiston2": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.059995,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
         "#AnimatedFlywheel": {
           "name": "Default",
           "framerate": 24.0,
@@ -2330,7 +1563,112 @@
           "first_last_position_delta": 0.0,
           "min_consecutive_quaternion_dot": 0.97778
         },
-        "#AnimatedDriveShaft": {
+        "#AnimatedCrankshaft": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.998606
+        },
+        "#AnimatedRod1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.024997,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999986
+        },
+        "#AnimatedRod2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.04664,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999986
+        },
+        "#AnimatedRod3": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.04664,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999986
+        },
+        "#AnimatedPiston1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.059995,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedPiston2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.111947,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedPiston3": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.111947,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedWindowShaft": {
           "name": "Default",
           "framerate": 24.0,
           "frames": 120,
@@ -2347,35 +1685,1046 @@
         }
       },
       "animated_nodes": [
-        "#AnimatedDriveShaft",
+        "#AnimatedCrankshaft",
         "#AnimatedFlywheel",
         "#AnimatedHeadPulley",
         "#AnimatedPiston1",
-        "#AnimatedPiston2"
+        "#AnimatedPiston2",
+        "#AnimatedPiston3",
+        "#AnimatedRod1",
+        "#AnimatedRod2",
+        "#AnimatedRod3",
+        "#AnimatedWindowShaft"
+      ],
+      "nan": false,
+      "version": 0,
+      "name": "MWP.Pump.Advanced.Folktails.Model",
+      "stem": "MWP.Pump.Advanced.Folktails.Model",
+      "file": "art/timbermesh/MWP.Pump.Advanced.Folktails.Model.timbermesh",
+      "bytes": 133997,
+      "sha256": "acab7ff856c6e9740dfe12206e71bf602891bed80df9d7371293b2059d90e25e",
+      "source": "art/models/MWP.Pump.Advanced.Folktails.Model.json",
+      "tier": "Advanced",
+      "faction": "Folktails",
+      "construction": false,
+      "planned_materials": [
+        "BaseWood_Brown.Folktails",
+        "BaseMetal.Folktails",
+        "WindowsAtlas.Folktails",
+        "Details.Folktails"
+      ],
+      "quaternion_continuity_flips": 240,
+      "uv_stats": {
+        "BaseWood_Brown.Folktails": {
+          "px_per_m_u": 145.3,
+          "px_per_m_v": 124.571,
+          "native_px_per_m": 145.3,
+          "projected_span_m": [
+            3.0,
+            3.5
+          ]
+        },
+        "BaseMetal.Folktails": {
+          "px_per_m_u": 164.0,
+          "px_per_m_v": 123.0,
+          "native_px_per_m": 164.0,
+          "projected_span_m": [
+            3.0,
+            4.0
+          ]
+        },
+        "Details.Folktails": {
+          "px_per_m_u": 164.0,
+          "px_per_m_v": 164.0,
+          "native_px_per_m": 164.0,
+          "projected_span_m": [
+            2.525,
+            2.895
+          ]
+        },
+        "WindowsAtlas.Folktails": {
+          "px_per_m_u": 82.4,
+          "px_per_m_v": 82.4,
+          "native_px_per_m": 82.4,
+          "projected_span_m": [
+            2.1096,
+            1.5014
+          ]
+        }
+      },
+      "animations_enabled": true,
+      "animation_frames": 120,
+      "parts": [
+        {
+          "name": "#AnimatedFlywheel",
+          "pivot": [
+            1.5,
+            1.55,
+            1.55
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 768
+        },
+        {
+          "name": "#AnimatedHeadPulley",
+          "pivot": [
+            1.5,
+            2.85,
+            1.55
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 8.0
+          },
+          "triangles": 536
+        },
+        {
+          "name": "#AnimatedCrankshaft",
+          "pivot": [
+            1.5,
+            0.95,
+            1.15
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 288
+        },
+        {
+          "name": "#AnimatedRod1",
+          "pivot": [
+            1.04,
+            0.95,
+            1.3
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.05,
+            "cycles": 4.0,
+            "phase": 0.0
+          },
+          "triangles": 12
+        },
+        {
+          "name": "#AnimatedRod2",
+          "pivot": [
+            1.5,
+            0.95,
+            1.3
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.05,
+            "cycles": 4.0,
+            "phase": 0.3333333333333333
+          },
+          "triangles": 12
+        },
+        {
+          "name": "#AnimatedRod3",
+          "pivot": [
+            1.96,
+            0.95,
+            1.3
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.05,
+            "cycles": 4.0,
+            "phase": 0.6666666666666666
+          },
+          "triangles": 12
+        },
+        {
+          "name": "#AnimatedPiston1",
+          "pivot": [
+            1.04,
+            2.22,
+            1.98
+          ],
+          "animation": {
+            "type": "translation",
+            "axis": "y",
+            "amplitude": 0.06,
+            "cycles": 4.0,
+            "phase": 0.0
+          },
+          "triangles": 44
+        },
+        {
+          "name": "#AnimatedPiston2",
+          "pivot": [
+            1.5,
+            2.22,
+            1.98
+          ],
+          "animation": {
+            "type": "translation",
+            "axis": "y",
+            "amplitude": 0.06,
+            "cycles": 4.0,
+            "phase": 0.3333333333333333
+          },
+          "triangles": 44
+        },
+        {
+          "name": "#AnimatedPiston3",
+          "pivot": [
+            1.96,
+            2.22,
+            1.98
+          ],
+          "animation": {
+            "type": "translation",
+            "axis": "y",
+            "amplitude": 0.06,
+            "cycles": 4.0,
+            "phase": 0.6666666666666666
+          },
+          "triangles": 44
+        },
+        {
+          "name": "#AnimatedWindowShaft",
+          "pivot": [
+            1.5,
+            1.85,
+            0.45
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 512
+        }
+      ]
+    },
+    {
+      "bounds_min": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bounds_max": [
+        3.0,
+        4.0,
+        3.0
+      ],
+      "bounds_size": [
+        3.0,
+        4.0,
+        3.0
+      ],
+      "triangles": 5860,
+      "vertices": 14296,
+      "materials": [
+        "BaseWood_DarkBrown.IronTeeth",
+        "BaseMetal.IronTeeth",
+        "Details.IronTeeth",
+        "WindowsAtlas.IronTeeth"
+      ],
+      "nodes": [
+        "MWP.Pump.Advanced.IronTeeth.Model",
+        "#AnimatedFlywheel",
+        "#AnimatedHeadPulley",
+        "#AnimatedCrankshaft",
+        "#AnimatedRod1",
+        "#AnimatedRod2",
+        "#AnimatedRod3",
+        "#AnimatedPiston1",
+        "#AnimatedPiston2",
+        "#AnimatedPiston3",
+        "#AnimatedWindowShaft",
+        "#Port#Power",
+        "#Port#Pipe",
+        "#Port#Logistics"
+      ],
+      "slots": {},
+      "ports": {
+        "#Port#Power": [
+          3.0,
+          2.0,
+          1.5
+        ],
+        "#Port#Pipe": [
+          1.5,
+          0.6499999761581421,
+          3.0
+        ],
+        "#Port#Logistics": [
+          1.5,
+          1.0,
+          0.0
+        ]
+      },
+      "uv_bounds": {
+        "MWP.Pump.Advanced.IronTeeth.Model": [
+          0.009766,
+          0.02208,
+          0.959878,
+          0.994141
+        ],
+        "#AnimatedFlywheel": [
+          0.053809,
+          0.194248,
+          0.446191,
+          0.81126
+        ],
+        "#AnimatedHeadPulley": [
+          0.057813,
+          0.659834,
+          0.442188,
+          0.888135
+        ],
+        "#AnimatedCrankshaft": [
+          0.053809,
+          0.098154,
+          0.446191,
+          0.671014
+        ],
+        "#AnimatedRod1": [
+          0.169521,
+          0.130704,
+          0.316181,
+          0.312245
+        ],
+        "#AnimatedRod2": [
+          0.210245,
+          0.130704,
+          0.316181,
+          0.312245
+        ],
+        "#AnimatedRod3": [
+          0.210245,
+          0.130704,
+          0.324873,
+          0.312245
+        ],
+        "#AnimatedPiston1": [
+          0.146299,
+          0.279131,
+          0.343291,
+          0.802852
+        ],
+        "#AnimatedPiston2": [
+          0.219971,
+          0.279131,
+          0.343291,
+          0.802852
+        ],
+        "#AnimatedPiston3": [
+          0.293643,
+          0.279131,
+          0.348096,
+          0.802852
+        ],
+        "#AnimatedWindowShaft": [
+          0.053008,
+          0.542197,
+          0.422168,
+          0.753604
+        ]
+      },
+      "animations": {
+        "#AnimatedFlywheel": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.998606
+        },
+        "#AnimatedHeadPulley": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.97778
+        },
+        "#AnimatedCrankshaft": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.998606
+        },
+        "#AnimatedRod1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.024997,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999986
+        },
+        "#AnimatedRod2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.04664,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999986
+        },
+        "#AnimatedRod3": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.04664,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999986
+        },
+        "#AnimatedPiston1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.059995,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedPiston2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.111947,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedPiston3": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.111947,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedWindowShaft": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.998606
+        }
+      },
+      "animated_nodes": [
+        "#AnimatedCrankshaft",
+        "#AnimatedFlywheel",
+        "#AnimatedHeadPulley",
+        "#AnimatedPiston1",
+        "#AnimatedPiston2",
+        "#AnimatedPiston3",
+        "#AnimatedRod1",
+        "#AnimatedRod2",
+        "#AnimatedRod3",
+        "#AnimatedWindowShaft"
+      ],
+      "nan": false,
+      "version": 0,
+      "name": "MWP.Pump.Advanced.IronTeeth.Model",
+      "stem": "MWP.Pump.Advanced.IronTeeth.Model",
+      "file": "art/timbermesh/MWP.Pump.Advanced.IronTeeth.Model.timbermesh",
+      "bytes": 134014,
+      "sha256": "127e37e84524ec692e2ebe9e17485f26e254fa101b2653bcb8c5248ea05c0ac3",
+      "source": "art/models/MWP.Pump.Advanced.IronTeeth.Model.json",
+      "tier": "Advanced",
+      "faction": "IronTeeth",
+      "construction": false,
+      "planned_materials": [
+        "BaseWood_DarkBrown.IronTeeth",
+        "BaseMetal.IronTeeth",
+        "WindowsAtlas.IronTeeth",
+        "Details.IronTeeth"
+      ],
+      "quaternion_continuity_flips": 240,
+      "uv_stats": {
+        "BaseWood_DarkBrown.IronTeeth": {
+          "px_per_m_u": 145.3,
+          "px_per_m_v": 124.571,
+          "native_px_per_m": 145.3,
+          "projected_span_m": [
+            3.0,
+            3.5
+          ]
+        },
+        "BaseMetal.IronTeeth": {
+          "px_per_m_u": 164.0,
+          "px_per_m_v": 123.0,
+          "native_px_per_m": 164.0,
+          "projected_span_m": [
+            3.0,
+            4.0
+          ]
+        },
+        "Details.IronTeeth": {
+          "px_per_m_u": 164.0,
+          "px_per_m_v": 164.0,
+          "native_px_per_m": 164.0,
+          "projected_span_m": [
+            2.525,
+            2.895
+          ]
+        },
+        "WindowsAtlas.IronTeeth": {
+          "px_per_m_u": 82.4,
+          "px_per_m_v": 82.4,
+          "native_px_per_m": 82.4,
+          "projected_span_m": [
+            2.1096,
+            1.5014
+          ]
+        }
+      },
+      "animations_enabled": true,
+      "animation_frames": 120,
+      "parts": [
+        {
+          "name": "#AnimatedFlywheel",
+          "pivot": [
+            1.5,
+            1.55,
+            1.55
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 768
+        },
+        {
+          "name": "#AnimatedHeadPulley",
+          "pivot": [
+            1.5,
+            2.85,
+            1.55
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 8.0
+          },
+          "triangles": 536
+        },
+        {
+          "name": "#AnimatedCrankshaft",
+          "pivot": [
+            1.5,
+            0.95,
+            1.15
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 288
+        },
+        {
+          "name": "#AnimatedRod1",
+          "pivot": [
+            1.04,
+            0.95,
+            1.3
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.05,
+            "cycles": 4.0,
+            "phase": 0.0
+          },
+          "triangles": 12
+        },
+        {
+          "name": "#AnimatedRod2",
+          "pivot": [
+            1.5,
+            0.95,
+            1.3
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.05,
+            "cycles": 4.0,
+            "phase": 0.3333333333333333
+          },
+          "triangles": 12
+        },
+        {
+          "name": "#AnimatedRod3",
+          "pivot": [
+            1.96,
+            0.95,
+            1.3
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.05,
+            "cycles": 4.0,
+            "phase": 0.6666666666666666
+          },
+          "triangles": 12
+        },
+        {
+          "name": "#AnimatedPiston1",
+          "pivot": [
+            1.04,
+            2.22,
+            1.98
+          ],
+          "animation": {
+            "type": "translation",
+            "axis": "y",
+            "amplitude": 0.06,
+            "cycles": 4.0,
+            "phase": 0.0
+          },
+          "triangles": 44
+        },
+        {
+          "name": "#AnimatedPiston2",
+          "pivot": [
+            1.5,
+            2.22,
+            1.98
+          ],
+          "animation": {
+            "type": "translation",
+            "axis": "y",
+            "amplitude": 0.06,
+            "cycles": 4.0,
+            "phase": 0.3333333333333333
+          },
+          "triangles": 44
+        },
+        {
+          "name": "#AnimatedPiston3",
+          "pivot": [
+            1.96,
+            2.22,
+            1.98
+          ],
+          "animation": {
+            "type": "translation",
+            "axis": "y",
+            "amplitude": 0.06,
+            "cycles": 4.0,
+            "phase": 0.6666666666666666
+          },
+          "triangles": 44
+        },
+        {
+          "name": "#AnimatedWindowShaft",
+          "pivot": [
+            1.5,
+            1.85,
+            0.45
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 512
+        }
+      ]
+    },
+    {
+      "bounds_min": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bounds_max": [
+        3.0,
+        4.0,
+        4.0
+      ],
+      "bounds_size": [
+        3.0,
+        4.0,
+        4.0
+      ],
+      "triangles": 5312,
+      "vertices": 12984,
+      "materials": [
+        "BaseWood_Brown.Folktails",
+        "BaseMetal.Folktails",
+        "Details.Folktails",
+        "WindowsAtlas.Folktails"
+      ],
+      "nodes": [
+        "MWP.Pump.Top.Folktails.Model",
+        "#AnimatedFlywheel",
+        "#AnimatedHeadPulley",
+        "#AnimatedCrankshaft",
+        "#AnimatedWindowShaft",
+        "#AnimatedLink1",
+        "#AnimatedLink2",
+        "#AnimatedPiston1",
+        "#AnimatedPiston2",
+        "#AnimatedValveWheel1",
+        "#AnimatedValveWheel2",
+        "#Port#Power",
+        "#Port#Pipe",
+        "#Port#Logistics"
+      ],
+      "slots": {},
+      "ports": {
+        "#Port#Power": [
+          3.0,
+          2.0,
+          2.0
+        ],
+        "#Port#Pipe": [
+          1.5,
+          0.6499999761581421,
+          4.0
+        ],
+        "#Port#Logistics": [
+          1.5,
+          1.0,
+          0.0
+        ]
+      },
+      "uv_bounds": {
+        "MWP.Pump.Top.Folktails.Model": [
+          0.005859,
+          0.01901,
+          0.95732,
+          0.994141
+        ],
+        "#AnimatedFlywheel": [
+          0.008572,
+          0.143132,
+          0.344944,
+          0.803731
+        ],
+        "#AnimatedHeadPulley": [
+          0.040996,
+          0.649838,
+          0.338887,
+          0.892939
+        ],
+        "#AnimatedCrankshaft": [
+          0.04248,
+          0.053998,
+          0.334082,
+          0.635889
+        ],
+        "#AnimatedWindowShaft": [
+          0.017905,
+          0.034252,
+          0.316064,
+          0.725977
+        ],
+        "#AnimatedLink1": [
+          0.043173,
+          0.050388,
+          0.132677,
+          0.195541
+        ],
+        "#AnimatedLink2": [
+          0.043173,
+          0.050388,
+          0.22762,
+          0.195541
+        ],
+        "#AnimatedPiston1": [
+          0.005859,
+          0.013672,
+          0.151504,
+          0.83168
+        ],
+        "#AnimatedPiston2": [
+          0.005859,
+          0.013672,
+          0.300449,
+          0.83168
+        ],
+        "#AnimatedValveWheel1": [
+          0.038411,
+          0.343327,
+          0.494141,
+          0.959004
+        ],
+        "#AnimatedValveWheel2": [
+          0.206597,
+          0.343327,
+          0.494141,
+          0.959004
+        ]
+      },
+      "animations": {
+        "#AnimatedFlywheel": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.998606
+        },
+        "#AnimatedHeadPulley": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.97778
+        },
+        "#AnimatedCrankshaft": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.998606
+        },
+        "#AnimatedWindowShaft": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.998606
+        },
+        "#AnimatedLink1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.04999,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999944
+        },
+        "#AnimatedLink2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.04999,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999944
+        },
+        "#AnimatedPiston1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.059995,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedPiston2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.059995,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedValveWheel1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999651
+        },
+        "#AnimatedValveWheel2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999651
+        }
+      },
+      "animated_nodes": [
+        "#AnimatedCrankshaft",
+        "#AnimatedFlywheel",
+        "#AnimatedHeadPulley",
+        "#AnimatedLink1",
+        "#AnimatedLink2",
+        "#AnimatedPiston1",
+        "#AnimatedPiston2",
+        "#AnimatedValveWheel1",
+        "#AnimatedValveWheel2",
+        "#AnimatedWindowShaft"
       ],
       "nan": false,
       "version": 0,
       "name": "MWP.Pump.Top.Folktails.Model",
       "stem": "MWP.Pump.Top.Folktails.Model",
       "file": "art/timbermesh/MWP.Pump.Top.Folktails.Model.timbermesh",
-      "bytes": 82155,
-      "sha256": "054709863030ab1565ceab47869528d424a7934c2ef46995ef2a12d43400a410",
+      "bytes": 119381,
+      "sha256": "3aa105aa6536e2ba6495cc70634b563bf6b9d3b75f0254f1bdf99618be3ffc78",
       "source": "art/models/MWP.Pump.Top.Folktails.Model.json",
       "tier": "Top",
       "faction": "Folktails",
       "construction": false,
       "planned_materials": [
-        "IrregularPlanks_Brown.Folktails",
+        "BaseWood_Brown.Folktails",
         "BaseMetal.Folktails",
         "WindowsAtlas.Folktails",
         "Details.Folktails"
       ],
-      "quaternion_continuity_flips": 180,
+      "quaternion_continuity_flips": 360,
       "uv_stats": {
-        "IrregularPlanks_Brown.Folktails": {
-          "px_per_m_u": 255.0,
-          "px_per_m_v": 255.0,
-          "native_px_per_m": 340.0,
+        "BaseWood_Brown.Folktails": {
+          "px_per_m_u": 126.0,
+          "px_per_m_v": 109.0,
+          "native_px_per_m": 145.3,
           "projected_span_m": [
             4.0,
             4.0
@@ -2391,12 +2740,12 @@
           ]
         },
         "Details.Folktails": {
-          "px_per_m_u": 141.993,
-          "px_per_m_v": 139.721,
+          "px_per_m_u": 138.889,
+          "px_per_m_v": 136.667,
           "native_px_per_m": 164.0,
           "projected_span_m": [
-            3.5213,
-            3.5213
+            3.6,
+            3.6
           ]
         },
         "WindowsAtlas.Folktails": {
@@ -2404,14 +2753,102 @@
           "px_per_m_v": 82.4,
           "native_px_per_m": 82.4,
           "projected_span_m": [
-            2.493,
-            2.873
+            2.046,
+            1.5796
           ]
         }
       },
       "animations_enabled": true,
       "animation_frames": 120,
       "parts": [
+        {
+          "name": "#AnimatedFlywheel",
+          "pivot": [
+            1.5,
+            1.45,
+            1.5
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 816
+        },
+        {
+          "name": "#AnimatedHeadPulley",
+          "pivot": [
+            1.5,
+            2.85,
+            1.5
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 8.0
+          },
+          "triangles": 560
+        },
+        {
+          "name": "#AnimatedCrankshaft",
+          "pivot": [
+            1.5,
+            0.95,
+            0.75
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 288
+        },
+        {
+          "name": "#AnimatedWindowShaft",
+          "pivot": [
+            1.5,
+            1.72,
+            0.5
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 120
+        },
+        {
+          "name": "#AnimatedLink1",
+          "pivot": [
+            1.15,
+            1.6,
+            0.55
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.1,
+            "cycles": 4.0,
+            "phase": 0.0
+          },
+          "triangles": 12
+        },
+        {
+          "name": "#AnimatedLink2",
+          "pivot": [
+            1.85,
+            1.6,
+            0.55
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.1,
+            "cycles": 4.0,
+            "phase": 0.5
+          },
+          "triangles": 12
+        },
         {
           "name": "#AnimatedPiston1",
           "pivot": [
@@ -2445,46 +2882,32 @@
           "triangles": 80
         },
         {
-          "name": "#AnimatedFlywheel",
+          "name": "#AnimatedValveWheel1",
           "pivot": [
-            2.88,
-            1.7,
-            1.6
+            0.88,
+            2.74,
+            3.44
           ],
           "animation": {
             "type": "rotation",
-            "axis": "x",
-            "turns": 2.0
+            "axis": "y",
+            "turns": 1.0
           },
-          "triangles": 356
+          "triangles": 96
         },
         {
-          "name": "#AnimatedHeadPulley",
+          "name": "#AnimatedValveWheel2",
           "pivot": [
-            2.88,
-            3.02,
-            1.6
+            2.12,
+            2.74,
+            3.44
           ],
           "animation": {
             "type": "rotation",
-            "axis": "x",
-            "turns": 8.0
+            "axis": "y",
+            "turns": -1.0
           },
-          "triangles": 272
-        },
-        {
-          "name": "#AnimatedDriveShaft",
-          "pivot": [
-            1.5,
-            1.7,
-            1.6
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": 2.0
-          },
-          "triangles": 144
+          "triangles": 96
         }
       ]
     },
@@ -2504,8 +2927,8 @@
         4.0,
         4.0
       ],
-      "triangles": 3768,
-      "vertices": 8852,
+      "triangles": 5312,
+      "vertices": 12984,
       "materials": [
         "IrregularPlanks_MetalForged.IronTeeth",
         "BaseMetal.IronTeeth",
@@ -2514,11 +2937,16 @@
       ],
       "nodes": [
         "MWP.Pump.Top.IronTeeth.Model",
-        "#AnimatedPiston1",
-        "#AnimatedPiston2",
         "#AnimatedFlywheel",
         "#AnimatedHeadPulley",
-        "#AnimatedDriveShaft",
+        "#AnimatedCrankshaft",
+        "#AnimatedWindowShaft",
+        "#AnimatedLink1",
+        "#AnimatedLink2",
+        "#AnimatedPiston1",
+        "#AnimatedPiston2",
+        "#AnimatedValveWheel1",
+        "#AnimatedValveWheel2",
         "#Port#Power",
         "#Port#Pipe",
         "#Port#Logistics"
@@ -2548,68 +2976,68 @@
           0.998047,
           0.998047
         ],
+        "#AnimatedFlywheel": [
+          0.008572,
+          0.143132,
+          0.344944,
+          0.803731
+        ],
+        "#AnimatedHeadPulley": [
+          0.040996,
+          0.649838,
+          0.338887,
+          0.892939
+        ],
+        "#AnimatedCrankshaft": [
+          0.04248,
+          0.053998,
+          0.334082,
+          0.635889
+        ],
+        "#AnimatedWindowShaft": [
+          0.017905,
+          0.034252,
+          0.316064,
+          0.725977
+        ],
+        "#AnimatedLink1": [
+          0.043173,
+          0.050388,
+          0.132677,
+          0.195541
+        ],
+        "#AnimatedLink2": [
+          0.043173,
+          0.050388,
+          0.22762,
+          0.195541
+        ],
         "#AnimatedPiston1": [
-          0.038594,
-          0.538594,
+          0.005859,
+          0.013672,
           0.151504,
           0.83168
         ],
         "#AnimatedPiston2": [
-          0.038594,
-          0.538594,
+          0.005859,
+          0.013672,
           0.300449,
           0.83168
         ],
-        "#AnimatedFlywheel": [
-          0.053428,
-          0.553428,
-          0.367715,
-          0.86291
+        "#AnimatedValveWheel1": [
+          0.038411,
+          0.343327,
+          0.494141,
+          0.959004
         ],
-        "#AnimatedHeadPulley": [
-          0.16185,
-          0.66185,
-          0.365312,
-          0.913359
-        ],
-        "#AnimatedDriveShaft": [
-          0.009766,
-          0.662424,
-          0.370117,
-          0.759609
+        "#AnimatedValveWheel2": [
+          0.206597,
+          0.343327,
+          0.494141,
+          0.959004
         ]
       },
       "animations": {
-        "#AnimatedPiston1": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.059995,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
-        "#AnimatedPiston2": {
-          "name": "Default",
-          "framerate": 24.0,
-          "frames": 120,
-          "channels": {
-            "rotation": false,
-            "translation": true,
-            "scale": false
-          },
-          "rotation_delta": 0.0,
-          "position_delta": 0.059995,
-          "first_last_rotation_dot": 1.0,
-          "first_last_position_delta": 0.0,
-          "min_consecutive_quaternion_dot": 1.0
-        },
         "#AnimatedFlywheel": {
           "name": "Default",
           "framerate": 24.0,
@@ -2640,7 +3068,7 @@
           "first_last_position_delta": 0.0,
           "min_consecutive_quaternion_dot": 0.97778
         },
-        "#AnimatedDriveShaft": {
+        "#AnimatedCrankshaft": {
           "name": "Default",
           "framerate": 24.0,
           "frames": 120,
@@ -2654,33 +3082,143 @@
           "first_last_rotation_dot": 1.0,
           "first_last_position_delta": 0.0,
           "min_consecutive_quaternion_dot": 0.998606
+        },
+        "#AnimatedWindowShaft": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.998606
+        },
+        "#AnimatedLink1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.04999,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999944
+        },
+        "#AnimatedLink2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 0.04999,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999944
+        },
+        "#AnimatedPiston1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.059995,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedPiston2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": false,
+            "translation": true,
+            "scale": false
+          },
+          "rotation_delta": 0.0,
+          "position_delta": 0.059995,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 1.0
+        },
+        "#AnimatedValveWheel1": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999651
+        },
+        "#AnimatedValveWheel2": {
+          "name": "Default",
+          "framerate": 24.0,
+          "frames": 120,
+          "channels": {
+            "rotation": true,
+            "translation": false,
+            "scale": false
+          },
+          "rotation_delta": 1.404849,
+          "position_delta": 0.0,
+          "first_last_rotation_dot": 1.0,
+          "first_last_position_delta": 0.0,
+          "min_consecutive_quaternion_dot": 0.999651
         }
       },
       "animated_nodes": [
-        "#AnimatedDriveShaft",
+        "#AnimatedCrankshaft",
         "#AnimatedFlywheel",
         "#AnimatedHeadPulley",
+        "#AnimatedLink1",
+        "#AnimatedLink2",
         "#AnimatedPiston1",
-        "#AnimatedPiston2"
+        "#AnimatedPiston2",
+        "#AnimatedValveWheel1",
+        "#AnimatedValveWheel2",
+        "#AnimatedWindowShaft"
       ],
       "nan": false,
       "version": 0,
       "name": "MWP.Pump.Top.IronTeeth.Model",
       "stem": "MWP.Pump.Top.IronTeeth.Model",
       "file": "art/timbermesh/MWP.Pump.Top.IronTeeth.Model.timbermesh",
-      "bytes": 82163,
-      "sha256": "0d57313e5b62ad6e3eb17ecfa4b1352cca4a8fd9dc0f9e806d7a12ccef1fb147",
+      "bytes": 119377,
+      "sha256": "d6aaa534c726136ced2fa4bc3d72fa02d9a0a76035b388f9991f5ecc3cb9413e",
       "source": "art/models/MWP.Pump.Top.IronTeeth.Model.json",
       "tier": "Top",
       "faction": "IronTeeth",
       "construction": false,
       "planned_materials": [
-        "BaseMetal.IronTeeth",
         "IrregularPlanks_MetalForged.IronTeeth",
+        "BaseMetal.IronTeeth",
         "Details.IronTeeth",
         "WindowsAtlas.IronTeeth"
       ],
-      "quaternion_continuity_flips": 180,
+      "quaternion_continuity_flips": 360,
       "uv_stats": {
         "IrregularPlanks_MetalForged.IronTeeth": {
           "px_per_m_u": 255.0,
@@ -2701,12 +3239,12 @@
           ]
         },
         "Details.IronTeeth": {
-          "px_per_m_u": 141.993,
-          "px_per_m_v": 139.721,
+          "px_per_m_u": 138.889,
+          "px_per_m_v": 136.667,
           "native_px_per_m": 164.0,
           "projected_span_m": [
-            3.5213,
-            3.5213
+            3.6,
+            3.6
           ]
         },
         "WindowsAtlas.IronTeeth": {
@@ -2714,14 +3252,102 @@
           "px_per_m_v": 82.4,
           "native_px_per_m": 82.4,
           "projected_span_m": [
-            2.493,
-            2.873
+            2.046,
+            1.5796
           ]
         }
       },
       "animations_enabled": true,
       "animation_frames": 120,
       "parts": [
+        {
+          "name": "#AnimatedFlywheel",
+          "pivot": [
+            1.5,
+            1.45,
+            1.5
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 816
+        },
+        {
+          "name": "#AnimatedHeadPulley",
+          "pivot": [
+            1.5,
+            2.85,
+            1.5
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 8.0
+          },
+          "triangles": 560
+        },
+        {
+          "name": "#AnimatedCrankshaft",
+          "pivot": [
+            1.5,
+            0.95,
+            0.75
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 288
+        },
+        {
+          "name": "#AnimatedWindowShaft",
+          "pivot": [
+            1.5,
+            1.72,
+            0.5
+          ],
+          "animation": {
+            "type": "rotation",
+            "axis": "x",
+            "turns": 2.0
+          },
+          "triangles": 120
+        },
+        {
+          "name": "#AnimatedLink1",
+          "pivot": [
+            1.15,
+            1.6,
+            0.55
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.1,
+            "cycles": 4.0,
+            "phase": 0.0
+          },
+          "triangles": 12
+        },
+        {
+          "name": "#AnimatedLink2",
+          "pivot": [
+            1.85,
+            1.6,
+            0.55
+          ],
+          "animation": {
+            "type": "oscillation",
+            "axis": "x",
+            "amplitude": 0.1,
+            "cycles": 4.0,
+            "phase": 0.5
+          },
+          "triangles": 12
+        },
         {
           "name": "#AnimatedPiston1",
           "pivot": [
@@ -2755,46 +3381,32 @@
           "triangles": 80
         },
         {
-          "name": "#AnimatedFlywheel",
+          "name": "#AnimatedValveWheel1",
           "pivot": [
-            2.88,
-            1.7,
-            1.6
+            0.88,
+            2.74,
+            3.44
           ],
           "animation": {
             "type": "rotation",
-            "axis": "x",
-            "turns": 2.0
+            "axis": "y",
+            "turns": 1.0
           },
-          "triangles": 356
+          "triangles": 96
         },
         {
-          "name": "#AnimatedHeadPulley",
+          "name": "#AnimatedValveWheel2",
           "pivot": [
-            2.88,
-            3.02,
-            1.6
+            2.12,
+            2.74,
+            3.44
           ],
           "animation": {
             "type": "rotation",
-            "axis": "x",
-            "turns": 8.0
+            "axis": "y",
+            "turns": -1.0
           },
-          "triangles": 272
-        },
-        {
-          "name": "#AnimatedDriveShaft",
-          "pivot": [
-            1.5,
-            1.7,
-            1.6
-          ],
-          "animation": {
-            "type": "rotation",
-            "axis": "x",
-            "turns": 2.0
-          },
-          "triangles": 144
+          "triangles": 96
         }
       ]
     },

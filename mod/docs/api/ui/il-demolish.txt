@@ -1,0 +1,42 @@
+
+=== Timberborn.BuildingsUI.DeleteBuildingFragment::InitializeFragment   [Timberborn.BuildingsUI]
+  IL_0000: ldarg.0
+  IL_0001: ldarg.0
+  IL_0002: ldfld Timberborn.CoreUI.VisualElementLoader Timberborn.BuildingsUI.DeleteBuildingFragment::_visualElementLoader
+  IL_0007: ldstr "Common/EntityPanel/DeleteObjectFragment"
+  IL_000c: callvirt UnityEngine.UIElements.VisualElement Timberborn.CoreUI.VisualElementLoader::LoadVisualElement(System.String)
+  IL_0011: stfld UnityEngine.UIElements.VisualElement Timberborn.BuildingsUI.DeleteBuildingFragment::_root
+  IL_0016: ldarg.0
+  IL_0017: ldfld UnityEngine.UIElements.VisualElement Timberborn.BuildingsUI.DeleteBuildingFragment::_root
+  IL_001c: ldstr "Button"
+  IL_0021: ldnull
+  IL_0022: call !!0 UnityEngine.UIElements.UQueryExtensions::Q<UnityEngine.UIElements.Button>(UnityEngine.UIElements.VisualElement,System.String,System.String)
+  IL_0027: stloc.0
+  IL_0028: ldarg.0
+  IL_0029: ldarg.0
+  IL_002a: ldfld Timberborn.InputSystemUI.BindableButtonFactory Timberborn.BuildingsUI.DeleteBuildingFragment::_bindableButtonFactory
+  IL_002f: ldloc.0
+  IL_0030: ldsfld System.String Timberborn.BuildingsUI.DeleteBuildingFragment::DeleteObjectKey
+  IL_0035: ldarg.0
+  IL_0036: ldftn System.Void Timberborn.BuildingsUI.DeleteBuildingFragment::DeleteCallback()
+  IL_003c: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+  IL_0041: ldc.i4.1
+  IL_0042: callvirt Timberborn.InputSystemUI.BindableButton Timberborn.InputSystemUI.BindableButtonFactory::Create(UnityEngine.UIElements.VisualElement,System.String,System.Action,System.Boolean)
+  IL_0047: stfld Timberborn.InputSystemUI.BindableButton Timberborn.BuildingsUI.DeleteBuildingFragment::_deleteButton
+  IL_004c: ldarg.0
+  IL_004d: ldfld Timberborn.TooltipSystem.ITooltipRegistrar Timberborn.BuildingsUI.DeleteBuildingFragment::_tooltipRegistrar
+  IL_0052: ldloc.0
+  IL_0053: ldarg.0
+  IL_0054: ldftn System.String Timberborn.BuildingsUI.DeleteBuildingFragment::GetTooltipText()
+  IL_005a: newobj System.Void System.Func`1<System.String>::.ctor(System.Object,System.IntPtr)
+  IL_005f: ldarg.0
+  IL_0060: ldftn System.String Timberborn.BuildingsUI.DeleteBuildingFragment::GetKeyBinding()
+  IL_0066: newobj System.Void System.Func`1<System.String>::.ctor(System.Object,System.IntPtr)
+  IL_006b: callvirt System.Void Timberborn.TooltipSystem.ITooltipRegistrar::RegisterWithKeyBinding(UnityEngine.UIElements.VisualElement,System.Func`1<System.String>,System.Func`1<System.String>)
+  IL_0070: ldarg.0
+  IL_0071: ldfld UnityEngine.UIElements.VisualElement Timberborn.BuildingsUI.DeleteBuildingFragment::_root
+  IL_0076: ldc.i4.0
+  IL_0077: call System.Void Timberborn.CoreUI.VisualElementExtensions::ToggleDisplayStyle(UnityEngine.UIElements.VisualElement,System.Boolean)
+  IL_007c: ldarg.0
+  IL_007d: ldfld UnityEngine.UIElements.VisualElement Timberborn.BuildingsUI.DeleteBuildingFragment::_root
+  IL_0082: ret

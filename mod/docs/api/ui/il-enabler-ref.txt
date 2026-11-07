@@ -1,0 +1,7 @@
+Timberborn.BuilderHubSystemUI.BuilderHubSystemUIConfigurator::ProvideTemplateModule   [Timberborn.BuilderHubSystemUI]
+Timberborn.FieldsUI.FieldsUIConfigurator::ProvideTemplateModule   [Timberborn.FieldsUI]
+Timberborn.ForestryUI.ForestryUIConfigurator::ProvideTemplateModule   [Timberborn.ForestryUI]
+Timberborn.GatheringUI.GatheringUIConfigurator::ProvideTemplateModule   [Timberborn.GatheringUI]
+Timberborn.RuinsUI.RuinsUIConfigurator::ProvideTemplateModule   [Timberborn.RuinsUI]
+Timberborn.SimpleOutputBuildingsUI.SimpleOutputBuildingsUIConfigurator::Configure   [Timberborn.SimpleOutputBuildingsUI]
+Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment::ShowFragment   [Timberborn.SimpleOutputBuildingsUI]

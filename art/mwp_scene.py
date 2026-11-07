@@ -136,7 +136,9 @@ def build_part_object(part, material_factory):
 def apply_animation(obj, animation):
     """Keyframe the animated part object for frames ANIM_FRAME_START..END.
 
-    ``rotation``: ``angle(t) = 2*pi*turns*t`` around the export axis.
+    ``rotation``:    ``angle(t) = 2*pi*turns*t`` around the export axis.
+    ``oscillation``: ``angle(t) = amplitude*sin(2*pi*(cycles*t + phase))`` radians
+                     around the export axis (connecting rods / rocker arms).
     ``translation``: ``offset(t) = amplitude*sin(2*pi*(cycles*t + phase))``.
     ``t`` runs 0..1 over the 120 exported frames; integer ``turns``/``cycles``
     make the first and last frame equal (seamless loop, as in the official
@@ -147,6 +149,11 @@ def apply_animation(obj, animation):
     if kind == "rotation":
         index, sign = ROTATION_AXIS[axis]
         total = 2.0 * math.pi * float(animation["turns"])
+    elif kind == "oscillation":
+        index, sign = ROTATION_AXIS[axis]
+        amplitude = float(animation["amplitude"])
+        cycles = float(animation["cycles"])
+        phase = float(animation.get("phase", 0.0))
     elif kind == "translation":
         index, sign = TRANSLATION_AXIS[axis]
         amplitude = float(animation["amplitude"])
@@ -165,6 +172,12 @@ def apply_animation(obj, animation):
         if kind == "rotation":
             euler = [0.0, 0.0, 0.0]
             euler[index] = sign * total * t
+            obj.rotation_euler = euler
+            obj.keyframe_insert("rotation_euler", frame=frame)
+        elif kind == "oscillation":
+            angle = amplitude * math.sin(2.0 * math.pi * (cycles * t + phase))
+            euler = [0.0, 0.0, 0.0]
+            euler[index] = sign * angle
             obj.rotation_euler = euler
             obj.keyframe_insert("rotation_euler", frame=frame)
         else:

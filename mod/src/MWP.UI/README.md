@@ -1,8 +1,8 @@
 # MWP.UI — entity panel for the mechanical water pump
 
 This assembly owns everything the player sees on a selected pump: the right-hand entity panel
-fragment (status, output, power, water quality, inventory, condition progress bar, maintenance
-rows and buttons, pipe-adapter state).
+fragment (status, output, water quality, condition and maintenance rows, maintenance/pause
+buttons, pipe-adapter state).
 
 Dependency rule (CONTRACT §0/§10): `MWP.UI` references **MWP.Core only**, never
 `MWP.Gameplay`. All data reaches the UI through
@@ -10,49 +10,84 @@ Dependency rule (CONTRACT §0/§10): `MWP.UI` references **MWP.Core only**, neve
 `MWP.Core.IMwpPumpCommands` (`RequestMaintenance`, `SetAutoMaintenance`, `SetPaused`). The two
 services are implemented and DI-registered as `[Context("Game")]` singletons by `MWP.Gameplay`.
 
-## What is wired (verified extension points)
+## Native look & feel (v0.3, T12)
 
-The panel is code-only: no UXML, USS, sprite or prefab asset is shipped (a compiled mod assembly
-cannot reference the game's asset bundles). Every API below was verified with
-`tools/ApiIndex` against Timberborn **1.1.2.8-ffc2de0-sw**; dumps are in `docs/api/ui/`.
+The panel no longer paints its own colours or progress bar. It is built from the game's own
+UIElements controls and USS classes, so the game's style sheets (`CoreStyle.uss`,
+`CommonStyle.uss`, `EntityPanelCommonStyle.uss`, `EntityPanelGameStyle.uss`, `GameStyle.uss` —
+attached to the GameUI/EntityPanel roots) style it exactly like the native fragments. No UXML,
+USS, sprite or prefab asset is shipped by the mod.
 
-| Piece | Game API |
-|---|---|
-| Configuration | `[Bindito.Core.Context("Game")] MwpUiConfigurator : Bindito.Core.Configurator` |
-| Fragment contract | `Timberborn.EntityPanelSystem.IEntityPanelFragment` (`InitializeFragment`, `ShowFragment`, `ClearFragment`, `UpdateFragment`) |
-| Panel contribution | `MultiBind<EntityPanelModule>().ToProvider<MwpEntityPanelModuleProvider>().AsSingleton()` |
-| Module building | `new EntityPanelModule.Builder().AddMiddleFragment(fragment, 1).Build()` |
-| Localization | `Timberborn.Localization.ILoc.T(key[, arg1..arg3])` |
-| Selected entity id | `Timberborn.EntitySystem.EntityComponent.EntityId` (`System.Guid`), found through `BaseComponent.AllComponents` |
-| Controls | `UnityEngine.UIElements.{Label, Button, Toggle, VisualElement}` + inline `IStyle` |
-| Refresh clock | `UnityEngine.Time.unscaledTime` |
+| Block | Native control | Native classes / template |
+|---|---|---|
+| Sub-panel frame | `Timberborn.CoreUI.NineSliceVisualElement` (nine-slice background drawn by the game) | `entity-sub-panel bg-sub-box--green` — same as `MechanicalNodeFragment`, `BatteryFragment`, `DeteriorableFragment`, `HaulCandidateFragment` |
+| Body text rows | `Label` | `entity-panel__text` (13 px, rgb(204,204,204)) |
+| "Next step" hint | `Label` | `entity-panel__sub-text` (12 px) |
+| Status colour | native text colour classes only | `game-text-normal` + `text--yellow` (warning) / `game-text--red` (stopped) — the game ships no green/blue/orange text classes, so none are invented |
+| Condition bar | `Timberborn.CoreUI.ProgressBar` (the control itself loads `UI/Views/Core/ProgressBar` and draws the native frame/background/fill) | `progress-bar` + label inside — exactly `DeteriorableFragment`'s durability row |
+| Maintenance progress bar | same `ProgressBar` | `progress-bar progress-bar--green` — same variant `TimerFragment` uses for its countdown |
+| Buttons | a **real native nine-slice button** taken from `Game/EntityPanel/DemolishableFragment` with `VisualElementLoader.LoadVisualElement(...)`, then re-labelled (`Button` base type) | `entity-panel__text entity-fragment__button entity-fragment__button--red` (pause) / `--green` (resume); wrapper `entity-panel__button-wrapper` |
+| Auto-maintenance toggle | `UnityEngine.UIElements.Toggle` | `game-toggle entity-panel__text entity-panel__toggle` — exactly `HaulCandidateFragment`/`FillValveFragment` |
 
-The fragment renders nothing for an entity without a readable pump snapshot, so other buildings
-get no extra rows.
+Why buttons are extracted instead of constructed: in this game build
+`Timberborn.CoreUI.NineSliceButton`/`LocalizableButton` are **internal**, so a mod assembly cannot
+`new` them (CS0122). Loading a vanilla template that contains one and keeping it typed as the
+public `Button` base gives the genuine control — native skin, hover states, click sound — without
+referencing an internal type. If the template ever stops providing a button, the panel falls back
+to a plain `Button` carrying the same native classes (the panel never breaks).
 
-## Rows (CONTRACT §10, REQ-UI-01/02/03, REQ-MAINT-10)
+## Rows delegated to the game's own fragments
 
-1. tier display name (`Building.MWP.Pump.<Tier>.DisplayName`), tooltip = rated-rate text
-2. highest-priority status (`Status.MWP.*`) coloured per requirements §12.2 (+ a grey
-   "next step" hint for NoPower / NoWater / NoAccess, reusing the base game's own sentences)
-3. actual output `UI.MWP.WaterRate` (one decimal) and power demand/supply
-   (`Status.MWP.PowerDemand`, `Status.MWP.PowerSupply`; delivered hp in the row tooltip via
-   `Mechanical.PowerInputMaximum`)
+The pump gets the vanilla fragments automatically, so the panel no longer duplicates them:
+
+| Information | Rendered by | How it appears |
+|---|---|---|
+| Mechanical power (consumer/network rows) | `Timberborn.MechanicalSystemUI.MechanicalNodeFragment` | automatic for any entity with a `MechanicalNode` (the pump blueprint has `MechanicalNodeSpec`) |
+| Internal Water stock (amount / limit) | `Timberborn.SimpleOutputBuildingsUI.SimpleOutputInventoryFragment` | needs `SimpleOutputInventoryFragmentEnabler`; the UI configurator contributes it (see below) |
+| Intake depth + depth limit controls | `Timberborn.WaterBuildingsUI.WaterInputPipeDepthFragment` | automatic for any entity with `WaterInputPipeSpec` + `WaterInputPipeCoordinates` (the pump blueprint has `WaterInputPipeSpec`) |
+| Max depth in the description | `Timberborn.WaterBuildingsUI.WaterInputPipeSpecDescriber` | automatic (`IEntityDescriber`) |
+
+The UI configurator contributes the enabler the same way the vanilla configurators do:
+
+```csharp
+MultiBind<TemplateModule>().ToProvider(CreateTemplateModule).AsSingleton();
+// ...
+builder.AddDecorator<SimpleOutputInventory, SimpleOutputInventoryFragmentEnabler>();
+```
+
+If one of those components is ever missing (e.g. a template instantiated before this module was
+installed), the pump panel keeps **fallback rows** for the stock (`UI.MWP.Inventory`) and the tier
+depth (`UI.MWP.MaxDepth`) so no information is lost. `Power`, `WaterInputPipeCoordinates` and
+`SimpleOutputInventoryFragmentEnabler` presence is checked once per selection.
+
+## Rows the MWP panel renders (CONTRACT §10, REQ-UI-01/02/03, REQ-MAINT-10)
+
+Status sub-panel:
+
+1. highest-priority status (`Status.MWP.*`) with the native colour class for its severity
+2. grey "next step" hint for NoPower / NoWater / NoAccess (base-game sentences)
+3. actual output `UI.MWP.WaterRate` (one decimal, tooltip = `Tooltip.MWP.WaterRate`)
 4. water quality `Status.MWP.WaterQuality`
-5. intake depth `UI.MWP.MaxDepth` (tier `MaxDepth` from `MWP.Core.TierCatalog`, requirements §12.1)
-6. internal inventory `UI.MWP.Inventory` (current / capacity)
-7. condition `UI.MWP.Condition` + progress bar (colour bands at 75/50/25); the whole maintenance
-   block (condition bar, countdown, materials, auto toggle, maintain button) is hidden when config
-   disables the maintenance system (`PumpSnapshot.MaintenanceEnabled`, REQ-MAINT-13)
-8. next maintenance `UI.MWP.MaintenanceIn`, required materials `UI.MWP.MaintenanceMaterials`
-   (tier table from `MWP.Core.TierCatalog`, good names from the game's `Good.<id>.DisplayName`)
-9. auto-maintenance `Toggle` `UI.MWP.AutoMaintenance`, "maintain now" `Button`
-   `UI.MWP.MaintainNow`, pause/resume `Button` `UI.MWP.Pause` / `UI.MWP.Resume`
-10. pipe adapter row: `Status.MWP.PipeDirect` / `.PipeValve` / `.PipeUnavailable`, with the
-    "Timber Pipes absent" case explained by `Tooltip.MWP.PipeCompat`
+5. fallback stock row `UI.MWP.Inventory` (only when the vanilla inventory fragment is off)
+6. fallback depth row `UI.MWP.MaxDepth` (only when the vanilla depth fragment is off)
+7. pipe adapter row (`Status.MWP.PipeDirect` / `.PipeValve` / `.PipeUnavailable`, `None`/`Unknown`
+   explained by `Tooltip.MWP.PipeCompat`)
+8. maintenance-downtime progress bar (green native bar, only while maintaining; the percentage
+   itself is in the status text from `PumpSnapshot.MaintenanceProgress`)
+9. pause/resume button (`UI.MWP.Pause` / `UI.MWP.Resume`), red while running, green while paused
 
-While the pump is maintaining, the status row uses `Status.MWP.Maintaining` with
-`PumpSnapshot.MaintenanceProgress × 100` (elapsed/total downtime, §20.2.5), not the condition.
+Maintenance sub-panel (hidden completely when `PumpSnapshot.MaintenanceEnabled` is false,
+REQ-MAINT-13):
+
+10. condition bar `UI.MWP.Condition` (native `ProgressBar`, label inside the bar)
+11. next maintenance `UI.MWP.MaintenanceIn`
+12. required materials `UI.MWP.MaintenanceMaterials` (tier table from `MWP.Core.TierCatalog`, good
+    names from the game's `Good.<id>.DisplayName`)
+13. auto-maintenance toggle `UI.MWP.AutoMaintenance`
+14. "maintain now" button `UI.MWP.MaintainNow`
+
+The building name/icon are not repeated: the native entity-panel header already shows them
+(REQ-UI-04 is satisfied by the blueprint's `LabeledEntitySpec`).
 
 Buttons send the selected pump's entity id only (REQ-UI-07); the panel never touches another
 pump's state.
@@ -62,49 +97,53 @@ pump's state.
 * `UpdateFragment` is called every frame by the panel system, but it returns immediately until
   `1 / MwpDefaults.UiRefreshHz` (250 ms) elapsed, so the snapshot is read at most 4×/s.
 * The snapshot is fingerprinted; the panel only rebuilds its localized strings when the
-  fingerprint changed (dirty marker). Steady state therefore allocates nothing per frame and
-  does no string formatting.
-* The element tree is built once in `InitializeFragment`; a render only assigns `text`, colours,
-  one bar width and two toggle values (with `SetValueWithoutNotify`, so a refresh can never
-  re-enter the command callbacks).
+  fingerprint changed (dirty marker). Steady state allocates nothing per frame.
+* The element tree (including the two extracted native buttons) is built once in
+  `InitializeFragment`; a render only assigns `text`, class membership, one `ProgressBar.SetProgress`
+  value, toggle values (with `SetValueWithoutNotify`) and display visibility — no element is ever
+  re-created or re-styled at runtime.
 * `ClearFragment` drops the entity id and hides the root, so a closed panel performs no queries.
 
 ## Localization
 
-All MWP strings come from `MWP.Core.MwpLocKeys` (CONTRACT §8); the panel adds no keys of its
-own. `Localization/MwpUiVanillaKeys.cs` only lists **base-game** keys the panel reuses (three
-"next step" sentences, the power-detail tooltip and the `Good.<id>.DisplayName` pattern); every
-one of them was verified to exist in the installed game's localization tables, so a raw key can
-never reach the player (REQ-UI-05).
+All MWP strings come from `MWP.Core.MwpLocKeys` (CONTRACT §8); the panel adds no keys of its own.
+`Localization/MwpUiVanillaKeys.cs` only lists **base-game** keys the panel reuses (three "next
+step" sentences and the `Good.<id>.DisplayName` pattern); every one was verified to exist in the
+installed game's localization tables, so a raw key can never reach the player (REQ-UI-05).
+
+The previous `TextLocalizationWrapper parameter types have changed` log warning came from using
+the shared game key `Unit.HorsePower.NumberAndUnit` once with a `string` argument (our old power
+tooltip) while the game's `UnitFormatter` formats it with numeric arguments. That tooltip is gone
+(power is rendered by the native mechanical fragment), and every key the panel now calls is called
+with one fixed argument-type list, so the wrapper never re-parameterises a key.
 
 ## Known gaps (honest list)
 
-1. **Supply hp is a tooltip, not a row**: the MWP key set has `Status.MWP.PowerSupply` as a
-   percentage only, so the delivered hp is attached as the row tooltip.
-2. **No icons**: requirement §12.4 asks for shape+colour cues; status is text + colour only
-   (no sprite assets are shipped). Colour is never the only signal because the text states the
-   condition.
-3. **Pause uses the pump's own flag**: the pump blueprint intentionally has no vanilla
-   `PausableBuildingSpec`, so the game's own pause toggle/keybinding does not act on it; the
-   panel's pause button is the only pause path and maps to `IMwpPumpCommands.SetPaused`.
-4. **Depth is the tier maximum, not the live intake cell**: `PumpSnapshot` carries no intake
-   coordinate, so the row shows the tier's rated `MaxDepth` (the only depth data a mod can read
-   without touching the gameplay assembly).
+1. **No icons / status badges**: no sprite assets are shipped; the status is text + native colour
+   class. Colour is never the only signal because the text states the condition.
+2. **Pause is the pump's own flag**: the blueprint has no vanilla `PausableBuildingSpec`, so the
+   game's pause keybinding does not act on the pump; this panel's button is the only pause path
+   and maps to `IMwpPumpCommands.SetPaused`.
+3. **Fallback rows are plain text**: if the vanilla inventory/depth fragment cannot appear, the
+   rows are `entity-panel__text` lines (no good icon / limit widget) — acceptable for a fallback.
+4. **Button extraction depends on a vanilla template**: `Game/EntityPanel/DemolishableFragment`
+   must keep containing an `entity-fragment__button`; a renamed/removed template degrades to the
+   plain-classes fallback button (logged by the panel only as a silent fallback, never an error).
 
-## In-game verification checklist
+## In-game verification checklist (screenshots wanted)
 
-1. Build the mod package, enable it, place a Mk I pump; select it: all rows appear (including
-   `Intake depth: 2 blocks` for Mk I), other buildings show no MWP rows.
-2. Disconnect the mechanical network → status becomes `NoPower` (red) + power hint; connect it
-   and verify the supply percentage and delivered hp tooltip update within 250 ms.
-3. Let the tank fill → `StorageFull`; drain it → `Producing` with the actual Water/h.
-4. Wait for contamination → water-quality percentage drops and the output changes.
-5. Force maintenance: click "maintain now" → materials row matches the tier table, the status
-   row shows `Maintaining: n%` climbing from 0 to 100, then `Producing`, condition bar 100 %.
-   With `maintenance.enabled = false` in `MWP_Config.json` the whole maintenance block
-   (condition bar, countdown, materials, auto toggle, maintain button) disappears.
-6. Toggle auto-maintenance off, click pause, verify only this pump pauses (other pumps keep
-   running) and the button labels switch Pause ↔ Resume.
-7. Switch UI language (zhTW/zhCN/enUS): all rows translate, no `MWP.` or `Status.` key text.
-8. Open the same panel with Timber Pipes installed and absent: pipe row shows valve/direct vs
-   the "requires Timber Pipes" tooltip.
+1. Select a pump: the panel uses the same nine-slice sub-panel background, 13 px text, native
+   button skin and native toggle as other buildings; compare side by side with a vanilla
+   mechanical building panel.
+2. Confirm the vanilla fragments above it/below it are visible: mechanical power rows, "Intake
+   depth", and the Water stock row (amount / limit) — and that the MWP panel does **not** repeat
+   power or stock.
+3. Disconnect power → status turns red with the native "needs power" hint; reconnect → 250 ms.
+4. Let the tank fill → `StorageFull`; drain → `Producing` with the actual Water/h.
+5. Contamination → water-quality row changes and output follows.
+6. "Maintain now": green native progress bar while maintaining, condition bar back to 100 %;
+   toggle the auto-maintenance toggle and verify the native checkmark; with
+   `maintenance.enabled = false` the whole maintenance sub-panel disappears.
+7. Pause/resume: the button flips between red "Pause" and green "Resume", only this pump stops.
+8. Switch language (zhTW/zhCN/enUS): every row translates, no raw keys, and the log contains no
+   `TextLocalizationWrapper parameter types have changed` warning.

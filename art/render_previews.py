@@ -72,7 +72,7 @@ def reset_scene():
     scene.render.film_transparent = False
     scene.view_settings.view_transform = 'Standard'
     scene.view_settings.look = 'None'
-    scene.view_settings.exposure = 0.55
+    scene.view_settings.exposure = 0.30
     return scene
 
 
@@ -196,23 +196,23 @@ def material_factory(name):
     return _MATERIAL_CACHE[name]
 
 
-def add_lights(world_color=(0.16, 0.17, 0.19)):
+def add_lights(world_color=(0.32, 0.37, 0.45)):
     world = bpy.data.worlds.new("MWP_World")
     world.use_nodes = True
     background = world.node_tree.nodes["Background"]
-    background.inputs["Color"].default_value = (*world_color, 1.0)
-    background.inputs["Strength"].default_value = 1.1
+    background.inputs["Color"].default_value = (0.28, 0.33, 0.41, 1.0)
+    background.inputs["Strength"].default_value = 1.05
     bpy.context.scene.world = world
 
     sun_data = bpy.data.lights.new("MWP_Sun", type='SUN')
-    sun_data.energy = 3.6
+    sun_data.energy = 3.7
     sun_data.angle = math.radians(12.0)
     sun = bpy.data.objects.new("MWP_Sun", sun_data)
     sun.rotation_euler = (math.radians(52.0), 0.0, math.radians(-38.0))
     bpy.context.scene.collection.objects.link(sun)
 
     fill_data = bpy.data.lights.new("MWP_Fill", type='AREA')
-    fill_data.energy = 420.0
+    fill_data.energy = 520.0
     fill_data.size = 6.0
     fill = bpy.data.objects.new("MWP_Fill", fill_data)
     fill.location = (-5.0, 4.0, 3.0)
@@ -251,8 +251,14 @@ def add_camera(data, zoom=1.0, view="iso"):
     # iso from the front (+blender Y = export -Z side), camera side = export +X
     if view == "iso":
         direction = mathutils.Vector((-0.80, 1.0, 0.42)).normalized()
-    elif view == "iso_back":
-        direction = mathutils.Vector((0.80, -1.0, 0.42)).normalized()
+    elif view == "right_front":
+        direction = mathutils.Vector((-0.88, 1.0, 0.24)).normalized()
+    elif view == "left_front":
+        direction = mathutils.Vector((0.88, 1.0, 0.24)).normalized()
+    elif view == "front_window":
+        direction = mathutils.Vector((0.05, 1.0, 0.13)).normalized()
+    elif view == "top":
+        direction = mathutils.Vector((-0.35, 0.7, 1.0)).normalized()
     else:
         direction = mathutils.Vector((0.0, 1.0, 0.25)).normalized()
     distance = span * 6.0
@@ -308,15 +314,32 @@ def prepare_scene(spec, samples=48, ground=True, animate=True):
     return data
 
 
+#: extra interior views for the Mk III / Mk IV dense-interior pass (T11)
+EXTRA_VIEWS = {
+    "Advanced": (("left_front", 1.0), ("right_front", 1.0), ("front_window", 1.0)),
+    "Top": (("left_front", 1.0), ("right_front", 1.0), ("front_window", 1.0)),
+}
+
+
 def render_model_previews(spec, samples=48, animate=True):
     data = prepare_scene(spec, samples=samples, animate=animate)
     outputs = []
     tier, faction = spec["tier"], spec["faction"]
     stem = "%s.%s" % (tier, faction)
-    for view, zoom in (("iso", 1.0), ("iso50", 2.0)):
+    standard_views = [("iso", 1.0), ("iso50", 2.0)]
+    for view, zoom in standard_views:
         camera = add_camera(data, zoom=zoom, view="iso")
         target = os.path.join(C.PREVIEWS_DIR, "%s_%s.png" % (stem, view))
         bpy.context.scene.frame_set(C.ANIM_FRAME_START)
+        render_to(target, PREVIEW_SIZE, transparent=False, samples=samples)
+        outputs.append(os.path.relpath(target, C.WORKSPACE).replace("\\", "/"))
+        bpy.data.objects.remove(camera, do_unlink=True)
+    for view, zoom in EXTRA_VIEWS.get(tier, ()):
+        if view == "iso":
+            continue
+        camera = add_camera(data, zoom=zoom, view=view)
+        bpy.context.scene.frame_set(C.ANIM_FRAME_START)
+        target = os.path.join(C.PREVIEWS_DIR, "%s_%s.png" % (stem, view))
         render_to(target, PREVIEW_SIZE, transparent=False, samples=samples)
         outputs.append(os.path.relpath(target, C.WORKSPACE).replace("\\", "/"))
         bpy.data.objects.remove(camera, do_unlink=True)
