@@ -150,3 +150,14 @@ cd "C:\Users\user\Downloads\Mechanical Water Pump"
 pwsh -File mod/build.ps1 -Clean        # A1–A4（本機若無 pwsh，用 powershell -File）
 # 遊戲內：見 §3，逐項填回本表
 ```
+
+## 發佈記錄（2026-11-08，0.2.0 首次公開發佈）
+
+| 項目 | 值 |
+|---|---|
+| Steam Workshop item | **3835434644**（Timberborn app 1062090），URL https://steamcommunity.com/sharedfiles/filedetails/?id=3835434644 |
+| Steam 內容 | 2.028 MB、tags: Update 1.1 / New content / Buildings；描述含 DeepSeek V4.1 Flash 署名；上傳工具 `mod/tools/steamupload`（Steamworks，eResult OK） |
+| GitHub | https://github.com/stanley-1028/MechanicalWaterPump（public，main `ff16f32`） |
+| GitHub release | `v0.2.0`，assets: `MechanicalWaterPump-0.2.0.zip`（1,814,944 B）+ `.sha256` |
+| 建置 | 0 warning、`PASS 213/213`、`VALIDATION PASSED`；art 16/16 PASS（322 checks、62 動畫節點、37,232 tris） |
+| 診斷 | `features.uiDiagnostics` 預設關閉；開啟後每個泵輸出 `MWP/Info/ModelDiag`（含 `hauling: HaulCandidate=… providers=…`） |

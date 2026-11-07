@@ -5,6 +5,7 @@
 
 - Steam 工作坊：https://steamcommunity.com/sharedfiles/filedetails/?id=3835434644
 - GitHub：https://github.com/stanley-1028/MechanicalWaterPump
+  （release v0.2.0：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.0）
 - 需求（權威）：[`機械水泵模組需求文檔.md`](機械水泵模組需求文檔.md)（v0.2，以 §20 為準）
 - 遊戲版本：Timberborn `1.1.2.8-ffc2de0-sw`（本機已安裝，Managed 組件可直接引用）
 - 交付狀態：**v0.2.0 程式與資料完成、離線驗證全綠**：
