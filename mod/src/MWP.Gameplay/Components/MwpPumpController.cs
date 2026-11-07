@@ -373,9 +373,13 @@ namespace MWP.Gameplay.Components
                         "pump active: tier=" + _tierName + " entity=" + _entityId.ToString("N"));
                 }
 
-                // TEMPORARY (2026-11-07): dump the instantiated model hierarchy once per pump so
-                // the empty-interior report on Mk III/IV can be diagnosed from Player.log.
-                LogModelHierarchyOnce();
+                // Opt-in (features.uiDiagnostics): dumps the instantiated model hierarchy and the
+                // hauling decorator state once per pump. Kept as a support/diagnostic aid; the
+                // default path is silent.
+                if (_runtime.DiagnosticsEnabled)
+                {
+                    LogModelHierarchyOnce();
+                }
             }
             catch (Exception exception)
             {

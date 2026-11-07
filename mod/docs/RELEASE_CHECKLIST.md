@@ -56,7 +56,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File mod\release.ps1 -Install
 
 ## 7. 上架步驟（人類帳號）
 
-1. `mod/workshop/workshop_data.json` 的 `ItemId` 首次保持 `"0"`；上傳成功後把 Workshop ID 寫回 → 之後更新才不會重複開新項目
+1. `mod/workshop/workshop_data.json` 的 `ItemId` 已設為 **3835434644**（2026-11-08 首次上傳）；之後更新直接沿用
 2. 遊戲 Mods 畫面 → 選擇本模組 → **Upload**（Steam 工作坊協定需你的帳號同意）
 3. GitHub：`git push -u origin main`（本機 `0b2b054` 已 commit）；release 上傳 `dist/MechanicalWaterPump-<version>.zip`
 4. 更新 `mod/CHANGELOG.md`、`mod/data/manifest.json` 版本、`thumbnail.png`（如外觀大改）

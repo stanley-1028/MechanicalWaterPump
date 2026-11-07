@@ -1,4 +1,11 @@
-# Changelog — Mechanical Water Pump (MWP)
+# Changelog
+
+## 0.2.0 — 首次公開發佈（2026-11-08）
+- Steam Workshop item **3835434644**（Timberborn 1.1）已上傳：https://steamcommunity.com/sharedfiles/filedetails/?id=3835434644
+- GitHub: https://github.com/stanley-1028/MechanicalWaterPump
+- 與 **DeepSeek V4.1 Flash** 共同完成。
+
+> Made in collaboration with **DeepSeek V4.1 Flash**. — Mechanical Water Pump (MWP)
 
 All notable changes are recorded here. Version numbers follow `manifest.json`;
 save/config/spec schema versions are separate (see `docs/CONTRACT.md` §13).

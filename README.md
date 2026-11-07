@@ -3,15 +3,22 @@
 以**機械動力換取免人力飲用水**的 Timberborn 模組：四檔免工人飲用水泵（Mk I–IV），
 保留水源、水質、動力網路、維護與搬運物流的挑戰，並以軟依賴方式支援 Timber Pipes。
 
+- Steam 工作坊：https://steamcommunity.com/sharedfiles/filedetails/?id=3835434644
+- GitHub：https://github.com/stanley-1028/MechanicalWaterPump
 - 需求（權威）：[`機械水泵模組需求文檔.md`](機械水泵模組需求文檔.md)（v0.2，以 §20 為準）
 - 遊戲版本：Timberborn `1.1.2.8-ffc2de0-sw`（本機已安裝，Managed 組件可直接引用）
 - 交付狀態：**v0.2.0 程式與資料完成、離線驗證全綠**：
   `build.ps1` exit 0、4 個組件 0 warning、單元測試 `PASS 213/213`、資料/組件驗證 `VALIDATION PASSED`、
   staged 套件 `mod/build/MWP`（4 DLL + 8 藍圖 + 2 collections + 三語系 + config + 8 圖示，237 KB）。
   **遊戲內驗收 T01–T27 尚未執行**（見 `mod/docs/VERIFICATION.md`）。
-- 美術：**自製四檔模型（16 個 `.timbermesh`，8 檔 finished 含齒輪/飛輪/活塞節點動畫、46 條動畫軌）
+- 美術：**自製四檔模型（16 個 `.timbermesh`，8 檔 finished 含齒輪/飛輪/活塞節點動畫、62 條動畫軌；Mk III/IV 內裝已強化）
   與 8 張 128×128 圖示已交付**；材質用世界尺度平鋪 UV（木 117–145、金屬 121–164 px/m）。
-  管線在 `art/`，驗證 16/16 PASS（274 checks）；剩餘：遊戲內動畫/外觀確認、LOD1/2、ART-07 三視圖簽核
+  管線在 `art/`，驗證 16/16 PASS（322 checks）；剩餘：遊戲內動畫/外觀確認、LOD1/2、ART-07 三視圖簽核
+
+## 製作與致謝
+
+本模組與 **DeepSeek V4.1 Flash** 共同完成：程式（Core/Gameplay/Integration/UI）、資料與平衡、
+自製模型/動畫/貼圖管線、離線驗證與文件，皆為人機協作的產出；需求、方向與遊戲內驗收由專案擁有者負責。
 
 ## 目錄
 

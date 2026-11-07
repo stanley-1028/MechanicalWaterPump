@@ -3,7 +3,7 @@
   "Version": "0.2.0",
   "Id": "MechanicalWaterPump",
   "MinimumGameVersion": "1.1.0.0",
-  "Description": "Four tiers of worker-free mechanical drinking-water pumps. Pay research, materials and mechanical power instead of beaver labour; valve-extractable Water inventory for pipe mods. v0.2 adds the maintenance system (condition, materials, downtime) and raises rated output to 3/6/15/20 Water per hour. Timber Pipes is detected at runtime and never required.",
+  "Description": "Four tiers of worker-free mechanical drinking-water pumps for Timberborn 1.1. Pay research, materials and mechanical power instead of beaver labour. Animated flywheels, gears and pistons driven by the mechanical network (speed follows power), a maintenance system (condition, upkeep materials, 2-hour downtime), four-tier balance at 3/6/15/20 Water per hour, internal water storage with vanilla hauling to tanks, a JSON config file, English / Simplified Chinese / Traditional Chinese localization, and optional Timber Pipes valve extraction detected at runtime and never required. Made in collaboration with DeepSeek V4.1 Flash.",
   "RequiredMods": [],
   "OptionalMods": []
 }
