@@ -9,7 +9,8 @@
   （release v0.2.0：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.0）
 - 需求（權威）：[`機械水泵模組需求文檔.md`](機械水泵模組需求文檔.md)（v0.2，以 §20 為準）
 - 遊戲版本：Timberborn `1.1.2.8-ffc2de0-sw`（本機已安裝，Managed 組件可直接引用）
-- 交付狀態：**v0.2.0 程式與資料完成、離線驗證全綠**：
+- 交付狀態：**0.2.0 後續修復：搬運實機驗證通過（BUG-04）＋新增「無搬運站」狀態回饋（BUG-05）**（2026-11-08）；
+  v0.2.0 程式與資料完成、離線驗證全綠：
   `build.ps1` exit 0、4 個組件 0 warning、單元測試 `PASS 213/213`、資料/組件驗證 `VALIDATION PASSED`、
   staged 套件 `mod/build/MWP`（4 DLL + 8 藍圖 + 2 collections + 三語系 + config + 8 圖示，237 KB）。
   **遊戲內驗收 T01–T27 尚未執行**（見 `mod/docs/VERIFICATION.md`）。
@@ -76,6 +77,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File mod\build.ps1 -Install
 - 產水 = `R_base × 供電比例 × 水質係數 × 機況乘數`；0 動力或 0 水源時必為 0。
 - 1 Water 消耗 0.2 m³ 水體（與原版 `WaterGoodToWaterAmountConverter` 一致，IL 已證實）。
 - 污染效率與原版一致（`1 − c`）；需求 §3.4 的 `1 − 0.75c` 保留為 config 選項（DV-01，見文件）。
+
+- **搬運**沿用原版規則：聚落要有**已雇工的搬運站（Hauling Post）**，海狸才會把泵內的水搬到水箱；
+  **暫停中的泵不會被清空**（與原版一致）。沒有搬運站時，泵會顯示原版「No hauling post in range」
+  狀態（0.2.1 起），不再無聲停產。實機證據：`mod/docs/evidence/haul-in-game-2026-11-08.log`、
+  `mod/docs/evidence/haul-status-in-game-2026-11-08.log`。
 
 ## 測試與驗證
 

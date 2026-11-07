@@ -1,5 +1,34 @@
 # Changelog
 
+## Unreleased — 0.2.0 post-release fixes (2026-11-08)
+
+### Fixed
+- **BUG-04 in-game confirmation (2026-11-08)**: the hauler-chain decorator trio from 0.2.0
+  (`HaulCandidate` + `SimpleOutputInventoryHaulBehaviorProvider` + `EmptyOutputWorkplaceBehavior`)
+  was verified in a live game. A copy of the reporter settlement got one finished vanilla
+  HaulingPost and two employed haulers; within about one in-game hour the haulers moved Water out
+  of every unpaused pump into the water tanks (Basic 15→0, Intermediate 30→0, Advanced 75→61, the
+  emptied Small Tanks grew to 30/30). The paused Mk III pump stayed at 100, matching vanilla
+  hauling rules (paused buildings are blocked and not emptied). Evidence:
+  `docs/evidence/haul-in-game-2026-11-08.log`.
+- **BUG-05 (2026-11-08, in-game: pump silently keeps its water when the district has no hauling
+  infrastructure)**: the pump carried the whole hauler chain but not the vanilla feedback status,
+  so a settlement without a Hauling Post saw its pumps fill up and stop with no explanation.
+  Added the vanilla pattern: `NoHaulingPostStatus` plus `MwpHaulStatus` (the initializer half that
+  calls `NoHaulingPostStatus.Initialize(...)`, mirroring `FireworkLauncherStatus` /
+  `GoodConsumingBuildingStatusInitializer`). The pump now shows the game's own "No hauling post in
+  range" status whenever its district cannot haul. Verified in-game on the unmodified settlement
+  (no Hauling Post): zero exceptions, `candidate=True enabled=True providers=1 emptyOutput=True
+  noHaulStatus=True inRange=False`. Evidence:
+  `docs/evidence/haul-status-in-game-2026-11-08.log`.
+- `MwpHaulStatus` is a decorator component and therefore had to be bound in the Game context
+  (`Bind<MwpHaulStatus>().AsTransient()`); an unbound decorator aborts the world load with
+  `BinditoException: No binding exists for type ...` (caught by the in-game round).
+
+### Notes
+- Hauling is vanilla hauling: a **staffed Hauling Post** must exist in the district, and a paused
+  building is intentionally not emptied (same as vanilla water pumps/gatherer flags).
+
 ## 0.2.0 — 首次公開發佈（2026-11-08）
 - Steam Workshop item **3835434644**（Timberborn 1.1）已上傳：https://steamcommunity.com/sharedfiles/filedetails/?id=3835434644
 - GitHub: https://github.com/stanley-1028/MechanicalWaterPump
