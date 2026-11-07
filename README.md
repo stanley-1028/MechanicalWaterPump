@@ -4,6 +4,7 @@
 保留水源、水質、動力網路、維護與搬運物流的挑戰，並以軟依賴方式支援 Timber Pipes。
 
 - Steam 工作坊：https://steamcommunity.com/sharedfiles/filedetails/?id=3835434644
+- 封面 AI 提示詞：[`mod/workshop/COVER_PROMPTS.md`](mod/workshop/COVER_PROMPTS.md)
 - GitHub：https://github.com/stanley-1028/MechanicalWaterPump
   （release v0.2.0：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.0）
 - 需求（權威）：[`機械水泵模組需求文檔.md`](機械水泵模組需求文檔.md)（v0.2，以 §20 為準）
