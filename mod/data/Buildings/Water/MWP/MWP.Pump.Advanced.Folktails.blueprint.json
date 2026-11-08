@@ -404,7 +404,7 @@
   "WaterInputPipeSpec": {
     "PipeSegmentPrefabPath": "Buildings/Water/WaterPump/WaterPumpPipeSegment.Folktails",
     "PipeParentName": "#Finished",
-    "MaxDepth": 6
+    "MaxDepth": 64
   },
   "WaterObstacleSpec": {
     "Coordinates": [
@@ -434,7 +434,7 @@
     "WaterPerHour": 15.0,
     "PowerRequiredHp": 500,
     "InternalCapacity": 75,
-    "MaxDepth": 6,
+    "MaxDepth": 64,
     "BadwaterPenalty": 1.0,
     "MinWaterQuality": 0.0,
     "CubicMetersPerWater": 0.2,

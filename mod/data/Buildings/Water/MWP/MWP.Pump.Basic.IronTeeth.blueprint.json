@@ -274,7 +274,7 @@
   "WaterInputPipeSpec": {
     "PipeSegmentPrefabPath": "Buildings/Water/DeepWaterPump/DeepWaterPumpPipeSegment.IronTeeth",
     "PipeParentName": "#Finished",
-    "MaxDepth": 2
+    "MaxDepth": 64
   },
   "WaterObstacleSpec": {
     "Coordinates": [
@@ -300,7 +300,7 @@
     "WaterPerHour": 3.0,
     "PowerRequiredHp": 100,
     "InternalCapacity": 15,
-    "MaxDepth": 2,
+    "MaxDepth": 64,
     "BadwaterPenalty": 1.0,
     "MinWaterQuality": 0.0,
     "CubicMetersPerWater": 0.2,

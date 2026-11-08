@@ -64,7 +64,7 @@ internal sealed class SourceFacts
     public string ModId => GetString("ModId", "MechanicalWaterPump");
 
     /// <summary>Version from MwpDefaults.ModVersion.</summary>
-    public string ModVersion => GetString("ModVersion", "0.2.1");
+    public string ModVersion => GetString("ModVersion", "0.2.2");
 
     /// <summary>Config file name from MwpDefaults.ConfigFileName.</summary>
     public string ConfigFileName => GetString("ConfigFileName", "MWP_Config.json");

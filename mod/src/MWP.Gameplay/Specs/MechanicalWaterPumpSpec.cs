@@ -42,9 +42,13 @@ namespace MWP
         [Serialize]
         public int InternalCapacity { get; set; } = 15;
 
-        /// <summary>Maximum intake depth in blocks; must equal <c>WaterInputPipeSpec.MaxDepth</c>.</summary>
+        /// <summary>
+        /// Maximum intake reach in blocks; must equal <c>WaterInputPipeSpec.MaxDepth</c>.
+        /// The shipped blueprints use 64 (effectively unlimited: the pipe reaches the riverbed, so
+        /// the pump draws water at any water level - user request 2026-11-08).
+        /// </summary>
         [Serialize]
-        public int MaxDepth { get; set; } = 2;
+        public int MaxDepth { get; set; } = 64;
 
         /// <summary>Contamination penalty; 1.0 reproduces vanilla <c>1 - c</c> (DV-01).</summary>
         [Serialize]

@@ -11,6 +11,7 @@ Building.MWP.Pump.Flavor,「終於不用再派海狸去搖水泵了。」,req 12
 Status.MWP.NoPower,沒有動力：接上風車或水輪,req 12.2
 Status.MWP.LowPower,供電不足：{0}%,req 12.3
 Status.MWP.NoWater,沒有可抽取的水,req 12.3
+UI.MWP.HintNoWater,進水口沒有水：請把水泵放在水邊，讓進水管接觸到水體。,v0.2.2 NoWater 提示（取代原版需要更深的水位）
 Status.MWP.StorageFull,內部水槽已滿,req 12.3
 Status.MWP.NoAccess,沒有道路可搬運,req 12.3
 Status.MWP.Producing,產水中：{0} 水/小時,req 12.3

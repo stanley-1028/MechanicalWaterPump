@@ -21,7 +21,7 @@ namespace MWP.Core
         /// <param name="sizeZ">Height (engine Z).</param>
         /// <param name="waterPerHour">Rated output at 100% power, clean water, condition 100.</param>
         /// <param name="powerRequiredHp">Mechanical power demand in hp.</param>
-        /// <param name="maxDepth">Maximum intake depth in blocks.</param>
+        /// <param name="maxDepth">Maximum intake reach in blocks; 64 = effectively unlimited (all tiers reach any water level - user request 2026-11-08).</param>
         /// <param name="internalCapacity">Internal Water capacity.</param>
         /// <param name="builderHours">Construction builder-hours.</param>
         /// <param name="maintenanceIntervalDays">Days of Producing time between maintenance.</param>
@@ -94,7 +94,7 @@ namespace MWP.Core
         /// <summary>Mechanical power demand in hp (REQ-BAL-09).</summary>
         public int PowerRequiredHp { get; }
 
-        /// <summary>Maximum intake depth in blocks.</summary>
+        /// <summary>Maximum intake reach in blocks; 64 = effectively unlimited (all tiers reach any water level - user request 2026-11-08).</summary>
         public int MaxDepth { get; }
 
         /// <summary>Internal Water inventory capacity.</summary>
@@ -138,7 +138,7 @@ namespace MWP.Core
                 sizeZ: 3,
                 waterPerHour: 3.0,
                 powerRequiredHp: 100,
-                maxDepth: 2,
+                maxDepth: 64,
                 internalCapacity: 15,
                 builderHours: 3,
                 maintenanceIntervalDays: 8.0,
@@ -153,7 +153,7 @@ namespace MWP.Core
                 sizeZ: 3,
                 waterPerHour: 6.0,
                 powerRequiredHp: 200,
-                maxDepth: 4,
+                maxDepth: 64,
                 internalCapacity: 30,
                 builderHours: 5,
                 maintenanceIntervalDays: 10.0,
@@ -168,7 +168,7 @@ namespace MWP.Core
                 sizeZ: 4,
                 waterPerHour: 15.0,
                 powerRequiredHp: 500,
-                maxDepth: 6,
+                maxDepth: 64,
                 internalCapacity: 75,
                 builderHours: 8,
                 maintenanceIntervalDays: 12.0,
@@ -183,7 +183,7 @@ namespace MWP.Core
                 sizeZ: 4,
                 waterPerHour: 20.0,
                 powerRequiredHp: 700,
-                maxDepth: 8,
+                maxDepth: 64,
                 internalCapacity: 100,
                 builderHours: 12,
                 maintenanceIntervalDays: 15.0,

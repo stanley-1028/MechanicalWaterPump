@@ -53,7 +53,7 @@ TIERS = [
     dict(
         tier="Basic", camel="Basic", science=150,
         cost=[("Log", 20)],
-        water=3.0, power=100, max_depth=2, capacity=15,
+        water=3.0, power=100, max_depth=64, capacity=15,
         maint_days=8.0, maint=[("Log", 10)], builder_hours=3,
         blocks={"Folktails": WATER_PUMP, "IronTeeth": DEEP_WATER_PUMP},
         art={"Folktails": WATER_PUMP, "IronTeeth": DEEP_WATER_PUMP},
@@ -66,7 +66,7 @@ TIERS = [
     dict(
         tier="Intermediate", camel="Intermediate", science=400,
         cost=[("Plank", 30), ("Log", 10)],
-        water=6.0, power=200, max_depth=4, capacity=30,
+        water=6.0, power=200, max_depth=64, capacity=30,
         maint_days=10.0, maint=[("Plank", 15)], builder_hours=5,
         blocks={"Folktails": WATER_PUMP, "IronTeeth": DEEP_WATER_PUMP},
         art={"Folktails": WATER_PUMP, "IronTeeth": DEEP_WATER_PUMP},
@@ -79,7 +79,7 @@ TIERS = [
     dict(
         tier="Advanced", camel="Advanced", science=700,
         cost=[("MetalBlock", 40), ("Plank", 20)],
-        water=15.0, power=500, max_depth=6, capacity=75,
+        water=15.0, power=500, max_depth=64, capacity=75,
         maint_days=12.0, maint=[("MetalBlock", 10), ("Plank", 10)], builder_hours=8,
         blocks={"Folktails": MECH_PUMP, "IronTeeth": DEEP_MECH_PUMP},
         art={"Folktails": MECH_PUMP, "IronTeeth": DEEP_MECH_PUMP},
@@ -92,7 +92,7 @@ TIERS = [
     dict(
         tier="Top", camel="Top", science=1500,
         cost=[("MetalBlock", 60)],
-        water=20.0, power=700, max_depth=8, capacity=100,
+        water=20.0, power=700, max_depth=64, capacity=100,
         maint_days=15.0, maint=[("MetalBlock", 15)], builder_hours=12,
         # TierCatalog keeps Mk IV at 3x4x4 for both factions, but the only IronTeeth pump
         # model is DeepMechanicalPump (3x3x4): occupancy data comes from the 3x4x4 vanilla

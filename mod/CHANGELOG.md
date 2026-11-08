@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.2.2 — 2026-11-08
+
+### Fixed
+- **BUG-06 (2026-11-08, user request: remove the "requires haulers to function" status added in
+  0.2.1)**: the pump no longer carries the vanilla `NoHaulingPostStatus` or its initializer
+  decorator `MwpHaulStatus`; both decorators and the `Bind<MwpHaulStatus>()` registration are gone,
+  and `MwpHaulStatus.cs` is deleted. The hauler chain itself is intentionally unchanged
+  (`HaulCandidate` + `SimpleOutputInventoryHaulBehaviorProvider` + `EmptyOutputWorkplaceBehavior`):
+  with a **staffed vanilla Hauling Post** beavers still carry the pump's water to the tanks, while
+  without haulers the pump simply fills its internal tank and stops producing, exactly like a
+  vanilla output building. The misleading "cannot work" warning is gone; the pump was never meant
+  to require haulers, it only needs a haul destination.
+- **BUG-07 (2026-11-08, user request: the pump could not reach the river bed / retreated water)**:
+  `MaxDepth` is now **64 (effectively unlimited)** for all four tiers, up from 2/4/6/8, in both
+  `WaterInputPipeSpec.MaxDepth` and `MWP.MechanicalWaterPumpSpec.MaxDepth`, in `MWP_Config.json`
+  and in `TierCatalog`. The intake pipe reaches the river bed, so the pump keeps working at any
+  water level, including low water and drought retreat. The NoWater hint no longer uses the
+  vanilla `Status.Buildings.NeedsWater` sentence ("this building needs deeper water to function");
+  it uses the new MWP key `UI.MWP.HintNoWater` ("the intake is not in water"). The vanilla depth
+  fragment still shows `Limit 64` (effectively unlimited).
+
+### Notes
+- Hauling still requires a **staffed vanilla Hauling Post** in the district, and paused pumps are
+  still not emptied (vanilla rules). See `docs/VERIFICATION.md` A20 for the removal evidence.
+- The 0.2.1 "No hauling post in range" feedback is intentionally withdrawn at the user's request;
+  a district without haulers now sees the pump fill up and stop with no warning — same as vanilla.
+- Version: `manifest.json` 0.2.1 → 0.2.2; save schema 2 and config schema 2 are unchanged.
+- Offline verification (2026-11-08): `build.ps1` exit 0, four assemblies 0 warning, unit tests
+  `PASS 213/213`, data/assembly checks `VALIDATION PASSED`. In-game acceptance (T04 intake depth,
+  T06 full-tank, T01–T27) is **still pending**.
+
 ## 0.2.1 — 2026-11-08
 
 ### Fixed

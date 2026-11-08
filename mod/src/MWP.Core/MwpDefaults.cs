@@ -12,7 +12,7 @@ namespace MWP.Core
         public const string ModId = "MechanicalWaterPump";
 
         /// <summary>Display version shipped in the manifest.</summary>
-        public const string ModVersion = "0.2.1";
+        public const string ModVersion = "0.2.2";
 
         /// <summary>Name of the JSON configuration file in the mod root (config schema 2).</summary>
         public const string ConfigFileName = "MWP_Config.json";
@@ -91,6 +91,14 @@ namespace MWP.Core
 
         /// <summary>No water state.</summary>
         public const string StatusNoWater = "Status.MWP.NoWater";
+
+        /// <summary>
+        /// Next-step hint for the no-water state: the pump's intake is not in water. MWP's own
+        /// sentence (0.2.2) instead of the vanilla "This building needs deeper water to function"
+        /// hint: with an unlimited intake depth the pump works at any water level, so the vanilla
+        /// sentence would be misleading.
+        /// </summary>
+        public const string HintNoWater = "UI.MWP.HintNoWater";
 
         /// <summary>Internal tank full state.</summary>
         public const string StatusStorageFull = "Status.MWP.StorageFull";

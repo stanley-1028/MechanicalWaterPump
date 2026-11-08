@@ -17,28 +17,28 @@
         "waterPerHour": 3.0,
         "powerRequired": 100,
         "internalCapacity": 15,
-        "maxDepth": 2
+        "maxDepth": 64
       },
       {
         "tier": "Intermediate",
         "waterPerHour": 6.0,
         "powerRequired": 200,
         "internalCapacity": 30,
-        "maxDepth": 4
+        "maxDepth": 64
       },
       {
         "tier": "Advanced",
         "waterPerHour": 15.0,
         "powerRequired": 500,
         "internalCapacity": 75,
-        "maxDepth": 6
+        "maxDepth": 64
       },
       {
         "tier": "Top",
         "waterPerHour": 20.0,
         "powerRequired": 700,
         "internalCapacity": 100,
-        "maxDepth": 8
+        "maxDepth": 64
       }
     ]
   },

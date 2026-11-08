@@ -14,10 +14,12 @@ namespace MWP.UI.Panels
     /// counts have one decimal, NaN/Infinity/negative values degrade to the "unknown" glyph
     /// instead of leaking a number to the player.
     ///
-    /// Every MWP text comes from <see cref="MwpLocKeys"/>; the three "next step" hints and the
-    /// good display names are base-game keys (see <see cref="MwpUiVanillaKeys"/>). Only the
-    /// rows that no vanilla fragment renders are produced here: power, internal inventory and
-    /// intake depth come from the game's own middle/bottom fragments.
+    /// Every MWP text comes from <see cref="MwpLocKeys"/>; the NoPower and NoAccess "next step"
+    /// hints and the good display names are base-game keys (see <see cref="MwpUiVanillaKeys"/>).
+    /// The NoWater hint is an MWP sentence since 0.2.2: the vanilla "needs deeper water" text no
+    /// longer applies because the pump reaches any water level. Only the rows that no vanilla
+    /// fragment renders are produced here: power, internal inventory and intake depth come from
+    /// the game's own middle/bottom fragments.
     /// </summary>
     public static class MwpPumpPanelDataFactory
     {
@@ -92,7 +94,7 @@ namespace MWP.UI.Panels
                 case PumpState.NoPower:
                     return (loc.T(MwpLocKeys.StatusNoPower), loc.T(MwpUiVanillaKeys.HintNoPower));
                 case PumpState.NoWater:
-                    return (loc.T(MwpLocKeys.StatusNoWater), loc.T(MwpUiVanillaKeys.HintNoWater));
+                    return (loc.T(MwpLocKeys.StatusNoWater), loc.T(MwpLocKeys.HintNoWater));
                 case PumpState.NoAccess:
                     return (loc.T(MwpLocKeys.StatusNoAccess), loc.T(MwpUiVanillaKeys.HintNoAccess));
                 case PumpState.StorageFull:

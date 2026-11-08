@@ -9,7 +9,7 @@
 cd "C:\Users\user\Downloads\Mechanical Water Pump"
 powershell -NoProfile -ExecutionPolicy Bypass -File mod\release.ps1 -Install
 ```
-- 遊戲 Mods 畫面確認 **Mechanical Water Pump 0.2.0** 已啟用、無紅字
+- 遊戲 Mods 畫面確認 **Mechanical Water Pump 0.2.2** 已啟用、無紅字
 - 開新檔（Folktails；之後再開一次 IronTeeth）
 
 ## 1. 建造與 UI（T01/T14）
@@ -31,7 +31,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File mod\release.ps1 -Install
 
 ## 3. 水質／水源（T04/T05）
 
-- [ ] 抽水深度超過上限（Mk I=2、II=4、III=6、IV=8 格）→ 停機 NoWater
+- [ ] 抽水深度不限（MaxDepth 64；進水管可達河床）→ 低水位／旱季退水仍可抽水；**進水口真的無水**才停機 NoWater
 - [ ] 壞水污染 → 產量下降、水質%下降，但永不產出壞水
 
 ## 4. 維護（T16–T22）

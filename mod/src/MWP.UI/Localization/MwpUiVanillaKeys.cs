@@ -29,9 +29,6 @@ namespace MWP.UI.Localization
         /// </summary>
         public const string HintNoPower = "Status.Mechanical.NoPower";
 
-        /// <summary>Full sentence telling the player that the building needs deeper water (NoWater hint).</summary>
-        public const string HintNoWater = "Status.Buildings.NeedsWater";
-
         /// <summary>Full sentence telling the player that no road connects the building (NoAccess hint).</summary>
         public const string HintNoAccess = "Status.Buildings.Unconnected";
     }

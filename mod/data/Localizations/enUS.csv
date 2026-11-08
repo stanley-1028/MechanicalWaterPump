@@ -11,6 +11,7 @@ Building.MWP.Pump.Flavor,"""Finally - no beaver has to crank the pump anymore.""
 Status.MWP.NoPower,No power - connect a windmill or water wheel,req 12.2
 Status.MWP.LowPower,Low power: {0}%,req 12.3
 Status.MWP.NoWater,No water to pump,req 12.3
+UI.MWP.HintNoWater,The intake is not in water - place the pump so its intake pipe touches the water.,v0.2.2 NoWater hint (replaces vanilla needs-deeper-water)
 Status.MWP.StorageFull,Internal tank full,req 12.3
 Status.MWP.NoAccess,No path for haulers,req 12.3
 Status.MWP.Producing,Producing: {0} water/hour,req 12.3

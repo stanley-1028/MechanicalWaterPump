@@ -3,8 +3,8 @@
 > 本檔記錄**實際跑過**的驗證與其輸出，以及**無法離線執行**、必須遊戲內人工驗收的項目。
 > 原則：沒有輸出證據的項目不得標 Pass。
 >
-> 最後更新：2026-11-06 22:14（v0.2.0 回歸重跑）｜證據日誌：`docs/evidence/build-2026-11-06.log`
-> （同日 08:00 回歸：`docs/evidence/build-2026-11-06-0800.log`；前次回歸：`docs/evidence/build-2026-11-05.log`；v0.2.0 原始建置：`docs/evidence/build-0.2.0.log`；art pass 建置：`docs/evidence/build-art-0.2.0.log`）
+> 最後更新：2026-11-08（v0.2.2：BUG-06／BUG-07）｜證據日誌：`docs/evidence/build-0.2.2.log`
+> （0.2.1 搬運實機：A16／A18；v0.2.0 回歸：`docs/evidence/build-2026-11-06.log`；同日 08:00 回歸：`docs/evidence/build-2026-11-06-0800.log`；前次回歸：`docs/evidence/build-2026-11-05.log`；v0.2.0 原始建置：`docs/evidence/build-0.2.0.log`；art pass 建置：`docs/evidence/build-art-0.2.0.log`）
 
 ## 1. 自動化驗證（可重跑）
 
@@ -23,7 +23,10 @@
 | A9 | **自製模型驗證（16/16，含動畫，B 版）** | `python art/validate_timbermesh.py` | `FILES: 16/16 present; 16 PASS, 0 FAIL`、`CHECKS: 322 PASS, 0 FAIL`（C1–C17）、exit 0；bounds (2,3,3)/(2,3,3)/(3,4,3)/(3,4,4)、LOD0 tris 2,072/2,788/3,948/3,768（≤12k）；每檔 1 root + 3 `#Port#` + N 個 `#Animated*` 子節點（5/6/7/5）、0 `#Slot#`；**8 檔 finished 共 46 條 nodeAnimations**（120 frames @24fps、seamless、rest==frame0、C15 逐幀對照誤差 ≤1.5e-7）、construction 0 動畫；signed volume 全正（C9）、動畫軸 vs 幾何軸（C16）、未被 merge（C17）；UV 密度 wood 117–145 / metal 121–164 / planks 255–340 / glass 82 / plaster 340 px/m（≥80）；`mod/data` 與 `art/timbermesh` SHA-256 相同；gen/export 兩次 byte-identical。16 檔合計 653,318 B / 30,320 tris。Mk I/II 為全木材（FT: BaseWood_Brown/LightBrown + IrregularPlanks_Brown；IT: BaseWood_DarkBrown/Grey + IrregularPlanks_MetalForged） | **PASS** |
 | A17 | **面板原生 UI（T12）** | `MWP.UI` 重寫 + `dotnet build`/全體 build | 使用遊戲 UXML 模板（`LoadVisualElement("Game/EntityPanel/...")`）與原生 class：`entity-sub-panel`、`entity-panel__text`、原生 `ProgressBar`、`entity-fragment__button` 九宮格按鈕、原生 toggle；移除全部 inline `style.`（grep 0 筆）；機械動力/庫存/深度改由原生 fragment 顯示（`SimpleOutputInventoryFragmentEnabler` decorator）；`TextLocalizationWrapper` 警告根因（共用 key 參數型別）已修 | **PASS（build）／待實機外觀** |
 | A16 | **搬運 decorator 鏈（BUG-04，2026-11-08 實機通過）** | IL + `MwpGameConfigurator.ProvideTemplateModule()` + 自動遊戲內回合 | `AddDecorator<SimpleOutputInventory, EmptyOutputWorkplaceBehavior / SimpleOutputInventoryHaulBehaviorProvider / HaulCandidate>()`；遊戲內實測（注入一個原版 HaulingPost + 2 名搬運工到回報存檔的副本）：搬運工把水從**所有未暫停**的泵搬到水箱——Basic 15→0、Intermediate 30→0、Advanced 75→61，被清空的小水箱長到 30/30；暫停的 Mk III 維持 100（原版規則：暫停建築被 block、不清空）。證據：`docs/evidence/haul-in-game-2026-11-08.log` | **PASS（實機）** |
-| A18 | **「無搬運站」狀態回饋（BUG-05，2026-11-08）** | IL 對照原版 + 自動遊戲內回合 | 原版輸出建築（`FireworkLauncherStatus`、`GoodConsumingBuildingStatusInitializer`）會加 `NoHaulingPostStatus` 並在 finished 時 `Initialize(Func<bool>)`；MWP 原本沒有 → 新增 `NoHaulingPostStatus` + `MwpHaulStatus` 兩個 decorator（`MwpHaulStatus` 需 `Bind<...>().AsTransient()`，否則載入拋 `BinditoException`）。實機驗證（原始回報存檔、無搬運站）：4 個泵 `candidate=True enabled=True providers=1 emptyOutput=True noHaulStatus=True haulStatusInit=True inRange=False`、未暫停的 Basic 提供 `[w=1.000 EmptyOutputWorkplaceBehavior]`、整段載入+執行 **0 個 Exception**。證據：`docs/evidence/haul-status-in-game-2026-11-08.log` | **PASS（實機）** |
+| A18 | **「無搬運站」狀態回饋（BUG-05，2026-11-08）** | IL 對照原版 + 自動遊戲內回合 | 原版輸出建築（`FireworkLauncherStatus`、`GoodConsumingBuildingStatusInitializer`）會加 `NoHaulingPostStatus` 並在 finished 時 `Initialize(Func<bool>)`；MWP 原本沒有 → 新增 `NoHaulingPostStatus` + `MwpHaulStatus` 兩個 decorator（`MwpHaulStatus` 需 `Bind<...>().AsTransient()`，否則載入拋 `BinditoException`）。實機驗證（原始回報存檔、無搬運站）：4 個泵 `candidate=True enabled=True providers=1 emptyOutput=True noHaulStatus=True haulStatusInit=True inRange=False`、未暫停的 Basic 提供 `[w=1.000 EmptyOutputWorkplaceBehavior]`、整段載入+執行 **0 個 Exception**。證據：`docs/evidence/haul-status-in-game-2026-11-08.log` | **PASS（實機；0.2.2 已依使用者要求移除，改由 A20 記錄）** |
+| A19 | **0.2.2 離線驗證（2026-11-08）** | `build.ps1 -Clean` | exit 0；4 個組件「0 个警告 / 0 个错误」；單元測試 `PASS 213/213`；資料/組件驗證 `VALIDATION PASSED`（另有 4 個既有的 game-type `AddDecorator` WARN，非錯誤）；staged 套件 `mod/build/MWP`：10 blueprints、1,248 KB、manifest 0.2.2。證據：`docs/evidence/build-0.2.2.log` | **PASS（離線）** |
+| A20 | **BUG-06：移除「需要搬運工」狀態（0.2.2，2026-11-08，使用者要求）** | 原始碼審查 + `build.ps1`／validator | `MwpGameConfigurator.ProvideTemplateModule()` 只剩搬運鏈三件套 decorator（`EmptyOutputWorkplaceBehavior` + `SimpleOutputInventoryHaulBehaviorProvider` + `HaulCandidate`）；`NoHaulingPostStatus`／`MwpHaulStatus` decorator 與 `Bind<MwpHaulStatus>()` 全部移除；`src/MWP.Gameplay/Components/MwpHaulStatus.cs` 已刪除；`MwpUiVanillaKeys` 不再保留原版 NoWater 提示 key。行為：有**已雇工搬運站**時原版搬運工照樣把泵內的水搬去水箱；沒有搬運工時泵只會裝滿內部水槽後停產（與原版一致），**不再顯示**「需要搬運工才能運轉」警告 | **PASS（原始碼/建置；實機回歸 T06/T07 待辦）** |
+| A21 | **BUG-07：抽水深度不限（MaxDepth 64，0.2.2，2026-11-08，使用者要求）** | 8 藍圖 + `MWP_Config.json` + `TierCatalog`／自訂 spec 一致性檢查 + validator | 四檔 × 兩陣營的 `WaterInputPipeSpec.MaxDepth` 與 `MWP.MechanicalWaterPumpSpec.MaxDepth` 皆 64；`MWP_Config.json` 四檔 `maxDepth` 64；`TierCatalog` 64（`DataChecks`／`ConfigValidator` 會比對，`VALIDATION PASSED`）；NoWater 提示改 MWP 自己的 `UI.MWP.HintNoWater`（三語系新增 key；原版 `Status.Buildings.NeedsWater`「需要更深的水位」不再使用）；原版 `WaterInputPipeDepthFragment` 仍顯示 `Limit 64`（等效不限）。進水管可達河床，任何水位（含低水位／旱季退水）皆可抽 | **PASS（離線）／遊戲內 T04 待實測** |
 | A15 | **實機 prefab 結構（ModelDiag，2026-11-07）** | 使用者載入世界後讀 `Player.log` 的 `MWP/Info/ModelDiag/*` | Mk III/IV/II/ I 四檔的 `#Finished` 下都有完整模型：root mesh（Advanced 6,633 verts）＋ `#Animated*` 子節點（Advanced：3×Piston 74、Flywheel 782、HeadPulley 698、GearboxGear 672、DriveShaft 392，全部 `renderer=on`）＋ 3 個 `#Port#`；施工模型 renderer=off。**證明「Mk III 空無一物」不是幾何缺失**，而是內裝密度/構圖（主齒輪在右外側、玻璃窗後為空）＋夜間光照；已開 T11 內裝強化 | **PASS（結構）／T11 美化中** |
 | A14 | **winding／背面檢查（BUG-03 回歸）** | 以 protobuf 重建 mesh + backface culling 渲染；量測每 mesh signed volume | 修正前 Advanced TOTAL **−6.721104**（全部 mesh INVERTED，重現遊戲內「空心/揉皺」）；修正後同 magnitude **+6.721104**、8 finished＋8 construction 全 OUTWARD、0 inverted。validator 新增 signed-volume>0 絕對檢查；`art/reports/t10/winding-diagnosis-before.txt` / `-after.txt`、`backface_broken_advanced.png` / `backface_fixed_advanced.png` | **PASS（已修）** |
 | A13 | **動畫 runtime 機制確認** | 遊戲 IL（`MechanicalSystemUIConfigurator.ProvideTemplateModule`、`MechanicalNodeAnimator`） | `AddDecorator<MechanicalNodeAnimatorSpec, MechanicalNodeAnimator>` 存在；`speed = PowerEfficiency × NonlinearAnimationManager.SpeedMultiplier`；`CanAnimate()` 在無動力時 `Enabled=false`。藍圖已含 `MechanicalNodeAnimatorSpec{MinSpeedMultiplier:0.0}`，因此動畫隨供電轉動、停電停止（**待實機目視確認**） | **PASS（IL）＋待目視** |
@@ -59,6 +62,7 @@
 
 > 2026-11-08 搬運實機驗證（BUG-04 / BUG-05）：以 `-skipModManager -settlementName MWPHaulTest -saveName mwptest/mwpnohaul` 自動載入回報存檔的副本並跑遊戲內回合；兩份證據見上方 A16/A18。
 > 結論：0.2.0 的三件套 decorator 在**有搬運站+搬運工**時確實運作；回報者存檔裡 4 個泵的水都沒被搬，是因為該聚落**沒有任何 HaulingPost / 搬運工**（6 隻海狸全在 DistrictCenter/BoxFarm 任職）。另外原版規則下**暫停中的泵不會被清空**（回報存檔的 Mk II–IV 都是 PausableBuilding.Paused=true）。0.2.1 因此補上原版同樣的「No hauling post in range」狀態回饋。
+> **0.2.2 更新（2026-11-08，使用者要求）**：上述「No hauling post in range」狀態已移除（BUG-06，見 A20）；BUG-04 的搬運鏈不受影響，A16 仍有效。BUG-05 的狀態回饋正式撤銷。
 
 補充證據：
 - `MWP.Gameplay` 的 `AddDecorator` IL 由 `ApiIndex il` 直接確認（`MwpGameConfigurator::ProvideTemplateModule`）。
@@ -97,7 +101,7 @@
 | T01 | 新檔 FT | 解鎖並建造四檔 | 皆成功；成本／研究正確 | 待實測 |
 | T02 | 任意 | 建造後不派工、接電 | 持續產水；24h 產量 72/144/360/480 ±5% | 待實測 |
 | T03 | 任意 | 供電 0/25/50/75/100% | 速率單調；0 = 0 | 待實測 |
-| T04 | 水邊 | 抽至低於 MaxDepth | 停機 NoWater | 待實測 |
+| T04 | 水邊 | 抽至河床／低水位（含旱季退水） | 仍可抽水；進水口真的無水才 NoWater | 待實測 |
 | T05 | 水邊 | 0/50/100% 壞水 | 速率下降；不產壞水；不優於原版水泵 | 待實測 |
 | T06 | 任意 | 庫存滿、無搬運 | 停產 StorageFull | 待實測 |
 | T07 | 有路 | 搬運工取貨 | 庫存下降、恢復產水 | 待實測 |
@@ -128,7 +132,7 @@
 |---|---:|---|---:|---|
 | Mk I | 3 Water/h | WaterPump ×1（1 工） | 3/h | ≥，且 0 工人 |
 | Mk II | 6 Water/h | WaterPump ×2（2 工） | 6/h | ≥，且 0 工人 |
-| Mk III | 15 Water/h | LargeWaterPump ×1 滿員（3 工） | ≈15/h | ≥，且深度 6>4、占地 3×3<3×4 |
+| Mk III | 15 Water/h | LargeWaterPump ×1 滿員（3 工） | ≈15/h | ≥，且深度不限（MaxDepth 64）>4、占地 3×3<3×4 |
 | Mk IV | 20 Water/h | LargeWaterPump ×1.33 滿員 | ≈20/h | ≥，且 0 工人 |
 
 實測時以 24 遊戲小時、100% 供電、乾淨水、庫存未滿量測，誤差 −5% 內視為達標（§20.1.3）。

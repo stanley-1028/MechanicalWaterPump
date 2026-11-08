@@ -19,6 +19,11 @@ namespace MWP.Core
         internal const double MaxTickIntervalSeconds = 10.0;
         internal const int MaxPowerRequired = 1000000;
         internal const int MaxInternalCapacity = 100000;
+
+        /// <summary>
+        /// Largest accepted intake depth. Also the shipped default since 0.2.2: 64 blocks is far
+        /// below any playable water depth, i.e. effectively unlimited ("pump at any water level").
+        /// </summary>
         internal const int MaxDepth = 64;
         internal const double MinIntervalDays = 1.0;
         internal const double MaxIntervalDays = 3650.0;

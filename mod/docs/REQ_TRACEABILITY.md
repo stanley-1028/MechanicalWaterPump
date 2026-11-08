@@ -8,12 +8,20 @@
 > - `GAP`：尚未完成（在「備註」寫明補救路徑）。
 > - `N/A`：v0.2 不適用（設計決策見 `CONTRACT.md` §13）。
 >
-> 檔案路徑皆相對 `mod/`。最後更新：2026-11-04（v0.2.0）。
+> 檔案路徑皆相對 `mod/`。最後更新：2026-11-08（v0.2.2：BUG-06／BUG-07）。
 
 ## 0. 自動證據對照（VERIFICATION §1）
 
 `A1` build 0 warning｜`A2` 單元測試 PASS 213/213｜`A3` VALIDATION PASSED｜`A4` 打包完整性｜
-`A5` 自訂 Spec metadata｜`A6` DI/入口型別｜`A7` 無硬依賴。以下 PASS(自動) 均引用其一或多項。
+`A5` 自訂 Spec metadata｜`A6` DI/入口型別｜`A7` 無硬依賴｜`A19` 0.2.2 離線驗證｜
+`A20` BUG-06 移除 NoHaulingPost 狀態｜`A21` BUG-07 MaxDepth 64 不限水位。以下 PASS(自動) 均引用其一或多項。
+
+## 0.1 BUG 對應（0.2.2，2026-11-08）
+
+| BUG | 變更 | 實作位置 | 驗證 | 狀態 |
+|---|---|---|---|---|
+| BUG-06 | 依使用者要求移除 0.2.1 的原版「需要搬運工才能運轉」狀態：`NoHaulingPostStatus` + `MwpHaulStatus` decorator、`Bind<MwpHaulStatus>()`、`MwpHaulStatus.cs` 全部移除；搬運鏈三件套保留 | `src/MWP.Gameplay/MwpGameConfigurator.cs`、`src/MWP.UI/Localization/MwpUiVanillaKeys.cs` | A20 + T06/T07 | PASS（原始碼/建置）／實機回歸待辦 |
+| BUG-07 | 四檔抽水深度改為不限（`MaxDepth` 64，原 2/4/6/8）；NoWater 提示改 MWP 自己的 `UI.MWP.HintNoWater`，不再用原版「需要更深的水位」 | 8 藍圖、`data/MWP_Config.json`、`src/MWP.Core/Balance/TierDefinition.cs`、`src/MWP.Core/MwpDefaults.cs`、3 份 CSV、`src/MWP.UI/Panels/MwpPumpPanelDataFactory.cs` | A21 + T04 | PASS（離線）／遊戲內 T04 待實測 |
 
 ## 1. CORE（核心玩法）
 
@@ -106,7 +114,7 @@
 
 | REQ | 要求 | 實作位置 | 驗證 | 狀態 |
 |---|---|---|---|---|
-| UI-01 | 面板顯示狀態/實際速率/供電/水質/庫存/管道/深度 | `src/MWP.UI/Panels/MwpPumpPanelDataFactory.cs`、`MwpPumpPanelView.cs` | A1（UI build）+ T14 | CODE |
+| UI-01 | 面板顯示狀態/實際速率/供電/水質/庫存/管道/深度（0.2.2 起深度 64＝不限，原版 fragment 顯示 Limit 64） | `src/MWP.UI/Panels/MwpPumpPanelDataFactory.cs`、`MwpPumpPanelView.cs` | A1（UI build）+ T14 | CODE |
 | UI-02 | 任何停產有原因，不得只顯示暫停 | 狀態列＋下一步提示（`MwpUiVanillaKeys.cs`） | T05 | CODE |
 | UI-03 | 固定優先序、只顯示最高者 | `StatusPriority`（Core）、UI 單一狀態列 | A2 | PASS(自動)+CODE |
 | UI-04 | 顯示名不得與原版「機械水泵」相同 | `data/Localizations/zhTW.csv`（機械飲水泵 Mk I–IV） | A3（顯示名檢查） | PASS(自動) |

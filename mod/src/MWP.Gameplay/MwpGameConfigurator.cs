@@ -40,10 +40,6 @@ namespace MWP.Gameplay
 
             Bind<MwpPumpController>().AsTransient();
 
-            // Decorator components are resolved through Bindito, not created with new: an unbound
-            // decorator type aborts the whole world load with "No binding exists for type ...".
-            Bind<MwpHaulStatus>().AsTransient();
-
             MultiBind<TemplateModule>().ToProvider(ProvideTemplateModule).AsSingleton();
         }
 
@@ -72,14 +68,12 @@ namespace MWP.Gameplay
             builder.AddDecorator<SimpleOutputInventory, SimpleOutputInventoryHaulBehaviorProvider>();
             builder.AddDecorator<SimpleOutputInventory, HaulCandidate>();
 
-            // BUG-05 (2026-11-08): vanilla output buildings also carry NoHaulingPostStatus so the
-            // player sees why nothing is hauled when the district has no Hauling Post
-            // (FireworkLauncherStatus / GoodConsumingBuildingStatusInitializer call
-            // NoHaulingPostStatus.Initialize(Func<bool>) on finished). The pump had the hauler chain
-            // above but no such feedback: with no Hauling Post the stock simply stopped growing
-            // without any in-game explanation. MwpHaulStatus supplies the missing initializer half.
-            builder.AddDecorator<SimpleOutputInventory, NoHaulingPostStatus>();
-            builder.AddDecorator<SimpleOutputInventory, MwpHaulStatus>();
+            // Intentional: the pump does NOT carry the vanilla NoHaulingPostStatus ("Requires
+            // haulers to function"), removed in 0.2.2 at the user's request. The pump is
+            // worker-free: without haulers or a pipe it simply fills its internal tank and stops
+            // like any vanilla output building, and the warning wrongly suggested it cannot work.
+            // The hauler chain above stays, so ordinary haulers still empty the pump when the
+            // district has a staffed Hauling Post.
             return builder.Build();
         }
     }

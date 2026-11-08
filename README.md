@@ -6,14 +6,16 @@
 - Steam 工作坊：https://steamcommunity.com/sharedfiles/filedetails/?id=3835434644
 - 封面 AI 提示詞：[`mod/workshop/COVER_PROMPTS.md`](mod/workshop/COVER_PROMPTS.md)
 - GitHub：https://github.com/stanley-1028/MechanicalWaterPump
-  （release v0.2.1：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.1；v0.2.0：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.0）
+  （release v0.2.2：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.2；v0.2.1：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.1；v0.2.0：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.0）
 - 需求（權威）：[`機械水泵模組需求文檔.md`](機械水泵模組需求文檔.md)（v0.2，以 §20 為準）
 - 遊戲版本：Timberborn `1.1.2.8-ffc2de0-sw`（本機已安裝，Managed 組件可直接引用）
-- 交付狀態：**v0.2.1：搬運實機驗證通過（BUG-04）＋新增「無搬運站」狀態回饋（BUG-05）**（2026-11-08）；
-  v0.2.0 程式與資料完成、離線驗證全綠：
+- 交付狀態：**v0.2.2（2026-11-08）：BUG-06 依使用者要求移除 0.2.1 的「需要搬運工才能運轉」狀態
+  ＋BUG-07 四檔抽水深度改為不限（MaxDepth 64）**；程式與資料完成、離線驗證全綠：
   `build.ps1` exit 0、4 個組件 0 warning、單元測試 `PASS 213/213`、資料/組件驗證 `VALIDATION PASSED`、
-  staged 套件 `mod/build/MWP`（4 DLL + 8 藍圖 + 2 collections + 三語系 + config + 8 圖示，237 KB）。
-  **遊戲內驗收 T01–T27 尚未執行**（見 `mod/docs/VERIFICATION.md`）。
+  staged 套件 `mod/build/MWP`（4 DLL + 8 藍圖 + 2 collections + 三語系 + config + 8 圖示）。
+  **遊戲內驗收 T04/T06 等 T01–T27 尚未執行**（見 `mod/docs/VERIFICATION.md`）。
+  歷史：v0.2.1 搬運實機驗證通過（BUG-04）＋「無搬運站」狀態回饋（BUG-05，已於 0.2.2 依使用者要求移除）；
+  v0.2.0 首次公開發佈。
 - 美術：**自製四檔模型（16 個 `.timbermesh`，8 檔 finished 含齒輪/飛輪/活塞節點動畫、62 條動畫軌；Mk III/IV 內裝已強化）
   與 8 張 128×128 圖示已交付**；材質用世界尺度平鋪 UV（木 117–145、金屬 121–164 px/m）。
   管線在 `art/`，驗證 16/16 PASS（322 checks）；剩餘：遊戲內動畫/外觀確認、LOD1/2、ART-07 三視圖簽核
@@ -69,19 +71,22 @@ powershell -NoProfile -ExecutionPolicy Bypass -File mod\build.ps1 -Install
 
 | 檔位 | 研究點 | 材料 | 尺寸 X×Y×Z | 產水 Water/h | 動力 hp | 抽水深度 | 庫存 | 維護間隔／材料 |
 |---|---:|---|---:|---:|---:|---:|---:|---|
-| Mk I | 150 | 20 Log | 2×3×3 | 3 | 100 | 2 | 15 | 8 日／10 Log |
-| Mk II | 400 | 30 Plank+10 Log | 2×3×3 | 6 | 200 | 4 | 30 | 10 日／15 Plank |
-| Mk III | 700 | 40 MetalBlock+20 Plank | 3×4×3 | 15 | 500 | 6 | 75 | 12 日／10 MetalBlock+10 Plank |
-| Mk IV | 1500 | 60 MetalBlock | 3×4×4 | 20 | 700 | 8 | 100 | 15 日／15 MetalBlock |
+| Mk I | 150 | 20 Log | 2×3×3 | 3 | 100 | 不限（64） | 15 | 8 日／10 Log |
+| Mk II | 400 | 30 Plank+10 Log | 2×3×3 | 6 | 200 | 不限（64） | 30 | 10 日／15 Plank |
+| Mk III | 700 | 40 MetalBlock+20 Plank | 3×4×3 | 15 | 500 | 不限（64） | 75 | 12 日／10 MetalBlock+10 Plank |
+| Mk IV | 1500 | 60 MetalBlock | 3×4×4 | 20 | 700 | 不限（64） | 100 | 15 日／15 MetalBlock |
+
+- 抽水深度自 v0.2.2 起四檔皆為 `MaxDepth = 64`（等效不限）：進水管可延伸到河床，
+  任何水位（含低水位／旱季退水）都能抽水；原版深度 fragment 顯示 `Limit 64`。
 
 - 產水 = `R_base × 供電比例 × 水質係數 × 機況乘數`；0 動力或 0 水源時必為 0。
 - 1 Water 消耗 0.2 m³ 水體（與原版 `WaterGoodToWaterAmountConverter` 一致，IL 已證實）。
 - 污染效率與原版一致（`1 − c`）；需求 §3.4 的 `1 − 0.75c` 保留為 config 選項（DV-01，見文件）。
 
 - **搬運**沿用原版規則：聚落要有**已雇工的搬運站（Hauling Post）**，海狸才會把泵內的水搬到水箱；
-  **暫停中的泵不會被清空**（與原版一致）。沒有搬運站時，泵會顯示原版「No hauling post in range」
-  狀態（0.2.1 起），不再無聲停產。實機證據：`mod/docs/evidence/haul-in-game-2026-11-08.log`、
-  `mod/docs/evidence/haul-status-in-game-2026-11-08.log`。
+  **暫停中的泵不會被清空**（與原版一致）。沒有搬運站時，泵只會把內部水槽裝滿後停產（與原版一致），
+  **不再顯示**原版「No hauling post in range」／「需要搬運工才能運轉」狀態（0.2.1 加入、0.2.2 依使用者要求移除）。
+  搬運鏈實機證據（BUG-04）：`mod/docs/evidence/haul-in-game-2026-11-08.log`。
 
 ## 測試與驗證
 
@@ -94,7 +99,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File mod\build.ps1 -Install
 ## 已知限制（誠實揭露）
 
 1. **本輪遊戲內視覺/行為驗收未完成**：模型/材質已完成靜態驗證（16/16、材質全在 MaterialCollection）；
-   **搬水行為已於 2026-11-08 以自動化遊戲內回合實測通過**（見 `mod/docs/VERIFICATION.md` A16/A18），
+   **搬水行為已於 2026-11-08 以自動化遊戲內回合實測通過**（見 `mod/docs/VERIFICATION.md` A16；
+   A18 的「無搬運站」狀態已於 0.2.2 依使用者要求移除，見 A20），
    但其餘外觀、建造選單、T01–T27 完整人工驗收仍需在可正常啟動遊戲的環境執行。
 2. **LOD1/LOD2 未輸出**：目前只有 LOD0（1.9k–4.3k tris，遠低於 12k 預算）。
 3. **ART-07 三視圖參考圖簽核**：有 24 張等角/50%/施工預覽，但需求要求的「建模前三視圖＋端口座標

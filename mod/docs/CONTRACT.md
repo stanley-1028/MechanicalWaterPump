@@ -202,7 +202,7 @@ namespace MWP.Core
 | `WaterPerHour` | float | 3 / 6 / 15 / 20 |
 | `PowerRequiredHp` | int | 100 / 200 / 500 / 700 |
 | `InternalCapacity` | int | 15 / 30 / 75 / 100（須與 `SimpleOutputInventorySpec.Capacity` 相同） |
-| `MaxDepth` | int | 2 / 4 / 6 / 8（須與 `WaterInputPipeSpec.MaxDepth` 相同） |
+| `MaxDepth` | int | 64（等效不限；v0.2.2 起；須與 `WaterInputPipeSpec.MaxDepth` 相同） |
 | `BadwaterPenalty` | float | 預設 1.0（DV-01） |
 | `MinWaterQuality` | float | 預設 0.0（DV-01） |
 | `CubicMetersPerWater` | float | 0.2 |
@@ -250,7 +250,7 @@ Spec 必須可被 `SpecTypeCache` 找到（public record、非抽象、繼承 `C
 - `MechanicalConnectorTargetSpec: {}`
 - `WaterInputSpec { WaterInputCoordinates }`：進水側（Z 負向），`Y=0`
 - `WaterInputPipeSpec`：`PipeSegmentPrefabPath` = 同陣營原版管段（見 §6）、`PipeParentName="#Finished"`、
-  `MaxDepth` = 檔位值
+  `MaxDepth` = 64（等效不限；v0.2.2 起四檔一致，須與 `MWP.MechanicalWaterPumpSpec.MaxDepth` 相同）
 - `WaterObstacleSpec` + `FinishableWaterObstacleSpec { Height: 1.0 }`：進水側整排
 - `SimpleOutputInventorySpec { Capacity:<capacity>, IgnorableCapacity:false }`
 - `MWP.MechanicalWaterPumpSpec`：見 §3
@@ -344,10 +344,10 @@ ApiIndex 驗證實際 API 後實作；**若 8 小時內無法驗證，降級方�
     "cubicMetersPerWater": 0.2,
     "tickIntervalSeconds": 1.0,
     "tiers": [
-      { "tier": "Basic", "waterPerHour": 3.0, "powerRequired": 100, "internalCapacity": 15, "maxDepth": 2 },
-      { "tier": "Intermediate", "waterPerHour": 6.0, "powerRequired": 200, "internalCapacity": 30, "maxDepth": 4 },
-      { "tier": "Advanced", "waterPerHour": 15.0, "powerRequired": 500, "internalCapacity": 75, "maxDepth": 6 },
-      { "tier": "Top", "waterPerHour": 20.0, "powerRequired": 700, "internalCapacity": 100, "maxDepth": 8 }
+      { "tier": "Basic", "waterPerHour": 3.0, "powerRequired": 100, "internalCapacity": 15, "maxDepth": 64 },
+      { "tier": "Intermediate", "waterPerHour": 6.0, "powerRequired": 200, "internalCapacity": 30, "maxDepth": 64 },
+      { "tier": "Advanced", "waterPerHour": 15.0, "powerRequired": 500, "internalCapacity": 75, "maxDepth": 64 },
+      { "tier": "Top", "waterPerHour": 20.0, "powerRequired": 700, "internalCapacity": 100, "maxDepth": 64 }
     ]
   },
   "maintenance": {
@@ -368,6 +368,9 @@ ApiIndex 驗證實際 API 後實作；**若 8 小時內無法驗證，降級方�
 `durationHours>=0`、`amount>=0`、拒絕 NaN/Inf/負數；非法值記 `MWP/Warn`。
 `maintenance.enabled=false` 時不得留 `Maintaining`，condition 回復 100（REQ-MAINT-13）。
 `useLegacyRates=true` 僅測試用（1/3/6/9），UI 需標示非預設（REQ-BAL-10）。
+`balance.tiers[].maxDepth` 四檔皆為 **64（等效不限）**（v0.2.2 起，原 2/4/6/8）：必須與
+`TierCatalog` 及 8 份藍圖的 `WaterInputPipeSpec.MaxDepth`／`MWP.MechanicalWaterPumpSpec.MaxDepth`
+一致（validator 會比對）；驗證規則要求 `maxDepth>=1`。
 
 ## 10. UI 契約
 
@@ -381,7 +384,8 @@ ApiIndex 驗證實際 API 後實作；**若 8 小時內無法驗證，降級方�
 4. 機況 %、下次維護（日）、所需材料、自動維護 toggle、立即維護按鈕；
    維護進行中顯示「維護中：{0}%」進度（資料來源 `PumpSnapshot.MaintenanceProgress` 0..1）；
    `PumpSnapshot.MaintenanceEnabled=false` 時隱藏機況/材料列（REQ-MAINT-13）
-5. 抽水深度（`UI.MWP.MaxDepth`，取 `TierCatalog` 的 MaxDepth）、管道狀態（未安裝/閥門/直連/降級）
+5. 抽水深度（`UI.MWP.MaxDepth`，取 `TierCatalog` 的 MaxDepth；v0.2.2 起四檔皆 64＝等效不限，
+   原版深度 fragment 顯示 `Limit 64`）、管道狀態（未安裝/閥門/直連/降級）
 
 刷新 ≤ 4 Hz、髒標記、面板關閉不刷新（REQ-PERF-04）。按鈕命令需只影響當前泵（REQ-UI-07）。
 UI 不得在 `Tick`/`Update` 每幀重建元素或配置字串。
@@ -414,3 +418,4 @@ UI 不得在 `Tick`/`Update` 每幀重建元素或配置字串。
 | DV-05 | Entity id 介面用 `System.Guid` 而非 int | 遊戲 `EntityComponent.EntityId` 是 Guid，全 API 無 int id | UI/Gameplay 直接以 Guid 為索引 |
 | DV-06 | Mk III/IV 的 `Blocks` 不再逐格照抄原版 MechanicalPump/LargeWaterPump，改為「只有前排 3 格 GroundOrStackable 支撐、其餘 Any 可懸空」 | 原支撐帶在佔地中段/大面積，窄岸放不下（使用者實測）；改成與 Mk I/II 同款的前排貼岸手感 | 放置手感一致；envelope/入口/水面/碰撞/平衡不變 |
 | DV-07 | 四檔 finished 模型加入**節點動畫**（飛輪/齒輪旋轉、活塞往復），供電時由遊戲既有 `MechanicalNodeAnimatorSpec` 驅動、0 動力停止 | 使用者明確要求動畫；與需求 §13.3「不可有動畫（皮帶可做靜態）」衝突，以使用者指示為準 | 不需改 C#／藍圖；動畫速度 ∝ 供電效率；施工模型保持靜態 |
+| DV-08 | **抽水深度四檔一律 `MaxDepth = 64`（等效不限）**；同時移除 0.2.1 加入的原版 `NoHaulingPostStatus` + `MwpHaulStatus`「需要搬運工才能運轉」狀態 | 使用者要求（2026-11-08）：原 2/4/6/8 深度在低水位／旱季退水時讓泵無故停機，進水管到不了河床；泵本身免工人，原版「需要搬運工」狀態是誤導。搬運鏈（`HaulCandidate` + `SimpleOutputInventoryHaulBehaviorProvider` + `EmptyOutputWorkplaceBehavior`）保留，無搬運工時滿槽停產與原版一致 | 8 藍圖／`MWP_Config.json`／`TierCatalog`／自訂 spec 全部 64；NoWater 提示改用 `UI.MWP.HintNoWater`（三語系新增），不再用 `Status.Buildings.NeedsWater`；原版深度 fragment 仍顯示 `Limit 64`；`MwpHaulStatus.cs` 刪除 |

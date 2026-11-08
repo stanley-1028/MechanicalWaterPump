@@ -65,7 +65,9 @@ depth (`UI.MWP.MaxDepth`) so no information is lost. `Power`, `WaterInputPipeCoo
 Status sub-panel:
 
 1. highest-priority status (`Status.MWP.*`) with the native colour class for its severity
-2. grey "next step" hint for NoPower / NoWater / NoAccess (base-game sentences)
+2. grey "next step" hint: NoPower / NoAccess reuse the base-game sentences; NoWater uses MWP's own
+   `UI.MWP.HintNoWater` since 0.2.2 (the vanilla "needs deeper water" sentence no longer applies now
+   that the intake depth is effectively unlimited)
 3. actual output `UI.MWP.WaterRate` (one decimal, tooltip = `Tooltip.MWP.WaterRate`)
 4. water quality `Status.MWP.WaterQuality`
 5. fallback stock row `UI.MWP.Inventory` (only when the vanilla inventory fragment is off)

@@ -58,7 +58,7 @@ namespace MWP.Tests
                 double[] rates = { 3.0, 6.0, 15.0, 20.0 };
                 int[] powers = { 100, 200, 500, 700 };
                 int[] capacities = { 15, 30, 75, 100 };
-                int[] depths = { 2, 4, 6, 8 };
+                int[] depths = { 64, 64, 64, 64 };
                 for (int i = 0; i < rates.Length; i++)
                 {
                     TierDefinition tier = config.Balance.Tiers[i];
