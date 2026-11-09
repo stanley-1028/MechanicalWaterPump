@@ -1,0 +1,35 @@
+# MWP BUG-08 in-game verification - low-flow/shallow intake withdraw fix - 2026-11-09
+#
+# Save: unmodified copy of the reporter settlement save "1.timber" (the world shown in the
+# reporter's screenshot: two Mk I pump on a lake edge, both stuck at "no water to pump") loaded
+# with the patched build via
+#   Timberborn.exe -skipModManager -settlementName MWPDiag -saveName 1
+# Temporary probe lines (MWP/Diag/Probe) were written by a throw-away diagnostic build; they are
+# not part of the shipped mod. Each line is printed every 3 production steps (~1 s).
+#
+# BEFORE the fix (same save, development probe): intake underwater (uw=True), water column
+# floor=2/ceiling=3, but the pump's water buffer stayed 0 while it logged 1000+ consecutive
+# withdrawal failures -> state stuck at NoWater, exactly as in the reporter's save
+# (waterWithdrawFailures = 1625/1629 persisted).
+#
+# AFTER the fix: the water buffer is no longer consumed while it holds less than one whole Water
+# item (0.2 m3); the probe shows buffer 0 while NoPower, then one transient NoWater step when the
+# mechanical network spins up, then Producing with failures=0, buffer oscillating around the
+# 0.2 m3 whole-item threshold and the internal stock rising (1,2,3,4,5,...). No artificial
+# buffer priming was used in this round (the probe only reads the buffer).
+#
+# Pump 1 (entity ab2205a9..., intake column 127,157) - selected timeline:
+state=NoPower hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0 demand=-1 failures=1000 pending=1 stock=0 powered=False ceiled=3 depth=0.6743546 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.67435455
+state=NoPower hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0 demand=-1 failures=1000 pending=1 stock=0 powered=False ceiled=3 depth=0.6804019 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.6804018
+state=NoPower hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0 demand=-1 failures=1000 pending=1 stock=0 powered=False ceiled=3 depth=0.6883175 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.68831754
+state=NoWater hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0 demand=-1 failures=1000 pending=1 stock=0 powered=True ceiled=3 depth=0.6887803 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.68878031
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.199999973 demand=-1 failures=0 pending=0.33749999999999997 stock=1 powered=True ceiled=3 depth=0.734114766 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.73411465
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.199999973 demand=-1 failures=0 pending=0.84375 stock=1 powered=True ceiled=3 depth=0.6940943 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.69409418
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.199999958 demand=-1 failures=0 pending=0.35 stock=2 powered=True ceiled=3 depth=0.684613168 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.68461323
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.199999943 demand=-1 failures=0 pending=0.36249999999999993 stock=3 powered=True ceiled=3 depth=0.6869197 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.68691969
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.199999928 demand=-1 failures=0 pending=0.37499999999999989 stock=4 powered=True ceiled=3 depth=0.681518853 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.68151879
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.199999914 demand=-1 failures=0 pending=0.38749999999999984 stock=3 powered=True ceiled=3 depth=0.653845549 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.65384555
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.1999999 demand=-1 failures=0 pending=0.3999999999999998 stock=3 powered=True ceiled=3 depth=0.66517663 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.66517663
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.199999884 demand=-1 failures=0 pending=0.41249999999999976 stock=4 powered=True ceiled=3 depth=0.67869544 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.67869544
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.199999869 demand=-1 failures=0 pending=0.42499999999999971 stock=5 powered=True ceiled=3 depth=0.6423567 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.64235663
+state=Producing hasWater=True uw=True coords=(127,157,2) pipeDepth=1 limit=64 useLimit=False blocked=False buffer=0.199999854 demand=-1 failures=0 pending=0.43749999999999967 stock=3 powered=True ceiled=3 depth=0.6828867 cellUw=True ceiling=3 floor=2 hasFloor=True heightOrFloor=2.6828866

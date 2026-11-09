@@ -9,13 +9,14 @@
   （release v0.2.2：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.2；v0.2.1：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.1；v0.2.0：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.0）
 - 需求（權威）：[`機械水泵模組需求文檔.md`](機械水泵模組需求文檔.md)（v0.2，以 §20 為準）
 - 遊戲版本：Timberborn `1.1.2.8-ffc2de0-sw`（本機已安裝，Managed 組件可直接引用）
-- 交付狀態：**v0.2.2（2026-11-08）：BUG-06 依使用者要求移除 0.2.1 的「需要搬運工才能運轉」狀態
-  ＋BUG-07 四檔抽水深度改為不限（MaxDepth 64）**；程式與資料完成、離線驗證全綠：
+- 交付狀態：**v0.2.3（2026-11-09）：BUG-08 修正低流量／淺水進水口的抽水失敗**
+  （緩衝不足一個 Water 單位時不再取走零頭而丟棄；回報存檔副本已實機自動回合驗證：修後泵自動恢復
+  `Producing`、庫存上升）。程式與資料完成、離線驗證全綠：
   `build.ps1` exit 0、4 個組件 0 warning、單元測試 `PASS 213/213`、資料/組件驗證 `VALIDATION PASSED`、
   staged 套件 `mod/build/MWP`（4 DLL + 8 藍圖 + 2 collections + 三語系 + config + 8 圖示）。
-  **遊戲內驗收 T04/T06 等 T01–T27 尚未執行**（見 `mod/docs/VERIFICATION.md`）。
-  歷史：v0.2.1 搬運實機驗證通過（BUG-04）＋「無搬運站」狀態回饋（BUG-05，已於 0.2.2 依使用者要求移除）；
-  v0.2.0 首次公開發佈。
+  **其餘遊戲內驗收 T01–T27 仍待執行**（見 `mod/docs/VERIFICATION.md`）。
+  歷史：v0.2.2 BUG-06 移除「需要搬運工才能運轉」狀態＋BUG-07 抽水深度不限（MaxDepth 64）；
+  v0.2.1 搬運實機驗證通過（BUG-04）＋「無搬運站」狀態回饋（BUG-05，已於 0.2.2 移除）；v0.2.0 首次公開發佈。
 - 美術：**自製四檔模型（16 個 `.timbermesh`，8 檔 finished 含齒輪/飛輪/活塞節點動畫、62 條動畫軌；Mk III/IV 內裝已強化）
   與 8 張 128×128 圖示已交付**；材質用世界尺度平鋪 UV（木 117–145、金屬 121–164 px/m）。
   管線在 `art/`，驗證 16/16 PASS（322 checks）；剩餘：遊戲內動畫/外觀確認、LOD1/2、ART-07 三視圖簽核
@@ -100,8 +101,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File mod\build.ps1 -Install
 
 1. **本輪遊戲內視覺/行為驗收未完成**：模型/材質已完成靜態驗證（16/16、材質全在 MaterialCollection）；
    **搬水行為已於 2026-11-08 以自動化遊戲內回合實測通過**（見 `mod/docs/VERIFICATION.md` A16；
-   A18 的「無搬運站」狀態已於 0.2.2 依使用者要求移除，見 A20），
-   但其餘外觀、建造選單、T01–T27 完整人工驗收仍需在可正常啟動遊戲的環境執行。
+   A18 的「無搬運站」狀態已於 0.2.2 依使用者要求移除，見 A20）；**低流量進水口抽水已於 2026-11-09
+   以回報存檔副本自動回合驗證**（BUG-08，A22/A23）。其餘外觀、建造選單、T01–T27 完整人工驗收仍需執行。
 2. **LOD1/LOD2 未輸出**：目前只有 LOD0（1.9k–4.3k tris，遠低於 12k 預算）。
 3. **ART-07 三視圖參考圖簽核**：有 24 張等角/50%/施工預覽，但需求要求的「建模前三視圖＋端口座標
    簽核」流程尚未走完（流程性項目）。

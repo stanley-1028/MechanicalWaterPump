@@ -42,12 +42,24 @@ namespace MWP.Gameplay.Components
         /// <inheritdoc />
         public double Contamination => _contamination;
 
+        /// <summary>Float tolerance for the buffered-volume comparison (0.2 m³ is not binary-exact).</summary>
+        private const float WaterVolumeEpsilon = 1e-4f;
+
         /// <inheritdoc />
         /// <remarks>
-        /// Reproduces the vanilla consumption chain exactly (API_FACTS_MWP §3):
+        /// Reproduces the vanilla consumption chain (API_FACTS_MWP §3):
         /// <c>WaterInput.DemandCleanWaterAmount</c> asks the water body for the requested volume
         /// (and returns what the input buffer can offer), then <c>RemoveCleanWater</c> actually
         /// removes the granted part. 0.2 m³ per Water item is enforced by the caller.
+        ///
+        /// BUG-08 (0.2.3): the full requested volume must be available before anything is
+        /// consumed. The pipe buffer is fed by the water simulation with whatever inflow the intake
+        /// column provides; at a shallow or low-flow intake that can be less than one Water item
+        /// (0.2 m³) per step. The old code consumed the partial buffer and then discarded it when
+        /// the whole-item conversion produced 0 items, so the buffer could never build up to 0.2 m³
+        /// and the pump failed forever with "no water" even while its intake was submerged (user
+        /// report 2026-11-09: 1600+ consecutive withdrawal failures at a lake edge). Partial water
+        /// now stays in the buffer and accumulates until a whole item can be withdrawn.
         /// </remarks>
         public double Withdraw(double cubicMeters)
         {
@@ -66,14 +78,15 @@ namespace MWP.Gameplay.Components
             {
                 float needed = cubicMeters > float.MaxValue ? float.MaxValue : (float)cubicMeters;
                 float available = waterInput.DemandCleanWaterAmount(needed);
-                if (float.IsNaN(available) || available <= 0f)
+                if (float.IsNaN(available) || available + WaterVolumeEpsilon < needed)
                 {
+                    // Keep the partial water buffered: consuming it now would discard the fraction
+                    // (REQ water accounting is whole-item) and permanently starve slow intakes.
                     return 0.0;
                 }
 
-                float take = available < needed ? available : needed;
-                waterInput.RemoveCleanWater(take);
-                return take;
+                waterInput.RemoveCleanWater(needed);
+                return needed;
             }
             catch (Exception exception)
             {

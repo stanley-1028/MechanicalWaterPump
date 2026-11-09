@@ -3,8 +3,8 @@
 > 本檔記錄**實際跑過**的驗證與其輸出，以及**無法離線執行**、必須遊戲內人工驗收的項目。
 > 原則：沒有輸出證據的項目不得標 Pass。
 >
-> 最後更新：2026-11-09（v0.2.2 定時回歸重跑：無程式／資料變更）｜證據日誌：`docs/evidence/build-2026-11-09.log`
-> （0.2.2 建置：`docs/evidence/build-0.2.2.log`；0.2.1 搬運實機：A16／A18；v0.2.0 回歸：`docs/evidence/build-2026-11-06.log`；同日 08:00 回歸：`docs/evidence/build-2026-11-06-0800.log`；前次回歸：`docs/evidence/build-2026-11-05.log`；v0.2.0 原始建置：`docs/evidence/build-0.2.0.log`；art pass 建置：`docs/evidence/build-art-0.2.0.log`）
+> 最後更新：2026-11-09（v0.2.3：BUG-08 低流量進水口抽水修正）｜證據日誌：`docs/evidence/build-0.2.3.log`、`docs/evidence/water-withdraw-in-game-2026-11-09.log`
+> （0.2.2 建置：`docs/evidence/build-0.2.2.log`；0.2.2 定時回歸：`docs/evidence/build-2026-11-09.log`；0.2.1 搬運實機：A16／A18；v0.2.0 回歸：`docs/evidence/build-2026-11-06.log`；同日 08:00 回歸：`docs/evidence/build-2026-11-06-0800.log`；前次回歸：`docs/evidence/build-2026-11-05.log`；v0.2.0 原始建置：`docs/evidence/build-0.2.0.log`；art pass 建置：`docs/evidence/build-art-0.2.0.log`）
 
 ## 1. 自動化驗證（可重跑）
 
@@ -27,6 +27,8 @@
 | A19 | **0.2.2 離線驗證（2026-11-08）** | `build.ps1 -Clean` | exit 0；4 個組件「0 个警告 / 0 个错误」；單元測試 `PASS 213/213`；資料/組件驗證 `VALIDATION PASSED`（另有 4 個既有的 game-type `AddDecorator` WARN，非錯誤）；staged 套件 `mod/build/MWP`：10 blueprints、1,248 KB、manifest 0.2.2。證據：`docs/evidence/build-0.2.2.log` | **PASS（離線）** |
 | A20 | **BUG-06：移除「需要搬運工」狀態（0.2.2，2026-11-08，使用者要求）** | 原始碼審查 + `build.ps1`／validator | `MwpGameConfigurator.ProvideTemplateModule()` 只剩搬運鏈三件套 decorator（`EmptyOutputWorkplaceBehavior` + `SimpleOutputInventoryHaulBehaviorProvider` + `HaulCandidate`）；`NoHaulingPostStatus`／`MwpHaulStatus` decorator 與 `Bind<MwpHaulStatus>()` 全部移除；`src/MWP.Gameplay/Components/MwpHaulStatus.cs` 已刪除；`MwpUiVanillaKeys` 不再保留原版 NoWater 提示 key。行為：有**已雇工搬運站**時原版搬運工照樣把泵內的水搬去水箱；沒有搬運工時泵只會裝滿內部水槽後停產（與原版一致），**不再顯示**「需要搬運工才能運轉」警告 | **PASS（原始碼/建置；實機回歸 T06/T07 待辦）** |
 | A21 | **BUG-07：抽水深度不限（MaxDepth 64，0.2.2，2026-11-08，使用者要求）** | 8 藍圖 + `MWP_Config.json` + `TierCatalog`／自訂 spec 一致性檢查 + validator | 四檔 × 兩陣營的 `WaterInputPipeSpec.MaxDepth` 與 `MWP.MechanicalWaterPumpSpec.MaxDepth` 皆 64；`MWP_Config.json` 四檔 `maxDepth` 64；`TierCatalog` 64（`DataChecks`／`ConfigValidator` 會比對，`VALIDATION PASSED`）；NoWater 提示改 MWP 自己的 `UI.MWP.HintNoWater`（三語系新增 key；原版 `Status.Buildings.NeedsWater`「需要更深的水位」不再使用）；原版 `WaterInputPipeDepthFragment` 仍顯示 `Limit 64`（等效不限）。進水管可達河床，任何水位（含低水位／旱季退水）皆可抽 | **PASS（離線）／遊戲內 T04 待實測** |
+| A22 | **BUG-08：低流量／淺水進水口抽水修正（0.2.3，2026-11-09，使用者回報）** | 遊戲內診斷探針（回報存檔副本自動回合）+ 原始碼審查 | 回報存檔的兩個 Mk I 泵：進水口 `WaterInput.IsUnderwater=true`、水柱 `floor=2 / ceiling=3`、水深約 0.65–0.77 m，但 `WaterInput` 緩衝為 0、`waterWithdrawFailures` 已累積 1625/1629、狀態卡 `NoWater`。診斷探針證實水體每步只補進約 0.05–0.1 m³（3 步約 0.2 m³），舊 `Withdraw()` 把不足一個 Water（0.2 m³）的零頭取走後因整數換算丟棄 → 緩衝永遠到不了 0.2。修法：只有緩衝 ≥ 完整請求量（含 1e-4 容差）才 `RemoveCleanWater`，不足時保留累積。同存檔副本實機驗證：修後泵在 3–4 步內由 `NoWater` 自動恢復 `Producing`、失敗計數歸零、緩衝穩定在 0.2 m³ 門檻、內部庫存上升（1→5）；未使用任何人工墊水。證據：`docs/evidence/water-withdraw-in-game-2026-11-09.log` | **PASS（實機，回報存檔副本）** |
+| A23 | **0.2.3 離線驗證（2026-11-09）** | `build.ps1 -Clean` | exit 0；4 個組件 0 warning / 0 error；單元測試 `PASS 213/213`；資料/組件驗證 `VALIDATION PASSED`（4 個既有 game-type `AddDecorator` WARN 非錯誤）；staged 套件 manifest 0.2.3。證據：`docs/evidence/build-0.2.3.log` | **PASS（離線）** |
 | A15 | **實機 prefab 結構（ModelDiag，2026-11-07）** | 使用者載入世界後讀 `Player.log` 的 `MWP/Info/ModelDiag/*` | Mk III/IV/II/ I 四檔的 `#Finished` 下都有完整模型：root mesh（Advanced 6,633 verts）＋ `#Animated*` 子節點（Advanced：3×Piston 74、Flywheel 782、HeadPulley 698、GearboxGear 672、DriveShaft 392，全部 `renderer=on`）＋ 3 個 `#Port#`；施工模型 renderer=off。**證明「Mk III 空無一物」不是幾何缺失**，而是內裝密度/構圖（主齒輪在右外側、玻璃窗後為空）＋夜間光照；已開 T11 內裝強化 | **PASS（結構）／T11 美化中** |
 | A14 | **winding／背面檢查（BUG-03 回歸）** | 以 protobuf 重建 mesh + backface culling 渲染；量測每 mesh signed volume | 修正前 Advanced TOTAL **−6.721104**（全部 mesh INVERTED，重現遊戲內「空心/揉皺」）；修正後同 magnitude **+6.721104**、8 finished＋8 construction 全 OUTWARD、0 inverted。validator 新增 signed-volume>0 絕對檢查；`art/reports/t10/winding-diagnosis-before.txt` / `-after.txt`、`backface_broken_advanced.png` / `backface_fixed_advanced.png` | **PASS（已修）** |
 | A13 | **動畫 runtime 機制確認** | 遊戲 IL（`MechanicalSystemUIConfigurator.ProvideTemplateModule`、`MechanicalNodeAnimator`） | `AddDecorator<MechanicalNodeAnimatorSpec, MechanicalNodeAnimator>` 存在；`speed = PowerEfficiency × NonlinearAnimationManager.SpeedMultiplier`；`CanAnimate()` 在無動力時 `Enabled=false`。藍圖已含 `MechanicalNodeAnimatorSpec{MinSpeedMultiplier:0.0}`，因此動畫隨供電轉動、停電停止（**待實機目視確認**） | **PASS（IL）＋待目視** |
@@ -106,7 +108,7 @@
 | T01 | 新檔 FT | 解鎖並建造四檔 | 皆成功；成本／研究正確 | 待實測 |
 | T02 | 任意 | 建造後不派工、接電 | 持續產水；24h 產量 72/144/360/480 ±5% | 待實測 |
 | T03 | 任意 | 供電 0/25/50/75/100% | 速率單調；0 = 0 | 待實測 |
-| T04 | 水邊 | 抽至河床／低水位（含旱季退水） | 仍可抽水；進水口真的無水才 NoWater | 待實測 |
+| T04 | 水邊 | 抽至河床／低水位（含旱季退水） | 仍可抽水；進水口真的無水才 NoWater（**2026-11-09 實機：湖邊低流量進水口在 BUG-08 修後可正常抽水，見 A22；完整 T04 仍待測**） | 待實測 |
 | T05 | 水邊 | 0/50/100% 壞水 | 速率下降；不產壞水；不優於原版水泵 | 待實測 |
 | T06 | 任意 | 庫存滿、無搬運 | 停產 StorageFull | 待實測 |
 | T07 | 有路 | 搬運工取貨 | 庫存下降、恢復產水 | 待實測 |

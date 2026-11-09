@@ -32,6 +32,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File mod\release.ps1 -Install
 ## 3. 水質／水源（T04/T05）
 
 - [ ] 抽水深度不限（MaxDepth 64；進水管可達河床）→ 低水位／旱季退水仍可抽水；**進水口真的無水**才停機 NoWater
+- [ ] 湖邊低流量／淺水進水口（進水管只到 1–2 格深）：泵仍能抽水，狀態不再永久卡「沒有可抽取的水」（BUG-08）
 - [ ] 壞水污染 → 產量下降、水質%下降，但永不產出壞水
 
 ## 4. 維護（T16–T22）

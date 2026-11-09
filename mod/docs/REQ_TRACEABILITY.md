@@ -8,20 +8,21 @@
 > - `GAP`：尚未完成（在「備註」寫明補救路徑）。
 > - `N/A`：v0.2 不適用（設計決策見 `CONTRACT.md` §13）。
 >
-> 檔案路徑皆相對 `mod/`。最後更新：2026-11-08（v0.2.2：BUG-06／BUG-07）。
+> 檔案路徑皆相對 `mod/`。最後更新：2026-11-09（v0.2.3：BUG-08）。
 
 ## 0. 自動證據對照（VERIFICATION §1）
 
 `A1` build 0 warning｜`A2` 單元測試 PASS 213/213｜`A3` VALIDATION PASSED｜`A4` 打包完整性｜
 `A5` 自訂 Spec metadata｜`A6` DI/入口型別｜`A7` 無硬依賴｜`A19` 0.2.2 離線驗證｜
-`A20` BUG-06 移除 NoHaulingPost 狀態｜`A21` BUG-07 MaxDepth 64 不限水位。以下 PASS(自動) 均引用其一或多項。
+`A20` BUG-06 移除 NoHaulingPost 狀態｜`A21` BUG-07 MaxDepth 64 不限水位｜`A22` BUG-08 低流量抽水修正（實機）｜`A23` 0.2.3 離線驗證。以下 PASS(自動) 均引用其一或多項。
 
-## 0.1 BUG 對應（0.2.2，2026-11-08）
+## 0.1 BUG 對應（0.2.2～0.2.3，2026-11-08／09）
 
 | BUG | 變更 | 實作位置 | 驗證 | 狀態 |
 |---|---|---|---|---|
 | BUG-06 | 依使用者要求移除 0.2.1 的原版「需要搬運工才能運轉」狀態：`NoHaulingPostStatus` + `MwpHaulStatus` decorator、`Bind<MwpHaulStatus>()`、`MwpHaulStatus.cs` 全部移除；搬運鏈三件套保留 | `src/MWP.Gameplay/MwpGameConfigurator.cs`、`src/MWP.UI/Localization/MwpUiVanillaKeys.cs` | A20 + T06/T07 | PASS（原始碼/建置）／實機回歸待辦 |
 | BUG-07 | 四檔抽水深度改為不限（`MaxDepth` 64，原 2/4/6/8）；NoWater 提示改 MWP 自己的 `UI.MWP.HintNoWater`，不再用原版「需要更深的水位」 | 8 藍圖、`data/MWP_Config.json`、`src/MWP.Core/Balance/TierDefinition.cs`、`src/MWP.Core/MwpDefaults.cs`、3 份 CSV、`src/MWP.UI/Panels/MwpPumpPanelDataFactory.cs` | A21 + T04 | PASS（離線）／遊戲內 T04 待實測 |
+| BUG-08 | 低流量／淺水進水口抽水失敗修正：緩衝不足一個完整 Water（0.2 m³）時不消耗（避免零頭被丟棄），改為保留累積；NoWater 提示改「進水口沒有水或水量不足」 | `src/MWP.Gameplay/Components/MwpPumpController.Ports.cs`、`src/MWP.Core/MwpDefaults.cs`、3 份 CSV | A22（實機，回報存檔副本）＋A23 | PASS（實機） |
 
 ## 1. CORE（核心玩法）
 

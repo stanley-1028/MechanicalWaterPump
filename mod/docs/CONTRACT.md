@@ -279,7 +279,8 @@ rate = WaterPerHour * r * q * conditionMult          // Water/遊戲小時
 accumulator += rate * (tickSeconds/3600)
 items = min(floor(accumulator), inventory.UnreservedCapacity("Water"), internalCapacity - stock)
 if (items > 0):
-    withdrawn = water.Withdraw(items * CubicMetersPerWater)   // 實作 = WaterInput.DemandCleanWaterAmount + RemoveCleanWater
+    withdrawn = water.Withdraw(items * CubicMetersPerWater)   // 實作 = WaterInput.DemandCleanWaterAmount + RemoveCleanWater；
+                                                              // 0.2.3（DV-09）：緩衝未滿一個完整單位時不得消耗
     grantedItems = min(items, floor(withdrawn / CubicMetersPerWater))  // 不得無中生有
     if (grantedItems > 0) inventory.GiveProduced(new GoodAmount("Water", grantedItems))
     accumulator -= grantedItems; 失敗計數 → NoWater（>5 次）
@@ -419,3 +420,4 @@ UI 不得在 `Tick`/`Update` 每幀重建元素或配置字串。
 | DV-06 | Mk III/IV 的 `Blocks` 不再逐格照抄原版 MechanicalPump/LargeWaterPump，改為「只有前排 3 格 GroundOrStackable 支撐、其餘 Any 可懸空」 | 原支撐帶在佔地中段/大面積，窄岸放不下（使用者實測）；改成與 Mk I/II 同款的前排貼岸手感 | 放置手感一致；envelope/入口/水面/碰撞/平衡不變 |
 | DV-07 | 四檔 finished 模型加入**節點動畫**（飛輪/齒輪旋轉、活塞往復），供電時由遊戲既有 `MechanicalNodeAnimatorSpec` 驅動、0 動力停止 | 使用者明確要求動畫；與需求 §13.3「不可有動畫（皮帶可做靜態）」衝突，以使用者指示為準 | 不需改 C#／藍圖；動畫速度 ∝ 供電效率；施工模型保持靜態 |
 | DV-08 | **抽水深度四檔一律 `MaxDepth = 64`（等效不限）**；同時移除 0.2.1 加入的原版 `NoHaulingPostStatus` + `MwpHaulStatus`「需要搬運工才能運轉」狀態 | 使用者要求（2026-11-08）：原 2/4/6/8 深度在低水位／旱季退水時讓泵無故停機，進水管到不了河床；泵本身免工人，原版「需要搬運工」狀態是誤導。搬運鏈（`HaulCandidate` + `SimpleOutputInventoryHaulBehaviorProvider` + `EmptyOutputWorkplaceBehavior`）保留，無搬運工時滿槽停產與原版一致 | 8 藍圖／`MWP_Config.json`／`TierCatalog`／自訂 spec 全部 64；NoWater 提示改用 `UI.MWP.HintNoWater`（三語系新增），不再用 `Status.Buildings.NeedsWater`；原版深度 fragment 仍顯示 `Limit 64`；`MwpHaulStatus.cs` 刪除 |
+| DV-09 | **抽水只消耗完整水單位（BUG-08 修正）**：`Withdraw()` 僅在 `WaterInput` 緩衝已累積到完整請求量（`items × 0.2 m³`，含 1e-4 容差）時才 `RemoveCleanWater`；不足時保留緩衝繼續累積 | 使用者回報（2026-11-09）：湖邊淺水／低流量進水口水體每步只補 0.05–0.1 m³，舊碼把不足 1 個 Water 的零頭取走再丟棄 → 緩衝永遠到不了 0.2 m³、泵卡 `NoWater`（存檔累積 1600+ 次失敗）；修正後同存檔副本實機恢復 `Producing` | `MwpPumpController.Ports.cs::Withdraw`；`UI.MWP.HintNoWater` 改為「進水口沒有水或水量不足」；`docs/VERIFICATION.md` A22／A23 |

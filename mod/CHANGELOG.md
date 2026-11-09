@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.2.3 — 2026-11-09
+
+### Fixed
+- **BUG-08（2026-11-09，使用者回報：水泵放在水邊仍顯示「沒有可抽取的水」、庫存一直是 0）**：
+  舊的 `Withdraw()` 只要緩衝裡有任何一點水就取走（`take = min(available, needed)`），之後
+  `GrantedItems()` 以整數 Water 單位（0.2 m³）換算，不足一個單位的零頭會被**丟棄**。低流量／淺水
+  進水口（例如湖邊淺灘）水體每步只補進約 0.05–0.1 m³，緩衝永遠累積不到 0.2 m³ → 每次抽水都失敗，
+  回報存檔中累積 1600+ 次連續失敗、狀態卡在 `NoWater`，即使 `WaterInput.IsUnderwater = true`
+  （進水口確實浸在水中）。
+  **修法**：只有當緩衝已累積到完整請求量（`items × 0.2 m³`，含 `1e-4` 容差）時才呼叫
+  `RemoveCleanWater` 並扣除；不足時保留緩衝讓它繼續累積，等水體補足後下一次成功。
+  - 遊戲內實證（回報存檔副本 + 臨時探針自動回合）：修前 `uw=True`、水柱 `floor=2 / ceiling=3`、
+    水緩衝 0 且連續失敗 1000+；修後泵在 3–4 個步驟內自動恢復 `Producing`、失敗計數歸零、
+    內部庫存開始上升。證據：`docs/evidence/water-withdraw-in-game-2026-11-09.log`。
+- **NoWater 提示語**：`UI.MWP.HintNoWater` 由「進水口沒有水」改為「進水口沒有水或水量不足：
+  請確認進水管浸在水中。」——修後此狀態也可能是進水正常但水流太慢、正在補水（暫態）。
+- `mod/docs/RELEASE_CHECKLIST.md` 的 T04 驗收項補上「低流量湖邊淺水」案例。
+
+### Notes
+- 版本 0.2.3；存檔 schema 2、config schema 2 不變（0.2.2 存檔可直接載入）。
+- 深水／高流量進水口行為不變（緩衝本來就 ≥ 1 個水單位，立即成功）。
+- 離線驗證：`build.ps1` exit 0、4 組件 0 warning、單元測試 `PASS 213/213`、`VALIDATION PASSED`。
+
 ## 0.2.2 — 2026-11-08
 
 ### Fixed

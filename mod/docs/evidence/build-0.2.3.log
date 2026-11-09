@@ -1,0 +1,97 @@
+# MWP 0.2.3 offline verification - build + unit tests + data/assembly validation + staging
+# Date: 2026-11-09 (Asia/Macau)
+# Command: powershell -NoProfile -ExecutionPolicy Bypass -File mod/build.ps1 -Clean
+#   (pwsh is not on this machine; Windows PowerShell 5.1 runs the same script.)
+# Result: exit 0; 4 assemblies built with "0 warnings / 0 errors"; unit tests PASS 213/213;
+#   data + assembly contract validation VALIDATION PASSED; staged mod/build/MWP
+#   (10 blueprints, 1,248 KB, manifest 0.2.3). The four AddDecorator WARNs are the pre-existing
+#   informational "game-type target not declared in the mod assembly" notes, not errors.
+#
+# Change under test (BUG-08): MwpPumpController.Withdraw() no longer consumes a partial
+#   WaterInput buffer; it waits until the full requested volume (whole Water items) is buffered.
+#   In-game proof on a copy of the reporter's save: docs/evidence/water-withdraw-in-game-2026-11-09.log
+#
+# Note: one earlier attempt of this command aborted with a transient Windows
+#   "Access denied" while CreateProcess-ing dotnet.exe (no compile/test ran); the rerun below is
+#   the authoritative output.
+#
+# ---- raw build output ----
+
+> dotnet build C:\Users\user\Downloads\Mechanical Water Pump\mod\src\MWP.Core\MWP.Core.csproj -c Release -m:1 --nologo -v q -p:TimberbornDir=C:\Program Files (x86)\Steam\steamapps\common\Timberborn
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:02.30
+> dotnet build C:\Users\user\Downloads\Mechanical Water Pump\mod\src\MWP.Gameplay\MWP.Gameplay.csproj -c Release -m:1 --nologo -v q -p:TimberbornDir=C:\Program Files (x86)\Steam\steamapps\common\Timberborn
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:02.21
+> dotnet build C:\Users\user\Downloads\Mechanical Water Pump\mod\src\MWP.Integration\MWP.Integration.csproj -c Release -m:1 --nologo -v q -p:TimberbornDir=C:\Program Files (x86)\Steam\steamapps\common\Timberborn
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.77
+> dotnet build C:\Users\user\Downloads\Mechanical Water Pump\mod\src\MWP.UI\MWP.UI.csproj -c Release -m:1 --nologo -v q -p:TimberbornDir=C:\Program Files (x86)\Steam\steamapps\common\Timberborn
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:02.09
+> dotnet run --project C:\Users\user\Downloads\Mechanical Water Pump\mod\tests\MWP.Tests\MWP.Tests.csproj -c Release -m:1 --nologo
+PASS 213/213
+> dotnet run --project C:\Users\user\Downloads\Mechanical Water Pump\mod\tools\validate\validate.csproj -c Release -m:1 --nologo -- C:\Users\user\Downloads\Mechanical Water Pump\mod\data --managed C:\Program Files (x86)\Steam\steamapps\common\Timberborn\Timberborn_Data\Managed
+MWP data validator
+  data dir        : C:\Users\user\Downloads\Mechanical Water Pump\mod\data
+  mod root        : C:\Users\user\Downloads\Mechanical Water Pump\mod
+  managed dir     : C:\Program Files (x86)\Steam\steamapps\common\Timberborn\Timberborn_Data\Managed
+  game assemblies : 660
+  spec types      : 507 (ComponentSpec subclasses + aliases)
+  mod assemblies  : 4 (MWP.Core.dll, MWP.Gameplay.dll, MWP.Integration.dll, MWP.UI.dll)
+  tier table      : 4 tiers from TierCatalog
+  loc keys        : 42 keys from MwpLocKeys
+  vanilla models  : 1067 blueprints indexed from Blueprints.zip
+  blueprints      : 10 (8 buildings + 2 collections expected)
+  Buildings/Water/MWP/MWP.Pump.Basic.Folktails.blueprint.json
+    finished: Buildings/Water/MWP/MWP.Pump.Basic.Folktails.Model -> Buildings/Water/MWP/MWP.Pump.Basic.Folktails.Model.timbermesh (49919 bytes)
+    stage   : Buildings/Water/MWP/MWP.Pump.Basic.Folktails.ConstructionStage0.Model -> Buildings/Water/MWP/MWP.Pump.Basic.Folktails.ConstructionStage0.Model.timbermesh (9459 bytes)
+  Buildings/Water/MWP/MWP.Pump.Basic.IronTeeth.blueprint.json
+    finished: Buildings/Water/MWP/MWP.Pump.Basic.IronTeeth.Model -> Buildings/Water/MWP/MWP.Pump.Basic.IronTeeth.Model.timbermesh (49921 bytes)
+    stage   : Buildings/Water/MWP/MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model -> Buildings/Water/MWP/MWP.Pump.Basic.IronTeeth.ConstructionStage0.Model.timbermesh (9463 bytes)
+  Buildings/Water/MWP/MWP.Pump.Intermediate.Folktails.blueprint.json
+    finished: Buildings/Water/MWP/MWP.Pump.Intermediate.Folktails.Model -> Buildings/Water/MWP/MWP.Pump.Intermediate.Folktails.Model.timbermesh (66135 bytes)
+    stage   : Buildings/Water/MWP/MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model -> Buildings/Water/MWP/MWP.Pump.Intermediate.Folktails.ConstructionStage0.Model.timbermesh (9465 bytes)
+  Buildings/Water/MWP/MWP.Pump.Intermediate.IronTeeth.blueprint.json
+    finished: Buildings/Water/MWP/MWP.Pump.Intermediate.IronTeeth.Model -> Buildings/Water/MWP/MWP.Pump.Intermediate.IronTeeth.Model.timbermesh (66163 bytes)
+    stage   : Buildings/Water/MWP/MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model -> Buildings/Water/MWP/MWP.Pump.Intermediate.IronTeeth.ConstructionStage0.Model.timbermesh (9471 bytes)
+  Buildings/Water/MWP/MWP.Pump.Advanced.Folktails.blueprint.json
+    finished: Buildings/Water/MWP/MWP.Pump.Advanced.Folktails.Model -> Buildings/Water/MWP/MWP.Pump.Advanced.Folktails.Model.timbermesh (133997 bytes)
+    stage   : Buildings/Water/MWP/MWP.Pump.Advanced.Folktails.ConstructionStage0.Model -> Buildings/Water/MWP/MWP.Pump.Advanced.Folktails.ConstructionStage0.Model.timbermesh (9756 bytes)
+  Buildings/Water/MWP/MWP.Pump.Advanced.IronTeeth.blueprint.json
+    finished: Buildings/Water/MWP/MWP.Pump.Advanced.IronTeeth.Model -> Buildings/Water/MWP/MWP.Pump.Advanced.IronTeeth.Model.timbermesh (134014 bytes)
+    stage   : Buildings/Water/MWP/MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model -> Buildings/Water/MWP/MWP.Pump.Advanced.IronTeeth.ConstructionStage0.Model.timbermesh (9760 bytes)
+  Buildings/Water/MWP/MWP.Pump.Top.Folktails.blueprint.json
+    finished: Buildings/Water/MWP/MWP.Pump.Top.Folktails.Model -> Buildings/Water/MWP/MWP.Pump.Top.Folktails.Model.timbermesh (119381 bytes)
+    stage   : Buildings/Water/MWP/MWP.Pump.Top.Folktails.ConstructionStage0.Model -> Buildings/Water/MWP/MWP.Pump.Top.Folktails.ConstructionStage0.Model.timbermesh (9779 bytes)
+  Buildings/Water/MWP/MWP.Pump.Top.IronTeeth.blueprint.json
+    finished: Buildings/Water/MWP/MWP.Pump.Top.IronTeeth.Model -> Buildings/Water/MWP/MWP.Pump.Top.IronTeeth.Model.timbermesh (119377 bytes)
+    stage   : Buildings/Water/MWP/MWP.Pump.Top.IronTeeth.ConstructionStage0.Model -> Buildings/Water/MWP/MWP.Pump.Top.IronTeeth.ConstructionStage0.Model.timbermesh (9784 bytes)
+
+WARN: [assemblies] the AddDecorator target 'EmptyOutputWorkplaceBehavior' is not declared in the built mod assemblies
+WARN: [assemblies] the AddDecorator target 'SimpleOutputInventoryHaulBehaviorProvider' is not declared in the built mod assemblies
+WARN: [assemblies] the AddDecorator target 'HaulCandidate' is not declared in the built mod assemblies
+WARN: [assemblies] the AddDecorator target 'SimpleOutputInventoryFragmentEnabler' is not declared in the built mod assemblies
+
+VALIDATION PASSED
+
+Staged mod package: C:\Users\user\Downloads\Mechanical Water Pump\mod\build\MWP
+  assemblies : MWP.Core, MWP.Gameplay, MWP.Integration, MWP.UI
+  blueprints : 10
+  size       : 1,248 KB
