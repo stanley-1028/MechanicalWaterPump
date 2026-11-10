@@ -220,7 +220,36 @@ sha256/動畫欄位相符、0 failures。
 * `art/export_timbermesh.py` 連跑兩次 → 16/16 `.timbermesh` **SHA-256 相同**（含動畫）。
 * 詳見 `art/determinism.txt`。
 
-## 9. 已知限制 / 降級（誠實清單）
+## 9. ART-07 三視圖＋端口座標簽核包（T13）
+
+REQ-ART-07 的「front / side / top 正交三視圖＋端口座標簽核」交付物（**不影響既有
+`art/previews/*.png` 與模型**；全部離線產生）：
+
+| 產物 | 路徑 | 說明 |
+|---|---|---|
+| 標註正交三視圖 ×24 | `art/previews/ortho/<Tier>.<Faction>_<front\|side\|top>.png` | 正交、固定比例、1 m 網格、DV-03 軸向標註、邊界尺寸、3 個 `#Port#` 位置與 (x,y,z)（近面實線／背面虛線 `hidden`） |
+| 每檔三視圖合圖 ×8 | `art/previews/art07/<Tier>.<Faction>_three_views.png` | front／side／top 並排 + 底部規格表（export bounds、TierDefinition、blueprint Size/BaseZ/Entrance/LocalAccess、ports、tris/動畫/材質）＋使用者簽核欄 |
+| 總覽 ×1 | `art/previews/art07/art07_overview_grid.png` | 4 檔 × 3 視圖（Folktails；IT 見各檔合圖） |
+| 簽核報告 | `art/reports/art07/three-view-signoff.md` | 每檔 export/TierDefinition/blueprint/ports 一致性 PASS/FAIL 表＋四檔×兩陣營簽核欄 |
+| 基礎渲染／版面 | `art/previews/ortho/_base/`、`art/previews/ortho/ortho-layout.json` | Blender 正交基礎渲染與相機/尺度資料（中間產物） |
+
+**座標慣例（DV-03）**：模型 export space = **X 寬／Y 高／Z 深**（block-corner 原點、
+正面 Z=0、進水側 Z=深）；引擎 `BlockObjectSpec.Size`／`TierDefinition` = **X 寬／Y 深／Z 高**。
+換算 `export_max = (Tier.SizeX, Tier.SizeZ, TierSizeY)`。front 視圖：相機在 −Z、看向 +Z
+（面法線 −Z）；side：相機在 +X、看向 −X；top：相機由上方看向 −Y（螢幕上 = +Z 深）。
+
+重跑：
+
+```powershell
+# 1) 正交基礎渲染（Blender 4.2.1 headless；24 張）
+& 'C:\Users\user\.hdbf\sdk\blender-4.2.1-windows-x64\blender.exe' -b --factory-startup -noaudio --python art\render_ortho_views.py
+# 2) 網格/軸向/尺寸/端口標註＋三視圖合圖＋總覽＋簽核表（純 Python + Pillow）
+python art\make_ortho_views.py
+```
+
+目前實跑：**24/24** 標註視圖、**8/8** 合圖、**8/8** 一致性全部 PASS（`art/reports/art07/three-view-signoff.md`）。
+
+## 10. 已知限制 / 降級（誠實清單）
 
 1. **未實機驗證**：只有離線格式/幾何/動畫驗證與 Cycles 離線渲染；幾何內外翻的修正以
    重新匯入 + 單面材質渲染離線重現/驗證，**仍需實機確認**（本輪未部署、未啟動遊戲）。

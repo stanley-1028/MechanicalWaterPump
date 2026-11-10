@@ -1,0 +1,13 @@
+ART-07 Lead consistency check — 2026-11-10
+engine BlockObjectSpec.Size = (X width, Y depth, Z height); .timbermesh export bounds = (X width, Y height, Z depth)
+
+MWP.Pump.Advanced.Folktails: Size={'X': 3, 'Y': 3, 'Z': 4} entrance={'X': 1, 'Y': -1, 'Z': 1} bounds=[3.0, 4.0, 3.0] ports={'#Port#Power': [3.0, 2.0, 1.5], '#Port#Pipe': [1.5, 0.6499999761581421, 3.0], '#Port#Logistics': [1.5, 1.0, 0.0]}
+MWP.Pump.Advanced.IronTeeth: Size={'X': 3, 'Y': 3, 'Z': 4} entrance={'X': 1, 'Y': -1, 'Z': 1} bounds=[3.0, 4.0, 3.0] ports={'#Port#Power': [3.0, 2.0, 1.5], '#Port#Pipe': [1.5, 0.6499999761581421, 3.0], '#Port#Logistics': [1.5, 1.0, 0.0]}
+MWP.Pump.Basic.Folktails: Size={'X': 2, 'Y': 3, 'Z': 3} entrance={'X': 1, 'Y': -1, 'Z': 1} bounds=[2.0, 3.0, 3.0] ports={'#Port#Power': [2.0, 1.5, 1.5], '#Port#Pipe': [1.0, 0.6499999761581421, 3.0], '#Port#Logistics': [1.0, 1.0, 0.0]}
+MWP.Pump.Basic.IronTeeth: Size={'X': 2, 'Y': 3, 'Z': 3} entrance={'X': 1, 'Y': -1, 'Z': 1} bounds=[2.0, 3.0, 3.0] ports={'#Port#Power': [2.0, 1.5, 1.5], '#Port#Pipe': [1.0, 0.6499999761581421, 3.0], '#Port#Logistics': [1.0, 1.0, 0.0]}
+MWP.Pump.Intermediate.Folktails: Size={'X': 2, 'Y': 3, 'Z': 3} entrance={'X': 1, 'Y': -1, 'Z': 1} bounds=[2.0, 3.0, 3.0] ports={'#Port#Power': [2.0, 1.5, 1.5], '#Port#Pipe': [1.0, 0.6499999761581421, 3.0], '#Port#Logistics': [1.0, 1.0, 0.0]}
+MWP.Pump.Intermediate.IronTeeth: Size={'X': 2, 'Y': 3, 'Z': 3} entrance={'X': 1, 'Y': -1, 'Z': 1} bounds=[2.0, 3.0, 3.0] ports={'#Port#Power': [2.0, 1.5, 1.5], '#Port#Pipe': [1.0, 0.6499999761581421, 3.0], '#Port#Logistics': [1.0, 1.0, 0.0]}
+MWP.Pump.Top.Folktails: Size={'X': 3, 'Y': 4, 'Z': 4} entrance={'X': 1, 'Y': -1, 'Z': 1} bounds=[3.0, 4.0, 4.0] ports={'#Port#Power': [3.0, 2.0, 2.0], '#Port#Pipe': [1.5, 0.6499999761581421, 4.0], '#Port#Logistics': [1.5, 1.0, 0.0]}
+MWP.Pump.Top.IronTeeth: Size={'X': 3, 'Y': 4, 'Z': 4} entrance={'X': 1, 'Y': -1, 'Z': 1} bounds=[3.0, 4.0, 4.0] ports={'#Port#Power': [3.0, 2.0, 2.0], '#Port#Pipe': [1.5, 0.6499999761581421, 4.0], '#Port#Logistics': [1.5, 1.0, 0.0]}
+
+All 8 blueprints: Size == finished & construction bounds (X width / Y depth / Z height) -> PASS

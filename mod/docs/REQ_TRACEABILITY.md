@@ -127,17 +127,17 @@
 
 | REQ | 要求 | 實作位置 | 驗證 | 狀態 |
 |---|---|---|---|---|
-| ART-01 | 四檔模型/圖示/施工模型齊備、尺寸一致 | `data/Buildings/Water/MWP/*.Model.timbermesh`（16 檔）、`data/Icons/MWP*.png`（8 檔） | A9（16/16 PASS、bounds 對 TierCatalog）+ A10 | **PASS(靜態)** |
-| ART-02 | LOD／材質預算 | LOD0 2,112–3,952 tris（≤12k）；材質只用原版 MaterialCollection | A9（tris/材質檢查）、A11 | PARTIAL（LOD1/2 未輸出，交由遊戲 prefab optimizer） |
+| ART-01 | 四檔模型/圖示/施工模型齊備、尺寸一致 | `data/Buildings/Water/MWP/*.Model.timbermesh`（16 檔，8 檔含動畫）、`data/Icons/MWP*.png`（8 檔） | A9（16/16 PASS、322 checks、62 動畫節點）、A18（尺寸/端口一致性） | **PASS** |
+| ART-02 | LOD／材質預算 | LOD0 **2,072 / 2,788 / 5,860 / 5,312** tris（≤12k）；材質只用原版 MaterialCollection | A9（tris/材質檢查）、A11 | PARTIAL（LOD1/2 未輸出，交由遊戲 prefab optimizer） |
 | ART-03 | 進水/輸出/動力端口可辨識標記 | 模型含幾何端口＋3 個 `#Port#Power/Pipe/Logistics` 空節點 | A9（C6 節點檢查） | **PASS(靜態)** |
-| ART-04 | 風格符合、無文字/商標 | 離線預覽人工檢視：FT 暖木 / IT 冷金屬、四檔造型階梯、無文字 | `art/previews/tiers_factions_iso_grid.png` | **PASS（人工）** |
+| ART-04 | 風格符合、無文字/商標 | 離線預覽人工檢視：FT 暖木 / IT 冷金屬、四檔造型階梯、Mk III/IV 內裝強化（雙飛輪/曲軸/連桿/壓力錶/閥門手輪）、無文字 | `art/previews/tiers_factions_iso_grid.png`、`art/previews/t11_mk3_mk4_angles_grid.png` | **PASS（人工）** |
 | ART-05 | 匯出格式/軸向/單位/命名 | `art/export_timbermesh.py` + C2/C7 檢查（Model.name=檔名、export space、四元數/法線/切線/UV） | A9 | **PASS(靜態)** |
-| ART-06 | 50% 縮放四檔可區分 | 24 張預覽（iso / iso50 / construction）＋ 4×2 陣營合圖 | `art/previews/*_iso50.png`、`icons_contact_4x2.png` | **PASS（人工）** |
-| ART-07 | 建模前三視圖參考圖簽核 | 有等角/50%/施工預覽，但需求要求的「建模前 front/side/top＋端口座標簽核」流程未走 | `art/previews/` | PARTIAL（流程性項目） |
+| ART-06 | 50% 縮放四檔可區分 | 60+ 張預覽（iso / iso50 / 動畫相位 / 四角度 / construction）＋ 4×2 陣營合圖 | `art/previews/*_iso50.png`、`icons_contact_4x2.png` | **PASS（人工）** |
+| ART-07 | 建模前三視圖參考圖簽核 | **正交三視圖＋端口座標簽核包已交付**：24 張 front/side/top（1 m 網格、DV-03 軸向、邊界尺寸）＋8 張合圖＋總覽＋逐檔一致性表（8/8 PASS，含 TierDefinition/blueprint/ports）；待使用者簽核 | `art/previews/ortho/`、`art/previews/art07/`、`art/reports/art07/three-view-signoff.md` | **PASS（產出）／待簽核** |
 | ART-08 | ≥6 張原版風格截圖、不得散布原版素材 | 模組包不含原版資產 | A4（打包清單） | PASS(自動)（參考圖本身為內部資料，未打包） |
 | ART-09 | 模組包不得含原版資產 | `build/MWP` 僅 dll/藍圖/CSV/PNG/自製 .timbermesh/config | A4 | PASS(自動) |
-| ART-10 | AI concept 標記、不得作尺寸依據 | 未產 AI 圖 | — | N/A |
-| ART-11 | prompt/seed 記錄 | 未產 AI 圖；`art/reference/PROMPTS.md` 已寫規範 | — | N/A |
+| ART-10 | AI concept 標記、不得作尺寸依據 | Steam 封面為 AI 生成（已標記），**未作尺寸/建模依據**（模型尺寸以三視圖與 TierDefinition 為準） | `mod/workshop/COVER_PROMPTS.md`、`art/reports/art07/three-view-signoff.md` | PASS |
+| ART-11 | prompt/seed 記錄 | 封面提示詞與版本變體記錄於 `mod/workshop/COVER_PROMPTS.md`；原始 AI 圖保存 `mod/workshop/cover/ai-raw-2732x1535.jpg` | `mod/workshop/COVER_PROMPTS.md`、`mod/workshop/DESCRIPTION.md` | PASS |
 
 ## 10. TEST（測試）
 
@@ -218,7 +218,7 @@
 
 | # | 項目 | 影響 | 補救 |
 |---|---|---|---|
-| 1 | REQ-ART-02 LOD1/2 未輸出；REQ-ART-07 三視圖簽核未走完 | 視覺/流程性缺口，不影響遊戲載入 | 模型 LOD0 已交付（2.1k–4.0k tris）；LOD 可由遊戲 prefab optimizer 產生；三視圖簽核列後續流程 |
+| 1 | REQ-ART-02 LOD1/2 未輸出；REQ-ART-07 三視圖已交付但**待使用者簽核** | 視覺/流程性缺口，不影響遊戲載入 | LOD0 已交付（2.1k–5.9k tris）；LOD 可由遊戲 prefab optimizer 產生；三視圖簽核表在 `art/reports/art07/three-view-signoff.md` |
 | 2 | 含自製模型的**遊戲內載入測試未完成**（環境啟動即退出，移除模組後同樣） | 模型實機外觀未驗 | A9–A11 靜態證據；環境恢復後重跑載入測試與 T01–T27 |
 | 3 | REQ-COMPAT-02/05/06/09、REQ-TEST-01..04、BAL-01/08、OPS-01、PERF-03/05 | 需遊戲內實測 | `VERIFICATION.md` §3 T01–T27 |
 | 4 | REQ-COMPAT-03 直連端口（SHOULD）未實作 | 少一個便利路徑 | 已降級為閥門路徑；後續版本 |

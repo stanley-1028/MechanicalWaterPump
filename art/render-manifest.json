@@ -175,5 +175,462 @@
     ]
   },
   "lighting": "daylight preview: sun 3.7 + fill 520 + sky 0.28/0.33/0.41, exposure 0.30",
-  "note": "T11 interior pass: Mk III/IV internal flywheels/crankshaft/window machinery; winding fix + animations + all-wood Mk I/II retained"
+  "note": "T11 interior pass: Mk III/IV internal flywheels/crankshaft/window machinery; winding fix + animations + all-wood Mk I/II retained",
+  "art07_three_view_signoff": {
+    "generated_by": [
+      "art/render_ortho_views.py",
+      "art/make_ortho_views.py"
+    ],
+    "sha256": {
+      "art/previews/ortho/MWP.Pump.Advanced.Folktails.Model_front.png": "1b128837b6d77b1947a5a87d285e8b9a1560f641ae5f6c62cde257119465b256",
+      "art/previews/ortho/MWP.Pump.Advanced.Folktails.Model_side.png": "69913499bd8d643b0bb645a9764b7da0894cf1ad5d431bf920add41b9b84d1ab",
+      "art/previews/ortho/MWP.Pump.Advanced.Folktails.Model_top.png": "391688625afda1a130b6f45372f99da3041b3e0c401c8dde8a3a383d314025f7",
+      "art/previews/ortho/MWP.Pump.Advanced.IronTeeth.Model_front.png": "39a4064a1f2ef1df2caaafd754f0e5686c4e68814c2ff37677ee7bb60aaaba36",
+      "art/previews/ortho/MWP.Pump.Advanced.IronTeeth.Model_side.png": "63fb9fbb08217892aad2a24d28ca1f117a90524e204036b7ba2b9674e98a0e02",
+      "art/previews/ortho/MWP.Pump.Advanced.IronTeeth.Model_top.png": "6ef6d500750db9be61b42978ba19bccb913e6ec8b0096063f5f8f768551aaf1a",
+      "art/previews/ortho/MWP.Pump.Basic.Folktails.Model_front.png": "343d134ed51162ee461d52fc64af1fe80032c4e4ba60fdbb975dd8bd4836fd06",
+      "art/previews/ortho/MWP.Pump.Basic.Folktails.Model_side.png": "540525da391ab28c7ec186a153975121a57f3c6ee2e01c85b1812f335fce3a51",
+      "art/previews/ortho/MWP.Pump.Basic.Folktails.Model_top.png": "3b51e71548d5b880ee94519786c0568690bd490f306ec02006e377d51e0f3ec0",
+      "art/previews/ortho/MWP.Pump.Basic.IronTeeth.Model_front.png": "70bd219add705dfa069dba029f49a7ef5bccc044882c8d34c4dedef2e4fb0eb3",
+      "art/previews/ortho/MWP.Pump.Basic.IronTeeth.Model_side.png": "b92b6c4a64b05b040d919cfd456cf6d229c1331fdbc3593a3557c4f094e93361",
+      "art/previews/ortho/MWP.Pump.Basic.IronTeeth.Model_top.png": "3622529cbb705c6f359be77b989efe2125fe7b49dfcd9777d71bf1a9c3d9f720",
+      "art/previews/ortho/MWP.Pump.Intermediate.Folktails.Model_front.png": "42fd250eac0c20f35e24d0e495f6d37a6687547f29aff74478b549e199da1c21",
+      "art/previews/ortho/MWP.Pump.Intermediate.Folktails.Model_side.png": "f65c91f00f545f408e403759d39321fed95de4f9eaacb50023183c36247ed15a",
+      "art/previews/ortho/MWP.Pump.Intermediate.Folktails.Model_top.png": "1d19269994a485576a7c485ef3ef71af5fd80c5f30d5c28d98e9368d8c948c7c",
+      "art/previews/ortho/MWP.Pump.Intermediate.IronTeeth.Model_front.png": "a0c4fdda80f446fd7627e6bb90607a8638f07ad7d24e019df0228ee10342dd9f",
+      "art/previews/ortho/MWP.Pump.Intermediate.IronTeeth.Model_side.png": "689ec328e00acd3748c09c2a829cc375b9faafe0c1644e4962ab5e8b37492072",
+      "art/previews/ortho/MWP.Pump.Intermediate.IronTeeth.Model_top.png": "84965af7d6f8f03818559a9d3cd80752c105ddb663ff1ac0ba8a1527d683b094",
+      "art/previews/ortho/MWP.Pump.Top.Folktails.Model_front.png": "06ed6bc17baf899c1b54185520bc1ca0624a4bdbd360e6021eda0f52312193b9",
+      "art/previews/ortho/MWP.Pump.Top.Folktails.Model_side.png": "c52dcd36a6f2a6d083b63e6a2e587461b6d370db27125d91217b1f008421f8fc",
+      "art/previews/ortho/MWP.Pump.Top.Folktails.Model_top.png": "edec17b2e350c85c610b055e13722a4bddc8d5668a1c079717865b147e34d1fd",
+      "art/previews/ortho/MWP.Pump.Top.IronTeeth.Model_front.png": "dd780247ddb39c8f0a22f1057a2fe74760829fa3a4a7ef822108b440aae1bf7f",
+      "art/previews/ortho/MWP.Pump.Top.IronTeeth.Model_side.png": "9165c6dfb774137f8246c9c8b5e9a77f4a1036c8f10bd0cf3d1528f796fb9c77",
+      "art/previews/ortho/MWP.Pump.Top.IronTeeth.Model_top.png": "f6f188e0040c653b95e3cb1fa0f696c97f22a7cfd2c749889888d18cd5c17165",
+      "art/previews/art07/MWP.Pump.Advanced.Folktails.Model_three_views.png": "293b49b9c8e2b9ef5724e9de6e58ddc08ceaa0212ad1d8dd0f7e4f4ffabb6854",
+      "art/previews/art07/MWP.Pump.Advanced.IronTeeth.Model_three_views.png": "d79ebfc3b0e926938436284a38e4ed71b2dbe803aea789c4a6f025db170503e2",
+      "art/previews/art07/MWP.Pump.Basic.Folktails.Model_three_views.png": "c404d83e8be55081b9d417aa40a89017b50e0899767077eddf02dbd5e7d7eb3e",
+      "art/previews/art07/MWP.Pump.Basic.IronTeeth.Model_three_views.png": "1bc06a389b1ea15d688e197c784eb2983c0e083b87e3358e6bb2c2e28fa74354",
+      "art/previews/art07/MWP.Pump.Intermediate.Folktails.Model_three_views.png": "1de856d91dbaf18bc1cfca1e68f211f31b7d301bb3c5c53a29a798cc829db37f",
+      "art/previews/art07/MWP.Pump.Intermediate.IronTeeth.Model_three_views.png": "f1801ef850c82b40dbfe9ac53aee1a67c1d1d37d3e218d83e7fbe16d753a2c8b",
+      "art/previews/art07/MWP.Pump.Top.Folktails.Model_three_views.png": "549f0db81de1da486ea08a98fde1fa42b4cd78e1dc844f3d908b6bc6a8b0b301",
+      "art/previews/art07/MWP.Pump.Top.IronTeeth.Model_three_views.png": "4039cab2d6c826d5125a03b3ea31220c0f4a10982f392b0cbd43c77fd2b3b156",
+      "art/previews/art07/art07_overview_grid.png": "b97fa1c073d87a0c2938103b1030af150bcacceabea9d3bc754e5c52fadfffc0",
+      "art/reports/art07/three-view-signoff.md": "1d27175c52bd21a330f3f6423a2176fd2a574402b913a27d4d250533d55a23e2",
+      "art/previews/ortho/ortho-layout.json": "e0acc976c108d25dcf6247406afe475125241e84d8d382640edc8540018bc152"
+    },
+    "conventions": {
+      "export_space": "X=width, Y=height, Z=depth; block-corner origin; front face at Z=0, intake side at Z=depth (DV-03)",
+      "engine_blueprint_space": "BlockObjectSpec.Size / TierDefinition: X=width, Y=depth, Z=height",
+      "front_view": "camera on the -Z side looking +Z (front face visible)",
+      "side_view": "camera on the +X side looking -X (right side)",
+      "top_view": "camera above looking -Y; screen up = +Z (depth)",
+      "scale": "ortho_scale = max(width,height,depth)+1.0 m, fixed per model across its three views; 1 m grid is constant inside a model"
+    },
+    "base_renders": [
+      "art/previews/ortho/_base/MWP.Pump.Basic.Folktails.Model_front_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Basic.Folktails.Model_side_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Basic.Folktails.Model_top_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Basic.IronTeeth.Model_front_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Basic.IronTeeth.Model_side_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Basic.IronTeeth.Model_top_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Intermediate.Folktails.Model_front_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Intermediate.Folktails.Model_side_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Intermediate.Folktails.Model_top_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Intermediate.IronTeeth.Model_front_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Intermediate.IronTeeth.Model_side_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Intermediate.IronTeeth.Model_top_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Advanced.Folktails.Model_front_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Advanced.Folktails.Model_side_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Advanced.Folktails.Model_top_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Advanced.IronTeeth.Model_front_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Advanced.IronTeeth.Model_side_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Advanced.IronTeeth.Model_top_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Top.Folktails.Model_front_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Top.Folktails.Model_side_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Top.Folktails.Model_top_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Top.IronTeeth.Model_front_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Top.IronTeeth.Model_side_base.png",
+      "art/previews/ortho/_base/MWP.Pump.Top.IronTeeth.Model_top_base.png"
+    ],
+    "annotated_views": [
+      "art/previews/ortho/MWP.Pump.Basic.Folktails.Model_front.png",
+      "art/previews/ortho/MWP.Pump.Basic.Folktails.Model_side.png",
+      "art/previews/ortho/MWP.Pump.Basic.Folktails.Model_top.png",
+      "art/previews/ortho/MWP.Pump.Basic.IronTeeth.Model_front.png",
+      "art/previews/ortho/MWP.Pump.Basic.IronTeeth.Model_side.png",
+      "art/previews/ortho/MWP.Pump.Basic.IronTeeth.Model_top.png",
+      "art/previews/ortho/MWP.Pump.Intermediate.Folktails.Model_front.png",
+      "art/previews/ortho/MWP.Pump.Intermediate.Folktails.Model_side.png",
+      "art/previews/ortho/MWP.Pump.Intermediate.Folktails.Model_top.png",
+      "art/previews/ortho/MWP.Pump.Intermediate.IronTeeth.Model_front.png",
+      "art/previews/ortho/MWP.Pump.Intermediate.IronTeeth.Model_side.png",
+      "art/previews/ortho/MWP.Pump.Intermediate.IronTeeth.Model_top.png",
+      "art/previews/ortho/MWP.Pump.Advanced.Folktails.Model_front.png",
+      "art/previews/ortho/MWP.Pump.Advanced.Folktails.Model_side.png",
+      "art/previews/ortho/MWP.Pump.Advanced.Folktails.Model_top.png",
+      "art/previews/ortho/MWP.Pump.Advanced.IronTeeth.Model_front.png",
+      "art/previews/ortho/MWP.Pump.Advanced.IronTeeth.Model_side.png",
+      "art/previews/ortho/MWP.Pump.Advanced.IronTeeth.Model_top.png",
+      "art/previews/ortho/MWP.Pump.Top.Folktails.Model_front.png",
+      "art/previews/ortho/MWP.Pump.Top.Folktails.Model_side.png",
+      "art/previews/ortho/MWP.Pump.Top.Folktails.Model_top.png",
+      "art/previews/ortho/MWP.Pump.Top.IronTeeth.Model_front.png",
+      "art/previews/ortho/MWP.Pump.Top.IronTeeth.Model_side.png",
+      "art/previews/ortho/MWP.Pump.Top.IronTeeth.Model_top.png"
+    ],
+    "three_view_sheets": [
+      "art/previews/art07/MWP.Pump.Basic.Folktails.Model_three_views.png",
+      "art/previews/art07/MWP.Pump.Basic.IronTeeth.Model_three_views.png",
+      "art/previews/art07/MWP.Pump.Intermediate.Folktails.Model_three_views.png",
+      "art/previews/art07/MWP.Pump.Intermediate.IronTeeth.Model_three_views.png",
+      "art/previews/art07/MWP.Pump.Advanced.Folktails.Model_three_views.png",
+      "art/previews/art07/MWP.Pump.Advanced.IronTeeth.Model_three_views.png",
+      "art/previews/art07/MWP.Pump.Top.Folktails.Model_three_views.png",
+      "art/previews/art07/MWP.Pump.Top.IronTeeth.Model_three_views.png"
+    ],
+    "overview_grid": "art/previews/art07/art07_overview_grid.png",
+    "signoff_report": "art/reports/art07/three-view-signoff.md",
+    "layout_json": "art/previews/ortho/ortho-layout.json",
+    "counts": {
+      "annotated_views": 24,
+      "three_view_sheets": 8,
+      "models": 8
+    },
+    "port_legend": {
+      "#Port#Power": "#C0392B",
+      "#Port#Pipe": "#2980B9",
+      "#Port#Logistics": "#27AE60"
+    },
+    "scale": "ortho_scale = max(width,height,depth)+1.0 m per model; px_per_m recorded in ortho-layout.json",
+    "models": [
+      {
+        "stem": "MWP.Pump.Basic.Folktails.Model",
+        "tier": "Basic",
+        "faction": "Folktails",
+        "size_wdh": [
+          2.0,
+          3.0,
+          3.0
+        ],
+        "consistency": "PASS",
+        "checks": {
+          "bounds_min_zero": true,
+          "export_size_wdh": true,
+          "export_eq_blueprint": true,
+          "tierdef_eq_blueprint": true,
+          "ports_match_contract": true
+        },
+        "ports": {
+          "#Port#Power": [
+            2.0,
+            1.5,
+            1.5
+          ],
+          "#Port#Pipe": [
+            1.0,
+            0.65,
+            3.0
+          ],
+          "#Port#Logistics": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "views": {
+          "front": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Basic.Folktails.Model_front.png",
+          "side": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Basic.Folktails.Model_side.png",
+          "top": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Basic.Folktails.Model_top.png"
+        },
+        "sheet": "art/previews/art07/MWP.Pump.Basic.Folktails.Model_three_views.png"
+      },
+      {
+        "stem": "MWP.Pump.Basic.IronTeeth.Model",
+        "tier": "Basic",
+        "faction": "IronTeeth",
+        "size_wdh": [
+          2.0,
+          3.0,
+          3.0
+        ],
+        "consistency": "PASS",
+        "checks": {
+          "bounds_min_zero": true,
+          "export_size_wdh": true,
+          "export_eq_blueprint": true,
+          "tierdef_eq_blueprint": true,
+          "ports_match_contract": true
+        },
+        "ports": {
+          "#Port#Power": [
+            2.0,
+            1.5,
+            1.5
+          ],
+          "#Port#Pipe": [
+            1.0,
+            0.65,
+            3.0
+          ],
+          "#Port#Logistics": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "views": {
+          "front": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Basic.IronTeeth.Model_front.png",
+          "side": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Basic.IronTeeth.Model_side.png",
+          "top": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Basic.IronTeeth.Model_top.png"
+        },
+        "sheet": "art/previews/art07/MWP.Pump.Basic.IronTeeth.Model_three_views.png"
+      },
+      {
+        "stem": "MWP.Pump.Intermediate.Folktails.Model",
+        "tier": "Intermediate",
+        "faction": "Folktails",
+        "size_wdh": [
+          2.0,
+          3.0,
+          3.0
+        ],
+        "consistency": "PASS",
+        "checks": {
+          "bounds_min_zero": true,
+          "export_size_wdh": true,
+          "export_eq_blueprint": true,
+          "tierdef_eq_blueprint": true,
+          "ports_match_contract": true
+        },
+        "ports": {
+          "#Port#Power": [
+            2.0,
+            1.5,
+            1.5
+          ],
+          "#Port#Pipe": [
+            1.0,
+            0.65,
+            3.0
+          ],
+          "#Port#Logistics": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "views": {
+          "front": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Intermediate.Folktails.Model_front.png",
+          "side": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Intermediate.Folktails.Model_side.png",
+          "top": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Intermediate.Folktails.Model_top.png"
+        },
+        "sheet": "art/previews/art07/MWP.Pump.Intermediate.Folktails.Model_three_views.png"
+      },
+      {
+        "stem": "MWP.Pump.Intermediate.IronTeeth.Model",
+        "tier": "Intermediate",
+        "faction": "IronTeeth",
+        "size_wdh": [
+          2.0,
+          3.0,
+          3.0
+        ],
+        "consistency": "PASS",
+        "checks": {
+          "bounds_min_zero": true,
+          "export_size_wdh": true,
+          "export_eq_blueprint": true,
+          "tierdef_eq_blueprint": true,
+          "ports_match_contract": true
+        },
+        "ports": {
+          "#Port#Power": [
+            2.0,
+            1.5,
+            1.5
+          ],
+          "#Port#Pipe": [
+            1.0,
+            0.65,
+            3.0
+          ],
+          "#Port#Logistics": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "views": {
+          "front": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Intermediate.IronTeeth.Model_front.png",
+          "side": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Intermediate.IronTeeth.Model_side.png",
+          "top": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Intermediate.IronTeeth.Model_top.png"
+        },
+        "sheet": "art/previews/art07/MWP.Pump.Intermediate.IronTeeth.Model_three_views.png"
+      },
+      {
+        "stem": "MWP.Pump.Advanced.Folktails.Model",
+        "tier": "Advanced",
+        "faction": "Folktails",
+        "size_wdh": [
+          3.0,
+          4.0,
+          3.0
+        ],
+        "consistency": "PASS",
+        "checks": {
+          "bounds_min_zero": true,
+          "export_size_wdh": true,
+          "export_eq_blueprint": true,
+          "tierdef_eq_blueprint": true,
+          "ports_match_contract": true
+        },
+        "ports": {
+          "#Port#Power": [
+            3.0,
+            2.0,
+            1.5
+          ],
+          "#Port#Pipe": [
+            1.5,
+            0.65,
+            3.0
+          ],
+          "#Port#Logistics": [
+            1.5,
+            1.0,
+            0.0
+          ]
+        },
+        "views": {
+          "front": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Advanced.Folktails.Model_front.png",
+          "side": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Advanced.Folktails.Model_side.png",
+          "top": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Advanced.Folktails.Model_top.png"
+        },
+        "sheet": "art/previews/art07/MWP.Pump.Advanced.Folktails.Model_three_views.png"
+      },
+      {
+        "stem": "MWP.Pump.Advanced.IronTeeth.Model",
+        "tier": "Advanced",
+        "faction": "IronTeeth",
+        "size_wdh": [
+          3.0,
+          4.0,
+          3.0
+        ],
+        "consistency": "PASS",
+        "checks": {
+          "bounds_min_zero": true,
+          "export_size_wdh": true,
+          "export_eq_blueprint": true,
+          "tierdef_eq_blueprint": true,
+          "ports_match_contract": true
+        },
+        "ports": {
+          "#Port#Power": [
+            3.0,
+            2.0,
+            1.5
+          ],
+          "#Port#Pipe": [
+            1.5,
+            0.65,
+            3.0
+          ],
+          "#Port#Logistics": [
+            1.5,
+            1.0,
+            0.0
+          ]
+        },
+        "views": {
+          "front": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Advanced.IronTeeth.Model_front.png",
+          "side": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Advanced.IronTeeth.Model_side.png",
+          "top": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Advanced.IronTeeth.Model_top.png"
+        },
+        "sheet": "art/previews/art07/MWP.Pump.Advanced.IronTeeth.Model_three_views.png"
+      },
+      {
+        "stem": "MWP.Pump.Top.Folktails.Model",
+        "tier": "Top",
+        "faction": "Folktails",
+        "size_wdh": [
+          3.0,
+          4.0,
+          4.0
+        ],
+        "consistency": "PASS",
+        "checks": {
+          "bounds_min_zero": true,
+          "export_size_wdh": true,
+          "export_eq_blueprint": true,
+          "tierdef_eq_blueprint": true,
+          "ports_match_contract": true
+        },
+        "ports": {
+          "#Port#Power": [
+            3.0,
+            2.0,
+            2.0
+          ],
+          "#Port#Pipe": [
+            1.5,
+            0.65,
+            4.0
+          ],
+          "#Port#Logistics": [
+            1.5,
+            1.0,
+            0.0
+          ]
+        },
+        "views": {
+          "front": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Top.Folktails.Model_front.png",
+          "side": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Top.Folktails.Model_side.png",
+          "top": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Top.Folktails.Model_top.png"
+        },
+        "sheet": "art/previews/art07/MWP.Pump.Top.Folktails.Model_three_views.png"
+      },
+      {
+        "stem": "MWP.Pump.Top.IronTeeth.Model",
+        "tier": "Top",
+        "faction": "IronTeeth",
+        "size_wdh": [
+          3.0,
+          4.0,
+          4.0
+        ],
+        "consistency": "PASS",
+        "checks": {
+          "bounds_min_zero": true,
+          "export_size_wdh": true,
+          "export_eq_blueprint": true,
+          "tierdef_eq_blueprint": true,
+          "ports_match_contract": true
+        },
+        "ports": {
+          "#Port#Power": [
+            3.0,
+            2.0,
+            2.0
+          ],
+          "#Port#Pipe": [
+            1.5,
+            0.65,
+            4.0
+          ],
+          "#Port#Logistics": [
+            1.5,
+            1.0,
+            0.0
+          ]
+        },
+        "views": {
+          "front": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Top.IronTeeth.Model_front.png",
+          "side": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Top.IronTeeth.Model_side.png",
+          "top": "C:\\Users\\user\\Downloads\\Mechanical Water Pump\\art\\previews\\ortho\\MWP.Pump.Top.IronTeeth.Model_top.png"
+        },
+        "sheet": "art/previews/art07/MWP.Pump.Top.IronTeeth.Model_three_views.png"
+      }
+    ]
+  }
 }

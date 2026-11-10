@@ -183,3 +183,15 @@ pwsh -File mod/build.ps1 -Clean        # A1–A4（本機若無 pwsh，用 power
 | GitHub release | `v0.2.0`，assets: `MechanicalWaterPump-0.2.0.zip`（1,814,944 B）+ `.sha256` |
 | 建置 | 0 warning、`PASS 213/213`、`VALIDATION PASSED`；art 16/16 PASS（322 checks、62 動畫節點、37,232 tris） |
 | 診斷 | `features.uiDiagnostics` 預設關閉；開啟後每個泵輸出 `MWP/Info/ModelDiag`（含 `hauling: HaulCandidate=… providers=…`） |
+
+## A18 — ART-07 三視圖＋端口座標簽核包（2026-11-10）
+
+| 項目 | 值 |
+|---|---|
+| 產出 | `art/previews/ortho/` 24 張（4 檔 × 2 陣營 × front/side/top）、`art/previews/art07/` 8 張合圖＋總覽、`art/reports/art07/three-view-signoff.md` |
+| 標註 | 1 m 網格、DV-03 軸向（X=寬、Y=高、Z=深）、邊界尺寸、3 個 `#Port#` 座標（Power/Pipe/Logistics；背面標 hidden） |
+| 尺寸 | Basic/Intermediate export 2×3×3、Advanced 3×4×3、Top 3×4×4；對應 TierDefinition (2,3,3)/(2,3,3)/(3,3,4)/(3,4,4) 與 blueprint Size |
+| 一致性 | 8 檔 × 5 項檢查（bounds min=0、export==(SizeX,SizeZ,SizeY)、export↔blueprint、TierDef==blueprint、ports==契約）全部 **PASS**；Lead 另以腳本核對 8 檔 Size==模型與施工 bounds（`docs/evidence/art07-dims-ports-lead-2026-11-10.txt`） |
+| 確定性 | 標註工具連跑兩次，24 ortho + 9 art07 圖 SHA-256 全部相同 |
+| 建置 | `build.ps1` exit 0、`PASS 213/213`、`VALIDATION PASSED`、staged 1,248 KB；包內僅 dll/json/csv/png/timbermesh，無原版/參考圖（`docs/evidence/build-weekly-2026-11-10.log`） |
+| 狀態 | **PASS（產出）／待使用者簽核**（簽核欄在報告內） |
