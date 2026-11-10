@@ -24,10 +24,38 @@ $managedDir = Join-Path $TimberbornDir 'Timberborn_Data\Managed'
 
 function Invoke-Dotnet {
     param([string[]]$Arguments)
-    Write-Host "> dotnet $($Arguments -join ' ')" -ForegroundColor DarkCyan
-    & dotnet @Arguments
-    if ($LASTEXITCODE -ne 0) {
-        throw "dotnet $($Arguments -join ' ') failed with exit code $LASTEXITCODE"
+    # `dotnet run` starts the freshly built apphost right after linking it. On this machine the
+    # first CreateProcess of that .exe intermittently fails with Win32 error 5 ("Access is denied",
+    # localized text on a zh/dpi machine) - typically an AV/Defender real-time-scan race - and the
+    # exact same command succeeds on the next attempt. Retry only that transient launch failure
+    # (message emitted by dotnet run itself, so it is not localized by the child CLI), max 5 tries.
+    # NOTE: keep this file pure ASCII: Windows PowerShell 5.1 reads BOM-less scripts as the system
+    # ANSI codepage (Big5 here), so a non-ASCII literal would be corrupted at parse time.
+    for ($attempt = 1; $attempt -le 5; $attempt++) {
+        Write-Host "> dotnet $($Arguments -join ' ')" -ForegroundColor DarkCyan
+        # The script sets $ErrorActionPreference = 'Stop'. Native stderr merged with 2>&1 turns
+        # into ErrorRecords that would terminate the function before the retry check can run, so
+        # run the child with 'Continue' and judge success by the exit code instead.
+        $previousEap = $ErrorActionPreference
+        try {
+            $ErrorActionPreference = 'Continue'
+            $output = & dotnet @Arguments 2>&1
+            $exitCode = $LASTEXITCODE
+        } finally {
+            $ErrorActionPreference = $previousEap
+        }
+        $output | ForEach-Object { Write-Host $_ }
+        if ($exitCode -eq 0) { return }
+
+        $text = ($output | Out-String)
+        $transientLaunch = $text -match 'An error occurred trying to start process' -and
+            $text -match 'with working directory'
+        if ($transientLaunch -and $attempt -lt 5) {
+            Write-Warning "transient apphost launch denial (attempt $attempt/5); retrying in 2s"
+            Start-Sleep -Seconds 2
+            continue
+        }
+        throw "dotnet $($Arguments -join ' ') failed with exit code $exitCode"
     }
 }
 
