@@ -1,0 +1,18 @@
+Setting breakpad minidump AppID = 1062090
+SteamInternal_SetMinidumpSteamID:  Caching Steam ID:  76561199800253923 [API loaded no]
+loggedOn=True steamId=76561199800253923
+content=C:\Users\user\Downloads\Mechanical Water Pump\dist\MechanicalWaterPump-0.2.4
+title=Mechanical Water Pump ¡X Four Worker-Free Drinking Water Tiers
+tags=Update 1.1,New content,Buildings
+status=k_EItemUpdateStatusPreparingConfig 0/0
+status=k_EItemUpdateStatusPreparingContent 0/0
+status=k_EItemUpdateStatusUploadingContent 0/0
+status=k_EItemUpdateStatusUploadingContent 263568/263568
+status=k_EItemUpdateStatusUploadingContent 263568/263568
+status=k_EItemUpdateStatusUploadingContent 263568/263568
+status=k_EItemUpdateStatusUploadingContent 263568/263568
+status=k_EItemUpdateStatusUploadingPreviewFile 0/0
+status=k_EItemUpdateStatusCommittingChanges 0/0
+status=k_EItemUpdateStatusInvalid 0/0
+submitDone ioFailure=False eResult=k_EResultOK needsLegalAgreement=False publishedFileId=3835434644
+ITEM_ID=3835434644

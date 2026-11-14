@@ -47,6 +47,11 @@
   `form_clicks=0`；與 HDBF 專案 §16.2 同一環境事實），所以「點擊群組展開」與「點選水泵看面板外觀」
   這兩步只能人工驗收；面板的原版 class／sprite 構成已離線逐項對照原版 UXML/USS
   （`docs/api/ui/panel-vanilla-facts.md`）。
+- **發布（2026-11-14）**：GitHub release `v0.2.4`
+  （https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.4 ，含
+  `MechanicalWaterPump-0.2.4.zip` 與 `.sha256`）；Steam 工作坊 item `3835434644` 已更新
+  （標題／說明／預覽圖／標籤／內容，`eResult=k_EResultOK`，`time_updated` 2026-11-14 08:50:58）。
+  證據：`docs/evidence/steam-upload-0.2.4.log`。
 
 ## 0.2.3 — 2026-11-09
 
