@@ -41,3 +41,4 @@ UI.MWP.Resume,Resume,v0.2 UI resume button
 Tooltip.MWP.PipeCompat,Requires Timber Pipes for valve extraction,req 12.3
 Tooltip.MWP.WaterRate,Rated rate; affected by power and water quality,req 12.3
 MWP.Flavor.Citation,"""Water flows downhill - but drinking water must go up.""",req 12.3
+ToolGroups.MWP,Mechanical Water Pumps,build-menu collapsible tool group

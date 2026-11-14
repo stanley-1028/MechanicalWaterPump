@@ -9,13 +9,14 @@ namespace MWP.UI.Panels
     /// <summary>
     /// The UIElements tree of the pump panel plus its one-way rendering path.
     ///
-    /// The visual language is the game's own: native nine-slice sub-panels
-    /// (<see cref="NineSliceVisualElement"/> + <c>entity-sub-panel bg-sub-box--green</c>), native
-    /// text classes, native <see cref="Timberborn.CoreUI.ProgressBar"/> bars, native
-    /// <c>game-toggle</c> toggles and native fragment buttons taken from the vanilla UXML
-    /// templates (the game's nine-slice button class is internal in this build, so a real native
-    /// button is extracted from a template and re-labelled instead of re-implementing its skin).
-    /// No inline colour, font or size is ever set.
+    /// The visual language is the game's own and nothing else: vanilla nine-slice sub-panel cards
+    /// (<see cref="NineSliceVisualElement"/> with <c>entity-sub-panel bg-sub-box--green</c> /
+    /// <c>bg-sub-box--red-striped</c>), the vanilla <c>status-list-element</c> icon+text row for
+    /// the status, vanilla <c>entity-panel__row</c> rows with the game's own 24 px
+    /// <c>inventory-row__image</c> sprites, the vanilla blue explanation box for the "next step"
+    /// hint, native <see cref="Timberborn.CoreUI.ProgressBar"/> bars, a native <c>game-toggle</c>
+    /// toggle, and real native nine-slice buttons taken from a vanilla UXML template (the game's
+    /// concrete button type is internal in this build). No inline colour, font or size is ever set.
     ///
     /// The tree is built exactly once in the constructor (never per frame, REQ-PERF-04); the
     /// labels keep their instances and <see cref="Render"/> only assigns text/values/classes. The
@@ -37,19 +38,27 @@ namespace MWP.UI.Panels
 
         private readonly VisualElementLoader _loader;
         private readonly VisualElement _root;
+
         private readonly NineSliceVisualElement _statusSection;
+        private readonly VisualElement _statusIcon;
         private readonly Label _status;
+        private readonly VisualElement _hintBox;
         private readonly Label _hint;
+        private readonly Button _pauseButton;
+
+        private readonly NineSliceVisualElement _measurementSection;
         private readonly Label _rate;
         private readonly Label _waterQuality;
         private readonly Label _inventory;
+        private readonly VisualElement _inventoryRow;
         private readonly Label _depth;
+        private readonly VisualElement _depthRow;
         private readonly Label _pipe;
-        private readonly Timberborn.CoreUI.ProgressBar _maintenanceProgressBar;
-        private readonly Button _pauseButton;
+
         private readonly NineSliceVisualElement _maintenanceSection;
         private readonly Timberborn.CoreUI.ProgressBar _conditionBar;
         private readonly Label _condition;
+        private readonly Timberborn.CoreUI.ProgressBar _maintenanceProgressBar;
         private readonly Label _maintenanceIn;
         private readonly Label _materials;
         private readonly Toggle _autoMaintenance;
@@ -73,36 +82,51 @@ namespace MWP.UI.Panels
             _root = new VisualElement();
             MwpPumpPanelStyles.SetVisible(_root, false);
 
-            // Status block: the state machine output plus the MWP-only measurement rows.
-            _statusSection = MwpPumpPanelStyles.CreateSection();
+            // Status card: the vanilla status-list row (icon + text), the "next step" explanation
+            // box and the pause/resume button.
+            _statusSection = MwpPumpPanelStyles.CreateSection(alert: false);
             _root.Add(_statusSection);
-            _status = MwpPumpPanelStyles.CreateStatusRow(_statusSection);
-            _hint = MwpPumpPanelStyles.CreateSubTextRow(_statusSection);
-            _rate = MwpPumpPanelStyles.CreateTextRow(_statusSection);
-            _rate.tooltip = loc.T(MwpLocKeys.TooltipWaterRate);
-            _waterQuality = MwpPumpPanelStyles.CreateTextRow(_statusSection);
-            _inventory = MwpPumpPanelStyles.CreateTextRow(_statusSection);
-            _depth = MwpPumpPanelStyles.CreateTextRow(_statusSection);
-            _pipe = MwpPumpPanelStyles.CreateTextRow(_statusSection);
-            _pipe.tooltip = loc.T(MwpLocKeys.TooltipPipeCompat);
-            _maintenanceProgressBar = MwpPumpPanelStyles.CreateProgressBar(_statusSection, out _, green: true);
-            MwpPumpPanelStyles.SetVisible(_maintenanceProgressBar, false);
+            _status = MwpPumpPanelStyles.CreateStatusRow(_statusSection, out _statusIcon);
+            _hint = MwpPumpPanelStyles.CreateExplanationBox(_statusSection);
+            _hintBox = _hint.parent;
             _pauseButton = CreateNativeButton(MwpPumpPanelStyles.CreateButtonWrapper(_statusSection),
-                loc.T(MwpLocKeys.UiPause), pauseToggled);
+                loc.T(MwpLocKeys.UiPause), green: false, pauseToggled);
 
-            // Maintenance block: only meaningful while the maintenance system is enabled.
-            _maintenanceSection = MwpPumpPanelStyles.CreateSection();
+            // Measurements card: the values no vanilla fragment renders (actual output, water
+            // quality, pipe adapter) plus the fallback stock/depth rows.
+            _measurementSection = MwpPumpPanelStyles.CreateSection(alert: false);
+            _root.Add(_measurementSection);
+            _rate = MwpPumpPanelStyles.CreateIconRow(_measurementSection, MwpPumpPanelIcons.Water, out _);
+            _rate.tooltip = loc.T(MwpLocKeys.TooltipWaterRate);
+            _waterQuality = MwpPumpPanelStyles.CreateIconRow(_measurementSection,
+                MwpPumpPanelIcons.WaterQuality, out _);
+            _inventory = MwpPumpPanelStyles.CreateIconRow(_measurementSection, MwpPumpPanelIcons.Water, out _);
+            _inventoryRow = _inventory.parent;
+            MwpPumpPanelStyles.SetVisible(_inventoryRow, false);
+            _depth = MwpPumpPanelStyles.CreateIconRow(_measurementSection, MwpPumpPanelIcons.Depth, out _);
+            _depthRow = _depth.parent;
+            MwpPumpPanelStyles.SetVisible(_depthRow, false);
+            _pipe = MwpPumpPanelStyles.CreateIconRow(_measurementSection, MwpPumpPanelIcons.Pipe, out _);
+            _pipe.tooltip = loc.T(MwpLocKeys.TooltipPipeCompat);
+
+            // Maintenance card: condition bar (DeteriorableFragment pattern), countdown/material
+            // rows, the downtime progress bar (TimerFragment pattern), the auto toggle and button.
+            _maintenanceSection = MwpPumpPanelStyles.CreateSection(alert: false);
             _root.Add(_maintenanceSection);
             _conditionBar = MwpPumpPanelStyles.CreateProgressBar(_maintenanceSection, out Label condition,
                 green: false);
             _condition = condition;
-            _maintenanceIn = MwpPumpPanelStyles.CreateTextRow(_maintenanceSection);
-            _materials = MwpPumpPanelStyles.CreateTextRow(_maintenanceSection);
+            _maintenanceProgressBar = MwpPumpPanelStyles.CreateProgressBar(_maintenanceSection, out _,
+                green: true);
+            MwpPumpPanelStyles.SetVisible(_maintenanceProgressBar, false);
+            _maintenanceIn = MwpPumpPanelStyles.CreateIconRow(_maintenanceSection, MwpPumpPanelIcons.Clock,
+                out _);
+            _materials = MwpPumpPanelStyles.CreateIconRow(_maintenanceSection, MwpPumpPanelIcons.Goods, out _);
             _autoMaintenance = MwpPumpPanelStyles.CreateToggle(
                 _maintenanceSection, loc.T(MwpLocKeys.UiAutoMaintenance));
             _autoMaintenance.RegisterValueChangedCallback(evt => autoMaintenanceChanged(evt.newValue));
             _maintainButton = CreateNativeButton(MwpPumpPanelStyles.CreateButtonWrapper(_maintenanceSection),
-                loc.T(MwpLocKeys.UiMaintainNow), maintainRequested);
+                loc.T(MwpLocKeys.UiMaintainNow), green: true, maintainRequested);
         }
 
         /// <summary>Root element handed to the entity panel system.</summary>
@@ -122,29 +146,56 @@ namespace MWP.UI.Panels
                 return;
             }
 
-            SetText(_status, data.Status);
-            MwpPumpPanelStyles.ApplyStatusColor(_status, data.State);
-            SetText(_hint, data.StatusHint);
-            MwpPumpPanelStyles.SetVisible(_hint, data.StatusHint.Length != 0);
+            ApplyStatus(in data);
+
             SetText(_rate, data.Rate);
             SetText(_waterQuality, data.WaterQuality);
             SetText(_inventory, data.Inventory);
-            MwpPumpPanelStyles.SetVisible(_inventory, data.ShowInventoryRow);
+            MwpPumpPanelStyles.SetVisible(_inventoryRow, data.ShowInventoryRow);
             SetText(_depth, data.Depth);
-            MwpPumpPanelStyles.SetVisible(_depth, data.ShowDepthRow);
+            MwpPumpPanelStyles.SetVisible(_depthRow, data.ShowDepthRow);
             SetText(_pipe, data.Pipe);
-            MwpPumpPanelStyles.SetProgress(_maintenanceProgressBar, data.MaintainingPercent);
-            MwpPumpPanelStyles.SetVisible(_maintenanceProgressBar, data.IsMaintaining);
+
             SetText(_pauseButton, data.PauseLabel);
             MwpPumpPanelStyles.ApplyPauseColor(_pauseButton, data.Paused);
 
             MwpPumpPanelStyles.SetVisible(_maintenanceSection, data.MaintenanceVisible);
             SetText(_condition, data.Condition);
             MwpPumpPanelStyles.SetProgress(_conditionBar, data.ConditionPercent);
+            MwpPumpPanelStyles.SetProgress(_maintenanceProgressBar, data.MaintainingPercent);
+            MwpPumpPanelStyles.SetVisible(_maintenanceProgressBar, data.IsMaintaining);
             SetText(_maintenanceIn, data.MaintenanceIn);
             SetText(_materials, data.Materials);
             _autoMaintenance.SetValueWithoutNotify(data.AutoMaintenance);
             SetVisible(true);
+        }
+
+        /// <summary>
+        /// Renders the vanilla status-list row: the game's own status sprite for the severity, the
+        /// native text colour class, and the red-striped alert card frame for hard alerts. The icon
+        /// is a background image on the status icon element, exactly how the vanilla
+        /// <c>StatusListFragment</c> assigns <c>StatusInstance.IconSmall</c>.
+        /// </summary>
+        private void ApplyStatus(in MwpPumpPanelData data)
+        {
+            SetText(_status, data.Status);
+            MwpPumpPanelStyles.ApplyStatusColor(_status, data.State);
+
+            UnityEngine.Sprite? sprite = MwpPumpPanelIcons.Get(MwpPumpPanelIcons.StatusIcon(data.State));
+            if (sprite is null)
+            {
+                MwpPumpPanelStyles.SetVisible(_statusIcon, false);
+            }
+            else
+            {
+                _statusIcon.style.backgroundImage = new StyleBackground(sprite);
+                MwpPumpPanelStyles.SetVisible(_statusIcon, true);
+            }
+
+            MwpPumpPanelStyles.SetSectionTone(_statusSection, MwpPumpPanelStyles.IsDanger(data.State));
+
+            SetText(_hint, data.StatusHint);
+            MwpPumpPanelStyles.SetVisible(_hintBox, data.StatusHint.Length != 0);
         }
 
         /// <summary>
@@ -153,9 +204,10 @@ namespace MWP.UI.Panels
         /// taken from one of them and only re-labelled; a plain fallback button is used if the
         /// template ever stops providing one.
         /// </summary>
-        private Button CreateNativeButton(VisualElement parent, string text, Action clicked)
+        private Button CreateNativeButton(VisualElement parent, string text, bool green, Action clicked)
         {
-            Button button = TakeNativeButton() ?? CreateFallbackButton();
+            Button button = TakeNativeButton() ?? new Button();
+            MwpPumpPanelStyles.ApplyFragmentButtonClasses(button, green);
             button.text = text;
             button.clicked += clicked;
             parent.Add(button);
@@ -181,13 +233,6 @@ namespace MWP.UI.Panels
             }
 
             return null;
-        }
-
-        private static Button CreateFallbackButton()
-        {
-            var button = new Button();
-            MwpPumpPanelStyles.ApplyFragmentButtonClasses(button);
-            return button;
         }
 
         private static void SetText(Label label, string text)

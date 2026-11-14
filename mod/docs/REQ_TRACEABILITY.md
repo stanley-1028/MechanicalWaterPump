@@ -8,13 +8,13 @@
 > - `GAP`：尚未完成（在「備註」寫明補救路徑）。
 > - `N/A`：v0.2 不適用（設計決策見 `CONTRACT.md` §13）。
 >
-> 檔案路徑皆相對 `mod/`。最後更新：2026-11-09（v0.2.3：BUG-08）。
+> 檔案路徑皆相對 `mod/`。最後更新：2026-11-13（UI/GUI 原版化＋可收縮建造選單群組）。
 
 ## 0. 自動證據對照（VERIFICATION §1）
 
 `A1` build 0 warning｜`A2` 單元測試 PASS 213/213｜`A3` VALIDATION PASSED｜`A4` 打包完整性｜
 `A5` 自訂 Spec metadata｜`A6` DI/入口型別｜`A7` 無硬依賴｜`A19` 0.2.2 離線驗證｜
-`A20` BUG-06 移除 NoHaulingPost 狀態｜`A21` BUG-07 MaxDepth 64 不限水位｜`A22` BUG-08 低流量抽水修正（實機）｜`A23` 0.2.3 離線驗證。以下 PASS(自動) 均引用其一或多項。
+`A20` BUG-06 移除 NoHaulingPost 狀態｜`A21` BUG-07 MaxDepth 64 不限水位｜`A22` BUG-08 低流量抽水修正（實機）｜`A23` 0.2.3 離線驗證｜`A24` 0.2.4 UI／GUI 原版化：離線全綠＋實機載入與 MWP 收合群組圖示（點擊展開／面板外觀待人工）。以下 PASS(自動) 均引用其一或多項。
 
 ## 0.1 BUG 對應（0.2.2～0.2.3，2026-11-08／09）
 
@@ -69,7 +69,7 @@
 | REQ | 要求 | 實作位置 | 驗證 | 狀態 |
 |---|---|---|---|---|
 | TECH-01 | ScienceCost 150/400/700/1500 | 藍圖 `BuildingSpec`、`TierCatalog` | A3 | PASS(自動) |
-| TECH-02 | Water 工具組、排序 60–63、未解鎖不顯示 | `PlaceableBlockObjectSpec`（ToolGroupId/ToolOrder）+ `TemplateCollection` | A3 | PASS(自動)+CODE |
+| TECH-02 | 四檔位於模組自己的可收縮工具群組（`Id=MWP`、Order 46、四檔 ToolOrder 10/20/30/40；未解鎖顯示鎖頭） | `data/BlockObjectToolGroups/BlockObjectToolGroup.MWP.blueprint.json`、8 藍圖 `PlaceableBlockObjectSpec`、`src/MWP.Core/MwpDefaults.cs`（`ToolGroupId/ToolGroupOrder/ToolGroupIcon`）、`MwpLocKeys.ToolGroupName`、3 份 CSV | A3（`ValidateToolGroup`＋8 藍圖 ToolGroupId/ToolOrder）＋A24（實機：群組圖示在 Water 與 Food 之間、收合狀態；點擊展開待人工） | PASS(自動)＋CODE＋部分實機 |
 | TECH-03 | 解鎖狀態用原版科技進度 | 只用 `ScienceCost`，不另存科技資料 | A3（無自訂科技節點）+ T01 | CODE |
 | TECH-04 | 未來研究節點需向後相容 | 目前未新增節點 | — | N/A |
 
@@ -82,7 +82,7 @@
 | COMPAT-03 | 直連端口失敗安全降級 | `src/MWP.Integration/MwpPipeAdapter.cs`（偵測＋ValveOnly/Error，不注入外部藍圖） | A7 + T10 | PARTIAL（SHOULD 直連端口 v0.2 未實作，只做偵測與降級） |
 | COMPAT-04 | 不硬引用外部模組、不改其藍圖 | 全部 Integration 以反射實作 | A7 | PASS(自動) |
 | COMPAT-05 | 與 Pump to Tank／Filter Pump／Barkimedes 共存 | 不覆寫原版藍圖、無 Harmony | T12 | GAP（需遊戲內） |
-| COMPAT-06 | 與 Water Extention／Power Lines／More Platforms 共存 | 沿用原版 MechanicalNode；ToolGroup 60–63 | T12 | GAP（需遊戲內） |
+| COMPAT-06 | 與 Water Extention／Power Lines／More Platforms 共存 | 沿用原版 MechanicalNode；建造選單用自有 MWP 工具群組（Order 46，不與原版 Water 群組衝突） | T12 | GAP（需遊戲內） |
 | COMPAT-07 | 偵測失敗不阻止啟動 | `TimberPipesProbe`／`MwpPipeAdapter` 全 try/catch；ModStarter 不 throw | A7 + 程式審查 | CODE |
 | COMPAT-08 | 相容狀態可診斷 | `MWP/Compat/Scan` log、UI 管道列（`Status.MWP.PipeDirect/Valve/Unavailable`） | UI T08（管道列） | CODE |
 | COMPAT-09 | 每組合有測試紀錄 | 見 `VERIFICATION.md` §3 T10/T11/T12 | T10–T12 | GAP（需遊戲內） |
@@ -115,11 +115,11 @@
 
 | REQ | 要求 | 實作位置 | 驗證 | 狀態 |
 |---|---|---|---|---|
-| UI-01 | 面板顯示狀態/實際速率/供電/水質/庫存/管道/深度（0.2.2 起深度 64＝不限，原版 fragment 顯示 Limit 64） | `src/MWP.UI/Panels/MwpPumpPanelDataFactory.cs`、`MwpPumpPanelView.cs` | A1（UI build）+ T14 | CODE |
+| UI-01 | 面板顯示狀態/實際速率/水質/庫存/管道/深度（0.2.2 起深度 64＝不限，原版 fragment 顯示 Limit 64） | `src/MWP.UI/Panels/MwpPumpPanelDataFactory.cs`、`MwpPumpPanelView.cs`、`MwpPumpPanelStyles.cs`、`MwpPumpPanelIcons.cs` | A1（UI build）+ T14 | CODE |
 | UI-02 | 任何停產有原因，不得只顯示暫停 | 狀態列＋下一步提示（`MwpUiVanillaKeys.cs`） | T05 | CODE |
 | UI-03 | 固定優先序、只顯示最高者 | `StatusPriority`（Core）、UI 單一狀態列 | A2 | PASS(自動)+CODE |
 | UI-04 | 顯示名不得與原版「機械水泵」相同 | `data/Localizations/zhTW.csv`（機械飲水泵 Mk I–IV） | A3（顯示名檢查） | PASS(自動) |
-| UI-05 | zhTW/zhCN/enUS、缺鍵回退不顯示 raw key | 3 份 CSV（各 41 keys）、`MwpLocKeys` | A3（key 集合/placeholder） | PASS(自動) |
+| UI-05 | zhTW/zhCN/enUS、缺鍵回退不顯示 raw key | 3 份 CSV（各 43 keys，含 `ToolGroups.MWP`）、`MwpLocKeys` | A3（key 集合/placeholder） | PASS(自動) |
 | UI-06 | UI ≤4Hz、開啟面板不掉幀 | `MwpPumpPanelFragment`（4Hz＋fingerprint 髒標記） | 程式審查 + T24 | CODE |
 | UI-07 | 暫停只影響當前泵 | `IMwpPumpCommands.SetPaused(Guid)`、UI 按鈕帶當前泵 Guid | A6 + T05 | PASS(自動)+CODE |
 

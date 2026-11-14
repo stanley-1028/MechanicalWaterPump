@@ -41,3 +41,4 @@ UI.MWP.Resume,恢复,v0.2 UI resume button
 Tooltip.MWP.PipeCompat,安装 Timber Pipes 后可用阀门抽取,req 12.3
 Tooltip.MWP.WaterRate,满载速率；受供电与水质影响,req 12.3
 MWP.Flavor.Citation,「水往低处流，但饮用水要往高处送。」,req 12.3
+ToolGroups.MWP,机械水泵,建造选单可收缩工具分组

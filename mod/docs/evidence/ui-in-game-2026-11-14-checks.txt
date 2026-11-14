@@ -1,0 +1,73 @@
+MWP 0.2.4 — UI/GUI 原版化 in-game verification round (2026-11-14)
+=================================================================
+
+Environment
+-----------
+Game            : Timberborn 1.1.2.8-ffc2de0-sw (fullscreen 1920x1080 for this round)
+Installed mod   : Documents\Timberborn\Mods\MechanicalWaterPump, manifest Version 0.2.4
+                  (staged from mod/build/MWP; 52 files, 11 blueprints incl. the MWP tool group)
+Save (copy)     : Documents\Timberborn\Saves\MWPDiag\1.timber  (schema 2, written by 0.2.2)
+Command line    : Timberborn.exe -skipModManager -saveName "1" -settlementName "MWPDiag"
+                  -logFile .tmp\ui-task\Player.log
+Mods this round : Mechanical Water Pump 0.2.4 (the subject), HDBF 2.5.11 + SteamEngineExpansion
+                  0.1.0 enabled because the save contains their entities (otherwise the game shows
+                  the "load issues: unknown object types" dialog and blocks the screenshot).
+                  TreePlanterTray 0.1.0 was moved out of Mods only for this round because its
+                  required Harmony 2.4.1 prerequisite is not installed and the game crashes while
+                  starting that mod; it was moved back afterwards and its registry state restored.
+                  All mod enable flags and the screen resolution were restored after the round.
+
+Result: load
+------------
+Load time: 36512ms (scene index: 2)
+
+[MWP/Info][MWP/Info/Config] MWP 0.2.4 config=C:\Users\user\Documents\Timberborn\Mods\MechanicalWaterPump\MWP_Config.json schema=2 tiers=4 maintenance=on modPath=...
+[MWP/Info][MWP/Info/Startup] MWP 0.2.4 ready; tiers=4; maintenance=on; legacyRates=off
+[MWP/Compat][MWP/Compat/Scan] Timber Pipes not detected; standard Water inventory only, core gameplay unaffected
+[MWP/Info][MWP/Info/SaveMigrate] pump state loaded (schema 2, modVersion=0.2.2)|Basic|unknown
+
+Result: checks (grep over the whole Player.log)
+-----------------------------------------------
+  Exception / MWP/Error lines                         : none
+  "unknown BlockObjectToolGroupSpec" warnings         : none
+  "Failed to load asset at Icons/MWPBasicFolktails"   : none
+  "No localization for ToolGroups.MWP"                : none
+  "No template found with name MechanicalWaterPump.*" : none
+  Log tag census: [MWP/Info] 3, [MWP/Compat] 1, [HDBF/*] 79 (the other dev mod's own warnings,
+  unrelated to MWP), [SEE/*] 3, engine lines.
+  => The mod-shipped BlockObjectToolGroupSpec blueprint was discovered by the game, its
+     AssetRef<Sprite> icon loaded, and its localization key resolved.
+
+Result: bottom build bar (screenshot evidence)
+----------------------------------------------
+ui-0.2.4-world.png          full 1080p frame of the loaded world (two pumps visible bottom-right)
+ui-0.2.4-bottombar.png      native-resolution crop of the bottom build bar
+ui-0.2.4-mwp-group-zoom.png 4x zoom of the group-button sequence, left to right:
+                              water drop (vanilla "Water" group, Order 45)
+                              MWP pump render (the mod's own group, Order 46)
+                              carrot (vanilla "Food" group, Order 50)
+                              log (Wood) / anvil (Metal) … the vanilla groups continue unchanged
+                            => exactly one collapsed MWP group icon between Water and Food, the
+                               vanilla collapsible-group presentation (the 4 tiers are only shown
+                               after the group is expanded).
+
+Limitation of this environment (honest)
+---------------------------------------
+Synthetic mouse/keyboard input is not available on this machine: the harness probe
+(Test-InputInjection.ps1) reports SetCursorPos/mouse_event/SendInput/keybd_event success but
+`sendinput_return=3, form_clicks=0, form_keys=0`, and OpenInputDesktop fails with access denied
+(the same environment fact recorded by the sibling HDBF project, VERIFICATION 16.2). Therefore the
+two click-driven steps could not be automated in this round:
+  1. clicking the MWP group to expand it (expand/collapse behaviour is the vanilla
+     BlockObjectToolGroupButton code path, IL-verified in docs/api/ui/toolgroup-facts.md §b.8), and
+  2. selecting a pump to open its entity panel (the panel's visual recipe is verified offline
+     against the vanilla UXML/USS in docs/api/ui/panel-vanilla-facts.md and MWP.UI/README.md).
+Both remain manual checks in VERIFICATION.md (T14-type UI pass); no claim of a Pass is made for
+them here. No workaround that bypasses the environment restriction was used.
+
+Cleanup
+-------
+TreePlanterTray restored to Documents\Timberborn\Mods; Mods-disabled removed; ModEnabled flags for
+MechanicalWaterPump / HDBF / SteamEngineExpansion restored to 0 (their pre-round values);
+Screenmanager resolution restored to 2560x1440. The game process was closed and audio un-muted by
+the round launcher's finally block.

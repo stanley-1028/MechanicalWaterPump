@@ -1,5 +1,53 @@
 # Changelog
 
+## 0.2.4 — 2026-11-13
+
+### Changed
+- **實體面板全面原版化（UI）**：不再有「一大塊自繪文字面板」的觀感。面板改為全部由遊戲原版控制項
+  與原版 USS class 組成：原版綠色九宮格子面板（硬警報改用原版 `StatusListFragment` 的紅條紋框）、
+  原版 `status-list-element` 狀態列（34 px 遊戲狀態圖示＋原版 `status-list-element__text`）、
+  原版藍色 `entity-fragment__explanation` 說明盒（下一步提示；標籤用原版
+  `entity-panel__text text--centered` 組合）、原版 `entity-panel__row`＋
+  `inventory-row__image` 24 px 圖示資訊列、原版 `ProgressBar`（機況／維護進度）、原版 `game-toggle`
+  開關，以及從原版 UXML 範本取出的真實九宮格按鈕（暫停紅／恢復綠、「立即維護」綠）。
+  模組不新增 UXML/USS/貼圖；列圖示全部用 `Resources.Load<Sprite>("UI/Images/...")` 讀遊戲原版
+  sprite，缺圖只少一個圖示、不拋例外。原版 fragment 已提供的動力／內部水庫存／抽水深度維持由
+  遊戲顯示，面板不重複。
+- **建造選單改為專屬可收縮群組（GUI）**：四檔不再塞在原版 `Water` 工具組，改由 spec-only 藍圖
+  `data/BlockObjectToolGroups/BlockObjectToolGroup.MWP.blueprint.json`
+  （`BlockObjectToolGroupSpec`：Id `MWP`、Order 46、NameLocKey `ToolGroups.MWP`、
+  Icon `Icons/MWPBasicFolktails`）定義自己的群組。底欄顯示一個 MWP 圖示，點擊展開 Mk I–IV、
+  點其他群組即收合——與原版 Water／Food 等群組相同的收縮行為。8 份藍圖的
+  `ToolGroupId` 改 `MWP`、`ToolOrder` 改 10/20/30/40；三語新增 `ToolGroups.MWP`
+  （Mechanical Water Pumps／机械水泵／機械水泵）。
+
+### Tooling / docs
+- `tools/validate` 新增 `ValidateToolGroup`：比對群組 JSON 與 Core 常數
+  （`MwpDefaults.ToolGroupId/ToolGroupOrder/ToolGroupIcon`、`MwpLocKeys.ToolGroupName`）、
+  圖示檔存在，並逐檔比對 8 份藍圖的新 ToolGroupId/ToolOrder；`gen_blueprints.py` 同步產生群組檔。
+- 新增 UI 取證：`docs/api/ui/toolgroup-facts.md`（群組載入／圖示／排序／風險）、
+  `docs/api/ui/panel-vanilla-facts.md`（原版面板 class／sprite／佈局對照）；
+  `src/MWP.UI/README.md`、`docs/CONTRACT.md` §4.1/§8/§10、`docs/REQ_TRACEABILITY.md` 同步更新。
+
+### Notes
+- 版本 0.2.4；存檔 schema 2、config schema 2 不變（0.2.3 存檔可直接載入）。群組歸屬由藍圖在
+  載入時決定、不寫存檔，舊存檔的既有泵會直接出現在新群組。
+- 離線驗證（2026-11-14 最終）：`build.ps1 -Clean` exit 0、4 組件 0 warning、單元測試
+  `PASS 213/213`、`VALIDATION PASSED`（43 鍵、11 藍圖含工具群組）、staged 套件 52 檔／
+  1,279,558 bytes（1,250 KB）。證據：`docs/evidence/build-0.2.4.log`。
+- **實機驗證（2026-11-14）**：以回報存檔副本自動載入世界（`-skipModManager -saveName 1
+  -settlementName MWPDiag`）通過——`Load time 36,512 ms`、`MWP 0.2.4 ready`、`SaveMigrate schema 2`，
+  全 log **0 Exception／0 `MWP/Error`**，無 `unknown BlockObjectToolGroupSpec`、無
+  `Failed to load asset at Icons/MWPBasicFolktails`、無 `No localization for ToolGroups.MWP`；
+  底欄截圖可見到**一個收合狀態的 MWP 群組圖示（泵渲染圖）位於原版 Water（水滴）與 Food（胡蘿蔔）
+  之間**（`Order 46`），即原版可收縮群組的預設呈現。證據：
+  `docs/evidence/ui-in-game-2026-11-14-Player.log`、`ui-in-game-2026-11-14-checks.txt`、
+  `ui-0.2.4-bottombar.png`、`ui-0.2.4-mwp-group-zoom.png`。
+- **實機待辦（誠實）**：本機無法合成滑鼠／鍵盤輸入（`OpenInputDesktop` 拒絕、probe
+  `form_clicks=0`；與 HDBF 專案 §16.2 同一環境事實），所以「點擊群組展開」與「點選水泵看面板外觀」
+  這兩步只能人工驗收；面板的原版 class／sprite 構成已離線逐項對照原版 UXML/USS
+  （`docs/api/ui/panel-vanilla-facts.md`）。
+
 ## 0.2.3 — 2026-11-09
 
 ### Fixed

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the 8 MWP blueprints and the 2 template collections.
+"""Generate the 8 MWP blueprints, the 2 template collections and the MWP tool-group spec.
 
 This is a developer script, not part of the validator build (it is not compiled). It documents
 how data/ was produced and lets the blueprints be regenerated after a contract change.
@@ -272,8 +272,11 @@ def build_blueprint(tier, faction, vanilla):
             "CapacityUnfinished": 0,
         },
         "PlaceableBlockObjectSpec": {
-            "ToolGroupId": "Water",
-            "ToolOrder": 60 + [t["tier"] for t in TIERS].index(tier["tier"]),
+            # The four tiers live in the mod's own collapsible bottom-bar group (spec-only
+            # BlockObjectToolGroup.MWP.blueprint.json), not in the vanilla Water group. Orders
+            # 10/20/30/40 follow the vanilla group convention.
+            "ToolGroupId": "MWP",
+            "ToolOrder": 10 * ([t["tier"] for t in TIERS].index(tier["tier"]) + 1),
             "ToolShape": "Square",
             "Layout": "Single",
             "CustomPivot": {
@@ -396,13 +399,36 @@ def write_template_collections():
         )
 
 
+def write_tool_group():
+    """Spec-only blueprint that defines the mod's own collapsible bottom-bar group.
+
+    The game creates one bottom-bar group per BlockObjectToolGroupSpec and collapses it into a
+    single icon that expands to the group's tools, exactly like the vanilla Water/Food groups.
+    Icon reuses the shipped Mk I building icon; the name key is ToolGroups.MWP.
+    """
+    write_json(
+        os.path.join(DATA, "BlockObjectToolGroups", "BlockObjectToolGroup.MWP.blueprint.json"),
+        {
+            "BlockObjectToolGroupSpec": {
+                "Id": "MWP",
+                "Order": 46,  # between vanilla Water (45) and Food (50)
+                "NameLocKey": "ToolGroups.MWP",
+                "Icon": "Icons/MWPBasicFolktails",
+                "FallbackGroup": False,
+            }
+        },
+    )
+
+
 def main():
     vanilla = read_vanilla()
     blueprints = write_blueprints(vanilla)
     write_template_collections()
+    write_tool_group()
     print("blueprints:", len(blueprints))
     for name in blueprints:
         print(" ", name)
+    print("tool group: BlockObjectToolGroups/BlockObjectToolGroup.MWP.blueprint.json")
 
 
 if __name__ == "__main__":

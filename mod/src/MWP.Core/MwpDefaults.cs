@@ -12,7 +12,7 @@ namespace MWP.Core
         public const string ModId = "MechanicalWaterPump";
 
         /// <summary>Display version shipped in the manifest.</summary>
-        public const string ModVersion = "0.2.3";
+        public const string ModVersion = "0.2.4";
 
         /// <summary>Name of the JSON configuration file in the mod root (config schema 2).</summary>
         public const string ConfigFileName = "MWP_Config.json";
@@ -44,8 +44,27 @@ namespace MWP.Core
         /// <summary>Blueprint path prefix containing the four tiers and two factions.</summary>
         public const string BlueprintFolder = "Buildings/Water/MWP";
 
-        /// <summary>Tool group the four tiers appear in (REQ-TECH-02).</summary>
-        public const string ToolGroupId = "Water";
+        /// <summary>
+        /// Tool group the four tiers appear in (REQ-TECH-02). Since the "collapsible building menu"
+        /// round this is the mod's own group instead of the vanilla "Water" group: the four tiers
+        /// live in their own bottom-bar group, which the game collapses into one icon and expands
+        /// exactly like the vanilla groups. The group itself is defined by the spec-only blueprint
+        /// <c>BlockObjectToolGroups/BlockObjectToolGroup.MWP.blueprint.json</c>.
+        /// </summary>
+        public const string ToolGroupId = "MWP";
+
+        /// <summary>
+        /// Order of the MWP tool group in the vanilla bottom bar. Vanilla uses 45 for Water and 50
+        /// for Food, so 46 places the MWP group right next to the water buildings without
+        /// renumbering anything vanilla.
+        /// </summary>
+        public const int ToolGroupOrder = 46;
+
+        /// <summary>
+        /// Sprite (AssetRef path) of the tool-group icon. It reuses the shipped Mk I icon, so the
+        /// group needs no extra art asset and looks like a normal rendered building icon.
+        /// </summary>
+        public const string ToolGroupIcon = "Icons/MWPBasicFolktails";
 
         /// <summary>Localization key namespace.</summary>
         public const string LocNamespace = "MWP";
@@ -82,6 +101,13 @@ namespace MWP.Core
 
         /// <summary>Flavor text key shared by all tiers.</summary>
         public const string Flavor = "Building.MWP.Pump.Flavor";
+
+        /// <summary>
+        /// Name of the MWP collapsible tool group in the vanilla bottom build bar. The tool group
+        /// blueprint references this key; vanilla uses the same "ToolGroups.*" convention for its
+        /// own groups (Water, Food, Power, ...).
+        /// </summary>
+        public const string ToolGroupName = "ToolGroups.MWP";
 
         /// <summary>Product name with placeholders: status text and its tooltip.</summary>
         public const string StatusNoPower = "Status.MWP.NoPower";

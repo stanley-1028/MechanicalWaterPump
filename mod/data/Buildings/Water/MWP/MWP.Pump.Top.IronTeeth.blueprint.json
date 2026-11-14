@@ -406,8 +406,8 @@
     "CapacityUnfinished": 0
   },
   "PlaceableBlockObjectSpec": {
-    "ToolGroupId": "Water",
-    "ToolOrder": 63,
+    "ToolGroupId": "MWP",
+    "ToolOrder": 40,
     "ToolShape": "Square",
     "Layout": "Single",
     "CustomPivot": {

@@ -9,10 +9,11 @@
 ## 0. 頁面短描述（Steam 搜尋結果 / GitHub repo description 用）
 
 **EN**：Four worker-free mechanical drinking-water pump tiers for Timberborn 1.1 — animated gear
-machinery, maintenance, hauling and native UI. Made in collaboration with DeepSeek V4.1 Flash.
+machinery, maintenance, hauling, a fully vanilla-style panel and a collapsible build-menu group.
+Made in collaboration with DeepSeek V4.1 Flash.
 
-**中文**：Timberborn 1.1 的四檔免工人機械抽水泵：齒輪/活塞動畫、維護系統、水搬運、原生 UI；與
-DeepSeek V4.1 Flash 共同完成。
+**中文**：Timberborn 1.1 的四檔免工人機械抽水泵：齒輪/活塞動畫、維護系統、水搬運、全面原版化面板、
+可收縮建造選單群組；與 DeepSeek V4.1 Flash 共同完成。
 
 ---
 
@@ -30,7 +31,7 @@ Four mechanical pumps for Timberborn 1.1 that make drinking water without a sing
 [*][b]Animated machinery[/b]: flywheels, gears, pulleys, drive shafts, pistons and linkages spin with the mechanical network — speed follows power efficiency and stops at 0 hp.
 [*][b]Maintenance system[/b]: condition wears from 100% to 0%, upkeep materials and a 2-hour downtime, with automatic or manual maintenance.
 [*][b]Internal water storage[/b] (15 / 30 / 75 / 100) that your beavers haul to tanks — or extract with a Timber Pipes valve if you have that mod.
-[*][b]Native Timberborn UI[/b]: same nine-slice panels, typography, progress bars, buttons and native power/water fragments as vanilla buildings.
+[*][b]Vanilla-style UI[/b]: nine-slice sub-panel cards, the game's own status row and status sprites, native 24 px row icons, progress bars, toggles and real vanilla fragment buttons — the same controls and USS classes as vanilla building panels. The four tiers also get their own [b]collapsible build-menu group[/b] (one bottom-bar icon that expands to Mk I–IV and collapses again), just like the vanilla Water/Food groups.
 [*]English, 简体中文 and 繁體中文 localization, plus a JSON config for balance tweaks. No dependencies.
 [/list]
 
@@ -50,7 +51,7 @@ Requires Timberborn 1.1.x. Save-compatible; no other mods required. Timber Pipes
 Made in collaboration with [b]DeepSeek V4.1 Flash[/b] — AI pair-development of code, data, art pipeline, validation and documentation. All models, textures, animations and icons are self-made for this mod.
 
 [h2]中文簡介[/h2]
-四檔免工人機械抽水泵：不用海狸顧泵，用研究、木板、金屬與機械動力換取飲用水。含齒輪/飛輪/活塞動畫（轉速隨供電效率、停電即停）、機況磨損與材料維護（停機 2 小時）、內部儲水（15/30/75/100，海狸會搬去儲水罐，或接 Timber Pipes 閥門抽水）、原生 Timberborn 面板樣式、英/簡中/繁中三語與 JSON 平衡設定。Mk I–IV 產量 3/6/15/20 水/小時，30 日平均 93–94%。與 DeepSeek V4.1 Flash 共同完成。
+四檔免工人機械抽水泵：不用海狸顧泵，用研究、木板、金屬與機械動力換取飲用水。含齒輪/飛輪/活塞動畫（轉速隨供電效率、停電即停）、機況磨損與材料維護（停機 2 小時）、內部儲水（15/30/75/100，海狸會搬去儲水罐，或接 Timber Pipes 閥門抽水）、面板全面原版化（原版子面板、狀態列與狀態圖示、資訊列圖示、進度條、開關、原版九宮格按鈕）、四檔專屬可收縮建造選單群組（底欄一個圖示展開 Mk I–IV）、英/簡中/繁中三語與 JSON 平衡設定。Mk I–IV 產量 3/6/15/20 水/小時，30 日平均 93–94%。與 DeepSeek V4.1 Flash 共同完成。
 ```
 
 ---

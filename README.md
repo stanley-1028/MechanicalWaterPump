@@ -6,17 +6,21 @@
 - Steam 工作坊：https://steamcommunity.com/sharedfiles/filedetails/?id=3835434644
 - 封面 AI 提示詞：[`mod/workshop/COVER_PROMPTS.md`](mod/workshop/COVER_PROMPTS.md)
 - GitHub：https://github.com/stanley-1028/MechanicalWaterPump
-  （release v0.2.2：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.2；v0.2.1：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.1；v0.2.0：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.0）
+  （release v0.2.4：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.4；v0.2.3：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.3；v0.2.2：https://github.com/stanley-1028/MechanicalWaterPump/releases/tag/v0.2.2）
 - 需求（權威）：[`機械水泵模組需求文檔.md`](機械水泵模組需求文檔.md)（v0.2，以 §20 為準）
 - 遊戲版本：Timberborn `1.1.2.8-ffc2de0-sw`（本機已安裝，Managed 組件可直接引用）
-- 交付狀態：**v0.2.3（2026-11-09）：BUG-08 修正低流量／淺水進水口的抽水失敗**
-  （緩衝不足一個 Water 單位時不再取走零頭而丟棄；回報存檔副本已實機自動回合驗證：修後泵自動恢復
-  `Producing`、庫存上升）。程式與資料完成、離線驗證全綠：
-  `build.ps1` exit 0、4 個組件 0 warning、單元測試 `PASS 213/213`、資料/組件驗證 `VALIDATION PASSED`、
-  staged 套件 `mod/build/MWP`（4 DLL + 8 藍圖 + 2 collections + 三語系 + config + 8 圖示）。
+- 交付狀態：**v0.2.4（2026-11-14）：UI／GUI 全面原版化＋四檔專屬可收縮建造選單群組**
+  （實體面板改為全部由遊戲原版控制項與原版 USS class 組成、不新增 UXML/USS/貼圖；底欄多一個
+  MWP 群組圖示，展開 Mk I–IV、點其他群組即收合，與原版 Water／Food 群組相同）。
+  離線驗證全綠：`build.ps1` exit 0、4 個組件 0 warning、單元測試 `PASS 213/213`、資料/組件驗證
+  `VALIDATION PASSED`（43 鍵、11 藍圖含工具群組；staged 套件 52 檔／1,250 KB）。
+  **實機**（2026-11-14，回報存檔副本自動載入）：成功進世界、`MWP 0.2.4 ready`、全 log
+  0 Exception／0 MWP Error，底欄可見收合狀態的 MWP 群組圖示位於原版 Water 與 Food 之間；
+  「點擊展開」與「選取水泵後的面板外觀」因本機無法合成輸入仍待人工（A24）。
   **其餘遊戲內驗收 T01–T27 仍待執行**（見 `mod/docs/VERIFICATION.md`）。
-  歷史：v0.2.2 BUG-06 移除「需要搬運工才能運轉」狀態＋BUG-07 抽水深度不限（MaxDepth 64）；
-  v0.2.1 搬運實機驗證通過（BUG-04）＋「無搬運站」狀態回饋（BUG-05，已於 0.2.2 移除）；v0.2.0 首次公開發佈。
+  歷史：v0.2.3 BUG-08 修正低流量／淺水進水口的抽水失敗；v0.2.2 BUG-06 移除「需要搬運工才能運轉」
+  狀態＋BUG-07 抽水深度不限（MaxDepth 64）；v0.2.1 搬運實機驗證通過（BUG-04）＋「無搬運站」狀態
+  回饋（BUG-05，已於 0.2.2 移除）；v0.2.0 首次公開發佈。
 - 美術：**自製四檔模型（16 個 `.timbermesh`，8 檔 finished 含齒輪/飛輪/活塞節點動畫、62 條動畫軌；Mk III/IV 內裝已強化）
   與 8 張 128×128 圖示已交付**；材質用世界尺度平鋪 UV（木 117–145、金屬 121–164 px/m）。
   管線在 `art/`，驗證 16/16 PASS（322 checks）；剩餘：遊戲內動畫/外觀確認、LOD1/2、ART-07 三視圖簽核
@@ -44,7 +48,7 @@
     ├── tests/MWP.Tests/          # L1 單元測試（零 NuGet）
     ├── tools/ApiIndex/           # 離線遊戲 API metadata/IL 探勘工具
     ├── tools/validate/           # 資料層驗證器（對真實遊戲 metadata）
-    ├── data/                     # 8 藍圖、2 TemplateCollection、三語系、Config、圖示
+    ├── data/                     # 8 藍圖、2 TemplateCollection、MWP 工具群組、三語系、Config、圖示
     └── docs/                     # CONTRACT / ARCHITECTURE / API_FACTS / VERIFICATION / …
 ```
 
@@ -83,6 +87,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File mod\build.ps1 -Install
 - 產水 = `R_base × 供電比例 × 水質係數 × 機況乘數`；0 動力或 0 水源時必為 0。
 - 1 Water 消耗 0.2 m³ 水體（與原版 `WaterGoodToWaterAmountConverter` 一致，IL 已證實）。
 - 污染效率與原版一致（`1 − c`）；需求 §3.4 的 `1 − 0.75c` 保留為 config 選項（DV-01，見文件）。
+- **UI／GUI 原版化（v0.2.4）**：實體面板全部由遊戲原版控制項與原版 USS class 組成
+  （原版九宮格子面板、`status-list-element` 狀態列與原版狀態圖示、`entity-panel__row`＋
+  `inventory-row__image` 24 px 資訊列、原版 `ProgressBar`、`game-toggle`、原版 UXML 取出的
+  九宮格按鈕），模組不新增 UXML/USS/貼圖；四檔有**專屬可收縮建造群組**（`Order 46`，
+  原版 Water 45 與 Food 50 之間），底欄收合為一個 MWP 圖示、展開 Mk I–IV，
+  與原版 Water／Food 群組相同的收縮行為（實作契約 `mod/docs/CONTRACT.md` §4.1／§10.1）。
 
 - **搬運**沿用原版規則：聚落要有**已雇工的搬運站（Hauling Post）**，海狸才會把泵內的水搬到水箱；
   **暫停中的泵不會被清空**（與原版一致）。沒有搬運站時，泵只會把內部水槽裝滿後停產（與原版一致），
@@ -95,14 +105,18 @@ powershell -NoProfile -ExecutionPolicy Bypass -File mod\build.ps1 -Install
 |---|---|---|---|
 | L1 單元測試 | 公式、狀態機、維護、Config、存檔遷移、JSON | `dotnet run --project mod/tests/MWP.Tests -m:1` | `PASS 213/213` |
 | 資料驗證 | 藍圖 spec/欄位/enum/block/本地化/config/icons 對真實遊戲 metadata ＋ 組件契約 A5–A7 | `tools/validate`（build.ps1 會跑） | `VALIDATION PASSED` |
-| 遊戲內驗收 | T01–T27（產量、維護、管道、100 泵效能） | 人工，見 `mod/docs/VERIFICATION.md` | **待實測** |
+| 遊戲內驗收 | T01–T27（產量、維護、管道、100 泵效能）＋ UI/GUI 原版化 | 人工，見 `mod/docs/VERIFICATION.md` | **T01–T27 待實測**；0.2.4 實機載入＋MWP 群組圖示**已通過**（A24），群組展開／面板外觀待人工 |
 
 ## 已知限制（誠實揭露）
 
 1. **本輪遊戲內視覺/行為驗收未完成**：模型/材質已完成靜態驗證（16/16、材質全在 MaterialCollection）；
    **搬水行為已於 2026-11-08 以自動化遊戲內回合實測通過**（見 `mod/docs/VERIFICATION.md` A16；
    A18 的「無搬運站」狀態已於 0.2.2 依使用者要求移除，見 A20）；**低流量進水口抽水已於 2026-11-09
-   以回報存檔副本自動回合驗證**（BUG-08，A22/A23）。其餘外觀、建造選單、T01–T27 完整人工驗收仍需執行。
+   以回報存檔副本自動回合驗證**（BUG-08，A22/A23）；**0.2.4 的 UI/GUI 已於 2026-11-14 實機載入
+   驗證（世界載入、0 Exception、底欄 MWP 收合群組圖示位於 Water 與 Food 之間，A24）**。
+   仍未驗：**點 MWP 群組展開的當下畫面**與**選取水泵後的實體面板外觀**（本機無法合成滑鼠/鍵盤
+   輸入，`OpenInputDesktop` 拒絕；面板的原版 class/sprite 組成已離線對照原版 UXML/USS），
+   以及 T01–T27 完整人工驗收。
 2. **LOD1/LOD2 未輸出**：目前只有 LOD0（1.9k–4.3k tris，遠低於 12k 預算）。
 3. **ART-07 三視圖參考圖簽核**：有 24 張等角/50%/施工預覽，但需求要求的「建模前三視圖＋端口座標
    簽核」流程尚未走完（流程性項目）。

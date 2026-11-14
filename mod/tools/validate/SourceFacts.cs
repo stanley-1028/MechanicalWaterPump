@@ -48,6 +48,7 @@ internal sealed class SourceFacts
         RegexOptions.Compiled);
 
     private readonly Dictionary<string, string> _defaults = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, string> _locKeyConstants = new(StringComparer.Ordinal);
 
     private SourceFacts()
     {
@@ -64,7 +65,7 @@ internal sealed class SourceFacts
     public string ModId => GetString("ModId", "MechanicalWaterPump");
 
     /// <summary>Version from MwpDefaults.ModVersion.</summary>
-    public string ModVersion => GetString("ModVersion", "0.2.3");
+    public string ModVersion => GetString("ModVersion", "0.2.4");
 
     /// <summary>Config file name from MwpDefaults.ConfigFileName.</summary>
     public string ConfigFileName => GetString("ConfigFileName", "MWP_Config.json");
@@ -76,7 +77,16 @@ internal sealed class SourceFacts
     public string BlueprintFolder => GetString("BlueprintFolder", "Buildings/Water/MWP");
 
     /// <summary>Tool group from MwpDefaults.ToolGroupId.</summary>
-    public string ToolGroupId => GetString("ToolGroupId", "Water");
+    public string ToolGroupId => GetString("ToolGroupId", "MWP");
+
+    /// <summary>Bottom-bar order of the MWP tool group from MwpDefaults.ToolGroupOrder.</summary>
+    public int ToolGroupOrder => GetInt("ToolGroupOrder", 46);
+
+    /// <summary>Tool-group sprite path from MwpDefaults.ToolGroupIcon.</summary>
+    public string ToolGroupIcon => GetString("ToolGroupIcon", "Icons/MWPBasicFolktails");
+
+    /// <summary>Tool-group name key from MwpLocKeys.ToolGroupName.</summary>
+    public string ToolGroupNameLocKey => GetLocKey("ToolGroupName", "ToolGroups.MWP");
 
     /// <summary>Config schema version from MwpDefaults.ConfigSchemaVersion.</summary>
     public int ConfigSchemaVersion => GetInt("ConfigSchemaVersion", 2);
@@ -124,7 +134,7 @@ internal sealed class SourceFacts
             }
             else
             {
-                facts.LocKeys = ParseLocKeys(locBody, report);
+                facts.LocKeys = facts.ParseLocKeys(locBody, report);
             }
         }
 
@@ -145,6 +155,9 @@ internal sealed class SourceFacts
     private string GetString(string name, string fallback) =>
         _defaults.TryGetValue(name, out var value) ? Unquote(value) : fallback;
 
+    private string GetLocKey(string constantName, string fallback) =>
+        _locKeyConstants.TryGetValue(constantName, out var value) ? value : fallback;
+
     private int GetInt(string name, int fallback) =>
         _defaults.TryGetValue(name, out var value)
         && int.TryParse(Unquote(value), NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsed)
@@ -157,16 +170,18 @@ internal sealed class SourceFacts
             ? parsed
             : fallback;
 
-    private static IReadOnlyList<string> ParseLocKeys(string body, Report report)
+    private IReadOnlyList<string> ParseLocKeys(string body, Report report)
     {
         var keys = new SortedSet<string>(StringComparer.Ordinal);
 
         foreach (Match match in ConstPattern.Matches(body))
         {
+            var name = match.Groups[1].Value;
             var value = Unquote(match.Groups[2].Value.Trim());
             if (value.Length > 0)
             {
                 keys.Add(value);
+                _locKeyConstants[name] = value;
             }
         }
 
@@ -200,7 +215,8 @@ internal sealed class SourceFacts
         || key.StartsWith("Status.MWP.", StringComparison.Ordinal)
         || key.StartsWith("UI.MWP.", StringComparison.Ordinal)
         || key.StartsWith("Tooltip.MWP.", StringComparison.Ordinal)
-        || key.StartsWith("MWP.", StringComparison.Ordinal);
+        || key.StartsWith("MWP.", StringComparison.Ordinal)
+        || key.StartsWith("ToolGroups.MWP", StringComparison.Ordinal);
 
     private static IReadOnlyDictionary<string, TierExpectation> ParseTierCatalog(string text, Report report)
     {

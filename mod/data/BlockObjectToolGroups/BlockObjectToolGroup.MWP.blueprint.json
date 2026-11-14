@@ -1,0 +1,9 @@
+{
+  "BlockObjectToolGroupSpec": {
+    "Id": "MWP",
+    "Order": 46,
+    "NameLocKey": "ToolGroups.MWP",
+    "Icon": "Icons/MWPBasicFolktails",
+    "FallbackGroup": false
+  }
+}

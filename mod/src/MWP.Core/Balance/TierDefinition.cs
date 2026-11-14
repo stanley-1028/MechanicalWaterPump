@@ -112,8 +112,11 @@ namespace MWP.Core
         /// <summary>Blueprint id, for example "MWP.Pump.Basic" (REQ-BLD-01).</summary>
         public string BlueprintId => "MWP.Pump." + TierName;
 
-        /// <summary>Tool group order inside the Water tool group (60..63).</summary>
-        public int ToolOrder => 60 + (int)Tier;
+        /// <summary>
+        /// Order inside the mod's own MWP tool group (10/20/30/40, the vanilla group convention:
+        /// multiples of 10 leave room for future tiers).
+        /// </summary>
+        public int ToolOrder => 10 * ((int)Tier + 1);
 
         /// <summary>Approximate beavers fed per day, at 2.121 Water/day/beaver (documented conversion).</summary>
         public double BeaversFedPerDay => WaterPerHour * 24.0 / 2.121;

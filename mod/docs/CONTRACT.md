@@ -239,8 +239,8 @@ Spec 必須可被 `SpecTypeCache` 找到（public record、非抽象、繼承 `C
   > 讓泵體離水面一格、進水口 `Z=-1` 落在水面層）；`LocalAccess` 用區域座標（y=高度）。
 - `BlockObjectNavMeshSettingsSpec`：全空陣列/default
 - `BuildingAccessibleSpec`：`LocalAccess` 對齊取貨面
-- `PlaceableBlockObjectSpec`：`ToolGroupId="Water"`、`ToolOrder=60/61/62/63`、`ToolShape="Square"`、
-  `Layout="Single"`、`CustomPivot.HasCustomPivot=false`
+- `PlaceableBlockObjectSpec`：`ToolGroupId="MWP"`、`ToolOrder=10/20/30/40`（Basic/Intermediate/Advanced/Top）、
+  `ToolShape="Square"`、`Layout="Single"`、`CustomPivot.HasCustomPivot=false`（工具群組見 §4.1）
 - `LabeledEntitySpec`：`Building.MWP.Pump.<Tier>.DisplayName` / `.Description` / `Building.MWP.Pump.Flavor`；
   `Icon = "Icons/MWP<CamelTier><Faction>"`（見 §7）
 - `ConstructionSiteProgressVisualizerSpec`：`ProgressThresholds=[0.0]`
@@ -262,6 +262,31 @@ Spec 必須可被 `SpecTypeCache` 找到（public record、非抽象、繼承 `C
 
 `TemplateCollection`：`mod/data/TemplateCollections/TemplateCollection.Buildings.Folktails.blueprint.json`
 與 `.IronTeeth.blueprint.json`，`Blueprints#append` 列出該陣營 4 檔路徑。
+
+### 4.1 可收縮建造選單群組（`BlockObjectToolGroupSpec`）
+
+四檔不再塞進原版 `Water` 工具組，而是放進模組自己的**可收縮工具群組**：原版機制
+`BlockObjectToolGroups/BlockObjectToolGroup.MWP.blueprint.json`（spec-only，無 `TemplateSpec`）：
+
+```json
+{
+  "BlockObjectToolGroupSpec": {
+    "Id": "MWP",
+    "Order": 46,
+    "NameLocKey": "ToolGroups.MWP",
+    "Icon": "Icons/MWPBasicFolktails",
+    "FallbackGroup": false
+  }
+}
+```
+
+- 位置：`mod/data/BlockObjectToolGroups/`，由遊戲的 blueprint 掃描直接載入（不需加入 TemplateCollection）。
+- `Order=46`：原版 Water=45、Food=50，MWP 緊接 Water；`NameLocKey` 由三語 CSV 提供（`ToolGroups.MWP`）。
+- `Icon` 重用已出貨的 Mk I 圖示（`Icons/MWPBasicFolktails`，AssetRef<Sprite>），不需額外圖檔。
+- 行為：底欄顯示一個 MWP 圖示，點擊後展開四個檔位，再點其他群組即收合——與原版 Water/Food 等群組完全相同。
+- 驗證：`tools/validate` 的 `ValidateToolGroup` 會比對 `MwpDefaults.ToolGroupId/ToolGroupOrder/ToolGroupIcon`、
+  `MwpLocKeys.ToolGroupName` 與實際 JSON，並要求圖示檔存在；8 份藍圖的 `ToolGroupId`/`ToolOrder` 也逐一比對。
+
 
 ## 5. 執行期行為（Gameplay 必須照此實作）
 
@@ -331,6 +356,8 @@ ApiIndex 驗證實際 API 後實作；**若 8 小時內無法驗證，降級方�
 `mod/data/Localizations/{enUS,zhCN,zhTW}.csv`，格式 `ID,Text,Comment`（header 必須一致）。
 所有 key **必須**由 `MwpLocKeys` 產生（見 Core）；三語 key 集合完全相同、placeholder 相同。
 不得出現 raw key（REQ-UI-05）。zhTW 顯示名「機械飲水泵 Mk I–IV」，刻意與原版「機械水泵」區隔（REQ-UI-04）。
+key 命名空間沿用 `Building.MWP.*`／`Status.MWP.*`／`UI.MWP.*`／`Tooltip.MWP.*`／`MWP.*`；工具群組名
+使用原版慣例 `ToolGroups.MWP`（`MwpLocKeys.ToolGroupName`，建造選單群組名稱，非建築顯示名）。
 
 ## 9. 設定檔契約（`mod/data/MWP_Config.json`，schema 2）
 
@@ -380,13 +407,37 @@ ApiIndex 驗證實際 API 後實作；**若 8 小時內無法驗證，降級方�
 不是 int（見 §2）。面板內容（REQ-UI-01/02/03、REQ-MAINT-10）：
 
 1. 狀態列（最高優先狀態＋原因＋下一步提示）
-2. 實際產水（Water/h，一位小數）、供電率 %、需求/供給 hp、水質 %
-3. 庫存 目前/上限
+2. 實際產水（Water/h，一位小數）、水質 %、管道狀態（未安裝/閥門/直連/降級）
+3. 庫存 目前/上限、抽水深度（fallback：僅當原版庫存/深度 fragment 無法顯示時）
 4. 機況 %、下次維護（日）、所需材料、自動維護 toggle、立即維護按鈕；
    維護進行中顯示「維護中：{0}%」進度（資料來源 `PumpSnapshot.MaintenanceProgress` 0..1）；
    `PumpSnapshot.MaintenanceEnabled=false` 時隱藏機況/材料列（REQ-MAINT-13）
-5. 抽水深度（`UI.MWP.MaxDepth`，取 `TierCatalog` 的 MaxDepth；v0.2.2 起四檔皆 64＝等效不限，
-   原版深度 fragment 顯示 `Limit 64`）、管道狀態（未安裝/閥門/直連/降級）
+
+### 10.1 「原版化」面板組成（2026-11-13 UI 輪）
+
+面板**不自行發明外觀**：所有元素都是遊戲原版控制項＋原版 USS class，靠 `EntityPanel` 根節點已掛載的
+`CoreStyle`／`CommonStyle`／`EntityPanelCommonStyle`／`EntityPanelGameStyle` 上色；不載入 UXML/USS，
+不設定任何 inline 顏色/字級/尺寸。具體對照：
+
+| 區塊 | 原版控制項／class | 說明 |
+|---|---|---|
+| 卡片框 | `NineSliceVisualElement` + `entity-sub-panel` + `bg-sub-box--green`；硬警報改用 `bg-sub-box--red-striped` | 與 `MechanicalNodeFragment`／`DeteriorableFragment` 相同；紅條紋正是原版 `StatusListFragment` 的警報框 |
+| 狀態列 | `status-list-element` + `status-list-element__icon`（34 px 原版 sprite）+ `status-list-element__text` | 完全照 `StatusListElement.uxml`；狀態圖示用原版 sprite（`UI/Images/Game/ico-*`），文字底色沿用原版 `game-text-normal`＋原生 `game-text--red`／`text--yellow` 嚴重度色 |
+| 「下一步」提示 | `entity-fragment__explanation` + `bg-sub-box--blue` + `entity-panel__text text--centered` | 與 `TimerFragment` 的模式說明盒相同 |
+| 資訊列 | `entity-panel__row` + `inventory-row__image`（24 px 原版 sprite）+ `entity-panel__text` | 與原版 icon row 相同；sprite 以 `Resources.Load<Sprite>("UI/Images/...")` 取得，缺失時該列不顯示圖示、不丟例外 |
+| 機況條 | `Timberborn.CoreUI.ProgressBar` + `progress-bar` + 內嵌 `entity-panel__text` label | 與 `DeteriorableFragment` 相同 |
+| 維護進度條 | 同上 + `progress-bar--green` | 與 `TimerFragment` 的倒數條相同 |
+| 自動維護 | `Toggle` + `game-toggle` + `entity-panel__text` + `entity-panel__toggle` | 與 `HaulCandidateFragment`／`FillValveFragment` 相同 |
+| 按鈕 | 從原版 UXML 範本取出的真實 `NineSliceButton`，套 `entity-panel__text entity-fragment__button`；暫停紅／恢復綠、立即維護綠 | 遊戲的九宮格按鈕型別是 internal，故借 `Game/EntityPanel/DemolishableFragment` 的原版按鈕再換色與文字；取不到時退回同 class 的 `Button` |
+| 標題 | 不使用自創標題列／常駐版面文字 | 原版 entity-panel fragment 沒有自訂標題列；建築名稱/圖示/說明仍由原版 header 與描述區顯示（REQ-UI-04） |
+
+原版 fragment 已自動提供的資訊**不重複**：動力列（`MechanicalNodeFragment`）、內部水庫存
+（`SimpleOutputInventoryFragment` + `SimpleOutputInventoryFragmentEnabler`）、抽水深度控制
+（`WaterInputPipeDepthFragment`）。電源/庫存/深度不會出現在本模組面板中，只有 fallback 列
+（`ShowInventoryRow`／`ShowDepthRow`）在原版 fragment 缺席時補位。
+
+建置選單另有 `BlockObjectToolGroupSpec` 群組（見 §4.1）：「GUI 原版化」＝使用原版可收縮工具群組，
+不自繪選單或覆寫原版 UI。
 
 刷新 ≤ 4 Hz、髒標記、面板關閉不刷新（REQ-PERF-04）。按鈕命令需只影響當前泵（REQ-UI-07）。
 UI 不得在 `Tick`/`Update` 每幀重建元素或配置字串。

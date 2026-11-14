@@ -14,6 +14,9 @@ internal sealed class DataChecks
     /// <summary>Prefix of mod-owned model paths (T7: the Blender-exported .timbermesh assets).</summary>
     private const string ModModelPrefix = "Buildings/Water/MWP/";
 
+    /// <summary>Spec-only blueprint that defines the mod's own collapsible bottom-bar tool group.</summary>
+    private const string ToolGroupRelativePath = "BlockObjectToolGroups/BlockObjectToolGroup.MWP.blueprint.json";
+
     /// <summary>CONTRACT section 6 pipe segments per faction.</summary>
     private static readonly Dictionary<string, string> PipeTable = new(StringComparer.Ordinal)
     {
@@ -55,6 +58,7 @@ internal sealed class DataChecks
         ValidateManifest();
         ValidateBlueprintSet();
         ValidateTemplateCollections();
+        ValidateToolGroup();
         ValidateIcons();
     }
 
@@ -173,7 +177,8 @@ internal sealed class DataChecks
             var isBlueprint = expected.Contains(fileName, StringComparer.Ordinal)
                               && relative.StartsWith("Buildings/Water/MWP/", StringComparison.Ordinal);
             var isCollection = relative.StartsWith("TemplateCollections/", StringComparison.Ordinal);
-            if (!isBlueprint && !isCollection)
+            var isToolGroup = relative == ToolGroupRelativePath;
+            if (!isBlueprint && !isCollection && !isToolGroup)
             {
                 _report.Error("blueprint", relative + ": unexpected blueprint file in data/");
             }
@@ -453,7 +458,7 @@ internal sealed class DataChecks
             "PlaceableBlockObjectSpec.ToolGroupId must be '" + _facts.ToolGroupId + "', found " + Show(group));
 
         var order = IntOf(spec, "ToolOrder");
-        var wantedOrder = 60 + Array.IndexOf(SourceFacts.TierTokens, tier);
+        var wantedOrder = 10 * (Array.IndexOf(SourceFacts.TierTokens, tier) + 1);
         Check(order == wantedOrder, file,
             "PlaceableBlockObjectSpec.ToolOrder must be " + wantedOrder + ", found " + Show(order));
 
@@ -986,6 +991,70 @@ internal sealed class DataChecks
             if (!known)
             {
                 _report.Error("collection", "TemplateCollections/" + fileName + ": unexpected template collection");
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------ tool group
+    /// <summary>
+    /// Validates the spec-only <c>BlockObjectToolGroupSpec</c> blueprint that puts the four tiers in
+    /// their own collapsible bottom-bar group (the vanilla mechanism: one icon that expands to the
+    /// group's tools). Every value is read from the Core constants (<see cref="SourceFacts"/>), so
+    /// the JSON and the code cannot drift.
+    /// </summary>
+    private void ValidateToolGroup()
+    {
+        var path = Path.Combine(_dataDir, ToolGroupRelativePath.Replace('/', Path.DirectorySeparatorChar));
+        if (!File.Exists(path))
+        {
+            _report.Error("toolgroup", ToolGroupRelativePath + ": missing (the mod's collapsible build-menu group)");
+            return;
+        }
+
+        JsonDocument document;
+        try
+        {
+            document = JsonDocument.Parse(File.ReadAllText(path));
+        }
+        catch (JsonException ex)
+        {
+            _report.Error("toolgroup", ToolGroupRelativePath + ": invalid JSON: " + ex.Message);
+            return;
+        }
+
+        using (document)
+        {
+            var root = document.RootElement;
+            if (!TrySpec(root, "BlockObjectToolGroupSpec", ToolGroupRelativePath, out var spec))
+            {
+                return;
+            }
+
+            Check(StrOf(spec, "Id") == _facts.ToolGroupId, ToolGroupRelativePath,
+                "BlockObjectToolGroupSpec.Id must be '" + _facts.ToolGroupId + "' (MwpDefaults.ToolGroupId), found "
+                + Show(StrOf(spec, "Id")));
+            Check(IntOf(spec, "Order") == _facts.ToolGroupOrder, ToolGroupRelativePath,
+                "BlockObjectToolGroupSpec.Order must be " + _facts.ToolGroupOrder
+                + " (MwpDefaults.ToolGroupOrder), found " + Show(IntOf(spec, "Order")));
+            Check(StrOf(spec, "NameLocKey") == _facts.ToolGroupNameLocKey, ToolGroupRelativePath,
+                "BlockObjectToolGroupSpec.NameLocKey must be '" + _facts.ToolGroupNameLocKey
+                + "' (MwpLocKeys.ToolGroupName), found " + Show(StrOf(spec, "NameLocKey")));
+            Check(StrOf(spec, "Icon") == _facts.ToolGroupIcon, ToolGroupRelativePath,
+                "BlockObjectToolGroupSpec.Icon must be '" + _facts.ToolGroupIcon
+                + "' (MwpDefaults.ToolGroupIcon), found " + Show(StrOf(spec, "Icon")));
+            Check(BoolOf(spec, "FallbackGroup") == false, ToolGroupRelativePath,
+                "BlockObjectToolGroupSpec.FallbackGroup must be false (MWP is a real group, not the fallback)");
+
+            var icon = StrOf(spec, "Icon");
+            if (!string.IsNullOrEmpty(icon) && !icon.StartsWith("Sprites/", StringComparison.Ordinal))
+            {
+                var iconPath = Path.Combine(_dataDir, icon.Replace('/', Path.DirectorySeparatorChar) + ".png");
+                Check(File.Exists(iconPath), ToolGroupRelativePath,
+                    "BlockObjectToolGroupSpec.Icon '" + icon + "' must resolve to a shipped sprite (Icons/... .png)");
+                if (File.Exists(iconPath))
+                {
+                    ValidatePng(iconPath, "Icons/" + Path.GetFileName(iconPath));
+                }
             }
         }
     }

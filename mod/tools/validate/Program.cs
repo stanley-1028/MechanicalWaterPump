@@ -97,7 +97,8 @@ internal static class Program
             .GetFiles(dataDir, "*.blueprint.json", SearchOption.AllDirectories)
             .OrderBy(path => path, StringComparer.OrdinalIgnoreCase)
             .ToList();
-        Console.WriteLine("  blueprints      : " + blueprintFiles.Count + " (8 buildings + 2 collections expected)");
+        Console.WriteLine("  blueprints      : " + blueprintFiles.Count
+                          + " (8 buildings + 2 collections + 1 tool group expected)");
 
         new DataChecks(dataDir, modRoot, facts, game, report).Validate();
 
