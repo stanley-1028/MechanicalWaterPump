@@ -239,7 +239,7 @@ Spec 必須可被 `SpecTypeCache` 找到（public record、非抽象、繼承 `C
   > 讓泵體離水面一格、進水口 `Z=-1` 落在水面層）；`LocalAccess` 用區域座標（y=高度）。
 - `BlockObjectNavMeshSettingsSpec`：全空陣列/default
 - `BuildingAccessibleSpec`：`LocalAccess` 對齊取貨面
-- `PlaceableBlockObjectSpec`：`ToolGroupId="MWP"`、`ToolOrder=10/20/30/40`（Basic/Intermediate/Advanced/Top）、
+- `PlaceableBlockObjectSpec`：`ToolGroupId="Water"`、`ToolOrder=53/54/55/56`（Basic/Intermediate/Advanced/Top）、
   `ToolShape="Square"`、`Layout="Single"`、`CustomPivot.HasCustomPivot=false`（工具群組見 §4.1）
 - `LabeledEntitySpec`：`Building.MWP.Pump.<Tier>.DisplayName` / `.Description` / `Building.MWP.Pump.Flavor`；
   `Icon = "Icons/MWP<CamelTier><Faction>"`（見 §7）
@@ -263,29 +263,22 @@ Spec 必須可被 `SpecTypeCache` 找到（public record、非抽象、繼承 `C
 `TemplateCollection`：`mod/data/TemplateCollections/TemplateCollection.Buildings.Folktails.blueprint.json`
 與 `.IronTeeth.blueprint.json`，`Blueprints#append` 列出該陣營 4 檔路徑。
 
-### 4.1 可收縮建造選單群組（`BlockObjectToolGroupSpec`）
+### 4.1 建造選單：整合進原版「水源（Water）」群組
 
-四檔不再塞進原版 `Water` 工具組，而是放進模組自己的**可收縮工具群組**：原版機制
-`BlockObjectToolGroups/BlockObjectToolGroup.MWP.blueprint.json`（spec-only，無 `TemplateSpec`）：
+四檔使用**原版 `Water` 工具群組**（`PlaceableBlockObjectSpec.ToolGroupId="Water"`），不另外定義
+`BlockObjectToolGroupSpec`。原版 Water 群組本身就是可收縮群組：底欄一個水滴圖示，點擊展開所有
+水源建築——四檔因此與原版水泵、機械泵並列，收合／展開行為完全由原版實作。
 
-```json
-{
-  "BlockObjectToolGroupSpec": {
-    "Id": "MWP",
-    "Order": 46,
-    "NameLocKey": "ToolGroups.MWP",
-    "Icon": "Icons/MWPBasicFolktails",
-    "FallbackGroup": false
-  }
-}
-```
-
-- 位置：`mod/data/BlockObjectToolGroups/`，由遊戲的 blueprint 掃描直接載入（不需加入 TemplateCollection）。
-- `Order=46`：原版 Water=45、Food=50，MWP 緊接 Water；`NameLocKey` 由三語 CSV 提供（`ToolGroups.MWP`）。
-- `Icon` 重用已出貨的 Mk I 圖示（`Icons/MWPBasicFolktails`，AssetRef<Sprite>），不需額外圖檔。
-- 行為：底欄顯示一個 MWP 圖示，點擊後展開四個檔位，再點其他群組即收合——與原版 Water/Food 等群組完全相同。
-- 驗證：`tools/validate` 的 `ValidateToolGroup` 會比對 `MwpDefaults.ToolGroupId/ToolGroupOrder/ToolGroupIcon`、
-  `MwpLocKeys.ToolGroupName` 與實際 JSON，並要求圖示檔存在；8 份藍圖的 `ToolGroupId`/`ToolOrder` 也逐一比對。
+- `ToolOrder=53/54/55/56`（Basic/Intermediate/Advanced/Top）：原版同群組順序為
+  `WaterPump` 10、`LargeWaterPump`/`DeepWaterPump` 11、`Discharge` 20、
+  `MechanicalPump` 50、`DeepMechanicalPump` 51、`CompactMechanicalPump` 52、`Centrifuge` 60、
+  `Badwater*` 80+。53–56 讓四檔**緊接原版機械泵之後**、離心機之前。注意：若玩家安裝了其他
+  水源 mod 且它們也用 53–56，遊戲會依 display-name loc key 排序，四檔可能與那些建築交錯；
+  四檔本身順序仍固定為 Mk I→IV，且都留在 Water 群組內（2026-11-15 實機已驗證）。
+- 不新增 `data/BlockObjectToolGroups/`、不需要群組圖示或 `ToolGroups.MWP` 名稱 key；面板「下一步」
+  與其他 UI 文字不受影響（§10.1）。
+- 驗證：`tools/validate` 逐檔比對 8 份藍圖的 `ToolGroupId=="Water"` 與 `ToolOrder==53+index`
+  （`ValidatePlaceableSpec`）；`gen_blueprints.py` 產生相同值。
 
 
 ## 5. 執行期行為（Gameplay 必須照此實作）
@@ -356,8 +349,8 @@ ApiIndex 驗證實際 API 後實作；**若 8 小時內無法驗證，降級方�
 `mod/data/Localizations/{enUS,zhCN,zhTW}.csv`，格式 `ID,Text,Comment`（header 必須一致）。
 所有 key **必須**由 `MwpLocKeys` 產生（見 Core）；三語 key 集合完全相同、placeholder 相同。
 不得出現 raw key（REQ-UI-05）。zhTW 顯示名「機械飲水泵 Mk I–IV」，刻意與原版「機械水泵」區隔（REQ-UI-04）。
-key 命名空間沿用 `Building.MWP.*`／`Status.MWP.*`／`UI.MWP.*`／`Tooltip.MWP.*`／`MWP.*`；工具群組名
-使用原版慣例 `ToolGroups.MWP`（`MwpLocKeys.ToolGroupName`，建造選單群組名稱，非建築顯示名）。
+key 命名空間沿用 `Building.MWP.*`／`Status.MWP.*`／`UI.MWP.*`／`Tooltip.MWP.*`／`MWP.*`。
+四檔已整合進原版 `Water` 建造群組，因此不再需要 `ToolGroups.MWP` 這類群組名稱 key。
 
 ## 9. 設定檔契約（`mod/data/MWP_Config.json`，schema 2）
 
@@ -436,8 +429,8 @@ key 命名空間沿用 `Building.MWP.*`／`Status.MWP.*`／`UI.MWP.*`／`Tooltip
 （`WaterInputPipeDepthFragment`）。電源/庫存/深度不會出現在本模組面板中，只有 fallback 列
 （`ShowInventoryRow`／`ShowDepthRow`）在原版 fragment 缺席時補位。
 
-建置選單另有 `BlockObjectToolGroupSpec` 群組（見 §4.1）：「GUI 原版化」＝使用原版可收縮工具群組，
-不自繪選單或覆寫原版 UI。
+建置選單整合進原版 `Water` 群組（見 §4.1）：「GUI 原版化」＝直接使用原版可收縮水源群組，
+不自繪選單、不新增群組、不覆寫原版 UI。
 
 刷新 ≤ 4 Hz、髒標記、面板關閉不刷新（REQ-PERF-04）。按鈕命令需只影響當前泵（REQ-UI-07）。
 UI 不得在 `Tick`/`Update` 每幀重建元素或配置字串。

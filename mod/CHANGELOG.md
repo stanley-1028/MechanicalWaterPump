@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.2.5 — 2026-11-15
+
+### Changed
+- **建造選單整合回原版「水源（Water）」群組（GUI）**：依使用者要求，取消 0.2.4 的專屬 `MWP`
+  底欄群組，四檔回到原版 `Water` 建造選單群組內（該群組本身就是原版可收縮群組：底欄一個
+  水滴圖示，點擊展開所有水源建築）。8 份藍圖 `ToolGroupId` 改回 `Water`、`ToolOrder`
+  改 **53/54/55/56**——緊接原版機械泵（`MechanicalPump` 50–52）之後、離心機（60）之前，
+  因此展開水源群組時四檔會排在原版機械泵旁邊。spec-only 群組藍圖
+  `BlockObjectToolGroups/BlockObjectToolGroup.MWP.blueprint.json` 與 `ToolGroups.MWP`
+  三語 key 已移除；`tools/validate` 的 `ValidateToolGroup` 同步移除、`ToolGroupId` 期望值
+  回到 `Water`、`ToolOrder` 期望值改 53+index。
+- **面板與平衡不變**：0.2.4 的原版化實體面板（九宮格子面板、狀態列、資訊列、進度條、開關、
+  原版九宮格按鈕）與所有產量／維護數值完全保留。
+
+### Notes
+- 版本 0.2.5；存檔 schema 2、config schema 2 不變（0.2.3／0.2.4 存檔可直接載入）。群組歸屬由
+  藍圖在載入時決定、不寫存檔，舊存檔的既有泵會直接出現在水源群組內。
+- 離線驗證：`build.ps1` exit 0、4 組件 0 warning、單元測試 `PASS 213/213`、
+  `VALIDATION PASSED`（42 鍵、10 藍圖）。
+- **實機驗證（2026-11-15）**：載入回報存檔副本（`Load time 120,626 ms`、`MWP 0.2.5 ready`、
+  全 log 0 Exception／0 MWP Error／無工具群組警告）。點擊底欄原版水滴圖示展開 `Water` 群組後，
+  在本機以合成滑鼠 hover 取得四個原版工具提示：**机械饮水泵 Mk I（100 馬力）／Mk II（200 馬力）／
+  Mk III（500 馬力）／Mk IV（700 馬力）**，順序 Mk I→IV，全部位於 `Water` 群組內；
+  沒有另外的 MWP 群組圖示。截圖：`docs/evidence/ui-0.2.5-water-group-expanded.png`、
+  `ui-0.2.5-water-group-row-annotated.png`、`ui-0.2.5-water-tiers-tooltips.png`；
+  完整紀錄：`docs/evidence/ui-in-game-2026-11-15-checks.txt` 與 `ui-in-game-2026-11-15-Player.log`。
+  註：本機安裝了大量工作坊 mod，其他水源 mod 也使用 53–56 訂單，因此四檔在該存檔中與它們交錯排列
+  （順序仍為 Mk I→IV）；純原版環境會緊接原版機械泵連續排列。
+
 ## 0.2.4 — 2026-11-13
 
 ### Changed

@@ -1,0 +1,45 @@
+MWP 0.2.5 - build / validation record (2026-11-15)
+==================================================
+
+Command
+-------
+powershell -NoProfile -ExecutionPolicy Bypass -File mod\build.ps1 -Clean
+
+Result: exit 0
+
+Build
+-----
+4 assemblies built with 0 warnings / 0 errors:
+  MWP.Core, MWP.Gameplay, MWP.Integration, MWP.UI
+(dotnet build -c Release -m:1, one invocation per project)
+
+Unit tests
+----------
+dotnet run --project mod/tests/MWP.Tests -c Release -m:1
+PASS 213/213
+
+Data / assembly validation
+--------------------------
+dotnet run --project mod/tools/validate/validate.csproj -c Release -m:1 -- mod/data
+  --managed <Timberborn>\Timberborn_Data\Managed
+VALIDATION PASSED
+  507 spec types, 42 loc keys (MwpLocKeys), 10 blueprints (8 buildings + 2 TemplateCollections),
+  1067 vanilla blueprints indexed from Blueprints.zip
+  4 pre-existing game-type AddDecorator WARN lines (EmptyOutputWorkplaceBehavior,
+  SimpleOutputInventoryHaulBehaviorProvider, HaulCandidate, SimpleOutputInventoryFragmentEnabler) -
+  not errors, documented since 0.1.x.
+
+Staged package
+--------------
+mod/build/MWP : 51 files, 1,279,337 bytes (1,249 KB)
+  4 DLL + 10 blueprints + 16 .timbermesh + 3 localization CSVs + MWP_Config.json + manifest.json
+  + 8 icons (with .png.meta.json); manifest Version 0.2.5.
+No data/BlockObjectToolGroups/ directory exists any more (the 0.2.4 MWP group blueprint was removed;
+the four tiers now point at ToolGroupId "Water").
+
+Raw console note
+----------------
+The harness console re-encoded the localized dotnet/MSBuild output lossily, so this record lists the
+exact outputs of the final run instead of a raw transcript; the raw scratch captures remain under
+.tmp/build-0.2.5*.log. In-game verification of this build: docs/evidence/ui-in-game-2026-11-15-*.txt
+and the ui-0.2.5-water-*.png screenshots.

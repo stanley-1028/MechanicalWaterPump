@@ -103,17 +103,17 @@ Maintenance card (hidden completely when `PumpSnapshot.MaintenanceEnabled` is fa
 Buttons send the selected pump's entity id only (REQ-UI-07); the panel never touches another
 pump's state.
 
-## Build menu: the mod's own collapsible tool group
+## Build menu: integrated into the vanilla Water group
 
-The four tiers are not appended to the vanilla Water group anymore; they live in their own
-collapsible bottom-bar group (the game collapses a group into one icon and expands it on click,
-exactly like the vanilla Water/Food groups). This is data, not UI code:
-`mod/data/BlockObjectToolGroups/BlockObjectToolGroup.MWP.blueprint.json`
-(`BlockObjectToolGroupSpec`: `Id="MWP"`, `Order=46`, `NameLocKey="ToolGroups.MWP"`,
-`Icon="Icons/MWPBasicFolktails"`), plus `ToolGroupId="MWP"` / `ToolOrder=10/20/30/40` in the eight
-building blueprints. The validator cross-checks all of it against the Core constants
-(`MwpDefaults.ToolGroupId/ToolGroupOrder/ToolGroupIcon`, `MwpLocKeys.ToolGroupName`). No UGUI/IMGUI
-code and no vanilla menu override is involved.
+The four tiers are not in a dedicated bottom-bar group: they are integrated into the **vanilla
+`Water` build-menu group** (the game's own collapsible water-source group — one water-drop icon in
+the bottom bar that expands to every water building). This is plain data, not UI code:
+`PlaceableBlockObjectSpec.ToolGroupId = "Water"` and `ToolOrder = 53/54/55/56` in the eight
+building blueprints, which places them right after the vanilla mechanical pumps (50-52) and before
+the centrifuge (60). No mod group blueprint, group icon or group-name localization key exists. The
+validator cross-checks every blueprint's group/order against the Core constants
+(`MwpDefaults.ToolGroupId`, `TierDefinition.ToolOrder`). No UGUI/IMGUI code and no vanilla menu
+override is involved.
 
 ## Refresh and allocation behaviour (REQ-PERF-04, §20.3.3)
 
@@ -157,15 +157,15 @@ with one fixed argument-type list, so the wrapper never re-parameterises a key.
 
 ## In-game verification checklist (screenshots wanted)
 
-> 2026-11-14 實機回合：世界成功載入、`MWP 0.2.4 ready`、log 0 Exception／0 MWP Error，底欄的
-> 收合 MWP 群組圖示已在截圖中確認（`docs/evidence/ui-0.2.4-bottombar.png` /
-> `ui-0.2.4-mwp-group-zoom.png`，位於原版 Water 與 Food 之間）。本機無法合成滑鼠／鍵盤輸入
-> （`OpenInputDesktop` 拒絕），所以下列需要點擊的項目（展開群組、選取水泵看面板）仍待人工；
-> 面板的原版 class／sprite 組成已逐項離線對照 `docs/api/ui/panel-vanilla-facts.md`。
+> 0.2.5 實機回合（2026-11-15）：底欄原版水源（Water）群組展開後，四檔的原生 tooltip 顯示
+> 「机械饮水泵 Mk I–IV」，截圖見 `docs/evidence/ui-0.2.5-water-group-expanded.png`、
+> `ui-0.2.5-water-group-row-annotated.png`、`ui-0.2.5-water-tiers-tooltips.png`。面板的原版
+> class／sprite 組成見 `docs/api/ui/panel-vanilla-facts.md`。
 
-1. Bottom build bar: one **MWP** group icon (Mk I pump render, order 46, next to Water). Click it:
-   it expands to the four tiers (Mk I–IV, orders 10/20/30/40); click another group and it
-   collapses again — identical behaviour to the vanilla Water group.
+1. Bottom build bar: the vanilla **Water** (water-drop) group. Click it: it expands to the game's
+   water buildings plus the four MWP tiers (Mk I–IV, orders 53–56) right after the vanilla
+   mechanical pumps; click another group and it collapses again — the vanilla group behaviour,
+   no mod group of its own.
 2. Select a pump: the panel uses the same nine-slice sub-panel background, 13 px text, native
    row/status layout, native button skin and native toggle as other buildings; compare side by
    side with a vanilla mechanical building panel.
@@ -181,6 +181,5 @@ with one fixed argument-type list, so the wrapper never re-parameterises a key.
    toggle the auto-maintenance toggle and verify the native checkmark; with
    `maintenance.enabled = false` the whole maintenance card disappears.
 8. Pause/resume: the button flips between red "Pause" and green "Resume", only this pump stops.
-9. Switch language (zhTW/zhCN/enUS): every row translates, including the MWP group name in the
-   build bar; no raw keys, and the log contains no
+9. Switch language (zhTW/zhCN/enUS): every row translates; no raw keys, and the log contains no
    `TextLocalizationWrapper parameter types have changed` warning.

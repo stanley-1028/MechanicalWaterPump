@@ -98,7 +98,7 @@ internal static class Program
             .OrderBy(path => path, StringComparer.OrdinalIgnoreCase)
             .ToList();
         Console.WriteLine("  blueprints      : " + blueprintFiles.Count
-                          + " (8 buildings + 2 collections + 1 tool group expected)");
+                          + " (8 buildings + 2 collections expected)");
 
         new DataChecks(dataDir, modRoot, facts, game, report).Validate();
 

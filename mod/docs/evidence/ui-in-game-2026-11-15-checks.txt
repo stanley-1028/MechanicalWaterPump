@@ -1,0 +1,67 @@
+MWP 0.2.5 - in-game verification: four tiers inside the vanilla Water build-menu group
+======================================================================================
+
+Date / build
+------------
+Game        : Timberborn 1.1.2.8-ffc2de0-sw
+Mod         : MechanicalWaterPump 0.2.5 (local, Documents\Timberborn\Mods)
+Save (copy) : Documents\Timberborn\Saves\MWPDiag\1.timber (Folktails, schema 2)
+Launch      : Timberborn.exe -skipModManager -saveName "1" -settlementName "MWPDiag"
+              -logFile .tmp\ui-task\Player.log
+Mod set     : local MWP 0.2.5 enabled. The test machine also has many Steam Workshop mods
+              (that is the owner's normal install); the local SteamEngineExpansion and the
+              Workshop copy of MechanicalWaterPump were disabled for this round because having a
+              local copy and a Workshop copy of the same mod Id enabled crashes the game at startup
+              (TimberUI ModUpdateService duplicate-key exception). All of that was restored after.
+
+Load result
+-----------
+Load time: 120626ms (scene index: 2)
+[MWP/Info][MWP/Info/Config] MWP 0.2.5 config=...\Mods\MechanicalWaterPump\MWP_Config.json
+                            schema=2 tiers=4 maintenance=on modPath=...\Mods\MechanicalWaterPump
+[MWP/Info][MWP/Info/Startup] MWP 0.2.5 ready; tiers=4; maintenance=on; legacyRates=off
+Log grep: no "Exception", no "MWP/Error", no "unknown BlockObjectToolGroupSpec",
+          no "Failed to load asset", no "No localization for ToolGroups". None.
+The save loaded without the "load issues" dialog (Workshop HDBF + Workshop SteamEngineExpansion
+supply the other buildings this save references).
+
+In-game UI result (screenshots in this folder)
+----------------------------------------------
+1. Bottom build bar: the vanilla Water group button is the water-drop icon; clicking it opens the
+   vanilla collapsible group (one row of water-source tools). No extra mod group button exists.
+2. The four MWP tiers are inside that Water group row. Hovering them in-game (injected mouse
+   movement + screenshot) gives:
+       "机械饮水泵 Mk I"   100 马力, unlock 20 science
+       "机械饮水泵 Mk II"  200 马力, unlock 400 science
+       "机械饮水泵 Mk III" 500 马力, unlock 700 science
+       "机械饮水泵 Mk IV"  700 马力, unlock 1.5k science
+   i.e. the same names/stats as the mod's own tiers, ordered Mk I < Mk II < Mk III < Mk IV.
+3. Evidence files:
+       ui-0.2.5-water-group-expanded.png      full 2560x1440 frame: Water group expanded, Mk I tooltip
+       ui-0.2.5-water-group-zoom.png          bottom-bar crop with the expanded row + Mk I tooltip
+       ui-0.2.5-water-group-row-annotated.png expanded Water row with the four tiers boxed/labelled
+       ui-0.2.5-water-tiers-tooltips.png      four hover tooltips (Mk I-IV) side by side
+       ui-in-game-2026-11-15-Player.log       the full Player.log of this round
+
+Ordering note (honest)
+----------------------
+ToolOrder 53/54/55/56 places our tiers right after the vanilla mechanical pumps (50-52) and before
+the centrifuge (60). On this heavily modded install some other water mods also use 53-56, so their
+buildings interleave between our Mk I/II/III/IV icons; all four are nevertheless in the vanilla
+Water group, in Mk I -> Mk IV order. On a vanilla-only install they appear consecutively right
+after the vanilla mechanical pumps.
+
+Synthetic input note (update of the 0.2.4 finding)
+-------------------------------------------------
+The 0.2.4 round could not click because the game was running in the DSH sandbox (low-integrity /
+restricted desktop) and OpenInputDesktop was denied. In this round the game ran with normal user
+integrity (danger-full-access session) and synthetic input works: SetCursorPos + mouse_event
+(click) and injected relative mouse moves (hover) reach the game window while it is foreground.
+That is how the Water group was opened and the tooltips were captured.
+
+Cleanup
+-------
+Game stopped; local mods moved back to Documents\Timberborn\Mods; ModEnabled flags and the
+Workshop/local duplicate handling restored (local SteamEngineExpansion and the Workshop copy of
+MechanicalWaterPump stay disabled to avoid the duplicate-Id startup crash; local MWP 0.2.5 stays
+enabled). The owner's TreePlanterTray screenshot harness was paused for the round and can resume.

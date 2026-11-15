@@ -113,10 +113,11 @@ namespace MWP.Core
         public string BlueprintId => "MWP.Pump." + TierName;
 
         /// <summary>
-        /// Order inside the mod's own MWP tool group (10/20/30/40, the vanilla group convention:
-        /// multiples of 10 leave room for future tiers).
+        /// Order inside the vanilla "Water" tool group. 53/54/55/56 places the four tiers right
+        /// after the game's own mechanical pumps (50-52) and before the centrifuge (60), so the
+        /// water-source build menu shows them next to the buildings they replace.
         /// </summary>
-        public int ToolOrder => 10 * ((int)Tier + 1);
+        public int ToolOrder => 53 + (int)Tier;
 
         /// <summary>Approximate beavers fed per day, at 2.121 Water/day/beaver (documented conversion).</summary>
         public double BeaversFedPerDay => WaterPerHour * 24.0 / 2.121;
