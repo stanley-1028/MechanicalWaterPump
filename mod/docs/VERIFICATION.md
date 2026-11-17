@@ -3,7 +3,7 @@
 > 本檔記錄**實際跑過**的驗證與其輸出，以及**無法離線執行**、必須遊戲內人工驗收的項目。
 > 原則：沒有輸出證據的項目不得標 Pass。
 >
-> 最後更新：2026-11-15（v0.2.5 建造選單整合回原版 Water 群組：離線全綠＋實機展開水源群組截圖與四檔 tooltip 通過）｜證據：`docs/evidence/build-0.2.5.log`、`docs/evidence/ui-in-game-2026-11-15-checks.txt`、`docs/evidence/ui-in-game-2026-11-15-Player.log`、`docs/evidence/ui-0.2.5-water-group-expanded.png`、`ui-0.2.5-water-group-row-annotated.png`、`ui-0.2.5-water-tiers-tooltips.png`、`docs/evidence/build-0.2.4.log`、`ui-in-game-2026-11-14-checks.txt`
+> 最後更新：2026-11-17（v0.2.5 定時離線回歸：4 組件 0 warning、`PASS 213/213`、`VALIDATION PASSED`、staged 51 檔／1,279,337 bytes＝與 0.2.5 一致無漂移；上一次 2026-11-16 同為定時回歸，2026-11-15 為建造選單整合回原版 Water 群組＋實機展開與四檔 tooltip）｜證據：`docs/evidence/build-2026-11-17.log`、`docs/evidence/build-2026-11-16.log`、`docs/evidence/build-0.2.5.log`、`docs/evidence/ui-in-game-2026-11-15-checks.txt`、`docs/evidence/ui-in-game-2026-11-15-Player.log`、`docs/evidence/ui-0.2.5-water-group-expanded.png`、`ui-0.2.5-water-group-row-annotated.png`、`ui-0.2.5-water-tiers-tooltips.png`、`docs/evidence/build-0.2.4.log`、`ui-in-game-2026-11-14-checks.txt`
 > 歷史（0.2.3 定時回歸：`docs/evidence/build-2026-11-10.log`）；0.2.2 建置：`docs/evidence/build-0.2.2.log`；0.2.2 定時回歸：`docs/evidence/build-2026-11-09.log`；0.2.1 搬運實機：A16／A18；v0.2.0 回歸：`docs/evidence/build-2026-11-06.log`；同日 08:00 回歸：`docs/evidence/build-2026-11-06-0800.log`；前次回歸：`docs/evidence/build-2026-11-05.log`；v0.2.0 原始建置：`docs/evidence/build-0.2.0.log`；art pass 建置：`docs/evidence/build-art-0.2.0.log`
 
 ## 1. 自動化驗證（可重跑）
@@ -74,6 +74,16 @@
 > 過程中 `dotnet run` 啟動**剛編譯**的 apphost 屢次被 Windows 拒絕（`Unhandled exception: An error occurred trying to start process ... 拒绝访问`，Win32 error 5；單元測試步驟 1 次、validator 步驟 3 次；同一指令立刻重跑即成功）→ AV/Defender 即時掃描競態，非模組問題。
 > **建置工具修正（本次唯一檔案變更）**：`mod/build.ps1` 的 `Invoke-Dotnet` 改為擷取 dotnet 輸出、在該呼叫期間以 `$ErrorActionPreference='Continue'` 執行（否則 stderr 變成 ErrorRecord 會在重試判斷前就終止腳本），並**僅針對該特定 apphost 啟動失敗訊息**重試 5 次（間隔 2 秒）；其他任何失敗仍照原樣 `throw`。重試路徑另以 fake-dotnet 測試驗證（失敗一次→自動重試成功；持續失敗→5 次後照原樣拋錯）；本次最終建置即由重試在 validator 第 1 次失敗後自動恢復。
 > 完整輸出：`docs/evidence/build-2026-11-10.log`（無 BOM、104 行；含該次自動重試的 WARNING 行）。
+>
+> 2026-11-16 回歸重跑（08:00–08:03，Asia/Macau，定時任務自動觸發）：`powershell -NoProfile -ExecutionPolicy Bypass -File mod\build.ps1 -Clean`
+> → exit 0；A1 4 次「0 个警告 / 0 个错误」、A2 `PASS 213/213`、A3 `507 spec types / 42 loc keys / 1067 vanilla blueprints / 10 blueprints` ＋ 4 個既有 game-type `AddDecorator` WARN（非錯誤）／`VALIDATION PASSED`、A4 51 檔 / 1,249 KB（1,279,337 bytes）、manifest 0.2.5。
+> 本次未改程式、資料或平衡值（工作樹 `a1ac24f` 乾淨）；套件 51 檔 / 1,279,337 bytes 與 0.2.5 記錄完全一致，內容未漂移，故 A25 列證據沿用、只更新本日期與本段。
+> 完整輸出：`docs/evidence/build-2026-11-16.log`（UTF-8 無 BOM、78 行）。
+>
+> 2026-11-17 回歸重跑（08:00–08:02，Asia/Macau，定時任務自動觸發）：`powershell -NoProfile -ExecutionPolicy Bypass -File mod\build.ps1 -Clean`
+> → exit 0；A1 4 次「0 个警告 / 0 个错误」、A2 `PASS 213/213`、A3 `507 spec types / 42 loc keys / 1067 vanilla blueprints / 10 blueprints` ＋ 4 個既有 game-type `AddDecorator` WARN（非錯誤）／`VALIDATION PASSED`、A4 51 檔 / 1,249 KB（1,279,337 bytes）、manifest 0.2.5。
+> 本次未改程式、資料或平衡值（工作樹 `a1ac24f`，僅本文件有前一輪回歸留下的未提交修改）；完整輸出與 2026-11-16 逐行比對**僅建置耗時秒數不同**，staged 套件 51 檔 / 1,279,337 bytes 與 0.2.5 記錄完全一致，內容未漂移，故結構表 A1–A4 數值不變、A25 列證據沿用，只更新本日期與本段。
+> 完整輸出：`docs/evidence/build-2026-11-17.log`（UTF-8 無 BOM、78 行）。
 >
 > A8 補充（誠實）：2026-11-04 23:14 之後重試載入測試時，**Timberborn 啟動後立即退出**；把整個模組移出 Mods 目錄後同樣發生（`Player.log` 只到引擎初始化＋shutdown，無例外），且 `steam://rungameid` / `Steam -applaunch` 也無法啟動 → **環境問題（Steam/工作階段），不是本模組造成**。因此「含自製模型的遊戲內載入/外觀」尚未驗證，列入待實測；A9–A11 為其靜態替代證據。
 > A8 說明：log 中的 `Invalid number of columns found in enUS (line 2..18)` 與大量 zhCN 缺鍵是**其他本地/工作坊模組**既有的問題（安裝我們的 mod 之前的 `Player-prev.log` 已有同樣錯誤；我們的 3 份 CSV 為合法 3 欄、無缺鍵）——不是 MWP。
