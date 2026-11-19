@@ -3,7 +3,8 @@
 > 本檔記錄**實際跑過**的驗證與其輸出，以及**無法離線執行**、必須遊戲內人工驗收的項目。
 > 原則：沒有輸出證據的項目不得標 Pass。
 >
-> 最後更新：2026-11-17（v0.2.5 定時離線回歸：4 組件 0 warning、`PASS 213/213`、`VALIDATION PASSED`、staged 51 檔／1,279,337 bytes＝與 0.2.5 一致無漂移；上一次 2026-11-16 同為定時回歸，2026-11-15 為建造選單整合回原版 Water 群組＋實機展開與四檔 tooltip）｜證據：`docs/evidence/build-2026-11-17.log`、`docs/evidence/build-2026-11-16.log`、`docs/evidence/build-0.2.5.log`、`docs/evidence/ui-in-game-2026-11-15-checks.txt`、`docs/evidence/ui-in-game-2026-11-15-Player.log`、`docs/evidence/ui-0.2.5-water-group-expanded.png`、`ui-0.2.5-water-group-row-annotated.png`、`ui-0.2.5-water-tiers-tooltips.png`、`docs/evidence/build-0.2.4.log`、`ui-in-game-2026-11-14-checks.txt`
+> 最後更新：2026-11-19（A 啟動檢查 PASS：`docs/evidence/launch-check-2026-11-19.txt`；B/C 實機驗收仍待執行）
+> 前次更新：2026-11-17（v0.2.5 定時離線回歸：4 組件 0 warning、`PASS 213/213`、`VALIDATION PASSED`、staged 51 檔／1,279,337 bytes＝與 0.2.5 一致無漂移；上一次 2026-11-16 同為定時回歸，2026-11-15 為建造選單整合回原版 Water 群組＋實機展開與四檔 tooltip）｜證據：`docs/evidence/build-2026-11-17.log`、`docs/evidence/build-2026-11-16.log`、`docs/evidence/build-0.2.5.log`、`docs/evidence/ui-in-game-2026-11-15-checks.txt`、`docs/evidence/ui-in-game-2026-11-15-Player.log`、`docs/evidence/ui-0.2.5-water-group-expanded.png`、`ui-0.2.5-water-group-row-annotated.png`、`ui-0.2.5-water-tiers-tooltips.png`、`docs/evidence/build-0.2.4.log`、`ui-in-game-2026-11-14-checks.txt`
 > 歷史（0.2.3 定時回歸：`docs/evidence/build-2026-11-10.log`）；0.2.2 建置：`docs/evidence/build-0.2.2.log`；0.2.2 定時回歸：`docs/evidence/build-2026-11-09.log`；0.2.1 搬運實機：A16／A18；v0.2.0 回歸：`docs/evidence/build-2026-11-06.log`；同日 08:00 回歸：`docs/evidence/build-2026-11-06-0800.log`；前次回歸：`docs/evidence/build-2026-11-05.log`；v0.2.0 原始建置：`docs/evidence/build-0.2.0.log`；art pass 建置：`docs/evidence/build-art-0.2.0.log`
 
 ## 1. 自動化驗證（可重跑）

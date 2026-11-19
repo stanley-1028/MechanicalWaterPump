@@ -1,0 +1,17 @@
+Launch check — 2026-11-19 (acceptance reminder A)
+=================================================
+Command : Timberborn.exe -logFile .tmp\accept\launch-check-Player.log (no -skipModManager)
+Result  : WINDOW_UP (process alive with MainWindowHandle != 0), title "Timberborn",
+          still alive after 15 s, closed cleanly (CloseMainWindow + force stop fallback).
+Verdict : A PASS — the game itself starts on this machine.
+
+Caveats from the log:
+- "Couldn't connect to the Steam client. Is it running and do you have the game in your library?"
+  => Steam was not running for this check (user was not logged in). Workshop content
+     (e.g. Timber Pipes) and the Workshop copy of this mod are unavailable until Steam runs.
+     Start Steam and sign in before the in-game acceptance round.
+- "No manifest file found in Documents\Timberborn\Mods\HighDensityBoxFarm"
+  => stale local HDBF folder without manifest; harmless, can be deleted.
+- No Exception / no MWP/Error lines in this log tail.
+
+Not covered by this check: save loading, build menu, models, panel, T01-T27.
